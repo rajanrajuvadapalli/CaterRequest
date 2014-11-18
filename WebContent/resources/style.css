@@ -1,0 +1,38 @@
+@CHARSET "ISO-8859-1";
+body { 
+	font-size: 40px;
+	font-family: "" Lucida Grande ", " Lucida Sans Unicode ", Helvetica, Arial, Verdana, sans-serif"; 
+}
+
+.footer { text-align: center;font-size: 80%;color: #a0a0a0;padding: 20px; }
+
+.top_menu {
+	background: #FFFFFF;
+	width: 100%;
+}
+
+.top_menu_item {
+	text-align: center;
+	vertical-align: center;
+	margin: 0;
+	font-size: 18px;
+	color: #52525A;
+	background: #FFFFFF;
+	height: 2.55556em;
+	width: 100px;
+    background-position: 50% 40%;
+    background-size: 1.05556em 1.27778em;
+    background-size: 19px 23px\0;
+    padding: 10px 10px 10px 10px;
+    border-radius: 15px;
+}
+
+a {
+	text-decoration: none;
+}
+
+.top_menu_item:hover {
+	color: #FFFFFF;
+	background: #52525A;
+}
+
