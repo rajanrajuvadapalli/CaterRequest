@@ -58,6 +58,11 @@
 					</select>
 				</td>
 			</tr>
+			<tr id="restaurant">
+				<td class="field-name">Website URL :</td>
+				<td class="field-value"><input type="text" size="50"
+					required="required" placeholder="Ex.: www.example.com" class="inputs"></td>
+			</tr>
 			<tr>
 				<td class="field-name">Email :</td>
 				<td class="field-value"><input type="text" size="30"
