@@ -38,14 +38,9 @@ a {
 
 .homePageBanner {
 	background: url('images/sacramento_banner.jpg');
-	background-repeat: no-repeat;
-	/* background-position:center center; */
-	
+	background-repeat: no-repeat;	
 	height: 400px;
 	width: 900px;
-	/* overflow: hidden; */
-	/* position: relative; */
-	/* width:100%; */
 	color: #FFFFFF;
 }
 .homePageBanner-left {
@@ -72,7 +67,7 @@ inputs-moz-placeholder {
 .inputs {
 	color: #9D9E9E;
 	padding: 15px 25px;
-	border: 1px solid #FFF;
+	border: 1px solid silver;
     border-radius: 5px;
 }
 
@@ -89,9 +84,43 @@ inputs-moz-placeholder {
 .pull-right{float:right;padding-right:15px;padding-left:0;border-left:0;vertical-align: top;}
 .pull-left{float:left;padding-right:15px;padding-left:0;border-left:0;vertical-align: top;}
 
+td.field-name {
+	text-align: right;
+}
+td.field-value {
+	text-align: left;
+}
 
+/* .register-option-user {
+	background: url('images/individual.png');
+	background-repeat: no-repeat;	
+	height: 300px;
+	width: 300px;
+	float: left;
+	vertical-align: top;
+	color: #fff;
+}
+.register-option-restaurant {
+	background: url('images/chef.jpg') ;
+	background-repeat: no-repeat;	
+	height: 300px;
+	width: 200px;
+	float: right;
+	vertical-align: top;
+	color: #fff;
+} */
 
-
-
-
+.image-button {
+	width:300px;
+	text-align: center;
+	vertical-align: center;
+	border: 1px solid silver;
+	border-radius: 5px;
+	box-shadow: 10px 10px 10px #888888; /* h-shadow v-shadow blur spread color */
+	opacity: 0.5;
+}
+.image-button:hover {
+	opacity: 1;
+	transform: scale(1.12);
+}
 

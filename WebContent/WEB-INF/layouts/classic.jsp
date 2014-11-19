@@ -5,6 +5,7 @@
 		<title><t:getAsString name="title"/></title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/style.css" type="text/css" />
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/register.js"></script>
 	</head>
 	<body align="center">
 		<table align="center">
