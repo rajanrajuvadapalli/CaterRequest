@@ -1,4 +1,4 @@
-<div>
+<div style="width:700px;">
 	<br><br><br><br>
 	<p>
 		Have a Party? Want to order food, but haven't decided on the cuisine or the budget, but still want to get
