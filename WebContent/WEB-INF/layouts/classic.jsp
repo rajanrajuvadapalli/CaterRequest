@@ -6,7 +6,12 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/style.css" type="text/css" />
 		<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/logo-favicon.ico">
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/register.js"></script>
+		<!-- <script src = "http://www.myersdaily.org/joseph/javascript/md5.js"></script> -->
+		<script src="${pageContext.request.contextPath}/resources/js/md5.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/register.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/bootstrap-formhelpers.min.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/jquery.validate.min.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/additional-methods.min.js"></script>
 	</head>
 	<body align="center">
 		<table align="center">

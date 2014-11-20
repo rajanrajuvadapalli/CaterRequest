@@ -17,7 +17,7 @@
 				<form method="POST" action="${pageContext.request.contextPath}/login">
 					<input type="text" size="30" required="required" placeholder="Your email" class="inputs"><br><br>
 					<input type="password" size="30" required="required" placeholder="Password" class="inputs"><br><br>
-					<button type="submit" size="30" class="button">Sign In </button><br><br>
+					<button type="submit" width="50px" class="button">Sign In </button><br><br>
 				</form>
 			</td>
 		</tr>	
