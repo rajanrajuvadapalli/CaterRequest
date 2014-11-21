@@ -17,7 +17,7 @@
 	<br> <br> <br>
 </div>
 
-<div id="register-form">
+<div>
 	<form method="POST" id="register-form"
 		action="${pageContext.request.contextPath}/register" novalidate
 		ectype="application/x-www-form-urlencoded" autocomplete="off">
@@ -36,11 +36,11 @@
 			</tr>
 			<tr id="restaurant">
 				<td class="field-name">Cuisine Type :</td>
-				<td class="field-value"><span id="cuisine-type"></span></td>
+				<td class="field-value"><span id="cuisineType"></span></td>
 			</tr>
 			<tr id="restaurant">
 				<td class="field-name">Website URL :</td>
-				<td class="field-value"><input type="url" size="50"
+				<td class="field-value"><input type="url" size="50" name="url"
 					required="required" placeholder="Ex.: www.example.com"
 					class="inputs"></td>
 			</tr>
@@ -60,36 +60,37 @@
 			<tr>
 				<td class="field-name">Confirm Password :</td>
 				<td class="field-value"><input type="password" size="30"
-					name="pwd2" required="required" placeholder="Re-enter Password"
-					class="inputs"></td>
+					name="pwd2" id="pwd2" required="required"
+					placeholder="Re-enter Password" class="inputs"></td>
 			</tr>
 			<tr>
 				<td class="field-name">Contact Phone :</td>
 				<td class="field-value"><input type="text" size="30"
-					name="phone" required="required"
-					placeholder="Ex.: xxx-xxx-xxxx" class="inputs"></td>
+					name="phone" required="required" placeholder="Ex.: xxx-xxx-xxxx"
+					class="inputs"></td>
 			</tr>
 			<tr>
 				<td colspan="2" style="text-align: center;"><br>Address</td>
 			</tr>
 			<tr>
 				<td class="field-name">Street 1 :</td>
-				<td class="field-value"><input type="text" size="30" maxlength="50" name="street2"
-					required="required" placeholder="Line 1" class="inputs"></td>
+				<td class="field-value"><input type="text" size="30"
+					maxlength="50" name="street1" required="required"
+					placeholder="Line 1" class="inputs"></td>
 			</tr>
 			<tr>
 				<td class="field-name">Street 2 :</td>
-				<td class="field-value"><input type="text" size="30"maxlength="50" name="street1"
-					placeholder="Line 2" class="inputs"></td>
+				<td class="field-value"><input type="text" size="30"
+					maxlength="50" name="street2" placeholder="Line 2" class="inputs"></td>
 			</tr>
 			<tr>
 				<td class="field-name">City :</td>
-				<td class="field-value"><input type="text" size="30" name="city"
-					required="required" placeholder="City" class="inputs"></td>
+				<td class="field-value"><input type="text" size="30"
+					name="city" required="required" placeholder="City" class="inputs"></td>
 			</tr>
 			<tr>
 				<td class="field-name">State :</td>
-				<td class="field-value"><select id="states1"
+				<td class="field-value"><select id="state" name="state"
 					class="form-control bfh-states inputs"></select></td>
 			</tr>
 			<tr>

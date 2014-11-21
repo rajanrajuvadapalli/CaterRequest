@@ -1,6 +1,8 @@
 package com.cater.ui.data;
 
+
 public class RegistrationData {
+	private static final String NEW_LINE = "\n";
 	private String name;
 	private String restaurantName;
 	private String cuisineType;
@@ -108,5 +110,24 @@ public class RegistrationData {
 
 	public void setZip(String zip) {
 		this.zip = zip;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("[name: ").append(name).append(NEW_LINE);
+		builder.append("restaurantName: ").append(restaurantName)
+				.append(NEW_LINE);
+		builder.append("cuisineType: ").append(cuisineType).append(NEW_LINE);
+		builder.append("url: ").append(url).append(NEW_LINE);
+		builder.append("email: ").append(email).append(NEW_LINE);
+		builder.append("password: ").append(password).append(NEW_LINE);
+		builder.append("phone: ").append(phone).append(NEW_LINE);
+		builder.append("street1: ").append(street1).append(NEW_LINE);
+		builder.append("street2: ").append(street2).append(NEW_LINE);
+		builder.append("city: ").append(city).append(NEW_LINE);
+		builder.append("state: ").append(state).append(NEW_LINE);
+		builder.append("zip: ").append(zip).append("]");
+		return builder.toString();
 	}
 }

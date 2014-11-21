@@ -1,0 +1,1 @@
+<div>Registration Success.</div>

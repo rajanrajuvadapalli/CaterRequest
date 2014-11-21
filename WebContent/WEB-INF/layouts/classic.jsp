@@ -1,4 +1,5 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="t" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html" />

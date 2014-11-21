@@ -4,7 +4,7 @@ $('document').ready(function() {
 	$("[id=register-options]").show();
 	$("[id=register-form]").hide();
 	populateCuisineTypes();
-	$('#states1').bfhstates({
+	$('#state').bfhstates({
 		country : 'US',
 		state : 'CA'
 	});
@@ -25,9 +25,9 @@ function showRegistrationFormFor(user) {
 }
 
 function populateCuisineTypes() {
-	$("span[id=cuisine-type]")
+	$("span[id=cuisineType]")
 			.replaceWith(
-					"<select class=\"inputs\" id=\"cuisine-type\" required=\"required\">"
+					"<select class=\"inputs\" name=\"cuisineType\" id=\"cuisineType\" required=\"required\">"
 							+ "	<option value=\"01\"> AMERICAN           </option>              "
 							+ "	<option value=\"02\"> CHINESE            </option>              "
 							+ "	<option value=\"03\"> CONTINENTAL        </option>              "
@@ -48,21 +48,8 @@ function populateCuisineTypes() {
 							+ "	<option value=\"18\"> THAI               </option>              "
 							+ "	<option value=\"19\"> TIBETAN            </option>              "
 							+ "	<option value=\"20\"> VIETNAMESE         </option>              "
-							// + " <option value=\"21\" selected=\"true\">
-							// </option> "
 							+ "</select>                                                          ");
 }
-
-/*function validateRegistrationForm() {
-	// Validate if the passwords match
-	var p1 = $("[id=pwd1]").val();
-	var p2 = $("[id=pwd2]").val();
-	if (p1 != null && p2 != null && p1.trim() && p1 != p2) {
-		alert("Passwords don't match.");
-		return false;
-	}
-	return true;
-};*/
 
 function validateRegistrationFormOnSubmit() {
 	$("form[id=register-form]").validate({
@@ -108,6 +95,13 @@ function validateRegistrationFormOnSubmit() {
 			zip:{
 				pattern: "Please enter a valid zip in the form xxxxx or xxxxx-xxxx"
 			}
+		},
+		submitHandler : function(form){
+			var hash = md5($("#pwd1").val());
+			$("#pwd1").val(hash);
+			$("#pwd2").val("");
+			form.submit();
 		}
 	});
 }
+
