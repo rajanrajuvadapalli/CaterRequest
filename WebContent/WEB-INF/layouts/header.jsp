@@ -9,6 +9,7 @@
 				<td><a href="${pageContext.request.contextPath}/contactUs"><span class="top_menu_item">Contact Us</span></a></td>
 				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td><a href="${pageContext.request.contextPath}/home"><span class="top_menu_item">Login</span></a></td>
 				<td><a href="${pageContext.request.contextPath}/signUp"><span class="top_menu_item">Sign Up</span></a></td>
 				</tr>
 		</table>
