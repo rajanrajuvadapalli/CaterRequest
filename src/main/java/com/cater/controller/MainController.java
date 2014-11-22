@@ -3,8 +3,7 @@ package com.cater.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,9 +20,7 @@ import com.cater.ui.data.RegistrationData;
  */
 @Controller
 public class MainController {
-	/** The Constant logger. */
-	public static final Logger logger = LoggerFactory
-			.getLogger(MainController.class);
+	private static final Logger logger = Logger.getLogger(MainController.class);
 
 	/**
 	 * Home.
