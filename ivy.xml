@@ -1,7 +1,11 @@
 <?xml version="1.0"?>
+<!DOCTYPE ivy-module [
+    <!ENTITY spring.version "4.0.2.RELEASE">
+    <!ENTITY hibernate.version "4.3.2.Final">
+]>
 <ivy-module version="1.0" xmlns:m="http://ant.apache.org/ivy/maven">
-	<info organisation="com.cater" module="Cater4Party"
-		revision="1.0.0" status="release" />
+	<info organisation="com.cater" module="Cater4Party" revision="1.0.0"
+		status="release" />
 
 	<configurations>
 
@@ -26,11 +30,12 @@
 		provide it. It is only available on the compilation classpath, and is
 		not transitive." />
 
-		<conf name="providedCompile" visibility="public" description="this is
+		<conf name="providedCompile" visibility="public"
+			description="this is
 		much like compile, but indicates you expect th/e JDK or a container to
 		provide it. It is only available on the compilation classpath, and is
-		not transitive."/>
-		
+		not transitive." />
+
 		<conf name="runtime" visibility="public"
 			description="this
 		scope indicates that the dependency is not required for compilation,
@@ -61,7 +66,7 @@
 
 		<conf name="optional" visibility="public"
 			description="contains all optional dependencies" />
-		
+
 		<conf name="bundle" visibility="public" description="Project bundles" />
 
 	</configurations>
@@ -71,22 +76,37 @@
 			conf="compile" />
 		<dependency org="org.apache.commons" name="commons-lang3"
 			rev="3.0" conf="compile" />
-		
+
 		<dependency org="org.slf4j" name="slf4j-api" rev="1.6.6"
 			conf="compile" />
 		<dependency org="org.apache.tiles" name="tiles-extras" rev="3.0.3"
 			conf="compile" />
-		<dependency org="commons-logging" name="commons-logging" rev="1.1.3"
-			conf="compile" />
+		<dependency org="commons-logging" name="commons-logging"
+			rev="1.1.3" conf="compile" />
 		<dependency org="jstl" name="jstl" rev="1.2" conf="compile" />
-		
+
 		<dependency org="org.springframework" name="spring-core"
-			rev="4.0.2.RELEASE" conf="compile" />
+			rev="&spring.version;" conf="compile" />
 		<dependency org="org.springframework" name="spring-web"
-			rev="4.0.2.RELEASE" conf="compile" />
+			rev="&spring.version;" conf="compile" />
 		<dependency org="org.springframework" name="spring-webmvc"
-			rev="4.0.2.RELEASE" conf="compile" />
-		<dependency org="javax.servlet" name="javax.servlet-api" rev="3.0.1" conf="provided"/>
+			rev="&spring.version;" conf="compile" />
+		<dependency org="org.springframework" name="spring-orm"
+			rev="&spring.version;" conf="compile" />
+		<dependency org="org.hibernate" name="hibernate-core" rev="&hibernate.version;"
+			conf="compile" />
+		<dependency org="org.hibernate" name="hibernate-entitymanager"
+			rev="&hibernate.version;" conf="compile" />
+		<dependency org="javax.servlet" name="javax.servlet-api"
+			rev="3.0.1" conf="provided" />
+		<dependency org="org.hsqldb" name="hsqldb" rev="2.3.2"
+			conf="compile" />
+		<dependency org="commons-dbcp" name="commons-dbcp" rev="1.4"
+			conf="compile" />
 		
+		<dependency org="junit" name="junit" rev="4.9" conf="testCompile"/>
+		<dependency org="org.springframework" name="spring-test"
+			rev="&spring.version;" conf="compile" />
+
 	</dependencies>
 </ivy-module>
