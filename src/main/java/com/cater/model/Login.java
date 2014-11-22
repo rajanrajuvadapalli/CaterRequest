@@ -1,5 +1,7 @@
 package com.cater.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +11,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Login")
-public class Login {//extends AbstractTimestampEntity implements Serializable {
-	//private static final long serialVersionUID = -7098840889708226176L;
+public class Login extends AbstractTimestampEntity implements Serializable {
+	private static final long serialVersionUID = -7098840889708226176L;
 	@Id
 	@Column(name = "login_pk")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
