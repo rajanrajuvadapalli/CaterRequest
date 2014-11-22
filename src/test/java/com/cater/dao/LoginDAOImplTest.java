@@ -1,6 +1,8 @@
 package com.cater.dao;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -57,9 +59,22 @@ public class LoginDAOImplTest {
 		login.setPassword("p");
 		login.setRole(Roles.CUSTOMER.toString());
 		login.setActive(true);
-		fixture.save(login);
+		assertTrue(fixture.save(login));
 		login.setPassword("up");
 		Thread.sleep(1000);
-		fixture.save(login);
+		assertTrue(fixture.save(login));
+	}
+
+	@Test
+	public void testFindById() throws InterruptedException {
+		Login login = new Login();
+		login.setUsername("findById");
+		login.setPassword("p");
+		login.setRole(Roles.CUSTOMER.toString());
+		login.setActive(true);
+		assertTrue(fixture.save(login));
+		Login persistedLogin = fixture.findById(login.getId());
+		assertNotNull(persistedLogin);
+		assertEquals(login, persistedLogin);
 	}
 }

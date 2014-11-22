@@ -41,7 +41,7 @@
 			<tr id="restaurant">
 				<td class="field-name">Website URL :</td>
 				<td class="field-value"><input type="url" size="50" name="url"
-					required="required" placeholder="Ex.: www.example.com"
+					required="required" placeholder="Ex.: http://www.example.com"
 					class="inputs"></td>
 			</tr>
 			<tr>

@@ -16,8 +16,11 @@ public class LoginDAOImpl implements LoginDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	/* (non-Javadoc)
+	 * @see com.cater.dao.LoginDAO#save(com.cater.model.Login)
+	 */
 	@Override
-	public void save(Login login) {
+	public boolean save(Login login) {
 		if (login == null) {
 			logger.error("Cannot save null value [Login.class]");
 		}
@@ -32,6 +35,7 @@ public class LoginDAOImpl implements LoginDAO {
 				tx.commit();
 				logger.debug("Successfully saved login info for "
 						+ login.getUsername());
+				return true;
 			}
 			catch (HibernateException he) {
 				logger.error(
@@ -44,5 +48,35 @@ public class LoginDAOImpl implements LoginDAO {
 				}
 			}
 		}
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.cater.dao.LoginDAO#findById(int)
+	 */
+	@Override
+	public Login findById(int id) {
+		logger.debug("Finding login for ID: " + id);
+		Session session = null;
+		Transaction tx = null;
+		try {
+			session = sessionFactory.openSession();
+			tx = session.beginTransaction();
+			Login login = (Login) session.get(Login.class, id);
+			logger.debug("Found login info for ID: " + id);
+			tx.rollback();
+			return login;
+		}
+		catch (HibernateException he) {
+			logger.error(
+					"Exception occurred while performing saveOrUpdate() operation on Login.class",
+					he);
+		}
+		finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		return null;
 	}
 }

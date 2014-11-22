@@ -4,27 +4,54 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @MappedSuperclass
 public abstract class AbstractTimestampEntity {
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "create_ts", nullable = false)
-	private Date created;
+	@Column(name = "create_ts", updatable = false)
+	private Date created = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "lupd_ts", nullable = false)
+	@Column(name = "lupd_ts")
 	private Date updated;
 
-	@PrePersist
-	protected void onCreate() {
-		updated = created = new Date();
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((created == null) ? 0 : created.hashCode());
+		result = prime * result + ((updated == null) ? 0 : updated.hashCode());
+		return result;
 	}
 
-	@PreUpdate
-	protected void onUpdate() {
-		updated = new Date();
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AbstractTimestampEntity other = (AbstractTimestampEntity) obj;
+		if (created == null) {
+			if (other.created != null)
+				return false;
+		}
+		else if (!created.equals(other.created))
+			return false;
+		if (updated == null) {
+			if (other.updated != null)
+				return false;
+		}
+		else if (!updated.equals(other.updated))
+			return false;
+		return true;
 	}
 }
