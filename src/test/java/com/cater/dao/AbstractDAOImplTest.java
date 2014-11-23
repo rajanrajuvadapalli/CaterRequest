@@ -19,12 +19,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public abstract class AbstractDAOImplTest {
 	@Autowired
 	private SessionFactory sessionFactory;
-	@Autowired
-	private DAOTestHelper daoTestHelper;
 
 	@Before
 	public void setUp() throws Exception {
-		daoTestHelper.clearTables();
+		DAOTestHelper.clearTables(sessionFactory);
 	}
 
 	protected SessionFactory getSessionFactory() {

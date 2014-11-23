@@ -6,8 +6,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.hibernate.PropertyValueException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,15 +17,6 @@ import com.cater.model.Login;
 public class LoginDAOImplTest extends AbstractDAOImplTest {
 	@Autowired
 	private LoginDAOImpl fixture;
-
-	public void clearLoginTable() {
-		//delete all entries from Login table
-		Session session = getSessionFactory().openSession();
-		Transaction tx = session.beginTransaction();
-		session.createQuery("delete from Login").executeUpdate();
-		tx.commit();
-		session.close();
-	}
 
 	@Test
 	public void testConstructor() {

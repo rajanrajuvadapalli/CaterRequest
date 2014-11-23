@@ -6,8 +6,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.hibernate.PropertyValueException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,15 +21,6 @@ import com.cater.model.Address;
 public class AddressDAOImplTest extends AbstractDAOImplTest {
 	@Autowired
 	private AddressDAOImpl fixture;
-
-	public void clearAddressTable() {
-		//delete all entries from Address table
-		Session session = getSessionFactory().openSession();
-		Transaction tx = session.beginTransaction();
-		session.createQuery("delete from Address").executeUpdate();
-		tx.commit();
-		session.close();
-	}
 
 	private Address createSampleAddress() {
 		Address address = new Address();
