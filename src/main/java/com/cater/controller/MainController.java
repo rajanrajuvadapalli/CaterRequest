@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.cater.service.RegisterService;
 import com.cater.ui.data.RegistrationData;
 
 /**
@@ -21,6 +23,8 @@ import com.cater.ui.data.RegistrationData;
 @Controller
 public class MainController {
 	private static final Logger logger = Logger.getLogger(MainController.class);
+	@Autowired
+	private RegisterService registerService;
 
 	/**
 	 * Home.
@@ -83,6 +87,8 @@ public class MainController {
 		data.setState(StringUtils.defaultString(request.getParameter("state")));
 		data.setZip(StringUtils.defaultString(request.getParameter("zip")));
 		logger.debug("Form data: " + data.toString());
+		registerService.register(data);
+		modelMap.put("name", data.getName());
 		return "registerSuccess";
 	}
 }

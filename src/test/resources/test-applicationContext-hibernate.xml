@@ -48,8 +48,4 @@
 		</property>
 	</bean>
 
-
-	<!-- <bean id="personDAO" class="com.journaldev.dao.PersonDAOImpl">
-		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-	</bean> -->
 </beans>
