@@ -1,5 +1,6 @@
 package com.cater.dao;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -104,5 +105,30 @@ public class CustomerDAOImplTest {
 		customer.getAddress().setStreet1("Updated Customer street1");
 		Thread.sleep(1000);
 		assertTrue(fixture.save(customer));
+	}
+
+	@Test
+	public void testFindById() throws InterruptedException {
+		Customer customer = createSampleCustomer();
+		assertTrue(fixture.save(customer));
+		Customer persistedCustomer = fixture.findById(customer.getId());
+		assertNotNull(persistedCustomer);
+		assertEquals(persistedCustomer.getName(), customer.getName());
+		assertEquals(persistedCustomer.getContactNumber(),
+				customer.getContactNumber());
+		assertEquals(persistedCustomer.getContactEmail(),
+				customer.getContactEmail());
+		assertNotNull(persistedCustomer.getLogin());
+		assertEquals(persistedCustomer.getLogin().getUsername(), "a");
+		assertEquals(persistedCustomer.getLogin().getPassword(), "p");
+		assertEquals(persistedCustomer.getLogin().getRole(), "CUSTOMER");
+		assertNotNull(persistedCustomer.getAddress());
+		assertEquals(persistedCustomer.getAddress().getStreet1(),
+				"customer test street1");
+		assertEquals(persistedCustomer.getAddress().getStreet2(),
+				"customer test street2");
+		assertEquals(persistedCustomer.getAddress().getCity(), "Sacramento");
+		assertEquals(persistedCustomer.getAddress().getState(), "CA");
+		assertEquals(persistedCustomer.getAddress().getZip(), "958300000");
 	}
 }
