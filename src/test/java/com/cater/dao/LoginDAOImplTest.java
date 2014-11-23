@@ -1,15 +1,15 @@
 package com.cater.dao;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import org.hibernate.PropertyValueException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,17 +21,11 @@ import com.cater.model.Login;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:test-applicationContext-hibernate.xml" })
-//@TransactionConfiguration
-//@Transactional
 public class LoginDAOImplTest {
 	@Autowired
 	private LoginDAOImpl fixture;
 	@Autowired
 	private SessionFactory sessionFactory;
-
-	@BeforeClass
-	public static void beforeClass() throws Exception {
-	}
 
 	@Before
 	public void setUp() throws Exception {
@@ -43,17 +37,29 @@ public class LoginDAOImplTest {
 		session.close();
 	}
 
-	@After
-	public void tearDown() throws Exception {
-	}
-
 	@Test
 	public void testConstructor() {
 		assertNotNull(fixture);
 	}
 
 	@Test
-	public void testSave() throws InterruptedException {
+	public void testSave_nullObject() {
+		Login login = null;
+		assertFalse(fixture.save(login));
+	}
+
+	@Test(expected = PropertyValueException.class)
+	public void testSave_nullProperty() {
+		Login login = new Login();
+		login.setUsername(null);
+		login.setPassword("p");
+		login.setRole(Roles.CUSTOMER.toString());
+		login.setActive(true);
+		fixture.save(login);
+	}
+
+	@Test
+	public void testSave_valid() throws InterruptedException {
 		Login login = new Login();
 		login.setUsername("a");
 		login.setPassword("p");
@@ -75,6 +81,9 @@ public class LoginDAOImplTest {
 		assertTrue(fixture.save(login));
 		Login persistedLogin = fixture.findById(login.getId());
 		assertNotNull(persistedLogin);
-		assertEquals(login, persistedLogin);
+		assertEquals(login.getUsername(), persistedLogin.getUsername());
+		assertEquals(login.getPassword(), persistedLogin.getPassword());
+		assertEquals(login.getRole(), persistedLogin.getRole());
+		assertEquals(login.isActive(), persistedLogin.isActive());
 	}
 }

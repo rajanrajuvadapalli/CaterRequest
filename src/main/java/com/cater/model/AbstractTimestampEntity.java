@@ -16,6 +16,14 @@ public abstract class AbstractTimestampEntity {
 	@Column(name = "lupd_ts")
 	private Date updated;
 
+	public Date getCreated() {
+		return created;
+	}
+
+	public Date getUpdated() {
+		return updated;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
