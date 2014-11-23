@@ -7,14 +7,10 @@ import static org.junit.Assert.assertTrue;
 
 import org.hibernate.PropertyValueException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.stereotype.Component;
 
 import com.cater.constants.Roles;
 import com.cater.model.Address;
@@ -26,28 +22,18 @@ import com.cater.model.Login;
  * Created: Nov 22, 2014
  * @author Hari 
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:test-applicationContext-hibernate.xml" })
-public class CustomerDAOImplTest {
+@Component
+public class CustomerDAOImplTest extends AbstractDAOImplTest {
 	@Autowired
 	private CustomerDAOImpl fixture;
-	@Autowired
-	private AddressDAOImplTest addressDAOImplTest;
-	@Autowired
-	private LoginDAOImplTest loginDAOImplTest;
-	@Autowired
-	private SessionFactory sessionFactory;
 
-	@Before
-	public void setUp() throws Exception {
+	public void clearCustomerTable() {
 		//delete all entries from Customer table
-		Session session = sessionFactory.openSession();
+		Session session = getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction();
 		session.createQuery("delete from Customer").executeUpdate();
 		tx.commit();
 		session.close();
-		addressDAOImplTest.clearAddressTable();
-		loginDAOImplTest.clearLoginTable();
 	}
 
 	private Customer createSampleCustomer() {

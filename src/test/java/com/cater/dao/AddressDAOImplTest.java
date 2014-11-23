@@ -7,15 +7,10 @@ import static org.junit.Assert.assertTrue;
 
 import org.hibernate.PropertyValueException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.cater.model.Address;
 
@@ -24,23 +19,14 @@ import com.cater.model.Address;
  * Created: Nov 22, 2014
  * @author Hari 
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:test-applicationContext-hibernate.xml" })
 @Component
-public class AddressDAOImplTest {
+public class AddressDAOImplTest extends AbstractDAOImplTest {
 	@Autowired
 	private AddressDAOImpl fixture;
-	@Autowired
-	private SessionFactory sessionFactory;
-
-	@Before
-	public void setUp() throws Exception {
-		clearAddressTable();
-	}
 
 	public void clearAddressTable() {
 		//delete all entries from Address table
-		Session session = sessionFactory.openSession();
+		Session session = getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction();
 		session.createQuery("delete from Address").executeUpdate();
 		tx.commit();

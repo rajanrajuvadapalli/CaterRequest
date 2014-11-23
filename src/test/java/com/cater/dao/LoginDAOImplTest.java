@@ -7,36 +7,22 @@ import static org.junit.Assert.assertTrue;
 
 import org.hibernate.PropertyValueException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.cater.constants.Roles;
 import com.cater.model.Login;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:test-applicationContext-hibernate.xml" })
 @Component
-public class LoginDAOImplTest {
+public class LoginDAOImplTest extends AbstractDAOImplTest {
 	@Autowired
 	private LoginDAOImpl fixture;
-	@Autowired
-	private SessionFactory sessionFactory;
-
-	@Before
-	public void setUp() throws Exception {
-		clearLoginTable();
-	}
 
 	public void clearLoginTable() {
 		//delete all entries from Login table
-		Session session = sessionFactory.openSession();
+		Session session = getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction();
 		session.createQuery("delete from Login").executeUpdate();
 		tx.commit();
