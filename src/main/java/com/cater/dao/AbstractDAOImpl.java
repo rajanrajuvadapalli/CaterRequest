@@ -19,20 +19,13 @@ import com.cater.model.AbstractTimestampEntity;
 public abstract class AbstractDAOImpl {
 	private static final Logger logger = Logger
 			.getLogger(AbstractDAOImpl.class);
-	//	private final Class <T> type;
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	//	protected AbstractDAOImpl(Class <T> type) {
-	//		this.type = type;
-	//	}
 	protected SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
 
-	//	protected Class <T> getType() {
-	//		return type;
-	//	}
 	/**
 	 * Save.
 	 *
