@@ -106,8 +106,10 @@ public class MainController {
 				.getParameter("username"));
 		String password = StringUtils
 				.defaultString(request.getParameter("pwd"));
-		List <String> errors = Lists.newArrayList();
-		modelMap.put("errors", errors);
+		List<String> errors = Lists.newArrayList();
+		//modelMap.put("errors", errors);
+		modelMap.addAttribute("errors", errors);
+		//request.setAttribute("errors", errors);
 		try {
 			Login login = loginService.retrieveLoginFor(username, password);
 			if (login == null) {

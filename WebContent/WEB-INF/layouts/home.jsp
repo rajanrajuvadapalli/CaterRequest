@@ -1,3 +1,14 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:if test="${not empty errors}">
+	<div class="error">
+		<ul>
+			<li><c:forEach items="${errors}" var="e">${e}</c:forEach></li>
+		</ul>
+		
+	</div>
+</c:if>
+	
 <div class="homePageBanner">
 	<table>
 		<tr>
@@ -15,24 +26,17 @@
 					ectype="application/x-www-form-urlencoded" autocomplete="off">
 					<table>
 						<tr>
-							<td><input type="email" size="30" name="username"
+							<td><input type="email" size="30" name="username" id="username"
 								required="required" placeholder="Your email" class="inputs"></td>
 						</tr>
 						<tr>
-							<td><input type="password" size="30" name="pwd"
+							<td><input type="password" size="30" name="pwd" id="pwd"
 								required="required" placeholder="Password" class="inputs"></td>
 						</tr>
 						<tr>
 							<td><button type="submit" width="50px" class="button">Sign
 									In</button></td>
 						</tr>
-						<tr>
-							<td><c:forEach items="${errors}" var="e">
-									<c:out value="${e}" />
-									<br>
-								</c:forEach></td>
-						</tr>
-
 					</table>
 					<br> <br>
 				</form>
