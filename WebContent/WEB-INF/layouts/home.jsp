@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:if test="${not empty errors}">
-	<div class="error">
+	<div class="errorMsg">
 		<ul>
 			<li><c:forEach items="${errors}" var="e">${e}</c:forEach></li>
 		</ul>
