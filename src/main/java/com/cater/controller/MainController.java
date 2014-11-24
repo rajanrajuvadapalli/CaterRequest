@@ -1,8 +1,10 @@
 package com.cater.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -14,8 +16,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.cater.constants.Roles;
+import com.cater.model.Login;
+import com.cater.service.LoginService;
 import com.cater.service.RegisterService;
 import com.cater.ui.data.RegistrationData;
+import com.google.common.collect.Lists;
 
 /**
  * The Class MainController.
@@ -25,6 +31,8 @@ public class MainController {
 	private static final Logger logger = Logger.getLogger(MainController.class);
 	@Autowired
 	private RegisterService registerService;
+	@Autowired
+	private LoginService loginService;
 
 	/**
 	 * Home.
@@ -90,5 +98,38 @@ public class MainController {
 		registerService.register(data);
 		modelMap.put("name", data.getName());
 		return "registerSuccess";
+	}
+
+	@RequestMapping(value = { "login" }, method = RequestMethod.POST)
+	public String login(ModelMap modelMap, HttpServletRequest request) {
+		String username = StringUtils.defaultString(request
+				.getParameter("username"));
+		String password = StringUtils
+				.defaultString(request.getParameter("pwd"));
+		List <String> errors = Lists.newArrayList();
+		modelMap.put("errors", errors);
+		try {
+			Login login = loginService.retrieveLoginFor(username, password);
+			if (login == null) {
+				errors.add("Invalid Username and password combination.");
+				return "home";
+			}
+			else if (StringUtils.equalsIgnoreCase(Roles.CUSTOMER.toString(),
+					login.getRole())) {
+				return "dashboardCustomer";
+			}
+			else if (StringUtils.equalsIgnoreCase(Roles.RESTAURANT.toString(),
+					login.getRole())) {
+				return "dashboardRestaurant";
+			}
+			else if (StringUtils.equalsIgnoreCase(Roles.ADMIN.toString(),
+					login.getRole())) {
+				return "dashboardAdmin";
+			}
+		}
+		catch (Exception ex) {
+			errors.add("An unknown exception occured while logging you in. Please try later.");
+		}
+		return "home";
 	}
 }

@@ -9,6 +9,7 @@ $('document').ready(function() {
 		state : 'CA'
 	});
 	validateRegistrationFormOnSubmit();
+	validateLoginForm();
 });
 
 function showRegistrationFormFor(user) {
@@ -52,56 +53,82 @@ function populateCuisineTypes() {
 }
 
 function validateRegistrationFormOnSubmit() {
-	$("form[id=register-form]").validate({
+	$("form[id=register-form]")
+			.validate(
+					{
+						rules : {
+							name : {
+								minlength : 4
+							},
+							restaurantName : {
+								minlength : 4
+							},
+							pwd1 : {
+								minlength : 5
+							},
+							pwd2 : {
+								minlength : 5,
+								equalTo : "#pwd1"
+							},
+							phone : {
+								phoneUS : true
+							},
+							zip : {
+								pattern : /^\d{5}(\-\d{4})?$/
+							}
+						},
+						messages : {
+							name : {
+								required : "Please enter your name.",
+								minlength : "Name must at least be 4 characters"
+							},
+							restaurantName : {
+								required : "Please enter your restaurant's name.",
+								minlength : "Name must at least be 4 characters"
+							},
+							pwd1 : {
+								required : "Please provide a password",
+								minlength : "Your password must be at least 5 characters long"
+							},
+							pwd2 : {
+								required : "Please provide a password",
+								minlength : "Your password must be at least 5 characters long",
+								equalTo : "Please enter the same password as above"
+							},
+							zip : {
+								pattern : "Please enter a valid zip in the form xxxxx or xxxxx-xxxx"
+							}
+						},
+						submitHandler : function(form) {
+							var hash = md5($("#pwd1").val());
+							$("#pwd1").val(hash);
+							$("#pwd2").val("");
+							form.submit();
+						}
+					});
+}
+
+function validateLoginForm() {
+	$("form[id=loginForm]").validate({
 		rules : {
-			name : {
-				minlength : 4
-			},
-			restaurantName : {
-				minlength : 4
-			},
-			pwd1 : {
+			pwd : {
 				minlength : 5
-			},
-			pwd2 : {
-				minlength : 5,
-				equalTo : "#pwd1"
-			},
-			phone: {
-				phoneUS: true
-			},
-			zip:{
-				pattern: /^\d{5}(\-\d{4})?$/
 			}
 		},
 		messages : {
-			name : {
-				required : "Please enter your name.",
-				minlength : "Name must at least be 4 characters"
+			username : {
+				required : "Please enter your email."
 			},
-			restaurantName : {
-				required : "Please enter your restaurant's name.",
-				minlength : "Name must at least be 4 characters"
-			},
-			pwd1 : {
+			pwd : {
 				required : "Please provide a password",
 				minlength : "Your password must be at least 5 characters long"
-			},
-			pwd2 : {
-				required : "Please provide a password",
-				minlength : "Your password must be at least 5 characters long",
-				equalTo : "Please enter the same password as above"
-			},
-			zip:{
-				pattern: "Please enter a valid zip in the form xxxxx or xxxxx-xxxx"
 			}
+
 		},
-		submitHandler : function(form){
-			var hash = md5($("#pwd1").val());
-			$("#pwd1").val(hash);
-			$("#pwd2").val("");
+		submitHandler : function(form) {
+			var hash = md5($("#pwd").val());
+			$("#pwd").val(hash);
 			form.submit();
 		}
 	});
 }
-
