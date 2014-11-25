@@ -21,8 +21,8 @@
 			</tr>
 		</table>
 	</div>
-	<c:if test="${not empty sessionScope.user.username}">
-		<div style="text-align:right;">Welcome <b>${sessionScope.username}</b>!</div>
+	<c:if test="${not empty sessionScope.user}">
+		<div style="text-align:right;color:#52525A;">Welcome <b>${sessionScope.user.username}</b>!</div>
 	</c:if>
 </div>
 

@@ -78,7 +78,8 @@ public class MainController {
 	 * @return the string
 	 */
 	@RequestMapping(value = { "register" }, method = RequestMethod.POST)
-	public String register(ModelMap modelMap, HttpServletRequest request) {
+	public String register(ModelMap modelMap, HttpServletRequest request,
+			HttpSession session) {
 		RegistrationData data = new RegistrationData();
 		data.setName(StringUtils.defaultString(request.getParameter("name")));
 		data.setRestaurantName(StringUtils.defaultString(request
@@ -99,6 +100,8 @@ public class MainController {
 		logger.debug("Form data: " + data.toString());
 		registerService.register(data);
 		modelMap.put("name", data.getName());
+		//When one signs up, logout the current user from session.
+		session.removeAttribute("user");
 		return "registerSuccess";
 	}
 
