@@ -89,9 +89,10 @@ inputs-moz-placeholder {
 
 .inputs {
 	color: #9D9E9E;
-	padding: 15px 25px;
+	padding: 12px 20px;
 	border: 1px solid silver;
 	border-radius: 5px;
+	font-size: 15px;
 }
 
 .button {
