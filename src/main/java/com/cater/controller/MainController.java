@@ -3,6 +3,7 @@ package com.cater.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -21,6 +22,7 @@ import com.cater.model.Login;
 import com.cater.service.LoginService;
 import com.cater.service.RegisterService;
 import com.cater.ui.data.RegistrationData;
+import com.cater.ui.data.User;
 import com.google.common.collect.Lists;
 
 /**
@@ -100,32 +102,55 @@ public class MainController {
 		return "registerSuccess";
 	}
 
+	/**
+	 * Logout.
+	 *
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param session the session
+	 * @return the string
+	 */
+	@RequestMapping(value = { "logout" })
+	public String logout(ModelMap modelMap, HttpServletRequest request,
+			HttpSession session) {
+		session.removeAttribute("user");
+		return "home";
+	}
+
+	/**
+	 * Login.
+	 *
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @return the string
+	 */
 	@RequestMapping(value = { "login" }, method = RequestMethod.POST)
-	public String login(ModelMap modelMap, HttpServletRequest request) {
+	public String login(ModelMap modelMap, HttpServletRequest request,
+			HttpSession session) {
 		String username = StringUtils.defaultString(request
 				.getParameter("username"));
 		String password = StringUtils
 				.defaultString(request.getParameter("pwd"));
 		List<String> errors = Lists.newArrayList();
-		//modelMap.put("errors", errors);
 		modelMap.addAttribute("errors", errors);
-		//request.setAttribute("errors", errors);
 		try {
 			Login login = loginService.retrieveLoginFor(username, password);
 			if (login == null) {
 				errors.add("Invalid Username and password combination.");
 				return "home";
 			}
-			else if (StringUtils.equalsIgnoreCase(Roles.CUSTOMER.toString(),
-					login.getRole())) {
+			User user = new User();
+			user.setUsername(username);
+			Roles role = Roles.get(login.getRole());
+			user.setRole(role);
+			session.setAttribute("user", user);
+			if (Roles.CUSTOMER == role) {
 				return "dashboardCustomer";
 			}
-			else if (StringUtils.equalsIgnoreCase(Roles.RESTAURANT.toString(),
-					login.getRole())) {
+			else if (Roles.RESTAURANT == role) {
 				return "dashboardRestaurant";
 			}
-			else if (StringUtils.equalsIgnoreCase(Roles.ADMIN.toString(),
-					login.getRole())) {
+			else if (Roles.ADMIN == role) {
 				return "dashboardAdmin";
 			}
 		}

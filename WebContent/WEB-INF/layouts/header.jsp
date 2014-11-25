@@ -9,10 +9,20 @@
 				<td><a href="${pageContext.request.contextPath}/contactUs"><span class="top_menu_item">Contact Us</span></a></td>
 				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-				<td><a href="${pageContext.request.contextPath}/home"><span class="top_menu_item">Login</span></a></td>
+				<c:choose>
+					<c:when test="${empty sessionScope.user}">
+						<td><a href="${pageContext.request.contextPath}/home"><span class="top_menu_item">Login</span></a></td>
+					</c:when>
+					<c:otherwise>
+						<td><a href="${pageContext.request.contextPath}/logout"><span class="top_menu_item">Logout</span></a></td>
+					</c:otherwise>
+				</c:choose>
 				<td><a href="${pageContext.request.contextPath}/signUp"><span class="top_menu_item">Sign Up</span></a></td>
-				</tr>
+			</tr>
 		</table>
 	</div>
+	<c:if test="${not empty sessionScope.user.username}">
+		<div style="text-align:right;">Welcome <b>${sessionScope.username}</b>!</div>
+	</c:if>
 </div>
 
