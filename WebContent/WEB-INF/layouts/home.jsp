@@ -29,10 +29,12 @@
 							<td><input type="email" size="30" name="username" id="username"
 								required="required" placeholder="Your email" class="inputs"></td>
 						</tr>
+						<tr><td></td></tr>
 						<tr>
 							<td><input type="password" size="30" name="pwd" id="pwd"
 								required="required" placeholder="Password" class="inputs"></td>
 						</tr>
+						<tr><td></td></tr>
 						<tr>
 							<td><button type="submit" width="50px" class="button">Sign
 									In</button></td>

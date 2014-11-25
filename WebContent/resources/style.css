@@ -47,18 +47,18 @@ a {
 	background: url('images/sacramento_banner.jpg');
 	background-repeat: no-repeat;
 	height: 400px;
-	width: 900px;
+	width: 1300px;
 	color: #FFFFFF;
 }
 
 .homePageBanner-left {
 	float: left;
-	padding: 10px 10px 10px 60px; /* top right bottom left */
+	padding: 10px 40px 10px 60px; /* top right bottom left */
 	vertical-align: top;
 }
 
 .homePageBanner-right {
-	padding: 75px 60px 10px 100px; /* top right bottom left */
+	padding: 75px 60px 10px 400px; /* top right bottom left */
 	vertical-align: top;
 }
 
@@ -149,7 +149,7 @@ td.field-value {
 .infoMsg, .successMsg, .warningMsg, .errorMsg, .validationMsg {
 border: 1px solid;
 margin: 10px 0px;
-padding:15px 10px 15px 50px;
+padding:10px 10px 10px 50px; /* top right bottom left */
 background-repeat: no-repeat;
 background-position: 10px center;
 }
