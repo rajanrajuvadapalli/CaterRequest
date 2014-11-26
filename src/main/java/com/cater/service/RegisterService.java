@@ -79,7 +79,7 @@ public class RegisterService {
 		}
 		else if (Roles.RESTAURANT == role) {
 			Restaurant restaurant = new Restaurant();
-			restaurant.setName(data.getName());
+			restaurant.setName(data.getRestaurantName());
 			restaurant.setAddress(address);
 			restaurant.setLogin(login);
 			restaurant.setContactNumber(data.getPhone());

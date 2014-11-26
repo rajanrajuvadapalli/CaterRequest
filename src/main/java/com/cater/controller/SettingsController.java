@@ -1,9 +1,14 @@
 package com.cater.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -14,6 +19,7 @@ import com.cater.model.Restaurant;
 import com.cater.service.PersonalSettingsService;
 import com.cater.ui.data.RegistrationData;
 import com.cater.ui.data.User;
+import com.google.common.collect.Lists;
 
 @Controller
 public class SettingsController {
@@ -42,6 +48,7 @@ public class SettingsController {
 					data.setPhone(customer.getContactNumber());
 					Address address = customer.getAddress();
 					populateAddress(data, address);
+					session.setAttribute("customerID", customer.getId());
 				}
 				else if (Roles.RESTAURANT == user.getRole()) {
 					Restaurant restaurant = (Restaurant) userFromDatabase;
@@ -51,6 +58,7 @@ public class SettingsController {
 					data.setPhone(restaurant.getContactNumber());
 					Address address = restaurant.getAddress();
 					populateAddress(data, address);
+					session.setAttribute("restaurantID", restaurant.getId());
 				}
 				user.setData(data);
 				session.setAttribute("user", user);
@@ -74,5 +82,55 @@ public class SettingsController {
 			data.setState(address.getState());
 			data.setZip(address.getZip());
 		}
+	}
+
+	/**
+	 * Settings update.
+	 *
+	 * @param request the request
+	 * @param session the session
+	 * @return the string
+	 */
+	@RequestMapping(value = { "settings" }, method = RequestMethod.POST)
+	public String settingsUpdate(ModelMap modelMap, HttpServletRequest request,
+			HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		if (user != null) {
+			Integer customerID = (Integer) session.getAttribute("customerID");
+			Integer restaurantID = (Integer) session
+					.getAttribute("restaurantID");
+			RegistrationData data = new RegistrationData();
+			data.setName(StringUtils.defaultString(request.getParameter("name")));
+			data.setRestaurantName(StringUtils.defaultString(request
+					.getParameter("restaurantName")));
+			data.setCuisineType(StringUtils.defaultString(request
+					.getParameter("cuisineType")));
+			data.setUrl(StringUtils.defaultString(request.getParameter("url")));
+			//data.setEmail(StringUtils.defaultString(request.getParameter("email")));
+			//data.setPassword(StringUtils.defaultString(request.getParameter("pwd1")));
+			data.setPhone(StringUtils.defaultString(request
+					.getParameter("phone")));
+			data.setStreet1(StringUtils.defaultString(request
+					.getParameter("street1")));
+			data.setStreet2(StringUtils.defaultString(request
+					.getParameter("street2")));
+			data.setCity(StringUtils.defaultString(request.getParameter("city")));
+			data.setState(StringUtils.defaultString(request
+					.getParameter("state")));
+			data.setZip(StringUtils.defaultString(request.getParameter("zip")));
+			boolean updateResult = personalSettingsService.updateDataFor(
+					user.getRole(), customerID, restaurantID, data);
+			if (updateResult) {
+				modelMap.addAttribute("status", "success");
+				user.setData(data);
+				session.setAttribute("user", user);
+			}
+			else {
+				List<String> errors = Lists.newArrayList();
+				errors.add("Failed to update profile information.");
+				modelMap.addAttribute("errors", errors);
+			}
+		}
+		return "settings";
 	}
 }
