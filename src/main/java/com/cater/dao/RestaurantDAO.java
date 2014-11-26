@@ -11,4 +11,6 @@ public interface RestaurantDAO {
 	boolean save(Restaurant restaurant);
 
 	Restaurant findById(int id);
+
+	Restaurant findByLoginID(int loginID);
 }

@@ -11,4 +11,6 @@ public interface CustomerDAO {
 	boolean save(Customer customer);
 
 	Customer findById(int id);
+
+	Customer findByLoginID(int loginID);
 }

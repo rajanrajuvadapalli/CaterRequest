@@ -3,8 +3,18 @@ package com.cater.ui.data;
 import com.cater.constants.Roles;
 
 public class User {
+	private int loginID;
 	private String username;
 	private Roles role;
+	private RegistrationData data;
+
+	public int getLoginID() {
+		return loginID;
+	}
+
+	public void setLoginID(int loginID) {
+		this.loginID = loginID;
+	}
 
 	public String getUsername() {
 		return username;
@@ -20,5 +30,13 @@ public class User {
 
 	public void setRole(Roles role) {
 		this.role = role;
+	}
+
+	public RegistrationData getData() {
+		return data;
+	}
+
+	public void setData(RegistrationData data) {
+		this.data = data;
 	}
 }

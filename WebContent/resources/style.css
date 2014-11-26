@@ -34,6 +34,19 @@ body {
 	border-radius: 15px;
 }
 
+.top_menu_icon {
+	text-align: center;
+	vertical-align: center;
+	margin: 0;
+	padding: 5px 10px 5px 10px; /* top right bottom left */
+	width: 25px;
+	background: #FFFFFF;
+	opacity: 0.5;
+}
+.top_menu_icon:hover {
+	opacity: 1;
+}
+
 a {
 	text-decoration: none;
 }
@@ -177,3 +190,25 @@ background-image: url('images/knob/Knob_Cancel.png');
 .error {
 	color: red;
 }
+
+table#settings {
+	
+}
+table.settings td {
+	border: 1px solid #B1B1BA;
+	border-radius: 3px;
+	width: 200px;
+	padding:5px 5px 5px 10px; /* top right bottom left */
+}
+table.settings td:hover {
+	background-color: #F1F1F5;
+}
+table.settings th {
+	border: 1px solid #B1B1BA;
+	border-radius: 3px;
+	width: 100%;
+	padding:5px 5px 5px 10px; /* top right bottom left */
+	text-align: left;
+	background-color: #DDDDE8;
+}
+

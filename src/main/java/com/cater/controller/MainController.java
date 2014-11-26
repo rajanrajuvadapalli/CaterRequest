@@ -18,8 +18,12 @@ import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.cater.constants.Roles;
+import com.cater.model.Address;
+import com.cater.model.Customer;
 import com.cater.model.Login;
+import com.cater.model.Restaurant;
 import com.cater.service.LoginService;
+import com.cater.service.PersonalSettingsService;
 import com.cater.service.RegisterService;
 import com.cater.ui.data.RegistrationData;
 import com.cater.ui.data.User;
@@ -35,6 +39,8 @@ public class MainController {
 	private RegisterService registerService;
 	@Autowired
 	private LoginService loginService;
+	@Autowired
+	private PersonalSettingsService personalSettingsService;
 
 	/**
 	 * Home.
@@ -143,6 +149,7 @@ public class MainController {
 				return "home";
 			}
 			User user = new User();
+			user.setLoginID(login.getId());
 			user.setUsername(username);
 			Roles role = Roles.get(login.getRole());
 			user.setRole(role);
@@ -161,5 +168,48 @@ public class MainController {
 			errors.add("An unknown exception occured while logging you in. Please try later.");
 		}
 		return "home";
+	}
+
+	@RequestMapping(value = { "settings" }, method = RequestMethod.GET)
+	public String settings(HttpSession session) {
+		//If the user is not in session redirect to the home page.
+		User user = (User) session.getAttribute("user");
+		if (user != null) {
+			//If the user is already in session, first retrieve all the fields from the database.
+			Object userFromDatabase = personalSettingsService
+					.getUserWithLoginID(user.getLoginID(), user.getRole());
+			if (userFromDatabase != null) {
+				RegistrationData data = new RegistrationData();
+				if (Roles.CUSTOMER == user.getRole()) {
+					Customer customer = (Customer) userFromDatabase;
+					data.setName(customer.getName());
+					data.setPhone(customer.getContactNumber());
+					Address address = customer.getAddress();
+					populateAddress(data, address);
+				}
+				else if (Roles.RESTAURANT == user.getRole()) {
+					Restaurant restaurant = (Restaurant) userFromDatabase;
+					data.setRestaurantName(restaurant.getName());
+					data.setCuisineType(restaurant.getCuisineType());
+					data.setUrl(restaurant.getWebsiteUrl());
+					Address address = restaurant.getAddress();
+					populateAddress(data, address);
+				}
+				user.setData(data);
+				session.setAttribute("user", user);
+				return "settings";
+			}
+		}
+		return "home";
+	}
+
+	private void populateAddress(RegistrationData data, Address address) {
+		if (data != null && address != null) {
+			data.setStreet1(address.getStreet1());
+			data.setStreet2(address.getStreet2());
+			data.setCity(address.getCity());
+			data.setState(address.getState());
+			data.setZip(address.getZip());
+		}
 	}
 }
