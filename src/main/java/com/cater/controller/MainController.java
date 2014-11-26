@@ -192,6 +192,7 @@ public class MainController {
 					data.setRestaurantName(restaurant.getName());
 					data.setCuisineType(restaurant.getCuisineType());
 					data.setUrl(restaurant.getWebsiteUrl());
+					data.setPhone(restaurant.getContactNumber());
 					Address address = restaurant.getAddress();
 					populateAddress(data, address);
 				}
