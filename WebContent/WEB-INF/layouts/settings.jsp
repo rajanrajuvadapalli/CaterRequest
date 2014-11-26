@@ -35,7 +35,8 @@
 						</tr>
 						<tr>
 							<td><input type="text" size="30" maxlength="50" name="name"
-								class="inputs" value="${sessionScope.user.data.name}"></td>
+								required="required" class="inputs"
+								value="${sessionScope.user.data.name}"></td>
 						</tr>
 					</c:if>
 					<c:if test="${sessionScope.user.role.value == 'RESTAURANT'}">
@@ -44,13 +45,15 @@
 						</tr>
 						<tr>
 							<td><input type="text" size="30" maxlength="50" name="name"
-								class="inputs" value="${sessionScope.user.data.restaurantName}"></td>
+								required="required" class="inputs"
+								value="${sessionScope.user.data.restaurantName}"></td>
 						</tr>
 						<tr>
 							<td>Cuisine Type</td>
 						</tr>
 						<tr>
-							<td><input type="text" size="30" maxlength="50" name="name"
+							<td><input type="text" size="30" maxlength="30"
+								name="cuisineType" id="cuisineType" required="required"
 								class="inputs" value="${sessionScope.user.data.cuisineType}"></td>
 						</tr>
 						<tr>
@@ -58,7 +61,8 @@
 						</tr>
 						<tr>
 							<td><input type="text" size="30" maxlength="50" name="name"
-								class="inputs" value="${sessionScope.user.data.url}"></td>
+								required="required" class="inputs"
+								value="${sessionScope.user.data.url}"></td>
 						</tr>
 
 					</c:if>
@@ -67,7 +71,7 @@
 					</tr>
 					<tr>
 						<td><input type="text" size="30" name="phone" class="inputs"
-							value="${sessionScope.user.data.phone}"></td>
+							required="required" value="${sessionScope.user.data.phone}"></td>
 					</tr>
 					<tr>
 						<td>Street 1</td>
@@ -89,15 +93,15 @@
 						<td>City</td>
 					</tr>
 					<tr>
-						<td><input type="text" size="30" name="city" class="inputs"
-							value="${sessionScope.user.data.city}"></td>
+						<td><input type="text" size="30" maxlength="50" name="city"
+							class="inputs" value="${sessionScope.user.data.city}"></td>
 					</tr>
 					<tr>
 						<td>State</td>
 					</tr>
 					<tr>
-						<td><select id="state" name="state" class="inputs"
-							value="${sessionScope.user.data.state}"></select></td>
+						<td><input size="30" maxlength="50" name="state"
+							class="inputs" value="${sessionScope.user.data.state}"></td>
 					</tr>
 					<tr>
 						<td>Zip</td>
