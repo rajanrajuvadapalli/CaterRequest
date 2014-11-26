@@ -2,8 +2,13 @@ package com.cater.ui.data;
 
 import com.cater.constants.Roles;
 
+/**
+ * The Class User. I store session data for the current user.
+ */
 public class User {
 	private int loginID;
+	private int customerID;
+	private int restaurantID;
 	private String username;
 	private Roles role;
 	private RegistrationData data;
@@ -14,6 +19,22 @@ public class User {
 
 	public void setLoginID(int loginID) {
 		this.loginID = loginID;
+	}
+
+	public int getCustomerID() {
+		return customerID;
+	}
+
+	public void setCustomerID(int customerID) {
+		this.customerID = customerID;
+	}
+
+	public int getRestaurantID() {
+		return restaurantID;
+	}
+
+	public void setRestaurantID(int restaurantID) {
+		this.restaurantID = restaurantID;
 	}
 
 	public String getUsername() {

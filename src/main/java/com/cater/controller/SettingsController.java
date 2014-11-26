@@ -15,16 +15,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.cater.constants.Roles;
 import com.cater.model.Address;
 import com.cater.model.Customer;
+import com.cater.model.Login;
 import com.cater.model.Restaurant;
+import com.cater.service.LoginService;
 import com.cater.service.PersonalSettingsService;
 import com.cater.ui.data.RegistrationData;
 import com.cater.ui.data.User;
 import com.google.common.collect.Lists;
 
 @Controller
+@RequestMapping(value = { "settings" })
 public class SettingsController {
 	@Autowired
 	private PersonalSettingsService personalSettingsService;
+	@Autowired
+	private LoginService loginService;
 
 	/**
 	 * Settings.
@@ -32,7 +37,7 @@ public class SettingsController {
 	 * @param session the session
 	 * @return the string
 	 */
-	@RequestMapping(value = { "settings" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "" }, method = RequestMethod.GET)
 	public String settings(HttpSession session) {
 		//If the user is not in session redirect to the home page.
 		User user = (User) session.getAttribute("user");
@@ -48,7 +53,7 @@ public class SettingsController {
 					data.setPhone(customer.getContactNumber());
 					Address address = customer.getAddress();
 					populateAddress(data, address);
-					session.setAttribute("customerID", customer.getId());
+					user.setCustomerID(customer.getId());
 				}
 				else if (Roles.RESTAURANT == user.getRole()) {
 					Restaurant restaurant = (Restaurant) userFromDatabase;
@@ -58,7 +63,7 @@ public class SettingsController {
 					data.setPhone(restaurant.getContactNumber());
 					Address address = restaurant.getAddress();
 					populateAddress(data, address);
-					session.setAttribute("restaurantID", restaurant.getId());
+					user.setRestaurantID(restaurant.getId());
 				}
 				user.setData(data);
 				session.setAttribute("user", user);
@@ -91,14 +96,13 @@ public class SettingsController {
 	 * @param session the session
 	 * @return the string
 	 */
-	@RequestMapping(value = { "settings" }, method = RequestMethod.POST)
-	public String settingsUpdate(ModelMap modelMap, HttpServletRequest request,
-			HttpSession session) {
+	@RequestMapping(value = { "profile" }, method = RequestMethod.POST)
+	public String profileSettingsUpdate(ModelMap modelMap,
+			HttpServletRequest request, HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		if (user != null) {
-			Integer customerID = (Integer) session.getAttribute("customerID");
-			Integer restaurantID = (Integer) session
-					.getAttribute("restaurantID");
+			Integer customerID = user.getCustomerID();
+			Integer restaurantID = user.getRestaurantID();
 			RegistrationData data = new RegistrationData();
 			data.setName(StringUtils.defaultString(request.getParameter("name")));
 			data.setRestaurantName(StringUtils.defaultString(request
@@ -129,6 +133,45 @@ public class SettingsController {
 				List<String> errors = Lists.newArrayList();
 				errors.add("Failed to update profile information.");
 				modelMap.addAttribute("errors", errors);
+			}
+		}
+		return "settings";
+	}
+
+	/**
+	 * Account settings update.
+	 *
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param session the session
+	 * @return the string
+	 */
+	@RequestMapping(value = { "accountSettings" }, method = RequestMethod.POST)
+	public String accountSettingsUpdate(ModelMap modelMap,
+			HttpServletRequest request, HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		if (user != null) {
+			String currentPassword = StringUtils.defaultString(request
+					.getParameter("currPwd"));
+			Login login = loginService.retrieveLoginFor(user.getUsername(),
+					currentPassword);
+			//If we cannot find a login, then the current password entered is incorrect.
+			List<String> errors = Lists.newArrayList();
+			modelMap.addAttribute("errors", errors);
+			if (login == null) {
+				errors.add("Current password you entered is incorrect. Please try again.");
+			}
+			else {
+				String newPassword = StringUtils.defaultString(request
+						.getParameter("newPwd1"));
+				boolean updateResult = loginService.updatePassword(
+						user.getLoginID(), newPassword);
+				if (updateResult) {
+					modelMap.addAttribute("status", "success");
+				}
+				else {
+					errors.add("Failed to update profile information. Please try again.");
+				}
 			}
 		}
 		return "settings";

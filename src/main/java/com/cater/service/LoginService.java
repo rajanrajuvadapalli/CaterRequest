@@ -31,4 +31,21 @@ public class LoginService {
 		}
 		return null;
 	}
+
+	/**
+	 * Update password.
+	 *
+	 * @param loginID the login id
+	 * @param newPassword the new password
+	 * @return true, if successful
+	 */
+	public boolean updatePassword(int loginID, String newPassword) {
+		if (StringUtils.isNotBlank(newPassword)) {
+			//return loginDAO.findByCredentials(username, password);
+			Login login = loginDAO.findById(loginID);
+			login.setPassword(newPassword);
+			return loginDAO.save(login);
+		}
+		return false;
+	}
 }
