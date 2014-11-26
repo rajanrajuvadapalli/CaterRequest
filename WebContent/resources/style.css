@@ -43,6 +43,7 @@ body {
 	background: #FFFFFF;
 	opacity: 0.5;
 }
+
 .top_menu_icon:hover {
 	opacity: 1;
 }
@@ -159,32 +160,36 @@ td.field-value {
 }
 
 /* http://www.jankoatwarpspeed.com/css-message-boxes-for-different-message-types/ */
-.infoMsg, .successMsg, .warningMsg, .errorMsg, .validationMsg {
-border: 1px solid;
-margin: 10px 0px;
-padding:10px 10px 10px 50px; /* top right bottom left */
-background-repeat: no-repeat;
-background-position: 10px center;
+.infoMsg,.successMsg,.warningMsg,.errorMsg,.validationMsg {
+	border: 1px solid;
+	margin: 10px 0px;
+	padding: 10px 10px 10px 50px; /* top right bottom left */
+	background-repeat: no-repeat;
+	background-position: 10px center;
 }
+
 .infoMsg {
-color: #00529B;
-background-color: #BDE5F8;
-background-image: url('images/knob/Knob_Message.png');
+	color: #00529B;
+	background-color: #BDE5F8;
+	background-image: url('images/knob/Knob_Message.png');
 }
+
 .successMsg {
-color: #4F8A10;
-background-color: #DFF2BF;
-background-image:url('images/knob/Knob_Valid_Green.png');
+	color: #4F8A10;
+	background-color: #DFF2BF;
+	background-image: url('images/knob/Knob_Valid_Green.png');
 }
+
 .warningMsg {
-color: #9F6000;
-background-color: #FEEFB3;
-background-image: url('images/knob/Knob_Attention.png');
+	color: #9F6000;
+	background-color: #FEEFB3;
+	background-image: url('images/knob/Knob_Attention.png');
 }
+
 .errorMsg {
-color: #D8000C;
-background-color: #FFBABA;
-background-image: url('images/knob/Knob_Cancel.png');
+	color: #D8000C;
+	background-color: #FFBABA;
+	background-image: url('images/knob/Knob_Cancel.png');
 }
 
 .error {
@@ -194,21 +199,29 @@ background-image: url('images/knob/Knob_Cancel.png');
 table#settings {
 	
 }
+
 table.settings td {
 	border: 1px solid #B1B1BA;
 	border-radius: 3px;
 	width: 200px;
-	padding:5px 5px 5px 10px; /* top right bottom left */
+	padding: 5px 5px 5px 10px; /* top right bottom left */
 }
+
 table.settings td:hover {
 	background-color: #F1F1F5;
 }
+
 table.settings th {
 	border: 1px solid #B1B1BA;
 	border-radius: 3px;
 	width: 100%;
-	padding:5px 5px 5px 10px; /* top right bottom left */
+	padding: 5px 5px 5px 10px; /* top right bottom left */
 	text-align: left;
 	background-color: #DDDDE8;
 }
 
+.settingsEditElement {
+	padding: 10px 10px 10px 20px;
+	border: 1px solid #B1B1BA;
+	border-radius: 5px;
+}

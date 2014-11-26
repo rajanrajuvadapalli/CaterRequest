@@ -1,4 +1,7 @@
 $('document').ready(function() {
+	$("div[id=profile]").show();
+	$("div[id=accountSettings]").hide();
+	$("div[id=paymentInfo]").hide();
 	validateProfileForm();
 	validateAccountSettingsForm();
 });
@@ -77,3 +80,23 @@ function validateAccountSettingsForm() {
 		}
 	});
 }
+
+function editProfile() {
+	$("div[id=profile]").show();
+	$("div[id=accountSettings]").hide();
+	$("div[id=paymentInfo]").hide();
+}
+
+function editAccountSettings() {
+	$("div[id=profile]").hide();
+	$("div[id=accountSettings]").show();
+	$("div[id=paymentInfo]").hide();
+}
+
+function editPaymentInfo() {
+	$("div[id=profile]").hide();
+	$("div[id=accountSettings]").hide();
+	$("div[id=paymentInfo]").show();
+}
+
+

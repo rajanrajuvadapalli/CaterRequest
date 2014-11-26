@@ -21,25 +21,22 @@
 					<th>Personal Settings</th>
 				</tr>
 				<tr>
-					<td>Profile</td>
+					<td onclick="editProfile()">Profile</td>
 				</tr>
 				<tr>
-					<td>Account Settings</td>
+					<td onclick="editAccountSettings()">Account Settings</td>
 				</tr>
 				<tr>
-					<td>Payment Info</td>
+					<td onclick="editPaymentInfo()">Payment Info</td>
 				</tr>
 			</table>
 		</td>
 
 		<td width="20px"></td>
 
-		<td align="left"
-			style="padding: 10px 10px 10px 20px; border: 1px solid #B1B1BA; border-radius: 5px;">
-			<c:import url="settings/_profile.jsp"></c:import> <c:import
-				url="settings/_accountSettings.jsp"></c:import>
-
-		</td>
+		<c:import url="settings/_profile.jsp"></c:import>
+		<c:import url="settings/_accountSettings.jsp"></c:import>
+		<c:import url="settings/_paymentInfo.jsp"></c:import>
 
 	</tr>
 </table>
