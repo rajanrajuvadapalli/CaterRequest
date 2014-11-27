@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <td align="left">
-	<div id="accountSettings" class="settingsEditElement">
+	<div id="accountSettings" class="sideMenuItemsDetail">
 		<h2>Account Settings</h2>
 		<form method="POST" id="accountSettingsForm"
 			action="${pageContext.request.contextPath}/settings/accountSettings"

@@ -1,5 +1,7 @@
 package com.cater.dao;
 
+import java.util.List;
+
 import com.cater.model.Customer;
 
 /**
@@ -13,4 +15,6 @@ public interface CustomerDAO {
 	Customer findById(int id);
 
 	Customer findByLoginID(int loginID);
+
+	List<Customer> fetchAllCustomers();
 }

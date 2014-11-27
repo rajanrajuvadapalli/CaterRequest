@@ -27,7 +27,7 @@
 					<table>
 						<tr>
 							<td><input type="email" size="30" name="username" id="username"
-								required="required" placeholder="Your email" class="inputs"></td>
+								required="required" placeholder="Your email" autofocus class="inputs"></td>
 						</tr>
 						<tr><td></td></tr>
 						<tr>

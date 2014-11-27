@@ -196,22 +196,18 @@ td.field-value {
 	color: red;
 }
 
-table#settings {
-	
-}
-
-table.settings td {
+table.sideMenuItem td {
 	border: 1px solid #B1B1BA;
 	border-radius: 3px;
 	width: 200px;
 	padding: 5px 5px 5px 10px; /* top right bottom left */
 }
 
-table.settings td:hover {
+table.sideMenuItem td:hover {
 	background-color: #F1F1F5;
 }
 
-table.settings th {
+table.sideMenuItem th {
 	border: 1px solid #B1B1BA;
 	border-radius: 3px;
 	width: 100%;
@@ -220,8 +216,28 @@ table.settings th {
 	background-color: #DDDDE8;
 }
 
-.settingsEditElement {
+.sideMenuItemsDetail {
 	padding: 10px 10px 10px 20px;
 	border: 1px solid #B1B1BA;
 	border-radius: 5px;
+}
+
+.list {
+	border: 1px solid #B1B1BA;
+	border-collapse: collapse;
+}
+
+.list th {
+	background-color: #CAF4CA;
+}
+
+.list td {
+	padding: 5px 5px 5px 10px; /* top right bottom left */
+}
+tr.odd {
+	background-color: #EAFBEA;
+}
+
+tr.even {
+	background-color: #FFFFFF;
 }

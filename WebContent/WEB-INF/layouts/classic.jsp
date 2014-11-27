@@ -13,6 +13,7 @@
 		<script src="${pageContext.request.contextPath}/resources/js/md5.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/register.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/settings.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/admin.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap-formhelpers.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/jquery.validate.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/additional-methods.min.js"></script>

@@ -79,4 +79,9 @@ public class CustomerDAOImpl extends AbstractDAOImpl implements CustomerDAO {
 			}
 		}
 	}
+
+	@Override
+	public List<Customer> fetchAllCustomers() {
+		return super.fetchAll(Customer.class);
+	}
 }

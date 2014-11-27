@@ -1,5 +1,7 @@
 package com.cater.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,8 +17,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.cater.constants.Roles;
+import com.cater.model.Customer;
+import com.cater.model.Restaurant;
+import com.cater.service.CustomerService;
 import com.cater.service.RegisterService;
+import com.cater.service.RestaurantService;
 import com.cater.ui.data.RegistrationData;
+import com.cater.ui.data.User;
 
 /**
  * The Class MainController.
@@ -26,6 +34,10 @@ public class MainController {
 	private static final Logger logger = Logger.getLogger(MainController.class);
 	@Autowired
 	private RegisterService registerService;
+	@Autowired
+	private CustomerService customerService;
+	@Autowired
+	private RestaurantService restaurantService;
 
 	/**
 	 * Home.
@@ -59,6 +71,34 @@ public class MainController {
 			}
 		}
 		return page;
+	}
+
+	/**
+	 * Home.
+	 *
+	 * @param session the session
+	 * @return the string
+	 */
+	@RequestMapping(value = { "home" })
+	public String home(ModelMap modelMap, HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		if (user != null) {
+			if (Roles.CUSTOMER == user.getRole()) {
+				return "dashboardCustomer";
+			}
+			else if (Roles.RESTAURANT == user.getRole()) {
+				return "dashboardRestaurant";
+			}
+			else if (Roles.ADMIN == user.getRole()) {
+				List<Customer> customers = customerService.fetchAllCustomers();
+				modelMap.put("customers", customers);
+				List<Restaurant> restaurants = restaurantService
+						.fetchAllRestaurants();
+				modelMap.put("restaurants", restaurants);
+				return "dashboardAdmin";
+			}
+		}
+		return "home";
 	}
 
 	/**

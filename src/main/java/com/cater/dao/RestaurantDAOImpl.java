@@ -79,4 +79,9 @@ public class RestaurantDAOImpl extends AbstractDAOImpl implements RestaurantDAO 
 			}
 		}
 	}
+
+	@Override
+	public List<Restaurant> fetchAllRestaurants() {
+		return super.fetchAll(Restaurant.class);
+	}
 }

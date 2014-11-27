@@ -1,5 +1,7 @@
 package com.cater.dao;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -32,7 +34,7 @@ public abstract class AbstractDAOImpl {
 	 * @param object the object
 	 * @return true, if successful
 	 */
-	public boolean save(Class <? extends AbstractTimestampEntity> clazz,
+	public boolean save(Class<? extends AbstractTimestampEntity> clazz,
 			Object object) {
 		if (object == null) {
 			logger.error("Cannot save null value for " + clazz);
@@ -73,8 +75,7 @@ public abstract class AbstractDAOImpl {
 	 * @return the t
 	 */
 	@SuppressWarnings("unchecked")
-	public <T extends AbstractTimestampEntity> T findById(Class <T> clazz,
-			int id) {
+	public <T extends AbstractTimestampEntity> T findById(Class<T> clazz, int id) {
 		logger.debug("Finding object of " + clazz + " for ID: " + id);
 		Session session = null;
 		Transaction tx = null;
@@ -89,6 +90,35 @@ public abstract class AbstractDAOImpl {
 		catch (HibernateException he) {
 			logger.error(
 					"Exception occurred while performing search() for object of "
+							+ clazz, he);
+			throw he;
+		}
+		finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+	}
+
+	/**
+	 * Fetch all.
+	 *
+	 * @param <T> the generic type
+	 * @param clazz the clazz
+	 * @return the list
+	 */
+	@SuppressWarnings("unchecked")
+	protected <T extends AbstractTimestampEntity> List<T> fetchAll(
+			Class<T> clazz) {
+		logger.debug("Fetching all objects of type " + clazz);
+		Session session = null;
+		try {
+			session = getSessionFactory().openSession();
+			return session.createCriteria(clazz).list();
+		}
+		catch (HibernateException he) {
+			logger.error(
+					"Exception occurred while fetching all objects of type "
 							+ clazz, he);
 			throw he;
 		}

@@ -35,7 +35,7 @@ public class LoginController {
 	public String logout(ModelMap modelMap, HttpServletRequest request,
 			HttpSession session) {
 		session.removeAttribute("user");
-		return "home";
+		return "redirect:home";
 	}
 
 	/**
@@ -66,19 +66,10 @@ public class LoginController {
 			Roles role = Roles.get(login.getRole());
 			user.setRole(role);
 			session.setAttribute("user", user);
-			if (Roles.CUSTOMER == role) {
-				return "dashboardCustomer";
-			}
-			else if (Roles.RESTAURANT == role) {
-				return "dashboardRestaurant";
-			}
-			else if (Roles.ADMIN == role) {
-				return "dashboardAdmin";
-			}
 		}
 		catch (Exception ex) {
 			errors.add("An unknown exception occured while logging you in. Please try later.");
 		}
-		return "home";
+		return "redirect:home";
 	}
 }

@@ -1,5 +1,7 @@
 package com.cater.dao;
 
+import java.util.List;
+
 import com.cater.model.Restaurant;
 
 /**
@@ -13,4 +15,6 @@ public interface RestaurantDAO {
 	Restaurant findById(int id);
 
 	Restaurant findByLoginID(int loginID);
+
+	List<Restaurant> fetchAllRestaurants();
 }

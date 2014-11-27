@@ -70,7 +70,8 @@ public class SettingsController {
 				return "settings";
 			}
 		}
-		return "home";
+		//return "home";
+		return "settings";
 	}
 
 	/**

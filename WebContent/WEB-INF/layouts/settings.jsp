@@ -16,18 +16,20 @@
 <table style="width: 900px;">
 	<tr>
 		<td style="width: 200px; vertical-align: top;">
-			<table class="settings">
+			<table class="sideMenuItem">
 				<tr>
 					<th>Personal Settings</th>
 				</tr>
 				<tr>
-					<td onclick="editProfile()">Profile</td>
+					<td style="cursor: pointer; cursor: hand;" onclick="editProfile()">Profile</td>
 				</tr>
 				<tr>
-					<td onclick="editAccountSettings()">Account Settings</td>
+					<td style="cursor: pointer; cursor: hand;"
+						onclick="editAccountSettings()">Account Settings</td>
 				</tr>
 				<tr>
-					<td onclick="editPaymentInfo()">Payment Info</td>
+					<td style="cursor: pointer; cursor: hand;"
+						onclick="editPaymentInfo()">Payment Info</td>
 				</tr>
 			</table>
 		</td>
