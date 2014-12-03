@@ -10,11 +10,25 @@
 			<table class="sideMenuItem">
 				<tr>
 					<td style="cursor: pointer; cursor: hand;"
-						onclick="listCustomers()">Customers</td>
+						onclick="listCustomers()">Customers (
+						<c:choose>
+							<c:when test="${empty customers}">
+								0
+							</c:when>
+							<c:otherwise>${customers.size()}</c:otherwise>
+						</c:choose>)
+					</td>
 				</tr>
 				<tr>
 					<td style="cursor: pointer; cursor: hand;"
-						onclick="listRestaurants()">Restaurants</td>
+						onclick="listRestaurants()">Restaurants (
+						<c:choose>
+							<c:when test="${empty restaurants}">
+								0
+							</c:when>
+							<c:otherwise>${restaurants.size()}</c:otherwise>
+						</c:choose>)
+					</td>
 				</tr>
 				<tr>
 					<td style="cursor: pointer; cursor: hand;" onclick="listEvents()">Events</td>

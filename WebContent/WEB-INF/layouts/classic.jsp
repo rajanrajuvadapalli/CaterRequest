@@ -7,6 +7,7 @@
 		<meta http-equiv="content-type" content="text/html" />
 		<title><t:getAsString name="title"/></title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/style.css" type="text/css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/menu.css" type="text/css" />
 		<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/logo-favicon.ico">
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 		<!-- <script src = "http://www.myersdaily.org/joseph/javascript/md5.js"></script> -->

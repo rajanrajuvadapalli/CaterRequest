@@ -17,14 +17,16 @@
 				<c:forEach items="${category.items}" var="item">
 					<tr class="item">
 						<td><input type="checkbox" value="${item.name}"
-							name="${item.name}" checked="${item.isSelected()?true:false}"></td>
+							name="${item.name}" ${item.isSelected()?"checked":""}></td>
 						<td><c:out value="${item.name}"></c:out></td>
 					</tr>
-					<tr class="itemDescription">
-						<td></td>
-						<td>(<c:out value="${item.description}"></c:out>)
-						</td>
-					</tr>
+					<c:if test="${not empty item.description}">
+						<tr class="itemDescription">
+							<td></td>
+							<td>(<c:out value="${item.description}"></c:out>)
+							</td>
+						</tr>
+					</c:if>
 				</c:forEach>
 			</c:forEach>
 

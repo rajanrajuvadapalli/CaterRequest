@@ -1,0 +1,40 @@
+.caterMenu {
+	color: #000000;	
+}
+
+.caterMenuTitle  {
+	border-radius: 15px;
+	height: 150px;
+	width: 1000px;
+	opacity: 0.5;
+	filter: alpha(opacity=50); /* For IE8 and earlier */
+	font-size: 50px;
+	vertical-align: center;
+}
+
+.INDIAN {
+	background: url('images/menus/indian.jpeg');
+	background-position: 50% 50%;
+}
+
+table.caterMenu {
+	width: 1000px;
+}
+
+table.caterMenu tr.category {
+	background-color: #acd180;
+	text-align: left;
+	font-size: 115%;
+	color: #004A00;
+	border: 1px solid;
+	border-radius: 15px;
+	padding: 12px 20px;
+}
+
+table.caterMenu tr.item {
+	font-family: cursive;
+}
+
+table.caterMenu tr.itemDescription {
+	color: #999999;
+}

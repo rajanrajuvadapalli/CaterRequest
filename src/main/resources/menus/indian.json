@@ -425,6 +425,852 @@
                     "isSelected": false
                 }
             ]
+        },
+        {
+            "name": "VEGETARIAN",
+            "items": [
+                {
+                    "name": "Aloo Capsicum",
+                    "description": "Potato with Bell peppers",
+                    "isSelected": false
+                },
+                {
+                    "name": "Aloo Baingan",
+                    "description": "Potato with Eggplant",
+                    "isSelected": false
+                },
+                {
+                    "name": "Aloo Fry",
+                    "description": "Fried Potato in Herbs",
+                    "isSelected": false
+                },
+                {
+                    "name": "Aloo Gobi",
+                    "description": "Potato and Cauliflower",
+                    "isSelected": false
+                },
+                {
+                    "name": "Aloo Jeera",
+                    "description": "Potato Fry with Cumin Seeds",
+                    "isSelected": false
+                },
+                {
+                    "name": "Aloo Khurma",
+                    "description": "Potato curry with coconut sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Aloo Makhani",
+                    "description": "Potato curry in creamy sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Aloo Methi",
+                    "description": "Potato with Fenugreek",
+                    "isSelected": false
+                },
+                {
+                    "name": "Aloo Mutter",
+                    "description": "Potato and Green peas curry",
+                    "isSelected": false
+                },
+                {
+                    "name": "Aloo Onion",
+                    "description": "Potato and Onion pan fry with spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Aloo Saag",
+                    "description": "Potato in chopped spinach",
+                    "isSelected": false
+                },
+                {
+                    "name": "Dum Aloo",
+                    "description": "Pressure cooked baby potato curry",
+                    "isSelected": false
+                },
+                {
+                    "name": "Bagara Baingan",
+                    "description": "Eggplant curry in onion tomato sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Baingan Bartha",
+                    "description": "Mashed eggplant, green peas, onion and tomato",
+                    "isSelected": false
+                },
+                {
+                    "name": "Baingan Tamatar",
+                    "description": "Eggplant and Tomato",
+                    "isSelected": false
+                },
+                {
+                    "name": "Gutti Vankaya",
+                    "description": "Whole Indian Eggplant curry",
+                    "isSelected": false
+                },
+                {
+                    "name": "Vankaya Pakodi",
+                    "description": "Eggplant Fry with Pakora",
+                    "isSelected": false
+                },
+                {
+                    "name": "Baingan Kadai",
+                    "description": "Eggplant curry in yogurt gravy",
+                    "isSelected": false
+                },
+                {
+                    "name": "Beans Porial",
+                    "description": "Green Beans with Grated coconut",
+                    "isSelected": false
+                },
+                {
+                    "name": "Bell Pepper Curry",
+                    "description": "Capsicum Curry",
+                    "isSelected": false
+                },
+                {
+                    "name": "Bhindi Fry"
+                },
+                {
+                    "name": "Okra Fry"
+                },
+                {
+                    "name": "Bhindi Pulusu / Kolambu",
+                    "description": "South Indian style okra sour curry",
+                    "isSelected": false
+                },
+                {
+                    "name": "Broccoli Capsicum Tomato",
+                    "description": "Semi dry Curry",
+                    "isSelected": false
+                },
+                {
+                    "name": "Broccoli",
+                    "description": "Mild Masala toss",
+                    "isSelected": false
+                },
+                {
+                    "name": "Cabbage Porial",
+                    "description": "Cabbage with Lentils",
+                    "isSelected": false
+                },
+                {
+                    "name": "Cauliflower Toss",
+                    "description": "Mildly spiced",
+                    "isSelected": false
+                },
+                {
+                    "name": "Channa Masala",
+                    "description": "Garbanzo Beans",
+                    "isSelected": false
+                },
+                {
+                    "name": "Channa Palak",
+                    "description": "Spinach with Garbanzo beans",
+                    "isSelected": false
+                },
+                {
+                    "name": "Garlic Spinach",
+                    "description": "Chopped spinach with garlic",
+                    "isSelected": false
+                },
+                {
+                    "name": "Gobi Manchurian",
+                    "description": "Cauliflower Manchurian",
+                    "isSelected": false
+                },
+                {
+                    "name": "Green Beans and Cauliflower",
+                    "description": "In mild Masala toss",
+                    "isSelected": false
+                },
+                {
+                    "name": "Green Beans Poriyal",
+                    "description": "Green Beans with Lentils and coconut",
+                    "isSelected": false
+                },
+                {
+                    "name": "Grilled/Sautéed Vegetables",
+                    "description": "Mixed vegetable toss with mild spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Indian Opo Squash",
+                    "description": "Bottle Gourd",
+                    "isSelected": false
+                },
+                {
+                    "name": "Majjiga Pulusu",
+                    "description": "South Indian style sour yogurt curry with vegetables",
+                    "isSelected": false
+                },
+                {
+                    "name": "Malai Kofta",
+                    "description": "Mashed vegetable Dumplings in creamy sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Mirchi ka Salna",
+                    "description": "Spicy green chilly curry in spices, Nuts and sesame seeds",
+                    "isSelected": false
+                },
+                {
+                    "name": "Mixed Vegetable Khurma",
+                    "description": "Coconut milk based curry",
+                    "isSelected": false
+                },
+                {
+                    "name": "Mixed Vegetable Fry",
+                    "description": "Mixed vegetable fry in mild spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Mukkala Pulusu",
+                    "description": "Andhra style mixed vegetable sweet/sour Curry",
+                    "isSelected": false
+                },
+                {
+                    "name": "Mushroom Mutter",
+                    "description": "Mushrooms and Green Peas",
+                    "isSelected": false
+                },
+                {
+                    "name": "Mutter Panneer",
+                    "description": "Homemade cheese with green peas",
+                    "isSelected": false
+                },
+                {
+                    "name": "Navaratan Khurma",
+                    "description": "Mixed Vegetable Khurma with nuts and dried fruits",
+                    "isSelected": false
+                },
+                {
+                    "name": "Palak Kofta",
+                    "description": "Spinach dumplings in creamu sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Panneer Butter Masala",
+                    "description": "Homemade cheese in creamy sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Panneer Kadai",
+                    "description": "Homemade cheese with capsicum and Onion",
+                    "isSelected": false
+                },
+                {
+                    "name": "Pakoda Kadi",
+                    "description": "Lentle flour curry",
+                    "isSelected": false
+                },
+                {
+                    "name": "Potato Beans",
+                    "description": "Potato and green beans in mild spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Potato Broccoli",
+                    "description": "Mild Masala toss",
+                    "isSelected": false
+                },
+                {
+                    "name": "Potato Green Beans",
+                    "description": "Tossed in mild spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Potato Vidaloo",
+                    "description": "Potato in spicy curry sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Rajma Dal Curry",
+                    "description": "Red kidney bean curry in tomato sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Soya Curry with peas and carrot",
+                    "description": "Soya bean chunks curry with Tomato and Garlic",
+                    "isSelected": false
+                },
+                {
+                    "name": "Spinach with Corn",
+                    "description": "Chopped spinach with corn kernel",
+                    "isSelected": false
+                },
+                {
+                    "name": "Sag Panneer",
+                    "description": "Spinach with homemade cheese",
+                    "isSelected": false
+                },
+                {
+                    "name": "Dondakaya vepudu /Tindora Fry",
+                    "description": "Sliced Tindora pan fried",
+                    "isSelected": false
+                },
+                {
+                    "name": "Tomato Daal",
+                    "description": "Yellow Lentils with tomato and garlic",
+                    "isSelected": false
+                },
+                {
+                    "name": "Veg Pepper Fry",
+                    "description": "Sautéed Vegetables with Pepper",
+                    "isSelected": false
+                },
+                {
+                    "name": "Vegetable Porial",
+                    "description": "Mixed vegetables with shredded coconut",
+                    "isSelected": false
+                },
+                {
+                    "name": "Vegetable Avial",
+                    "description": "Mixed vegetable curry in coconut sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Vegetable Chettinadu",
+                    "description": "Southern style vegetable curry",
+                    "isSelected": false
+                },
+                {
+                    "name": "Vegetable Khurma",
+                    "description": "Mixed vegetables in coconut sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Vegetable Ball Manchurian",
+                    "description": "Mashed vegetable ball toss in Manchurian sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Vegetable Toss",
+                    "description": "Mixed vegetables tossed in mild spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Vegetable Kofta Curry",
+                    "description": "Mashed Vegetable dumplings in curry sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Gobi Tamatar",
+                    "description": "Cauliflower and Tomato curry",
+                    "isSelected": false
+                },
+                {
+                    "name": "Gongura Panneer",
+                    "description": "Sour Roselle leaves with homemade cheese",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "name": "CHICKEN",
+            "items": [
+                {
+                    "name": "Chicken Dopiaza",
+                    "description": "Nawabi Style chicken curry with prominence of onions",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken Cilantro",
+                    "description": "Chicken cooked with coriander and spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken Kadai",
+                    "description": "Semi dry chicken curry with aroma of ginger and garlic",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken 555",
+                    "description": "Deep fried and stir fried in black pepper",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken 65",
+                    "description": "Spicy deep- fried chicken",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken Chettinadu",
+                    "description": "Spicy chicken curry from Tamilnadu with curry leaves",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken Curry",
+                    "description": "Typical south Indian chicken curry with a variety of spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken Fry",
+                    "description": "Pan fried dry style chicken curry with no gravy",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken Kadai",
+                    "description": "Chicken Curry with Capsicum, Onion and Tomato",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken Khurma",
+                    "description": "Chicken Curry made with yogurt and coconut milk",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken Makhani",
+                    "description": "Butter Chicken",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken Pepper Fry",
+                    "description": "Bone-in chicken fried with black pepper",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken Roast",
+                    "description": "Country chicken pan fried with onions and spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken Tikka Masala",
+                    "description": "Mildly spiced in creamy curry",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken Vindaloo",
+                    "description": "Anglo Indian form of chicken curry with potatoes",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chilli Chicken",
+                    "description": "Indo-Chinese style",
+                    "isSelected": false
+                },
+                {
+                    "name": "Egg Curry",
+                    "description": "Boiled eggs cooked with tomato and onions",
+                    "isSelected": false
+                },
+                {
+                    "name": "Egg Curry",
+                    "description": "Sour style egg curry",
+                    "isSelected": false
+                },
+                {
+                    "name": "Lasuni Murgi Tamatar",
+                    "description": "Chicken with Garlic and Tomato",
+                    "isSelected": false
+                },
+                {
+                    "name": "Methi Chicken",
+                    "description": "Fenugreek Chicken",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken Manchurian",
+                    "description": "Chicken cooked in Indo Chinese style sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Ginger Chicken",
+                    "description": "Marinated chicken pan fried with a special ginger sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken Majestic",
+                    "description": "Boneless chicken breast strips cooked with garlic, mint Red chili, pepper powder and tossed in chef’s special sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Tandoori Chicken",
+                    "description": "Marinated Chicken legs and thighs with bone cooked in Clay Oven",
+                    "isSelected": false
+                },
+                {
+                    "name": "Tandoori Chicken Tikka Kabob",
+                    "description": "Marinated chicken boneless breast cubes cooked in clay oven",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "name": "LAMB_GOAT",
+            "items": [
+                {
+                    "name": "Goat Curry",
+                    "description": "Bone-in goat curry",
+                    "isSelected": false
+                },
+                {
+                    "name": "Goat Kadai",
+                    "description": "Bone-in goat Goat cooked with onions and bell peppers",
+                    "isSelected": false
+                },
+                {
+                    "name": "Goat Fry",
+                    "description": "Bone-in goat pan fried with onions and spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Goat Pepper Fry",
+                    "description": "Bone-in goat cubes Pre cooked and pan fried with onions and peppers",
+                    "isSelected": false
+                },
+                {
+                    "name": "Kheema Mutter",
+                    "description": "Minced Lamb with green peas",
+                    "isSelected": false
+                },
+                {
+                    "name": "Lamb Curry",
+                    "description": "Boneless lamb curry",
+                    "isSelected": false
+                },
+                {
+                    "name": "Lamb Rogan Josh",
+                    "description": "Kashmiri style lamb curry cooked in creamy yogurt and spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Lamb Saag",
+                    "description": "Lamb cooked with Spinach",
+                    "isSelected": false
+                },
+                {
+                    "name": "Lamb Vindaloo",
+                    "description": "Lamb curry dish with potato",
+                    "isSelected": false
+                },
+                {
+                    "name": "Gongura Mutton",
+                    "description": "Goat curry in sour Roselle leaves",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "name": "FISH_SHRIMP",
+            "items": [
+                {
+                    "name": "Andhra Fish Curry",
+                    "description": "Fish curry with onion base spicy gravy",
+                    "isSelected": false
+                },
+                {
+                    "name": "Fish Fry",
+                    "description": "Pan fried Tilapia fish",
+                    "isSelected": false
+                },
+                {
+                    "name": "Fish Pulusu",
+                    "description": "Tilapia fish cooked with sour and tangy sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Apollo Fish",
+                    "description": "Fish fillets conked in Masala and tossed in chef’s special sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chilli Fish",
+                    "description": "An excellent finger snack or side dish pan fried to semi dry in Indo Chinese style sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Fish Pakora",
+                    "description": "Batter fried fish fritters",
+                    "isSelected": false
+                },
+                {
+                    "name": "Malabar Fish Curry",
+                    "description": "Tilapia fish curry in creamy coconut sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Malabar Shrimp",
+                    "description": "Shrimp curry in creamy coconut sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Shrimp Curry",
+                    "description": "Tail off prawn curry",
+                    "isSelected": false
+                },
+                {
+                    "name": "Shrimp Fry",
+                    "description": "Tail off prawns shallow fried",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chilli Shrimp",
+                    "description": "Spicy shrimp appetizer",
+                    "isSelected": false
+                },
+                {
+                    "name": "Shrimp Pakora",
+                    "description": "Batter fried shrimp pakoras",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "name": "RICE_and_BIRYANI",
+            "items": [
+                {
+                    "name": "Bisi Bela Bath",
+                    "description": "Rice cooked with lentils and spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken Biryani",
+                    "description": "Basmati rice steam cooked with marinated chicken cubes",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken Fried Rice",
+                    "description": "Shredded cooked chicken pan fried with Basmati rice",
+                    "isSelected": false
+                },
+                {
+                    "name": "Coconut Rice",
+                    "description": "Basmati rice cooked in coconut milk",
+                    "isSelected": false
+                },
+                {
+                    "name": "Curd Rice",
+                    "description": "Soft cooked Rice in Yogurt and spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Goat Biryani",
+                    "description": "Superior Basmati rice steam cooked with Goat meat",
+                    "isSelected": false
+                },
+                {
+                    "name": "Hyderabadi Chicken Biryani",
+                    "description": "Superior Basmati rice steam cooked in Hyderabad style",
+                    "isSelected": false
+                },
+                {
+                    "name": "Jeera Rice",
+                    "description": "Cumin Seed Rice",
+                    "isSelected": false
+                },
+                {
+                    "name": "Lamb Biryani",
+                    "description": "Basmati rice cooked with marinated boneless lamb cubes",
+                    "isSelected": false
+                },
+                {
+                    "name": "Lemon Rice",
+                    "description": "Basmati rice with lemon juice Mustard, Chili and lentils",
+                    "isSelected": false
+                },
+                {
+                    "name": "Masala Rice",
+                    "description": "Basmati Rice cooked with mild spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Mint Pulao",
+                    "description": "Basmati rice cooked with fresh mint leaves",
+                    "isSelected": false
+                },
+                {
+                    "name": "Pulihora Rice",
+                    "description": "Rice cooked with Tamarind and spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Rice Kitchidi",
+                    "description": "Rice cooked with mild spices/lentils and green peas",
+                    "isSelected": false
+                },
+                {
+                    "name": "Spinach Rice",
+                    "description": "Cooked spinach and garlic pan fried with basmati rice",
+                    "isSelected": false
+                },
+                {
+                    "name": "Tomato Rice",
+                    "description": "Basmati rice cooked with fresh tomatoes and mild spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Vangi Bath",
+                    "description": "Rice steam cooked with Eggplant and spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Vegetabe Fried Rice",
+                    "description": "Cooked Basmati rice pan fried with vegetables",
+                    "isSelected": false
+                },
+                {
+                    "name": "Vegetable Biryani",
+                    "description": "Basmati rice cooked with vegetables, herbs and spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Vegetable Pulao",
+                    "description": "Basmati Rice steam cooked with Vegetables and mild spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Vegetarian Masala Rice",
+                    "description": "Plain rice cooked with assorted spices and herbs",
+                    "isSelected": false
+                },
+                {
+                    "name": "Vegetarian Kashmiri Biryani",
+                    "description": "Vegetable Biryani in Kashmiri style with nuts and dry fruits",
+                    "isSelected": false
+                },
+                {
+                    "name": "White Rice",
+                    "description": "Plain Basmati Rice",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "name": "DESSERTS",
+            "items": [
+                {
+                    "name": "Beets Halwa",
+                    "description": "Grated beets t cooked in sugar syrup and nuts",
+                    "isSelected": false
+                },
+                {
+                    "name": "Besan Laddu",
+                    "description": "Sweetened lentil flour balls",
+                    "isSelected": false
+                },
+                {
+                    "name": "Bobbatlu",
+                    "description": "Stuffed flour pancakes",
+                    "isSelected": false
+                },
+                {
+                    "name": "Boondi Laddu",
+                    "description": "Channa Dal laddus",
+                    "isSelected": false
+                },
+                {
+                    "name": "Caramel Custard",
+                    "description": "Custard with egg and caramel sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Carrot Halwa",
+                    "description": "Grated carrots cooked in milk and sugar syrup",
+                    "isSelected": false
+                },
+                {
+                    "name": "Coconut Kesari",
+                    "description": "Semolina cooked in coconut milk and sugar syrup",
+                    "isSelected": false
+                },
+                {
+                    "name": "Dal Payasam",
+                    "description": "Lentils cooked in sugar syrup",
+                    "isSelected": false
+                },
+                {
+                    "name": "Double Ka Meetha",
+                    "description": "Deep Fried bread chunks in milk and sugar syrup",
+                    "isSelected": false
+                },
+                {
+                    "name": "Fruit Custard",
+                    "description": "Creamy and smooth custard with fresh medley of fruits",
+                    "isSelected": false
+                },
+                {
+                    "name": "Fruit Kesari",
+                    "description": "Semolina and Fruit dessert",
+                    "isSelected": false
+                },
+                {
+                    "name": "Gulab Jamun",
+                    "description": "Lentil and cheese balls fried and soaked in sugar syrup",
+                    "isSelected": false
+                },
+                {
+                    "name": "Kala Jamun",
+                    "description": "Lentil and cheese balls fried and dipped in sugar syrup",
+                    "isSelected": false
+                },
+                {
+                    "name": "Kheer",
+                    "description": "Vermicelli and Milk",
+                    "isSelected": false
+                },
+                {
+                    "name": "Lentil Dessert",
+                    "description": "Lentil cream in milk",
+                    "isSelected": false
+                },
+                {
+                    "name": "Mango Kesari",
+                    "description": "Semolina cooked with milk and mango pulp",
+                    "isSelected": false
+                },
+                {
+                    "name": "Mango Mousse",
+                    "description": "Yummy, puffy, soft Creamy mango dessert",
+                    "isSelected": false
+                },
+                {
+                    "name": "Mysore Pak",
+                    "description": "Lentil flour cakes",
+                    "isSelected": false
+                },
+                {
+                    "name": "Poornalu",
+                    "description": "Stuffed Sweet lentil dumplings",
+                    "isSelected": false
+                },
+                {
+                    "name": "Ravva Kesari",
+                    "description": "Semolina cooked in sugar syrup",
+                    "isSelected": false
+                },
+                {
+                    "name": "Ravva Laddu",
+                    "description": "Fried semolina balls with coconut, nuts and sugar",
+                    "isSelected": false
+                },
+                {
+                    "name": "Rice Kheer",
+                    "description": "Rice cooked with milk, sugar syrup and nuts",
+                    "isSelected": false
+                },
+                {
+                    "name": "Sabudana Sweet",
+                    "description": "Tapioca in milk",
+                    "isSelected": false
+                },
+                {
+                    "name": "Semya Payasam",
+                    "description": "Vermicelli cooked in milk and sugar syrup",
+                    "isSelected": false
+                },
+                {
+                    "name": "Sweet Rice Pongal",
+                    "description": "Rice cooked with milk and nuts",
+                    "isSelected": false
+                },
+                {
+                    "name": "Sorakaya Halwa",
+                    "description": "Squash dessert",
+                    "isSelected": false
+                }
+            ]
         }
     ]
 }
