@@ -1,0 +1,38 @@
+{
+    "cuisine": "INDIAN",
+    "categories": [
+        {
+            "name": "APPETIZERS",
+            "items": [
+                {
+                    "name": "Aloo Bonda",
+                    "description": "Lentil fritters with Potato and Peas stuffed",
+                    "isSelected": false
+                },
+                {
+                    "name": "Baby Corn 555",
+                    "description": "Baby corn tossed in Special sauce",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "name": "SOUPS",
+            "items": [
+                {
+                    "name": "Hot and Sour Veg Soup",
+                    "description": "Spicy vegetable Sweet corn soup with vegetables",
+                    "isSelected": false
+                },
+                {
+                    "name": "Hot and Sour Chicken Soup",
+                    "description": "Spicy corn soup with shredded chicken",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "name": "ZERO ITEMS"
+        }
+    ]
+}

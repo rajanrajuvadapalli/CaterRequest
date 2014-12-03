@@ -1,0 +1,430 @@
+{
+    "cuisine": "INDIAN",
+    "categories": [
+        {
+            "name": "APPETIZERS",
+            "items": [
+                {
+                    "name": "Aloo Bonda",
+                    "description": "Lentil fritters with Potato and Peas stuffed",
+                    "isSelected": false
+                },
+                {
+                    "name": "Baby Corn 555",
+                    "description": "Baby corn tossed in Special sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Baby Corn Manchurian",
+                    "description": "Baby corn tossed in Manchurian sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Bonda",
+                    "description": "Lentil Fritters",
+                    "isSelected": false
+                },
+                {
+                    "name": "Channa Chat",
+                    "description": "Cooked Garbanzo beans with a spice mix and raw onions",
+                    "isSelected": false
+                },
+                {
+                    "name": "Corn Bonda",
+                    "description": "Deep fried corn fritters dipped in lentil batter and deep fried",
+                    "isSelected": false
+                },
+                {
+                    "name": "Cut Mirchi",
+                    "description": "Spicy jalapenos dipped in batter and deep fried",
+                    "isSelected": false
+                },
+                {
+                    "name": "Dahi Vada",
+                    "description": "Lentil donuts soaked in spiced Yogurt",
+                    "isSelected": false
+                },
+                {
+                    "name": "Eggplant Pakoras",
+                    "description": "Eggplant fritters dipped in lentil batter and deep fried",
+                    "isSelected": false
+                },
+                {
+                    "name": "Egg Puffs",
+                    "description": "Crispy and flaky patties stuffed with egg",
+                    "isSelected": false
+                },
+                {
+                    "name": "Fried Idly",
+                    "description": "Pan fried Rice cakes mildly spiced",
+                    "isSelected": false
+                },
+                {
+                    "name": "Hot Chili Pakoras",
+                    "description": "Jalapeno Fritters Spicy",
+                    "isSelected": false
+                },
+                {
+                    "name": "Idly Thadka",
+                    "description": "Steam cooked rice cakes tossed in spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Zucchini Pakoras",
+                    "description": "Zucchini slices dipped in lentil batter deep fried",
+                    "isSelected": false
+                },
+                {
+                    "name": "Masala Vada",
+                    "description": "Split Pea donuts deep fried",
+                    "isSelected": false
+                },
+                {
+                    "name": "Medu Vada",
+                    "description": "Deep fried Lentil batter Donuts",
+                    "isSelected": false
+                },
+                {
+                    "name": "Moong Dal Rasam",
+                    "description": "Lentil Soup",
+                    "isSelected": false
+                },
+                {
+                    "name": "Mysore Bonda",
+                    "description": "Deep fried Lentil fitters",
+                    "isSelected": false
+                },
+                {
+                    "name": "Onion Pakora",
+                    "description": "Onion fritters dipped in mildly spiced lentil batter and deep fried",
+                    "isSelected": false
+                },
+                {
+                    "name": "Papad",
+                    "description": "Crispy Lentil Wafers with Pepper corns",
+                    "isSelected": false
+                },
+                {
+                    "name": "Pasta Manchurian",
+                    "description": "Pasta tossed in Manchurian sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Pongal",
+                    "description": "Rice cooked with lentils and pepper corns",
+                    "isSelected": false
+                },
+                {
+                    "name": "Raitha",
+                    "description": "Yogurt Sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Rasam",
+                    "description": "Spiced Tamarind and Tomato soup",
+                    "isSelected": false
+                },
+                {
+                    "name": "Vadiyalu",
+                    "description": "Rice batter crisps deep fried",
+                    "isSelected": false
+                },
+                {
+                    "name": "Sambar",
+                    "description": "Thick Lentil Soup with vegetables",
+                    "isSelected": false
+                },
+                {
+                    "name": "Samosa Chat",
+                    "description": "Broken crispy turnovers dressed with sweet, sour and spicy sauce and Garnished with onion",
+                    "isSelected": false
+                },
+                {
+                    "name": "Semya Kichidi",
+                    "description": "Vermicelli cooked with spices and vegetables",
+                    "isSelected": false
+                },
+                {
+                    "name": "Semya Upma",
+                    "description": "Vermicelli cooked with mild spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Spinach Idly",
+                    "description": "Steam cooked rice cakes with spinach",
+                    "isSelected": false
+                },
+                {
+                    "name": "Spinach Pakoras",
+                    "description": "Fresh spinach fritters dipped in lentil batter and deep fried",
+                    "isSelected": false
+                },
+                {
+                    "name": "Sweet Corn",
+                    "description": "Corn kernel tossed in mild spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Upma",
+                    "description": "Semolina with mild spices and vegetables",
+                    "isSelected": false
+                },
+                {
+                    "name": "Uthappam",
+                    "description": "Rice batter pancakes",
+                    "isSelected": false
+                },
+                {
+                    "name": "Mixed Veg Bajji",
+                    "description": "Assorted Vegetable fritters mildly spiced and deep fried",
+                    "isSelected": false
+                },
+                {
+                    "name": "Vegetable Cutlets",
+                    "description": "Mashed vegetables and peas patties deep fried",
+                    "isSelected": false
+                },
+                {
+                    "name": "Semya Kichidi",
+                    "description": "Vermicelli cooked with Vegetables",
+                    "isSelected": false
+                },
+                {
+                    "name": "Vegetable Noodles",
+                    "description": "Rice noodles with vegetables in Indo-Chinese style",
+                    "isSelected": false
+                },
+                {
+                    "name": "Vegetable Pakoras",
+                    "description": "Assortment of various vegetable pakoras",
+                    "isSelected": false
+                },
+                {
+                    "name": "Vegetable Puffs",
+                    "description": "Crispy and flaky Veggie patties Stuffed with potato and peas",
+                    "isSelected": false
+                },
+                {
+                    "name": "Vegetable Samosa",
+                    "description": "Crispy shell patties/turnovers stuffed with Potato, onion and green peas",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken 555",
+                    "description": "Deep fried and stir fried in black pepper",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken 65",
+                    "description": "Spicy deep- fried chicken",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken Pepper Fry",
+                    "description": "Bone-in chicken fried with black pepper",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken Roast",
+                    "description": "Country chicken pan fried with onions and spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chilli Chicken",
+                    "description": "Indo-Chinese style",
+                    "isSelected": false
+                },
+                {
+                    "name": "Egg Bonda",
+                    "description": "Boiled eggs cooked with tomato and onions",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken Manchurian",
+                    "description": "Chicken cooked in Indo Chinese style sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Ginger Chicken",
+                    "description": "Marinated chicken pan fried with a special ginger sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken Majestic",
+                    "description": "Boneless chicken breast strips cooked with garlic, mint Red chili, pepper powder and tossed in chef’s special sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Tandoori Chicken",
+                    "description": "Marinated Chicken legs and thighs with bone cooked in Clay Oven",
+                    "isSelected": false
+                },
+                {
+                    "name": "Tandoori Chicken Tikka Kabob",
+                    "description": "Marinated chicken boneless breast cubes cooked in clay oven",
+                    "isSelected": false
+                },
+                {
+                    "name": "Tandoori Boti Kabab",
+                    "description": "Marinated boneless lamb cubes cooked in clay oven",
+                    "isSelected": false
+                },
+                {
+                    "name": "Tandoori Sheek Kabab",
+                    "description": "Marinated chicken boneless breast cubes cooked in clay oven",
+                    "isSelected": false
+                },
+                {
+                    "name": "Apollo Fish",
+                    "description": "Fish fillets conked in Masala and tossed in chef’s special sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chilli Fish",
+                    "description": "An excellent finger snack or side dish pan fried to semi dry in Indo Chinese style sauce",
+                    "isSelected": false
+                },
+                {
+                    "name": "Fish Pakora",
+                    "description": "Batter fried fish fritters",
+                    "isSelected": false
+                },
+                {
+                    "name": "Tandoori Fish Tikka",
+                    "description": "Marinated Mahi Mahi Fish cubes cooked in clay oven",
+                    "isSelected": false
+                },
+                {
+                    "name": "Tandoori Shrimp",
+                    "description": "Marinated Shrimp cooked in clay oven",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chilli Shrimp",
+                    "description": "Spicy shrimp appetizer",
+                    "isSelected": false
+                },
+                {
+                    "name": "Shrimp Pakora",
+                    "description": "Batter fried shrimp pakoras",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "name": "SOUPS",
+            "items": [
+                {
+                    "name": "Hot and Sour Veg Soup",
+                    "description": "Spicy vegetable Sweet corn soup with vegetables",
+                    "isSelected": false
+                },
+                {
+                    "name": "Hot and Sour Chicken Soup",
+                    "description": "Spicy corn soup with shredded chicken",
+                    "isSelected": false
+                },
+                {
+                    "name": "Sambar",
+                    "description": "Thick lentil soup spicy with vegetables",
+                    "isSelected": false
+                },
+                {
+                    "name": "Rasam",
+                    "description": "Thin spicy tomato and tamarind soup",
+                    "isSelected": false
+                },
+                {
+                    "name": "Vegetarian corn soup",
+                    "description": "Creamy sweet corn soup",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken Corn soup",
+                    "description": "Creamy sweet corn soup cooked with Chicken",
+                    "isSelected": false
+                },
+                {
+                    "name": "Tomato Soup",
+                    "description": "Creamy tomato soup",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "name": "DAL AND LENTILS",
+            "items": [
+                {
+                    "name": "Cabbage Dal",
+                    "description": "Yellow Lentils with Cabbage",
+                    "isSelected": false
+                },
+                {
+                    "name": "Dal Makhani",
+                    "description": "Mixed Lentil curry",
+                    "isSelected": false
+                },
+                {
+                    "name": "Dal Palak",
+                    "description": "Spinach with Yellow Lentils",
+                    "isSelected": false
+                },
+                {
+                    "name": "Dal Thadka",
+                    "description": "Spiced Lentils",
+                    "isSelected": false
+                },
+                {
+                    "name": "Masala Dal",
+                    "description": "Spiced Lentils",
+                    "isSelected": false
+                },
+                {
+                    "name": "Mixed Dal",
+                    "description": "Lentil Mix",
+                    "isSelected": false
+                },
+                {
+                    "name": "Moong Daal",
+                    "description": "Green Gram Lentils",
+                    "isSelected": false
+                },
+                {
+                    "name": "Pancharatan Dal",
+                    "description": "Five kinds of lentils cooked with spices",
+                    "isSelected": false
+                },
+                {
+                    "name": "Plain Dal",
+                    "description": "Plain Cream of Lentils",
+                    "isSelected": false
+                },
+                {
+                    "name": "Rajma Dal",
+                    "description": "Kidney Beans mildly spiced",
+                    "isSelected": false
+                },
+                {
+                    "name": "Tomato Dal",
+                    "description": "Yellow Lentils with Tomato and garlic",
+                    "isSelected": false
+                },
+                {
+                    "name": "Dosakaya Pappu",
+                    "description": "Bottle gourd with yellow lentils",
+                    "isSelected": false
+                },
+                {
+                    "name": "Sorakaya Pappu",
+                    "description": "Opo squash with yellow lentils",
+                    "isSelected": false
+                },
+                {
+                    "name": "Mango Dal",
+                    "description": "Sour raw mango with yellow lentils",
+                    "isSelected": false
+                }
+            ]
+        }
+    ]
+}

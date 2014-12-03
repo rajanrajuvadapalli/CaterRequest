@@ -42,10 +42,12 @@ body {
 	width: 25px;
 	background: #FFFFFF;
 	opacity: 0.5;
+	filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 
 .top_menu_icon:hover {
 	opacity: 1;
+	filter: alpha(opacity=100); /* For IE8 and earlier */
 }
 
 a {
@@ -152,10 +154,12 @@ td.field-value {
 	box-shadow: 10px 10px 10px #888888;
 	/* h-shadow v-shadow blur spread color */
 	opacity: 0.5;
+	filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 
 .image-button:hover {
 	opacity: 1;
+	filter: alpha(opacity=100); /* For IE8 and earlier */
 	transform: scale(1.12);
 }
 
@@ -228,16 +232,70 @@ table.sideMenuItem th {
 }
 
 .list th {
-	background-color: #CAF4CA;
+	background-color: #acd180;
+	color: #004A00;
 }
 
 .list td {
 	padding: 5px 5px 5px 10px; /* top right bottom left */
 }
 tr.odd {
-	background-color: #EAFBEA;
+	background-color: #ecf4e2;
 }
 
 tr.even {
 	background-color: #FFFFFF;
 }
+
+.caterMenu {
+	color: #000000;	
+}
+
+.caterMenuTitle  {
+	border-radius: 15px;
+	height: 150px;
+	width: 1000px;
+	opacity: 0.5;
+	filter: alpha(opacity=50); /* For IE8 and earlier */
+	font-size: 50px;
+	vertical-align: center;
+}
+
+.INDIAN {
+	background: url('images/menus/indian.jpeg');
+	background-position: 50% 50%;
+	/* background-position: inherit;
+	border-radius: inherit;
+	height: inherit;
+	width: inherit;
+	opacity:inherit;
+	filter: inherit;
+	font-size:inherit;
+	vertical-align: inherit; */
+}
+
+table.caterMenu {
+	width: 1000px;
+}
+
+table.caterMenu tr.category {
+	background-color: #acd180;
+	text-align: left;
+	font-size: 115%;
+	color: #004A00;
+	border: 1px solid;
+	border-radius: 10px;
+	padding: 12px 20px;
+}
+
+table.caterMenu tr.item {
+	font-family: cursive;
+}
+
+table.caterMenu tr.itemDescription {
+	color: #999999;
+}
+
+
+
+
