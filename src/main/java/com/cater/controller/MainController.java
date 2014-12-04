@@ -1,5 +1,7 @@
 package com.cater.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +20,9 @@ import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.cater.constants.Roles;
+import com.cater.menu.Menu;
+import com.cater.menu.MenuDeserializer;
+import com.cater.menu.MenuDeserializerTest;
 import com.cater.model.Customer;
 import com.cater.model.Restaurant;
 import com.cater.service.CustomerService;
@@ -84,6 +89,9 @@ public class MainController {
 		User user = (User) session.getAttribute("user");
 		if (user != null) {
 			if (Roles.CUSTOMER == user.getRole()) {
+				Customer customer = customerService
+						.fetchCustomerWithLoginId(user.getLoginID());
+				modelMap.put("customer", customer);
 				return "dashboardCustomer";
 			}
 			else if (Roles.RESTAURANT == user.getRole()) {
@@ -98,6 +106,15 @@ public class MainController {
 				return "dashboardAdmin";
 			}
 		}
+		try {
+			File f = new File(MenuDeserializerTest.class.getResource(
+					"/menus/indian.json").getFile());
+			Menu indianMenu = new MenuDeserializer().readJSON(f);
+			modelMap.put("menu", indianMenu);
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
 		return "home";
 	}
 
@@ -111,28 +128,37 @@ public class MainController {
 	@RequestMapping(value = { "register" }, method = RequestMethod.POST)
 	public String register(ModelMap modelMap, HttpServletRequest request,
 			HttpSession session) {
-		RegistrationData data = new RegistrationData();
-		data.setName(StringUtils.defaultString(request.getParameter("name")));
-		data.setRestaurantName(StringUtils.defaultString(request
-				.getParameter("restaurantName")));
-		data.setCuisineType(StringUtils.defaultString(request
-				.getParameter("cuisineType")));
-		data.setUrl(StringUtils.defaultString(request.getParameter("url")));
-		data.setEmail(StringUtils.defaultString(request.getParameter("email")));
-		data.setPassword(StringUtils.defaultString(request.getParameter("pwd1")));
-		data.setPhone(StringUtils.defaultString(request.getParameter("phone")));
-		data.setStreet1(StringUtils.defaultString(request
-				.getParameter("street1")));
-		data.setStreet2(StringUtils.defaultString(request
-				.getParameter("street2")));
-		data.setCity(StringUtils.defaultString(request.getParameter("city")));
-		data.setState(StringUtils.defaultString(request.getParameter("state")));
-		data.setZip(StringUtils.defaultString(request.getParameter("zip")));
-		logger.debug("Form data: " + data.toString());
-		registerService.register(data);
-		modelMap.put("name", data.getName());
-		//When one signs up, logout the current user from session.
-		session.removeAttribute("user");
-		return "registerSuccess";
+		try {
+			RegistrationData data = new RegistrationData();
+			data.setName(StringUtils.defaultString(request.getParameter("name")));
+			data.setRestaurantName(StringUtils.defaultString(request
+					.getParameter("restaurantName")));
+			data.setCuisineType(StringUtils.defaultString(request
+					.getParameter("cuisineType")));
+			data.setUrl(StringUtils.defaultString(request.getParameter("url")));
+			data.setEmail(StringUtils.defaultString(request
+					.getParameter("email")));
+			data.setPassword(StringUtils.defaultString(request
+					.getParameter("pwd1")));
+			data.setPhone(StringUtils.defaultString(request
+					.getParameter("phone")));
+			data.setStreet1(StringUtils.defaultString(request
+					.getParameter("street1")));
+			data.setStreet2(StringUtils.defaultString(request
+					.getParameter("street2")));
+			data.setCity(StringUtils.defaultString(request.getParameter("city")));
+			data.setState(StringUtils.defaultString(request
+					.getParameter("state")));
+			data.setZip(StringUtils.defaultString(request.getParameter("zip")));
+			logger.debug("Form data: " + data.toString());
+			registerService.register(data);
+			modelMap.put("name", data.getName());
+			//When one signs up, logout the current user from session.
+			session.removeAttribute("user");
+			return "registerSuccess";
+		}
+		catch (Exception e) {
+			return "500";
+		}
 	}
 }
