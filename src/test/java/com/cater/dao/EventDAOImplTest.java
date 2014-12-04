@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -24,6 +25,8 @@ import com.cater.model.Login;
 public class EventDAOImplTest extends AbstractDAOImplTest {
 	@Autowired
 	private EventDAO fixture;
+	private static final SimpleDateFormat df = new SimpleDateFormat(
+			"yyyy-MM-dd hh:mm:ss", Locale.US);
 	private static final Date DATE_1;
 	static {
 		Calendar calendar = Calendar.getInstance(Locale.US);
@@ -104,7 +107,8 @@ public class EventDAOImplTest extends AbstractDAOImplTest {
 		Event persistedEvent = fixture.findById(event.getId());
 		assertNotNull(persistedEvent);
 		assertEquals(persistedEvent.getName(), "Sample Event");
-		assertEquals(persistedEvent.getDate_time(), DATE_1);
+		assertEquals(df.format(persistedEvent.getDate_time()),
+				df.format(DATE_1));
 		assertNotNull(persistedEvent.getCustomer());
 		assertEquals(persistedEvent.getCustomer().getName(), "Event Sandra");
 		assertNotNull(persistedEvent.getLocation());
