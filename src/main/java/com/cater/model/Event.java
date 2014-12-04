@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -30,7 +31,7 @@ public class Event extends AbstractTimestampEntity implements Serializable {
 	private int id;
 	@Column(name = "name", length = 250, nullable = false)
 	private String name;
-	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = false)
+	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "customer_sk", nullable = false)
 	private Customer customer;
 	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = false)

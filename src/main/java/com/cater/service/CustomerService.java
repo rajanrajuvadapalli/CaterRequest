@@ -16,4 +16,8 @@ public class CustomerService {
 	public List<Customer> fetchAllCustomers() {
 		return customerDAO.fetchAllCustomers();
 	}
+
+	public Customer fetchCustomerWithLoginId(int loginID) {
+		return customerDAO.findByLoginID(loginID);
+	}
 }

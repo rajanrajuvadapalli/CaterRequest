@@ -1,6 +1,7 @@
 package com.cater.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -52,6 +54,9 @@ public class Customer extends AbstractTimestampEntity implements Serializable {
 	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "address_sk", nullable = true)
 	private Address address;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "id")
+	public List<Event> events;
 
 	public int getId() {
 		return id;
@@ -101,6 +106,14 @@ public class Customer extends AbstractTimestampEntity implements Serializable {
 		return address;
 	}
 
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -118,45 +131,31 @@ public class Customer extends AbstractTimestampEntity implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		if (this == obj) return true;
+		if (!super.equals(obj)) return false;
+		if (getClass() != obj.getClass()) return false;
 		Customer other = (Customer) obj;
 		if (address == null) {
-			if (other.address != null)
-				return false;
+			if (other.address != null) return false;
 		}
-		else if (!address.equals(other.address))
-			return false;
+		else if (!address.equals(other.address)) return false;
 		if (contactEmail == null) {
-			if (other.contactEmail != null)
-				return false;
+			if (other.contactEmail != null) return false;
 		}
-		else if (!contactEmail.equals(other.contactEmail))
-			return false;
+		else if (!contactEmail.equals(other.contactEmail)) return false;
 		if (contactNumber == null) {
-			if (other.contactNumber != null)
-				return false;
+			if (other.contactNumber != null) return false;
 		}
-		else if (!contactNumber.equals(other.contactNumber))
-			return false;
-		if (id != other.id)
-			return false;
+		else if (!contactNumber.equals(other.contactNumber)) return false;
+		if (id != other.id) return false;
 		if (login == null) {
-			if (other.login != null)
-				return false;
+			if (other.login != null) return false;
 		}
-		else if (!login.equals(other.login))
-			return false;
+		else if (!login.equals(other.login)) return false;
 		if (name == null) {
-			if (other.name != null)
-				return false;
+			if (other.name != null) return false;
 		}
-		else if (!name.equals(other.name))
-			return false;
+		else if (!name.equals(other.name)) return false;
 		return true;
 	}
 }
