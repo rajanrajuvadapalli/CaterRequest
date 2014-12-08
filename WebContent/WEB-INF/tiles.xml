@@ -11,9 +11,14 @@
 		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
 	</definition>
 
-	<definition name="*" extends="template">
+	<definition name="t_*" extends="template">
 		<put-attribute name="body" value="/WEB-INF/layouts/{1}.jsp" />
 	</definition>
-
-
+	
+	<definition name="*" template="/WEB-INF/layouts/{1}.jsp">
+	</definition>
+	
+	<definition name="*/*" template="/WEB-INF/layouts/{1}/{2}.jsp">
+	</definition>
+	
 </tiles-definitions>
