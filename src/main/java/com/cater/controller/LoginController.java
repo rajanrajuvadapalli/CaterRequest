@@ -58,7 +58,7 @@ public class LoginController {
 			Login login = loginService.retrieveLoginFor(username, password);
 			if (login == null) {
 				errors.add("Invalid Username and password combination.");
-				return "home";
+				return "t_home";
 			}
 			User user = new User();
 			user.setLoginID(login.getId());

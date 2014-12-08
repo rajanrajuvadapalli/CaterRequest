@@ -67,11 +67,10 @@ public class SettingsController {
 				}
 				user.setData(data);
 				session.setAttribute("user", user);
-				return "settings";
+				return "t_settings";
 			}
 		}
-		//return "home";
-		return "settings";
+		return "t_home";
 	}
 
 	/**
@@ -136,7 +135,7 @@ public class SettingsController {
 				modelMap.addAttribute("errors", errors);
 			}
 		}
-		return "settings";
+		return "t_settings";
 	}
 
 	/**
@@ -175,6 +174,6 @@ public class SettingsController {
 				}
 			}
 		}
-		return "settings";
+		return "t_settings";
 	}
 }

@@ -52,7 +52,7 @@ public class MainController {
 	 */
 	@RequestMapping(value = { "" })
 	public String home(ModelMap modelMap) {
-		return "home";
+		return "t_home";
 	}
 
 	/**
@@ -72,10 +72,10 @@ public class MainController {
 			webpage = webApplicationContext.getResource("WEB-INF/layouts/"
 					+ page + ".jsp");
 			if (webpage == null || !webpage.exists()) {
-				return "404";
+				return "t_404";
 			}
 		}
-		return page;
+		return "t_" + page;
 	}
 
 	/**
@@ -92,10 +92,10 @@ public class MainController {
 				Customer customer = customerService
 						.fetchCustomerWithLoginId(user.getLoginID());
 				modelMap.put("customer", customer);
-				return "dashboardCustomer";
+				return "t_dashboardCustomer";
 			}
 			else if (Roles.RESTAURANT == user.getRole()) {
-				return "dashboardRestaurant";
+				return "t_dashboardRestaurant";
 			}
 			else if (Roles.ADMIN == user.getRole()) {
 				List<Customer> customers = customerService.fetchAllCustomers();
@@ -103,7 +103,7 @@ public class MainController {
 				List<Restaurant> restaurants = restaurantService
 						.fetchAllRestaurants();
 				modelMap.put("restaurants", restaurants);
-				return "dashboardAdmin";
+				return "t_dashboardAdmin";
 			}
 		}
 		try {
@@ -115,7 +115,7 @@ public class MainController {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-		return "home";
+		return "t_home";
 	}
 
 	/**
@@ -155,10 +155,10 @@ public class MainController {
 			modelMap.put("name", data.getName());
 			//When one signs up, logout the current user from session.
 			session.removeAttribute("user");
-			return "registerSuccess";
+			return "t_registerSuccess";
 		}
 		catch (Exception e) {
-			return "500";
+			return "t_500";
 		}
 	}
 }
