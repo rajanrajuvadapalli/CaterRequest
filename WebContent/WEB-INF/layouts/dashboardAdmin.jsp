@@ -37,10 +37,12 @@
 		</td>
 
 		<td width="20px"></td>
-
-		<c:import url="admin/_customersList.jsp"></c:import>
-		<c:import url="admin/_restaurantsList.jsp"></c:import>
-		<c:import url="admin/_eventsList.jsp"></c:import>
+		
+		<td align="left">
+			<c:import url="notiles/_customersList.jsp"></c:import>
+			<c:import url="notiles/_restaurantsList.jsp"></c:import>
+			<c:import url="notiles/_eventsList.jsp"></c:import>
+		</td>
 
 	</tr>
 </table>

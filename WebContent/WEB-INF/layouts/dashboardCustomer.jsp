@@ -11,13 +11,6 @@
 				<tr>
 					<td style="cursor: pointer; cursor: hand;"
 						onclick="listCustomerEvents()">My Events
-						<c:choose>
-							<c:when test="${empty customer}"></c:when>
-							<c:when test="${empty customer.events}">
-								(0)
-							</c:when>
-							<c:otherwise>(${customer.events.size()})</c:otherwise>
-						</c:choose>
 					</td>
 				</tr>
 				<tr>
