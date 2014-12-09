@@ -18,17 +18,17 @@ import com.cater.model.Event;
 public class EventDAOImpl extends AbstractDAOImpl implements EventDAO {
 	private static final Logger logger = Logger.getLogger(EventDAOImpl.class);
 	@Autowired
-	private CustomerDAO customerDAO;
-	@Autowired
 	private AddressDAO addressDAO;
 
 	@Override
 	public boolean save(Event event) {
 		if (event == null) {
-			logger.error("Cannot save null value for Customer.");
+			logger.error("Cannot save null value for Event.");
+		}
+		else if (event.getLocation() == null) {
+			logger.error("Location address cannot be empty for Event.");
 		}
 		else {
-			customerDAO.save(event.getCustomer());
 			addressDAO.save(event.getLocation());
 			return super.save(Event.class, event);
 		}

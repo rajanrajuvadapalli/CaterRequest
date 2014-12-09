@@ -55,7 +55,7 @@ public class Customer extends AbstractTimestampEntity implements Serializable {
 	@JoinColumn(name = "address_sk", nullable = true)
 	private Address address;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "customer_sk")
 	public List<Event> events;
 
 	public int getId() {

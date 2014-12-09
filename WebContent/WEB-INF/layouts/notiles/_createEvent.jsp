@@ -1,0 +1,57 @@
+<div>
+	<form method="POST" id="event-form"
+		action="${pageContext.request.contextPath}/customer/createEvent" novalidate
+		ectype="application/x-www-form-urlencoded" autocomplete="off">
+		<table>
+			<tr>
+				<td class="field-name">Event Name :</td>
+				<td class="field-value"><input type="text" size="50"
+					maxlength="250" name="name" required="required"
+					placeholder="Ex.: Victoria's Birthday party" class="inputs">
+			</tr>
+			<tr>
+				<td class="field-name">Date/Time :</td>
+				<td class="field-value"><input type="text" size="30"
+					maxlength="50" name="datetimepicker" id="datetimepicker"
+					required="required" class="inputs" /></td>
+			</tr>
+
+			<tr>
+				<td colspan="2" style="text-align: center;"><br>Event
+					Location</td>
+			</tr>
+			<tr>
+				<td class="field-name">Street 1 :</td>
+				<td class="field-value"><input type="text" size="30"
+					maxlength="50" name="street1" required="required"
+					placeholder="Line 1" class="inputs"></td>
+			</tr>
+			<tr>
+				<td class="field-name">Street 2 :</td>
+				<td class="field-value"><input type="text" size="30"
+					maxlength="50" name="street2" placeholder="Line 2" class="inputs"></td>
+			</tr>
+			<tr>
+				<td class="field-name">City :</td>
+				<td class="field-value"><input type="text" size="30"
+					name="city" required="required" placeholder="City" class="inputs"></td>
+			</tr>
+			<tr>
+				<td class="field-name">State :</td>
+				<td class="field-value"><select id="state" name="state"
+					class="form-control bfh-states inputs"></select></td>
+			</tr>
+			<tr>
+				<td class="field-name">Zip :</td>
+				<td class="field-value"><input type="text" size="10" name="zip"
+					maxlength="10" required="required" placeholder="Ex.: xxxxx"
+					class="inputs"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><button type="submit" width="50px" class="button">Create
+						Event</button></td>
+			</tr>
+		</table>
+	</form>
+</div>

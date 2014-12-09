@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<script src="${pageContext.request.contextPath}/resources/js/customer.js"></script>
 
 <div>
 	<h2 style="text-align: center;">Customer Dashboard</h2>

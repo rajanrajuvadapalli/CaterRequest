@@ -6,19 +6,7 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html" />
 		<title><t:getAsString name="title"/></title>
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/style.css" type="text/css" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/menu.css" type="text/css" />
-		<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/logo-favicon.ico">
-		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-		<!-- <script src = "http://www.myersdaily.org/joseph/javascript/md5.js"></script> -->
-		<script src="${pageContext.request.contextPath}/resources/js/md5.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/js/register.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/js/settings.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/js/admin.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/js/customer.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/js/bootstrap-formhelpers.min.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/js/jquery.validate.min.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/js/additional-methods.min.js"></script>
+		<c:import url="scripts.jsp"></c:import>
 	</head>
 	<body align="center">
 		<table align="center">

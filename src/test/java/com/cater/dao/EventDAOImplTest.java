@@ -25,6 +25,8 @@ import com.cater.model.Login;
 public class EventDAOImplTest extends AbstractDAOImplTest {
 	@Autowired
 	private EventDAO fixture;
+	@Autowired
+	private CustomerDAO customerDAO;
 	private static final SimpleDateFormat df = new SimpleDateFormat(
 			"yyyy-MM-dd hh:mm:ss", Locale.US);
 	private static final Date DATE_1;
@@ -37,7 +39,9 @@ public class EventDAOImplTest extends AbstractDAOImplTest {
 	private Event createSampleEvent() {
 		Event event = new Event();
 		event.setName("Sample Event");
-		event.setCustomer(createSampleCustomer());
+		Customer c = createSampleCustomer();
+		customerDAO.save(c);
+		event.setCustomer(c);
 		event.setLocation(createSampleAddress());
 		event.setDate_time(DATE_1);
 		return event;

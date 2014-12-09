@@ -1,9 +1,10 @@
 $('document')
 		.ready(
 				function() {
-					$("td[id=customerDashboardData]")
+					listCustomerEvents();
+					/*$("td[id=customerDashboardData]")
 							.html(
-									"<div class=\"sideMenuItemsDetail\">Please select from options to your left.</div>");
+									"<div class=\"sideMenuItemsDetail\">Please select from options to your left.</div>");*/
 				});
 
 function listCustomerEvents() {
@@ -23,4 +24,31 @@ function listCustomerEvents() {
 					+ ", <br>Error:" + error + "</div>");
 		}
 	});
+}
+
+function showCreateEventForm() {
+	var element = $("td[id=customerDashboardData]");
+	$.ajax({
+		url : "/cater4party/customer/createEvent",
+		type : "GET",
+		context : document.body,
+		success : function(response) {
+			console.log(response);
+			element.html(response);
+			$("input[id=datetimepicker]").datetimepicker();
+			$('#state').bfhstates({
+				country : 'US',
+				state : 'CA'
+			});
+		},
+		error : function(xhr, status, error) {
+			element.html("<div class=\"sideMenuItemsDetail\">Status:" + status
+					+ ", <br>Error:" + error + "</div>");
+		}
+	});
+}
+
+function showMenuOptions(eventId) {
+	console.log(eventId);
+	
 }
