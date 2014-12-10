@@ -1,11 +1,12 @@
-$('document')
-		.ready(
-				function() {
-					listCustomerEvents();
-					/*$("td[id=customerDashboardData]")
-							.html(
-									"<div class=\"sideMenuItemsDetail\">Please select from options to your left.</div>");*/
-				});
+$('document').ready(function() {
+	listCustomerEvents();
+	/*
+	 * $("td[id=customerDashboardData]") .html( "<div
+	 * class=\"sideMenuItemsDetail\">Please select from options to your left.</div>");
+	 */
+	//validateSelectMenuFormOnSubmit();
+	validateMenuFormOnSubmit();
+});
 
 function listCustomerEvents() {
 	// Make an ajax call and get list of events
@@ -16,7 +17,7 @@ function listCustomerEvents() {
 		type : "GET",
 		context : document.body,
 		success : function(response) {
-			//console.log(response);
+			// console.log(response);
 			element.html(response);
 		},
 		error : function(xhr, status, error) {
@@ -50,5 +51,82 @@ function showCreateEventForm() {
 
 function showMenuOptions(eventId) {
 	console.log(eventId);
-	
+	var element = $("td[id=customerDashboardData]");
+	var cuisines = "<div class=\"sideMenuItemsDetail\">"
+			+ "<form method=\"POST\" id=\"select-menu-form\" action=\"/cater4party/menu/selectMenu\">"
+			/*
+			 * + " <input type=\"checkbox\" name=\"cuisine\" value=\"AMERICAN\">
+			 * AMERICAN </input> <br> " + " <input type=\"checkbox\"
+			 * name=\"cuisine\" value=\"CHINESE\"> CHINESE </input> <br> " + "
+			 * <input type=\"checkbox\" name=\"cuisine\" value=\"CONTINENTAL\">
+			 * CONTINENTAL </input> <br> " + " <input type=\"checkbox\"
+			 * name=\"cuisine\" value=\"CUBAN\"> CUBAN </input> <br> " + "
+			 * <input type=\"checkbox\" name=\"cuisine\" value=\"FRENCH\">
+			 * FRENCH </input> <br> " + " <input type=\"checkbox\"
+			 * name=\"cuisine\" value=\"GREEK\"> GREEK </input> <br> "
+			 */
+			+ "	<input type=\"checkbox\" name=\"cuisine\" value=\"INDIAN\"> 		INDIAN             </input> <br> "
+			/*
+			 * + " <input type=\"checkbox\" name=\"cuisine\"
+			 * value=\"INDONESIAN\"> INDONESIAN </input> <br> " + " <input
+			 * type=\"checkbox\" name=\"cuisine\" value=\"ITALIAN\"> ITALIAN
+			 * </input> <br> " + " <input type=\"checkbox\" name=\"cuisine\"
+			 * value=\"JAPANESE\"> JAPANESE </input> <br> " + " <input
+			 * type=\"checkbox\" name=\"cuisine\" value=\"KOREAN\"> KOREAN
+			 * </input> <br> " + " <input type=\"checkbox\" name=\"cuisine\"
+			 * value=\"LEBANESE\"> LEBANESE </input> <br> " + " <input
+			 * type=\"checkbox\" name=\"cuisine\" value=\"MALAYSIAN\"> MALAYSIAN
+			 * </input> <br> " + " <input type=\"checkbox\" name=\"cuisine\"
+			 * value=\"MEXICAN\"> MEXICAN </input> <br> " + " <input
+			 * type=\"checkbox\" name=\"cuisine\" value=\"RUSSIAN\"> RUSSIAN
+			 * </input> <br> " + " <input type=\"checkbox\" name=\"cuisine\"
+			 * value=\"SINGAPORE\"> SINGAPORE </input> <br> " + " <input
+			 * type=\"checkbox\" name=\"cuisine\" value=\"SPANISH\"> SPANISH
+			 * </input> <br> " + " <input type=\"checkbox\" name=\"cuisine\"
+			 * value=\"THAI\"> THAI </input> <br> " + " <input type=\"checkbox\"
+			 * name=\"cuisine\" value=\"TIBETAN\"> TIBETAN </input> <br> " + "
+			 * <input type=\"checkbox\" name=\"cuisine\" value=\"VIETNAMESE\">
+			 * VIETNAMESE </input> <br> "
+			 */
+			+ "<input type=\"hidden\" name=\"eventId\" value=\"" + eventId
+			+ "\">" + "<button width=\"50px\" class=\"button\">Next</button>"
+			+ "</div>" + "</form>";
+	element.html(cuisines);
+	validateSelectMenuFormOnSubmit();
+}
+
+function validateSelectMenuFormOnSubmit() {
+	$("form[id=select-menu-form]").validate({
+		rules : {
+			cuisine : {
+				required : true
+			}
+		},
+		messages : {
+			cuisine : {
+				required : "Please select at least 1 cuisine."
+			}
+		},
+		submitHandler : function(form) {
+			form.submit();
+		}
+	});
+}
+
+function validateMenuFormOnSubmit() {
+	$("form[id=menu-form]").validate({
+		rules : {
+			itemName : {
+				required : true
+			}
+		},
+		messages : {
+			itemName : {
+				required : "Please select at least 1 item from the menu."
+			}
+		},
+		submitHandler : function(form) {
+			form.submit();
+		}
+	});
 }

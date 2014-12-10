@@ -65,9 +65,9 @@ ALTER TABLE cater4party.Event ADD FOREIGN KEY (location_sk) REFERENCES cater4par
 CREATE TABLE cater4party.Quote
 (
 	id INT NOT NULL IDENTITY
-	,data VARCHAR(5000)  NULL 
+	,data VARCHAR(100000)  NULL 
 	,event_sk INT NOT NULL 
-	,restaurant_sk INT NOT NULL 
+	,restaurant_sk INT NULL 
 	,status VARCHAR(20)  NULL 
 	,create_ts DATETIME NOT NULL 
 	,lupd_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP );

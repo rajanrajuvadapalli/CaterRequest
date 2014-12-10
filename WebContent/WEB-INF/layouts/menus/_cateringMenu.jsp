@@ -7,7 +7,7 @@
 		</h2>
 	</div>
 	<form method="POST" id="menu-form"
-		action="${pageContext.request.contextPath}/menu" novalidate
+		action="${pageContext.request.contextPath}/menu/requestQuote" novalidate
 		ectype="application/x-www-form-urlencoded" autocomplete="off">
 		<table class="caterMenu">
 			<c:forEach items="${menu.categories}" var="category">
@@ -17,7 +17,7 @@
 				<c:forEach items="${category.items}" var="item">
 					<tr class="item">
 						<td><input type="checkbox" value="${item.name}"
-							name="${item.name}" ${item.isSelected()?"checked":""}></td>
+							name="itemName" ${item.isSelected()?"checked":""}></td>
 						<td><c:out value="${item.name}"></c:out></td>
 					</tr>
 					<c:if test="${not empty item.description}">
@@ -29,7 +29,8 @@
 					</c:if>
 				</c:forEach>
 			</c:forEach>
-
+			<tr><td></td><td><button type="submit" width="50px" class="button">Next</button></td></tr>
 		</table>
+		<input type="hidden" name="cuisine" value="${menu.cuisine}">
 	</form>
 </div>

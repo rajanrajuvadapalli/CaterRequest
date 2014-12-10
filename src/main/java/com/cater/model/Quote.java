@@ -26,8 +26,8 @@ public class Quote extends AbstractTimestampEntity implements Serializable {
 	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "event_sk", nullable = false)
 	private Event event;
-	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name = "restaurant_sk", nullable = false)
+	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = true)
+	@JoinColumn(name = "restaurant_sk", nullable = true)
 	private Restaurant restaurant;
 	@Column(name = "status", length = 20, nullable = true)
 	private String status;
