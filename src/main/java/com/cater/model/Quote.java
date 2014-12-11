@@ -23,6 +23,8 @@ public class Quote extends AbstractTimestampEntity implements Serializable {
 	private int id;
 	@Column(name = "data", length = 5000, nullable = true)
 	private String data;
+	@Column(name = "cuisine_type", length = 20, nullable = false)
+	private String cuisineType;
 	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "event_sk", nullable = false)
 	private Event event;
@@ -72,6 +74,14 @@ public class Quote extends AbstractTimestampEntity implements Serializable {
 		this.status = status;
 	}
 
+	public String getCuisineType() {
+		return cuisineType;
+	}
+
+	public void setCuisineType(String cuisineType) {
+		this.cuisineType = cuisineType;
+	}
+
 	/* (non-Javadoc)
 	 * @see com.cater.model.AbstractTimestampEntity#hashCode()
 	 */
@@ -79,6 +89,8 @@ public class Quote extends AbstractTimestampEntity implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
+		result = prime * result
+				+ ((cuisineType == null) ? 0 : cuisineType.hashCode());
 		result = prime * result + ((data == null) ? 0 : data.hashCode());
 		result = prime * result + ((event == null) ? 0 : event.hashCode());
 		result = prime * result + id;
@@ -97,6 +109,10 @@ public class Quote extends AbstractTimestampEntity implements Serializable {
 		if (!super.equals(obj)) return false;
 		if (getClass() != obj.getClass()) return false;
 		Quote other = (Quote) obj;
+		if (cuisineType == null) {
+			if (other.cuisineType != null) return false;
+		}
+		else if (!cuisineType.equals(other.cuisineType)) return false;
 		if (data == null) {
 			if (other.data != null) return false;
 		}

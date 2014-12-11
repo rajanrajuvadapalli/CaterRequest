@@ -9,7 +9,7 @@ public interface EventDAO {
 
 	Event findById(int id);
 
-	Event findByCustomerID(int customerID);
+	List<Event> findByCustomerID(int customerID);
 
 	List<Event> fetchAllEvents();
 }

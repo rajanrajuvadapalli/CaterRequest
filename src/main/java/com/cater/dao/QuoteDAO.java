@@ -9,9 +9,5 @@ public interface QuoteDAO {
 
 	Quote findById(int id);
 
-	Quote findByEventID(int eventID);
-
-	Quote findByRestaurantID(int restaurantID);
-
-	List<Quote> fetchAllQuotes();
+	List<Quote> findQuotesWithEventId(int eventID);
 }

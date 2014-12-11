@@ -69,6 +69,7 @@ CREATE TABLE cater4party.Quote
 	,event_sk INT NOT NULL 
 	,restaurant_sk INT NULL 
 	,status VARCHAR(20)  NULL 
+	,cuisine_type VARCHAR(20) NOT NULL
 	,create_ts DATETIME NOT NULL 
 	,lupd_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP );
 -- Create Foreign Key: Quote.restaurant_sk -> Restaurant.id

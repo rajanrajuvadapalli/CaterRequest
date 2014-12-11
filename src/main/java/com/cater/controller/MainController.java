@@ -90,7 +90,7 @@ public class MainController {
 		if (user != null) {
 			if (Roles.CUSTOMER == user.getRole()) {
 				Customer customer = customerService
-						.fetchCustomerWithLoginId(user.getLoginID());
+						.findCustomerWithLoginId(user.getLoginID());
 				modelMap.put("customer", customer);
 				return "t_dashboardCustomer";
 			}

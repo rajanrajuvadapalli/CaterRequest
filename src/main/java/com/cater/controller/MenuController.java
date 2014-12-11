@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,8 @@ public class MenuController {
 	private CustomerService customerService;
 	@Autowired
 	private MenuSerializer menuSerializer;
+	@Autowired
+	private MenuDeserializer menuDeserializer;
 
 	/**
 	 * Select menu form.
@@ -50,22 +53,55 @@ public class MenuController {
 	@RequestMapping(value = { "selectMenu" }, method = RequestMethod.POST)
 	public String selectMenuForm(HttpSession httpSession, ModelMap modelMap,
 			HttpServletRequest request,
-			@RequestParam(value = "cuisine", required = true) String[] cuisines) {
+			@RequestParam(value = "cuisine", required = true) String cuisine) {
 		User user = (User) httpSession.getAttribute("user");
 		if (user == null) {
 			return "t_home";
 		}
-		httpSession.setAttribute("eventId", request.getParameter("eventId"));
-		//TODO: Dynamically pull the menu after we start supporting more cuisines.
-		//Temporarily hard coded to "indian" menu.
-		try {
-			File f = new File(CustomerDashboardController.class.getResource(
-					"/menus/indian.json").getFile());
-			Menu indianMenu = new MenuDeserializer().readJSON(f);
-			modelMap.put("menu", indianMenu);
+		String eventId = request.getParameter("eventId");
+		httpSession.setAttribute("eventId", eventId);
+		//First check the DB if a menu is selected earlier for this cuisine
+		Event e = customerService.fetchEventWithId(Integer.valueOf(eventId));
+		List<Quote> availableQuotes = customerService.findQuotesWithEventId(e
+				.getId());
+		String customerCreatedMenuData = null;
+		if (CollectionUtils.isNotEmpty(availableQuotes)) {
+			//Get the quote for the cuisine and with status = CREATED. This is the one created/selected by customer.
+			for (Quote q : availableQuotes) {
+				if (StringUtils.equalsIgnoreCase(cuisine, q.getCuisineType())
+						&& StringUtils.equalsIgnoreCase(
+								QuoteStatus.CREATED.toString(), q.getStatus())) {
+					httpSession.setAttribute("quoteId", q.getId());
+					customerCreatedMenuData = q.getData();
+					break;
+				}
+			}
 		}
-		catch (IOException e) {
-			logger.error("Failed to read indian menu.", e);
+		if (customerCreatedMenuData == null) {
+			//TODO: Dynamically pull the menu after we start supporting more cuisines.
+			//Temporarily hard coded to "indian" menu.
+			try {
+				File f = new File(CustomerDashboardController.class
+						.getResource("/menus/indian.json").getFile());
+				Menu menu = new MenuDeserializer().readJSON(f);
+				modelMap.put("menu", menu);
+			}
+			catch (IOException ex) {
+				logger.error("Failed to read indian menu.", ex);
+			}
+		}
+		else {
+			logger.debug("Customer already created menu for event "
+					+ e.getName() + " of type " + cuisine);
+			try {
+				String menuJson = new String(
+						Base64.decodeBase64(customerCreatedMenuData));
+				Menu menu = menuDeserializer.readJSON(menuJson);
+				modelMap.put("menu", menu);
+			}
+			catch (IOException ex) {
+				logger.error("Failed to read indian menu.", ex);
+			}
 		}
 		return "menus/t__cateringMenu";
 	}
@@ -114,14 +150,19 @@ public class MenuController {
 			}
 			Event e = customerService
 					.fetchEventWithId(Integer.valueOf(eventId));
-			//Create quote
+			//Create or update quote
 			Quote q = new Quote();
+			Integer quoteId = (Integer) httpSession.getAttribute("quoteId");
+			if (quoteId != null) {
+				q = customerService.findQuoteWithId(quoteId);
+			}
 			q.setEvent(e);
 			String data = menuSerializer.serialize(menu);
 			logger.debug("Json menu (" + data.length() + ") " + data);
 			data = Base64.encodeBase64String(data.getBytes());
 			logger.debug("Encoded Json menu (" + data.length() + ")" + data);
 			q.setData(data);
+			q.setCuisineType(cuisineType);
 			q.setStatus(QuoteStatus.CREATED.toString());
 			customerService.saveQuote(q);
 			List<String> successMessages = Lists.newArrayList();

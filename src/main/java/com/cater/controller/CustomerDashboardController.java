@@ -41,7 +41,7 @@ public class CustomerDashboardController {
 	public String listEvents(HttpSession httpSession, ModelMap modelMap) {
 		User user = (User) httpSession.getAttribute("user");
 		if (user != null) {
-			Customer c = customerService.fetchCustomerWithLoginId(user
+			Customer c = customerService.findCustomerWithLoginId(user
 					.getLoginID());
 			modelMap.addAttribute("events", c.getEvents());
 		}
@@ -71,7 +71,7 @@ public class CustomerDashboardController {
 			HttpServletRequest request) {
 		User user = (User) httpSession.getAttribute("user");
 		if (user != null) {
-			Customer c = customerService.fetchCustomerWithLoginId(user
+			Customer c = customerService.findCustomerWithLoginId(user
 					.getLoginID());
 			logger.debug("Creating event for " + c.getName());
 			Event e = new Event();

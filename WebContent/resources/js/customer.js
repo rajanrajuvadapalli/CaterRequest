@@ -55,37 +55,37 @@ function showMenuOptions(eventId) {
 	var cuisines = "<div class=\"sideMenuItemsDetail\">"
 			+ "<form method=\"POST\" id=\"select-menu-form\" action=\"/cater4party/menu/selectMenu\">"
 			/*
-			 * + " <input type=\"checkbox\" name=\"cuisine\" value=\"AMERICAN\">
-			 * AMERICAN </input> <br> " + " <input type=\"checkbox\"
+			 * + " <input type=\"radio\" name=\"cuisine\" value=\"AMERICAN\">
+			 * AMERICAN </input> <br> " + " <input type=\"radio\"
 			 * name=\"cuisine\" value=\"CHINESE\"> CHINESE </input> <br> " + "
-			 * <input type=\"checkbox\" name=\"cuisine\" value=\"CONTINENTAL\">
-			 * CONTINENTAL </input> <br> " + " <input type=\"checkbox\"
+			 * <input type=\"radio\" name=\"cuisine\" value=\"CONTINENTAL\">
+			 * CONTINENTAL </input> <br> " + " <input type=\"radio\"
 			 * name=\"cuisine\" value=\"CUBAN\"> CUBAN </input> <br> " + "
-			 * <input type=\"checkbox\" name=\"cuisine\" value=\"FRENCH\">
-			 * FRENCH </input> <br> " + " <input type=\"checkbox\"
+			 * <input type=\"radio\" name=\"cuisine\" value=\"FRENCH\">
+			 * FRENCH </input> <br> " + " <input type=\"radio\"
 			 * name=\"cuisine\" value=\"GREEK\"> GREEK </input> <br> "
 			 */
-			+ "	<input type=\"checkbox\" name=\"cuisine\" value=\"INDIAN\"> 		INDIAN             </input> <br> "
+			+ "	<input type=\"radio\" name=\"cuisine\" value=\"INDIAN\"> 		INDIAN             </input> <br> "
 			/*
-			 * + " <input type=\"checkbox\" name=\"cuisine\"
+			 * + " <input type=\"radio\" name=\"cuisine\"
 			 * value=\"INDONESIAN\"> INDONESIAN </input> <br> " + " <input
-			 * type=\"checkbox\" name=\"cuisine\" value=\"ITALIAN\"> ITALIAN
-			 * </input> <br> " + " <input type=\"checkbox\" name=\"cuisine\"
+			 * type=\"radio\" name=\"cuisine\" value=\"ITALIAN\"> ITALIAN
+			 * </input> <br> " + " <input type=\"radio\" name=\"cuisine\"
 			 * value=\"JAPANESE\"> JAPANESE </input> <br> " + " <input
-			 * type=\"checkbox\" name=\"cuisine\" value=\"KOREAN\"> KOREAN
-			 * </input> <br> " + " <input type=\"checkbox\" name=\"cuisine\"
+			 * type=\"radio\" name=\"cuisine\" value=\"KOREAN\"> KOREAN
+			 * </input> <br> " + " <input type=\"radio\" name=\"cuisine\"
 			 * value=\"LEBANESE\"> LEBANESE </input> <br> " + " <input
-			 * type=\"checkbox\" name=\"cuisine\" value=\"MALAYSIAN\"> MALAYSIAN
-			 * </input> <br> " + " <input type=\"checkbox\" name=\"cuisine\"
+			 * type=\"radio\" name=\"cuisine\" value=\"MALAYSIAN\"> MALAYSIAN
+			 * </input> <br> " + " <input type=\"radio\" name=\"cuisine\"
 			 * value=\"MEXICAN\"> MEXICAN </input> <br> " + " <input
-			 * type=\"checkbox\" name=\"cuisine\" value=\"RUSSIAN\"> RUSSIAN
-			 * </input> <br> " + " <input type=\"checkbox\" name=\"cuisine\"
+			 * type=\"radio\" name=\"cuisine\" value=\"RUSSIAN\"> RUSSIAN
+			 * </input> <br> " + " <input type=\"radio\" name=\"cuisine\"
 			 * value=\"SINGAPORE\"> SINGAPORE </input> <br> " + " <input
-			 * type=\"checkbox\" name=\"cuisine\" value=\"SPANISH\"> SPANISH
-			 * </input> <br> " + " <input type=\"checkbox\" name=\"cuisine\"
-			 * value=\"THAI\"> THAI </input> <br> " + " <input type=\"checkbox\"
+			 * type=\"radio\" name=\"cuisine\" value=\"SPANISH\"> SPANISH
+			 * </input> <br> " + " <input type=\"radio\" name=\"cuisine\"
+			 * value=\"THAI\"> THAI </input> <br> " + " <input type=\"radio\"
 			 * name=\"cuisine\" value=\"TIBETAN\"> TIBETAN </input> <br> " + "
-			 * <input type=\"checkbox\" name=\"cuisine\" value=\"VIETNAMESE\">
+			 * <input type=\"radio\" name=\"cuisine\" value=\"VIETNAMESE\">
 			 * VIETNAMESE </input> <br> "
 			 */
 			+ "<input type=\"hidden\" name=\"eventId\" value=\"" + eventId

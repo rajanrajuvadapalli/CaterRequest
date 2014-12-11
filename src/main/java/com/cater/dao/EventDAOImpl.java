@@ -2,7 +2,6 @@ package com.cater.dao;
 
 import java.util.List;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -40,27 +39,28 @@ public class EventDAOImpl extends AbstractDAOImpl implements EventDAO {
 		return super.findById(Event.class, id);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public Event findByCustomerID(int customerID) {
-		Event event = null;
+	public List<Event> findByCustomerID(int customerID) {
+		//Event event = null;
 		logger.debug("Finding Event with customer ID: " + customerID);
 		Session session = null;
 		Transaction tx = null;
 		try {
 			session = getSessionFactory().openSession();
 			tx = session.beginTransaction();
-			List<?> list = session
+			List<Event> list = (List<Event>) session
 					.createCriteria(Event.class, "event")
 					.createAlias("event.customer", "customer",
 							JoinType.LEFT_OUTER_JOIN)
 					.add(Restrictions
 							.eq("customer.id", new Integer(customerID))).list();
-			if (CollectionUtils.isNotEmpty(list)) {
+			/*if (CollectionUtils.isNotEmpty(list)) {
 				event = (Event) list.iterator().next();
 				logger.debug("Found Event with customer ID: " + customerID);
-			}
+			}*/
 			tx.rollback();
-			return event;
+			return list;
 		}
 		catch (HibernateException he) {
 			logger.error(

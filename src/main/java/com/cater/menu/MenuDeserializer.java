@@ -6,6 +6,7 @@ import java.io.IOException;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MappingJsonFactory;
@@ -22,15 +23,27 @@ public class MenuDeserializer {
 	 */
 	public Menu readJSON(File f) throws IOException {
 		if (f != null && f.exists()) {
-			ObjectMapper mapper = new ObjectMapper();
-			mapper.configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING,
-					true);
 			String json = FileUtils.readFileToString(f);
-			JsonParser jp = new MappingJsonFactory(mapper)
-					.createJsonParser(json);
-			Menu menu = mapper.readValue(jp, Menu.class);
-			return menu;
+			return readJSON(json);
 		}
 		return null;
+	}
+
+	/**
+	 * Read json.
+	 *
+	 * @param aString the a string
+	 * @return the menu
+	 * @throws JsonParseException the json parse exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	public Menu readJSON(String aString) throws JsonParseException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING,
+				true);
+		JsonParser jp = new MappingJsonFactory(mapper)
+				.createJsonParser(aString);
+		Menu menu = mapper.readValue(jp, Menu.class);
+		return menu;
 	}
 }

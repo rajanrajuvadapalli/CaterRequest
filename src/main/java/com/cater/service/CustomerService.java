@@ -25,7 +25,7 @@ public class CustomerService {
 		return customerDAO.fetchAllCustomers();
 	}
 
-	public Customer fetchCustomerWithLoginId(int loginID) {
+	public Customer findCustomerWithLoginId(int loginID) {
 		return customerDAO.findByLoginID(loginID);
 	}
 
@@ -39,5 +39,13 @@ public class CustomerService {
 
 	public Event fetchEventWithId(int eventId) {
 		return eventDAO.findById(eventId);
+	}
+
+	public Quote findQuoteWithId(int quoteId) {
+		return quoteDAO.findById(quoteId);
+	}
+
+	public List<Quote> findQuotesWithEventId(int eventId) {
+		return quoteDAO.findQuotesWithEventId(eventId);
 	}
 }
