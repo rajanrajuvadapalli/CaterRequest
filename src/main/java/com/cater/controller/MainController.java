@@ -1,9 +1,5 @@
 package com.cater.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -20,9 +16,6 @@ import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.cater.constants.Roles;
-import com.cater.menu.Menu;
-import com.cater.menu.MenuDeserializer;
-import com.cater.menu.MenuDeserializerTest;
 import com.cater.model.Customer;
 import com.cater.model.Restaurant;
 import com.cater.service.CustomerService;
@@ -95,25 +88,18 @@ public class MainController {
 				return "t_dashboardCustomer";
 			}
 			else if (Roles.RESTAURANT == user.getRole()) {
+				Restaurant restaurant = restaurantService
+						.findRestaurantWithLoginId(user.getLoginID());
+				modelMap.put("restaurant", restaurant);
 				return "t_dashboardRestaurant";
 			}
 			else if (Roles.ADMIN == user.getRole()) {
-				List<Customer> customers = customerService.fetchAllCustomers();
-				modelMap.put("customers", customers);
-				List<Restaurant> restaurants = restaurantService
-						.fetchAllRestaurants();
-				modelMap.put("restaurants", restaurants);
+				modelMap.put("customers", customerService.fetchAllCustomers());
+				modelMap.put("restaurants",
+						restaurantService.fetchAllRestaurants());
+				modelMap.put("events", customerService.fetchAllEvents());
 				return "t_dashboardAdmin";
 			}
-		}
-		try {
-			File f = new File(MenuDeserializerTest.class.getResource(
-					"/menus/indian.json").getFile());
-			Menu indianMenu = new MenuDeserializer().readJSON(f);
-			modelMap.put("menu", indianMenu);
-		}
-		catch (IOException e) {
-			e.printStackTrace();
 		}
 		return "t_home";
 	}

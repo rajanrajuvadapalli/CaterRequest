@@ -52,3 +52,35 @@ ALTER TABLE Restaurant ADD FOREIGN KEY (address_sk) REFERENCES Address(id);
 -- Create Foreign Key: Restaurant.login_sk -> Login.id
 ALTER TABLE Restaurant ADD FOREIGN KEY (login_sk) REFERENCES Login(id);
 
+CREATE TABLE cater4party.Event
+(
+	`id` INT NOT NULL AUTO_INCREMENT
+	,PRIMARY KEY (id)
+	,`customer_sk` INT NOT NULL 
+	,`name` VARCHAR(250) NOT NULL 
+	,`location_sk` INT NOT NULL 
+	,`date_time` DATETIME NOT NULL 
+	,`create_ts` DATETIME NOT NULL 
+	,`lupd_ts` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
+-- Create Foreign Key: Event.customer_sk -> Customer.id
+ALTER TABLE cater4party.Event ADD FOREIGN KEY (customer_sk) REFERENCES cater4party.Customer(id);
+-- Create Foreign Key: Event.location_sk -> Address.id
+ALTER TABLE cater4party.Event ADD FOREIGN KEY (location_sk) REFERENCES cater4party.Address(id);
+
+CREATE TABLE cater4party.Quote
+(
+	`id` INT NOT NULL AUTO_INCREMENT
+	,PRIMARY KEY (id)
+	,`data` blob(100000)  NULL 
+	,`event_sk` INT NOT NULL 
+	,`restaurant_sk` INT NULL 
+	,`status` VARCHAR(20)  NULL 
+	,`cuisine_type` VARCHAR(20) NOT NULL
+	,`create_ts` DATETIME NOT NULL 
+	,`lupd_ts` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
+-- Create Foreign Key: Quote.restaurant_sk -> Restaurant.id
+ALTER TABLE cater4party.Quote ADD FOREIGN KEY (restaurant_sk) REFERENCES cater4party.Restaurant(id);
+-- Create Foreign Key: Quote.event_sk -> Event.id
+ALTER TABLE cater4party.Quote ADD FOREIGN KEY (event_sk) REFERENCES cater4party.Event(id);
+
+

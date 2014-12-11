@@ -10,8 +10,7 @@
 			<table class="sideMenuItem">
 				<tr>
 					<td style="cursor: pointer; cursor: hand;"
-						onclick="listCustomers()">Customers
-						<c:choose>
+						onclick="listCustomers()">Customers <c:choose>
 							<c:when test="${empty customers}">
 								(0)
 							</c:when>
@@ -21,8 +20,7 @@
 				</tr>
 				<tr>
 					<td style="cursor: pointer; cursor: hand;"
-						onclick="listRestaurants()">Restaurants
-						<c:choose>
+						onclick="listRestaurants()">Restaurants <c:choose>
 							<c:when test="${empty restaurants}">
 								(0)
 							</c:when>
@@ -31,18 +29,23 @@
 					</td>
 				</tr>
 				<tr>
-					<td style="cursor: pointer; cursor: hand;" onclick="listEvents()">Events</td>
+					<td style="cursor: pointer; cursor: hand;" onclick="listEvents()">Events
+						<c:choose>
+							<c:when test="${empty events}">
+								(0)
+							</c:when>
+							<c:otherwise>(${events.size()})</c:otherwise>
+						</c:choose>
+					</td>
 				</tr>
 			</table>
 		</td>
 
 		<td width="20px"></td>
-		
-		<td align="left">
-			<c:import url="notiles/_customersList.jsp"></c:import>
-			<c:import url="notiles/_restaurantsList.jsp"></c:import>
-			<c:import url="notiles/_eventsList.jsp"></c:import>
-		</td>
+
+		<td align="left"><c:import url="notiles/_customersList.jsp"></c:import>
+			<c:import url="notiles/_restaurantsList.jsp"></c:import> <c:import
+				url="notiles/_eventsList.jsp"></c:import></td>
 
 	</tr>
 </table>

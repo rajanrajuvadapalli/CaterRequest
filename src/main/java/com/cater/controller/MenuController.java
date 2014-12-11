@@ -61,8 +61,8 @@ public class MenuController {
 		String eventId = request.getParameter("eventId");
 		httpSession.setAttribute("eventId", eventId);
 		//First check the DB if a menu is selected earlier for this cuisine
-		Event e = customerService.fetchEventWithId(Integer.valueOf(eventId));
-		List<Quote> availableQuotes = customerService.findQuotesWithEventId(e
+		Event e = customerService.findEventWithId(Integer.valueOf(eventId));
+		List <Quote> availableQuotes = customerService.findQuotesWithEventId(e
 				.getId());
 		String customerCreatedMenuData = null;
 		if (CollectionUtils.isNotEmpty(availableQuotes)) {
@@ -148,8 +148,7 @@ public class MenuController {
 					}
 				}
 			}
-			Event e = customerService
-					.fetchEventWithId(Integer.valueOf(eventId));
+			Event e = customerService.findEventWithId(Integer.valueOf(eventId));
 			//Create or update quote
 			Quote q = new Quote();
 			Integer quoteId = (Integer) httpSession.getAttribute("quoteId");
@@ -165,7 +164,7 @@ public class MenuController {
 			q.setCuisineType(cuisineType);
 			q.setStatus(QuoteStatus.CREATED.toString());
 			customerService.saveQuote(q);
-			List<String> successMessages = Lists.newArrayList();
+			List <String> successMessages = Lists.newArrayList();
 			successMessages
 					.add("Your request for quotes is successfully submitted for '"
 							+ e.getName() + "'.");

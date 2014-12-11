@@ -21,7 +21,7 @@ public class CustomerService {
 	@Autowired
 	private QuoteDAO quoteDAO;
 
-	public List<Customer> fetchAllCustomers() {
+	public List <Customer> fetchAllCustomers() {
 		return customerDAO.fetchAllCustomers();
 	}
 
@@ -33,19 +33,23 @@ public class CustomerService {
 		return eventDAO.save(e);
 	}
 
-	public boolean saveQuote(Quote q) {
-		return quoteDAO.save(q);
+	public List <Event> fetchAllEvents() {
+		return eventDAO.fetchAllEvents();
 	}
 
-	public Event fetchEventWithId(int eventId) {
+	public Event findEventWithId(int eventId) {
 		return eventDAO.findById(eventId);
+	}
+
+	public boolean saveQuote(Quote q) {
+		return quoteDAO.save(q);
 	}
 
 	public Quote findQuoteWithId(int quoteId) {
 		return quoteDAO.findById(quoteId);
 	}
 
-	public List<Quote> findQuotesWithEventId(int eventId) {
+	public List <Quote> findQuotesWithEventId(int eventId) {
 		return quoteDAO.findQuotesWithEventId(eventId);
 	}
 }
