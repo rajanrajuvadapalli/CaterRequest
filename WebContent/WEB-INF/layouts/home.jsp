@@ -8,6 +8,15 @@
 		
 	</div>
 </c:if>
+
+<c:if test="${not empty warnings}">
+	<div class="warningMsg">
+		<ul>
+			<li><c:forEach items="${warnings}" var="w">${w}</c:forEach></li>
+		</ul>
+		
+	</div>
+</c:if>
 	
 <div class="homePageBanner">
 	<table>

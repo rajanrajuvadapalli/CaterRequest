@@ -52,14 +52,22 @@ public class LoginController {
 				.getParameter("username"));
 		String password = StringUtils
 				.defaultString(request.getParameter("pwd"));
-		List<String> errors = Lists.newArrayList();
+		List <String> errors = Lists.newArrayList();
 		modelMap.addAttribute("errors", errors);
+		List <String> warnings = Lists.newArrayList();
+		modelMap.addAttribute("warnings", warnings);
 		try {
 			Login login = loginService.retrieveLoginFor(username, password);
 			if (login == null) {
 				errors.add("Invalid Username and password combination.");
 				return "t_home";
 			}
+			//TODO: uncomment the following block after we integrate the email module.
+			/*else if (!login.isActive()) {
+				warnings.add("Your account is not active. If you have recently registered with us, "
+						+ "please click on the confirmation link in the email.");
+				return "t_home";
+			}*/
 			User user = new User();
 			user.setLoginID(login.getId());
 			user.setUsername(username);
