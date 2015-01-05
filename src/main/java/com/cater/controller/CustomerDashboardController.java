@@ -43,7 +43,9 @@ public class CustomerDashboardController {
 		if (user != null) {
 			Customer c = customerService.findCustomerWithLoginId(user
 					.getLoginID());
-			modelMap.addAttribute("events", c.getEvents());
+			if (c != null) {
+				modelMap.addAttribute("events", c.getEvents());
+			}
 		}
 		return "notiles/_eventsList";
 	}

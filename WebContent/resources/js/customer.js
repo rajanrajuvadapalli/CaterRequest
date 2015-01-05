@@ -51,7 +51,6 @@ function showCreateEventForm() {
 
 function showMenuOptions(eventId) {
 	console.log(eventId);
-	var element = $("td[id=customerDashboardData]");
 	var cuisines = "<div class=\"sideMenuItemsDetail\">"
 			+ "<form method=\"POST\" id=\"select-menu-form\" action=\"/cater4party/menu/selectMenu\">"
 			/*
@@ -91,7 +90,7 @@ function showMenuOptions(eventId) {
 			+ "<input type=\"hidden\" name=\"eventId\" value=\"" + eventId
 			+ "\">" + "<button width=\"50px\" class=\"button\">Next</button>"
 			+ "</div>" + "</form>";
-	element.html(cuisines);
+	$("td[id=customerDashboardData]").html(cuisines);
 	validateSelectMenuFormOnSubmit();
 }
 
