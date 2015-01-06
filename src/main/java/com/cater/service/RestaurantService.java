@@ -13,8 +13,12 @@ public class RestaurantService {
 	@Autowired
 	private RestaurantDAO restaurantDAO;
 
-	public List <Restaurant> fetchAllRestaurants() {
+	public List<Restaurant> fetchAllRestaurants() {
 		return restaurantDAO.fetchAllRestaurants();
+	}
+
+	public List<Restaurant> fetchRestaurantsOfType(String cuisine) {
+		return restaurantDAO.fetchRestaurantsOfType(cuisine);
 	}
 
 	public Restaurant findRestaurantWithLoginId(int loginID) {

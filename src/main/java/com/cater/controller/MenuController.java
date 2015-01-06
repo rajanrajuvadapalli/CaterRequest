@@ -27,6 +27,7 @@ import com.cater.menu.MenuSerializer;
 import com.cater.model.Event;
 import com.cater.model.Quote;
 import com.cater.service.CustomerService;
+import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
 import com.google.common.collect.Lists;
 
@@ -36,6 +37,8 @@ public class MenuController {
 	private static final Logger logger = Logger.getLogger(MenuController.class);
 	@Autowired
 	private CustomerService customerService;
+	@Autowired
+	private RestaurantService restaurantService;
 	@Autowired
 	private MenuSerializer menuSerializer;
 	@Autowired
@@ -62,7 +65,7 @@ public class MenuController {
 		httpSession.setAttribute("eventId", eventId);
 		//First check the DB if a menu is selected earlier for this cuisine
 		Event e = customerService.findEventWithId(Integer.valueOf(eventId));
-		List <Quote> availableQuotes = customerService.findQuotesWithEventId(e
+		List<Quote> availableQuotes = customerService.findQuotesWithEventId(e
 				.getId());
 		String customerCreatedMenuData = null;
 		if (CollectionUtils.isNotEmpty(availableQuotes)) {
@@ -107,7 +110,7 @@ public class MenuController {
 	}
 
 	/**
-	 * Request quote.
+	 * Save quote.
 	 *
 	 * @param httpSession the http session
 	 * @param modelMap the model map
@@ -115,8 +118,8 @@ public class MenuController {
 	 * @param itemNames the item names
 	 * @return the string
 	 */
-	@RequestMapping(value = { "requestQuote" }, method = RequestMethod.POST)
-	public String requestQuote(
+	@RequestMapping(value = { "saveQuote" }, method = RequestMethod.POST)
+	public String saveQuote(
 			HttpSession httpSession,
 			ModelMap modelMap,
 			HttpServletRequest request,
@@ -150,10 +153,13 @@ public class MenuController {
 			}
 			Event e = customerService.findEventWithId(Integer.valueOf(eventId));
 			//Create or update quote
-			Quote q = new Quote();
+			Quote q;
 			Integer quoteId = (Integer) httpSession.getAttribute("quoteId");
 			if (quoteId != null) {
 				q = customerService.findQuoteWithId(quoteId);
+			}
+			else {
+				q = new Quote();
 			}
 			q.setEvent(e);
 			String data = menuSerializer.serialize(menu);
@@ -164,12 +170,8 @@ public class MenuController {
 			q.setCuisineType(cuisineType);
 			q.setStatus(QuoteStatus.CREATED.toString());
 			customerService.saveQuote(q);
-			List <String> successMessages = Lists.newArrayList();
-			successMessages
-					.add("Your request for quotes is successfully submitted for '"
-							+ e.getName() + "'.");
-			modelMap.addAttribute("successMessages", successMessages);
-			httpSession.removeAttribute("eventId");
+			modelMap.put("restaurants",
+					restaurantService.fetchRestaurantsOfType(cuisineType));
 		}
 		catch (IOException e) {
 			logger.error(
@@ -177,6 +179,37 @@ public class MenuController {
 					e);
 			return "t_500";
 		}
+		return "menus/t__cateringRestaurants";
+	}
+
+	/**
+	 * Request quote.
+	 *
+	 * @param httpSession the http session
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param rNames the r names
+	 * @return the string
+	 */
+	@RequestMapping(value = { "requestQuote" }, method = RequestMethod.POST)
+	public String requestQuote(HttpSession httpSession, ModelMap modelMap,
+			HttpServletRequest request,
+			@RequestParam(value = "rName", required = true) String[] rNames) {
+		User user = (User) httpSession.getAttribute("user");
+		if (user == null) {
+			return "t_home";
+		}
+		//String cuisineType = request.getParameter("cuisine");
+		String eventId = (String) httpSession.getAttribute("eventId");
+		Event e = customerService.findEventWithId(Integer.valueOf(eventId));
+		//TODO: Send emails to restaurants, requesting to submit quotes.
+		List<String> successMessages = Lists.newArrayList();
+		successMessages
+				.add("Your request for quotes is successfully submitted for '"
+						+ e.getName() + "'.");
+		modelMap.addAttribute("successMessages", successMessages);
+		httpSession.removeAttribute("eventId");
+		httpSession.removeAttribute("quoteId");
 		return "t_dashboardCustomer";
 	}
 }

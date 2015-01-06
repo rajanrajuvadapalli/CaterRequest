@@ -3,6 +3,7 @@ package com.cater.dao;
 import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -83,5 +84,35 @@ public class RestaurantDAOImpl extends AbstractDAOImpl implements RestaurantDAO 
 	@Override
 	public List<Restaurant> fetchAllRestaurants() {
 		return super.fetchAll(Restaurant.class);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Restaurant> fetchRestaurantsOfType(String cuisine) {
+		logger.debug("Finding Restaurants of type : " + cuisine);
+		if (StringUtils.isNotBlank(cuisine)) {
+			Session session = null;
+			Transaction tx = null;
+			try {
+				session = getSessionFactory().openSession();
+				tx = session.beginTransaction();
+				List<Restaurant> list = session
+						.createCriteria(Restaurant.class, "res")
+						.add(Restrictions.eq("res.cuisineType", cuisine))
+						.list();
+				tx.rollback();
+				return list;
+			}
+			catch (HibernateException he) {
+				logger.error("Finding Restaurants of type : " + cuisine, he);
+				throw he;
+			}
+			finally {
+				if (session != null) {
+					session.close();
+				}
+			}
+		}
+		return null;
 	}
 }

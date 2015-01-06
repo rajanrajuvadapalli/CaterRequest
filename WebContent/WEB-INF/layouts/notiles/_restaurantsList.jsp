@@ -5,7 +5,7 @@
 	<c:choose>
 		<c:when test="${empty restaurants}">
 		There are 0 restaurants in the database.
-	</c:when>
+		</c:when>
 
 		<c:otherwise>
 			<table class="list">

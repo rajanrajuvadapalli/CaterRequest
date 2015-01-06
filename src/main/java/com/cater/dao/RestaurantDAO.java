@@ -6,7 +6,7 @@ import com.cater.model.Restaurant;
 
 /**
  * Description: 
- * Created: Nov 23, 2014
+ * @since Nov 23, 2014
  * @author Hari 
  */
 public interface RestaurantDAO {
@@ -17,4 +17,6 @@ public interface RestaurantDAO {
 	Restaurant findByLoginID(int loginID);
 
 	List<Restaurant> fetchAllRestaurants();
+
+	List<Restaurant> fetchRestaurantsOfType(String cuisine);
 }
