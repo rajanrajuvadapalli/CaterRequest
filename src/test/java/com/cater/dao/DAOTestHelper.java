@@ -6,7 +6,7 @@ import org.hibernate.Transaction;
 
 /**
  * Description: 
- * Created: Nov 23, 2014
+ * @since Nov 23, 2014
  * @author Hari 
  */
 public final class DAOTestHelper {
@@ -15,6 +15,7 @@ public final class DAOTestHelper {
 			Session session = sessionFactory.openSession();
 			Transaction tx = session.beginTransaction();
 			session.createQuery("delete from Quote").executeUpdate();
+			session.createQuery("delete from Menu").executeUpdate();
 			session.createQuery("delete from Event").executeUpdate();
 			session.createQuery("delete from Customer").executeUpdate();
 			session.createQuery("delete from Restaurant").executeUpdate();
@@ -34,6 +35,7 @@ public final class DAOTestHelper {
 		clearAddressTable(sessionFactory);
 		clearLoginTable(sessionFactory);
 		clearEventTable(sessionFactory);
+		clearMenuTable(sessionFactory);
 		clearQuoteTable(sessionFactory);
 	}
 
@@ -78,6 +80,15 @@ public final class DAOTestHelper {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 		session.createQuery("delete from Event").executeUpdate();
+		tx.commit();
+		session.close();
+	}
+
+	public static void clearMenuTable(SessionFactory sessionFactory) {
+		//delete all entries from Menu table
+		Session session = sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
+		session.createQuery("delete from Menu").executeUpdate();
 		tx.commit();
 		session.close();
 	}
