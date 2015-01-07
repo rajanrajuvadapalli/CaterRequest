@@ -1,6 +1,6 @@
 <div>
 	<form method="POST" id="event-form"
-		action="${pageContext.request.contextPath}/customer/createEvent" novalidate
+		action="${pageContext.request.contextPath}/customer/createEvent"
 		ectype="application/x-www-form-urlencoded" autocomplete="off">
 		<table>
 			<tr>
