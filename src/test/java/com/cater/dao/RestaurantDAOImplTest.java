@@ -24,7 +24,7 @@ import com.cater.model.Restaurant;
 @Component
 public class RestaurantDAOImplTest extends AbstractDAOImplTest {
 	@Autowired
-	private RestaurantDAOImpl fixture;
+	private RestaurantDAO fixture;
 
 	private Restaurant createSampleRestaurant() {
 		Restaurant restaurant = new Restaurant();

@@ -21,16 +21,14 @@ public class Quote extends AbstractTimestampEntity implements Serializable {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name = "data", length = 5000, nullable = true)
-	private String data;
-	@Column(name = "cuisine_type", length = 20, nullable = false)
-	private String cuisineType;
-	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name = "event_sk", nullable = false)
-	private Event event;
 	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = true)
-	@JoinColumn(name = "restaurant_sk", nullable = true)
+	@JoinColumn(name = "menu_sk", nullable = false)
+	private Menu menu;
+	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = true)
+	@JoinColumn(name = "restaurant_sk", nullable = false)
 	private Restaurant restaurant;
+	@Column(name = "price")
+	private Double price;
 	@Column(name = "status", length = 20, nullable = true)
 	private String status;
 
@@ -42,20 +40,12 @@ public class Quote extends AbstractTimestampEntity implements Serializable {
 		this.id = id;
 	}
 
-	public String getData() {
-		return data;
+	public Menu getMenu() {
+		return menu;
 	}
 
-	public void setData(String data) {
-		this.data = data;
-	}
-
-	public Event getEvent() {
-		return event;
-	}
-
-	public void setEvent(Event event) {
-		this.event = event;
+	public void setMenu(Menu menu) {
+		this.menu = menu;
 	}
 
 	public Restaurant getRestaurant() {
@@ -66,20 +56,20 @@ public class Quote extends AbstractTimestampEntity implements Serializable {
 		this.restaurant = restaurant;
 	}
 
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
 	public String getStatus() {
 		return status;
 	}
 
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-	public String getCuisineType() {
-		return cuisineType;
-	}
-
-	public void setCuisineType(String cuisineType) {
-		this.cuisineType = cuisineType;
 	}
 
 	/* (non-Javadoc)
@@ -89,11 +79,9 @@ public class Quote extends AbstractTimestampEntity implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result
-				+ ((cuisineType == null) ? 0 : cuisineType.hashCode());
-		result = prime * result + ((data == null) ? 0 : data.hashCode());
-		result = prime * result + ((event == null) ? 0 : event.hashCode());
 		result = prime * result + id;
+		result = prime * result + ((menu == null) ? 0 : menu.hashCode());
+		result = prime * result + ((price == null) ? 0 : price.hashCode());
 		result = prime * result
 				+ ((restaurant == null) ? 0 : restaurant.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
@@ -109,19 +97,15 @@ public class Quote extends AbstractTimestampEntity implements Serializable {
 		if (!super.equals(obj)) return false;
 		if (getClass() != obj.getClass()) return false;
 		Quote other = (Quote) obj;
-		if (cuisineType == null) {
-			if (other.cuisineType != null) return false;
-		}
-		else if (!cuisineType.equals(other.cuisineType)) return false;
-		if (data == null) {
-			if (other.data != null) return false;
-		}
-		else if (!data.equals(other.data)) return false;
-		if (event == null) {
-			if (other.event != null) return false;
-		}
-		else if (!event.equals(other.event)) return false;
 		if (id != other.id) return false;
+		if (menu == null) {
+			if (other.menu != null) return false;
+		}
+		else if (!menu.equals(other.menu)) return false;
+		if (price == null) {
+			if (other.price != null) return false;
+		}
+		else if (!price.equals(other.price)) return false;
 		if (restaurant == null) {
 			if (other.restaurant != null) return false;
 		}

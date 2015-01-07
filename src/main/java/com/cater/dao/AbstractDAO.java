@@ -18,9 +18,9 @@ import com.cater.model.AbstractTimestampEntity;
  * @author Hari 
  */
 @Component
-public abstract class AbstractDAOImpl {
+public abstract class AbstractDAO {
 	private static final Logger logger = Logger
-			.getLogger(AbstractDAOImpl.class);
+			.getLogger(AbstractDAO.class);
 	@Autowired
 	private SessionFactory sessionFactory;
 

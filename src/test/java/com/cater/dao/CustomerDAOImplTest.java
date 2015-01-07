@@ -23,7 +23,7 @@ import com.cater.model.Login;
 @Component
 public class CustomerDAOImplTest extends AbstractDAOImplTest {
 	@Autowired
-	private CustomerDAOImpl fixture;
+	private CustomerDAO fixture;
 
 	private Customer createSampleCustomer() {
 		Customer customer = new Customer();

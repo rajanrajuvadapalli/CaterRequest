@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 
 import com.cater.dao.CustomerDAO;
 import com.cater.dao.EventDAO;
-import com.cater.dao.QuoteDAO;
+import com.cater.dao.MenuDAO;
 import com.cater.model.Customer;
 import com.cater.model.Event;
-import com.cater.model.Quote;
+import com.cater.model.Menu;
 
 @Component
 public class CustomerService {
@@ -19,9 +19,9 @@ public class CustomerService {
 	@Autowired
 	private EventDAO eventDAO;
 	@Autowired
-	private QuoteDAO quoteDAO;
+	private MenuDAO menuDAO;
 
-	public List <Customer> fetchAllCustomers() {
+	public List<Customer> fetchAllCustomers() {
 		return customerDAO.fetchAllCustomers();
 	}
 
@@ -33,7 +33,7 @@ public class CustomerService {
 		return eventDAO.save(e);
 	}
 
-	public List <Event> fetchAllEvents() {
+	public List<Event> fetchAllEvents() {
 		return eventDAO.fetchAllEvents();
 	}
 
@@ -41,15 +41,15 @@ public class CustomerService {
 		return eventDAO.findById(eventId);
 	}
 
-	public boolean saveQuote(Quote q) {
-		return quoteDAO.save(q);
+	public Menu findMenuWithId(int menuId) {
+		return menuDAO.findById(menuId);
 	}
 
-	public Quote findQuoteWithId(int quoteId) {
-		return quoteDAO.findById(quoteId);
+	public boolean saveMenu(Menu m) {
+		return menuDAO.save(m);
 	}
 
-	public List <Quote> findQuotesWithEventId(int eventId) {
-		return quoteDAO.findQuotesWithEventId(eventId);
+	public List<Menu> findMenusWithEventId(int eventId) {
+		return menuDAO.findMenusWithEventId(eventId);
 	}
 }

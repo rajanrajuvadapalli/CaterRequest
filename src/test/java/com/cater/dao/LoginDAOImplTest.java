@@ -16,7 +16,7 @@ import com.cater.model.Login;
 @Component
 public class LoginDAOImplTest extends AbstractDAOImplTest {
 	@Autowired
-	private LoginDAOImpl fixture;
+	private LoginDAO fixture;
 
 	@Test
 	public void testConstructor() {

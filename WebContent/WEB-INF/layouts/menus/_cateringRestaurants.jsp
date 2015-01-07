@@ -18,7 +18,7 @@
 				<table>
 					<c:forEach items="${restaurants}" var="r">
 							<tr>
-								<td><input type="checkbox" value="${r.name}" name="rName"}><c:out value="${r.name}"></c:out></td>
+								<td><input type="checkbox" value="${r.id}" name="restaurantId"}><c:out value="${r.name}"></c:out></td>
 							</tr>
 					</c:forEach>
 					<tr><td><button type="submit" width="50px" class="button">Next</button></td></tr>

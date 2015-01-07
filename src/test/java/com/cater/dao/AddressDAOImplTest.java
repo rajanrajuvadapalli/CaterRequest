@@ -20,7 +20,7 @@ import com.cater.model.Address;
 @Component
 public class AddressDAOImplTest extends AbstractDAOImplTest {
 	@Autowired
-	private AddressDAOImpl fixture;
+	private AddressDAO fixture;
 
 	private Address createSampleAddress() {
 		Address address = new Address();

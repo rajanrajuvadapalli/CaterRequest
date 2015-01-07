@@ -62,18 +62,30 @@ ALTER TABLE cater4party.Event ADD FOREIGN KEY (customer_sk) REFERENCES cater4par
 -- Create Foreign Key: Event.location_sk -> Address.id
 ALTER TABLE cater4party.Event ADD FOREIGN KEY (location_sk) REFERENCES cater4party.Address(id);
 
+CREATE TABLE cater4party.Menu
+(
+	id INT NOT NULL IDENTITY
+	,data VARCHAR(50000)  NULL 
+	,event_sk INT NOT NULL 
+	,cuisine_type VARCHAR(20) NOT NULL 
+	,create_ts DATETIME NOT NULL 
+	,lupd_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP );
+-- Create Foreign Key: Menu.event_sk -> Event.id
+ALTER TABLE cater4party.Menu ADD FOREIGN KEY (event_sk) REFERENCES cater4party.Event(id);
+
 CREATE TABLE cater4party.Quote
 (
 	id INT NOT NULL IDENTITY
-	,data VARCHAR(100000)  NULL 
-	,event_sk INT NOT NULL 
-	,restaurant_sk INT NULL 
+	,menu_sk INT NOT NULL 
+	,restaurant_sk INT NOT NULL 
+	,price DECIMAL  NULL 
 	,status VARCHAR(20)  NULL 
-	,cuisine_type VARCHAR(20) NOT NULL
 	,create_ts DATETIME NOT NULL 
 	,lupd_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP );
+-- Create Foreign Key: Quote.menu_sk -> Menu.id
+ALTER TABLE cater4party.Quote ADD FOREIGN KEY (menu_sk) REFERENCES cater4party.Menu(id);
 -- Create Foreign Key: Quote.restaurant_sk -> Restaurant.id
 ALTER TABLE cater4party.Quote ADD FOREIGN KEY (restaurant_sk) REFERENCES cater4party.Restaurant(id);
--- Create Foreign Key: Quote.event_sk -> Event.id
-ALTER TABLE cater4party.Quote ADD FOREIGN KEY (event_sk) REFERENCES cater4party.Event(id);
+
+
 
