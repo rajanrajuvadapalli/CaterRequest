@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.cater.Helper;
 import com.cater.constants.Roles;
 import com.cater.model.Customer;
 import com.cater.model.Restaurant;
@@ -126,8 +127,8 @@ public class MainController {
 					.getParameter("email")));
 			data.setPassword(StringUtils.defaultString(request
 					.getParameter("pwd1")));
-			data.setPhone(StringUtils.defaultString(request
-					.getParameter("phone")));
+			data.setPhone(Helper.formatPhone(StringUtils.defaultString(request
+					.getParameter("phone"))));
 			data.setStreet1(StringUtils.defaultString(request
 					.getParameter("street1")));
 			data.setStreet2(StringUtils.defaultString(request
