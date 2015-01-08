@@ -1,4 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div>
 	<div class="caterMenuTitle ${menu.cuisine}">
@@ -27,20 +28,21 @@
 		<hr>
 		<form method="POST" id="submit-price-form"
 			action="${pageContext.request.contextPath}/restaurant/submitprice"
-			ectype="application/x-www-form-urlencoded"
-			autocomplete="off">
+			ectype="application/x-www-form-urlencoded" autocomplete="off">
 			<table>
 				<c:choose>
 					<c:when test="${price != null}">
 						<tr>
 							<td>Price Quoted:</td>
-							<td style="color:red;"><b>&#36;<c:out value="${price}"></c:out></b></td>
+							<td style="color: red;"><b><fmt:setLocale value="en_US" />
+									<fmt:formatNumber value="${price}" type="currency" /></b></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td>New Price :</td>
 							<td><input type="text" size="30" maxlength="50" name="price"
-								required="required" placeholder="0.00" class="inputs"></td>
+								required="required" pattern="[0-9]+\.[0-9]{2}"
+								placeholder="0.00" class="inputs"></td>
 							<td><button type="submit" width="50px" class="button">Udpate</button></td>
 						</tr>
 					</c:when>
@@ -48,7 +50,8 @@
 						<tr>
 							<td>Price :</td>
 							<td><input type="text" size="30" maxlength="50" name="price"
-								required="required" placeholder="0.00" class="inputs"></td>
+								required="required" pattern="[0-9]+\.[0-9]{2}"
+								placeholder="0.00" class="inputs"></td>
 							<td><button type="submit" width="50px" class="button">Submit</button></td>
 						</tr>
 					</c:otherwise>
