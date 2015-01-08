@@ -38,6 +38,10 @@ public class RestaurantService {
 		return quoteDAO.findById(quoteId);
 	}
 
+	public Quote findQuoteWithRestaurantIdAndMenuId(int restaurantId, int menuId) {
+		return quoteDAO.findByRestaurantIdAndMenuId(restaurantId, menuId);
+	}
+
 	public boolean saveOrUpdateQuote(Quote q) {
 		return quoteDAO.saveOrUpdate(q);
 	}

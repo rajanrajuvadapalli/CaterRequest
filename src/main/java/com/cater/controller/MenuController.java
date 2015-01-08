@@ -115,7 +115,7 @@ public class MenuController {
 	}
 
 	/**
-	 * Save quote.
+	 * Save menu.
 	 *
 	 * @param httpSession the http session
 	 * @param modelMap the model map
@@ -123,8 +123,8 @@ public class MenuController {
 	 * @param itemNames the item names
 	 * @return the string
 	 */
-	@RequestMapping(value = { "saveQuote" }, method = RequestMethod.POST)
-	public String saveQuote(
+	@RequestMapping(value = { "saveMenu" }, method = RequestMethod.POST)
+	public String saveMenu(
 			HttpSession httpSession,
 			ModelMap modelMap,
 			HttpServletRequest request,
@@ -212,12 +212,20 @@ public class MenuController {
 			menuModel = customerService.findMenuWithId(menuId);
 		}
 		for (String restaurantId : restaurantIds) {
-			Quote q = new Quote();
-			q.setMenu(menuModel);
-			Restaurant restaurant = restaurantService
-					.findRestaurantWithId(Integer.parseInt(restaurantId));
-			q.setRestaurant(restaurant);
-			q.setStatus(QuoteStatus.CREATED.toString());
+			//Find if a quote already exists.
+			Quote q = restaurantService.findQuoteWithRestaurantIdAndMenuId(
+					Integer.parseInt(restaurantId), menuId);
+			if (q == null) {
+				q = new Quote();
+				q.setStatus(QuoteStatus.CREATED.toString());
+				q.setMenu(menuModel);
+				Restaurant restaurant = restaurantService
+						.findRestaurantWithId(Integer.parseInt(restaurantId));
+				q.setRestaurant(restaurant);
+			}
+			else {
+				q.setStatus(QuoteStatus.UPDATED_MENU.toString());
+			}
 			restaurantService.saveOrUpdateQuote(q);
 		}
 		//TODO: Send emails to restaurants, requesting to submit quotes.
@@ -278,6 +286,18 @@ public class MenuController {
 				}
 				newMenu.setCategories(categories);
 				modelMap.put("menu", newMenu);
+				Restaurant restaurant = restaurantService
+						.findRestaurantWithLoginId(user.getLoginID());
+				if (restaurant != null) {
+					//If a restaurant is requesting to see the menu, 
+					//it can also see the price it quoted before.
+					Quote quote = restaurantService
+							.findQuoteWithRestaurantIdAndMenuId(
+									restaurant.getId(),
+									Integer.parseInt(menuId));
+					modelMap.put("price", quote.getPrice());
+				}
+				httpSession.setAttribute("menuId", menuId);
 			}
 		}
 		catch (Exception ex) {

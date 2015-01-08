@@ -7,7 +7,7 @@
 		</h2>
 	</div>
 	<form method="POST" id="menu-form"
-		action="${pageContext.request.contextPath}/menu/saveQuote" novalidate
+		action="${pageContext.request.contextPath}/menu/saveMenu" novalidate
 		ectype="application/x-www-form-urlencoded" autocomplete="off">
 		<table class="caterMenu">
 			<c:forEach items="${menu.categories}" var="category">
