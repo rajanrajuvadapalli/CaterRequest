@@ -19,7 +19,7 @@ public class EventDAO extends AbstractDAO {
 	@Autowired
 	private AddressDAO addressDAO;
 
-	public boolean save(Event event) {
+	public boolean saveOrUpdate(Event event) {
 		if (event == null) {
 			logger.error("Cannot save null value for Event.");
 		}
@@ -27,8 +27,14 @@ public class EventDAO extends AbstractDAO {
 			logger.error("Location address cannot be empty for Event.");
 		}
 		else {
-			addressDAO.save(event.getLocation());
-			return super.save(Event.class, event);
+			addressDAO.saveOrUpdate(event.getLocation());
+			Event existingObject = findById(event.getId());
+			if (existingObject == null) {
+				return super.save(Event.class, event);
+			}
+			else {
+				return super.update(Event.class, event);
+			}
 		}
 		return false;
 	}

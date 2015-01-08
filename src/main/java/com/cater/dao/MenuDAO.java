@@ -21,13 +21,25 @@ public class MenuDAO extends AbstractDAO {
 	private static final Logger logger = Logger.getLogger(MenuDAO.class);
 
 	/**
-	 * Save.
+	 * Save or update.
 	 *
 	 * @param menu the menu
 	 * @return true, if successful
 	 */
-	public boolean save(Menu menu) {
-		return super.save(Menu.class, menu);
+	public boolean saveOrUpdate(Menu menu) {
+		if (menu == null) {
+			logger.error("Cannot save null value for Menu.");
+			return false;
+		}
+		else {
+			Menu existingObject = findById(menu.getId());
+			if (existingObject == null) {
+				return super.save(Menu.class, menu);
+			}
+			else {
+				return super.update(Menu.class, menu);
+			}
+		}
 	}
 
 	/**

@@ -19,8 +19,7 @@ import com.cater.model.AbstractTimestampEntity;
  */
 @Component
 public abstract class AbstractDAO {
-	private static final Logger logger = Logger
-			.getLogger(AbstractDAO.class);
+	private static final Logger logger = Logger.getLogger(AbstractDAO.class);
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -37,10 +36,10 @@ public abstract class AbstractDAO {
 	public boolean save(Class<? extends AbstractTimestampEntity> clazz,
 			Object object) {
 		if (object == null) {
-			logger.error("Cannot save null value for " + clazz);
+			logger.error("Cannot save or update null value for " + clazz);
 		}
 		else {
-			logger.debug("Saving object of " + clazz);
+			logger.debug("Saving or updating object of " + clazz);
 			Session session = null;
 			Transaction tx = null;
 			try {
@@ -54,6 +53,45 @@ public abstract class AbstractDAO {
 			catch (HibernateException he) {
 				logger.error(
 						"Exception occurred while performing saveOrUpdate() operation on object of "
+								+ clazz, he);
+				throw he;
+			}
+			finally {
+				if (session != null) {
+					session.close();
+				}
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Update.
+	 *
+	 * @param clazz the clazz
+	 * @param object the object
+	 * @return true, if successful
+	 */
+	public boolean update(Class<? extends AbstractTimestampEntity> clazz,
+			Object object) {
+		if (object == null) {
+			logger.error("Cannot update null value for " + clazz);
+		}
+		else {
+			logger.debug("Updating object of " + clazz);
+			Session session = null;
+			Transaction tx = null;
+			try {
+				session = getSessionFactory().openSession();
+				tx = session.beginTransaction();
+				session.update(object);
+				tx.commit();
+				logger.debug("Successfully updated object of " + clazz);
+				return true;
+			}
+			catch (HibernateException he) {
+				logger.error(
+						"Exception occurred while performing update() operation on object of "
 								+ clazz, he);
 				throw he;
 			}

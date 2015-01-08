@@ -62,30 +62,30 @@ public class CustomerDAOImplTest extends AbstractDAOImplTest {
 	@Test
 	public void testSave_nullObject() {
 		Customer customer = null;
-		assertFalse(fixture.save(customer));
+		assertFalse(fixture.saveOrUpdate(customer));
 	}
 
 	@Test(expected = PropertyValueException.class)
 	public void testSave_nullProperty() {
 		Customer customer = createSampleCustomer();
 		customer.setName(null);
-		fixture.save(customer);
+		fixture.saveOrUpdate(customer);
 	}
 
 	@Test
 	public void testSave_valid() throws InterruptedException {
 		Customer customer = createSampleCustomer();
-		assertTrue(fixture.save(customer));
+		assertTrue(fixture.saveOrUpdate(customer));
 		customer.setName("Updated Victoria");
 		customer.getAddress().setStreet1("Updated Customer street1");
 		Thread.sleep(1000);
-		assertTrue(fixture.save(customer));
+		assertTrue(fixture.saveOrUpdate(customer));
 	}
 
 	@Test
 	public void testFindById() throws InterruptedException {
 		Customer customer = createSampleCustomer();
-		assertTrue(fixture.save(customer));
+		assertTrue(fixture.saveOrUpdate(customer));
 		Customer persistedCustomer = fixture.findById(customer.getId());
 		assertNotNull(persistedCustomer);
 		assertEquals(persistedCustomer.getName(), customer.getName());

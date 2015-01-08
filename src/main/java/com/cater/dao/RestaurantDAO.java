@@ -1,6 +1,7 @@
 package com.cater.dao;
 
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.cater.model.Restaurant;
+import com.google.common.collect.Sets;
 
 /**
  * Description: 
@@ -28,14 +30,20 @@ public class RestaurantDAO extends AbstractDAO {
 	@Autowired
 	private AddressDAO addressDAO;
 
-	public boolean save(Restaurant restaurant) {
+	public boolean saveOrUpdate(Restaurant restaurant) {
 		if (restaurant == null) {
 			logger.error("Cannot save null value for Restaurant.");
 		}
 		else {
-			loginDAO.save(restaurant.getLogin());
-			addressDAO.save(restaurant.getAddress());
-			return super.save(Restaurant.class, restaurant);
+			loginDAO.saveOrUpdate(restaurant.getLogin());
+			addressDAO.saveOrUpdate(restaurant.getAddress());
+			Restaurant existingObject = findById(restaurant.getId());
+			if (existingObject == null) {
+				return super.save(Restaurant.class, restaurant);
+			}
+			else {
+				return super.update(Restaurant.class, restaurant);
+			}
 		}
 		return false;
 	}
@@ -82,7 +90,7 @@ public class RestaurantDAO extends AbstractDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Restaurant> fetchRestaurantsOfType(String cuisine) {
+	public Set<Restaurant> fetchRestaurantsOfType(String cuisine) {
 		logger.debug("Finding Restaurants of type : " + cuisine);
 		if (StringUtils.isNotBlank(cuisine)) {
 			Session session = null;
@@ -95,7 +103,11 @@ public class RestaurantDAO extends AbstractDAO {
 						.add(Restrictions.eq("res.cuisineType", cuisine))
 						.list();
 				tx.rollback();
-				return list;
+				Set<Restaurant> restaurants = Sets.newHashSet();
+				for (Restaurant r : list) {
+					restaurants.add(r);
+				}
+				return restaurants;
 			}
 			catch (HibernateException he) {
 				logger.error("Finding Restaurants of type : " + cuisine, he);

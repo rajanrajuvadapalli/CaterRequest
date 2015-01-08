@@ -29,8 +29,8 @@ public class CustomerService {
 		return customerDAO.findByLoginID(loginID);
 	}
 
-	public boolean saveEvent(Event e) {
-		return eventDAO.save(e);
+	public boolean saveOrUpdateEvent(Event e) {
+		return eventDAO.saveOrUpdate(e);
 	}
 
 	public List<Event> fetchAllEvents() {
@@ -45,8 +45,8 @@ public class CustomerService {
 		return menuDAO.findById(menuId);
 	}
 
-	public boolean saveMenu(Menu m) {
-		return menuDAO.save(m);
+	public boolean saveOrUpdateMenu(Menu m) {
+		return menuDAO.saveOrUpdate(m);
 	}
 
 	public List<Menu> findMenusWithEventId(int eventId) {

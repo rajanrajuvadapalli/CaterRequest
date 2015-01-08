@@ -17,8 +17,20 @@ import com.cater.model.Login;
 public class LoginDAO extends AbstractDAO {
 	private static final Logger logger = Logger.getLogger(LoginDAO.class);
 
-	public boolean save(Login login) {
-		return super.save(Login.class, login);
+	public boolean saveOrUpdate(Login login) {
+		if (login == null) {
+			logger.error("Cannot save null value for Login.");
+			return false;
+		}
+		else {
+			Login existingObject = findById(login.getId());
+			if (existingObject == null) {
+				return super.save(Login.class, login);
+			}
+			else {
+				return super.update(Login.class, login);
+			}
+		}
 	}
 
 	public Login findById(int id) {

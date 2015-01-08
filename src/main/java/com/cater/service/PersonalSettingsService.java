@@ -88,7 +88,7 @@ public class PersonalSettingsService {
 				address.setCity(data.getCity());
 				address.setState(data.getState());
 				address.setZip(data.getZip());
-				customerDAO.save(customer);
+				customerDAO.saveOrUpdate(customer);
 				return true;
 			}
 		}
@@ -121,7 +121,7 @@ public class PersonalSettingsService {
 				address.setCity(data.getCity());
 				address.setState(data.getState());
 				address.setZip(data.getZip());
-				restaurantDAO.save(restaurant);
+				restaurantDAO.saveOrUpdate(restaurant);
 				return true;
 			}
 		}

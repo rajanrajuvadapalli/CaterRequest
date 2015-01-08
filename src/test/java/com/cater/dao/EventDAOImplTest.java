@@ -40,7 +40,7 @@ public class EventDAOImplTest extends AbstractDAOImplTest {
 		Event event = new Event();
 		event.setName("Sample Event");
 		Customer c = createSampleCustomer();
-		customerDAO.save(c);
+		customerDAO.saveOrUpdate(c);
 		event.setCustomer(c);
 		event.setLocation(createSampleAddress());
 		event.setDate_time(DATE_1);
@@ -84,30 +84,30 @@ public class EventDAOImplTest extends AbstractDAOImplTest {
 	@Test
 	public void testSave_nullObject() {
 		Event event = null;
-		assertFalse(fixture.save(event));
+		assertFalse(fixture.saveOrUpdate(event));
 	}
 
 	@Test(expected = PropertyValueException.class)
 	public void testSave_nullProperty() {
 		Event event = createSampleEvent();
 		event.setName(null);
-		fixture.save(event);
+		fixture.saveOrUpdate(event);
 	}
 
 	@Test
 	public void testSave_valid() throws InterruptedException {
 		Event event = createSampleEvent();
-		assertTrue(fixture.save(event));
+		assertTrue(fixture.saveOrUpdate(event));
 		event.setName("Updated Sample Event");
 		event.getLocation().setStreet1("Updated Event street1");
 		Thread.sleep(1000);
-		assertTrue(fixture.save(event));
+		assertTrue(fixture.saveOrUpdate(event));
 	}
 
 	@Test
 	public void testFindById() throws InterruptedException {
 		Event event = createSampleEvent();
-		assertTrue(fixture.save(event));
+		assertTrue(fixture.saveOrUpdate(event));
 		Event persistedEvent = fixture.findById(event.getId());
 		assertNotNull(persistedEvent);
 		assertEquals(persistedEvent.getName(), "Sample Event");

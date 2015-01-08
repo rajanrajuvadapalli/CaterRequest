@@ -1,14 +1,28 @@
 package com.cater.dao;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import com.cater.model.Quote;
 
 @Component
 public class QuoteDAO extends AbstractDAO {
-	//	private static final Logger logger = Logger.getLogger(QuoteDAO.class);
-	public boolean save(Quote quote) {
-		return super.save(Quote.class, quote);
+	private static final Logger logger = Logger.getLogger(QuoteDAO.class);
+
+	public boolean saveOrUpdate(Quote quote) {
+		if (quote == null) {
+			logger.error("Cannot save null value for Quote.");
+			return false;
+		}
+		else {
+			Quote existingObject = findById(quote.getId());
+			if (existingObject == null) {
+				return super.save(Quote.class, quote);
+			}
+			else {
+				return super.update(Quote.class, quote);
+			}
+		}
 	}
 
 	public Quote findById(int id) {

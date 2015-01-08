@@ -44,7 +44,7 @@ public class LoginService {
 			//return loginDAO.findByCredentials(username, password);
 			Login login = loginDAO.findById(loginID);
 			login.setPassword(newPassword);
-			return loginDAO.save(login);
+			return loginDAO.saveOrUpdate(login);
 		}
 		return false;
 	}

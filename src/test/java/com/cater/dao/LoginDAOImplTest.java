@@ -26,7 +26,7 @@ public class LoginDAOImplTest extends AbstractDAOImplTest {
 	@Test
 	public void testSave_nullObject() {
 		Login login = null;
-		assertFalse(fixture.save(login));
+		assertFalse(fixture.saveOrUpdate(login));
 	}
 
 	@Test(expected = PropertyValueException.class)
@@ -36,7 +36,7 @@ public class LoginDAOImplTest extends AbstractDAOImplTest {
 		login.setPassword("p");
 		login.setRole(Roles.CUSTOMER.toString());
 		login.setActive(true);
-		fixture.save(login);
+		fixture.saveOrUpdate(login);
 	}
 
 	@Test
@@ -46,10 +46,10 @@ public class LoginDAOImplTest extends AbstractDAOImplTest {
 		login.setPassword("p");
 		login.setRole(Roles.CUSTOMER.toString());
 		login.setActive(true);
-		assertTrue(fixture.save(login));
+		assertTrue(fixture.saveOrUpdate(login));
 		login.setPassword("up");
 		Thread.sleep(1000);
-		assertTrue(fixture.save(login));
+		assertTrue(fixture.saveOrUpdate(login));
 	}
 
 	@Test
@@ -59,7 +59,7 @@ public class LoginDAOImplTest extends AbstractDAOImplTest {
 		login.setPassword("p");
 		login.setRole(Roles.CUSTOMER.toString());
 		login.setActive(true);
-		assertTrue(fixture.save(login));
+		assertTrue(fixture.saveOrUpdate(login));
 		Login persistedLogin = fixture.findById(login.getId());
 		assertNotNull(persistedLogin);
 		assertEquals(login.getUsername(), persistedLogin.getUsername());

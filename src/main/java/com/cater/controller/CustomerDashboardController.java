@@ -97,7 +97,7 @@ public class CustomerDashboardController {
 				logger.error(e1);
 			}
 			e.setCustomer(c);
-			customerService.saveEvent(e);
+			customerService.saveOrUpdateEvent(e);
 			modelMap.addAttribute("events", c.getEvents());
 			return "t_dashboardCustomer";
 		}

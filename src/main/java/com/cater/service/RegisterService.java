@@ -52,7 +52,7 @@ public class RegisterService {
 		address.setCity(data.getCity());
 		address.setState(data.getState());
 		address.setZip(data.getZip());
-		addressDAO.save(address);
+		addressDAO.saveOrUpdate(address);
 		return address;
 	}
 
@@ -62,7 +62,7 @@ public class RegisterService {
 		login.setPassword(data.getPassword());
 		login.setRole(role.toString());
 		login.setActive(false);//deafult is inactive. User has to confirm his/her email to be active.
-		loginDAO.save(login);
+		loginDAO.saveOrUpdate(login);
 		return login;
 	}
 
@@ -75,7 +75,7 @@ public class RegisterService {
 			customer.setName(data.getName());
 			customer.setContactNumber(data.getPhone());
 			customer.setContactEmail(data.getEmail());
-			customerDAO.save(customer);
+			customerDAO.saveOrUpdate(customer);
 		}
 		else if (Roles.RESTAURANT == role) {
 			Restaurant restaurant = new Restaurant();
@@ -86,7 +86,7 @@ public class RegisterService {
 			restaurant.setContactEmail(data.getEmail());
 			restaurant.setCuisineType(data.getCuisineType());
 			restaurant.setWebsiteUrl(data.getUrl());
-			restaurantDAO.save(restaurant);
+			restaurantDAO.saveOrUpdate(restaurant);
 		}
 	}
 }

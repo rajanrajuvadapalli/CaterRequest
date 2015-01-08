@@ -1,6 +1,7 @@
 package com.cater.service;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,7 +22,7 @@ public class RestaurantService {
 		return restaurantDAO.fetchAllRestaurants();
 	}
 
-	public List<Restaurant> fetchRestaurantsOfType(String cuisine) {
+	public Set<Restaurant> fetchRestaurantsOfType(String cuisine) {
 		return restaurantDAO.fetchRestaurantsOfType(cuisine);
 	}
 
@@ -37,7 +38,7 @@ public class RestaurantService {
 		return quoteDAO.findById(quoteId);
 	}
 
-	public boolean saveQuote(Quote q) {
-		return quoteDAO.save(q);
+	public boolean saveOrUpdateQuote(Quote q) {
+		return quoteDAO.saveOrUpdate(q);
 	}
 }

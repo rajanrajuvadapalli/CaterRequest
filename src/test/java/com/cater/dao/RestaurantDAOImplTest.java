@@ -65,30 +65,30 @@ public class RestaurantDAOImplTest extends AbstractDAOImplTest {
 	@Test
 	public void testSave_nullObject() {
 		Restaurant restaurant = null;
-		assertFalse(fixture.save(restaurant));
+		assertFalse(fixture.saveOrUpdate(restaurant));
 	}
 
 	@Test(expected = PropertyValueException.class)
 	public void testSave_nullProperty() {
 		Restaurant restaurant = createSampleRestaurant();
 		restaurant.setName(null);
-		fixture.save(restaurant);
+		fixture.saveOrUpdate(restaurant);
 	}
 
 	@Test
 	public void testSave_valid() throws InterruptedException {
 		Restaurant restaurant = createSampleRestaurant();
-		fixture.save(restaurant);
+		fixture.saveOrUpdate(restaurant);
 		restaurant.setName("Updated Chipotle");
 		restaurant.getAddress().setStreet1("Updated Restaurant street1");
 		Thread.sleep(1000);
-		assertTrue(fixture.save(restaurant));
+		assertTrue(fixture.saveOrUpdate(restaurant));
 	}
 
 	@Test
 	public void testFindById() throws InterruptedException {
 		Restaurant restaurant = createSampleRestaurant();
-		fixture.save(restaurant);
+		fixture.saveOrUpdate(restaurant);
 		Restaurant persistedRestaurant = fixture.findById(restaurant.getId());
 		assertNotNull(persistedRestaurant);
 		assertEquals(persistedRestaurant.getName(), "Chipotle");

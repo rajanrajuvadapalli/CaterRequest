@@ -27,14 +27,20 @@ public class CustomerDAO extends AbstractDAO {
 	@Autowired
 	private AddressDAO addressDAO;
 
-	public boolean save(Customer customer) {
+	public boolean saveOrUpdate(Customer customer) {
 		if (customer == null) {
 			logger.error("Cannot save null value for Customer.");
 		}
 		else {
-			loginDAO.save(customer.getLogin());
-			addressDAO.save(customer.getAddress());
-			return super.save(Customer.class, customer);
+			loginDAO.saveOrUpdate(customer.getLogin());
+			addressDAO.saveOrUpdate(customer.getAddress());
+			Customer existingObject = findById(customer.getId());
+			if (existingObject == null) {
+				return super.save(Customer.class, customer);
+			}
+			else {
+				return super.update(Customer.class, customer);
+			}
 		}
 		return false;
 	}

@@ -40,29 +40,29 @@ public class AddressDAOImplTest extends AbstractDAOImplTest {
 	@Test
 	public void testSave_nullObject() {
 		Address address = null;
-		assertFalse(fixture.save(address));
+		assertFalse(fixture.saveOrUpdate(address));
 	}
 
 	@Test(expected = PropertyValueException.class)
 	public void testSave_nullProperty() {
 		Address address = createSampleAddress();
 		address.setStreet1(null);
-		fixture.save(address);
+		fixture.saveOrUpdate(address);
 	}
 
 	@Test
 	public void testSave_valid() throws InterruptedException {
 		Address address = createSampleAddress();
-		assertTrue(fixture.save(address));
+		assertTrue(fixture.saveOrUpdate(address));
 		address.setStreet1("new abc");
 		Thread.sleep(1000);
-		assertTrue(fixture.save(address));
+		assertTrue(fixture.saveOrUpdate(address));
 	}
 
 	@Test
 	public void testFindById() throws InterruptedException {
 		Address address = createSampleAddress();
-		assertTrue(fixture.save(address));
+		assertTrue(fixture.saveOrUpdate(address));
 		Address persistedAddress = fixture.findById(address.getId());
 		assertNotNull(persistedAddress);
 		assertEquals(address.getStreet1(), persistedAddress.getStreet1());

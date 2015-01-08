@@ -14,11 +14,13 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cater.constants.QuoteStatus;
+import com.cater.dao.MenuDAO;
 import com.cater.menu.Menu;
 import com.cater.menu.MenuCategory;
 import com.cater.menu.MenuDeserializer;
@@ -30,6 +32,7 @@ import com.cater.model.Restaurant;
 import com.cater.service.CustomerService;
 import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
+import com.fasterxml.jackson.core.JsonParseException;
 import com.google.common.collect.Lists;
 
 @Controller
@@ -44,6 +47,8 @@ public class MenuController {
 	private MenuSerializer menuSerializer;
 	@Autowired
 	private MenuDeserializer menuDeserializer;
+	@Autowired
+	private MenuDAO menuDAO;
 
 	/**
 	 * Select menu form.
@@ -84,8 +89,8 @@ public class MenuController {
 			//TODO: Dynamically pull the menu after we start supporting more cuisines.
 			//Temporarily hard coded to "indian" menu.
 			try {
-				File f = new File(CustomerDashboardController.class
-						.getResource("/menus/indian.json").getFile());
+				File f = new File(MenuController.class.getResource(
+						"/menus/indian.json").getFile());
 				Menu menu = new MenuDeserializer().readJSON(f);
 				modelMap.put("menu", menu);
 			}
@@ -137,8 +142,8 @@ public class MenuController {
 			if (StringUtils.equalsIgnoreCase("indian", cuisineType)) {
 				menuJson = "/menus/indian.json";
 			}
-			File f = new File(CustomerDashboardController.class.getResource(
-					menuJson).getFile());
+			File f = new File(MenuController.class.getResource(menuJson)
+					.getFile());
 			Menu menu = new MenuDeserializer().readJSON(f);
 			for (String selectedItem : itemNames) {
 				logger.debug("Selected item: " + selectedItem);
@@ -168,8 +173,8 @@ public class MenuController {
 			logger.debug("Encoded Json menu (" + data.length() + ")" + data);
 			menuModel.setData(data);
 			menuModel.setCuisineType(cuisineType);
-			customerService.saveMenu(menuModel);
-			httpSession.setAttribute("mednuId", menuModel.getId());
+			customerService.saveOrUpdateMenu(menuModel);
+			httpSession.setAttribute("menuId", menuModel.getId());
 			modelMap.put("restaurants",
 					restaurantService.fetchRestaurantsOfType(cuisineType));
 		}
@@ -213,7 +218,7 @@ public class MenuController {
 					.findRestaurantWithId(Integer.parseInt(restaurantId));
 			q.setRestaurant(restaurant);
 			q.setStatus(QuoteStatus.CREATED.toString());
-			restaurantService.saveQuote(q);
+			restaurantService.saveOrUpdateQuote(q);
 		}
 		//TODO: Send emails to restaurants, requesting to submit quotes.
 		String eventId = (String) httpSession.getAttribute("eventId");
@@ -226,5 +231,58 @@ public class MenuController {
 		httpSession.removeAttribute("eventId");
 		httpSession.removeAttribute("menuId");
 		return "t_dashboardCustomer";
+	}
+
+	/**
+	 * View.
+	 *
+	 * @param httpSession the http session
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param menuId the menu id
+	 * @return the string
+	 * @throws IOException 
+	 * @throws JsonParseException 
+	 */
+	@RequestMapping(value = { "view/{menuId}" }, method = RequestMethod.GET)
+	public String view(HttpSession httpSession, ModelMap modelMap,
+			HttpServletRequest request, @PathVariable String menuId) {
+		User user = (User) httpSession.getAttribute("user");
+		if (user == null) {
+			return "t_home";
+		}
+		try {
+			com.cater.model.Menu menuModel = menuDAO.findById(Integer
+					.parseInt(menuId));
+			String menuDataJsonFromDb = new String(
+					Base64.decodeBase64(menuModel.getData()));
+			logger.debug(menuDataJsonFromDb);
+			Menu menu = new MenuDeserializer().readJSON(menuDataJsonFromDb);
+			Menu newMenu = new Menu();
+			newMenu.setCuisine(menu.getCuisine());
+			if (menu != null) {
+				List<MenuCategory> categories = Lists.newArrayList();
+				for (MenuCategory mc : menu.getCategories()) {
+					List<MenuItem> items = Lists.newArrayList();
+					for (MenuItem menuItem : mc.getItems()) {
+						if (menuItem.isSelected()) {
+							items.add(menuItem);
+						}
+					}
+					if (CollectionUtils.isNotEmpty(items)) {
+						MenuCategory newMenuCategory = new MenuCategory();
+						newMenuCategory.setItems(items);
+						newMenuCategory.setName(mc.getName());
+						categories.add(newMenuCategory);
+					}
+				}
+				newMenu.setCategories(categories);
+				modelMap.put("menu", newMenu);
+			}
+		}
+		catch (Exception ex) {
+			logger.error(ex);
+		}
+		return "menus/t__cateringMenuReadOnly";
 	}
 }
