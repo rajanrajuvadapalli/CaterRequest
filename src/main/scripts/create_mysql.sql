@@ -86,7 +86,7 @@ CREATE TABLE cater4party.Quote
 	,PRIMARY KEY (id)
 	,`menu_sk` INT NOT NULL 
 	,`restaurant_sk` INT NOT NULL 
-	,`price` DECIMAL(0, 0)  NULL 
+	,`price` DECIMAL(6,2)  NULL 
 	,`status` VARCHAR(20)  NULL 
 	,`create_ts` DATETIME NOT NULL 
 	,`lupd_ts` DATETIME NOT NULL 
