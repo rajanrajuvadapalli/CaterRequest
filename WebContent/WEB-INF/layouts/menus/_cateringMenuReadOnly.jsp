@@ -27,7 +27,7 @@
 		<hr>
 		<form method="POST" id="submit-price-form"
 			action="${pageContext.request.contextPath}/restaurant/submitprice"
-			novalidate ectype="application/x-www-form-urlencoded"
+			ectype="application/x-www-form-urlencoded"
 			autocomplete="off">
 			<table>
 				<c:choose>
