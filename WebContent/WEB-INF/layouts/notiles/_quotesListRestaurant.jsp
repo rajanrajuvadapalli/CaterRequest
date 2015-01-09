@@ -5,7 +5,7 @@
 	<h2>Quotes</h2>
 	<c:choose>
 		<c:when test="${empty quotes}">
-		There are 0 quotes in the database.
+		You currently do not have any request for quotes.
 	</c:when>
 
 		<c:otherwise>
