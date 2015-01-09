@@ -1,4 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div id="eventsList" class="sideMenuItemsDetail">
 	<h2>Quotes</h2>
@@ -16,7 +17,7 @@
 					<th width="300px;" class="list">Price</th>
 					<th width="200px;" class="list">Customer&nbsp;Name</th>
 					<th width="400px;" class="list">Customer Contact&nbsp;Number</th>
-					<th>Status</th>
+					<th width="500px;">Status</th>
 				</tr>
 				<c:forEach items="${quotes}" var="q" varStatus="loopStatus">
 					<tr class="${loopStatus.index % 2 == 0 ? 'even' : 'odd'} list">
@@ -32,7 +33,13 @@
 							</c:if></td>
 						<td class="list">${q.menu.event.customer.name}</td>
 						<td class="list">${q.menu.event.customer.contactNumber}</td>
-						<td class="list">${q.status}</td>
+						<td class="list"><c:choose>
+								<c:when test="${q.status.toString() == 'CREATED'}">New</c:when>
+								<c:when test="${q.status.toString() == 'UPDATED_MENU'}">Customer updated the menu</c:when>
+								<c:when test="${q.status.toString() == 'UPDATED_PRICE'}">Customer is reviewing your new price quote</c:when>
+								<c:when test="${q.status.toString() == 'APPROVED'}">Customer accepted your quote</c:when>
+								<c:when test="${q.status.toString() == 'DENIED'}">Customer denied</c:when>
+							</c:choose></td>
 					</tr>
 				</c:forEach>
 			</table>

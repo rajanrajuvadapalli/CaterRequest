@@ -23,7 +23,7 @@
 	</div>
 </c:if>
 
-<table style="width: 900px;">
+<table style="width: 1200px;">
 	<tr>
 		<td style="width: 200px; vertical-align: top;">
 			<table class="sideMenuItem">

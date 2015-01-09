@@ -41,7 +41,7 @@
 						<tr>
 							<td>New Price :</td>
 							<td><input type="text" size="30" maxlength="50" name="price"
-								required="required" pattern="[0-9]+\.[0-9]{2}"
+								required="required" pattern="[0-9]+(\.[0-9]{2})?"
 								placeholder="0.00" class="inputs"></td>
 							<td><button type="submit" width="50px" class="button">Udpate</button></td>
 						</tr>
@@ -50,7 +50,7 @@
 						<tr>
 							<td>Price :</td>
 							<td><input type="text" size="30" maxlength="50" name="price"
-								required="required" pattern="[0-9]+\.[0-9]{2}"
+								required="required" pattern="[0-9]+(\.[0-9]{2})?"
 								placeholder="0.00" class="inputs"></td>
 							<td><button type="submit" width="50px" class="button">Submit</button></td>
 						</tr>

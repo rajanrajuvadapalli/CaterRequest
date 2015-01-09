@@ -21,3 +21,17 @@ function listRestaurantQuotes() {
 	});
 }
 
+function validateSelectRestaurantForm() {
+	var atLeast1Selected = false;
+	$(":checkbox").each(function() {
+		if (this.checked == true) {
+			atLeast1Selected = true;
+		}
+	});
+	if (atLeast1Selected) {
+		return true;
+	} else {
+		alert("Please select at least 1 restaurant.");
+		return false;
+	}
+}

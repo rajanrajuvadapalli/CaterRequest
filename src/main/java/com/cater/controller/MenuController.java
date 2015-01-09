@@ -3,6 +3,7 @@ package com.cater.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -34,6 +35,7 @@ import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 @Controller
 @RequestMapping(value = { "menu" })
@@ -175,8 +177,18 @@ public class MenuController {
 			menuModel.setCuisineType(cuisineType);
 			customerService.saveOrUpdateMenu(menuModel);
 			httpSession.setAttribute("menuId", menuModel.getId());
-			modelMap.put("restaurants",
-					restaurantService.fetchRestaurantsOfType(cuisineType));
+			Set<Restaurant> restaurants = restaurantService
+					.fetchRestaurantsOfType(cuisineType);
+			modelMap.put("restaurants", restaurants);
+			Set<Integer> previouslySelectedRestaurants = Sets.newHashSet();
+			for (Restaurant r : restaurants) {
+				Quote q = restaurantService.findQuoteWithRestaurantIdAndMenuId(
+						r.getId(), menuId);
+				if (q != null) {
+					previouslySelectedRestaurants.add(r.getId());
+				}
+			}
+			modelMap.put("prevR", previouslySelectedRestaurants);
 		}
 		catch (IOException e) {
 			logger.error(
