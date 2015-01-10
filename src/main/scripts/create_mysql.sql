@@ -69,7 +69,7 @@ ALTER TABLE cater4party.Event ADD FOREIGN KEY (location_sk) REFERENCES cater4par
 
 CREATE TABLE cater4party.Menu
 (
-	`id` INT NOT NULL 
+	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
 	,`data` VARCHAR(50000)  NULL 
 	,`event_sk` INT NOT NULL 
@@ -82,7 +82,7 @@ ALTER TABLE cater4party.Menu ADD FOREIGN KEY (event_sk) REFERENCES cater4party.E
 
 CREATE TABLE cater4party.Quote
 (
-	`id` INT NOT NULL 
+	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
 	,`menu_sk` INT NOT NULL 
 	,`restaurant_sk` INT NOT NULL 
