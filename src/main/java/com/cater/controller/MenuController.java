@@ -88,6 +88,7 @@ public class MenuController {
 			}
 		}
 		if (customerCreatedMenuData == null) {
+			httpSession.setAttribute("menuId", null);
 			//TODO: Dynamically pull the menu after we start supporting more cuisines.
 			//Temporarily hard coded to "indian" menu.
 			try {
