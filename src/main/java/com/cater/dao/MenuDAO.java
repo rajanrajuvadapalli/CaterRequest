@@ -32,8 +32,7 @@ public class MenuDAO extends AbstractDAO {
 			return false;
 		}
 		else {
-			Menu existingObject = findById(menu.getId());
-			if (existingObject == null) {
+			if (menu.getId() == null) {
 				return super.save(Menu.class, menu);
 			}
 			else {
@@ -48,7 +47,7 @@ public class MenuDAO extends AbstractDAO {
 	 * @param id the id
 	 * @return the menu
 	 */
-	public Menu findById(int id) {
+	public Menu findById(Integer id) {
 		return super.findById(Menu.class, id);
 	}
 
@@ -59,19 +58,21 @@ public class MenuDAO extends AbstractDAO {
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Menu> findMenusWithEventId(int eventID) {
+	public List <Menu> findMenusWithEventId(Integer eventID) {
+		if (eventID == null) {
+			return null;
+		}
 		logger.debug("Finding menus with event ID: " + eventID);
 		Session session = null;
 		Transaction tx = null;
 		try {
 			session = getSessionFactory().openSession();
 			tx = session.beginTransaction();
-			List<Menu> list = (List<Menu>) session
+			List <Menu> list = (List <Menu>) session
 					.createCriteria(Menu.class, "menu")
 					.createAlias("menu.event", "event",
 							JoinType.LEFT_OUTER_JOIN)
-					.add(Restrictions.eq("event.id", new Integer(eventID)))
-					.list();
+					.add(Restrictions.eq("event.id", eventID)).list();
 			tx.rollback();
 			return list;
 		}

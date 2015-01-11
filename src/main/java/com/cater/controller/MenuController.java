@@ -73,7 +73,7 @@ public class MenuController {
 		httpSession.setAttribute("eventId", eventId);
 		//First check the DB if a menu is selected earlier for this cuisine
 		Event e = customerService.findEventWithId(Integer.valueOf(eventId));
-		List<com.cater.model.Menu> availableMenus = customerService
+		List <com.cater.model.Menu> availableMenus = customerService
 				.findMenusWithEventId(e.getId());
 		String customerCreatedMenuData = null;
 		if (CollectionUtils.isNotEmpty(availableMenus)) {
@@ -176,11 +176,12 @@ public class MenuController {
 			menuModel.setData(data);
 			menuModel.setCuisineType(cuisineType);
 			customerService.saveOrUpdateMenu(menuModel);
-			httpSession.setAttribute("menuId", menuModel.getId());
-			Set<Restaurant> restaurants = restaurantService
+			menuId = menuModel.getId();
+			httpSession.setAttribute("menuId", menuId);
+			Set <Restaurant> restaurants = restaurantService
 					.fetchRestaurantsOfType(cuisineType);
 			modelMap.put("restaurants", restaurants);
-			Set<Integer> previouslySelectedRestaurants = Sets.newHashSet();
+			Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
 			for (Restaurant r : restaurants) {
 				Quote q = restaurantService.findQuoteWithRestaurantIdAndMenuId(
 						r.getId(), menuId);
@@ -243,7 +244,7 @@ public class MenuController {
 		//TODO: Send emails to restaurants, requesting to submit quotes.
 		String eventId = (String) httpSession.getAttribute("eventId");
 		Event e = customerService.findEventWithId(Integer.valueOf(eventId));
-		List<String> successMessages = Lists.newArrayList();
+		List <String> successMessages = Lists.newArrayList();
 		successMessages
 				.add("Your request for quotes is successfully submitted for '"
 						+ e.getName() + "'.");
@@ -266,14 +267,13 @@ public class MenuController {
 	 */
 	@RequestMapping(value = { "view/{menuId}" }, method = RequestMethod.GET)
 	public String view(HttpSession httpSession, ModelMap modelMap,
-			HttpServletRequest request, @PathVariable String menuId) {
+			HttpServletRequest request, @PathVariable Integer menuId) {
 		User user = (User) httpSession.getAttribute("user");
 		if (user == null) {
 			return "t_home";
 		}
 		try {
-			com.cater.model.Menu menuModel = menuDAO.findById(Integer
-					.parseInt(menuId));
+			com.cater.model.Menu menuModel = menuDAO.findById(menuId);
 			String menuDataJsonFromDb = new String(
 					Base64.decodeBase64(menuModel.getData()));
 			logger.debug(menuDataJsonFromDb);
@@ -281,9 +281,9 @@ public class MenuController {
 			Menu newMenu = new Menu();
 			newMenu.setCuisine(menu.getCuisine());
 			if (menu != null) {
-				List<MenuCategory> categories = Lists.newArrayList();
+				List <MenuCategory> categories = Lists.newArrayList();
 				for (MenuCategory mc : menu.getCategories()) {
-					List<MenuItem> items = Lists.newArrayList();
+					List <MenuItem> items = Lists.newArrayList();
 					for (MenuItem menuItem : mc.getItems()) {
 						if (menuItem.isSelected()) {
 							items.add(menuItem);
@@ -305,8 +305,7 @@ public class MenuController {
 					//it can also see the price it quoted before.
 					Quote quote = restaurantService
 							.findQuoteWithRestaurantIdAndMenuId(
-									restaurant.getId(),
-									Integer.parseInt(menuId));
+									restaurant.getId(), menuId);
 					modelMap.put("price", quote.getPrice());
 				}
 				httpSession.setAttribute("menuId", menuId);

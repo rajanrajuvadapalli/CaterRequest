@@ -34,8 +34,7 @@ public class CustomerDAO extends AbstractDAO {
 		else {
 			loginDAO.saveOrUpdate(customer.getLogin());
 			addressDAO.saveOrUpdate(customer.getAddress());
-			Customer existingObject = findById(customer.getId());
-			if (existingObject == null) {
+			if (customer.getId() == null) {
 				return super.save(Customer.class, customer);
 			}
 			else {
@@ -45,11 +44,14 @@ public class CustomerDAO extends AbstractDAO {
 		return false;
 	}
 
-	public Customer findById(int id) {
+	public Customer findById(Integer id) {
 		return super.findById(Customer.class, id);
 	}
 
-	public Customer findByLoginID(int loginID) {
+	public Customer findByLoginID(Integer loginID) {
+		if (loginID == null) {
+			return null;
+		}
 		Customer customer = null;
 		logger.debug("Finding Customer with login ID: " + loginID);
 		Session session = null;
@@ -57,11 +59,10 @@ public class CustomerDAO extends AbstractDAO {
 		try {
 			session = getSessionFactory().openSession();
 			tx = session.beginTransaction();
-			List<?> list = session
+			List <?> list = session
 					.createCriteria(Customer.class, "cus")
 					.createAlias("cus.login", "login", JoinType.LEFT_OUTER_JOIN)
-					.add(Restrictions.eq("login.id", new Integer(loginID)))
-					.list();
+					.add(Restrictions.eq("login.id", loginID)).list();
 			if (CollectionUtils.isNotEmpty(list)) {
 				customer = (Customer) list.iterator().next();
 				logger.debug("Found Customer with login ID: " + loginID);
@@ -82,7 +83,7 @@ public class CustomerDAO extends AbstractDAO {
 		}
 	}
 
-	public List<Customer> fetchAllCustomers() {
+	public List <Customer> fetchAllCustomers() {
 		return super.fetchAll(Customer.class);
 	}
 }

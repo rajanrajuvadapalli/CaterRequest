@@ -39,7 +39,7 @@ public class LoginService {
 	 * @param newPassword the new password
 	 * @return true, if successful
 	 */
-	public boolean updatePassword(int loginID, String newPassword) {
+	public boolean updatePassword(Integer loginID, String newPassword) {
 		if (StringUtils.isNotBlank(newPassword)) {
 			//return loginDAO.findByCredentials(username, password);
 			Login login = loginDAO.findById(loginID);

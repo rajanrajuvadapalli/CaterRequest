@@ -18,27 +18,28 @@ public class RestaurantService {
 	@Autowired
 	private QuoteDAO quoteDAO;
 
-	public List<Restaurant> fetchAllRestaurants() {
+	public List <Restaurant> fetchAllRestaurants() {
 		return restaurantDAO.fetchAllRestaurants();
 	}
 
-	public Set<Restaurant> fetchRestaurantsOfType(String cuisine) {
+	public Set <Restaurant> fetchRestaurantsOfType(String cuisine) {
 		return restaurantDAO.fetchRestaurantsOfType(cuisine);
 	}
 
-	public Restaurant findRestaurantWithId(int restaurantId) {
+	public Restaurant findRestaurantWithId(Integer restaurantId) {
 		return restaurantDAO.findById(restaurantId);
 	}
 
-	public Restaurant findRestaurantWithLoginId(int loginID) {
+	public Restaurant findRestaurantWithLoginId(Integer loginID) {
 		return restaurantDAO.findByLoginID(loginID);
 	}
 
-	public Quote findQuoteWithId(int quoteId) {
+	public Quote findQuoteWithId(Integer quoteId) {
 		return quoteDAO.findById(quoteId);
 	}
 
-	public Quote findQuoteWithRestaurantIdAndMenuId(int restaurantId, int menuId) {
+	public Quote findQuoteWithRestaurantIdAndMenuId(Integer restaurantId,
+			Integer menuId) {
 		return quoteDAO.findByRestaurantIdAndMenuId(restaurantId, menuId);
 	}
 

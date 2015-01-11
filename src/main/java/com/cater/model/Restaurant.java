@@ -43,7 +43,7 @@ public class Restaurant extends AbstractTimestampEntity implements Serializable 
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	@Column(name = "name", length = 50, nullable = false)
 	private String name;
 	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = false)
@@ -62,13 +62,13 @@ public class Restaurant extends AbstractTimestampEntity implements Serializable 
 	private String websiteUrl;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "restaurant_sk")
-	public List<Quote> quotes;
+	public List <Quote> quotes;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -128,17 +128,14 @@ public class Restaurant extends AbstractTimestampEntity implements Serializable 
 		this.websiteUrl = websiteUrl;
 	}
 
-	public List<Quote> getQuotes() {
+	public List <Quote> getQuotes() {
 		return quotes;
 	}
 
-	public void setQuotes(List<Quote> quotes) {
+	public void setQuotes(List <Quote> quotes) {
 		this.quotes = quotes;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.cater.model.AbstractTimestampEntity#hashCode()
-	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -150,7 +147,7 @@ public class Restaurant extends AbstractTimestampEntity implements Serializable 
 				+ ((contactNumber == null) ? 0 : contactNumber.hashCode());
 		result = prime * result
 				+ ((cuisineType == null) ? 0 : cuisineType.hashCode());
-		result = prime * result + id;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result
@@ -158,44 +155,63 @@ public class Restaurant extends AbstractTimestampEntity implements Serializable 
 		return result;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.cater.model.AbstractTimestampEntity#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) return true;
-		if (!super.equals(obj)) return false;
-		if (getClass() != obj.getClass()) return false;
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
 		Restaurant other = (Restaurant) obj;
 		if (address == null) {
-			if (other.address != null) return false;
+			if (other.address != null)
+				return false;
 		}
-		else if (!address.equals(other.address)) return false;
+		else if (!address.equals(other.address))
+			return false;
 		if (contactEmail == null) {
-			if (other.contactEmail != null) return false;
+			if (other.contactEmail != null)
+				return false;
 		}
-		else if (!contactEmail.equals(other.contactEmail)) return false;
+		else if (!contactEmail.equals(other.contactEmail))
+			return false;
 		if (contactNumber == null) {
-			if (other.contactNumber != null) return false;
+			if (other.contactNumber != null)
+				return false;
 		}
-		else if (!contactNumber.equals(other.contactNumber)) return false;
+		else if (!contactNumber.equals(other.contactNumber))
+			return false;
 		if (cuisineType == null) {
-			if (other.cuisineType != null) return false;
+			if (other.cuisineType != null)
+				return false;
 		}
-		else if (!cuisineType.equals(other.cuisineType)) return false;
-		if (id != other.id) return false;
+		else if (!cuisineType.equals(other.cuisineType))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		}
+		else if (!id.equals(other.id))
+			return false;
 		if (login == null) {
-			if (other.login != null) return false;
+			if (other.login != null)
+				return false;
 		}
-		else if (!login.equals(other.login)) return false;
+		else if (!login.equals(other.login))
+			return false;
 		if (name == null) {
-			if (other.name != null) return false;
+			if (other.name != null)
+				return false;
 		}
-		else if (!name.equals(other.name)) return false;
+		else if (!name.equals(other.name))
+			return false;
 		if (websiteUrl == null) {
-			if (other.websiteUrl != null) return false;
+			if (other.websiteUrl != null)
+				return false;
 		}
-		else if (!websiteUrl.equals(other.websiteUrl)) return false;
+		else if (!websiteUrl.equals(other.websiteUrl))
+			return false;
 		return true;
 	}
 }

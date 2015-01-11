@@ -20,7 +20,7 @@ public class Menu extends AbstractTimestampEntity implements Serializable {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	@Column(name = "data", length = 5000, nullable = true)
 	private String data;
 	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = false)
@@ -29,11 +29,11 @@ public class Menu extends AbstractTimestampEntity implements Serializable {
 	@Column(name = "cuisine_type", length = 20, nullable = false)
 	private String cuisineType;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -61,9 +61,6 @@ public class Menu extends AbstractTimestampEntity implements Serializable {
 		this.cuisineType = cuisineType;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.cater.model.AbstractTimestampEntity#hashCode()
-	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -72,32 +69,43 @@ public class Menu extends AbstractTimestampEntity implements Serializable {
 				+ ((cuisineType == null) ? 0 : cuisineType.hashCode());
 		result = prime * result + ((data == null) ? 0 : data.hashCode());
 		result = prime * result + ((event == null) ? 0 : event.hashCode());
-		result = prime * result + id;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.cater.model.AbstractTimestampEntity#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) return true;
-		if (!super.equals(obj)) return false;
-		if (getClass() != obj.getClass()) return false;
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
 		Menu other = (Menu) obj;
 		if (cuisineType == null) {
-			if (other.cuisineType != null) return false;
+			if (other.cuisineType != null)
+				return false;
 		}
-		else if (!cuisineType.equals(other.cuisineType)) return false;
+		else if (!cuisineType.equals(other.cuisineType))
+			return false;
 		if (data == null) {
-			if (other.data != null) return false;
+			if (other.data != null)
+				return false;
 		}
-		else if (!data.equals(other.data)) return false;
+		else if (!data.equals(other.data))
+			return false;
 		if (event == null) {
-			if (other.event != null) return false;
+			if (other.event != null)
+				return false;
 		}
-		else if (!event.equals(other.event)) return false;
-		if (id != other.id) return false;
+		else if (!event.equals(other.event))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		}
+		else if (!id.equals(other.id))
+			return false;
 		return true;
 	}
 }

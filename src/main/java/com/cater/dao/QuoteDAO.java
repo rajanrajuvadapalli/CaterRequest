@@ -23,8 +23,7 @@ public class QuoteDAO extends AbstractDAO {
 			return false;
 		}
 		else {
-			Quote existingObject = findById(quote.getId());
-			if (existingObject == null) {
+			if (quote.getId() == null) {
 				return super.save(Quote.class, quote);
 			}
 			else {
@@ -33,7 +32,7 @@ public class QuoteDAO extends AbstractDAO {
 		}
 	}
 
-	public Quote findById(int id) {
+	public Quote findById(Integer id) {
 		return super.findById(Quote.class, id);
 	}
 
@@ -67,7 +66,11 @@ public class QuoteDAO extends AbstractDAO {
 		}
 	}*/
 	@SuppressWarnings("unchecked")
-	public Quote findByRestaurantIdAndMenuId(int restaurantId, int menuId) {
+	public Quote findByRestaurantIdAndMenuId(Integer restaurantId,
+			Integer menuId) {
+		if (restaurantId == null || menuId == null) {
+			return null;
+		}
 		logger.debug("Finding Quote with restaurant ID: " + restaurantId
 				+ ", menu ID: " + menuId);
 		Session session = null;
@@ -75,15 +78,13 @@ public class QuoteDAO extends AbstractDAO {
 		try {
 			session = getSessionFactory().openSession();
 			tx = session.beginTransaction();
-			List<Quote> list = (List<Quote>) session
+			List <Quote> list = (List <Quote>) session
 					.createCriteria(Quote.class, "quote")
 					.createAlias("quote.restaurant", "restaurant",
 							JoinType.LEFT_OUTER_JOIN)
 					.createAlias("quote.menu", "menu", JoinType.LEFT_OUTER_JOIN)
-					.add(Restrictions.eq("restaurant.id", new Integer(
-							restaurantId)))
-					.add(Restrictions.eq("menu.id", new Integer(menuId)))
-					.list();
+					.add(Restrictions.eq("restaurant.id", restaurantId))
+					.add(Restrictions.eq("menu.id", menuId)).list();
 			tx.rollback();
 			if (CollectionUtils.isNotEmpty(list)) {
 				return list.iterator().next();

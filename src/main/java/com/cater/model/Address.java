@@ -32,7 +32,7 @@ public class Address extends AbstractTimestampEntity implements Serializable {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	@Column(name = "street1", length = 50, nullable = false)
 	private String street1;
 	@Column(name = "street2", length = 50, nullable = true)
@@ -44,11 +44,11 @@ public class Address extends AbstractTimestampEntity implements Serializable {
 	@Column(name = "zip", length = 9, nullable = false)
 	private String zip;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -92,15 +92,12 @@ public class Address extends AbstractTimestampEntity implements Serializable {
 		this.zip = zip;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.cater.model.AbstractTimestampEntity#hashCode()
-	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
-		result = prime * result + id;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((state == null) ? 0 : state.hashCode());
 		result = prime * result + ((street1 == null) ? 0 : street1.hashCode());
 		result = prime * result + ((street2 == null) ? 0 : street2.hashCode());
@@ -108,9 +105,6 @@ public class Address extends AbstractTimestampEntity implements Serializable {
 		return result;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.cater.model.AbstractTimestampEntity#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -126,7 +120,11 @@ public class Address extends AbstractTimestampEntity implements Serializable {
 		}
 		else if (!city.equals(other.city))
 			return false;
-		if (id != other.id)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		}
+		else if (!id.equals(other.id))
 			return false;
 		if (state == null) {
 			if (other.state != null)

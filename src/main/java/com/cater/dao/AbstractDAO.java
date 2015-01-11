@@ -33,7 +33,7 @@ public abstract class AbstractDAO {
 	 * @param object the object
 	 * @return true, if successful
 	 */
-	public boolean save(Class<? extends AbstractTimestampEntity> clazz,
+	public boolean save(Class <? extends AbstractTimestampEntity> clazz,
 			Object object) {
 		if (object == null) {
 			logger.error("Cannot save or update null value for " + clazz);
@@ -72,7 +72,7 @@ public abstract class AbstractDAO {
 	 * @param object the object
 	 * @return true, if successful
 	 */
-	public boolean update(Class<? extends AbstractTimestampEntity> clazz,
+	public boolean update(Class <? extends AbstractTimestampEntity> clazz,
 			Object object) {
 		if (object == null) {
 			logger.error("Cannot update null value for " + clazz);
@@ -113,7 +113,11 @@ public abstract class AbstractDAO {
 	 * @return the t
 	 */
 	@SuppressWarnings("unchecked")
-	public <T extends AbstractTimestampEntity> T findById(Class<T> clazz, int id) {
+	public <T extends AbstractTimestampEntity> T findById(Class <T> clazz,
+			Integer id) {
+		if (id == null) {
+			return null;
+		}
 		logger.debug("Finding object of " + clazz + " for ID: " + id);
 		Session session = null;
 		Transaction tx = null;
@@ -146,8 +150,8 @@ public abstract class AbstractDAO {
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
-	protected <T extends AbstractTimestampEntity> List<T> fetchAll(
-			Class<T> clazz) {
+	protected <T extends AbstractTimestampEntity> List <T> fetchAll(
+			Class <T> clazz) {
 		logger.debug("Fetching all objects of type " + clazz);
 		Session session = null;
 		try {

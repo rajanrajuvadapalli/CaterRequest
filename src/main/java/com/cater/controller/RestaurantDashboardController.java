@@ -43,11 +43,11 @@ public class RestaurantDashboardController {
 		User user = (User) httpSession.getAttribute("user");
 		if (user != null) {
 			String price = request.getParameter("price");
-			String menuId = (String) httpSession.getAttribute("menuId");
+			Integer menuId = (Integer) httpSession.getAttribute("menuId");
 			Restaurant restaurant = restaurantService
 					.findRestaurantWithLoginId(user.getLoginID());
 			Quote q = restaurantService.findQuoteWithRestaurantIdAndMenuId(
-					restaurant.getId(), Integer.parseInt(menuId));
+					restaurant.getId(), menuId);
 			if (q != null) {
 				q.setPrice(Double.parseDouble(price));
 				q.setStatus(QuoteStatus.UPDATED_PRICE.toString());

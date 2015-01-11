@@ -12,7 +12,6 @@ import com.cater.model.Customer;
 import com.cater.model.Restaurant;
 import com.cater.ui.data.RegistrationData;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class PersonalSettingsService.
  */
@@ -35,7 +34,7 @@ public class PersonalSettingsService {
 	 * @param role the role
 	 * @return the user with login id
 	 */
-	public Object getUserWithLoginID(int loginID, Roles role) {
+	public Object getUserWithLoginID(Integer loginID, Roles role) {
 		if (Roles.CUSTOMER == role) {
 			return customerDAO.findByLoginID(loginID);
 		}
@@ -72,7 +71,8 @@ public class PersonalSettingsService {
 	 * @param data the data
 	 * @return true, if successful
 	 */
-	private boolean updateDataForCustomer(int customerID, RegistrationData data) {
+	private boolean updateDataForCustomer(Integer customerID,
+			RegistrationData data) {
 		if (data != null) {
 			Customer customer = customerDAO.findById(customerID);
 			if (customer != null) {
@@ -102,7 +102,7 @@ public class PersonalSettingsService {
 	 * @param data the data
 	 * @return true, if successful
 	 */
-	private boolean updateDataForRestaurant(int restaurantID,
+	private boolean updateDataForRestaurant(Integer restaurantID,
 			RegistrationData data) {
 		if (data != null) {
 			Restaurant restaurant = restaurantDAO.findById(restaurantID);

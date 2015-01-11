@@ -37,8 +37,7 @@ public class RestaurantDAO extends AbstractDAO {
 		else {
 			loginDAO.saveOrUpdate(restaurant.getLogin());
 			addressDAO.saveOrUpdate(restaurant.getAddress());
-			Restaurant existingObject = findById(restaurant.getId());
-			if (existingObject == null) {
+			if (restaurant.getId() == null) {
 				return super.save(Restaurant.class, restaurant);
 			}
 			else {
@@ -48,11 +47,14 @@ public class RestaurantDAO extends AbstractDAO {
 		return false;
 	}
 
-	public Restaurant findById(int id) {
+	public Restaurant findById(Integer id) {
 		return super.findById(Restaurant.class, id);
 	}
 
-	public Restaurant findByLoginID(int loginID) {
+	public Restaurant findByLoginID(Integer loginID) {
+		if (loginID == null) {
+			return null;
+		}
 		Restaurant restaurant = null;
 		logger.debug("Finding Restaurant with login ID: " + loginID);
 		Session session = null;
@@ -60,11 +62,10 @@ public class RestaurantDAO extends AbstractDAO {
 		try {
 			session = getSessionFactory().openSession();
 			tx = session.beginTransaction();
-			List<?> list = session
+			List <?> list = session
 					.createCriteria(Restaurant.class, "res")
 					.createAlias("res.login", "login", JoinType.LEFT_OUTER_JOIN)
-					.add(Restrictions.eq("login.id", new Integer(loginID)))
-					.list();
+					.add(Restrictions.eq("login.id", loginID)).list();
 			if (CollectionUtils.isNotEmpty(list)) {
 				restaurant = (Restaurant) list.iterator().next();
 				logger.debug("Found Restaurant with login ID: " + loginID);
@@ -85,12 +86,12 @@ public class RestaurantDAO extends AbstractDAO {
 		}
 	}
 
-	public List<Restaurant> fetchAllRestaurants() {
+	public List <Restaurant> fetchAllRestaurants() {
 		return super.fetchAll(Restaurant.class);
 	}
 
 	@SuppressWarnings("unchecked")
-	public Set<Restaurant> fetchRestaurantsOfType(String cuisine) {
+	public Set <Restaurant> fetchRestaurantsOfType(String cuisine) {
 		logger.debug("Finding Restaurants of type : " + cuisine);
 		if (StringUtils.isNotBlank(cuisine)) {
 			Session session = null;
@@ -98,12 +99,12 @@ public class RestaurantDAO extends AbstractDAO {
 			try {
 				session = getSessionFactory().openSession();
 				tx = session.beginTransaction();
-				List<Restaurant> list = session
+				List <Restaurant> list = session
 						.createCriteria(Restaurant.class, "res")
 						.add(Restrictions.eq("res.cuisineType", cuisine))
 						.list();
 				tx.rollback();
-				Set<Restaurant> restaurants = Sets.newHashSet();
+				Set <Restaurant> restaurants = Sets.newHashSet();
 				for (Restaurant r : list) {
 					restaurants.add(r);
 				}

@@ -28,8 +28,7 @@ public class EventDAO extends AbstractDAO {
 		}
 		else {
 			addressDAO.saveOrUpdate(event.getLocation());
-			Event existingObject = findById(event.getId());
-			if (existingObject == null) {
+			if (event.getId() == null) {
 				return super.save(Event.class, event);
 			}
 			else {
@@ -39,29 +38,27 @@ public class EventDAO extends AbstractDAO {
 		return false;
 	}
 
-	public Event findById(int id) {
+	public Event findById(Integer id) {
 		return super.findById(Event.class, id);
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Event> findByCustomerID(int customerID) {
-		//Event event = null;
+	public List <Event> findByCustomerID(Integer customerID) {
+		if (customerID == null) {
+			return null;
+		}
 		logger.debug("Finding Event with customer ID: " + customerID);
 		Session session = null;
 		Transaction tx = null;
 		try {
 			session = getSessionFactory().openSession();
 			tx = session.beginTransaction();
-			List<Event> list = (List<Event>) session
+			List <Event> list = (List <Event>) session
 					.createCriteria(Event.class, "event")
 					.createAlias("event.customer", "customer",
 							JoinType.LEFT_OUTER_JOIN)
 					.add(Restrictions
 							.eq("customer.id", new Integer(customerID))).list();
-			/*if (CollectionUtils.isNotEmpty(list)) {
-				event = (Event) list.iterator().next();
-				logger.debug("Found Event with customer ID: " + customerID);
-			}*/
 			tx.rollback();
 			return list;
 		}
@@ -78,7 +75,7 @@ public class EventDAO extends AbstractDAO {
 		}
 	}
 
-	public List<Event> fetchAllEvents() {
+	public List <Event> fetchAllEvents() {
 		return super.fetchAll(Event.class);
 	}
 }

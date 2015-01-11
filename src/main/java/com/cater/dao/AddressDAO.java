@@ -20,8 +20,7 @@ public class AddressDAO extends AbstractDAO {
 			return false;
 		}
 		else {
-			Address existingObject = findById(address.getId());
-			if (existingObject == null) {
+			if (address.getId() == null) {
 				return super.save(Address.class, address);
 			}
 			else {
@@ -30,7 +29,7 @@ public class AddressDAO extends AbstractDAO {
 		}
 	}
 
-	public Address findById(int id) {
+	public Address findById(Integer id) {
 		return super.findById(Address.class, id);
 	}
 }

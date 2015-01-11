@@ -23,8 +23,7 @@ public class LoginDAO extends AbstractDAO {
 			return false;
 		}
 		else {
-			Login existingObject = findById(login.getId());
-			if (existingObject == null) {
+			if (login.getId() == null) {
 				return super.save(Login.class, login);
 			}
 			else {
@@ -33,7 +32,7 @@ public class LoginDAO extends AbstractDAO {
 		}
 	}
 
-	public Login findById(int id) {
+	public Login findById(Integer id) {
 		return super.findById(Login.class, id);
 	}
 
@@ -46,7 +45,7 @@ public class LoginDAO extends AbstractDAO {
 			try {
 				session = getSessionFactory().openSession();
 				tx = session.beginTransaction();
-				List<?> results = session.createCriteria(Login.class)
+				List <?> results = session.createCriteria(Login.class)
 						.add(Restrictions.eq("username", username))
 						.add(Restrictions.eq("password", password)).list();
 				if (CollectionUtils.isNotEmpty(results)) {
