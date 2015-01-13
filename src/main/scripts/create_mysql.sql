@@ -31,9 +31,9 @@ CREATE TABLE cater4party.Customer (
 	,`create_ts` DATETIME NOT NULL
 	,`lupd_ts` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
 -- Create Foreign Key: Customer.address_sk -> Address.id
-ALTER TABLE Customer ADD FOREIGN KEY (address_sk) REFERENCES Address(id);
+ALTER TABLE cater4party.Customer ADD FOREIGN KEY (address_sk) REFERENCES cater4party.Address(id);
 -- Create Foreign Key: Customer.login_sk -> Login.id
-ALTER TABLE Customer ADD FOREIGN KEY (login_sk) REFERENCES Login(id);
+ALTER TABLE cater4party.Customer ADD FOREIGN KEY (login_sk) REFERENCES cater4party.Login(id);
 
 CREATE TABLE cater4party.Restaurant (
 	`id` INT NOT NULL AUTO_INCREMENT
@@ -48,9 +48,9 @@ CREATE TABLE cater4party.Restaurant (
 	,`create_ts` DATETIME NOT NULL 
 	,`lupd_ts` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
 -- Create Foreign Key: Restaurant.address_sk -> Address.id
-ALTER TABLE Restaurant ADD FOREIGN KEY (address_sk) REFERENCES Address(id);
+ALTER TABLE cater4party.Restaurant ADD FOREIGN KEY (address_sk) REFERENCES cater4party.Address(id);
 -- Create Foreign Key: Restaurant.login_sk -> Login.id
-ALTER TABLE Restaurant ADD FOREIGN KEY (login_sk) REFERENCES Login(id);
+ALTER TABLE cater4party.Restaurant ADD FOREIGN KEY (login_sk) REFERENCES cater4party.Login(id);
 
 CREATE TABLE cater4party.Event
 (
