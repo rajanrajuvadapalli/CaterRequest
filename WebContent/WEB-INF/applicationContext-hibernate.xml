@@ -25,12 +25,20 @@
 		<property name="username" value="root" />
 		<property name="password" value="passw0rd" />
 	</bean>
+	
+	<bean id="dataSourceMysqlAws" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://samaladb.czlyspks6hz4.us-west-2.rds.amazonaws.com:3306/mycaterdb" />
+		<property name="username" value="hari" />
+		<property name="password" value="utah84321" />
+	</bean>
 
 
 	<!-- Hibernate 4 SessionFactory Bean definition -->
 	<bean id="hibernate4AnnotatedSessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<property name="dataSource" ref="dataSourceMysql" />
+		<property name="dataSource" ref="dataSourceMysqlAws" />
 		<property name="packagesToScan">
 			<list>
 				<value>com.cater.model</value>
@@ -43,7 +51,8 @@
 				<prop key="hibernate.current_session_context_class">thread</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<!-- <prop key="hibernate.default_catalog">PUBLIC</prop> -->
-				<prop key="hibernate.default_schema">cater4party</prop>
+<!-- 				<prop key="hibernate.default_schema">cater4party</prop> -->
+				<prop key="hibernate.default_schema">mycaterdb</prop>
 			</props>
 		</property>
 	</bean>
