@@ -93,7 +93,7 @@
 			conf="compile" />
 		<dependency org="jstl" name="jstl" rev="1.2" conf="compile" />
 		<dependency org="javax.servlet" name="javax.servlet-api"
-			rev="3.0.1" conf="provided" />
+			rev="3.0.1" conf="providedCompile" />
 
 		<!-- Spring -->
 		<dependency org="org.springframework" name="spring-core"
