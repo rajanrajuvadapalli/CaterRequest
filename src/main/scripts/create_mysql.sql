@@ -59,7 +59,9 @@ CREATE TABLE cater4party.Event
 	,`customer_sk` INT NOT NULL 
 	,`name` VARCHAR(250) NOT NULL 
 	,`location_sk` INT NOT NULL 
-	,`date_time` DATETIME NOT NULL 
+	,`date_time` DATETIME NOT NULL
+	,`person_count` INT NULL 
+	,`budget_total` INT NULL
 	,`create_ts` DATETIME NOT NULL 
 	,`lupd_ts` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
 -- Create Foreign Key: Event.customer_sk -> Customer.id
