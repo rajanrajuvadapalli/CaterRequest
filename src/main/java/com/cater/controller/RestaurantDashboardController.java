@@ -3,7 +3,6 @@ package com.cater.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,8 +18,8 @@ import com.cater.ui.data.User;
 @Controller
 @RequestMapping(value = { "restaurant" })
 public class RestaurantDashboardController {
-	private static final Logger logger = Logger
-			.getLogger(RestaurantDashboardController.class);
+	/*private static final Logger logger = Logger
+			.getLogger(RestaurantDashboardController.class);*/
 	@Autowired
 	private RestaurantService restaurantService;
 

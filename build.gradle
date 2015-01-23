@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'war'
+apply plugin: 'pmd'
 
 ext.sourceCompatibility=JavaVersion.VERSION_1_6
 version = '1.0'
@@ -58,4 +59,10 @@ war {
 	//Copy folders from WebContent
 	from('WebContent') {
 	}
+}
+
+pmd {
+	sourceSets = [sourceSets.main]
+	ignoreFailures = true
+	ruleSets = ["basic", "design", "unusedcode"]
 }

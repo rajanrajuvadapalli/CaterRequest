@@ -4,8 +4,12 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class Helper {
+public final class Helper {
 	private static final Pattern phonePattern = Pattern.compile("[0-9]{10}");
+
+	private Helper() {
+		//All methods are static
+	}
 
 	public static String formatPhone(String phone) {
 		if (StringUtils.isNotBlank(phone)

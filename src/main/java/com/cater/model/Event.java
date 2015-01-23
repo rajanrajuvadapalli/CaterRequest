@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "Event")
-public class Event extends AbstractTimestampEntity implements Serializable {
+public class Event extends TimestampEntity implements Serializable {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 8977768799207482935L;
 	@Id

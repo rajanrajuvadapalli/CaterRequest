@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import com.cater.model.Login;
 
 @Component
-public class LoginDAO extends AbstractDAO {
+public class LoginDAO extends DataAccessObject {
 	private static final Logger logger = Logger.getLogger(LoginDAO.class);
 
 	public boolean saveOrUpdate(Login login) {

@@ -37,7 +37,7 @@ ALTER TABLE Restaurant ADD FOREIGN KEY (login_sk) REFERENCES Login(id);
  */
 @Entity
 @Table(name = "Restaurant")
-public class Restaurant extends AbstractTimestampEntity implements Serializable {
+public class Restaurant extends TimestampEntity implements Serializable {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -4558590649364593837L;
 	@Id

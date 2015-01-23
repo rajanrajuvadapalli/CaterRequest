@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.cater.constants.Roles;
-import com.cater.dao.AddressDAO;
 import com.cater.dao.CustomerDAO;
 import com.cater.dao.RestaurantDAO;
 import com.cater.model.Address;
@@ -23,10 +22,10 @@ public class PersonalSettingsService {
 	/** The restaurant dao. */
 	@Autowired
 	private RestaurantDAO restaurantDAO;
-	/** The address dao. */
-	@Autowired
-	private AddressDAO addressDAO;
 
+	/** The address dao. */
+	/*@Autowired
+	private AddressDAO addressDAO;*/
 	/**
 	 * Gets the user with login id.
 	 *

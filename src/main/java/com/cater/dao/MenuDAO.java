@@ -16,7 +16,7 @@ import com.cater.model.Menu;
  * The Class MenuDAO.
  */
 @Component
-public class MenuDAO extends AbstractDAO {
+public class MenuDAO extends DataAccessObject {
 	/** The Constant logger. */
 	private static final Logger logger = Logger.getLogger(MenuDAO.class);
 

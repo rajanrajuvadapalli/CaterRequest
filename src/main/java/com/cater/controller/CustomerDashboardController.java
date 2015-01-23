@@ -3,6 +3,7 @@ package com.cater.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -27,7 +28,7 @@ public class CustomerDashboardController {
 	private static final Logger logger = Logger
 			.getLogger(CustomerDashboardController.class);
 	private static final SimpleDateFormat SDF = new SimpleDateFormat(
-			"MM/dd/yyyy HH:mm");
+			"MM/dd/yyyy HH:mm", Locale.US);
 	@Autowired
 	private CustomerService customerService;
 
@@ -89,9 +90,11 @@ public class CustomerDashboardController {
 			e.setLocation(a);
 			Date dateTime;
 			try {
-				dateTime = SDF.parse(StringUtils.defaultString(request
-						.getParameter("datetimepicker")));
-				e.setDate_time(dateTime);
+				synchronized (this) {
+					dateTime = SDF.parse(StringUtils.defaultString(request
+							.getParameter("datetimepicker")));
+					e.setDate_time(dateTime);
+				}
 			}
 			catch (ParseException e1) {
 				logger.error(e1);

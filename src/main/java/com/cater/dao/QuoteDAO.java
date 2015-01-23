@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import com.cater.model.Quote;
 
 @Component
-public class QuoteDAO extends AbstractDAO {
+public class QuoteDAO extends DataAccessObject {
 	private static final Logger logger = Logger.getLogger(QuoteDAO.class);
 
 	public boolean saveOrUpdate(Quote quote) {

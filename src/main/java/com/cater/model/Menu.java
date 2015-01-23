@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Menu")
-public class Menu extends AbstractTimestampEntity implements Serializable {
+public class Menu extends TimestampEntity implements Serializable {
 	private static final long serialVersionUID = -3414170199430466757L;
 	@Id
 	@Column(name = "id")

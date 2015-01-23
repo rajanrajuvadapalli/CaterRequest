@@ -10,7 +10,7 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.cater.model.AbstractTimestampEntity;
+import com.cater.model.TimestampEntity;
 
 /**
  * Description: 
@@ -18,8 +18,8 @@ import com.cater.model.AbstractTimestampEntity;
  * @author Hari 
  */
 @Component
-public abstract class AbstractDAO {
-	private static final Logger logger = Logger.getLogger(AbstractDAO.class);
+public class DataAccessObject {
+	private static final Logger logger = Logger.getLogger(DataAccessObject.class);
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -33,7 +33,7 @@ public abstract class AbstractDAO {
 	 * @param object the object
 	 * @return true, if successful
 	 */
-	public boolean save(Class <? extends AbstractTimestampEntity> clazz,
+	public boolean save(Class<? extends TimestampEntity> clazz,
 			Object object) {
 		if (object == null) {
 			logger.error("Cannot save or update null value for " + clazz);
@@ -72,7 +72,7 @@ public abstract class AbstractDAO {
 	 * @param object the object
 	 * @return true, if successful
 	 */
-	public boolean update(Class <? extends AbstractTimestampEntity> clazz,
+	public boolean update(Class<? extends TimestampEntity> clazz,
 			Object object) {
 		if (object == null) {
 			logger.error("Cannot update null value for " + clazz);
@@ -113,7 +113,7 @@ public abstract class AbstractDAO {
 	 * @return the t
 	 */
 	@SuppressWarnings("unchecked")
-	public <T extends AbstractTimestampEntity> T findById(Class <T> clazz,
+	public <T extends TimestampEntity> T findById(Class<T> clazz,
 			Integer id) {
 		if (id == null) {
 			return null;
@@ -150,8 +150,8 @@ public abstract class AbstractDAO {
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
-	protected <T extends AbstractTimestampEntity> List <T> fetchAll(
-			Class <T> clazz) {
+	protected <T extends TimestampEntity> List<T> fetchAll(
+			Class<T> clazz) {
 		logger.debug("Fetching all objects of type " + clazz);
 		Session session = null;
 		try {

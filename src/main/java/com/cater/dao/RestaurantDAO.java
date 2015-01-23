@@ -23,7 +23,7 @@ import com.google.common.collect.Sets;
  * @author Hari 
  */
 @Component
-public class RestaurantDAO extends AbstractDAO {
+public class RestaurantDAO extends DataAccessObject {
 	private static final Logger logger = Logger.getLogger(RestaurantDAO.class);
 	@Autowired
 	private LoginDAO loginDAO;

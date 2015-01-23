@@ -11,7 +11,7 @@ import com.cater.model.Address;
  * @author Hari 
  */
 @Component
-public class AddressDAO extends AbstractDAO {
+public class AddressDAO extends DataAccessObject {
 	private static final Logger logger = Logger.getLogger(AddressDAO.class);
 
 	public boolean saveOrUpdate(Address address) {

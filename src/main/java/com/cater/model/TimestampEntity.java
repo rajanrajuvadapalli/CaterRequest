@@ -8,10 +8,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @MappedSuperclass
-public abstract class AbstractTimestampEntity {
+public class TimestampEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "create_ts", updatable = false)
-	private Date created = new Date();
+	private final Date created = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "lupd_ts")
 	private Date updated;
@@ -41,25 +41,18 @@ public abstract class AbstractTimestampEntity {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		AbstractTimestampEntity other = (AbstractTimestampEntity) obj;
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		TimestampEntity other = (TimestampEntity) obj;
 		if (created == null) {
-			if (other.created != null)
-				return false;
+			if (other.created != null) return false;
 		}
-		else if (!created.equals(other.created))
-			return false;
+		else if (!created.equals(other.created)) return false;
 		if (updated == null) {
-			if (other.updated != null)
-				return false;
+			if (other.updated != null) return false;
 		}
-		else if (!updated.equals(other.updated))
-			return false;
+		else if (!updated.equals(other.updated)) return false;
 		return true;
 	}
 }

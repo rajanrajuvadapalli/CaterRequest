@@ -43,7 +43,7 @@ public class MenuDeserializer {
 				true);
 		JsonParser jp = new MappingJsonFactory(mapper)
 				.createJsonParser(aString);
-		Menu menu = mapper.readValue(jp, Menu.class);
-		return menu;
+		//Menu menu = 
+		return mapper.readValue(jp, Menu.class);
 	}
 }

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import com.cater.model.Event;
 
 @Component
-public class EventDAO extends AbstractDAO {
+public class EventDAO extends DataAccessObject {
 	private static final Logger logger = Logger.getLogger(EventDAO.class);
 	@Autowired
 	private AddressDAO addressDAO;

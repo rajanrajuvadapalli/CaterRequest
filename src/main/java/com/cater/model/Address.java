@@ -26,7 +26,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Address")
-public class Address extends AbstractTimestampEntity implements Serializable {
+public class Address extends TimestampEntity implements Serializable {
 	private static final long serialVersionUID = -5664392162328826793L;
 	private static final String NEW_LINE = "\n";
 	@Id

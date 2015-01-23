@@ -36,7 +36,7 @@ ALTER TABLE Customer ADD FOREIGN KEY (login_sk) REFERENCES Login(id);
  */
 @Entity
 @Table(name = "Customer")
-public class Customer extends AbstractTimestampEntity implements Serializable {
+public class Customer extends TimestampEntity implements Serializable {
 	private static final long serialVersionUID = -5882175270370982220L;
 	@Id
 	@Column(name = "id")

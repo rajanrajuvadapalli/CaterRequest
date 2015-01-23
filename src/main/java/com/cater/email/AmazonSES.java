@@ -26,13 +26,13 @@ import com.amazonaws.services.simpleemail.model.SendEmailRequest;
 public class AmazonSES {
 	private static final Logger logger = Logger.getLogger(AmazonSES.class);
 	private static final String FROM = "hari2139@gmail.com";
-	private final AWSCredentials credentials;
 	private final AmazonSimpleEmailServiceClient client;
 
 	/**
 	 * Instantiates a new amazon ses.
 	 */
 	public AmazonSES() {
+		AWSCredentials credentials;
 		try {
 			/*
 			 * The ProfileCredentialsProvider will return your [default]

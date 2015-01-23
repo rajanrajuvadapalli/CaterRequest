@@ -20,7 +20,7 @@ import com.cater.model.Customer;
  * @author Hari 
  */
 @Component
-public class CustomerDAO extends AbstractDAO {
+public class CustomerDAO extends DataAccessObject {
 	private static final Logger logger = Logger.getLogger(CustomerDAO.class);
 	@Autowired
 	private LoginDAO loginDAO;
