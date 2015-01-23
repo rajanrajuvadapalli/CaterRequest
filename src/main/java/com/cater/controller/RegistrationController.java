@@ -75,6 +75,11 @@ public class RegistrationController {
 			if (login != null) {
 				List<String> warnings = Lists.newArrayList();
 				warnings.add("The email addresses used is already registered.");
+				if (!login.isActive()) {
+					warnings.add("If you registered earlier, please check your email ("
+							+ login.getUsername()
+							+ ") for a confirmation email to complete the registration process.");
+				}
 				modelMap.addAttribute("warnings", warnings);
 				return "t_signUp";
 			}
