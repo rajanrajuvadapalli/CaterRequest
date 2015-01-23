@@ -1,5 +1,3 @@
---Script for Amazon RDS on AWS
-
 CREATE TABLE mycaterdb.Login (
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
