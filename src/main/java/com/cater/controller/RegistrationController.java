@@ -69,6 +69,15 @@ public class RegistrationController {
 	public String register(ModelMap modelMap, HttpServletRequest request,
 			HttpSession session) {
 		try {
+			//First check if the email (user name used to login) is in use.
+			String username = request.getParameter("email");
+			Login login = loginService.retrieveLoginFor(username, null);
+			if (login != null) {
+				List<String> warnings = Lists.newArrayList();
+				warnings.add("The email addresses used is already registered.");
+				modelMap.addAttribute("warnings", warnings);
+				return "t_signUp";
+			}
 			RegistrationData data = new RegistrationData();
 			data.setName(StringUtils.defaultString(request.getParameter("name")));
 			data.setRestaurantName(StringUtils.defaultString(request
@@ -76,8 +85,7 @@ public class RegistrationController {
 			data.setCuisineType(StringUtils.defaultString(request
 					.getParameter("cuisineType")));
 			data.setUrl(StringUtils.defaultString(request.getParameter("url")));
-			data.setEmail(StringUtils.defaultString(request
-					.getParameter("email")));
+			data.setEmail(StringUtils.defaultString(username));
 			data.setPassword(StringUtils.defaultString(request
 					.getParameter("pwd1")));
 			data.setPhone(Helper.formatPhone(StringUtils.defaultString(request
@@ -91,7 +99,7 @@ public class RegistrationController {
 					.getParameter("state")));
 			data.setZip(StringUtils.defaultString(request.getParameter("zip")));
 			logger.debug("Form data: " + data.toString());
-			Login login = registerService.register(data);
+			login = registerService.register(data);
 			modelMap.put("name", data.getName());
 			//When one signs up, logout the current user from session.
 			session.removeAttribute("user");
@@ -114,7 +122,7 @@ public class RegistrationController {
 				List<String> errors = Lists.newArrayList();
 				errors.add("Ouch! Something went wrong. Please contact technical support at 1-(800)xxx-xxxx");
 				modelMap.addAttribute("errors", errors);
-				return "t_register";
+				return "t_signUp";
 			}
 		}
 		catch (Exception e) {

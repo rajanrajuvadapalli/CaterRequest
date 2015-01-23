@@ -10,6 +10,24 @@
 	</div>
 </c:if>
 
+<c:if test="${not empty warnings}">
+	<div class="warningMsg">
+		<ul>
+			<li><c:forEach items="${warnings}" var="w">${w}</c:forEach></li>
+		</ul>
+		
+	</div>
+</c:if>
+
+<c:if test="${not empty successMessages}">
+	<div class="successMsg">
+		<ul>
+			<li><c:forEach items="${successMessages}" var="sm">${sm}</c:forEach></li>
+		</ul>
+		
+	</div>
+</c:if>
+
 <div align="center" id="register-options">
 	<h3 style="text-align: center; color: silver;">Would you like to
 		register as</h3>

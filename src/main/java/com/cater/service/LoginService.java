@@ -26,7 +26,7 @@ public class LoginService {
 	 */
 	public Login retrieveLoginFor(String username, String password) {
 		if (StringUtils.isNotBlank(username)
-				&& StringUtils.isNotBlank(password)) {
+				|| StringUtils.isNotBlank(password)) {
 			return loginDAO.findByCredentials(username, password);
 		}
 		return null;
