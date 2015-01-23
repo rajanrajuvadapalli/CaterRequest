@@ -19,13 +19,13 @@
 				<td class="field-name">Number of Persons :</td>
 				<td class="field-value"><input type="text" size="20"
 					maxlength="20" name="person_count" required="required"
-					class="inputs">
+					pattern="[0-9]+" title="Must be a Number" class="inputs">
 			</tr>
 			<tr>
 				<td class="field-name">Total Budget :</td>
 				<td class="field-value"><input type="text" size="20"
 					maxlength="20" name="budget_total" required="required"
-					class="inputs">
+					pattern="[0-9]+" title="Must be a Number" class="inputs">
 			</tr>
 
 			<tr>

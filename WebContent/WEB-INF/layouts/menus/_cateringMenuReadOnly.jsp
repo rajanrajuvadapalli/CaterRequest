@@ -1,7 +1,7 @@
-<%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div>
@@ -45,7 +45,7 @@
 							<td>New Price :</td>
 							<td><input type="text" size="30" maxlength="50" name="price"
 								required="required" pattern="[0-9]+(\.[0-9]{2})?"
-								placeholder="0.00" class="inputs"></td>
+								title="Example: 250.60" placeholder="0.00" class="inputs"></td>
 							<td><button type="submit" width="50px" class="button">Udpate</button></td>
 						</tr>
 					</c:when>
@@ -54,7 +54,7 @@
 							<td>Price :</td>
 							<td><input type="text" size="30" maxlength="50" name="price"
 								required="required" pattern="[0-9]+(\.[0-9]{2})?"
-								placeholder="0.00" class="inputs"></td>
+								title="Example: 250.60" placeholder="0.00" class="inputs"></td>
 							<td><button type="submit" width="50px" class="button">Submit</button></td>
 						</tr>
 					</c:otherwise>
