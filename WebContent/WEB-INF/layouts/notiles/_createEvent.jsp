@@ -15,6 +15,18 @@
 					maxlength="50" name="datetimepicker" id="datetimepicker"
 					required="required" class="inputs" /></td>
 			</tr>
+			<tr>
+				<td class="field-name">Number of Persons :</td>
+				<td class="field-value"><input type="text" size="20"
+					maxlength="20" name="person_count" required="required"
+					class="inputs">
+			</tr>
+			<tr>
+				<td class="field-name">Total Budget :</td>
+				<td class="field-value"><input type="text" size="20"
+					maxlength="20" name="budget_total" required="required"
+					class="inputs">
+			</tr>
 
 			<tr>
 				<td colspan="2" style="text-align: center;"><br>Event

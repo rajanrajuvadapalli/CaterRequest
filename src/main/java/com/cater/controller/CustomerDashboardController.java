@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -29,6 +30,7 @@ public class CustomerDashboardController {
 			.getLogger(CustomerDashboardController.class);
 	private static final SimpleDateFormat SDF = new SimpleDateFormat(
 			"MM/dd/yyyy HH:mm", Locale.US);
+	private static final Pattern NUMERIC = Pattern.compile("[0-9]+");
 	@Autowired
 	private CustomerService customerService;
 
@@ -100,6 +102,16 @@ public class CustomerDashboardController {
 				logger.error(e1);
 			}
 			e.setCustomer(c);
+			String personCountParameter = request.getParameter("person_count");
+			if (StringUtils.isNotBlank(personCountParameter)
+					&& NUMERIC.matcher(personCountParameter).matches()) {
+				e.setPersonCount(Integer.parseInt(personCountParameter));
+			}
+			String budgetTotalParameter = request.getParameter("budget_total");
+			if (StringUtils.isNotBlank(budgetTotalParameter)
+					&& NUMERIC.matcher(budgetTotalParameter).matches()) {
+				e.setBudgetTotal(Integer.parseInt(budgetTotalParameter));
+			}
 			customerService.saveOrUpdateEvent(e);
 			modelMap.addAttribute("events", c.getEvents());
 			return "t_dashboardCustomer";
