@@ -38,11 +38,12 @@ public class RegisterService {
 		return Roles.CUSTOMER;
 	}
 
-	public void register(RegistrationData data) {
+	public Login register(RegistrationData data) {
 		Roles role = determineUserRole(data);
 		Login login = saveLoginData(data, role);
 		Address address = saveAddressData(data);
 		saveUserData(data, role, login, address);
+		return login;
 	}
 
 	private Address saveAddressData(RegistrationData data) {
@@ -88,5 +89,10 @@ public class RegisterService {
 			restaurant.setWebsiteUrl(data.getUrl());
 			restaurantDAO.saveOrUpdate(restaurant);
 		}
+	}
+
+	public void activateUser(Login login) {
+		login.setActive(true);
+		loginDAO.update(Login.class, login);
 	}
 }

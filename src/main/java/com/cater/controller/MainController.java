@@ -1,28 +1,21 @@
 package com.cater.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.cater.Helper;
 import com.cater.constants.Roles;
 import com.cater.model.Customer;
 import com.cater.model.Restaurant;
 import com.cater.service.CustomerService;
-import com.cater.service.RegisterService;
 import com.cater.service.RestaurantService;
-import com.cater.ui.data.RegistrationData;
 import com.cater.ui.data.User;
 
 /**
@@ -30,9 +23,6 @@ import com.cater.ui.data.User;
  */
 @Controller
 public class MainController {
-	private static final Logger logger = Logger.getLogger(MainController.class);
-	@Autowired
-	private RegisterService registerService;
 	@Autowired
 	private CustomerService customerService;
 	@Autowired
@@ -103,49 +93,5 @@ public class MainController {
 			}
 		}
 		return "t_home";
-	}
-
-	/**
-	 * Register.
-	 *
-	 * @param modelMap the model map
-	 * @param request the request
-	 * @return the string
-	 */
-	@RequestMapping(value = { "register" }, method = RequestMethod.POST)
-	public String register(ModelMap modelMap, HttpServletRequest request,
-			HttpSession session) {
-		try {
-			RegistrationData data = new RegistrationData();
-			data.setName(StringUtils.defaultString(request.getParameter("name")));
-			data.setRestaurantName(StringUtils.defaultString(request
-					.getParameter("restaurantName")));
-			data.setCuisineType(StringUtils.defaultString(request
-					.getParameter("cuisineType")));
-			data.setUrl(StringUtils.defaultString(request.getParameter("url")));
-			data.setEmail(StringUtils.defaultString(request
-					.getParameter("email")));
-			data.setPassword(StringUtils.defaultString(request
-					.getParameter("pwd1")));
-			data.setPhone(Helper.formatPhone(StringUtils.defaultString(request
-					.getParameter("phone"))));
-			data.setStreet1(StringUtils.defaultString(request
-					.getParameter("street1")));
-			data.setStreet2(StringUtils.defaultString(request
-					.getParameter("street2")));
-			data.setCity(StringUtils.defaultString(request.getParameter("city")));
-			data.setState(StringUtils.defaultString(request
-					.getParameter("state")));
-			data.setZip(StringUtils.defaultString(request.getParameter("zip")));
-			logger.debug("Form data: " + data.toString());
-			registerService.register(data);
-			modelMap.put("name", data.getName());
-			//When one signs up, logout the current user from session.
-			session.removeAttribute("user");
-			return "t_registerSuccess";
-		}
-		catch (Exception e) {
-			return "t_500";
-		}
 	}
 }

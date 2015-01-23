@@ -41,7 +41,6 @@ public class LoginService {
 	 */
 	public boolean updatePassword(Integer loginID, String newPassword) {
 		if (StringUtils.isNotBlank(newPassword)) {
-			//return loginDAO.findByCredentials(username, password);
 			Login login = loginDAO.findById(loginID);
 			login.setPassword(newPassword);
 			return loginDAO.saveOrUpdate(login);

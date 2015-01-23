@@ -17,6 +17,15 @@
 		
 	</div>
 </c:if>
+
+<c:if test="${not empty successMessages}">
+	<div class="successMsg">
+		<ul>
+			<li><c:forEach items="${successMessages}" var="sm">${sm}</c:forEach></li>
+		</ul>
+		
+	</div>
+</c:if>
 	
 <div class="homePageBanner">
 	<table>

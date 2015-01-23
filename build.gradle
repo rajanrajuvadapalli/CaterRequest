@@ -47,7 +47,8 @@ dependencies {
 	compile "mysql:mysql-connector-java:5.1.34"
 	compile "commons-dbcp:commons-dbcp:1.4"
 	
-	compile 'com.sendgrid:sendgrid-java:2.0.0'
+	//compile 'com.sendgrid:sendgrid-java:2.0.0'
+	compile 'com.amazonaws:aws-java-sdk-ses:1.9.16'
 	
 	testCompile "junit:junit:4.9"
 	testCompile "org.springframework:spring-test:${springVersion}"	

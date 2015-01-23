@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -38,16 +39,23 @@ public class LoginDAO extends AbstractDAO {
 
 	public Login findByCredentials(String username, String password) {
 		if (StringUtils.isNotBlank(username)
-				&& StringUtils.isNotBlank(password)) {
+				|| StringUtils.isNotBlank(password)) {
 			Session session = null;
 			Transaction tx = null;
 			Login login = null;
 			try {
 				session = getSessionFactory().openSession();
 				tx = session.beginTransaction();
-				List <?> results = session.createCriteria(Login.class)
-						.add(Restrictions.eq("username", username))
-						.add(Restrictions.eq("password", password)).list();
+				Criteria criteria = session.createCriteria(Login.class);
+				if (StringUtils.isNotBlank(username)) {
+					criteria = criteria.add(Restrictions.eq("username",
+							username));
+				}
+				if (StringUtils.isNotBlank(password)) {
+					criteria = criteria.add(Restrictions.eq("password",
+							password));
+				}
+				List<?> results = criteria.list();
 				if (CollectionUtils.isNotEmpty(results)) {
 					login = (Login) results.iterator().next();
 				}

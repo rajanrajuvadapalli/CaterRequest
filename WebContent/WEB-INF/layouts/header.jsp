@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div>
 	<div class="top_menu pull-left" align="center">
 		<table>
@@ -18,7 +18,7 @@
 					<c:when test="${empty sessionScope.user}">
 						<td><a href="${pageContext.request.contextPath}/home"><span
 								class="top_menu_item">Login</span></a></td>
-						<td><a href="${pageContext.request.contextPath}/signUp"><span
+						<td><a href="${pageContext.request.contextPath}/register"><span
 								class="top_menu_item">Sign Up</span></a></td>
 					</c:when>
 					<c:otherwise>

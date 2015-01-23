@@ -1,4 +1,14 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <h2 style="text-align: center;">Registration</h2>
+
+<c:if test="${not empty errors}">
+	<div class="errorMsg">
+		<ul>
+			<li><c:forEach items="${errors}" var="e">${e}</c:forEach></li>
+		</ul>
+		
+	</div>
+</c:if>
 
 <div align="center" id="register-options">
 	<h3 style="text-align: center; color: silver;">Would you like to
