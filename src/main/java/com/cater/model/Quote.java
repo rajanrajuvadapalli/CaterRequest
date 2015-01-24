@@ -22,7 +22,7 @@ public class Quote extends TimestampEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = true)
-	@JoinColumn(name = "menu_sk", nullable = true)
+	@JoinColumn(name = "menu_sk", nullable = false)
 	private Menu menu;
 	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = true)
 	@JoinColumn(name = "restaurant_sk", nullable = false)
@@ -87,30 +87,43 @@ public class Quote extends TimestampEntity implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) return true;
-		if (!super.equals(obj)) return false;
-		if (getClass() != obj.getClass()) return false;
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
 		Quote other = (Quote) obj;
 		if (id == null) {
-			if (other.id != null) return false;
+			if (other.id != null)
+				return false;
 		}
-		else if (!id.equals(other.id)) return false;
+		else if (!id.equals(other.id))
+			return false;
 		if (menu == null) {
-			if (other.menu != null) return false;
+			if (other.menu != null)
+				return false;
 		}
-		else if (!menu.equals(other.menu)) return false;
+		else if (!menu.equals(other.menu))
+			return false;
 		if (price == null) {
-			if (other.price != null) return false;
+			if (other.price != null)
+				return false;
 		}
-		else if (!price.equals(other.price)) return false;
+		else if (!price.equals(other.price))
+			return false;
 		if (restaurant == null) {
-			if (other.restaurant != null) return false;
+			if (other.restaurant != null)
+				return false;
 		}
-		else if (!restaurant.equals(other.restaurant)) return false;
+		else if (!restaurant.equals(other.restaurant))
+			return false;
 		if (status == null) {
-			if (other.status != null) return false;
+			if (other.status != null)
+				return false;
 		}
-		else if (!status.equals(other.status)) return false;
+		else if (!status.equals(other.status))
+			return false;
 		return true;
 	}
 }

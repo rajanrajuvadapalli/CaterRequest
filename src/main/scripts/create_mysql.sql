@@ -85,7 +85,7 @@ CREATE TABLE cater4party.Quote
 (
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
-	,`menu_sk` INT NULL 
+	,`menu_sk` INT NOT NULL 
 	,`restaurant_sk` INT NOT NULL 
 	,`price` DECIMAL(6,2)  NULL 
 	,`status` VARCHAR(20)  NULL 
