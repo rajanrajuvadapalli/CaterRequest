@@ -16,7 +16,7 @@
 				</h2>
 			</div>
 			<form method="POST" id="select-restaurant-form"
-				action="${pageContext.request.contextPath}/menu/requestQuote"
+				action="${pageContext.request.contextPath}/customer/event/requestQuote"
 				onsubmit="return validateSelectRestaurantForm()" 
 				ectype="application/x-www-form-urlencoded"
 				autocomplete="off">
