@@ -49,10 +49,10 @@ function showCreateEventForm() {
 	});
 }
 
-function showMenuOptions(eventId) {
+function showCuisineOptions(eventId) {
 	console.log(eventId);
 	var cuisines = "<div class=\"sideMenuItemsDetail\">"
-			+ "<form method=\"POST\" id=\"select-menu-form\" action=\"/cater4party/menu/selectMenu\">"
+			+ "<form method=\"POST\" id=\"select-cuisine-form\" action=\"/cater4party/customer/event/selectRestaurant\">"
 			/*
 			 * + " <input type=\"radio\" name=\"cuisine\" value=\"AMERICAN\">
 			 * AMERICAN </input> <br> " + " <input type=\"radio\"
@@ -95,7 +95,7 @@ function showMenuOptions(eventId) {
 }
 
 function validateSelectMenuFormOnSubmit() {
-	$("form[id=select-menu-form]").validate({
+	$("form[id=select-cuisine-form]").validate({
 		rules : {
 			cuisine : {
 				required : true

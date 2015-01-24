@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cater.Helper;
+import com.cater.constants.Roles;
 import com.cater.email.EmailHelper;
 import com.cater.model.Login;
 import com.cater.service.CustomerService;
 import com.cater.service.LoginService;
 import com.cater.service.RegisterService;
+import com.cater.service.RestaurantService;
 import com.cater.ui.data.RegistrationData;
 import com.google.common.collect.Lists;
 
@@ -38,6 +40,8 @@ public class RegistrationController {
 	private LoginService loginService;
 	@Autowired
 	private CustomerService customerService;
+	@Autowired
+	private RestaurantService restaurantService;
 	@Autowired
 	private EmailHelper emailHelper;
 	//TODO:
@@ -105,7 +109,6 @@ public class RegistrationController {
 			data.setZip(StringUtils.defaultString(request.getParameter("zip")));
 			logger.debug("Form data: " + data.toString());
 			login = registerService.register(data);
-			modelMap.put("name", data.getName());
 			//When one signs up, logout the current user from session.
 			session.removeAttribute("user");
 			String[] username_domain = StringUtils.split(login.getUsername(),
@@ -116,9 +119,20 @@ public class RegistrationController {
 					.encodeBase64URLSafeString(confirmationToken.getBytes());
 			logger.debug("Confirmation token for " + login.getUsername() + ": "
 					+ confirmationToken + "(" + confirmationToken_URLSafe + ")");
+			String customer_restaurant_name = "";
+			if (Roles.CUSTOMER == Roles.get(login.getRole())) {
+				modelMap.put("name", data.getName());
+				customer_restaurant_name = customerService
+						.findCustomerWithLoginId(login.getId()).getName();
+			}
+			else if (Roles.RESTAURANT == Roles.get(login.getRole())) {
+				modelMap.put("name", data.getRestaurantName());
+				customer_restaurant_name = restaurantService
+						.findRestaurantWithLoginId(login.getId()).getName();
+			}
 			boolean sendEmailStatus = emailHelper
-					.sendRegistrationConfirmationEmail(customerService
-							.findCustomerWithLoginId(login.getId()).getName(),
+					.sendRegistrationConfirmationEmail(
+							customer_restaurant_name,
 							confirmationToken_URLSafe, TO);
 			if (sendEmailStatus) {
 				return "t_registerSuccess";

@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +21,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.cater.model.Address;
 import com.cater.model.Customer;
 import com.cater.model.Event;
+import com.cater.model.Restaurant;
 import com.cater.service.CustomerService;
+import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
 
 @Controller
@@ -33,6 +36,8 @@ public class CustomerDashboardController {
 	private static final Pattern NUMERIC = Pattern.compile("[0-9]+");
 	@Autowired
 	private CustomerService customerService;
+	@Autowired
+	private RestaurantService restaurantService;
 
 	/**
 	 * List events.
@@ -117,5 +122,28 @@ public class CustomerDashboardController {
 			return "t_dashboardCustomer";
 		}
 		return "t_home";
+	}
+
+	@RequestMapping(value = { "event/selectRestaurant" }, method = RequestMethod.POST)
+	public String selectRestaurant(HttpSession httpSession, ModelMap modelMap,
+			HttpServletRequest request) {
+		User user = (User) httpSession.getAttribute("user");
+		if (user == null) {
+			return "t_home";
+		}
+		String cuisineType = request.getParameter("cuisine");
+		Set<Restaurant> restaurants = restaurantService
+				.fetchRestaurantsOfType(cuisineType);
+		modelMap.put("restaurants", restaurants);
+		/*Set<Integer> previouslySelectedRestaurants = Sets.newHashSet();
+		for (Restaurant r : restaurants) {
+			Quote q = restaurantService.findQuoteWithRestaurantIdAndMenuId(
+					r.getId(), menuId);
+			if (q != null) {
+				previouslySelectedRestaurants.add(r.getId());
+			}
+		}
+		modelMap.put("prevR", previouslySelectedRestaurants);*/
+		return "menus/t__cateringRestaurants";
 	}
 }
