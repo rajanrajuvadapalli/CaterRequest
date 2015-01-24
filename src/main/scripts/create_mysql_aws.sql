@@ -84,7 +84,7 @@ CREATE TABLE mycaterdb.Quote
 (
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
-	,`menu_sk` INT NOT NULL 
+	,`menu_sk` INT NULL 
 	,`restaurant_sk` INT NOT NULL 
 	,`price` DECIMAL(6,2)  NULL 
 	,`status` VARCHAR(20)  NULL 
