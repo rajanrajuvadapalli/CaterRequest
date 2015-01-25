@@ -23,6 +23,13 @@ public class RestaurantDashboardController {
 	@Autowired
 	private RestaurantService restaurantService;
 
+	/**
+	 * List quotes.
+	 *
+	 * @param httpSession the http session
+	 * @param modelMap the model map
+	 * @return the string
+	 */
 	@RequestMapping(value = { "listQuotes" }, method = RequestMethod.GET)
 	public String listQuotes(HttpSession httpSession, ModelMap modelMap) {
 		User user = (User) httpSession.getAttribute("user");
@@ -36,6 +43,14 @@ public class RestaurantDashboardController {
 		return "notiles/_quotesListRestaurant";
 	}
 
+	/**
+	 * Submit price.
+	 *
+	 * @param httpSession the http session
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @return the string
+	 */
 	@RequestMapping(value = { "submitprice" }, method = RequestMethod.POST)
 	public String submitPrice(HttpSession httpSession, ModelMap modelMap,
 			HttpServletRequest request) {
@@ -49,10 +64,29 @@ public class RestaurantDashboardController {
 					restaurant.getId(), menuId);
 			if (q != null) {
 				q.setPrice(Double.parseDouble(price));
-				q.setStatus(QuoteStatus.UPDATED_PRICE.toString());
+				q.setStatus(QuoteStatus.RESTAURANT_UPDATED_PRICE.toString());
 				restaurantService.saveOrUpdateQuote(q);
 			}
 		}
 		return "redirect:/home";
+	}
+
+	/**
+	 * List docs.
+	 *
+	 * @param httpSession the http session
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @return the string
+	 */
+	@RequestMapping(value = { "listDocs" }, method = RequestMethod.GET)
+	public String listDocs(HttpSession httpSession, ModelMap modelMap,
+			HttpServletRequest request) {
+		User user = (User) httpSession.getAttribute("user");
+		if (user == null) {
+			return "redirect:/home";
+		}
+		//Sweep the directory for this restaurant
+		return "notiles/_docsListRestaurant";
 	}
 }

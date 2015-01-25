@@ -45,6 +45,11 @@
 						onclick="listRestaurantQuotes()">Quotes
 					</td>
 				</tr>				
+				<tr>
+					<td style="cursor: pointer; cursor: hand;"
+						onclick="listRestaurantDocs()">My Documents
+					</td>
+				</tr>
 			</table>
 		</td>
 		
