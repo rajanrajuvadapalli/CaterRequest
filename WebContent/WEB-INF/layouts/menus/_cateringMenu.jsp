@@ -33,7 +33,7 @@
 					</c:if>
 				</c:forEach>
 			</c:forEach>
-			<tr><td></td><td><button type="submit" width="50px" class="button">Next</button></td></tr>
+			<tr><td></td><td><button type="submit" width="50px" class="btn btn-lg btn-primary btn-block">Next</button></td></tr>
 		</table>
 		<input type="hidden" name="cuisine" value="${menu.cuisine}">
 	</form>

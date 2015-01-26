@@ -61,7 +61,7 @@
 			</tr>
 			<tr>
 				<td></td>
-				<td><button type="submit" width="50px" class="button">Create
+				<td><button type="submit" width="50px" class="btn btn-lg btn-primary btn-block">Create
 						Event</button></td>
 			</tr>
 		</table>

@@ -35,7 +35,7 @@
 						<c:if test="${user.role == 'CUSTOMER'}">
 							<td class="list"><button
 									onclick="showCuisineOptions(${e.id})" width="50px"
-									class="button">Select&nbsp;Restaurants</button></td>
+									class="btn btn-lg btn-primary btn-block">Select&nbsp;Restaurants</button></td>
 						</c:if>
 					</tr>
 				</c:forEach>

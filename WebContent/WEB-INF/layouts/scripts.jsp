@@ -18,3 +18,15 @@
 <script src="${pageContext.request.contextPath}/resources/js/jquery.validate.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/additional-methods.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery-ui-timepicker-addon.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<!-- <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/signin.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/theme.css" type="text/css" />

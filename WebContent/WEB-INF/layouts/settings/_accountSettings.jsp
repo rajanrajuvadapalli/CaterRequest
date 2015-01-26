@@ -38,7 +38,7 @@
 				</tr>
 				<tr>
 
-					<td><button type="submit" width="50px" class="button">Update
+					<td><button type="submit" width="50px" class="btn btn-lg btn-primary btn-block">Update
 							Profile</button></td>
 				</tr>
 			</table>

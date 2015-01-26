@@ -46,7 +46,7 @@
 							<td><input type="text" size="30" maxlength="50" name="price"
 								required="required" pattern="[0-9]+(\.[0-9]{2})?"
 								title="Example: 250.60" placeholder="0.00" class="inputs"></td>
-							<td><button type="submit" width="50px" class="button">Udpate</button></td>
+							<td><button type="submit" width="50px" class="btn btn-lg btn-primary btn-block">Udpate</button></td>
 						</tr>
 					</c:when>
 					<c:otherwise>
@@ -55,7 +55,7 @@
 							<td><input type="text" size="30" maxlength="50" name="price"
 								required="required" pattern="[0-9]+(\.[0-9]{2})?"
 								title="Example: 250.60" placeholder="0.00" class="inputs"></td>
-							<td><button type="submit" width="50px" class="button">Submit</button></td>
+							<td><button type="submit" width="50px" class="btn btn-lg btn-primary btn-block">Submit</button></td>
 						</tr>
 					</c:otherwise>
 				</c:choose>

@@ -7,7 +7,7 @@
 <h2 style="text-align: center;">Registration</h2>
 
 <c:if test="${not empty errors}">
-	<div class="errorMsg">
+	<div class="alert alert-danger">
 		<ul>
 			<c:forEach items="${errors}" var="e"><li>${e}</li></c:forEach>
 		</ul>
@@ -16,7 +16,7 @@
 </c:if>
 
 <c:if test="${not empty successMessages}">
-	<div class="successMsg">
+	<div class="alert alert-success">
 		<ul>
 			<c:forEach items="${successMessages}" var="sm"><li>${sm}</li></c:forEach>
 		</ul>
@@ -25,7 +25,7 @@
 </c:if>
 
 <c:if test="${not empty warnings}">
-	<div class="warningMsg">
+	<div class="alert alert-warning">
 		<ul>
 			<c:forEach items="${warnings}" var="w"><li>${w}</li></c:forEach>
 		</ul>
@@ -133,7 +133,7 @@
 			</tr>
 			<tr>
 				<td></td>
-				<td><button type="submit" width="50px" class="button">Register</button></td>
+				<td><button type="submit" width="50px" class="btn btn-lg btn-primary btn-block">Register</button></td>
 			</tr>
 		</table>
 	</form>

@@ -29,7 +29,7 @@
 						</tr>
 					</c:forEach>
 					<tr>
-						<td><button type="submit" width="50px" class="button">Next</button></td>
+						<td><button type="submit" width="50px" class="btn btn-lg btn-primary btn-block">Next</button></td>
 					</tr>
 				</table>
 				<input type="hidden" name="cuisine" value="${menu.cuisine}">

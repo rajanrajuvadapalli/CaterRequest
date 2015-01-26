@@ -1,4 +1,6 @@
 <%@page contentType="text/html;charset=UTF-8"%>
-<div class="footer" align="center">
-	&copy; 2014 All rights reserved.&nbsp;
-</div>
+<footer class="footer">
+	<div class="container">
+		<p class="text-muted">&copy; 2015 All rights reserved.</p>
+	</div>
+</footer>

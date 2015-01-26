@@ -1,69 +1,60 @@
-<%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <c:if test="${not empty errors}">
-	<div class="errorMsg">
+	<div class="alert alert-danger">
 		<ul>
-			<c:forEach items="${errors}" var="e"><li>${e}</li></c:forEach>
+			<c:forEach items="${errors}" var="e">
+				<li>${e}</li>
+			</c:forEach>
 		</ul>
-		
+
 	</div>
 </c:if>
 
 <c:if test="${not empty successMessages}">
-	<div class="successMsg">
+	<div class="alert alert-success">
 		<ul>
-			<c:forEach items="${successMessages}" var="sm"><li>${sm}</li></c:forEach>
+			<c:forEach items="${successMessages}" var="sm">
+				<li>${sm}</li>
+			</c:forEach>
 		</ul>
-		
+
 	</div>
 </c:if>
 
 <c:if test="${not empty warnings}">
-	<div class="warningMsg">
+	<div class="alert alert-warning">
 		<ul>
-			<c:forEach items="${warnings}" var="w"><li>${w}</li></c:forEach>
+			<c:forEach items="${warnings}" var="w">
+				<li>${w}</li>
+			</c:forEach>
 		</ul>
 	</div>
 </c:if>
-	
-<div class="homePageBanner">
-	<table>
-		<tr>
-			<td class="homePageBanner-left">
-				<h2 class="heading">Got a Party?</h2>
 
-				<h2 class="subheading">
-					Create Event<br> Select Menu<br> Get Quotes<br>
-					Finalize & Order
-				</h2>
-			</td>
-			<td class="homePageBanner-right">
-				<form method="POST" id="loginForm"
-					action="${pageContext.request.contextPath}/login" novalidate
-					ectype="application/x-www-form-urlencoded" autocomplete="off">
-					<table>
-						<tr>
-							<td><input type="email" size="30" name="username" id="username"
-								required="required" placeholder="Your email" autofocus class="inputs"></td>
-						</tr>
-						<tr><td></td></tr>
-						<tr>
-							<td><input type="password" size="30" name="pwd" id="pwd"
-								required="required" placeholder="Password" class="inputs"></td>
-						</tr>
-						<tr><td></td></tr>
-						<tr>
-							<td><button type="submit" width="50px" class="button">Sign
-									In</button></td>
-						</tr>
-					</table>
-					<br> <br>
-				</form>
-			</td>
-		</tr>
-	</table>
+<div class="container theme-showcase" role="main">
+	<form class="form-signin" method="POST" id="loginForm"
+		action="${pageContext.request.contextPath}/login" novalidate
+		ectype="application/x-www-form-urlencoded" autocomplete="off">
+
+		<h2 class="form-signin-heading">Please sign in</h2>
+		<label for="inputEmail" class="sr-only">Email address</label> <input
+			type="email" name="username" id="username" class="form-control"
+			placeholder="Email address" required autofocus> <label
+			for="inputPassword" class="sr-only">Password</label> <input
+			type="password" name="pwd" id="pwd" class="form-control"
+			placeholder="Password" required>
+		<div class="checkbox">
+			<label> <input type="checkbox" value="remember-me">
+				Remember me
+			</label>
+		</div>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
+			in</button>
+	</form>
 </div>
+<!-- /container -->
