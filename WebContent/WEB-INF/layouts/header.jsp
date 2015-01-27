@@ -40,7 +40,7 @@
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="${pageContext.request.contextPath}/settings/personalInfo">Personal Info</a></li>
 								<li><a href="${pageContext.request.contextPath}/settings/changePassword">Change Password</a></li>
-								<li><a href="#">Payment Info</a></li>
+								<li><a href="${pageContext.request.contextPath}/settings/paymentInfo">Payment Info</a></li>
 								<!-- <li class="divider"></li>
 								<li class="dropdown-header">Nav header</li>
 								<li><a href="#">Separated link</a></li>

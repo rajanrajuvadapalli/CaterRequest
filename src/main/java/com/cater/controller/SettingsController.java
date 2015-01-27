@@ -52,6 +52,16 @@ public class SettingsController {
 		return "settings/t_changePassword";
 	}
 
+	@RequestMapping(value = { "paymentInfo" }, method = RequestMethod.GET)
+	public String getPaymentInfo(ModelMap modelMap, HttpServletRequest request,
+			HttpSession session) {
+		boolean result = checkUserInSessionAndRetrieveData(session);
+		if (!result) {
+			return "t_home";
+		}
+		return "settings/t_paymentInfo";
+	}
+
 	private boolean checkUserInSessionAndRetrieveData(HttpSession session) {
 		//If the user is not in session redirect to the home page.
 		User user = (User) session.getAttribute("user");
