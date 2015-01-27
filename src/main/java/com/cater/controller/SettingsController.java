@@ -32,24 +32,27 @@ public class SettingsController {
 	@Autowired
 	private LoginService loginService;
 
-	/**
-	 * Settings.
-	 *
-	 * @param session the session
-	 * @return the string
-	 */
-	@RequestMapping(value = { "" }, method = RequestMethod.GET)
-	public String settings(HttpSession session) {
+	@RequestMapping(value = { "personalInfo" }, method = RequestMethod.GET)
+	public String getPersonalInfo(ModelMap modelMap,
+			HttpServletRequest request, HttpSession session) {
+		boolean result = checkUserInSessionAndRetrieveData(session);
+		if (!result) {
+			return "t_home";
+		}
+		return "settings/t_personalInfo";
+	}
+
+	private boolean checkUserInSessionAndRetrieveData(HttpSession session) {
 		//If the user is not in session redirect to the home page.
 		User user = (User) session.getAttribute("user");
 		if (user == null) {
-			return "t_home";
+			return false;
 		}
 		//If the user is already in session, first retrieve all the fields from the database.
 		Object userFromDatabase = personalSettingsService.getUserWithLoginID(
 				user.getLoginID(), user.getRole());
 		if (userFromDatabase == null) {
-			return "t_home";
+			return false;
 		}
 		RegistrationData data = new RegistrationData();
 		if (Roles.CUSTOMER == user.getRole()) {
@@ -72,7 +75,7 @@ public class SettingsController {
 		}
 		user.setData(data);
 		session.setAttribute("user", user);
-		return "t_settings";
+		return true;
 	}
 
 	/**
@@ -91,15 +94,8 @@ public class SettingsController {
 		}
 	}
 
-	/**
-	 * Settings update.
-	 *
-	 * @param request the request
-	 * @param session the session
-	 * @return the string
-	 */
-	@RequestMapping(value = { "profile" }, method = RequestMethod.POST)
-	public String profileSettingsUpdate(ModelMap modelMap,
+	@RequestMapping(value = { "personalInfo" }, method = RequestMethod.POST)
+	public String updatePersonalInfo(ModelMap modelMap,
 			HttpServletRequest request, HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		if (user != null) {
@@ -127,7 +123,10 @@ public class SettingsController {
 			boolean updateResult = personalSettingsService.updateDataFor(
 					user.getRole(), customerID, restaurantID, data);
 			if (updateResult) {
-				modelMap.addAttribute("status", "success");
+				List<String> successMessages = Lists.newArrayList();
+				successMessages
+						.add("Your account has been successfully udpated.");
+				modelMap.addAttribute("successMessages", successMessages);
 				user.setData(data);
 				session.setAttribute("user", user);
 			}
@@ -137,7 +136,7 @@ public class SettingsController {
 				modelMap.addAttribute("errors", errors);
 			}
 		}
-		return "t_settings";
+		return "settings/t_personalInfo";
 	}
 
 	/**

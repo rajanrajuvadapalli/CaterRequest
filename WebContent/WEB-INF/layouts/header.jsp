@@ -33,8 +33,21 @@
 								Up</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="${pageContext.request.contextPath}/settings">
-								Settings </a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-expanded="false">Settings
+								<span class="caret"></span>
+						</a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="${pageContext.request.contextPath}/settings/personalInfo">Personal Info</a></li>
+								<li><a href="#">Change Password</a></li>
+								<li><a href="#">Payment Info</a></li>
+								<!-- <li class="divider"></li>
+								<li class="dropdown-header">Nav header</li>
+								<li><a href="#">Separated link</a></li>
+								<li><a href="#">One more separated link</a></li> -->
+							</ul></li>
+
+
 						<li><a href="${pageContext.request.contextPath}/logout">
 								Logout </a></li>
 					</c:otherwise>

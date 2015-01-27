@@ -30,10 +30,6 @@
 	</div>
 </c:if>
 
-<c:if test="${status == 'success'}">
-	<div class="alert alert-success">Profile successfully updated.</div>
-</c:if>
-
 <table style="width: 900px;">
 	<tr>
 		<td style="width: 200px; vertical-align: top;">
