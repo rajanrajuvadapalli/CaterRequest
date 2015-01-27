@@ -42,6 +42,16 @@ public class SettingsController {
 		return "settings/t_personalInfo";
 	}
 
+	@RequestMapping(value = { "changePassword" }, method = RequestMethod.GET)
+	public String getChangePassword(ModelMap modelMap,
+			HttpServletRequest request, HttpSession session) {
+		boolean result = checkUserInSessionAndRetrieveData(session);
+		if (!result) {
+			return "t_home";
+		}
+		return "settings/t_changePassword";
+	}
+
 	private boolean checkUserInSessionAndRetrieveData(HttpSession session) {
 		//If the user is not in session redirect to the home page.
 		User user = (User) session.getAttribute("user");
@@ -139,17 +149,9 @@ public class SettingsController {
 		return "settings/t_personalInfo";
 	}
 
-	/**
-	 * Account settings update.
-	 *
-	 * @param modelMap the model map
-	 * @param request the request
-	 * @param session the session
-	 * @return the string
-	 */
-	@RequestMapping(value = { "accountSettings" }, method = RequestMethod.POST)
-	public String accountSettingsUpdate(ModelMap modelMap,
-			HttpServletRequest request, HttpSession session) {
+	@RequestMapping(value = { "changePassword" }, method = RequestMethod.POST)
+	public String changePassword(ModelMap modelMap, HttpServletRequest request,
+			HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		if (user != null) {
 			String currentPassword = StringUtils.defaultString(request
@@ -168,13 +170,16 @@ public class SettingsController {
 				boolean updateResult = loginService.updatePassword(
 						user.getLoginID(), newPassword);
 				if (updateResult) {
-					modelMap.addAttribute("status", "success");
+					List<String> successMessages = Lists.newArrayList();
+					successMessages
+							.add("Your account has been successfully udpated.");
+					modelMap.addAttribute("successMessages", successMessages);
 				}
 				else {
 					errors.add("Failed to update profile information. Please try again.");
 				}
 			}
 		}
-		return "t_settings";
+		return "settings/t_changePassword";
 	}
 }

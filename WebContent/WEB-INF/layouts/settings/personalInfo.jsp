@@ -8,6 +8,38 @@
 	<h1>Settings</h1>
 </div>
 
+<c:if test="${not empty errors}">
+	<div class="alert alert-danger">
+		<ul>
+			<c:forEach items="${errors}" var="e">
+				<li>${e}</li>
+			</c:forEach>
+		</ul>
+
+	</div>
+</c:if>
+
+<c:if test="${not empty successMessages}">
+	<div class="alert alert-success">
+		<ul>
+			<c:forEach items="${successMessages}" var="sm">
+				<li>${sm}</li>
+			</c:forEach>
+		</ul>
+
+	</div>
+</c:if>
+
+<c:if test="${not empty warnings}">
+	<div class="alert alert-warning">
+		<ul>
+			<c:forEach items="${warnings}" var="w">
+				<li>${w}</li>
+			</c:forEach>
+		</ul>
+	</div>
+</c:if>
+
 <div class="col-sm-10">
 	<div class="panel panel-info">
 		<div class="panel-heading">
@@ -16,7 +48,7 @@
 		<div class="panel-body">
 
 			<form class="form-horizontal" method="POST" id="profileForm"
-				action="${pageContext.request.contextPath}/settings/profile"
+				action="${pageContext.request.contextPath}/settings/personalInfo"
 				novalidate ectype="application/x-www-form-urlencoded"
 				autocomplete="off">
 				<c:if test="${sessionScope.user.role.value == 'CUSTOMER'}">
@@ -32,7 +64,7 @@
 				</c:if>
 				<c:if test="${sessionScope.user.role.value == 'RESTAURANT'}">
 					<div class="form-group">
-						<label for="name" class="col-sm-2 control-label">Restaurant
+						<label for="restaurantName" class="col-sm-2 control-label">Restaurant
 							Name: </label>
 						<div class="col-sm-6">
 							<input type="text" size="30" maxlength="50" name="restaurantName"
@@ -41,7 +73,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="name" class="col-sm-2 control-label">Cuisine
+						<label for="cuisineType" class="col-sm-2 control-label">Cuisine
 							Type: </label>
 						<div class="col-sm-6">
 							<input type="text" size="30" maxlength="30" name="cuisineType"
@@ -50,7 +82,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="name" class="col-sm-2 control-label">Website
+						<label for="url" class="col-sm-2 control-label">Website
 							URL: </label>
 						<div class="col-sm-6">
 							<input type="text" size="30" maxlength="50" name="url"
@@ -61,7 +93,7 @@
 
 				</c:if>
 				<div class="form-group">
-					<label for="name" class="col-sm-2 control-label">Contact
+					<label for="phone" class="col-sm-2 control-label">Contact
 						Phone: </label>
 					<div class="col-sm-6">
 						<input type="text" size="30" name="phone" class="form-control"
@@ -73,12 +105,12 @@
 					</label>
 
 					<div class="col-sm-6">
-						<input type="text" size="30" maxlength="50" name="street1"
+						<input type="street1" size="30" maxlength="50" name="street1"
 							class="form-control" value="${sessionScope.user.data.street1}">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="name" class="col-sm-2 control-label">Street 2:
+					<label for="street2" class="col-sm-2 control-label">Street 2:
 					</label>
 
 					<div class="col-sm-6">
@@ -87,7 +119,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="name" class="col-sm-2 control-label">City: </label>
+					<label for="city" class="col-sm-2 control-label">City: </label>
 
 					<div class="col-sm-6">
 						<input type="text" size="30" maxlength="50" name="city"
@@ -95,14 +127,14 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="name" class="col-sm-2 control-label">State: </label>
+					<label for="state" class="col-sm-2 control-label">State: </label>
 					<div class="col-sm-6">
 						<input size="30" maxlength="50" name="state" class="form-control"
 							value="${sessionScope.user.data.state}">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="name" class="col-sm-2 control-label">Zip: </label>
+					<label for="zip" class="col-sm-2 control-label">Zip: </label>
 
 					<div class="col-sm-6">
 						<input type="text" size="10" name="zip" maxlength="10"
