@@ -60,9 +60,9 @@ public class Restaurant extends TimestampEntity implements Serializable {
 	private String cuisineType;
 	@Column(name = "website_url", length = 50, nullable = true)
 	private String websiteUrl;
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "restaurant_sk")
-	public List <Quote> quotes;
+	public List<Quote> quotes;
 
 	public Integer getId() {
 		return id;
@@ -128,11 +128,11 @@ public class Restaurant extends TimestampEntity implements Serializable {
 		this.websiteUrl = websiteUrl;
 	}
 
-	public List <Quote> getQuotes() {
+	public List<Quote> getQuotes() {
 		return quotes;
 	}
 
-	public void setQuotes(List <Quote> quotes) {
+	public void setQuotes(List<Quote> quotes) {
 		this.quotes = quotes;
 	}
 
@@ -157,61 +157,42 @@ public class Restaurant extends TimestampEntity implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		if (this == obj) return true;
+		if (!super.equals(obj)) return false;
+		if (getClass() != obj.getClass()) return false;
 		Restaurant other = (Restaurant) obj;
 		if (address == null) {
-			if (other.address != null)
-				return false;
+			if (other.address != null) return false;
 		}
-		else if (!address.equals(other.address))
-			return false;
+		else if (!address.equals(other.address)) return false;
 		if (contactEmail == null) {
-			if (other.contactEmail != null)
-				return false;
+			if (other.contactEmail != null) return false;
 		}
-		else if (!contactEmail.equals(other.contactEmail))
-			return false;
+		else if (!contactEmail.equals(other.contactEmail)) return false;
 		if (contactNumber == null) {
-			if (other.contactNumber != null)
-				return false;
+			if (other.contactNumber != null) return false;
 		}
-		else if (!contactNumber.equals(other.contactNumber))
-			return false;
+		else if (!contactNumber.equals(other.contactNumber)) return false;
 		if (cuisineType == null) {
-			if (other.cuisineType != null)
-				return false;
+			if (other.cuisineType != null) return false;
 		}
-		else if (!cuisineType.equals(other.cuisineType))
-			return false;
+		else if (!cuisineType.equals(other.cuisineType)) return false;
 		if (id == null) {
-			if (other.id != null)
-				return false;
+			if (other.id != null) return false;
 		}
-		else if (!id.equals(other.id))
-			return false;
+		else if (!id.equals(other.id)) return false;
 		if (login == null) {
-			if (other.login != null)
-				return false;
+			if (other.login != null) return false;
 		}
-		else if (!login.equals(other.login))
-			return false;
+		else if (!login.equals(other.login)) return false;
 		if (name == null) {
-			if (other.name != null)
-				return false;
+			if (other.name != null) return false;
 		}
-		else if (!name.equals(other.name))
-			return false;
+		else if (!name.equals(other.name)) return false;
 		if (websiteUrl == null) {
-			if (other.websiteUrl != null)
-				return false;
+			if (other.websiteUrl != null) return false;
 		}
-		else if (!websiteUrl.equals(other.websiteUrl))
-			return false;
+		else if (!websiteUrl.equals(other.websiteUrl)) return false;
 		return true;
 	}
 }

@@ -7,6 +7,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -62,7 +63,7 @@ public class RestaurantDAO extends DataAccessObject {
 		try {
 			session = getSessionFactory().openSession();
 			tx = session.beginTransaction();
-			List <?> list = session
+			List<?> list = session
 					.createCriteria(Restaurant.class, "res")
 					.createAlias("res.login", "login", JoinType.LEFT_OUTER_JOIN)
 					.add(Restrictions.eq("login.id", loginID)).list();
@@ -86,12 +87,12 @@ public class RestaurantDAO extends DataAccessObject {
 		}
 	}
 
-	public List <Restaurant> fetchAllRestaurants() {
+	public List<Restaurant> fetchAllRestaurants() {
 		return super.fetchAll(Restaurant.class);
 	}
 
 	@SuppressWarnings("unchecked")
-	public Set <Restaurant> fetchRestaurantsOfType(String cuisine) {
+	public Set<Restaurant> fetchRestaurantsOfType(String cuisine) {
 		logger.debug("Finding Restaurants of type : " + cuisine);
 		if (StringUtils.isNotBlank(cuisine)) {
 			Session session = null;
@@ -99,12 +100,12 @@ public class RestaurantDAO extends DataAccessObject {
 			try {
 				session = getSessionFactory().openSession();
 				tx = session.beginTransaction();
-				List <Restaurant> list = session
+				List<Restaurant> list = session
 						.createCriteria(Restaurant.class, "res")
 						.add(Restrictions.eq("res.cuisineType", cuisine))
 						.list();
 				tx.rollback();
-				Set <Restaurant> restaurants = Sets.newHashSet();
+				Set<Restaurant> restaurants = Sets.newHashSet();
 				for (Restaurant r : list) {
 					restaurants.add(r);
 				}
@@ -121,5 +122,26 @@ public class RestaurantDAO extends DataAccessObject {
 			}
 		}
 		return null;
+	}
+
+	public int getNumberOfRestaurants() {
+		logger.debug("Finding number of restaurants.");
+		Session session = null;
+		try {
+			session = getSessionFactory().openSession();
+			Query q = session.createQuery("select count(*) from Restaurant");
+			return ((Long) q.uniqueResult()).intValue();
+		}
+		catch (HibernateException he) {
+			logger.error(
+					"Exception occurred while Finding number of restaurants.",
+					he);
+			return 0;
+		}
+		finally {
+			if (session != null) {
+				session.close();
+			}
+		}
 	}
 }

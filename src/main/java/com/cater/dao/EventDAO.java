@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -43,7 +44,7 @@ public class EventDAO extends DataAccessObject {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List <Event> findByCustomerID(Integer customerID) {
+	public List<Event> findByCustomerID(Integer customerID) {
 		if (customerID == null) {
 			return null;
 		}
@@ -53,7 +54,7 @@ public class EventDAO extends DataAccessObject {
 		try {
 			session = getSessionFactory().openSession();
 			tx = session.beginTransaction();
-			List <Event> list = (List <Event>) session
+			List<Event> list = (List<Event>) session
 					.createCriteria(Event.class, "event")
 					.createAlias("event.customer", "customer",
 							JoinType.LEFT_OUTER_JOIN)
@@ -75,7 +76,27 @@ public class EventDAO extends DataAccessObject {
 		}
 	}
 
-	public List <Event> fetchAllEvents() {
+	public List<Event> fetchAllEvents() {
 		return super.fetchAll(Event.class);
+	}
+
+	public int getNumberOfEvents() {
+		logger.debug("Finding number of events.");
+		Session session = null;
+		try {
+			session = getSessionFactory().openSession();
+			Query q = session.createQuery("select count(*) from Event");
+			return ((Long) q.uniqueResult()).intValue();
+		}
+		catch (HibernateException he) {
+			logger.error("Exception occurred while Finding number of events.",
+					he);
+			return 0;
+		}
+		finally {
+			if (session != null) {
+				session.close();
+			}
+		}
 	}
 }

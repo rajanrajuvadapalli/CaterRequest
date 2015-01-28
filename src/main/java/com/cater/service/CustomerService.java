@@ -21,7 +21,7 @@ public class CustomerService {
 	@Autowired
 	private MenuDAO menuDAO;
 
-	public List <Customer> fetchAllCustomers() {
+	public List<Customer> fetchAllCustomers() {
 		return customerDAO.fetchAllCustomers();
 	}
 
@@ -33,7 +33,7 @@ public class CustomerService {
 		return eventDAO.saveOrUpdate(e);
 	}
 
-	public List <Event> fetchAllEvents() {
+	public List<Event> fetchAllEvents() {
 		return eventDAO.fetchAllEvents();
 	}
 
@@ -49,7 +49,15 @@ public class CustomerService {
 		return menuDAO.saveOrUpdate(m);
 	}
 
-	public List <Menu> findMenusWithEventId(Integer eventId) {
+	public List<Menu> findMenusWithEventId(Integer eventId) {
 		return menuDAO.findMenusWithEventId(eventId);
+	}
+
+	public int getNumberOfCustomers() {
+		return customerDAO.getNumberOfCustomers();
+	}
+
+	public int getNumberOfEvents() {
+		return eventDAO.getNumberOfEvents();
 	}
 }

@@ -91,6 +91,7 @@ public class MainController {
 			}
 			else if (Roles.ADMIN == user.getRole()) {
 				refreshCounts(session);
+				((User) session.getAttribute("user")).setName("ADMIN");
 				return "admin/t_dashboard";
 			}
 		}
@@ -98,10 +99,10 @@ public class MainController {
 	}
 
 	public void refreshCounts(HttpSession session) {
-		session.setAttribute("nCustomers", customerService.fetchAllCustomers()
-				.size());
-		session.setAttribute("nRestaurants", restaurantService
-				.fetchAllRestaurants().size());
-		session.setAttribute("nEvents", customerService.fetchAllEvents().size());
+		session.setAttribute("nCustomers",
+				customerService.getNumberOfCustomers());
+		session.setAttribute("nRestaurants",
+				restaurantService.getNumberOfRestaurants());
+		session.setAttribute("nEvents", customerService.getNumberOfEvents());
 	}
 }

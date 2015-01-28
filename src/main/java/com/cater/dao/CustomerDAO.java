@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -59,7 +60,7 @@ public class CustomerDAO extends DataAccessObject {
 		try {
 			session = getSessionFactory().openSession();
 			tx = session.beginTransaction();
-			List <?> list = session
+			List<?> list = session
 					.createCriteria(Customer.class, "cus")
 					.createAlias("cus.login", "login", JoinType.LEFT_OUTER_JOIN)
 					.add(Restrictions.eq("login.id", loginID)).list();
@@ -83,7 +84,37 @@ public class CustomerDAO extends DataAccessObject {
 		}
 	}
 
-	public List <Customer> fetchAllCustomers() {
+	/**
+	 * Fetch all customers.
+	 *
+	 * @return the list
+	 */
+	public List<Customer> fetchAllCustomers() {
 		return super.fetchAll(Customer.class);
+	}
+
+	/**
+	 * Gets the number of customers.
+	 *
+	 * @return the number of customers
+	 */
+	public int getNumberOfCustomers() {
+		logger.debug("Finding number of customers.");
+		Session session = null;
+		try {
+			session = getSessionFactory().openSession();
+			Query q = session.createQuery("select count(*) from Customer");
+			return ((Long) q.uniqueResult()).intValue();
+		}
+		catch (HibernateException he) {
+			logger.error(
+					"Exception occurred while Finding number of customers.", he);
+			return 0;
+		}
+		finally {
+			if (session != null) {
+				session.close();
+			}
+		}
 	}
 }
