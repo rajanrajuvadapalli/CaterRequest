@@ -6,23 +6,31 @@ import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.cater.model.TimestampEntity;
 
 /**
- * Description: 
+ * Description:.
+ *
  * @since Nov 22, 2014
- * @author Hari 
+ * @author Hari
  */
 @Component
 public class DataAccessObject {
-	private static final Logger logger = Logger.getLogger(DataAccessObject.class);
+	/** The Constant logger. */
+	private static final Logger logger = Logger
+			.getLogger(DataAccessObject.class);
+	/** The session factory. */
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	/**
+	 * Gets the session factory.
+	 *
+	 * @return the session factory
+	 */
 	protected SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
@@ -30,23 +38,19 @@ public class DataAccessObject {
 	/**
 	 * Save.
 	 *
+	 * @param clazz the clazz
 	 * @param object the object
 	 * @return true, if successful
 	 */
-	public boolean save(Class<? extends TimestampEntity> clazz,
-			Object object) {
+	public boolean save(Class<? extends TimestampEntity> clazz, Object object) {
 		if (object == null) {
 			logger.error("Cannot save or update null value for " + clazz);
 		}
 		else {
 			logger.debug("Saving or updating object of " + clazz);
-			Session session = null;
-			Transaction tx = null;
 			try {
-				session = getSessionFactory().openSession();
-				tx = session.beginTransaction();
+				Session session = getSessionFactory().getCurrentSession();
 				session.saveOrUpdate(object);
-				tx.commit();
 				logger.debug("Successfully saved object of " + clazz);
 				return true;
 			}
@@ -55,11 +59,6 @@ public class DataAccessObject {
 						"Exception occurred while performing saveOrUpdate() operation on object of "
 								+ clazz, he);
 				throw he;
-			}
-			finally {
-				if (session != null) {
-					session.close();
-				}
 			}
 		}
 		return false;
@@ -72,20 +71,15 @@ public class DataAccessObject {
 	 * @param object the object
 	 * @return true, if successful
 	 */
-	public boolean update(Class<? extends TimestampEntity> clazz,
-			Object object) {
+	public boolean update(Class<? extends TimestampEntity> clazz, Object object) {
 		if (object == null) {
 			logger.error("Cannot update null value for " + clazz);
 		}
 		else {
 			logger.debug("Updating object of " + clazz);
-			Session session = null;
-			Transaction tx = null;
 			try {
-				session = getSessionFactory().openSession();
-				tx = session.beginTransaction();
+				Session session = getSessionFactory().getCurrentSession();
 				session.update(object);
-				tx.commit();
 				logger.debug("Successfully updated object of " + clazz);
 				return true;
 			}
@@ -94,11 +88,6 @@ public class DataAccessObject {
 						"Exception occurred while performing update() operation on object of "
 								+ clazz, he);
 				throw he;
-			}
-			finally {
-				if (session != null) {
-					session.close();
-				}
 			}
 		}
 		return false;
@@ -113,20 +102,15 @@ public class DataAccessObject {
 	 * @return the t
 	 */
 	@SuppressWarnings("unchecked")
-	public <T extends TimestampEntity> T findById(Class<T> clazz,
-			Integer id) {
+	public <T extends TimestampEntity> T findById(Class<T> clazz, Integer id) {
 		if (id == null) {
 			return null;
 		}
 		logger.debug("Finding object of " + clazz + " for ID: " + id);
-		Session session = null;
-		Transaction tx = null;
 		try {
-			session = getSessionFactory().openSession();
-			tx = session.beginTransaction();
+			Session session = getSessionFactory().getCurrentSession();
 			T object = (T) session.get(clazz, id);
 			logger.debug("Found object of " + clazz + " for ID: " + id);
-			tx.rollback();
 			return object;
 		}
 		catch (HibernateException he) {
@@ -134,11 +118,6 @@ public class DataAccessObject {
 					"Exception occurred while performing search() for object of "
 							+ clazz, he);
 			throw he;
-		}
-		finally {
-			if (session != null) {
-				session.close();
-			}
 		}
 	}
 
@@ -150,12 +129,10 @@ public class DataAccessObject {
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
-	protected <T extends TimestampEntity> List<T> fetchAll(
-			Class<T> clazz) {
+	protected <T extends TimestampEntity> List<T> fetchAll(Class<T> clazz) {
 		logger.debug("Fetching all objects of type " + clazz);
-		Session session = null;
 		try {
-			session = getSessionFactory().openSession();
+			Session session = getSessionFactory().getCurrentSession();
 			return session.createCriteria(clazz).list();
 		}
 		catch (HibernateException he) {
@@ -163,11 +140,6 @@ public class DataAccessObject {
 					"Exception occurred while fetching all objects of type "
 							+ clazz, he);
 			throw he;
-		}
-		finally {
-			if (session != null) {
-				session.close();
-			}
 		}
 	}
 }

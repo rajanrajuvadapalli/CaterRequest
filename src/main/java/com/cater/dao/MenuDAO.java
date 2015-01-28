@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
 import org.springframework.stereotype.Component;
@@ -58,22 +57,18 @@ public class MenuDAO extends DataAccessObject {
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
-	public List <Menu> findMenusWithEventId(Integer eventID) {
+	public List<Menu> findMenusWithEventId(Integer eventID) {
 		if (eventID == null) {
 			return null;
 		}
 		logger.debug("Finding menus with event ID: " + eventID);
-		Session session = null;
-		Transaction tx = null;
 		try {
-			session = getSessionFactory().openSession();
-			tx = session.beginTransaction();
-			List <Menu> list = (List <Menu>) session
+			Session session = getSessionFactory().getCurrentSession();
+			List<Menu> list = (List<Menu>) session
 					.createCriteria(Menu.class, "menu")
 					.createAlias("menu.event", "event",
 							JoinType.LEFT_OUTER_JOIN)
 					.add(Restrictions.eq("event.id", eventID)).list();
-			tx.rollback();
 			return list;
 		}
 		catch (HibernateException he) {
@@ -81,11 +76,6 @@ public class MenuDAO extends DataAccessObject {
 					"Exception occurred while Finding menus with event ID: "
 							+ eventID, he);
 			throw he;
-		}
-		finally {
-			if (session != null) {
-				session.close();
-			}
 		}
 	}
 }

@@ -8,16 +8,25 @@ import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
 import com.cater.model.Login;
 
+/**
+ * The Class LoginDAO.
+ */
 @Component
 public class LoginDAO extends DataAccessObject {
+	/** The Constant logger. */
 	private static final Logger logger = Logger.getLogger(LoginDAO.class);
 
+	/**
+	 * Save or update.
+	 *
+	 * @param login the login
+	 * @return true, if successful
+	 */
 	public boolean saveOrUpdate(Login login) {
 		if (login == null) {
 			logger.error("Cannot save null value for Login.");
@@ -33,19 +42,29 @@ public class LoginDAO extends DataAccessObject {
 		}
 	}
 
+	/**
+	 * Find by id.
+	 *
+	 * @param id the id
+	 * @return the login
+	 */
 	public Login findById(Integer id) {
 		return super.findById(Login.class, id);
 	}
 
+	/**
+	 * Find by credentials.
+	 *
+	 * @param username the username
+	 * @param password the password
+	 * @return the login
+	 */
 	public Login findByCredentials(String username, String password) {
 		if (StringUtils.isNotBlank(username)
 				|| StringUtils.isNotBlank(password)) {
-			Session session = null;
-			Transaction tx = null;
 			Login login = null;
 			try {
-				session = getSessionFactory().openSession();
-				tx = session.beginTransaction();
+				Session session = getSessionFactory().getCurrentSession();
 				Criteria criteria = session.createCriteria(Login.class);
 				if (StringUtils.isNotBlank(username)) {
 					criteria = criteria.add(Restrictions.eq("username",
@@ -59,7 +78,6 @@ public class LoginDAO extends DataAccessObject {
 				if (CollectionUtils.isNotEmpty(results)) {
 					login = (Login) results.iterator().next();
 				}
-				tx.rollback();
 				return login;
 			}
 			catch (HibernateException he) {
@@ -67,11 +85,6 @@ public class LoginDAO extends DataAccessObject {
 						"Exception occurred while finding login credentials for "
 								+ username + "/" + password, he);
 				throw he;
-			}
-			finally {
-				if (session != null) {
-					session.close();
-				}
 			}
 		}
 		return null;

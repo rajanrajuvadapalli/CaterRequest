@@ -9,7 +9,6 @@ import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,18 +18,28 @@ import com.cater.model.Restaurant;
 import com.google.common.collect.Sets;
 
 /**
- * Description: 
+ * Description:.
+ *
  * @since Nov 23, 2014
- * @author Hari 
+ * @author Hari
  */
 @Component
 public class RestaurantDAO extends DataAccessObject {
+	/** The Constant logger. */
 	private static final Logger logger = Logger.getLogger(RestaurantDAO.class);
+	/** The login dao. */
 	@Autowired
 	private LoginDAO loginDAO;
+	/** The address dao. */
 	@Autowired
 	private AddressDAO addressDAO;
 
+	/**
+	 * Save or update.
+	 *
+	 * @param restaurant the restaurant
+	 * @return true, if successful
+	 */
 	public boolean saveOrUpdate(Restaurant restaurant) {
 		if (restaurant == null) {
 			logger.error("Cannot save null value for Restaurant.");
@@ -48,21 +57,30 @@ public class RestaurantDAO extends DataAccessObject {
 		return false;
 	}
 
+	/**
+	 * Find by id.
+	 *
+	 * @param id the id
+	 * @return the restaurant
+	 */
 	public Restaurant findById(Integer id) {
 		return super.findById(Restaurant.class, id);
 	}
 
+	/**
+	 * Find by login id.
+	 *
+	 * @param loginID the login id
+	 * @return the restaurant
+	 */
 	public Restaurant findByLoginID(Integer loginID) {
 		if (loginID == null) {
 			return null;
 		}
 		Restaurant restaurant = null;
 		logger.debug("Finding Restaurant with login ID: " + loginID);
-		Session session = null;
-		Transaction tx = null;
 		try {
-			session = getSessionFactory().openSession();
-			tx = session.beginTransaction();
+			Session session = getSessionFactory().getCurrentSession();
 			List<?> list = session
 					.createCriteria(Restaurant.class, "res")
 					.createAlias("res.login", "login", JoinType.LEFT_OUTER_JOIN)
@@ -71,7 +89,6 @@ public class RestaurantDAO extends DataAccessObject {
 				restaurant = (Restaurant) list.iterator().next();
 				logger.debug("Found Restaurant with login ID: " + loginID);
 			}
-			tx.rollback();
 			return restaurant;
 		}
 		catch (HibernateException he) {
@@ -80,31 +97,33 @@ public class RestaurantDAO extends DataAccessObject {
 							+ loginID, he);
 			throw he;
 		}
-		finally {
-			if (session != null) {
-				session.close();
-			}
-		}
 	}
 
+	/**
+	 * Fetch all restaurants.
+	 *
+	 * @return the list
+	 */
 	public List<Restaurant> fetchAllRestaurants() {
 		return super.fetchAll(Restaurant.class);
 	}
 
+	/**
+	 * Fetch restaurants of type.
+	 *
+	 * @param cuisine the cuisine
+	 * @return the sets the
+	 */
 	@SuppressWarnings("unchecked")
 	public Set<Restaurant> fetchRestaurantsOfType(String cuisine) {
 		logger.debug("Finding Restaurants of type : " + cuisine);
 		if (StringUtils.isNotBlank(cuisine)) {
-			Session session = null;
-			Transaction tx = null;
 			try {
-				session = getSessionFactory().openSession();
-				tx = session.beginTransaction();
+				Session session = getSessionFactory().getCurrentSession();
 				List<Restaurant> list = session
 						.createCriteria(Restaurant.class, "res")
 						.add(Restrictions.eq("res.cuisineType", cuisine))
 						.list();
-				tx.rollback();
 				Set<Restaurant> restaurants = Sets.newHashSet();
 				for (Restaurant r : list) {
 					restaurants.add(r);
@@ -115,20 +134,19 @@ public class RestaurantDAO extends DataAccessObject {
 				logger.error("Finding Restaurants of type : " + cuisine, he);
 				throw he;
 			}
-			finally {
-				if (session != null) {
-					session.close();
-				}
-			}
 		}
 		return null;
 	}
 
+	/**
+	 * Gets the number of restaurants.
+	 *
+	 * @return the number of restaurants
+	 */
 	public int getNumberOfRestaurants() {
 		logger.debug("Finding number of restaurants.");
-		Session session = null;
 		try {
-			session = getSessionFactory().openSession();
+			Session session = getSessionFactory().getCurrentSession();
 			Query q = session.createQuery("select count(*) from Restaurant");
 			return ((Long) q.uniqueResult()).intValue();
 		}
@@ -137,11 +155,6 @@ public class RestaurantDAO extends DataAccessObject {
 					"Exception occurred while Finding number of restaurants.",
 					he);
 			return 0;
-		}
-		finally {
-			if (session != null) {
-				session.close();
-			}
 		}
 	}
 }

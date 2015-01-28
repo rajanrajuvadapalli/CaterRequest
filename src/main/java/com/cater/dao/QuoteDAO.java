@@ -6,17 +6,26 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
 import org.springframework.stereotype.Component;
 
 import com.cater.model.Quote;
 
+/**
+ * The Class QuoteDAO.
+ */
 @Component
 public class QuoteDAO extends DataAccessObject {
+	/** The Constant logger. */
 	private static final Logger logger = Logger.getLogger(QuoteDAO.class);
 
+	/**
+	 * Save or update.
+	 *
+	 * @param quote the quote
+	 * @return true, if successful
+	 */
 	public boolean saveOrUpdate(Quote quote) {
 		if (quote == null) {
 			logger.error("Cannot save null value for Quote.");
@@ -32,6 +41,12 @@ public class QuoteDAO extends DataAccessObject {
 		}
 	}
 
+	/**
+	 * Find by id.
+	 *
+	 * @param id the id
+	 * @return the quote
+	 */
 	public Quote findById(Integer id) {
 		return super.findById(Quote.class, id);
 	}
@@ -42,7 +57,7 @@ public class QuoteDAO extends DataAccessObject {
 		Session session = null;
 		Transaction tx = null;
 		try {
-			session = getSessionFactory().openSession();
+			session = getSessionFactory().getCurrentSession();
 			tx = session.beginTransaction();
 			List<Quote> list = (List<Quote>) session
 					.createCriteria(Quote.class, "quote")
@@ -61,10 +76,17 @@ public class QuoteDAO extends DataAccessObject {
 		}
 		finally {
 			if (session != null) {
-				session.close();
+				//session.close();
 			}
 		}
 	}*/
+	/**
+	 * Find by restaurant id and menu id.
+	 *
+	 * @param restaurantId the restaurant id
+	 * @param menuId the menu id
+	 * @return the quote
+	 */
 	@SuppressWarnings("unchecked")
 	public Quote findByRestaurantIdAndMenuId(Integer restaurantId,
 			Integer menuId) {
@@ -73,19 +95,15 @@ public class QuoteDAO extends DataAccessObject {
 		}
 		logger.debug("Finding Quote with restaurant ID: " + restaurantId
 				+ ", menu ID: " + menuId);
-		Session session = null;
-		Transaction tx = null;
 		try {
-			session = getSessionFactory().openSession();
-			tx = session.beginTransaction();
-			List <Quote> list = (List <Quote>) session
+			Session session = getSessionFactory().getCurrentSession();
+			List<Quote> list = (List<Quote>) session
 					.createCriteria(Quote.class, "quote")
 					.createAlias("quote.restaurant", "restaurant",
 							JoinType.LEFT_OUTER_JOIN)
 					.createAlias("quote.menu", "menu", JoinType.LEFT_OUTER_JOIN)
 					.add(Restrictions.eq("restaurant.id", restaurantId))
 					.add(Restrictions.eq("menu.id", menuId)).list();
-			tx.rollback();
 			if (CollectionUtils.isNotEmpty(list)) {
 				return list.iterator().next();
 			}
@@ -95,11 +113,6 @@ public class QuoteDAO extends DataAccessObject {
 					"Exception occurred while Finding Quote with restaurnat and menu ID.",
 					he);
 			throw he;
-		}
-		finally {
-			if (session != null) {
-				session.close();
-			}
 		}
 		return null;
 	}

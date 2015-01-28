@@ -76,6 +76,7 @@ public class MainController {
 				Customer customer = customerService
 						.findCustomerWithLoginId(user.getLoginID());
 				modelMap.put("customer", customer);
+				//Hibernate.initialize(customer.getEvents());
 				modelMap.put("events", customer.getEvents());
 				((User) session.getAttribute("user")).setName(customer
 						.getName());
