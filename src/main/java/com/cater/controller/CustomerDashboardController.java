@@ -55,7 +55,7 @@ public class CustomerDashboardController {
 	 * @param httpSession the http session
 	 * @return the list
 	 */
-	@RequestMapping(value = { "listEvents" }, method = RequestMethod.GET)
+	/*@RequestMapping(value = { "listEvents" }, method = RequestMethod.GET)
 	public String listEvents(HttpSession httpSession, ModelMap modelMap) {
 		User user = (User) httpSession.getAttribute("user");
 		if (user != null) {
@@ -66,6 +66,10 @@ public class CustomerDashboardController {
 			}
 		}
 		return "notiles/_eventsList";
+	}*/
+	@RequestMapping(value = { "dashboard" }, method = RequestMethod.GET)
+	public String getDashboard() {
+		return "customer/t_dashboard";
 	}
 
 	/**
@@ -75,7 +79,7 @@ public class CustomerDashboardController {
 	 */
 	@RequestMapping(value = { "createEvent" }, method = RequestMethod.GET)
 	public String getCreateEventForm() {
-		return "notiles/_createEvent";
+		return "customer/t_createEvent";
 	}
 
 	/**
@@ -90,48 +94,46 @@ public class CustomerDashboardController {
 	public String createEvent(HttpSession httpSession, ModelMap modelMap,
 			HttpServletRequest request) {
 		User user = (User) httpSession.getAttribute("user");
-		if (user != null) {
-			Customer c = customerService.findCustomerWithLoginId(user
-					.getLoginID());
-			logger.debug("Creating event for " + c.getName());
-			Event e = new Event();
-			e.setName(StringUtils.defaultString(request.getParameter("name")));
-			Address a = new Address();
-			a.setStreet1(StringUtils.defaultString(request
-					.getParameter("street1")));
-			a.setStreet2(StringUtils.defaultString(request
-					.getParameter("street2")));
-			a.setCity(StringUtils.defaultString(request.getParameter("city")));
-			a.setState(StringUtils.defaultString(request.getParameter("state")));
-			a.setZip(StringUtils.defaultString(request.getParameter("zip")));
-			e.setLocation(a);
-			Date dateTime;
-			try {
-				synchronized (this) {
-					dateTime = SDF.parse(StringUtils.defaultString(request
-							.getParameter("datetimepicker")));
-					e.setDate_time(dateTime);
-				}
-			}
-			catch (ParseException e1) {
-				logger.error(e1);
-			}
-			e.setCustomer(c);
-			String personCountParameter = request.getParameter("person_count");
-			if (StringUtils.isNotBlank(personCountParameter)
-					&& NUMERIC.matcher(personCountParameter).matches()) {
-				e.setPersonCount(Integer.parseInt(personCountParameter));
-			}
-			String budgetTotalParameter = request.getParameter("budget_total");
-			if (StringUtils.isNotBlank(budgetTotalParameter)
-					&& NUMERIC.matcher(budgetTotalParameter).matches()) {
-				e.setBudgetTotal(Integer.parseInt(budgetTotalParameter));
-			}
-			customerService.saveOrUpdateEvent(e);
-			modelMap.addAttribute("events", c.getEvents());
-			return "t_dashboardCustomer";
+		if (user == null) {
+			return "t_home";
 		}
-		return "t_home";
+		Customer c = customerService.findCustomerWithLoginId(user.getLoginID());
+		logger.debug("Creating event for " + c.getName());
+		Event e = new Event();
+		e.setName(StringUtils.defaultString(request.getParameter("name")));
+		Address a = new Address();
+		a.setStreet1(StringUtils.defaultString(request.getParameter("street1")));
+		a.setStreet2(StringUtils.defaultString(request.getParameter("street2")));
+		a.setCity(StringUtils.defaultString(request.getParameter("city")));
+		a.setState(StringUtils.defaultString(request.getParameter("state")));
+		a.setZip(StringUtils.defaultString(request.getParameter("zip")));
+		e.setLocation(a);
+		Date dateTime;
+		try {
+			synchronized (this) {
+				dateTime = SDF.parse(StringUtils.defaultString(request
+						.getParameter("datetimepicker")));
+				e.setDate_time(dateTime);
+			}
+		}
+		catch (ParseException e1) {
+			logger.error(e1);
+		}
+		e.setCustomer(c);
+		String personCountParameter = request.getParameter("person_count");
+		if (StringUtils.isNotBlank(personCountParameter)
+				&& NUMERIC.matcher(personCountParameter).matches()) {
+			e.setPersonCount(Integer.parseInt(personCountParameter));
+		}
+		String budgetTotalParameter = request.getParameter("budget_total");
+		if (StringUtils.isNotBlank(budgetTotalParameter)
+				&& NUMERIC.matcher(budgetTotalParameter).matches()) {
+			e.setBudgetTotal(Integer.parseInt(budgetTotalParameter));
+		}
+		customerService.saveOrUpdateEvent(e);
+		c = customerService.findCustomerWithLoginId(user.getLoginID());
+		modelMap.put("events", c.getEvents());
+		return "customer/t_dashboard";
 	}
 
 	/**
@@ -155,7 +157,7 @@ public class CustomerDashboardController {
 		httpSession.setAttribute("eventId", eventId);
 		//First check the DB if a menu is selected earlier for this cuisine
 		Event e = customerService.findEventWithId(Integer.valueOf(eventId));
-		List <com.cater.model.Menu> availableMenus = customerService
+		List<com.cater.model.Menu> availableMenus = customerService
 				.findMenusWithEventId(e.getId());
 		com.cater.model.Menu existingMenu = null;
 		if (CollectionUtils.isNotEmpty(availableMenus)) {
@@ -176,10 +178,10 @@ public class CustomerDashboardController {
 			customerService.saveOrUpdateMenu(existingMenu);
 		}
 		httpSession.setAttribute("menuId", existingMenu.getId());
-		Set <Restaurant> restaurants = restaurantService
+		Set<Restaurant> restaurants = restaurantService
 				.fetchRestaurantsOfType(cuisine);
 		modelMap.put("restaurants", restaurants);
-		Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
+		Set<Integer> previouslySelectedRestaurants = Sets.newHashSet();
 		for (Restaurant r : restaurants) {
 			Quote q = restaurantService.findQuoteWithRestaurantIdAndMenuId(
 					r.getId(), existingMenu.getId());
@@ -232,13 +234,13 @@ public class CustomerDashboardController {
 		//TODO: Send emails to restaurants, requesting to submit quotes.
 		String eventId = (String) httpSession.getAttribute("eventId");
 		Event e = customerService.findEventWithId(Integer.valueOf(eventId));
-		List <String> successMessages = Lists.newArrayList();
+		List<String> successMessages = Lists.newArrayList();
 		successMessages
 				.add("Your request for quotes is successfully submitted for '"
 						+ e.getName() + "'.");
 		modelMap.addAttribute("successMessages", successMessages);
 		httpSession.removeAttribute("eventId");
 		httpSession.removeAttribute("menuId");
-		return "t_dashboardCustomer";
+		return "customer/t_dashboard";
 	}
 }

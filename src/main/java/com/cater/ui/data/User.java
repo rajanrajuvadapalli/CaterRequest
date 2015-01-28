@@ -10,6 +10,7 @@ public class User {
 	private int customerID;
 	private int restaurantID;
 	private String username;
+	private String name;
 	private Roles role;
 	private RegistrationData data;
 
@@ -43,6 +44,14 @@ public class User {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Roles getRole() {

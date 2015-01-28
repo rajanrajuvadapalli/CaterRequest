@@ -1,5 +1,6 @@
 $('document').ready(function() {
-	listCustomerEvents();
+	$("input[id=datetimepicker]").datetimepicker();
+	//listCustomerEvents();
 	/*
 	 * $("td[id=customerDashboardData]") .html( "<div
 	 * class=\"sideMenuItemsDetail\">Please select from options to your left.</div>");
@@ -8,7 +9,7 @@ $('document').ready(function() {
 	validateMenuFormOnSubmit();
 });
 
-function listCustomerEvents() {
+/*function listCustomerEvents() {
 	// Make an ajax call and get list of events
 	var element = $("td[id=customerDashboardData]");
 	element.html("<div class=\"sideMenuItemsDetail\">Fetching data...</div>");
@@ -25,8 +26,9 @@ function listCustomerEvents() {
 					+ ", <br>Error:" + error + "</div>");
 		}
 	});
-}
+}*/
 
+/*
 function showCreateEventForm() {
 	var element = $("td[id=customerDashboardData]");
 	$.ajax({
@@ -48,7 +50,7 @@ function showCreateEventForm() {
 		}
 	});
 }
-
+*/
 function showCuisineOptions(eventId) {
 	console.log(eventId);
 	var cuisines = "<div class=\"sideMenuItemsDetail\">"

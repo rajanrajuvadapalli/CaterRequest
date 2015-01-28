@@ -73,7 +73,7 @@ public class MenuController {
 		httpSession.setAttribute("eventId", eventId);
 		//First check the DB if a menu is selected earlier for this cuisine
 		Event e = customerService.findEventWithId(Integer.valueOf(eventId));
-		List <com.cater.model.Menu> availableMenus = customerService
+		List<com.cater.model.Menu> availableMenus = customerService
 				.findMenusWithEventId(e.getId());
 		String customerCreatedMenuData = null;
 		if (CollectionUtils.isNotEmpty(availableMenus)) {
@@ -179,10 +179,10 @@ public class MenuController {
 			customerService.saveOrUpdateMenu(menuModel);
 			menuId = menuModel.getId();
 			httpSession.setAttribute("menuId", menuId);
-			Set <Restaurant> restaurants = restaurantService
+			Set<Restaurant> restaurants = restaurantService
 					.fetchRestaurantsOfType(cuisineType);
 			modelMap.put("restaurants", restaurants);
-			Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
+			Set<Integer> previouslySelectedRestaurants = Sets.newHashSet();
 			for (Restaurant r : restaurants) {
 				Quote q = restaurantService.findQuoteWithRestaurantIdAndMenuId(
 						r.getId(), menuId);
@@ -245,14 +245,14 @@ public class MenuController {
 		//TODO: Send emails to restaurants, requesting to submit quotes.
 		String eventId = (String) httpSession.getAttribute("eventId");
 		Event e = customerService.findEventWithId(Integer.valueOf(eventId));
-		List <String> successMessages = Lists.newArrayList();
+		List<String> successMessages = Lists.newArrayList();
 		successMessages
 				.add("Your request for quotes is successfully submitted for '"
 						+ e.getName() + "'.");
 		modelMap.addAttribute("successMessages", successMessages);
 		httpSession.removeAttribute("eventId");
 		httpSession.removeAttribute("menuId");
-		return "t_dashboardCustomer";
+		return "customer/t_dashboard";
 	}
 
 	/**
@@ -282,9 +282,9 @@ public class MenuController {
 			Menu newMenu = new Menu();
 			newMenu.setCuisine(menu.getCuisine());
 			if (menu != null) {
-				List <MenuCategory> categories = Lists.newArrayList();
+				List<MenuCategory> categories = Lists.newArrayList();
 				for (MenuCategory mc : menu.getCategories()) {
-					List <MenuItem> items = Lists.newArrayList();
+					List<MenuItem> items = Lists.newArrayList();
 					for (MenuItem menuItem : mc.getItems()) {
 						if (menuItem.isSelected()) {
 							items.add(menuItem);

@@ -76,20 +76,25 @@ public class MainController {
 				Customer customer = customerService
 						.findCustomerWithLoginId(user.getLoginID());
 				modelMap.put("customer", customer);
-				return "t_dashboardCustomer";
+				modelMap.put("events", customer.getEvents());
+				((User) session.getAttribute("user")).setName(customer
+						.getName());
+				return "customer/t_dashboard";
 			}
 			else if (Roles.RESTAURANT == user.getRole()) {
 				Restaurant restaurant = restaurantService
 						.findRestaurantWithLoginId(user.getLoginID());
 				modelMap.put("restaurant", restaurant);
-				return "t_dashboardRestaurant";
+				((User) session.getAttribute("user")).setName(restaurant
+						.getName());
+				return "restaurant/t_dashboard";
 			}
 			else if (Roles.ADMIN == user.getRole()) {
 				modelMap.put("customers", customerService.fetchAllCustomers());
 				modelMap.put("restaurants",
 						restaurantService.fetchAllRestaurants());
 				modelMap.put("events", customerService.fetchAllEvents());
-				return "t_dashboardAdmin";
+				return "admin/t_dashboard";
 			}
 		}
 		return "t_home";
