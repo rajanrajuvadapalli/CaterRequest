@@ -67,15 +67,24 @@
 
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-expanded="false">${sessionUserName}
-								<span class="caret"></span>
-						</a>
+								<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="${pageContext.request.contextPath}/logout">
-										Logout </a></li>
 								<li><a href="${pageContext.request.contextPath}/home">
 										My Dashboard </a></li>
-
-							</ul></li>
+								
+								<c:if test="${sessionScope.user.role == 'ADMIN'}">	
+								<li><a href="${pageContext.request.contextPath}/admin/listCustomers">
+										List Customers <span class="badge">${nCustomers}</span></a></li>								
+								<li><a href="${pageContext.request.contextPath}/admin/listEvents">
+										List Events <span class="badge">${nEvents}</span></a></li>
+								<li><a href="${pageContext.request.contextPath}/admin/listRestaurants">
+										List Restaurants <span class="badge">${nRestaurants}</span></a></li>						
+								</c:if>
+								
+								<li><a href="${pageContext.request.contextPath}/logout">
+										Logout </a></li>
+							</ul>
+						</li>
 					</c:otherwise>
 				</c:choose>
 			</ul>
@@ -84,22 +93,5 @@
 	</div>
 </nav>
 
-
-<!-- 
-<div style="align: right;">
-	<c:if test="${not empty sessionScope.user}">
-		<span style="text-align: right; color: #52525A;"> Welcome <b>
-				<c:choose>
-					<c:when test="${not empty sessionScope.user.name}">
-					${sessionScope.user.name}
-					</c:when>
-					<c:otherwise>
-					${sessionScope.user.username}
-					</c:otherwise>
-				</c:choose>
-		</b>!
-		</span>
-	</c:if>
-</div> -->
 
 

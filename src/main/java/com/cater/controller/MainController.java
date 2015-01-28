@@ -90,13 +90,18 @@ public class MainController {
 				return "restaurant/t_dashboard";
 			}
 			else if (Roles.ADMIN == user.getRole()) {
-				modelMap.put("customers", customerService.fetchAllCustomers());
-				modelMap.put("restaurants",
-						restaurantService.fetchAllRestaurants());
-				modelMap.put("events", customerService.fetchAllEvents());
+				refreshCounts(session);
 				return "admin/t_dashboard";
 			}
 		}
 		return "t_home";
+	}
+
+	public void refreshCounts(HttpSession session) {
+		session.setAttribute("nCustomers", customerService.fetchAllCustomers()
+				.size());
+		session.setAttribute("nRestaurants", restaurantService
+				.fetchAllRestaurants().size());
+		session.setAttribute("nEvents", customerService.fetchAllEvents().size());
 	}
 }

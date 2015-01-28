@@ -1,7 +1,7 @@
 $('document').ready(function() {
-	$("div[id=customersList]").show();
-	$("div[id=restaurantsList]").hide();
-	$("div[id=eventsList]").hide();
+	//$("div[id=customersList]").show();
+	//$("div[id=restaurantsList]").hide();
+	//$("div[id=eventsList]").hide();
 });
 
 function listCustomers() {
