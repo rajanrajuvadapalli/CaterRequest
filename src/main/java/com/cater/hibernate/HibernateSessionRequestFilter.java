@@ -41,12 +41,12 @@ public class HibernateSessionRequestFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		try {
-			log.debug("Starting a database transaction");
+			//log.debug("Starting a database transaction");
 			sf.getCurrentSession().beginTransaction();
 			// Call the next filter (continue request processing)  
 			chain.doFilter(request, response);
 			// Commit and cleanup  
-			log.debug("Committing the database transaction");
+			//log.debug("Committing the database transaction");
 			sf.getCurrentSession().getTransaction().commit();
 		}
 		catch (StaleObjectStateException staleEx) {

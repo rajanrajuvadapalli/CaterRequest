@@ -94,6 +94,7 @@ public class AmazonSES {
 		catch (Exception ex) {
 			logger.info("The email was not sent.");
 			logger.error("Error message: " + ex.getMessage());
+			throw new IOException(ex);
 		}
 	}
 }
