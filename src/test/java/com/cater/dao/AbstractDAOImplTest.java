@@ -1,6 +1,7 @@
 package com.cater.dao;
 
 import org.hibernate.SessionFactory;
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -24,7 +25,13 @@ public abstract class AbstractDAOImplTest {
 
 	@Before
 	public void setUp() throws Exception {
+		sessionFactory.getCurrentSession().beginTransaction();
 		DAOTestHelper.clearTables(sessionFactory);
+	}
+
+	@After
+	public void after() throws Exception {
+		sessionFactory.getCurrentSession().getTransaction().rollback();
 	}
 
 	@AfterClass
