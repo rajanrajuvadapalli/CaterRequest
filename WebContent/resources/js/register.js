@@ -3,7 +3,7 @@
 $('document').ready(function() {
 	$("[id=register-options]").show();
 	$("[id=register-form]").hide();
-	populateCuisineTypes();
+	//populateCuisineTypes();
 	$('#state').bfhstates({
 		country : 'US',
 		state : 'CA'
@@ -24,7 +24,7 @@ function showRegistrationFormFor(user) {
 		$("[id=restaurant]").show();
 	}
 }
-
+/*
 function populateCuisineTypes() {
 	$("span[id=cuisineType]")
 			.replaceWith(
@@ -50,7 +50,7 @@ function populateCuisineTypes() {
 							+ "	<option value=\"TIBETAN\"> 		TIBETAN            </option>              "
 							+ "	<option value=\"VIETNAMESE\"> 	VIETNAMESE         </option>              "
 							+ "</select>                                                          ");
-}
+}*/
 
 function validateRegistrationFormOnSubmit() {
 	$("form[id=register-form]")

@@ -23,6 +23,15 @@
 	
 	<mvc:annotation-driven />
 	
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:cater.properties</value>
+			</list>
+		</property>
+	</bean>
+	
 	<!-- <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" 
 		> <property name="prefix"> <value>/WEB-INF/pages/</value> </property> <property 
 		name="suffix"> <value>.jsp</value> </property> </bean> -->

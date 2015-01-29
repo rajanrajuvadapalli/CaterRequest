@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/style.css" type="text/css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/menu.css" type="text/css" />
+<!-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/style.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/menu.css" type="text/css" /> -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/jquery-ui-timepicker-addon.css" type="text/css" />
 <link rel="stylesheet" media="all" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css" type="text/css" />
 
@@ -28,5 +28,8 @@
 <!-- Latest compiled and minified JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!-- The following 2 CSS are from bootstrap -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/signin.css" type="text/css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/theme.css" type="text/css" />
+
+

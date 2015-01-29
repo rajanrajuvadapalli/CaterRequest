@@ -48,11 +48,11 @@
 			for="inputPassword" class="sr-only">Password</label> <input
 			type="password" name="pwd" id="pwd" class="form-control"
 			placeholder="Password" required>
-		<div class="checkbox">
+		<!-- <div class="checkbox">
 			<label> <input type="checkbox" value="remember-me">
 				Remember me
 			</label>
-		</div>
+		</div> -->
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
 			in</button>
 	</form>

@@ -2,7 +2,7 @@ $('document').ready(function() {
 	//listRestaurantQuotes();
 });
 
-function listRestaurantQuotes() {
+/*function listRestaurantQuotes() {
 	// Make an ajax call and get list of quotes
 	var element = $("td[id=restaurantDashboardData]");
 	element.html("<div class=\"sideMenuItemsDetail\">Fetching data...</div>");
@@ -19,8 +19,9 @@ function listRestaurantQuotes() {
 					+ ", <br>Error:" + error + "</div>");
 		}
 	});
-}
+}*/
 
+/*
 function validateSelectRestaurantForm() {
 	var atLeast1Selected = false;
 	$(":checkbox").each(function() {
@@ -34,8 +35,9 @@ function validateSelectRestaurantForm() {
 		alert("Please select at least 1 restaurant.");
 		return false;
 	}
-}
+}*/
 
+/*
 function listRestaurantDocs() {
 	// Make an ajax call and get list of quotes
 	var element = $("td[id=restaurantDashboardData]");
@@ -53,4 +55,4 @@ function listRestaurantDocs() {
 					+ ", <br>Error:" + error + "</div>");
 		}
 	});
-}
+}*/
