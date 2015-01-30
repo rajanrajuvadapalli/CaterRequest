@@ -3,6 +3,7 @@ package com.cater.email;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.amazonaws.AmazonClientException;
@@ -25,7 +26,8 @@ import com.amazonaws.services.simpleemail.model.SendEmailRequest;
 @Component
 public class AmazonSES {
 	private static final Logger logger = Logger.getLogger(AmazonSES.class);
-	private static final String FROM = "hari2139@gmail.com";
+	@Value("${admin.email}")
+	private String ADMIN_EMAIL;
 	private final AmazonSimpleEmailServiceClient client;
 
 	/**
@@ -83,8 +85,9 @@ public class AmazonSES {
 		// Create a message with the specified subject and body.
 		Message message = new Message().withSubject(subject).withBody(body);
 		// Assemble the email.
-		SendEmailRequest request = new SendEmailRequest().withSource(FROM)
-				.withDestination(destination).withMessage(message);
+		SendEmailRequest request = new SendEmailRequest()
+				.withSource(ADMIN_EMAIL).withDestination(destination)
+				.withMessage(message);
 		try {
 			logger.info("Attempting to send an email through Amazon SES by using the AWS SDK for Java...");
 			// Send the email.

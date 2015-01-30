@@ -34,6 +34,21 @@ public class ContactUsController {
 	/** The customer care contact number. */
 	@Value("${customer.care.contact.number}")
 	private String customerCareContactNumber;
+	@Value("${admin.email}")
+	private String ADMIN_EMAIL;
+
+	/**
+	 * Contact us.
+	 *
+	 * @param request the request
+	 * @param modelMap the model map
+	 * @return the string
+	 */
+	@RequestMapping(value = { "" }, method = RequestMethod.GET)
+	public String contactUs(HttpServletRequest request, ModelMap modelMap) {
+		modelMap.addAttribute("adminEmail", ADMIN_EMAIL);
+		return "t_contactUs";
+	}
 
 	/**
 	 * Send email.

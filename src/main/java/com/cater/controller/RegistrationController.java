@@ -47,9 +47,6 @@ public class RegistrationController {
 	private EmailHelper emailHelper;
 	@Value("${customer.care.contact.number}")
 	private String customerCareContactNumber;
-	//TODO:
-	//After we request for PROD access we can send to any email.
-	private static final String TO = "hari2139@gmail.com";
 
 	/**
 	 * Gets the register form.
@@ -136,7 +133,7 @@ public class RegistrationController {
 			boolean sendEmailStatus = emailHelper
 					.sendRegistrationConfirmationEmail(
 							customer_restaurant_name,
-							confirmationToken_URLSafe, TO);
+							confirmationToken_URLSafe, username);
 			if (sendEmailStatus) {
 				return "t_registerSuccess";
 			}
