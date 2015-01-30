@@ -171,7 +171,7 @@ public class RegistrationController {
 			List<String> errors = Lists.newArrayList();
 			errors.add("Invalid confirmation link used. Please register again.");
 			modelMap.addAttribute("errors", errors);
-			return "t_home";
+			return "t_login";
 		}
 		String username = tokens[0] + "@" + tokens[2];
 		String pwd = tokens[1];
@@ -180,7 +180,7 @@ public class RegistrationController {
 			List<String> errors = Lists.newArrayList();
 			errors.add("Invalid confirmation link used. Please register again.");
 			modelMap.addAttribute("errors", errors);
-			return "t_home";
+			return "t_login";
 		}
 		//If the account is already active, display warning message.
 		//Otherwise, make the account active and display confirmation message.
@@ -196,6 +196,6 @@ public class RegistrationController {
 					.add("Your account has been successfully activated. Please login to continue.");
 			modelMap.addAttribute("successMessages", successMessages);
 		}
-		return "t_home";
+		return "t_login";
 	}
 }

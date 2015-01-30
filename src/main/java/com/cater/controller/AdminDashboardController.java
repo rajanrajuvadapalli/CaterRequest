@@ -2,7 +2,6 @@ package com.cater.controller;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,8 +19,8 @@ import com.cater.service.RestaurantService;
 @Controller
 @RequestMapping(value = { "admin" })
 public class AdminDashboardController {
-	private static final Logger logger = Logger
-			.getLogger(AdminDashboardController.class);
+	/*private static final Logger logger = Logger
+			.getLogger(AdminDashboardController.class);*/
 	@Autowired
 	private CustomerService customerService;
 	@Autowired
