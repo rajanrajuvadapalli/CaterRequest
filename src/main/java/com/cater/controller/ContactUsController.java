@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,19 +16,32 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.cater.email.EmailHelper;
 import com.google.common.collect.Lists;
 
-/** 
- * Description: 
+/**
+ * Description:.
+ *
  * @since Jan 29, 2015
  * @author Hari Samala
  */
 @Controller
 @RequestMapping(value = { "contactUs" })
 public class ContactUsController {
+	/** The Constant logger. */
 	private static final Logger logger = Logger
 			.getLogger(ContactUsController.class);
+	/** The email helper. */
 	@Autowired
 	private EmailHelper emailHelper;
+	/** The customer care contact number. */
+	@Value("${customer.care.contact.number}")
+	private String customerCareContactNumber;
 
+	/**
+	 * Send email.
+	 *
+	 * @param request the request
+	 * @param modelMap the model map
+	 * @return the string
+	 */
 	@RequestMapping(value = { "email" }, method = RequestMethod.POST)
 	public String sendEmail(HttpServletRequest request, ModelMap modelMap) {
 		String name = StringUtils.defaultString(request.getParameter("name"));
@@ -47,7 +61,8 @@ public class ContactUsController {
 		}
 		else {
 			List<String> errors = Lists.newArrayList();
-			errors.add("Ouch! Something went wrong. Please contact technical support at 1-(800)xxx-xxxx");
+			errors.add("Ouch! Something went wrong. Please contact technical support at "
+					+ customerCareContactNumber);
 			modelMap.addAttribute("errors", errors);
 		}
 		return "t_contactUs";

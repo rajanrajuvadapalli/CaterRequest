@@ -9,6 +9,7 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,6 +45,8 @@ public class RegistrationController {
 	private RestaurantService restaurantService;
 	@Autowired
 	private EmailHelper emailHelper;
+	@Value("${customer.care.contact.number}")
+	private String customerCareContactNumber;
 	//TODO:
 	//After we request for PROD access we can send to any email.
 	private static final String TO = "hari2139@gmail.com";
@@ -139,7 +142,8 @@ public class RegistrationController {
 			}
 			else {
 				List<String> errors = Lists.newArrayList();
-				errors.add("Ouch! Something went wrong. Please contact technical support at 1-(800)xxx-xxxx");
+				errors.add("Ouch! Something went wrong. Please contact technical support at "
+						+ customerCareContactNumber);
 				modelMap.addAttribute("errors", errors);
 				return "t_signUp";
 			}
