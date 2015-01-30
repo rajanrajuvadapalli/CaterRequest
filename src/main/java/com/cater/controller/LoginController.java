@@ -13,8 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cater.constants.Roles;
+import com.cater.model.Customer;
 import com.cater.model.Login;
+import com.cater.model.Restaurant;
+import com.cater.service.CustomerService;
 import com.cater.service.LoginService;
+import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
 import com.google.common.collect.Lists;
 
@@ -22,6 +26,10 @@ import com.google.common.collect.Lists;
 public class LoginController {
 	@Autowired
 	private LoginService loginService;
+	@Autowired
+	private CustomerService customerService;
+	@Autowired
+	private RestaurantService restaurantService;
 
 	/**
 	 * Logout.
@@ -36,6 +44,20 @@ public class LoginController {
 			HttpSession session) {
 		session.removeAttribute("user");
 		return "redirect:home";
+	}
+
+	/**
+	 * Gets the login page.
+	 *
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param session the session
+	 * @return the login page
+	 */
+	@RequestMapping(value = { "login" }, method = RequestMethod.GET)
+	public String getLoginPage(ModelMap modelMap, HttpServletRequest request,
+			HttpSession session) {
+		return "t_login";
 	}
 
 	/**
@@ -60,12 +82,12 @@ public class LoginController {
 			Login login = loginService.retrieveLoginFor(username, password);
 			if (login == null) {
 				errors.add("Invalid Username and password combination.");
-				return "t_home";
+				return "t_login";
 			}
 			else if (!login.isActive()) {
 				warnings.add("Your account is not active. If you have recently registered with us, "
 						+ "please click on the confirmation link in your email.");
-				return "t_home";
+				return "t_login";
 			}
 			User user = new User();
 			user.setLoginID(login.getId());
@@ -73,10 +95,34 @@ public class LoginController {
 			Roles role = Roles.get(login.getRole());
 			user.setRole(role);
 			session.setAttribute("user", user);
+			if (Roles.CUSTOMER == user.getRole()) {
+				Customer customer = customerService
+						.findCustomerWithLoginId(user.getLoginID());
+				modelMap.put("customer", customer);
+				//Hibernate.initialize(customer.getEvents());
+				modelMap.put("events", customer.getEvents());
+				((User) session.getAttribute("user")).setName(customer
+						.getName());
+				return "customer/t_dashboard";
+			}
+			else if (Roles.RESTAURANT == user.getRole()) {
+				Restaurant restaurant = restaurantService
+						.findRestaurantWithLoginId(user.getLoginID());
+				modelMap.put("restaurant", restaurant);
+				((User) session.getAttribute("user")).setName(restaurant
+						.getName());
+				return "restaurant/t_dashboard";
+			}
+			else if (Roles.ADMIN == user.getRole()) {
+				//refreshCounts(session);
+				((User) session.getAttribute("user")).setName("ADMIN");
+				return "redirect:admin/listCustomers";
+				//return "admin/t_dashboard";
+			}
 		}
 		catch (Exception ex) {
 			errors.add("An unknown exception occured while logging you in. Please try later.");
 		}
-		return "redirect:home";
+		return "t_login";
 	}
 }

@@ -4,57 +4,53 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<c:if test="${not empty errors}">
-	<div class="alert alert-danger">
-		<ul>
-			<c:forEach items="${errors}" var="e">
-				<li>${e}</li>
-			</c:forEach>
-		</ul>
-
-	</div>
-</c:if>
-
-<c:if test="${not empty successMessages}">
-	<div class="alert alert-success">
-		<ul>
-			<c:forEach items="${successMessages}" var="sm">
-				<li>${sm}</li>
-			</c:forEach>
-		</ul>
-
-	</div>
-</c:if>
-
-<c:if test="${not empty warnings}">
-	<div class="alert alert-warning">
-		<ul>
-			<c:forEach items="${warnings}" var="w">
-				<li>${w}</li>
-			</c:forEach>
-		</ul>
-	</div>
-</c:if>
-
-<div class="container theme-showcase" role="main">
-	<form class="form-signin" method="POST" id="loginForm"
-		action="${pageContext.request.contextPath}/login" novalidate
-		ectype="application/x-www-form-urlencoded" autocomplete="off">
-
-		<h2 class="form-signin-heading">Please sign in</h2>
-		<label for="inputEmail" class="sr-only">Email address</label> <input
-			type="email" name="username" id="username" class="form-control"
-			placeholder="Email address" required autofocus> <label
-			for="inputPassword" class="sr-only">Password</label> <input
-			type="password" name="pwd" id="pwd" class="form-control"
-			placeholder="Password" required>
-		<!-- <div class="checkbox">
-			<label> <input type="checkbox" value="remember-me">
-				Remember me
-			</label>
-		</div> -->
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
-			in</button>
-	</form>
-</div>
-<!-- /container -->
+ <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active" style="height:700px;">
+          <img src="${pageContext.request.contextPath}/resources/images/carousel/1.jpg" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <!-- <h1>Example headline.</h1>
+              <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>-->
+            </div>
+          </div>
+        </div>
+        <div class="item" style="height:700px;">
+          <img src="${pageContext.request.contextPath}/resources/images/carousel/2.jpg" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+             <!--  <h1>Another example headline.</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p> -->
+            </div>
+          </div>
+        </div>
+        <div class="item" style="height:700px;">
+          <img src="${pageContext.request.contextPath}/resources/images/carousel/3.jpg" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption">
+             <!--  <h1>One more for good measure.</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->

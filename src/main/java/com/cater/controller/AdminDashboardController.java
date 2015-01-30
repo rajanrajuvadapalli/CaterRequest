@@ -1,5 +1,7 @@
 package com.cater.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,25 +28,37 @@ public class AdminDashboardController {
 	private RestaurantService restaurantService;
 
 	@RequestMapping(value = { "dashboard" }, method = RequestMethod.GET)
-	public String getDashboard() {
+	public String getDashboard(HttpSession session) {
+		refreshCounts(session);
 		return "admin/t_dashboard";
 	}
 
 	@RequestMapping(value = { "listCustomers" }, method = RequestMethod.GET)
-	public String listCustomers(ModelMap modelMap) {
+	public String listCustomers(ModelMap modelMap, HttpSession session) {
 		modelMap.put("customers", customerService.fetchAllCustomers());
+		refreshCounts(session);
 		return "admin/t_listCustomers";
 	}
 
 	@RequestMapping(value = { "listEvents" }, method = RequestMethod.GET)
-	public String listEvents(ModelMap modelMap) {
+	public String listEvents(ModelMap modelMap, HttpSession session) {
 		modelMap.put("events", customerService.fetchAllEvents());
+		refreshCounts(session);
 		return "admin/t_listEvents";
 	}
 
 	@RequestMapping(value = { "listRestaurants" }, method = RequestMethod.GET)
-	public String listRestaurants(ModelMap modelMap) {
+	public String listRestaurants(ModelMap modelMap, HttpSession session) {
 		modelMap.put("restaurants", restaurantService.fetchAllRestaurants());
+		refreshCounts(session);
 		return "admin/t_listRestaurants";
+	}
+
+	public void refreshCounts(HttpSession session) {
+		session.setAttribute("nCustomers",
+				customerService.getNumberOfCustomers());
+		session.setAttribute("nRestaurants",
+				restaurantService.getNumberOfRestaurants());
+		session.setAttribute("nEvents", customerService.getNumberOfEvents());
 	}
 }

@@ -42,14 +42,14 @@
 
 <div align="center" id="register-options">
 	<h3 style="text-align: center; color: silver;">Would you like to
-		register as</h3>
+		register as</h3><br> <br> <br>
 	<table>
 		<tr>
-			<td class="image-button"><img
+			<td class="image-button img-thumbnail"><img
 				src="${pageContext.request.contextPath}/resources/images/individual.png"
 				alt="customer" onclick="showRegistrationFormFor('customer')" /></td>
 			<td>&nbsp;&nbsp;&nbsp;</td>
-			<td class="image-button"><img
+			<td class="image-button img-thumbnail"><img
 				src="${pageContext.request.contextPath}/resources/images/chef.jpg"
 				alt="restaurant" onclick="showRegistrationFormFor('restaurant')" /></td>
 		</tr>

@@ -40,7 +40,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<c:choose>
 					<c:when test="${empty sessionScope.user}">
-						<li><a href="${pageContext.request.contextPath}/home">Login</a></li>
+						<li><a href="${pageContext.request.contextPath}/login">Login</a></li>
 						<li><a href="${pageContext.request.contextPath}/register">Sign
 								Up</a></li>
 					</c:when>
@@ -72,7 +72,8 @@
 								<li><a href="${pageContext.request.contextPath}/home">
 										My Dashboard </a></li>
 								
-								<c:if test="${sessionScope.user.role == 'ADMIN'}">	
+								<c:if test="${sessionScope.user.role == 'ADMIN'}">
+								<li class="divider"></li>	
 								<li><a href="${pageContext.request.contextPath}/admin/listCustomers">
 										List Customers <span class="badge">${nCustomers}</span></a></li>								
 								<li><a href="${pageContext.request.contextPath}/admin/listEvents">
@@ -81,6 +82,7 @@
 										List Restaurants <span class="badge">${nRestaurants}</span></a></li>						
 								</c:if>
 								
+								<li class="divider"></li>
 								<li><a href="${pageContext.request.contextPath}/logout">
 										Logout </a></li>
 							</ul>
