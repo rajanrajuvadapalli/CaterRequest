@@ -15,7 +15,7 @@
         <li data-target="#myCarousel" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner" role="listbox">
-        <div class="item active" style="height:700px;">
+        <div class="item active">
           <img src="${pageContext.request.contextPath}/resources/images/carousel/3.jpg" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
@@ -25,7 +25,7 @@
             </div>
           </div>
         </div>
-        <div class="item" style="height:700px;">
+        <div class="item">
           <img src="${pageContext.request.contextPath}/resources/images/carousel/2.jpg" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
@@ -35,7 +35,7 @@
             </div>
           </div>
         </div>
-        <div class="item" style="height:700px;">
+        <div class="item">
           <img src="${pageContext.request.contextPath}/resources/images/carousel/1.jpg" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
