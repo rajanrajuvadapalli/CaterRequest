@@ -4,6 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<div class="container container-fluid">
  <!-- Carousel
     ================================================== -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -15,7 +16,7 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active" style="height:700px;">
-          <img src="${pageContext.request.contextPath}/resources/images/carousel/1.jpg" alt="First slide">
+          <img src="${pageContext.request.contextPath}/resources/images/carousel/3.jpg" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
               <!-- <h1>Example headline.</h1>
@@ -35,7 +36,7 @@
           </div>
         </div>
         <div class="item" style="height:700px;">
-          <img src="${pageContext.request.contextPath}/resources/images/carousel/3.jpg" alt="Third slide">
+          <img src="${pageContext.request.contextPath}/resources/images/carousel/1.jpg" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
              <!--  <h1>One more for good measure.</h1>
@@ -54,3 +55,4 @@
         <span class="sr-only">Next</span>
       </a>
     </div><!-- /.carousel -->
+  </div>

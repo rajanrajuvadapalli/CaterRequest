@@ -89,7 +89,7 @@
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">To: </label>
-					<label class="col-sm-6 text-muted" style="font-family:courier;">${adminEmail} (Admin)</label>
+					<span class="col-sm-4 text-muted" style="font-family:courier;">${adminEmail} (Admin)</span>
 				</div>
 				<div class="form-group">
 					<label for="subject" class="col-sm-2 control-label">Subject: </label>

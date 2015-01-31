@@ -6,27 +6,22 @@
 
 <html>
 	<head>
+		<meta name="viewport" content="width=device-width, user-scalable=no" />
 		<meta http-equiv="content-type" content="text/html" />
 		<title><t:getAsString name="title"/></title>
 		<c:import url="scripts.jsp"></c:import>
 	</head>
 	<body align="center">
-		<table align="center">
-			<tr>
-				<td>
-					<t:insertAttribute name="header" />
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<t:insertAttribute name="body" />
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<t:insertAttribute name="footer" />
-				</td>
-			</tr>
-		</table>
+		<div class="container container-fluid">
+			<div class="row">
+				<t:insertAttribute name="header" />
+			</div>
+			<div class="row">
+				<t:insertAttribute name="body" />
+			</div>
+			<div class="row">
+				<t:insertAttribute name="footer" />
+			</div>
+		</div>
 	</body>
 </html>

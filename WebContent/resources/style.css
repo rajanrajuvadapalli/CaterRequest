@@ -1,11 +1,13 @@
 .image-button {
-	width: 300px;
+	/*width: 300px;
 	text-align: center;
-	vertical-align: center;
 	border: 1px solid silver;
 	border-radius: 5px;
 	box-shadow: 10px 10px 10px #888888;
+	vertical-align: center;
+	*/
 	/* h-shadow v-shadow blur spread color */
+	
 	opacity: 0.5;
 	filter: alpha(opacity=50); /* For IE8 and earlier */
 }

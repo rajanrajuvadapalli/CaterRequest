@@ -4,7 +4,7 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 	<definition name="template" template="/WEB-INF/layouts/classic.jsp">
-		<put-attribute name="title" value="Cater 4 Party" />
+		<put-attribute name="title" value="Cater Request" />
 		<put-attribute name="header" value="/WEB-INF/layouts/header.jsp" />
 		<!-- <put-attribute name="menu" value="/WEB-INF/layouts/menu.jsp" /> -->
 		<!-- <put-attribute name="body" value="layouts/home.jsp" /> -->

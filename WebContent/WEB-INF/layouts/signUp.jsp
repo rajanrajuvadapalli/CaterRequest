@@ -40,22 +40,20 @@
 	</div>
 </c:if>
 
-<div align="center" id="register-options">
-	<h3 style="text-align: center; color: silver;">Would you like to
-		register as</h3><br> <br> <br>
-	<table>
-		<tr>
-			<td class="image-button img-thumbnail"><img
-				src="${pageContext.request.contextPath}/resources/images/individual.png"
-				alt="customer" onclick="showRegistrationFormFor('customer')" /></td>
-			<td>&nbsp;&nbsp;&nbsp;</td>
-			<td class="image-button img-thumbnail"><img
-				src="${pageContext.request.contextPath}/resources/images/chef.jpg"
-				alt="restaurant" onclick="showRegistrationFormFor('restaurant')" /></td>
-		</tr>
-	</table>
-	<br> <br> <br>
-</div>
+<div class="container container-fluid">
+	<div id="register-options">
+		<h3 class="text-muted">Would you like to register as</h3><br> <br> <br>
+		<div class="row" align="center">
+			<div class="col-sm-4 image-button img-rounded">
+				<img src="${pageContext.request.contextPath}/resources/images/individual.png"
+					alt="customer" onclick="showRegistrationFormFor('customer')" />
+			</div>
+			<div class="col-sm-4 image-button img-rounded">
+				<img src="${pageContext.request.contextPath}/resources/images/chef.jpg"
+					alt="restaurant" onclick="showRegistrationFormFor('restaurant')" />
+			</div>
+		</div>
+	</div>
 
 <form class="form-horizontal" method="POST" id="register-form"
 	action="${pageContext.request.contextPath}/register" novalidate
@@ -196,5 +194,6 @@
 		<button type="submit" class="btn btn-lg btn-primary btn-block">Register</button>
 	</div>
 </form>
+</div>
 
 
