@@ -6,7 +6,7 @@
 
 <html>
 	<head>
-		<meta name="viewport" content="width=device-width, user-scalable=no" />
+		<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1" />
 		<meta http-equiv="content-type" content="text/html" />
 		<title><t:getAsString name="title"/></title>
 		<c:import url="scripts.jsp"></c:import>
