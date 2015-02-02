@@ -7,31 +7,8 @@
 /* Carousel base class */
 .carousel {
   width: device-width;
-  
-  margin-bottom: 60px;
-}
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-  z-index: 10;
+   margin-bottom: 60px; 
 }
 
-/* Declare heights because of positioning of img element */
-.carousel .item {
-  height: 100%;
-  background-color: #777;
-}
-.carousel-inner > .item > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
- height: auto;
-}
 
-/*
-@media (min-width: 1500px) {
-  .carousel {
-    height: 700px;
-  }
-}*/
 
