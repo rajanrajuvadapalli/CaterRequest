@@ -69,7 +69,7 @@
 							data-toggle="dropdown" role="button" aria-expanded="false">${sessionUserName}
 								<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="${pageContext.request.contextPath}/home">
+								<li><a href="${pageContext.request.contextPath}/dashboard">
 										My Dashboard </a></li>
 								
 								<c:if test="${sessionScope.user.role == 'ADMIN'}">

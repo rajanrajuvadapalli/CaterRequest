@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cater.service.CustomerService;
 import com.cater.service.RestaurantService;
+import com.cater.ui.data.User;
 
 /** 
  * Description: 
@@ -26,10 +27,15 @@ public class AdminDashboardController {
 	@Autowired
 	private RestaurantService restaurantService;
 
-	@RequestMapping(value = { "dashboard" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "dashboard" })
 	public String getDashboard(HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return "t_home";
+		}
+		user.setName("ADMIN");
 		refreshCounts(session);
-		return "admin/t_dashboard";
+		return "redirect:listCustomers";
 	}
 
 	@RequestMapping(value = { "listCustomers" }, method = RequestMethod.GET)

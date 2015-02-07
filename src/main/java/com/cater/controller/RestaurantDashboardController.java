@@ -23,6 +23,19 @@ public class RestaurantDashboardController {
 	@Autowired
 	private RestaurantService restaurantService;
 
+	@RequestMapping(value = { "dashboard" })
+	public String getDashboard(ModelMap modelMap, HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return "t_home";
+		}
+		Restaurant restaurant = restaurantService
+				.findRestaurantWithLoginId(user.getLoginID());
+		modelMap.put("restaurant", restaurant);
+		((User) session.getAttribute("user")).setName(restaurant.getName());
+		return "restaurant/t_dashboard";
+	}
+
 	/**
 	 * List quotes.
 	 *

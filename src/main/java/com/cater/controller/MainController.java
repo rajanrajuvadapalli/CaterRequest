@@ -1,5 +1,7 @@
 package com.cater.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -7,6 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
+
+import com.cater.constants.Roles;
+import com.cater.ui.data.User;
 
 /**
  * The Class MainController.
@@ -21,6 +26,24 @@ public class MainController {
 	 */
 	@RequestMapping(value = { "", "home" })
 	public String home(ModelMap modelMap) {
+		return "t_home";
+	}
+
+	@RequestMapping(value = { "dashboard" })
+	public String dashboard(ModelMap modelMap, HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return "t_home";
+		}
+		if (Roles.CUSTOMER == user.getRole()) {
+			return "redirect:customer/dashboard";
+		}
+		else if (Roles.RESTAURANT == user.getRole()) {
+			return "redirect:restaurant/dashboard";
+		}
+		else if (Roles.ADMIN == user.getRole()) {
+			return "redirect:admin/dashboard";
+		}
 		return "t_home";
 	}
 

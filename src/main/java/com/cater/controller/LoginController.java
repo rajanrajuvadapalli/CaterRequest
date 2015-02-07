@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cater.constants.Roles;
-import com.cater.model.Customer;
 import com.cater.model.Login;
-import com.cater.model.Restaurant;
 import com.cater.service.CustomerService;
 import com.cater.service.LoginService;
 import com.cater.service.RestaurantService;
@@ -95,30 +93,7 @@ public class LoginController {
 			Roles role = Roles.get(login.getRole());
 			user.setRole(role);
 			session.setAttribute("user", user);
-			if (Roles.CUSTOMER == user.getRole()) {
-				Customer customer = customerService
-						.findCustomerWithLoginId(user.getLoginID());
-				modelMap.put("customer", customer);
-				//Hibernate.initialize(customer.getEvents());
-				modelMap.put("events", customer.getEvents());
-				((User) session.getAttribute("user")).setName(customer
-						.getName());
-				return "customer/t_dashboard";
-			}
-			else if (Roles.RESTAURANT == user.getRole()) {
-				Restaurant restaurant = restaurantService
-						.findRestaurantWithLoginId(user.getLoginID());
-				modelMap.put("restaurant", restaurant);
-				((User) session.getAttribute("user")).setName(restaurant
-						.getName());
-				return "restaurant/t_dashboard";
-			}
-			else if (Roles.ADMIN == user.getRole()) {
-				//refreshCounts(session);
-				((User) session.getAttribute("user")).setName("ADMIN");
-				return "redirect:admin/listCustomers";
-				//return "admin/t_dashboard";
-			}
+			return "redirect:dashboard";
 		}
 		catch (Exception ex) {
 			errors.add("An unknown exception occured while logging you in. Please try later.");

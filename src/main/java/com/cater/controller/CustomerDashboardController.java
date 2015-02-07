@@ -67,8 +67,17 @@ public class CustomerDashboardController {
 		}
 		return "notiles/_eventsList";
 	}*/
-	@RequestMapping(value = { "dashboard" }, method = RequestMethod.GET)
-	public String getDashboard() {
+	@RequestMapping(value = { "dashboard" })
+	public String getDashboard(ModelMap modelMap, HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return "t_home";
+		}
+		Customer customer = customerService.findCustomerWithLoginId(user
+				.getLoginID());
+		modelMap.put("customer", customer);
+		modelMap.put("events", customer.getEvents());
+		((User) session.getAttribute("user")).setName(customer.getName());
 		return "customer/t_dashboard";
 	}
 
