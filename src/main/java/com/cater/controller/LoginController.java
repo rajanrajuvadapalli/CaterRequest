@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cater.constants.Roles;
 import com.cater.model.Login;
-import com.cater.service.CustomerService;
 import com.cater.service.LoginService;
-import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
 import com.google.common.collect.Lists;
 
@@ -24,10 +22,6 @@ import com.google.common.collect.Lists;
 public class LoginController {
 	@Autowired
 	private LoginService loginService;
-	@Autowired
-	private CustomerService customerService;
-	@Autowired
-	private RestaurantService restaurantService;
 
 	/**
 	 * Logout.
