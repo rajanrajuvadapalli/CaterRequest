@@ -6,9 +6,10 @@
 
 <c:if test="${not empty errors}">
 	<div class="alert alert-danger">
+
 		<ul>
 			<c:forEach items="${errors}" var="e">
-				<li>${e}</li>
+				<li align="left">${e}</li>
 			</c:forEach>
 		</ul>
 
@@ -19,7 +20,7 @@
 	<div class="alert alert-success">
 		<ul>
 			<c:forEach items="${successMessages}" var="sm">
-				<li>${sm}</li>
+				<li align="left">${sm}</li>
 			</c:forEach>
 		</ul>
 
@@ -30,12 +31,11 @@
 	<div class="alert alert-warning">
 		<ul>
 			<c:forEach items="${warnings}" var="w">
-				<li>${w}</li>
+				<li align="left">${w}</li>
 			</c:forEach>
 		</ul>
 	</div>
 </c:if>
-
 <div class="container theme-showcase" role="main">
 	<form class="form-signin" method="POST" id="loginForm"
 		action="${pageContext.request.contextPath}/login" novalidate

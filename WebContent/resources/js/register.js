@@ -28,7 +28,7 @@ function showRegistrationFormFor(user) {
 function populateCuisineTypes() {
 	$("span[id=cuisineType]")
 			.replaceWith(
-					"<select class=\"inputs\" name=\"cuisineType\" id=\"cuisineType\" required=\"required\">"
+					"<select class=\"form-control inputs\" name=\"cuisineType\" id=\"cuisineType\" required=\"required\">"
 							+ "	<option value=\"AMERICAN\">		AMERICAN           </option>              "
 							+ "	<option value=\"CHINESE\"> 		CHINESE            </option>              "
 							+ "	<option value=\"CONTINENTAL\"> 	CONTINENTAL        </option>              "
