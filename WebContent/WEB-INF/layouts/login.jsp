@@ -4,39 +4,40 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<c:if test="${not empty errors}">
-	<div class="alert alert-danger">
+<div class="col-sm-11">
+	<c:if test="${not empty errors}">
+		<div class="alert alert-danger">
 
-		<ul>
-			<c:forEach items="${errors}" var="e">
-				<li align="left">${e}</li>
-			</c:forEach>
-		</ul>
+			<ul>
+				<c:forEach items="${errors}" var="e">
+					<li align="left">${e}</li>
+				</c:forEach>
+			</ul>
 
-	</div>
-</c:if>
+		</div>
+	</c:if>
 
-<c:if test="${not empty successMessages}">
-	<div class="alert alert-success">
-		<ul>
-			<c:forEach items="${successMessages}" var="sm">
-				<li align="left">${sm}</li>
-			</c:forEach>
-		</ul>
+	<c:if test="${not empty successMessages}">
+		<div class="alert alert-success">
+			<ul>
+				<c:forEach items="${successMessages}" var="sm">
+					<li align="left">${sm}</li>
+				</c:forEach>
+			</ul>
 
-	</div>
-</c:if>
+		</div>
+	</c:if>
 
-<c:if test="${not empty warnings}">
-	<div class="alert alert-warning">
-		<ul>
-			<c:forEach items="${warnings}" var="w">
-				<li align="left">${w}</li>
-			</c:forEach>
-		</ul>
-	</div>
-</c:if>
-<div class="container theme-showcase" role="main">
+	<c:if test="${not empty warnings}">
+		<div class="alert alert-warning">
+			<ul>
+				<c:forEach items="${warnings}" var="w">
+					<li align="left">${w}</li>
+				</c:forEach>
+			</ul>
+		</div>
+	</c:if>
+
 	<form class="form-signin" method="POST" id="loginForm"
 		action="${pageContext.request.contextPath}/login" novalidate
 		ectype="application/x-www-form-urlencoded" autocomplete="off">

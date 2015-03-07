@@ -40,7 +40,7 @@
 	</div>
 </c:if>
 
-<div class="col-sm-10">
+<div class="col-sm-12">
 	<div class="panel panel-info">
 		<div class="panel-heading">
 			<h3 class="panel-title">Personal Info</h3>
@@ -110,8 +110,8 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="street2" class="col-sm-2 control-label">Street 2:
-					</label>
+					<label for="street2" class="col-sm-2 control-label">Street
+						2: </label>
 
 					<div class="col-sm-6">
 						<input type="text" size="30" maxlength="50" name="street2"
@@ -142,8 +142,14 @@
 					</div>
 				</div>
 
-				<button type="submit" class="btn btn-lg btn-primary btn-block">Update
-				</button>
+				<div class="form-group">
+					<label class="col-sm-2 control-label"></label>
+
+					<div class="col-sm-6" align="left">
+						<button type="submit" class="btn btn-lg btn-primary">Update
+						</button>
+					</div>
+				</div>
 
 			</form>
 		</div>

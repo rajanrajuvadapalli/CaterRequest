@@ -41,7 +41,7 @@
 </c:if>
 
 
-<div class="col-sm-10">
+<div class="col-sm-12">
 	<div class="panel panel-info">
 		<div class="panel-heading">
 			<h3 class="panel-title">Payment Info</h3>

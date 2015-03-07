@@ -78,7 +78,7 @@ public class RegistrationController {
 			Login login = loginService.retrieveLoginFor(username, null);
 			if (login != null) {
 				List<String> warnings = Lists.newArrayList();
-				warnings.add("The email addresses used is already registered.");
+				warnings.add("The email address used is already registered.");
 				if (!login.isActive()) {
 					warnings.add("If you registered earlier, please check your email ("
 							+ login.getUsername()

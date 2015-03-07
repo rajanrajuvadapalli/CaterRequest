@@ -8,7 +8,7 @@
 	<h1>Admin Dashboard</h1>
 </div>
 
-<div class="col-sm-10">
+<div class="col-sm-12">
 	<div class="panel panel-success">
 		<div class="panel-heading">
 			<h3 class="panel-title">Events</h3>

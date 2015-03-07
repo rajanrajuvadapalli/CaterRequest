@@ -8,15 +8,18 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-	<!-- Create DataSource Bean -->
-    <bean id="dataSourceMysqlAws" class="org.springframework.jndi.JndiObjectFactoryBean">
-        <property name="jndiName" value="java:comp/env/jdbc/awsrds"/>
-    </bean>
-
+	<bean id="dataSourceLocal" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+	
 	<!-- Hibernate 4 SessionFactory Bean definition -->
 	<bean id="hibernate4AnnotatedSessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<property name="dataSource" ref="dataSourceMysqlAws" />
+		<property name="dataSource" ref="dataSourceLocal" />
 		<property name="packagesToScan">
 			<list>
 				<value>com.cater.model</value>
@@ -24,10 +27,10 @@
 		</property>
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
 				<prop key="hibernate.current_session_context_class">thread</prop>
 				<prop key="hibernate.show_sql">true</prop>
- 				<prop key="hibernate.default_schema">mycaterdb</prop>
+ 				<prop key="hibernate.default_schema">cater4party</prop>
 			</props>
 		</property>
 	</bean>

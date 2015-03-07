@@ -18,12 +18,12 @@
 			<t:insertAttribute name="header" />
 		</div>
 		<div class="row">
-			<div class="col-md-1">
+			<div class="col-sm-1">
 				<img
 					src="${pageContext.request.contextPath}/resources/images/logo.jpg"
 					alt="VSP" width="180px" />
 			</div>
-			<div class="col-md-12">
+			<div>
 				<t:insertAttribute name="body" />
 			</div>
 		</div>

@@ -41,7 +41,7 @@
 </c:if>
 
 
-<div class="col-sm-10">
+<div class="col-sm-12">
 	<div align="right">
 		<a href="${pageContext.request.contextPath}/customer/createEvent"
 			role="button" class="btn btn-lg btn-primary"> Create Event</a>

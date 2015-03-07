@@ -1,3 +1,7 @@
+body {
+	font-size: 20px!important;
+}
+
 .image-button {
 	/*width: 300px;
 	text-align: center;
@@ -19,9 +23,9 @@
 }
 
 .navbar-nav {
-	font-size: 20px;
+	/* font-size: 20px; */
 }
 
 .alert {
-	font-size: 20px;
+	/* font-size: 20px; */
 }
