@@ -1,13 +1,25 @@
 $('document').ready(function() {
 	$("input[id=datetimepicker]").datetimepicker();
-	// listCustomerEvents();
-	/*
-	 * $("td[id=customerDashboardData]") .html( "<div
-	 * class=\"sideMenuItemsDetail\">Please select from options to your left.</div>");
-	 */
 	// validateSelectMenuFormOnSubmit();
 	validateMenuFormOnSubmit();
 });
+
+function validateEventDate() {
+	// Validate that the date is in the future
+	//var date_time = $('input[id=datetimepicker]').val();
+	var dateObject = $('input[id=datetimepicker]').datepicker('getDate');
+	if(new Date().getTime() > dateObject) {
+		alert("Please enter a date in the future.");
+		return false;
+	} else {
+		alert(dateObject);
+		return true;
+	}
+}
+
+function test () {
+	alert("Blah");
+}
 
 /*
  * function listCustomerEvents() { // Make an ajax call and get list of events
@@ -34,17 +46,16 @@ $('document').ready(function() {
  * function showCuisineOptions(eventId) { console.log(eventId); var cuisines = "<div
  * class=\"sideMenuItemsDetail\">" + "<form method=\"POST\"
  * id=\"select-cuisine-form\"
- * action=\"/cater4party/customer/event/selectRestaurant\">"
- *  + " <input type=\"radio\" name=\"cuisine\" value=\"AMERICAN\"> AMERICAN
- * </input> <br> " + " <input type=\"radio\" name=\"cuisine\" value=\"CHINESE\">
- * CHINESE </input> <br> " + " <input type=\"radio\" name=\"cuisine\"
- * value=\"CONTINENTAL\"> CONTINENTAL </input> <br> " + " <input type=\"radio\"
- * name=\"cuisine\" value=\"CUBAN\"> CUBAN </input> <br> " + " <input
- * type=\"radio\" name=\"cuisine\" value=\"FRENCH\"> FRENCH </input> <br> " + "
- * <input type=\"radio\" name=\"cuisine\" value=\"GREEK\"> GREEK </input> <br> "
- *  + " <input type=\"radio\" name=\"cuisine\" value=\"INDIAN\"> INDIAN </input>
- * <br> "
- *  + " <input type=\"radio\" name=\"cuisine\" value=\"INDONESIAN\"> INDONESIAN
+ * action=\"/cater4party/customer/event/selectRestaurant\">" + " <input
+ * type=\"radio\" name=\"cuisine\" value=\"AMERICAN\"> AMERICAN </input> <br> " + "
+ * <input type=\"radio\" name=\"cuisine\" value=\"CHINESE\"> CHINESE </input>
+ * <br> " + " <input type=\"radio\" name=\"cuisine\" value=\"CONTINENTAL\">
+ * CONTINENTAL </input> <br> " + " <input type=\"radio\" name=\"cuisine\"
+ * value=\"CUBAN\"> CUBAN </input> <br> " + " <input type=\"radio\"
+ * name=\"cuisine\" value=\"FRENCH\"> FRENCH </input> <br> " + " <input
+ * type=\"radio\" name=\"cuisine\" value=\"GREEK\"> GREEK </input> <br> " + "
+ * <input type=\"radio\" name=\"cuisine\" value=\"INDIAN\"> INDIAN </input> <br> " + "
+ * <input type=\"radio\" name=\"cuisine\" value=\"INDONESIAN\"> INDONESIAN
  * </input> <br> " + " <input type=\"radio\" name=\"cuisine\" value=\"ITALIAN\">
  * ITALIAN </input> <br> " + " <input type=\"radio\" name=\"cuisine\"
  * value=\"JAPANESE\"> JAPANESE </input> <br> " + " <input type=\"radio\"
@@ -59,12 +70,12 @@ $('document').ready(function() {
  * <input type=\"radio\" name=\"cuisine\" value=\"THAI\"> THAI </input> <br> " + "
  * <input type=\"radio\" name=\"cuisine\" value=\"TIBETAN\"> TIBETAN </input>
  * <br> " + " <input type=\"radio\" name=\"cuisine\" value=\"VIETNAMESE\">
- * VIETNAMESE </input> <br> "
- *  + "<input type=\"hidden\" name=\"eventId\" value=\"" + eventId + "\">" + "<button
- * width=\"50px\" class=\"button\">Next</button>" + "</div>" + "</form>";
+ * VIETNAMESE </input> <br> " + "<input type=\"hidden\" name=\"eventId\"
+ * value=\"" + eventId + "\">" + "<button width=\"50px\" class=\"button\">Next</button>" + "</div>" + "</form>";
  * $("td[id=customerDashboardData]").html(cuisines);
  * validateSelectMenuFormOnSubmit(); }
  */
+
 
 function validateSelectMenuFormOnSubmit() {
 	$("form[id=select-cuisine-form]").validate({

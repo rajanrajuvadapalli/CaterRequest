@@ -63,7 +63,7 @@
 				</c:when>
 				<c:otherwise>
 					<div class="table-responsive">
-						<table class="table table-striped table-hover table-bordered">
+						<table class="table table-striped table-hover table-bordered sortable" >
 							<tr>
 								<th>Event Name</th>
 								<th>Date/Time</th>

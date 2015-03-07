@@ -54,7 +54,7 @@
 				<c:if test="${sessionScope.user.role.value == 'CUSTOMER'}">
 					<div class="form-group">
 
-						<label for="name" class="col-sm-2 control-label">Name&nbsp;:</label>
+						<label for="name" class="col-sm-3 control-label">Name&nbsp;:</label>
 						<div class="col-sm-6">
 							<input type="text" size="30" maxlength="50" name="name"
 								required="required" class="form-control"
@@ -64,7 +64,7 @@
 				</c:if>
 				<c:if test="${sessionScope.user.role.value == 'RESTAURANT'}">
 					<div class="form-group">
-						<label for="restaurantName" class="col-sm-2 control-label">Restaurant
+						<label for="restaurantName" class="col-sm-3 control-label">Restaurant
 							Name: </label>
 						<div class="col-sm-6">
 							<input type="text" size="30" maxlength="50" name="restaurantName"
@@ -73,7 +73,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="cuisineType" class="col-sm-2 control-label">Cuisine
+						<label for="cuisineType" class="col-sm-3 control-label">Cuisine
 							Type: </label>
 						<div class="col-sm-6">
 							<input type="text" size="30" maxlength="30" name="cuisineType"
@@ -82,7 +82,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="url" class="col-sm-2 control-label">Website
+						<label for="url" class="col-sm-3 control-label">Website
 							URL: </label>
 						<div class="col-sm-6">
 							<input type="text" size="30" maxlength="50" name="url"
@@ -93,7 +93,7 @@
 
 				</c:if>
 				<div class="form-group">
-					<label for="phone" class="col-sm-2 control-label">Contact
+					<label for="phone" class="col-sm-3 control-label">Contact
 						Phone: </label>
 					<div class="col-sm-6">
 						<input type="text" size="30" name="phone" class="form-control"
@@ -101,7 +101,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="name" class="col-sm-2 control-label">Street 1:
+					<label for="name" class="col-sm-3 control-label">Street 1:
 					</label>
 
 					<div class="col-sm-6">
@@ -110,7 +110,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="street2" class="col-sm-2 control-label">Street
+					<label for="street2" class="col-sm-3 control-label">Street
 						2: </label>
 
 					<div class="col-sm-6">
@@ -119,7 +119,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="city" class="col-sm-2 control-label">City: </label>
+					<label for="city" class="col-sm-3 control-label">City: </label>
 
 					<div class="col-sm-6">
 						<input type="text" size="30" maxlength="50" name="city"
@@ -127,14 +127,14 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="state" class="col-sm-2 control-label">State: </label>
+					<label for="state" class="col-sm-3 control-label">State: </label>
 					<div class="col-sm-6">
 						<input size="30" maxlength="50" name="state" class="form-control"
 							value="${sessionScope.user.data.state}">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="zip" class="col-sm-2 control-label">Zip: </label>
+					<label for="zip" class="col-sm-3 control-label">Zip: </label>
 
 					<div class="col-sm-6">
 						<input type="text" size="10" name="zip" maxlength="10"
@@ -143,7 +143,7 @@
 				</div>
 
 				<div class="form-group">
-					<label class="col-sm-2 control-label"></label>
+					<label class="col-sm-3 control-label"></label>
 
 					<div class="col-sm-6" align="left">
 						<button type="submit" class="btn btn-lg btn-primary">Update
