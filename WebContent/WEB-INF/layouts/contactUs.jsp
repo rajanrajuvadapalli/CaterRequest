@@ -41,59 +41,61 @@
 </c:if>
 
 <div class="col-sm-12">
-	<div class="panel panel-info">
-		<div class="panel-heading">
-			<h3 class="panel-title">Head Quarters</h3>
+	<div class="col-sm-6">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h3 class="panel-title">Head Quarters</h3>
+			</div>
+			<div class="panel-body">Rancho Cordova, Sacramento, CA 95670</div>
 		</div>
-		<div class="panel-body">Rancho Cordova, Sacramento, CA 95670</div>
+	</div>
+	<div class="col-sm-6">
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h3 class="panel-title">Customer Service</h3>
+			</div>
+			<div class="panel-body">
+				Call Center: 1-800-xxx-xxxx<br> Hours: Monday to Sunday - 9am
+				to 9pm PST
+			</div>
+		</div>
 	</div>
 </div>
 
-<div class="col-sm-12">
-	<div class="panel panel-success">
-		<div class="panel-heading">
-			<h3 class="panel-title">Customer Service</h3>
-		</div>
-		<div class="panel-body">
-			Call Center: 1-800-xxx-xxxx<br> Hours: Monday to Sunday - 9am to
-			9pm PST
-		</div>
-	</div>
-</div>
 
-<div class="col-sm-12">
+
+<div class="col-sm-8 col-sm-offset-2">
 	<div class="panel panel-warning">
 		<div class="panel-heading">
 			<h3 class="panel-title">Email</h3>
 		</div>
-		<div class="panel-body" style="font-family: courier; font-size: 18px;">
+		<div class="panel-body" style="font-size: 18px;">
 			<form class="form-horizontal" method="POST" id="contactUsForm"
 				action="${pageContext.request.contextPath}/contactUs/email"
 				novalidate ectype="application/x-www-form-urlencoded"
 				autocomplete="off">
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">Name: </label>
-					<div class="col-sm-6">
+					<div class="col-sm-8" style="font-family: courier;">
 						<input type="text" id="name" name="name" required="required"
 							class="form-control" style="font-size: 18px;">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="email" class="col-sm-2 control-label">Email: </label>
-					<div class="col-sm-6">
+					<div class="col-sm-8" style="font-family: courier;">
 						<input type="email" id="email" name="email" required="required"
 							class="form-control" style="font-size: 18px;">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">To: </label> <span
-						class="col-sm-4 text-muted" align="left">${adminEmail}
-						(Admin)</span>
+						class="col-sm-8 text-muted" align="left">${adminEmail} </span>
 				</div>
 				<div class="form-group">
 					<label for="subject" class="col-sm-2 control-label">Subject:
 					</label>
-					<div class="col-sm-6">
+					<div class="col-sm-8" style="font-family: courier;">
 						<input type="text" id="subject" name="subject" required="required"
 							class="form-control" style="font-size: 18px;">
 					</div>
@@ -101,9 +103,10 @@
 				<div class="form-group">
 					<label for="message" class="col-sm-2 control-label">Message:
 					</label>
-					<div class="col-sm-6">
+					<div class="col-sm-8">
 						<textarea class="form-control" rows="6" id="message"
-							name="message" required="required" style="font-size: 18px;"></textarea>
+							name="message" required="required"
+							style="font-family: courier; font-size: 18px;"></textarea>
 					</div>
 				</div>
 				<div class="form-group">

@@ -80,6 +80,7 @@ public class ContactUsController {
 					+ customerCareContactNumber);
 			modelMap.addAttribute("errors", errors);
 		}
+		modelMap.addAttribute("adminEmail", ADMIN_EMAIL);
 		return "t_contactUs";
 	}
 }
