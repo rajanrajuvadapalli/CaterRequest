@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +20,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.cater.Helper;
 import com.cater.constants.QuoteStatus;
 import com.cater.model.Address;
 import com.cater.model.Customer;
@@ -34,7 +35,6 @@ import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 
 /**
  * The Class CustomerDashboardController.
@@ -160,42 +160,8 @@ public class CustomerDashboardController {
 		}
 		customerService.saveOrUpdateEvent(e);
 		return "redirect:/customer/dashboard";
-		//c = customerService.findCustomerWithLoginId(user.getLoginID());
-		//modelMap.put("events", c.getEvents());
-		//return "customer/t_dashboard";
 	}
 
-	/*@RequestMapping(value = { "showMenu" }, method = RequestMethod.POST)
-	public String showMenu(HttpSession httpSession, ModelMap modelMap,
-			HttpServletRequest request) {
-		User user = (User) httpSession.getAttribute("user");
-		if (user == null) {
-			return "t_home";
-		}
-		String eventIdString = StringUtils.defaultString(request
-				.getParameter("eventId"));
-		String cuisineType = StringUtils.defaultString(request
-				.getParameter("cuisineType"));
-		logger.debug("Showing menu for event with ID: " + eventIdString
-				+ ", for cuisine: " + cuisineType);
-		//First check DB if a menu exists for this cuisine
-		List <Menu> menus = customerService.findMenusWithEventId(Helper
-				.stringToInteger(eventIdString));
-		Menu existingMenu = null;
-		if (CollectionUtils.isNotEmpty(menus)) {
-			for (Menu m : menus) {
-				if (StringUtils.equalsIgnoreCase(m.getCuisineType(),
-						cuisineType)) {
-					existingMenu = m;
-					break;
-				}
-			}
-		}
-		if (existingMenu == null) {
-			modelMap.put("menu", menuJson);
-		}
-		return "menus/t__cateringMenu";
-	}*/
 	/**
 	 * Select restaurant.
 	 *
@@ -204,7 +170,7 @@ public class CustomerDashboardController {
 	 * @param request the request
 	 * @return the string
 	 */
-	@RequestMapping(value = { "event/selectRestaurant" }, method = RequestMethod.POST)
+	/*@RequestMapping(value = { "event/selectRestaurant" }, method = RequestMethod.POST)
 	public String selectRestaurant(HttpSession httpSession, ModelMap modelMap,
 			HttpServletRequest request) {
 		User user = (User) httpSession.getAttribute("user");
@@ -251,8 +217,7 @@ public class CustomerDashboardController {
 		}
 		modelMap.put("prevR", previouslySelectedRestaurants);
 		return "menus/t__cateringRestaurants";
-	}
-
+	}*/
 	/**
 	 * Request quote.
 	 *
@@ -267,7 +232,8 @@ public class CustomerDashboardController {
 			HttpSession httpSession,
 			ModelMap modelMap,
 			HttpServletRequest request,
-			@RequestParam(value = "restaurantId", required = true) String[] restaurantIds) {
+			@RequestParam(value = "restaurantId", required = true) String[] restaurantIds,
+			RedirectAttributes redirectAttributes) {
 		User user = (User) httpSession.getAttribute("user");
 		if (user == null) {
 			return "t_home";
@@ -277,30 +243,35 @@ public class CustomerDashboardController {
 		if (menuId != null) {
 			menuModel = customerService.findMenuWithId(menuId);
 		}
+		List <String> selectedRestaurantNames = Lists.newArrayList();
 		for (String restaurantId : restaurantIds) {
 			//Find if a quote already exists.
 			Quote q = restaurantService.findQuoteWithRestaurantIdAndMenuId(
-					Integer.parseInt(restaurantId), menuId);
+					Helper.stringToInteger(restaurantId), menuId);
+			Restaurant restaurant = restaurantService
+					.findRestaurantWithId(Helper.stringToInteger(restaurantId));
+			selectedRestaurantNames.add(restaurant.getName());
 			if (q == null) {
 				q = new Quote();
 				q.setStatus(QuoteStatus.CREATED.toString());
 				q.setMenu(menuModel);
-				Restaurant restaurant = restaurantService
-						.findRestaurantWithId(Integer.parseInt(restaurantId));
 				q.setRestaurant(restaurant);
+				restaurantService.saveOrUpdateQuote(q);
 			}
-			restaurantService.saveOrUpdateQuote(q);
 		}
 		//TODO: Send emails to restaurants, requesting to submit quotes.
-		String eventId = (String) httpSession.getAttribute("eventId");
-		Event e = customerService.findEventWithId(Integer.valueOf(eventId));
+		String eventName = (String) httpSession.getAttribute("eventName");
 		List <String> successMessages = Lists.newArrayList();
 		successMessages
 				.add("Your request for quotes is successfully submitted for '"
-						+ e.getName() + "'.");
-		modelMap.addAttribute("successMessages", successMessages);
+						+ eventName + "'.");
+		successMessages.add("To restaurant(s): "
+				+ StringUtils.join(selectedRestaurantNames, ", "));
+		redirectAttributes
+				.addFlashAttribute("successMessages", successMessages);
 		httpSession.removeAttribute("eventId");
+		httpSession.removeAttribute("eventName");
 		httpSession.removeAttribute("menuId");
-		return "customer/t_dashboard";
+		return "redirect:/customer/dashboard";
 	}
 }

@@ -80,7 +80,7 @@
 									<td><c:if test="${not empty e2m.get(e.id)}">
 											<c:forEach items="${e2m.get(e.id)}" var="cuisine">
 												${cuisine}<a
-													href="${pageContext.request.contextPath}/customer/editMenu?eventId=${e.id}&cuisine=${cuisine}">
+													href="${pageContext.request.contextPath}/menu/selectMenu?eventId=${e.id}&cuisineType=${cuisine}">
 													<img alt="edit"
 													src="${pageContext.request.contextPath}/resources/images/edit.png">
 												</a>
@@ -88,12 +88,13 @@
 											</c:forEach>
 										</c:if>
 
-										<form class="form-horizontal" method="POST" id="event-form"
+										<form class="form-horizontal" method="GET" id="event-form"
 											action="${pageContext.request.contextPath}/menu/selectMenu"
 											ectype="application/x-www-form-urlencoded">
 
 											<div class="row">
-												<input type="text" hidden="true" name="eventId" value="${e.id}">
+												<input type="text" hidden="true" name="eventId"
+													value="${e.id}">
 												<div class="col-sm-4">
 													<span id="cuisineType"></span>
 												</div>

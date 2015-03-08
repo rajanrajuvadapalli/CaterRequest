@@ -5,11 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="page-header">
-	<h1>
-		${sessionScope.eventName}/
-		<c:out value="${menu.cuisine}"></c:out>
-		menu
-	</h1>
+	<h1>${sessionScope.eventName}/${menu.cuisine} menu</h1>
 </div>
 
 <div class="col-sm-12">
@@ -50,6 +46,6 @@
 </div>
 
 
-<input type="hidden" name="cuisine" value="${menu.cuisine}">
+<input type="hidden" name="cuisineType" value="${menu.cuisine}">
 </form>
 </div>

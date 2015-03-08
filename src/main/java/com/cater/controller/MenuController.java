@@ -63,7 +63,7 @@ public class MenuController {
 	 * @param cuisines the cuisines
 	 * @return the string
 	 */
-	@RequestMapping(value = { "selectMenu" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "selectMenu" }, method = RequestMethod.GET)
 	public String selectMenuForm(HttpSession httpSession, ModelMap modelMap,
 			HttpServletRequest request,
 			@RequestParam(value = "cuisineType", required = true) String cuisine) {
@@ -134,20 +134,19 @@ public class MenuController {
 			HttpSession httpSession,
 			ModelMap modelMap,
 			HttpServletRequest request,
-			@RequestParam(value = "itemName", required = true) String[] itemNames) {
+			@RequestParam(value = "itemName", required = true) String[] itemNames,
+			@RequestParam(value = "cuisineType", required = true) String cuisine) {
 		User user = (User) httpSession.getAttribute("user");
 		if (user == null) {
 			return "t_home";
 		}
-		String cuisineType = request.getParameter("cuisine");
 		String eventId = (String) httpSession.getAttribute("eventId");
+		modelMap.put("cuisineType", cuisine);
 		//TODO: Dynamically pull the menu after we start supporting more cuisines.
 		//Temporarily hard coded to "indian" menu.
 		try {
-			String menuJson = "/menus/indian.json";
-			if (StringUtils.equalsIgnoreCase("indian", cuisineType)) {
-				menuJson = "/menus/indian.json";
-			}
+			String menuJson = "/menus/"
+					+ StringUtils.lowerCase(cuisine, Locale.US) + ".json";
 			File f = new File(MenuController.class.getResource(menuJson)
 					.getFile());
 			Menu menu = new MenuDeserializer().readJSON(f);
@@ -162,7 +161,8 @@ public class MenuController {
 					}
 				}
 			}
-			Event e = customerService.findEventWithId(Integer.valueOf(eventId));
+			Event e = customerService.findEventWithId(Helper
+					.stringToInteger(eventId));
 			//Create or update menu in database
 			com.cater.model.Menu menuModel;
 			Integer menuId = (Integer) httpSession.getAttribute("menuId");
@@ -178,12 +178,12 @@ public class MenuController {
 			data = Base64.encodeBase64String(data.getBytes());
 			logger.debug("Encoded Json menu (" + data.length() + ")" + data);
 			menuModel.setData(data);
-			menuModel.setCuisineType(cuisineType);
+			menuModel.setCuisineType(cuisine);
 			customerService.saveOrUpdateMenu(menuModel);
 			menuId = menuModel.getId();
 			httpSession.setAttribute("menuId", menuId);
 			Set <Restaurant> restaurants = restaurantService
-					.fetchRestaurantsOfType(cuisineType);
+					.fetchRestaurantsOfType(cuisine);
 			modelMap.put("restaurants", restaurants);
 			Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
 			for (Restaurant r : restaurants) {

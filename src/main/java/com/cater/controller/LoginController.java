@@ -35,6 +35,7 @@ public class LoginController {
 	public String logout(ModelMap modelMap, HttpServletRequest request,
 			HttpSession session) {
 		session.removeAttribute("user");
+		session.invalidate();
 		return "redirect:home";
 	}
 
@@ -66,9 +67,9 @@ public class LoginController {
 				.getParameter("username"));
 		String password = StringUtils
 				.defaultString(request.getParameter("pwd"));
-		List<String> errors = Lists.newArrayList();
+		List <String> errors = Lists.newArrayList();
 		modelMap.addAttribute("errors", errors);
-		List<String> warnings = Lists.newArrayList();
+		List <String> warnings = Lists.newArrayList();
 		modelMap.addAttribute("warnings", warnings);
 		try {
 			Login login = loginService.retrieveLoginFor(username, password);
