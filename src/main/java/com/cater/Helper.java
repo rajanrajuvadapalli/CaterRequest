@@ -21,4 +21,13 @@ public final class Helper {
 		}
 		return phone;
 	}
+
+	public static Integer stringToInteger(String aString) {
+		try {
+			return Integer.parseInt(aString);
+		}
+		catch (Exception ex) {
+			return null;
+		}
+	}
 }

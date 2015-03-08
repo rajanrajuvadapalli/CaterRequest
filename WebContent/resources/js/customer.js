@@ -4,17 +4,19 @@ $('document').ready(function() {
 	validateMenuFormOnSubmit();
 });
 
-function validateEventDate() {
-	// Validate that the date is in the future
-	//var date_time = $('input[id=datetimepicker]').val();
+function validateEventForm() {
+	// Validate that the date is in the future.
 	var dateObject = $('input[id=datetimepicker]').datepicker('getDate');
 	if(new Date().getTime() > dateObject) {
 		alert("Please enter a date in the future.");
 		return false;
-	} else {
-		alert(dateObject);
-		return true;
 	}
+	var numberOfPeople = $('input[id=person_count]').val();
+	if(numberOfPeople <= 1) {
+		alert("Number of people should be 2 or more.");
+		return false;
+	}
+	return true;
 }
 
 function test () {

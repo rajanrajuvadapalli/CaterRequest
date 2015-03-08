@@ -63,36 +63,46 @@
 				</c:when>
 				<c:otherwise>
 					<div class="table-responsive">
-						<table class="table table-striped table-hover table-bordered sortable" >
+						<table
+							class="table table-striped table-hover table-bordered sortable">
 							<tr>
 								<th>Event Name</th>
 								<th>Date/Time</th>
 								<th>Location</th>
-								<%-- <c:if test="${user.role == 'ADMIN'}">
-									<th width="200px;">Customer&nbsp;Name</th>
-									<th width="400px;">Customer Contact&nbsp;Number</th>
-								</c:if> --%>
-
-								<%-- <th></th> --%>
-
+								<th>Menu(s)</th>
 							</tr>
 							<c:forEach items="${events}" var="e">
 								<tr>
 									<td>${e.name}</td>
 									<td>${e.date_time}</td>
-									<td>${e.location.street1} ${e.location.street2}, ${e.location.city},
-										${e.location.state} - ${e.location.zip}
-									</td>
-									<%-- <c:if test="${user.role == 'ADMIN'}">
-										<td ${e.customer.name}</td>
-										<td ${e.customer.contactNumber}</td>
-									</c:if> --%>
+									<td>${e.location.street1} ${e.location.street2},
+										${e.location.city}, ${e.location.state} - ${e.location.zip}</td>
+									<td><c:if test="${not empty e2m.get(e.id)}">
+											<c:forEach items="${e2m.get(e.id)}" var="cuisine">
+												${cuisine}<a
+													href="${pageContext.request.contextPath}/customer/editMenu?eventId=${e.id}&cuisine=${cuisine}">
+													<img alt="edit"
+													src="${pageContext.request.contextPath}/resources/images/edit.png">
+												</a>
+												<br>
+											</c:forEach>
+										</c:if>
 
-									<%-- <td
-										<button
-												onclick="showCuisineOptions(${e.id})"
-												class="btn btn-lg btn-primary btn-block">A</button></td> --%>
+										<form class="form-horizontal" method="POST" id="event-form"
+											action="${pageContext.request.contextPath}/menu/selectMenu"
+											ectype="application/x-www-form-urlencoded">
 
+											<div class="row">
+												<input type="text" hidden="true" name="eventId" value="${e.id}">
+												<div class="col-sm-4">
+													<span id="cuisineType"></span>
+												</div>
+												<div class="col-sm-1" align="left">
+													<button type="submit" class="btn btn-sm btn-warning">Select
+														Menu</button>
+												</div>
+											</div>
+										</form></td>
 								</tr>
 							</c:forEach>
 						</table>

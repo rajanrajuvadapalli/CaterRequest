@@ -3,6 +3,7 @@ package com.cater.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.cater.Helper;
 import com.cater.constants.QuoteStatus;
 import com.cater.dao.MenuDAO;
 import com.cater.menu.Menu;
@@ -64,7 +66,7 @@ public class MenuController {
 	@RequestMapping(value = { "selectMenu" }, method = RequestMethod.POST)
 	public String selectMenuForm(HttpSession httpSession, ModelMap modelMap,
 			HttpServletRequest request,
-			@RequestParam(value = "cuisine", required = true) String cuisine) {
+			@RequestParam(value = "cuisineType", required = true) String cuisine) {
 		User user = (User) httpSession.getAttribute("user");
 		if (user == null) {
 			return "t_home";
@@ -72,8 +74,10 @@ public class MenuController {
 		String eventId = request.getParameter("eventId");
 		httpSession.setAttribute("eventId", eventId);
 		//First check the DB if a menu is selected earlier for this cuisine
-		Event e = customerService.findEventWithId(Integer.valueOf(eventId));
-		List<com.cater.model.Menu> availableMenus = customerService
+		Event e = customerService.findEventWithId(Helper
+				.stringToInteger(eventId));
+		httpSession.setAttribute("eventName", e.getName());
+		List <com.cater.model.Menu> availableMenus = customerService
 				.findMenusWithEventId(e.getId());
 		String customerCreatedMenuData = null;
 		if (CollectionUtils.isNotEmpty(availableMenus)) {
@@ -89,11 +93,10 @@ public class MenuController {
 		}
 		if (customerCreatedMenuData == null) {
 			httpSession.setAttribute("menuId", null);
-			//TODO: Dynamically pull the menu after we start supporting more cuisines.
-			//Temporarily hard coded to "indian" menu.
 			try {
 				File f = new File(MenuController.class.getResource(
-						"/menus/indian.json").getFile());
+						"/menus/" + StringUtils.lowerCase(cuisine, Locale.US)
+								+ ".json").getFile());
 				Menu menu = new MenuDeserializer().readJSON(f);
 				modelMap.put("menu", menu);
 			}
@@ -179,10 +182,10 @@ public class MenuController {
 			customerService.saveOrUpdateMenu(menuModel);
 			menuId = menuModel.getId();
 			httpSession.setAttribute("menuId", menuId);
-			Set<Restaurant> restaurants = restaurantService
+			Set <Restaurant> restaurants = restaurantService
 					.fetchRestaurantsOfType(cuisineType);
 			modelMap.put("restaurants", restaurants);
-			Set<Integer> previouslySelectedRestaurants = Sets.newHashSet();
+			Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
 			for (Restaurant r : restaurants) {
 				Quote q = restaurantService.findQuoteWithRestaurantIdAndMenuId(
 						r.getId(), menuId);
@@ -245,7 +248,7 @@ public class MenuController {
 		//TODO: Send emails to restaurants, requesting to submit quotes.
 		String eventId = (String) httpSession.getAttribute("eventId");
 		Event e = customerService.findEventWithId(Integer.valueOf(eventId));
-		List<String> successMessages = Lists.newArrayList();
+		List <String> successMessages = Lists.newArrayList();
 		successMessages
 				.add("Your request for quotes is successfully submitted for '"
 						+ e.getName() + "'.");
@@ -282,9 +285,9 @@ public class MenuController {
 			Menu newMenu = new Menu();
 			newMenu.setCuisine(menu.getCuisine());
 			if (menu != null) {
-				List<MenuCategory> categories = Lists.newArrayList();
+				List <MenuCategory> categories = Lists.newArrayList();
 				for (MenuCategory mc : menu.getCategories()) {
-					List<MenuItem> items = Lists.newArrayList();
+					List <MenuItem> items = Lists.newArrayList();
 					for (MenuItem menuItem : mc.getItems()) {
 						if (menuItem.isSelected()) {
 							items.add(menuItem);

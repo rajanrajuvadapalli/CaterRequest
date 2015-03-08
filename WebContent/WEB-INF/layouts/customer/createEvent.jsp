@@ -43,7 +43,7 @@
 <form class="form-horizontal" method="POST" id="event-form"
 	action="${pageContext.request.contextPath}/customer/createEvent"
 	ectype="application/x-www-form-urlencoded" autocomplete="off"
-	onsubmit="return validateEventDate();">
+	onsubmit="return validateEventForm();">
 	<div class="col-sm-12">
 		<div class="panel panel-info">
 			<div class="panel-heading">
@@ -56,7 +56,7 @@
 						:</label>
 					<div class="col-sm-6">
 						<input type="text" size="50" maxlength="250" name="name"
-							required="required" placeholder="Ex.: Victoria's Birthday party"
+							required="required" placeholder="Ex.: Victoria's Birthday party" autofocus
 							class="form-control">
 					</div>
 				</div>
