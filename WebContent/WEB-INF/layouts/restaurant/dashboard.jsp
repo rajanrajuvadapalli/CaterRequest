@@ -53,15 +53,16 @@
 
 				<c:otherwise>
 					<div class="table-responsive">
-						<table class="table table-striped table-bordered sortable">
+						<table class="table table-striped table-bordered">
 							<tr>
 								<th class="col-sm-2">Customer Name <br>and Contact
+									Number
 								</th>
 								<th class="col-sm-2">Event Name</th>
 								<th class="col-sm-2">Date/Time</th>
 								<th class="col-sm-1">Number of persons</th>
 								<th class="col-sm-2">Status</th>
-								<th class="col-sm-2">You quoted</th>
+								<th class="col-sm-2">Your quote</th>
 							</tr>
 							<c:forEach items="${restaurant.quotes}" var="q">
 								<tr>
@@ -77,7 +78,9 @@
 									<td><c:choose>
 											<c:when test="${q.status.toString() == 'CREATED'}">New</c:when>
 											<c:when
-												test="${q.status.toString() == 'CUSTOMER_UPDATED_MENU'}">Customer updated the menu</c:when>
+												test="${q.status.toString() == 'CUSTOMER_UPDATED_MENU'}">Customer has updated the menu</c:when>
+											<c:when
+												test="${q.status.toString() == 'RESTAURANT_UPDATED_PRICE'}">Customer is reviewing your updated price quote.</c:when>
 											<c:when test="${q.status.toString() == 'APPROVED'}">Customer accepted your quote</c:when>
 											<c:when test="${q.status.toString() == 'DENIED'}">Customer denied your quote</c:when>
 											<c:when test="${q.status.toString() == 'PAID'}">Customer paid</c:when>

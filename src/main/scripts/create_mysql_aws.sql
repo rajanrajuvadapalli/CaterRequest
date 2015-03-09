@@ -87,7 +87,7 @@ CREATE TABLE mycaterdb.Quote
 	,`menu_sk` INT NOT NULL 
 	,`restaurant_sk` INT NOT NULL 
 	,`price` DECIMAL(6,2)  NULL 
-	,`status` VARCHAR(20)  NULL 
+	,`status` VARCHAR(30)  NULL 
 	,`create_ts` DATETIME NOT NULL 
 	,`lupd_ts` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
 -- Create Foreign Key: Quote.menu_sk -> Menu.id

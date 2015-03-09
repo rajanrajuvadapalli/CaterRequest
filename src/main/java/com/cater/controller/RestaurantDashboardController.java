@@ -1,5 +1,7 @@
 package com.cater.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -8,12 +10,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.cater.Helper;
 import com.cater.constants.QuoteStatus;
 import com.cater.model.Quote;
 import com.cater.model.Restaurant;
 import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
+import com.google.common.collect.Lists;
 
 @Controller
 @RequestMapping(value = { "restaurant" })
@@ -65,22 +70,26 @@ public class RestaurantDashboardController {
 	 */
 	@RequestMapping(value = { "submitprice" }, method = RequestMethod.POST)
 	public String submitPrice(HttpSession httpSession, ModelMap modelMap,
-			HttpServletRequest request) {
+			HttpServletRequest request, RedirectAttributes redirectAttributes) {
 		User user = (User) httpSession.getAttribute("user");
 		if (user != null) {
 			String price = request.getParameter("price");
-			Integer menuId = (Integer) httpSession.getAttribute("menuId");
-			Restaurant restaurant = restaurantService
-					.findRestaurantWithLoginId(user.getLoginID());
-			Quote q = restaurantService.findQuoteWithRestaurantIdAndMenuId(
-					restaurant.getId(), menuId);
+			String quoteIdString = request.getParameter("quoteId");
+			Quote q = restaurantService.findQuoteWithId(Helper
+					.stringToInteger(quoteIdString));
 			if (q != null) {
 				q.setPrice(Double.parseDouble(price));
 				q.setStatus(QuoteStatus.RESTAURANT_UPDATED_PRICE.toString());
 				restaurantService.saveOrUpdateQuote(q);
+				List<String> successMessages = Lists.newArrayList();
+				successMessages
+						.add("Your quote is successfully submitted for event: "
+								+ q.getMenu().getEvent().getName());
+				redirectAttributes.addFlashAttribute("successMessages",
+						successMessages);
 			}
 		}
-		return "redirect:/home";
+		return "redirect:/dashboard";
 	}
 	/**
 	 * List docs.

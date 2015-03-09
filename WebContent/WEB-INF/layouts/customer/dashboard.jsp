@@ -63,7 +63,7 @@
 				</c:when>
 				<c:otherwise>
 					<div class="table-responsive">
-						<table class="table table-striped table-bordered sortable">
+						<table class="table table-striped table-bordered">
 							<tr>
 								<th class="col-sm-2">Event Name</th>
 								<th class="col-sm-2">Date/Time</th>
@@ -109,7 +109,8 @@
 														<c:when test="${empty q.price}">Not responded</c:when>
 														<c:otherwise>
 															<fmt:setLocale value="en_US" />
-															<fmt:formatNumber value="${q.price}" type="currency" />
+															<b><fmt:formatNumber value="${q.price}"
+																	type="currency" /></b>
 														</c:otherwise>
 													</c:choose>
 													<br>
