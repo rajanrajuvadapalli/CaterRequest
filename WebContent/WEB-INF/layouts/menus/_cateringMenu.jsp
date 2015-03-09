@@ -10,7 +10,8 @@
 
 <div class="col-sm-12">
 	<form class="form-horizontal" method="POST" id="menu-form"
-		action="${pageContext.request.contextPath}/menu/saveMenu" novalidate
+		action="${pageContext.request.contextPath}/menu/saveMenu"
+		onsubmit="return validateMenuFormOnSubmit();"
 		ectype="application/x-www-form-urlencoded" autocomplete="off">
 		<div class="row">
 			<c:forEach items="${menu.categories}" var="category">
