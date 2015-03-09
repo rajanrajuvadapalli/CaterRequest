@@ -7,20 +7,26 @@ $('document').ready(function() {
 function validateEventForm() {
 	// Validate that the date is in the future.
 	var dateObject = $('input[id=datetimepicker]').datepicker('getDate');
-	if(new Date().getTime() > dateObject) {
+	if (new Date().getTime() > dateObject) {
 		alert("Please enter a date in the future.");
 		return false;
 	}
 	var numberOfPeople = $('input[id=person_count]').val();
-	if(numberOfPeople <= 1) {
+	if (numberOfPeople <= 1) {
 		alert("Number of people should be 2 or more.");
 		return false;
 	}
 	return true;
 }
 
-function test () {
-	alert("Blah");
+function validateCuisine(formId) {
+	var element = $('form[id=' + formId + '] select[id=cuisineType]');
+	if (element.val() != "INDIAN") {
+		alert("Sorry! " + element.val()
+				+ " restaurants are not registered with us at this moment.");
+		return false;
+	}
+	return true;
 }
 
 /*
@@ -78,8 +84,7 @@ function test () {
  * validateSelectMenuFormOnSubmit(); }
  */
 
-
-function validateSelectMenuFormOnSubmit() {
+/*function validateSelectMenuFormOnSubmit() {
 	$("form[id=select-cuisine-form]").validate({
 		rules : {
 			cuisine : {
@@ -95,7 +100,7 @@ function validateSelectMenuFormOnSubmit() {
 			form.submit();
 		}
 	});
-}
+}*/
 
 function validateMenuFormOnSubmit() {
 	$("form[id=menu-form]").validate({
