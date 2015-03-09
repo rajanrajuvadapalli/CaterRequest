@@ -76,14 +76,19 @@
 									<td>${q.menu.event.date_time}</td>
 									<td>${q.menu.event.personCount}</td>
 									<td><c:choose>
-											<c:when test="${q.status.toString() == 'CREATED'}">New</c:when>
+											<c:when test="${q.status.toString() == 'CREATED'}">Customer is reviewing your quote.</c:when>
 											<c:when
-												test="${q.status.toString() == 'CUSTOMER_UPDATED_MENU'}">Customer has updated the menu</c:when>
+												test="${q.status.toString() == 'CUSTOMER_UPDATED_MENU'}">
+												Customer has updated the menu. <span class="badge"
+													style="background-color: #FF3300;">&nbsp;&#134;&nbsp;</span>
+											</c:when>
 											<c:when
 												test="${q.status.toString() == 'RESTAURANT_UPDATED_PRICE'}">Customer is reviewing your updated price quote.</c:when>
-											<c:when test="${q.status.toString() == 'APPROVED'}">Customer accepted your quote</c:when>
-											<c:when test="${q.status.toString() == 'DENIED'}">Customer denied your quote</c:when>
-											<c:when test="${q.status.toString() == 'PAID'}">Customer paid</c:when>
+											<c:when test="${q.status.toString() == 'APPROVED'}">Customer accepted your quote.
+											<span class="badge" style="background-color: #009933;">&nbsp;&#x2713;&nbsp;</span>
+											</c:when>
+											<c:when test="${q.status.toString() == 'DENIED'}">Customer denied your quote.</c:when>
+											<c:when test="${q.status.toString() == 'PAID'}">Customer has paid.</c:when>
 										</c:choose></td>
 									<td><fmt:setLocale value="en_US" /> <fmt:formatNumber
 											value="${q.price}" type="currency" /></td>

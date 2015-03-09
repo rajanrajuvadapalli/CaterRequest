@@ -142,8 +142,6 @@ public class MenuController {
 		}
 		String eventId = (String) httpSession.getAttribute("eventId");
 		modelMap.put("cuisineType", cuisine);
-		//TODO: Dynamically pull the menu after we start supporting more cuisines.
-		//Temporarily hard coded to "indian" menu.
 		try {
 			String menuJson = "/menus/"
 					+ StringUtils.lowerCase(cuisine, Locale.US) + ".json";
@@ -177,6 +175,8 @@ public class MenuController {
 			logger.debug("Json menu (" + data.length() + ") " + data);
 			data = Base64.encodeBase64String(data.getBytes());
 			logger.debug("Encoded Json menu (" + data.length() + ")" + data);
+			boolean isMenuChanged = !StringUtils.equalsIgnoreCase(data,
+					menuModel.getData());
 			menuModel.setData(data);
 			menuModel.setCuisineType(cuisine);
 			customerService.saveOrUpdateMenu(menuModel);
@@ -191,6 +191,11 @@ public class MenuController {
 						r.getId(), menuId);
 				if (q != null) {
 					previouslySelectedRestaurants.add(r.getId());
+					if (isMenuChanged) {
+						q.setStatus(QuoteStatus.CUSTOMER_UPDATED_MENU
+								.toString());
+						restaurantService.saveOrUpdateQuote(q);
+					}
 				}
 			}
 			modelMap.put("prevR", previouslySelectedRestaurants);
