@@ -51,22 +51,21 @@ public class QuoteDAO extends DataAccessObject {
 		return super.findById(Quote.class, id);
 	}
 
-	/*@SuppressWarnings("unchecked")
-	public List<Quote> findQuotesWithEventId(int eventID) {
-		logger.debug("Finding Quote with event ID: " + eventID);
+	@SuppressWarnings("unchecked")
+	public List <Quote> findByEventId(Integer eventID) {
+		if (eventID == null) {
+			return null;
+		}
+		logger.debug("Finding Quotes with event ID: " + eventID);
 		Session session = null;
-		Transaction tx = null;
 		try {
 			session = getSessionFactory().getCurrentSession();
-			tx = session.beginTransaction();
-			List<Quote> list = (List<Quote>) session
+			return (List <Quote>) session
 					.createCriteria(Quote.class, "quote")
-					.createAlias("quote.event", "event",
+					.createAlias("quote.menu", "menu", JoinType.LEFT_OUTER_JOIN)
+					.createAlias("menu.event", "event",
 							JoinType.LEFT_OUTER_JOIN)
-					.add(Restrictions.eq("event.id", new Integer(eventID)))
-					.list();
-			tx.rollback();
-			return list;
+					.add(Restrictions.eq("event.id", eventID)).list();
 		}
 		catch (HibernateException he) {
 			logger.error(
@@ -74,12 +73,8 @@ public class QuoteDAO extends DataAccessObject {
 							+ eventID, he);
 			throw he;
 		}
-		finally {
-			if (session != null) {
-				//session.close();
-			}
-		}
-	}*/
+	}
+
 	/**
 	 * Find by restaurant id and menu id.
 	 *
@@ -97,7 +92,7 @@ public class QuoteDAO extends DataAccessObject {
 				+ ", menu ID: " + menuId);
 		try {
 			Session session = getSessionFactory().getCurrentSession();
-			List<Quote> list = (List<Quote>) session
+			List <Quote> list = (List <Quote>) session
 					.createCriteria(Quote.class, "quote")
 					.createAlias("quote.restaurant", "restaurant",
 							JoinType.LEFT_OUTER_JOIN)

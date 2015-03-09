@@ -18,11 +18,11 @@ public class RestaurantService {
 	@Autowired
 	private QuoteDAO quoteDAO;
 
-	public List<Restaurant> fetchAllRestaurants() {
+	public List <Restaurant> fetchAllRestaurants() {
 		return restaurantDAO.fetchAllRestaurants();
 	}
 
-	public Set<Restaurant> fetchRestaurantsOfType(String cuisine) {
+	public Set <Restaurant> fetchRestaurantsOfType(String cuisine) {
 		return restaurantDAO.fetchRestaurantsOfType(cuisine);
 	}
 
@@ -36,6 +36,13 @@ public class RestaurantService {
 
 	public Quote findQuoteWithId(Integer quoteId) {
 		return quoteDAO.findById(quoteId);
+	}
+
+	/*public List<Quote> findQuotesWithMenuId(Integer menuId) {
+		return quoteDAO.findByMenuId(menuId);
+	}*/
+	public List <Quote> findQuotesWithEventId(Integer eventId) {
+		return quoteDAO.findByEventId(eventId);
 	}
 
 	public Quote findQuoteWithRestaurantIdAndMenuId(Integer restaurantId,

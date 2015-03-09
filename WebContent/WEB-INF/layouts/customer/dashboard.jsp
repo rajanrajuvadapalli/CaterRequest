@@ -63,13 +63,13 @@
 				</c:when>
 				<c:otherwise>
 					<div class="table-responsive">
-						<table
-							class="table table-striped table-hover table-bordered sortable">
+						<table class="table table-striped table-bordered sortable">
 							<tr>
-								<th>Event Name</th>
-								<th>Date/Time</th>
-								<th>Location</th>
-								<th>Menu(s)</th>
+								<th class="col-sm-2">Event Name</th>
+								<th class="col-sm-2">Date/Time</th>
+								<th class="col-sm-2">Location</th>
+								<th class="col-sm-2">Menu(s)</th>
+								<th class="col-sm-2">Quotes(s)</th>
 							</tr>
 							<c:forEach items="${events}" var="e">
 								<tr>
@@ -84,26 +84,38 @@
 													<img alt="edit"
 													src="${pageContext.request.contextPath}/resources/images/edit.png">
 												</a>
-												<br>
-											</c:forEach>
-										</c:if>
 
+											</c:forEach>
+											<hr>
+										</c:if>
 										<form class="form-horizontal" method="GET" id="event-form"
 											action="${pageContext.request.contextPath}/menu/selectMenu"
 											ectype="application/x-www-form-urlencoded">
 
-											<div class="row">
-												<input type="text" hidden="true" name="eventId"
-													value="${e.id}">
-												<div class="col-sm-4">
-													<span id="cuisineType"></span>
-												</div>
-												<div class="col-sm-1" align="left">
-													<button type="submit" class="btn btn-sm btn-warning">Select
-														Menu</button>
-												</div>
-											</div>
+											<input type="text" hidden="true" name="eventId"
+												value="${e.id}"> <span id="cuisineType"></span>
+											<button type="submit" class="btn btn-sm btn-warning">Select
+												Menu</button>
 										</form></td>
+									<td><c:choose>
+											<c:when test="${empty e2m.get(e.id)}">Please select a menu and create your request.</c:when>
+											<c:when test="${empty e2q.get(e.id)}">
+											0 restaurants have responded to your request.
+											</c:when>
+											<c:otherwise>
+												<c:forEach items="${e2q.get(e.id)}" var="q">
+												${q.restaurant.name}: &nbsp;
+												<c:choose>
+														<c:when test="${empty q.price}">Not responded</c:when>
+														<c:otherwise>
+															<fmt:setLocale value="en_US" />
+															<fmt:formatNumber value="${q.price}" type="currency" />
+														</c:otherwise>
+													</c:choose>
+													<br>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose></td>
 								</tr>
 							</c:forEach>
 						</table>
@@ -114,13 +126,3 @@
 		</div>
 	</div>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>

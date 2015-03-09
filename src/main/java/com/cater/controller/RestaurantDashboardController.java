@@ -43,7 +43,7 @@ public class RestaurantDashboardController {
 	 * @param modelMap the model map
 	 * @return the string
 	 */
-	@RequestMapping(value = { "listQuotes" }, method = RequestMethod.GET)
+	/*@RequestMapping(value = { "listQuotes" }, method = RequestMethod.GET)
 	public String listQuotes(HttpSession httpSession, ModelMap modelMap) {
 		User user = (User) httpSession.getAttribute("user");
 		if (user != null) {
@@ -54,8 +54,7 @@ public class RestaurantDashboardController {
 			}
 		}
 		return "notiles/_quotesListRestaurant";
-	}
-
+	}*/
 	/**
 	 * Submit price.
 	 *
@@ -83,7 +82,6 @@ public class RestaurantDashboardController {
 		}
 		return "redirect:/home";
 	}
-
 	/**
 	 * List docs.
 	 *
@@ -92,7 +90,7 @@ public class RestaurantDashboardController {
 	 * @param request the request
 	 * @return the string
 	 */
-	@RequestMapping(value = { "listDocs" }, method = RequestMethod.GET)
+	/*@RequestMapping(value = { "listDocs" }, method = RequestMethod.GET)
 	public String listDocs(HttpSession httpSession, ModelMap modelMap,
 			HttpServletRequest request) {
 		User user = (User) httpSession.getAttribute("user");
@@ -101,5 +99,5 @@ public class RestaurantDashboardController {
 		}
 		//Sweep the directory for this restaurant
 		return "notiles/_docsListRestaurant";
-	}
+	}*/
 }

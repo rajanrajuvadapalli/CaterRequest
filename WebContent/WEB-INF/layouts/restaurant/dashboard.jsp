@@ -1,7 +1,7 @@
-<%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div class="page-header">
 	<h1>My Dashboard</h1>
@@ -38,3 +38,58 @@
 		</ul>
 	</div>
 </c:if>
+
+<div class="col-sm-12">
+	<div class="panel panel-success">
+		<div class="panel-heading">
+			<h3 class="panel-title">Quotes</h3>
+		</div>
+		<div class="panel-body">
+
+			<c:choose>
+				<c:when test="${empty restaurant.quotes}">
+				You currently do not have any request for quotes.
+				</c:when>
+
+				<c:otherwise>
+					<div class="table-responsive">
+						<table class="table table-striped table-bordered sortable">
+							<tr>
+								<th class="col-sm-2">Customer Name <br>and Contact
+								</th>
+								<th class="col-sm-2">Event Name</th>
+								<th class="col-sm-2">Date/Time</th>
+								<th class="col-sm-1">Number of persons</th>
+								<th class="col-sm-2">Status</th>
+								<th class="col-sm-2">You quoted</th>
+							</tr>
+							<c:forEach items="${restaurant.quotes}" var="q">
+								<tr>
+									<td>${q.menu.event.customer.name}<br>
+										${q.menu.event.customer.contactNumber}
+									</td>
+									<td>${q.menu.event.name}<br> <a
+										href="${pageContext.request.contextPath}/menu/view/${q.menu.id}">See
+											Menu</a>
+									</td>
+									<td>${q.menu.event.date_time}</td>
+									<td>${q.menu.event.personCount}</td>
+									<td><c:choose>
+											<c:when test="${q.status.toString() == 'CREATED'}">New</c:when>
+											<c:when
+												test="${q.status.toString() == 'CUSTOMER_UPDATED_MENU'}">Customer updated the menu</c:when>
+											<c:when test="${q.status.toString() == 'APPROVED'}">Customer accepted your quote</c:when>
+											<c:when test="${q.status.toString() == 'DENIED'}">Customer denied your quote</c:when>
+											<c:when test="${q.status.toString() == 'PAID'}">Customer paid</c:when>
+										</c:choose></td>
+									<td><fmt:setLocale value="en_US" /> <fmt:formatNumber
+											value="${q.price}" type="currency" /></td>
+								</tr>
+							</c:forEach>
+						</table>
+					</div>
+				</c:otherwise>
+			</c:choose>
+		</div>
+	</div>
+</div>

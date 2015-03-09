@@ -36,7 +36,7 @@ public class LoginController {
 			HttpSession session) {
 		session.removeAttribute("user");
 		session.invalidate();
-		return "redirect:home";
+		return "redirect:login";
 	}
 
 	/**

@@ -82,6 +82,7 @@ public class CustomerDashboardController {
 		List <Event> events = customer.getEvents();
 		modelMap.put("events", events);
 		Map <Integer, List <String>> e2m = Maps.newHashMap();
+		Map <Integer, List <Quote>> e2q = Maps.newHashMap();
 		for (Event e : events) {
 			List <Menu> menus = customerService.findMenusWithEventId(e.getId());
 			List <String> selectedCusines = Lists.newLinkedList();
@@ -90,12 +91,13 @@ public class CustomerDashboardController {
 					selectedCusines.add(m.getCuisineType());
 				}
 			}
-			//Test
-			//selectedCusines.add("INDIAN");
-			//selectedCusines.add("MEXICAN");
 			e2m.put(e.getId(), selectedCusines);
+			List <Quote> quotes = restaurantService.findQuotesWithEventId(e
+					.getId());
+			e2q.put(e.getId(), quotes);
 		}
 		modelMap.put("e2m", e2m);
+		modelMap.put("e2q", e2q);
 		((User) session.getAttribute("user")).setName(customer.getName());
 		return "customer/t_dashboard";
 	}
