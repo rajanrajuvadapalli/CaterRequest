@@ -120,7 +120,9 @@
 		<!-- For sending email through AWS SES -->
 		<dependency org="com.amazonaws" name="aws-java-sdk-ses" rev="1.9.16" conf="compile" />
 		
-
+		<!-- Twilio Cloud Communications - APIs for Voice, VoIP, and text messaging -->
+		<dependency org="com.twilio.sdk" name="twilio-java-sdk" rev="3.4.5" conf="compile" />
+    
 		<!-- Test -->
 		<dependency org="junit" name="junit" rev="4.9" conf="testCompile" />
 		<dependency org="org.springframework" name="spring-test"

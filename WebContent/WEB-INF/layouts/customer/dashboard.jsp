@@ -68,8 +68,8 @@
 								<th class="col-sm-2">Event Name</th>
 								<th class="col-sm-2">Date/Time</th>
 								<th class="col-sm-2">Location</th>
+								<th class="col-sm-2">Quote(s)</th>
 								<th class="col-sm-2">Menu(s)</th>
-								<th class="col-sm-2">Quotes(s)</th>
 							</tr>
 							<c:forEach items="${events}" var="e">
 								<tr>
@@ -77,26 +77,6 @@
 									<td>${e.date_time}</td>
 									<td>${e.location.street1} ${e.location.street2},
 										${e.location.city}, ${e.location.state} - ${e.location.zip}</td>
-									<td><c:if test="${not empty e2m.get(e.id)}">
-											<c:forEach items="${e2m.get(e.id)}" var="cuisine">
-												${cuisine}<a
-													href="${pageContext.request.contextPath}/menu/selectMenu?eventId=${e.id}&cuisineType=${cuisine}">
-													<img alt="edit"
-													src="${pageContext.request.contextPath}/resources/images/edit.png">
-												</a>
-
-											</c:forEach>
-											<hr>
-										</c:if>
-										<form class="form-horizontal" method="GET" id="${e.id}"
-											action="${pageContext.request.contextPath}/menu/selectMenu"
-											onsubmit="return validateCuisine(${e.id});"
-											ectype="application/x-www-form-urlencoded">
-											<input type="text" hidden="true" name="eventId"
-												value="${e.id}"> <span id="cuisineType"></span>
-											<button type="submit" class="btn btn-sm btn-warning">Select
-												Menu</button>
-										</form></td>
 									<td><c:choose>
 											<c:when test="${empty e2m.get(e.id)}">Please select a menu and create your request.</c:when>
 											<c:when test="${empty e2q.get(e.id)}">
@@ -117,6 +97,27 @@
 												</c:forEach>
 											</c:otherwise>
 										</c:choose></td>
+									<td><c:if test="${not empty e2m.get(e.id)}">
+											<c:forEach items="${e2m.get(e.id)}" var="cuisine">
+												${cuisine}<a
+													href="${pageContext.request.contextPath}/menu/selectMenu?eventId=${e.id}&cuisineType=${cuisine}">
+													<img alt="edit"
+													src="${pageContext.request.contextPath}/resources/images/edit.png">
+												</a>
+
+											</c:forEach>
+											<hr>
+										</c:if>
+										<form class="form-horizontal" method="GET" id="${e.id}"
+											action="${pageContext.request.contextPath}/menu/selectMenu"
+											onsubmit="return validateCuisine(${e.id});"
+											ectype="application/x-www-form-urlencoded">
+											<input type="text" hidden="true" name="eventId"
+												value="${e.id}"> <span id="cuisineType"></span>
+											<button type="submit" class="btn btn-sm btn-warning">Select
+												Menu</button>
+										</form></td>
+
 								</tr>
 							</c:forEach>
 						</table>
