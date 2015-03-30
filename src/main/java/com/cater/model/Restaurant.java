@@ -46,10 +46,10 @@ public class Restaurant extends TimestampEntity implements Serializable {
 	private Integer id;
 	@Column(name = "name", length = 50, nullable = false)
 	private String name;
-	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = false)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "address_sk", nullable = false)
 	private Address address;
-	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = false)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "login_sk", nullable = false)
 	private Login login;
 	@Column(name = "contact_number", length = 20, nullable = false)

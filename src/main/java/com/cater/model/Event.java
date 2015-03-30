@@ -31,10 +31,10 @@ public class Event extends TimestampEntity implements Serializable {
 	private Integer id;
 	@Column(name = "name", length = 250, nullable = false)
 	private String name;
-	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = false)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "customer_sk", nullable = false)
 	private Customer customer;
-	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = false)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "location_sk", nullable = false)
 	private Address location;
 	@Temporal(TemporalType.TIMESTAMP)

@@ -21,10 +21,10 @@ public class Quote extends TimestampEntity implements Serializable {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = true)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = true)
 	@JoinColumn(name = "menu_sk", nullable = false)
 	private Menu menu;
-	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = true)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = true)
 	@JoinColumn(name = "restaurant_sk", nullable = false)
 	private Restaurant restaurant;
 	@Column(name = "price")

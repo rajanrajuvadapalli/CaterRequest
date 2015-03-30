@@ -23,7 +23,7 @@ public class Menu extends TimestampEntity implements Serializable {
 	private Integer id;
 	@Column(name = "data", length = 5000, nullable = true)
 	private String data;
-	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = false)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "event_sk", nullable = false)
 	private Event event;
 	@Column(name = "cuisine_type", length = 20, nullable = false)
