@@ -75,6 +75,7 @@ public class RegisterService {
 			customer.setAddress(address);
 			customer.setName(data.getName());
 			customer.setContactNumber(data.getPhone());
+			customer.setSmsOk(data.isSmsOk());
 			customer.setContactEmail(data.getEmail());
 			customerDAO.saveOrUpdate(customer);
 		}

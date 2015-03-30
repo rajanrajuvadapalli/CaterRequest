@@ -24,6 +24,7 @@ import com.cater.service.CustomerService;
 import com.cater.service.LoginService;
 import com.cater.service.RegisterService;
 import com.cater.service.RestaurantService;
+import com.cater.twilio.sms.SMSHelper;
 import com.cater.ui.data.RegistrationData;
 import com.google.common.collect.Lists;
 
@@ -45,6 +46,8 @@ public class RegistrationController {
 	private RestaurantService restaurantService;
 	@Autowired
 	private EmailHelper emailHelper;
+	@Autowired
+	private SMSHelper smsHelper;
 	@Value("${customer.care.contact.number}")
 	private String customerCareContactNumber;
 
@@ -77,7 +80,7 @@ public class RegistrationController {
 			String username = request.getParameter("email");
 			Login login = loginService.retrieveLoginFor(username, null);
 			if (login != null) {
-				List<String> warnings = Lists.newArrayList();
+				List <String> warnings = Lists.newArrayList();
 				warnings.add("The email address used is already registered.");
 				if (!login.isActive()) {
 					warnings.add("If you registered earlier, please check your email ("
@@ -99,6 +102,8 @@ public class RegistrationController {
 					.getParameter("pwd1")));
 			data.setPhone(Helper.formatPhone(StringUtils.defaultString(request
 					.getParameter("phone"))));
+			data.setSmsOk(StringUtils.equalsIgnoreCase("on",
+					request.getParameter("smsOk")));
 			data.setStreet1(StringUtils.defaultString(request
 					.getParameter("street1")));
 			data.setStreet2(StringUtils.defaultString(request
@@ -134,11 +139,14 @@ public class RegistrationController {
 					.sendRegistrationConfirmationEmail(
 							customer_restaurant_name,
 							confirmationToken_URLSafe, username);
+			/*if (data.isSmsOk()) {
+				smsHelper.sendRegistrationConfirmationSMS(data.getPhone());
+			}*/
 			if (sendEmailStatus) {
 				return "t_registerSuccess";
 			}
 			else {
-				List<String> errors = Lists.newArrayList();
+				List <String> errors = Lists.newArrayList();
 				errors.add("Ouch! Something went wrong. Please contact technical support at "
 						+ customerCareContactNumber);
 				modelMap.addAttribute("errors", errors);
@@ -168,7 +176,7 @@ public class RegistrationController {
 		logger.info("Received request for confirmation: " + confirmationToken);
 		String[] tokens = StringUtils.split(confirmationToken, "@");
 		if (tokens == null || tokens.length != 3) {
-			List<String> errors = Lists.newArrayList();
+			List <String> errors = Lists.newArrayList();
 			errors.add("Invalid confirmation link used. Please register again.");
 			modelMap.addAttribute("errors", errors);
 			return "t_login";
@@ -177,7 +185,7 @@ public class RegistrationController {
 		String pwd = tokens[1];
 		Login login = loginService.retrieveLoginFor(username, pwd);
 		if (login == null) {
-			List<String> errors = Lists.newArrayList();
+			List <String> errors = Lists.newArrayList();
 			errors.add("Invalid confirmation link used. Please register again.");
 			modelMap.addAttribute("errors", errors);
 			return "t_login";
@@ -185,13 +193,13 @@ public class RegistrationController {
 		//If the account is already active, display warning message.
 		//Otherwise, make the account active and display confirmation message.
 		if (login.isActive()) {
-			List<String> warnings = Lists.newArrayList();
+			List <String> warnings = Lists.newArrayList();
 			warnings.add("Your account has already been activated. Please login to continue.");
 			modelMap.addAttribute("warnings", warnings);
 		}
 		else {
 			registerService.activateUser(login);
-			List<String> successMessages = Lists.newArrayList();
+			List <String> successMessages = Lists.newArrayList();
 			successMessages
 					.add("Your account has been successfully activated. Please login to continue.");
 			modelMap.addAttribute("successMessages", successMessages);

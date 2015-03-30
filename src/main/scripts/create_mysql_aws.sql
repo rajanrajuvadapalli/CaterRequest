@@ -25,6 +25,7 @@ CREATE TABLE mycaterdb.Customer (
 	,`name` VARCHAR(50) NOT NULL 
 	,`login_sk` INT NOT NULL 
 	,`contact_number` VARCHAR(20) NOT NULL 
+	,`sms_ok` BIT NOT NULL
 	,`contact_email` VARCHAR(50) NOT NULL 
 	,`address_sk` INT  NULL 
 	,`create_ts` DATETIME NOT NULL

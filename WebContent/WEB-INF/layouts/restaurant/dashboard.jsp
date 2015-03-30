@@ -83,7 +83,9 @@
 													style="background-color: #FF3300;">&nbsp;&#134;&nbsp;</span>
 											</c:when>
 											<c:when
-												test="${q.status.toString() == 'RESTAURANT_UPDATED_PRICE'}">Customer is reviewing your price quote.</c:when>
+												test="${q.status.toString() == 'RESTAURANT_SUBMITTED_PRICE'}">Customer is reviewing your price quote.</c:when>
+											<c:when
+												test="${q.status.toString() == 'RESTAURANT_UPDATED_PRICE'}">Customer is reviewing your updated price quote.</c:when>
 											<c:when test="${q.status.toString() == 'APPROVED'}">Customer accepted your quote.
 											<span class="badge" style="background-color: #009933;">&nbsp;&#x2713;&nbsp;</span>
 											</c:when>

@@ -127,12 +127,12 @@
 						<div class="col-sm-6" align="left">
 							<input type="text" size="30" name="phone" required="required"
 								placeholder="Ex.: xxx-xxx-xxxx" class="form-control">
-							&nbsp;<input type="checkbox"
-								style="-webkit-transform: scale(1.5); -o-transform: scale(1.5); -ms-transform: scale(1.5); -moz-transform: scale(1.5); padding: 10px;">&nbsp;&nbsp;Send
-							me text alerts <i>(carrier charges may apply)</i>
+							&nbsp;<input type="checkbox" name="smsOk" id="customer"
+								style="-webkit-transform: scale(1.5); -o-transform: scale(1.5); -ms-transform: scale(1.5); -moz-transform: scale(1.5); padding: 10px;">&nbsp;&nbsp;<span  id="customer">Send
+							me text alerts <i>(carrier charges may apply)</i></span>
 						</div>
 					</div>
-					<div class="form-group">
+					<div class="form-group" id="customer">
 						<label for="pwd2" class="col-sm-4 control-label">How did
 							you hear about us&nbsp;?</label>
 						<div class="col-sm-6">

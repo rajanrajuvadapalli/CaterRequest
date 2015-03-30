@@ -77,7 +77,7 @@ public class MenuController {
 		Event e = customerService.findEventWithId(Helper
 				.stringToInteger(eventId));
 		httpSession.setAttribute("eventName", e.getName());
-		List<com.cater.model.Menu> availableMenus = customerService
+		List <com.cater.model.Menu> availableMenus = customerService
 				.findMenusWithEventId(e.getId());
 		String customerCreatedMenuData = null;
 		if (CollectionUtils.isNotEmpty(availableMenus)) {
@@ -172,9 +172,11 @@ public class MenuController {
 			}
 			menuModel.setEvent(e);
 			String data = menuSerializer.serialize(menu);
-			logger.debug("Json menu (" + data.length() + ") " + data);
+			logger.debug("Json menu (" + data.length() + ") ");
+			logger.debug(data);
 			data = Base64.encodeBase64String(data.getBytes());
-			logger.debug("Encoded Json menu (" + data.length() + ")" + data);
+			logger.debug("Encoded Json menu (" + data.length() + ")");
+			logger.debug(data);
 			boolean isMenuChanged = !StringUtils.equalsIgnoreCase(data,
 					menuModel.getData());
 			menuModel.setData(data);
@@ -182,19 +184,20 @@ public class MenuController {
 			customerService.saveOrUpdateMenu(menuModel);
 			menuId = menuModel.getId();
 			httpSession.setAttribute("menuId", menuId);
-			Set<Restaurant> restaurants = restaurantService
+			Set <Restaurant> restaurants = restaurantService
 					.fetchRestaurantsOfType(cuisine);
 			modelMap.put("restaurants", restaurants);
-			Set<Integer> previouslySelectedRestaurants = Sets.newHashSet();
+			Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
 			for (Restaurant r : restaurants) {
-				Quote q = restaurantService.findQuoteWithRestaurantIdAndMenuId(
-						r.getId(), menuId);
-				if (q != null) {
+				Quote quote = restaurantService
+						.findQuoteWithRestaurantIdAndMenuId(r.getId(), menuId);
+				if (quote != null) {
 					previouslySelectedRestaurants.add(r.getId());
 					if (isMenuChanged) {
-						q.setStatus(QuoteStatus.CUSTOMER_UPDATED_MENU
+						quote.setStatus(QuoteStatus.CUSTOMER_UPDATED_MENU
 								.toString());
-						restaurantService.saveOrUpdateQuote(q);
+						restaurantService.saveOrUpdateQuote(quote);
+						restaurantService.sendNotification(quote);
 					}
 				}
 			}
@@ -218,7 +221,7 @@ public class MenuController {
 	 * @param rNames the r names
 	 * @return the string
 	 */
-	@RequestMapping(value = { "requestQuote" }, method = RequestMethod.POST)
+	/*@RequestMapping(value = { "requestQuote" }, method = RequestMethod.POST)
 	public String requestQuote(
 			HttpSession httpSession,
 			ModelMap modelMap,
@@ -233,36 +236,35 @@ public class MenuController {
 		if (menuId != null) {
 			menuModel = customerService.findMenuWithId(menuId);
 		}
+		String eventId = (String) httpSession.getAttribute("eventId");
+		Event event = customerService.findEventWithId(Integer.valueOf(eventId));
 		for (String restaurantId : restaurantIds) {
 			//Find if a quote already exists.
-			Quote q = restaurantService.findQuoteWithRestaurantIdAndMenuId(
+			Quote quote = restaurantService.findQuoteWithRestaurantIdAndMenuId(
 					Integer.parseInt(restaurantId), menuId);
-			if (q == null) {
-				q = new Quote();
-				q.setStatus(QuoteStatus.CREATED.toString());
-				q.setMenu(menuModel);
-				Restaurant restaurant = restaurantService
-						.findRestaurantWithId(Integer.parseInt(restaurantId));
-				q.setRestaurant(restaurant);
+			Restaurant restaurant = restaurantService
+					.findRestaurantWithId(Integer.parseInt(restaurantId));
+			if (quote == null) {
+				quote = new Quote();
+				quote.setStatus(QuoteStatus.CREATED.toString());
+				quote.setMenu(menuModel);
+				quote.setRestaurant(restaurant);
 			}
 			else {
-				q.setStatus(QuoteStatus.CUSTOMER_UPDATED_MENU.toString());
+				quote.setStatus(QuoteStatus.CUSTOMER_UPDATED_MENU.toString());
 			}
-			restaurantService.saveOrUpdateQuote(q);
+			restaurantService.saveOrUpdateQuote(quote);
+			restaurantService.sendNotification(quote);
 		}
-		//TODO: Send emails to restaurants, requesting to submit quotes.
-		String eventId = (String) httpSession.getAttribute("eventId");
-		Event e = customerService.findEventWithId(Integer.valueOf(eventId));
-		List<String> successMessages = Lists.newArrayList();
+		List <String> successMessages = Lists.newArrayList();
 		successMessages
 				.add("Your request for quotes is successfully submitted for '"
-						+ e.getName() + "'.");
+						+ event.getName() + "'.");
 		modelMap.addAttribute("successMessages", successMessages);
 		httpSession.removeAttribute("eventId");
 		httpSession.removeAttribute("menuId");
 		return "customer/t_dashboard";
-	}
-
+	}*/
 	/**
 	 * View.
 	 *
@@ -290,9 +292,9 @@ public class MenuController {
 			Menu newMenu = new Menu();
 			newMenu.setCuisine(menu.getCuisine());
 			if (menu != null) {
-				List<MenuCategory> categories = Lists.newArrayList();
+				List <MenuCategory> categories = Lists.newArrayList();
 				for (MenuCategory mc : menu.getCategories()) {
-					List<MenuItem> items = Lists.newArrayList();
+					List <MenuItem> items = Lists.newArrayList();
 					for (MenuItem menuItem : mc.getItems()) {
 						if (menuItem.isSelected()) {
 							items.add(menuItem);

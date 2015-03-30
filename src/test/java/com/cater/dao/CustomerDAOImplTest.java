@@ -28,6 +28,7 @@ public class CustomerDAOImplTest extends AbstractDAOImplTest {
 	private Customer createSampleCustomer() {
 		Customer customer = new Customer();
 		customer.setName("Customer Victoria");
+		customer.setSmsOk(true);
 		customer.setLogin(createSampleLogin());
 		customer.setContactNumber("123-456-7890");
 		customer.setContactEmail("test@gmail.com");
@@ -88,6 +89,7 @@ public class CustomerDAOImplTest extends AbstractDAOImplTest {
 		assertTrue(fixture.saveOrUpdate(customer));
 		Customer persistedCustomer = fixture.findById(customer.getId());
 		assertNotNull(persistedCustomer);
+		assertTrue(persistedCustomer.isSmsOk());
 		assertEquals(persistedCustomer.getName(), customer.getName());
 		assertEquals(persistedCustomer.getContactNumber(),
 				customer.getContactNumber());

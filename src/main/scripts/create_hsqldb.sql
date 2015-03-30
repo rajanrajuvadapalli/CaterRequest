@@ -22,7 +22,8 @@ CREATE TABLE cater4party.Customer (
 	id INT NOT NULL IDENTITY
 	,name VARCHAR(50) NOT NULL 
 	,login_sk INT NOT NULL 
-	,contact_number VARCHAR(20) NOT NULL 
+	,contact_number VARCHAR(20) NOT NULL
+	,sms_ok BIT NOT NULL
 	,contact_email VARCHAR(50) NOT NULL 
 	,address_sk INT  NULL 
 	,create_ts DATETIME NOT NULL
@@ -81,7 +82,7 @@ CREATE TABLE cater4party.Quote
 	,menu_sk INT NOT NULL 
 	,restaurant_sk INT NOT NULL 
 	,price DECIMAL(6,2)  NULL 
-	,status VARCHAR(20)  NULL 
+	,status VARCHAR(30)  NULL 
 	,create_ts DATETIME NOT NULL 
 	,lupd_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP );
 -- Create Foreign Key: Quote.menu_sk -> Menu.id

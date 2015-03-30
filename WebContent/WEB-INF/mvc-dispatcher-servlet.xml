@@ -28,6 +28,7 @@
 		<property name="locations">
 			<list>
 				<value>classpath:cater.properties</value>
+				<value>classpath:email.properties</value>
 			</list>
 		</property>
 	</bean>

@@ -11,17 +11,17 @@ body {
 </style>
 </head>
 <body>
-	<span style="text-align: center; font-size: 23px; color: #52525A;">Confirm
-		Your Account</span>
-<br><br>
+	<!-- <span style="text-align: center; font-size: 23px; color: #52525A;">Notification</span> 
+<br/><br/>-->
 	Hi ${USERNAME},
 	<p>
-		Please confirm your account by clicking on the following link:<br><br>
-		http://caterrequest.com/confirmation?confirmation_token=${TOKEN}
+		${STATUS_MESSAGE}<br/><br/>
+		<b>Event name: </b>${EVENT_NAME}<br/>
+		<b>Customer name: </b>${CUSTOMER_NAME}<br/>
+		<b>Restaurant name: </b>${RESTAURANT_NAME}<br/>
 	</p>
 
-	<p>If you did not sign up for this account, you can disregard this
-		email and the account will not be created.</p>
+	<p>Please <a href="http://www.caterrequest.com/login" >login</a> to your account for more details.</p>
 
 	Regards,
 	<br> The CaterRequest Team

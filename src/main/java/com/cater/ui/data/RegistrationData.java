@@ -1,6 +1,5 @@
 package com.cater.ui.data;
 
-
 public class RegistrationData {
 	private static final String NEW_LINE = "\n";
 	private String name;
@@ -10,6 +9,7 @@ public class RegistrationData {
 	private String email;
 	private String password;
 	private String phone;
+	private boolean smsOk;
 	private String street1;
 	private String street2;
 	private String city;
@@ -72,6 +72,14 @@ public class RegistrationData {
 		this.phone = phone;
 	}
 
+	public boolean isSmsOk() {
+		return smsOk;
+	}
+
+	public void setSmsOk(boolean smsOk) {
+		this.smsOk = smsOk;
+	}
+
 	public String getStreet1() {
 		return street1;
 	}
@@ -123,6 +131,7 @@ public class RegistrationData {
 		builder.append("email: ").append(email).append(NEW_LINE);
 		builder.append("password: ").append(password).append(NEW_LINE);
 		builder.append("phone: ").append(phone).append(NEW_LINE);
+		builder.append("isSmsOk: ").append(smsOk).append(NEW_LINE);
 		builder.append("street1: ").append(street1).append(NEW_LINE);
 		builder.append("street2: ").append(street2).append(NEW_LINE);
 		builder.append("city: ").append(city).append(NEW_LINE);

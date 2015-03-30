@@ -16,6 +16,7 @@ import com.cater.Helper;
 import com.cater.constants.QuoteStatus;
 import com.cater.model.Quote;
 import com.cater.model.Restaurant;
+import com.cater.service.CustomerService;
 import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
 import com.google.common.collect.Lists;
@@ -27,6 +28,8 @@ public class RestaurantDashboardController {
 			.getLogger(RestaurantDashboardController.class);*/
 	@Autowired
 	private RestaurantService restaurantService;
+	@Autowired
+	private CustomerService customerService;
 
 	@RequestMapping(value = { "dashboard" })
 	public String getDashboard(ModelMap modelMap, HttpSession session) {
@@ -75,16 +78,26 @@ public class RestaurantDashboardController {
 		if (user != null) {
 			String price = request.getParameter("price");
 			String quoteIdString = request.getParameter("quoteId");
-			Quote q = restaurantService.findQuoteWithId(Helper
+			Quote quote = restaurantService.findQuoteWithId(Helper
 					.stringToInteger(quoteIdString));
-			if (q != null) {
-				q.setPrice(Double.parseDouble(price));
-				q.setStatus(QuoteStatus.RESTAURANT_UPDATED_PRICE.toString());
-				restaurantService.saveOrUpdateQuote(q);
-				List<String> successMessages = Lists.newArrayList();
+			Double existingPrice = quote.getPrice();
+			if (quote != null) {
+				Double newPrice = Double.parseDouble(price);
+				quote.setPrice(newPrice);
+				if (existingPrice == null || existingPrice == 0) {
+					quote.setStatus(QuoteStatus.RESTAURANT_SUBMITTED_PRICE
+							.toString());
+				}
+				else if (!newPrice.equals(existingPrice)) {
+					quote.setStatus(QuoteStatus.RESTAURANT_UPDATED_PRICE
+							.toString());
+				}
+				restaurantService.saveOrUpdateQuote(quote);
+				customerService.sendNotification(quote);
+				List <String> successMessages = Lists.newArrayList();
 				successMessages
 						.add("Your quote is successfully submitted for event: "
-								+ q.getMenu().getEvent().getName());
+								+ quote.getMenu().getEvent().getName());
 				redirectAttributes.addFlashAttribute("successMessages",
 						successMessages);
 			}

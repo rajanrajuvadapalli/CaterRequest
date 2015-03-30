@@ -25,6 +25,7 @@ import javax.persistence.Table;
 	,`name` VARCHAR(50) NOT NULL 
 	,`login_sk` INT NOT NULL 
 	,`contact_number` VARCHAR(20) NOT NULL 
+	,`sms_ok` BIT(1)
 	,`contact_email` VARCHAR(50) NOT NULL 
 	,`address_sk` INT  NULL 
 	,`create_ts` DATETIME NOT NULL
@@ -49,6 +50,8 @@ public class Customer extends TimestampEntity implements Serializable {
 	private Login login;
 	@Column(name = "contact_number", length = 20, nullable = false)
 	private String contactNumber;
+	@Column(name = "sms_ok", nullable = false, unique = false, updatable = true)
+	private boolean smsOk;
 	@Column(name = "contact_email", length = 50, nullable = false)
 	private String contactEmail;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = false)
@@ -84,6 +87,14 @@ public class Customer extends TimestampEntity implements Serializable {
 
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
+	}
+
+	public boolean isSmsOk() {
+		return smsOk;
+	}
+
+	public void setSmsOk(boolean smsOk) {
+		this.smsOk = smsOk;
 	}
 
 	public String getContactEmail() {

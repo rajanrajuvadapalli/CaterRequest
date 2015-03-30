@@ -6,10 +6,13 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.cater.constants.Roles;
 import com.cater.dao.QuoteDAO;
 import com.cater.dao.RestaurantDAO;
+import com.cater.email.EmailHelper;
 import com.cater.model.Quote;
 import com.cater.model.Restaurant;
+import com.cater.twilio.sms.SMSHelper;
 
 @Component
 public class RestaurantService {
@@ -17,6 +20,10 @@ public class RestaurantService {
 	private RestaurantDAO restaurantDAO;
 	@Autowired
 	private QuoteDAO quoteDAO;
+	@Autowired
+	private EmailHelper emailHelper;
+	@Autowired
+	private SMSHelper smsHelper;
 
 	public List <Restaurant> fetchAllRestaurants() {
 		return restaurantDAO.fetchAllRestaurants();
@@ -56,5 +63,10 @@ public class RestaurantService {
 
 	public int getNumberOfRestaurants() {
 		return restaurantDAO.getNumberOfRestaurants();
+	}
+
+	public void sendNotification(Quote quote) {
+		emailHelper.sendNotificationEmailTo(Roles.RESTAURANT, quote);
+		smsHelper.sendNotificationSMSto(Roles.RESTAURANT, quote);
 	}
 }

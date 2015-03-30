@@ -248,20 +248,20 @@ public class CustomerDashboardController {
 		List <String> selectedRestaurantNames = Lists.newArrayList();
 		for (String restaurantId : restaurantIds) {
 			//Find if a quote already exists.
-			Quote q = restaurantService.findQuoteWithRestaurantIdAndMenuId(
+			Quote quote = restaurantService.findQuoteWithRestaurantIdAndMenuId(
 					Helper.stringToInteger(restaurantId), menuId);
 			Restaurant restaurant = restaurantService
 					.findRestaurantWithId(Helper.stringToInteger(restaurantId));
 			selectedRestaurantNames.add(restaurant.getName());
-			if (q == null) {
-				q = new Quote();
-				q.setStatus(QuoteStatus.CREATED.toString());
-				q.setMenu(menuModel);
-				q.setRestaurant(restaurant);
-				restaurantService.saveOrUpdateQuote(q);
+			if (quote == null) {
+				quote = new Quote();
+				quote.setStatus(QuoteStatus.CREATED.toString());
+				quote.setMenu(menuModel);
+				quote.setRestaurant(restaurant);
+				restaurantService.saveOrUpdateQuote(quote);
+				restaurantService.sendNotification(quote);
 			}
 		}
-		//TODO: Send emails to restaurants, requesting to submit quotes.
 		String eventName = (String) httpSession.getAttribute("eventName");
 		List <String> successMessages = Lists.newArrayList();
 		successMessages
