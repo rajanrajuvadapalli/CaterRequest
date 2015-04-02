@@ -82,7 +82,7 @@ public class CustomerDashboardController {
 		List <Event> events = customer.getEvents();
 		modelMap.put("events", events);
 		Map <Integer, List <String>> e2m = Maps.newHashMap();
-		Map <Integer, List <Quote>> e2q = Maps.newHashMap();
+		Map <Integer, Map<String, List <Quote>>> e2q = Maps.newHashMap();
 		for (Event e : events) {
 			List <Menu> menus = customerService.findMenusWithEventId(e.getId());
 			List <String> selectedCusines = Lists.newLinkedList();
@@ -94,12 +94,30 @@ public class CustomerDashboardController {
 			e2m.put(e.getId(), selectedCusines);
 			List <Quote> quotes = restaurantService.findQuotesWithEventId(e
 					.getId());
-			e2q.put(e.getId(), quotes);
+			Map<String, List <Quote>> groupedQuotes = groupQuotesPerCuisine(quotes);
+			e2q.put(e.getId(), groupedQuotes);
 		}
 		modelMap.put("e2m", e2m);
 		modelMap.put("e2q", e2q);
 		((User) session.getAttribute("user")).setName(customer.getName());
 		return "customer/t_dashboard";
+	}
+
+	private Map<String, List<Quote>> groupQuotesPerCuisine(List<Quote> quotes) {
+		Map<String, List <Quote>> groupedQuotes = Maps.newHashMap();
+		for(Quote q: quotes) {
+			Restaurant r = q.getRestaurant();
+			if(r!=null) {
+				String cuisine = r.getCuisineType();
+				List <Quote> q2 = groupedQuotes.get(cuisine);
+				if(q2==null) {
+					q2 = Lists.newArrayList();
+					groupedQuotes.put(cuisine, q2);
+				}
+				q2.add(q);
+			}
+		}
+		return groupedQuotes;
 	}
 
 	/**

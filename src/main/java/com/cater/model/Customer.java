@@ -15,26 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-/**
- * The Class Customer.
- * 
- * Script for MySQL
- * CREATE TABLE cater4party.Customer (
-	`id` INT NOT NULL AUTO_INCREMENT
-	,PRIMARY KEY (id)
-	,`name` VARCHAR(50) NOT NULL 
-	,`login_sk` INT NOT NULL 
-	,`contact_number` VARCHAR(20) NOT NULL 
-	,`sms_ok` BIT(1)
-	,`contact_email` VARCHAR(50) NOT NULL 
-	,`address_sk` INT  NULL 
-	,`create_ts` DATETIME NOT NULL
-	,`lupd_ts` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)
--- Create Foreign Key: Customer.address_sk -> Address.id
-ALTER TABLE Customer ADD FOREIGN KEY (address_sk) REFERENCES Address(id);
--- Create Foreign Key: Customer.login_sk -> Login.id
-ALTER TABLE Customer ADD FOREIGN KEY (login_sk) REFERENCES Login(id);
- */
+
 @Entity
 @Table(name = "Customer")
 public class Customer extends TimestampEntity implements Serializable {
@@ -50,6 +31,8 @@ public class Customer extends TimestampEntity implements Serializable {
 	private Login login;
 	@Column(name = "contact_number", length = 20, nullable = false)
 	private String contactNumber;
+	@Column(name = "number_verified", nullable = false, unique = false, updatable = true)
+	private boolean isNumberVerified;
 	@Column(name = "sms_ok", nullable = false, unique = false, updatable = true)
 	private boolean smsOk;
 	@Column(name = "contact_email", length = 50, nullable = false)
@@ -59,7 +42,7 @@ public class Customer extends TimestampEntity implements Serializable {
 	private Address address;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_sk")
-	public List <Event> events;
+	public List<Event> events;
 
 	public Integer getId() {
 		return id;
@@ -97,6 +80,14 @@ public class Customer extends TimestampEntity implements Serializable {
 		this.smsOk = smsOk;
 	}
 
+	public boolean isNumberVerified() {
+		return isNumberVerified;
+	}
+
+	public void setNumberVerified(boolean isNumberVerified) {
+		this.isNumberVerified = isNumberVerified;
+	}
+
 	public String getContactEmail() {
 		return contactEmail;
 	}
@@ -117,11 +108,11 @@ public class Customer extends TimestampEntity implements Serializable {
 		return address;
 	}
 
-	public List <Event> getEvents() {
+	public List<Event> getEvents() {
 		return events;
 	}
 
-	public void setEvents(List <Event> events) {
+	public void setEvents(List<Event> events) {
 		this.events = events;
 	}
 
@@ -135,8 +126,10 @@ public class Customer extends TimestampEntity implements Serializable {
 		result = prime * result
 				+ ((contactNumber == null) ? 0 : contactNumber.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + (isNumberVerified ? 1231 : 1237);
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + (smsOk ? 1231 : 1237);
 		return result;
 	}
 
@@ -152,38 +145,36 @@ public class Customer extends TimestampEntity implements Serializable {
 		if (address == null) {
 			if (other.address != null)
 				return false;
-		}
-		else if (!address.equals(other.address))
+		} else if (!address.equals(other.address))
 			return false;
 		if (contactEmail == null) {
 			if (other.contactEmail != null)
 				return false;
-		}
-		else if (!contactEmail.equals(other.contactEmail))
+		} else if (!contactEmail.equals(other.contactEmail))
 			return false;
 		if (contactNumber == null) {
 			if (other.contactNumber != null)
 				return false;
-		}
-		else if (!contactNumber.equals(other.contactNumber))
+		} else if (!contactNumber.equals(other.contactNumber))
 			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
-		}
-		else if (!id.equals(other.id))
+		} else if (!id.equals(other.id))
+			return false;
+		if (isNumberVerified != other.isNumberVerified)
 			return false;
 		if (login == null) {
 			if (other.login != null)
 				return false;
-		}
-		else if (!login.equals(other.login))
+		} else if (!login.equals(other.login))
 			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
-		}
-		else if (!name.equals(other.name))
+		} else if (!name.equals(other.name))
+			return false;
+		if (smsOk != other.smsOk)
 			return false;
 		return true;
 	}

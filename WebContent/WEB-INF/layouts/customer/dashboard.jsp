@@ -75,7 +75,7 @@
 								<tr>
 									<td>${e.name}</td>
 									<td>${e.date_time}</td>
-									<td>${e.location.street1} ${e.location.street2},
+									<td>${e.location.street1}${e.location.street2},
 										${e.location.city}, ${e.location.state} - ${e.location.zip}</td>
 									<td><c:choose>
 											<c:when test="${empty e2m.get(e.id)}">Please select a menu and create your request.</c:when>
@@ -83,17 +83,32 @@
 											0 restaurants have responded to your request.
 											</c:when>
 											<c:otherwise>
-												<c:forEach items="${e2q.get(e.id)}" var="q">
-												${q.restaurant.name}: &nbsp;
-												<c:choose>
-														<c:when test="${empty q.price}">Not responded</c:when>
-														<c:otherwise>
-															<fmt:setLocale value="en_US" />
-															<b><fmt:formatNumber value="${q.price}"
-																	type="currency" /></b>
-														</c:otherwise>
-													</c:choose>
-													<br>
+												<c:forEach items="${e2q.get(e.id)}" var="q2c">
+													<c:if test="${not empty q2c}">
+														<div>
+															<div class="panel panel-info">
+																<div class="panel-heading">
+																	<h3 class="panel-title">${q2c.key}</h3>
+																</div>
+																<div class="panel-body">
+																	<div>
+																		<c:forEach items="${q2c.value}" var="q">
+																			<u>${q.restaurant.name}</u>: &nbsp;
+																			<c:choose>
+																				<c:when test="${empty q.price}">Not responded</c:when>
+																				<c:otherwise>
+																					<fmt:setLocale value="en_US" />
+																					<b><fmt:formatNumber value="${q.price}"
+																							type="currency" /></b>
+																				</c:otherwise>
+																			</c:choose>
+																			<br>
+																		</c:forEach>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</c:if>
 												</c:forEach>
 											</c:otherwise>
 										</c:choose></td>
@@ -104,16 +119,19 @@
 													<img alt="edit"
 													src="${pageContext.request.contextPath}/resources/images/edit.png">
 												</a>
-
+												<br />
 											</c:forEach>
 											<hr>
-										</c:if>
-										<form class="form-horizontal" method="GET" id="${e.id}"
+										</c:if> <a class="popup-with-form" href="#${e.id}"><span
+											class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+											Add Menu</a>
+										<form class=" mfp-hide white-popup-block menuOptions"
+											method="GET" id="${e.id}"
 											action="${pageContext.request.contextPath}/menu/selectMenu"
 											onsubmit="return validateCuisine(${e.id});"
 											ectype="application/x-www-form-urlencoded">
 											<input type="text" hidden="true" name="eventId"
-												value="${e.id}"> <span id="cuisineType"></span>
+												value="${e.id}"> <span id="cuisineType"></span><br />
 											<button type="submit" class="btn btn-sm btn-warning">Select
 												Menu</button>
 										</form></td>

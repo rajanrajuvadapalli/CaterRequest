@@ -1,5 +1,16 @@
 $('document').ready(function() {
 	$("input[id=datetimepicker]").datetimepicker();
+	$('.popup-with-form').magnificPopup({
+		type : 'inline',
+		fixedContentPos: false,
+		fixedBgPos: true,
+		overflowY: 'auto',
+		closeBtnInside: true,
+		midClick: true,
+		preloader : false,
+		removalDelay: 300,
+		mainClass: 'my-mfp-zoom-in'
+	});
 });
 
 function validateEventForm() {

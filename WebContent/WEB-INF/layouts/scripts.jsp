@@ -36,6 +36,9 @@
 <!-- http://www.kryogenix.org/code/browser/sorttable/ -->
 <script
 	src="${pageContext.request.contextPath}/resources/js/sorttable.js"></script>
+<!-- http://dimsemenov.com/plugins/magnific-popup/ -->
+<script
+	src="${pageContext.request.contextPath}/resources/js/jquery.magnific-popup.min.js"></script>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
@@ -57,6 +60,9 @@
 <!-- <link rel="stylesheet" href="http://getbootstrap.com/examples/carousel/carousel.css"> -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/carousel.css"
+	type="text/css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/magnific-popup.css"
 	type="text/css" />
 
 

@@ -1,3 +1,4 @@
+create schema cater4party;
 
 CREATE TABLE cater4party.Login (
 	id INT NOT NULL IDENTITY
@@ -23,6 +24,7 @@ CREATE TABLE cater4party.Customer (
 	,name VARCHAR(50) NOT NULL 
 	,login_sk INT NOT NULL 
 	,contact_number VARCHAR(20) NOT NULL
+	,number_verified BIT NOT NULL
 	,sms_ok BIT NOT NULL
 	,contact_email VARCHAR(50) NOT NULL 
 	,address_sk INT  NULL 
@@ -39,6 +41,7 @@ CREATE TABLE cater4party.Restaurant (
 	,address_sk INT NOT NULL 
 	,login_sk INT NOT NULL 
 	,contact_number VARCHAR(20) NOT NULL 
+	,number_verified BIT NOT NULL
 	,contact_email VARCHAR(50) NOT NULL 
 	,cuisine_type VARCHAR(20) NOT NULL 
 	,website_url VARCHAR(50)  NULL 

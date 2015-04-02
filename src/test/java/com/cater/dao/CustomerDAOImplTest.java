@@ -90,6 +90,7 @@ public class CustomerDAOImplTest extends AbstractDAOImplTest {
 		Customer persistedCustomer = fixture.findById(customer.getId());
 		assertNotNull(persistedCustomer);
 		assertTrue(persistedCustomer.isSmsOk());
+		assertFalse(persistedCustomer.isNumberVerified());
 		assertEquals(persistedCustomer.getName(), customer.getName());
 		assertEquals(persistedCustomer.getContactNumber(),
 				customer.getContactNumber());

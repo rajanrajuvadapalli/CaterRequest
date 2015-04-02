@@ -93,6 +93,7 @@ public class RestaurantDAOImplTest extends AbstractDAOImplTest {
 		assertNotNull(persistedRestaurant);
 		assertEquals(persistedRestaurant.getName(), "Chipotle");
 		assertEquals(persistedRestaurant.getContactNumber(), "9996663333");
+		assertFalse(persistedRestaurant.isNumberVerified());
 		assertEquals(persistedRestaurant.getContactEmail(), "manager@gmail.com");
 		assertEquals(persistedRestaurant.getCuisineType(), "MEXICAN");
 		assertEquals(persistedRestaurant.getWebsiteUrl(), "http://chipotle.com");
