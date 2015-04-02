@@ -2,6 +2,7 @@
 <!DOCTYPE ivy-module [
     <!ENTITY spring.version "4.0.2.RELEASE">
     <!ENTITY hibernate.version "4.3.2.Final">
+    <!ENTITY rest.version "2.3.5.Final">
 ]>
 <ivy-module version="1.0" xmlns:m="http://ant.apache.org/ivy/maven">
 	<info organisation="com.cater" module="Cater4Party" revision="1.0.0"
@@ -123,6 +124,11 @@
 		<!-- Twilio Cloud Communications - APIs for Voice, VoIP, and text messaging -->
 		<dependency org="com.twilio.sdk" name="twilio-java-sdk" rev="3.4.5" conf="compile" />
     
+    	<!-- REST Easy -->
+    	<dependency org="org.jboss.resteasy" name="resteasy-jaxrs" rev="&rest.version;" conf="compile" />
+        <dependency org="org.jboss.resteasy" name="resteasy-jaxb-provider" rev="&rest.version;" conf="compile" />
+        <dependency org="org.jboss.resteasy" name="resteasy-jackson-provider" rev="&rest.version;" conf="compile" />
+        
 		<!-- Test -->
 		<dependency org="junit" name="junit" rev="4.9" conf="testCompile" />
 		<dependency org="org.springframework" name="spring-test"
