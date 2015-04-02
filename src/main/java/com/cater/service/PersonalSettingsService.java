@@ -77,6 +77,7 @@ public class PersonalSettingsService {
 			if (customer != null) {
 				customer.setName(data.getName());
 				customer.setContactNumber(data.getPhone());
+				customer.setSmsOk(data.isSmsOk());
 				Address address = customer.getAddress();
 				if (address == null) {
 					address = new Address();

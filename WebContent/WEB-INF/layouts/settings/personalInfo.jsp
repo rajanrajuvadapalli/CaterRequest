@@ -98,6 +98,10 @@
 					<div class="col-sm-6">
 						<input type="text" size="30" name="phone" class="form-control"
 							required="required" value="${sessionScope.user.data.phone}">
+							&nbsp;<input type="checkbox" name="smsOk" id="customer"
+							${sessionScope.user.data.smsOk?"checked":""}
+								style="-webkit-transform: scale(1.5); -o-transform: scale(1.5); -ms-transform: scale(1.5); -moz-transform: scale(1.5); padding: 10px;">&nbsp;&nbsp;<span  id="customer">Send
+							me text alerts <i>(carrier charges may apply)</i></span>
 					</div>
 				</div>
 				<div class="form-group">

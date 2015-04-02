@@ -79,6 +79,7 @@ public class SettingsController {
 			Customer customer = (Customer) userFromDatabase;
 			data.setName(customer.getName());
 			data.setPhone(customer.getContactNumber());
+			data.setSmsOk(customer.isSmsOk());
 			Address address = customer.getAddress();
 			populateAddress(data, address);
 			user.setCustomerID(customer.getId());
@@ -132,6 +133,8 @@ public class SettingsController {
 			//data.setPassword(StringUtils.defaultString(request.getParameter("pwd1")));
 			data.setPhone(Helper.formatPhone(StringUtils.defaultString(request
 					.getParameter("phone"))));
+			data.setSmsOk(StringUtils.equalsIgnoreCase("on",
+					request.getParameter("smsOk")));
 			data.setStreet1(StringUtils.defaultString(request
 					.getParameter("street1")));
 			data.setStreet2(StringUtils.defaultString(request
