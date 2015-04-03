@@ -6,6 +6,7 @@ ext.sourceCompatibility=JavaVersion.VERSION_1_6
 version = '1.0'
 ext.springVersion = '4.0.2.RELEASE'
 ext.hibernateVersion = '4.3.2.Final'
+ext.restVersion = '2.3.5.Final'
 
 repositories {
 	mavenCentral()
@@ -52,6 +53,11 @@ dependencies {
 	
 	//Twilio Cloud Communications - APIs for Voice, VoIP, and text messaging.
 	compile "com.twilio.sdk:twilio-java-sdk:3.4.5"
+	
+	//REST Easy
+    compile "org.jboss.resteasy:resteasy-jaxrs:${restVersion}"
+    compile "org.jboss.resteasy:resteasy-jaxb-provider:${restVersion}"
+    compile "org.jboss.resteasy:resteasy-jackson-provider:${restVersion}"
 	
 	testCompile "junit:junit:4.9"
 	testCompile "org.springframework:spring-test:${springVersion}"	
