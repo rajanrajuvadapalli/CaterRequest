@@ -44,21 +44,25 @@ public class EmailHelper {
 	 *
 	 * @param username the username
 	 * @param confirmationToken the confirmation token
+	 * @param phoneVerificationCode the phone verification code
 	 * @param toAddresses the to addresses
 	 * @return true, if successful
 	 */
 	public boolean sendRegistrationConfirmationEmail(String username,
-			String confirmationToken, String... toAddresses) {
+			String confirmationToken, String phoneVerificationCode,
+			String... toAddresses) {
 		try {
 			File f = new File(MenuController.class.getResource(
 					"/email/registrationConfirmation.html").getFile());
 			String emailBody = FileUtils.readFileToString(f);
-			String[] searchList = new String[2];
-			String[] replacementList = new String[2];
+			String[] searchList = new String[3];
+			String[] replacementList = new String[3];
 			searchList[0] = "${USERNAME}";
 			replacementList[0] = username;
 			searchList[1] = "${TOKEN}";
 			replacementList[1] = confirmationToken;
+			searchList[2] = "${PVC}";
+			replacementList[2] = phoneVerificationCode;
 			emailBody = StringUtils.replaceEach(emailBody, searchList,
 					replacementList);
 			amazonSES.sendEmail(emailSubject_registrationConfirmation,
