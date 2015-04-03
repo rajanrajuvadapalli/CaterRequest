@@ -8,11 +8,29 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	
+	<listener>
+		<listener-class>
+			org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap
+		</listener-class>
+	</listener>
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/mvc-dispatcher-servlet.xml,
 		    /WEB-INF/applicationContext-hibernate.xml</param-value>
+	</context-param>
+	
+	<!-- Auto scan REST service -->
+	<context-param>
+		<param-name>resteasy.scan</param-name>
+		<param-value>true</param-value>
+	</context-param>
+ 
+	<!-- this need same with resteasy servlet url-pattern -->
+	<context-param>
+		<param-name>resteasy.servlet.mapping.prefix</param-name>
+		<param-value>/rest</param-value>
 	</context-param>
 
 	<servlet>
@@ -20,6 +38,18 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	
+	<servlet>
+		<servlet-name>resteasy-servlet</servlet-name>
+		<servlet-class>
+			org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
+		</servlet-class>
+	</servlet>
+ 
+	<servlet-mapping>
+		<servlet-name>resteasy-servlet</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
 
 	<servlet-mapping>
 		<servlet-name>mvc-dispatcher</servlet-name>
