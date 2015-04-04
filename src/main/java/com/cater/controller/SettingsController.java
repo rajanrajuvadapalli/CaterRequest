@@ -150,10 +150,11 @@ public class SettingsController {
 			if (updateResult) {
 				List<String> successMessages = Lists.newArrayList();
 				successMessages
-						.add("Your account has been successfully udpated.");
+						.add("Your account has been successfully updated.");
 				modelMap.addAttribute("successMessages", successMessages);
-				user.setData(data);
-				session.setAttribute("user", user);
+				/*user.setData(data);
+				session.setAttribute("user", user);*/
+				checkUserInSessionAndRetrieveData(session);
 			}
 			else {
 				List<String> errors = Lists.newArrayList();
