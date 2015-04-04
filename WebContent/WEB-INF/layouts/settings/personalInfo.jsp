@@ -10,6 +10,10 @@
 
 <c:if test="${not empty errors}">
 	<div class="alert alert-danger">
+		<button type="button" class="close btn-lg" data-dismiss="alert"
+			aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
 		<ul>
 			<c:forEach items="${errors}" var="e">
 				<li align="left">${e}</li>
@@ -21,17 +25,24 @@
 
 <c:if test="${not empty successMessages}">
 	<div class="alert alert-success">
+		<button type="button" class="close btn-lg" data-dismiss="alert"
+			aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
 		<ul>
 			<c:forEach items="${successMessages}" var="sm">
 				<li align="left">${sm}</li>
 			</c:forEach>
 		</ul>
-
 	</div>
 </c:if>
 
 <c:if test="${not empty warnings}">
 	<div class="alert alert-warning">
+		<button type="button" class="close btn-lg" data-dismiss="alert"
+			aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
 		<ul>
 			<c:forEach items="${warnings}" var="w">
 				<li align="left">${w}</li>
@@ -95,21 +106,53 @@
 				<div class="form-group">
 					<label for="phone" class="col-sm-3 control-label">Contact
 						Phone: </label>
-					<div class="col-sm-6">
-						<input type="text" size="30" name="phone" class="form-control"
-							required="required" value="${sessionScope.user.data.phone}">
-							<input type="checkbox" name="smsOk" id="customer"
-							${sessionScope.user.data.smsOk?"checked":""}
-								style="-webkit-transform: scale(1.5); -o-transform: scale(1.5); -ms-transform: scale(1.5); -moz-transform: scale(1.5); padding: 10px;">&nbsp;&nbsp;<span  id="customer">Send
-							me text alerts <i>(carrier charges may apply)</i></span>
+					<div class="row">
+						<div class="col-sm-3">
+							<input type="text" size="20" maxlength="20" name="phone"
+								class="form-control" required="required"
+								value="${sessionScope.user.data.phone}">
+						</div>
+						<c:if test="${sessionScope.user.data.numberVerified}">
+							<div class="col-xs-1" align="left">
+								<span class="glyphicon glyphicon-ok" style="color: green;"></span>
+							</div>
+						</c:if>
+						<br />
+						<div class="col-sm-6" id="customer" align="left">
+							<input type="checkbox" name="smsOk"
+								${sessionScope.user.data.smsOk?"checked":""}
+								style="-webkit-transform: scale(1.5); -o-transform: scale(1.5); -ms-transform: scale(1.5); -moz-transform: scale(1.5); padding: 10px;">
+							&nbsp;Send me text alerts<sup>*</sup>
+						</div>
 					</div>
 				</div>
+				<c:if test="${!sessionScope.user.data.numberVerified}">
+					<div class="form-group">
+						<label for="pvc" class="col-sm-3 control-label">Verification
+							Code: </label>
+						<div class="row">
+							<div class="col-sm-3">
+								<input type="text" size="10" maxlength="5" name="pvc" id="pvc"
+									class="form-control"
+									value="${sessionScope.user.data.phoneVerificationCode}"
+									style="text-transform: uppercase"> <input type="text"
+									hidden="true" value="${sessionScope.user.loginID}"
+									id="pvc-loginID"> <input type="text" hidden="true"
+									value="${sessionScope.user.role.value}" id="pvc-role">
+							</div>
+							<div class="col-sm-1">
+								<button formaction="" id="pvc" class="btn btn-warning"
+									data-loading-text="Verifying...">Verify</button>
+							</div>
+						</div>
+					</div>
+				</c:if>
 				<div class="form-group">
-					<label for="name" class="col-sm-3 control-label">Street 1:
-					</label>
+					<label for="street1" class="col-sm-3 control-label">Street
+						1: </label>
 
 					<div class="col-sm-6">
-						<input type="street1" size="30" maxlength="50" name="street1"
+						<input type="text" size="30" maxlength="50" name="street1"
 							class="form-control" value="${sessionScope.user.data.street1}">
 					</div>
 				</div>
@@ -157,5 +200,9 @@
 
 			</form>
 		</div>
+	</div>
+	<div align="left">
+		<span style="color: gray; font-size: 14px;"><sup>*</sup>carrier
+			charges may apply</span>
 	</div>
 </div>

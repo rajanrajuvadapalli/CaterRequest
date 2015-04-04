@@ -10,6 +10,8 @@ public class RegistrationData {
 	private String password;
 	private String phone;
 	private boolean smsOk;
+	private boolean numberVerified;
+	private String phoneVerificationCode;
 	private String street1;
 	private String street2;
 	private String city;
@@ -78,6 +80,22 @@ public class RegistrationData {
 
 	public void setSmsOk(boolean smsOk) {
 		this.smsOk = smsOk;
+	}
+
+	public boolean isNumberVerified() {
+		return numberVerified;
+	}
+
+	public void setNumberVerified(boolean numberVerified) {
+		this.numberVerified = numberVerified;
+	}
+
+	public String getPhoneVerificationCode() {
+		return phoneVerificationCode;
+	}
+
+	public void setPhoneVerificationCode(String phoneVerificationCode) {
+		this.phoneVerificationCode = phoneVerificationCode;
 	}
 
 	public String getStreet1() {

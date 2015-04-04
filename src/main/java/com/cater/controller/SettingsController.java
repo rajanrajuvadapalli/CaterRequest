@@ -80,6 +80,7 @@ public class SettingsController {
 			data.setName(customer.getName());
 			data.setPhone(customer.getContactNumber());
 			data.setSmsOk(customer.isSmsOk());
+			data.setNumberVerified(customer.isNumberVerified());
 			Address address = customer.getAddress();
 			populateAddress(data, address);
 			user.setCustomerID(customer.getId());
@@ -90,6 +91,7 @@ public class SettingsController {
 			data.setCuisineType(restaurant.getCuisineType());
 			data.setUrl(restaurant.getWebsiteUrl());
 			data.setPhone(restaurant.getContactNumber());
+			data.setNumberVerified(restaurant.isNumberVerified());
 			Address address = restaurant.getAddress();
 			populateAddress(data, address);
 			user.setRestaurantID(restaurant.getId());

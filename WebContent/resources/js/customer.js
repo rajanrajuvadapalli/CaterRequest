@@ -2,16 +2,56 @@ $('document').ready(function() {
 	$("input[id=datetimepicker]").datetimepicker();
 	$('.popup-with-form').magnificPopup({
 		type : 'inline',
-		fixedContentPos: false,
-		fixedBgPos: true,
-		overflowY: 'auto',
-		closeBtnInside: true,
-		midClick: true,
+		fixedContentPos : false,
+		fixedBgPos : true,
+		overflowY : 'auto',
+		closeBtnInside : true,
+		midClick : true,
 		preloader : false,
-		removalDelay: 300,
-		mainClass: 'my-mfp-zoom-in'
+		removalDelay : 300,
+		mainClass : 'my-mfp-zoom-in'
 	});
+	$('button[id=pvc]').click(validatePhoneVerificationCode);
 });
+
+function validatePhoneVerificationCode() {
+	var loginID = $('input[id=pvc-loginID]').val();
+	var role = $('input[id=pvc-role]').val();
+	var url = "/cater4party/rest/phone/verify/" + loginID + "?role=" + role;
+	var pvc = $('input[id=pvc]').val();
+	/*
+	 * console.log("login ID: " + loginID); console.log("Role: " + role);
+	 * console.log("URL: " + url); console.log("phone verification code: " +
+	 * pvc);
+	 */
+
+	if (pvc == null || pvc.length != 5) {
+		alert("Please enter the complete verification code.");
+		$('input[id=pvc]').focus();
+		return false;
+	}
+
+	$.ajax({
+		url : url,
+		data : pvc,
+		type : "POST",
+		contentType : "text/plain;",
+		// accepts : "text/plain",
+		async : false,
+		processData : false,
+		success : function(response) {
+			alert(response);
+			window.location.href = '/cater4party/settings/personalInfo';
+		},
+		error : function(xhr, status, error) {
+			alert(response + " " + error);
+		}/*
+			 * , statusCode : { 404 : function() { alert("page not found"); },
+			 * 400 : function() { alert("400"); } }
+			 */
+	});
+	return false;
+}
 
 function validateEventForm() {
 	// Validate that the date is in the future.
