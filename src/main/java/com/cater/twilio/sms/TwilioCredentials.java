@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 import java.util.Scanner;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 
 import com.google.common.collect.Maps;
 
@@ -16,8 +17,11 @@ import com.google.common.collect.Maps;
  * The Class TwilioCredentials.
  */
 public class TwilioCredentials {
+	private static final Logger logger = Logger
+			.getLogger(TwilioCredentials.class);
 	/** The Constant DEFAULT_CREDENTIAL_PROFILES_FILENAME. */
 	private static final String DEFAULT_CREDENTIAL_PROFILES_FILENAME = "credentials";
+	private static final String TWILIO_FILE_PATH = "TWILIO_FILE_PATH";
 	/** The properties. */
 	private Map <String, String> properties = Maps.newHashMap();
 
@@ -52,17 +56,29 @@ public class TwilioCredentials {
 	 * @throws TwilioClientException the twilio client exception
 	 */
 	public TwilioCredentials() throws TwilioClientException {
-		// read ~/.twilio/credentials file
-		String userHome = System.getProperty("user.home");
-		if (userHome == null) {
-			throw new TwilioClientException("Unable to load Twilio profiles: "
-					+ "'user.home' System property is not set.");
+		File credentialsFile = null;
+		String filePathOverride = System.getProperty(TWILIO_FILE_PATH);
+		//If there is a system variable set for the path, use it
+		if (StringUtils.isNotBlank(filePathOverride)) {
+			credentialsFile = new File(filePathOverride);
+			logger.debug("filePathOverride: "
+					+ credentialsFile.getAbsolutePath());
 		}
-		File twilioDirectory = new File(userHome, ".twilio");
-		File credentialsFile = new File(twilioDirectory,
-				DEFAULT_CREDENTIAL_PROFILES_FILENAME);
-		boolean foundCredentialProfiles = credentialsFile.exists()
-				&& credentialsFile.isFile();
+		else {
+			// read ~/.twilio/credentials file
+			String userHome = System.getProperty("user.home");
+			if (userHome == null) {
+				throw new TwilioClientException(
+						"Unable to load Twilio profiles: "
+								+ "'user.home' System property is not set.");
+			}
+			File twilioDirectory = new File(userHome, ".twilio");
+			logger.debug("twilioDirectory: " + twilioDirectory);
+			credentialsFile = new File(twilioDirectory,
+					DEFAULT_CREDENTIAL_PROFILES_FILENAME);
+		}
+		boolean foundCredentialProfiles = credentialsFile != null
+				&& credentialsFile.exists() && credentialsFile.isFile();
 		if (!foundCredentialProfiles) {
 			throw new TwilioClientException(
 					"Could not locate twilio credentials file.");
