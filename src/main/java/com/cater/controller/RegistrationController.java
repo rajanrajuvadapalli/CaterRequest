@@ -1,7 +1,6 @@
 package com.cater.controller;
 
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -136,15 +135,10 @@ public class RegistrationController {
 				customer_restaurant_name = restaurantService
 						.findRestaurantWithLoginId(login.getId()).getName();
 			}
-			String phoneVerificationCode = StringUtils
-					.upperCase(
-							StringUtils.substring(login.getPassword(), 4, 9),
-							Locale.US);
 			boolean sendEmailStatus = emailHelper
 					.sendRegistrationConfirmationEmail(
 							customer_restaurant_name,
-							confirmationToken_URLSafe, phoneVerificationCode,
-							username);
+							confirmationToken_URLSafe, username);
 			/*if (data.isSmsOk()) {
 				smsHelper.sendRegistrationConfirmationSMS(data.getPhone());
 			}*/
