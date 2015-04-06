@@ -20,18 +20,37 @@ import com.cater.model.Login;
 import com.cater.model.Restaurant;
 import com.cater.service.LoginService;
 import com.cater.service.PersonalSettingsService;
+import com.cater.service.UpdateResult;
+import com.cater.twilio.sms.SMSHelper;
 import com.cater.ui.data.RegistrationData;
 import com.cater.ui.data.User;
 import com.google.common.collect.Lists;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SettingsController.
+ */
 @Controller
 @RequestMapping(value = { "settings" })
 public class SettingsController {
+	/** The personal settings service. */
 	@Autowired
 	private PersonalSettingsService personalSettingsService;
+	/** The login service. */
 	@Autowired
 	private LoginService loginService;
+	/** The sms helper. */
+	@Autowired
+	private SMSHelper smsHelper;
 
+	/**
+	 * Gets the personal info.
+	 *
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param session the session
+	 * @return the personal info
+	 */
 	@RequestMapping(value = { "personalInfo" }, method = RequestMethod.GET)
 	public String getPersonalInfo(ModelMap modelMap,
 			HttpServletRequest request, HttpSession session) {
@@ -42,6 +61,14 @@ public class SettingsController {
 		return "settings/t_personalInfo";
 	}
 
+	/**
+	 * Gets the change password.
+	 *
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param session the session
+	 * @return the change password
+	 */
 	@RequestMapping(value = { "changePassword" }, method = RequestMethod.GET)
 	public String getChangePassword(ModelMap modelMap,
 			HttpServletRequest request, HttpSession session) {
@@ -52,6 +79,14 @@ public class SettingsController {
 		return "settings/t_changePassword";
 	}
 
+	/**
+	 * Gets the payment info.
+	 *
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param session the session
+	 * @return the payment info
+	 */
 	@RequestMapping(value = { "paymentInfo" }, method = RequestMethod.GET)
 	public String getPaymentInfo(ModelMap modelMap, HttpServletRequest request,
 			HttpSession session) {
@@ -62,6 +97,12 @@ public class SettingsController {
 		return "settings/t_paymentInfo";
 	}
 
+	/**
+	 * Check user in session and retrieve data.
+	 *
+	 * @param session the session
+	 * @return true, if successful
+	 */
 	private boolean checkUserInSessionAndRetrieveData(HttpSession session) {
 		//If the user is not in session redirect to the home page.
 		User user = (User) session.getAttribute("user");
@@ -117,6 +158,14 @@ public class SettingsController {
 		}
 	}
 
+	/**
+	 * Update personal info.
+	 *
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param session the session
+	 * @return the string
+	 */
 	@RequestMapping(value = { "personalInfo" }, method = RequestMethod.POST)
 	public String updatePersonalInfo(ModelMap modelMap,
 			HttpServletRequest request, HttpSession session) {
@@ -145,19 +194,27 @@ public class SettingsController {
 			data.setState(StringUtils.defaultString(request
 					.getParameter("state")));
 			data.setZip(StringUtils.defaultString(request.getParameter("zip")));
-			boolean updateResult = personalSettingsService.updateDataFor(
+			UpdateResult updateResult = personalSettingsService.updateDataFor(
 					user.getRole(), customerID, restaurantID, data);
-			if (updateResult) {
-				List<String> successMessages = Lists.newArrayList();
+			if (updateResult.isUpdateSuccess()) {
+				List <String> successMessages = Lists.newArrayList();
 				successMessages
 						.add("Your account has been successfully updated.");
-				modelMap.addAttribute("successMessages", successMessages);
 				/*user.setData(data);
 				session.setAttribute("user", user);*/
+				if (updateResult.isPhoneNumberUpdated()) {
+					Login login = loginService.findLoginWithId(user
+							.getLoginID());
+					smsHelper.sendRegistrationConfirmationSMS(login,
+							data.isSmsOk(), data.getPhone());
+					successMessages
+							.add("We sent an verification code to your new phone number. Please verify below.");
+				}
+				modelMap.addAttribute("successMessages", successMessages);
 				checkUserInSessionAndRetrieveData(session);
 			}
 			else {
-				List<String> errors = Lists.newArrayList();
+				List <String> errors = Lists.newArrayList();
 				errors.add("Failed to update profile information.");
 				modelMap.addAttribute("errors", errors);
 			}
@@ -165,6 +222,14 @@ public class SettingsController {
 		return "settings/t_personalInfo";
 	}
 
+	/**
+	 * Change password.
+	 *
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param session the session
+	 * @return the string
+	 */
 	@RequestMapping(value = { "changePassword" }, method = RequestMethod.POST)
 	public String changePassword(ModelMap modelMap, HttpServletRequest request,
 			HttpSession session) {
@@ -175,7 +240,7 @@ public class SettingsController {
 			Login login = loginService.retrieveLoginFor(user.getUsername(),
 					currentPassword);
 			//If we cannot find a login, then the current password entered is incorrect.
-			List<String> errors = Lists.newArrayList();
+			List <String> errors = Lists.newArrayList();
 			modelMap.addAttribute("errors", errors);
 			if (login == null) {
 				errors.add("Current password you entered is incorrect. Please try again.");
@@ -186,7 +251,7 @@ public class SettingsController {
 				boolean updateResult = loginService.updatePassword(
 						user.getLoginID(), newPassword);
 				if (updateResult) {
-					List<String> successMessages = Lists.newArrayList();
+					List <String> successMessages = Lists.newArrayList();
 					successMessages
 							.add("Your account has been successfully udpated.");
 					modelMap.addAttribute("successMessages", successMessages);

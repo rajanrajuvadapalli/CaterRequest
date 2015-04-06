@@ -6,7 +6,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.google.common.collect.Lists;
@@ -22,16 +21,21 @@ import com.twilio.sdk.resource.instance.Message;
  */
 @Component
 public class TwilioSMS {
+	/** The Constant logger. */
 	private static final Logger logger = Logger.getLogger(TwilioSMS.class);
-	@Value("${twilio.sid}")
-	private String sid;
-	@Value("${twilio.auth}")
-	private String auth_token;
-	@Value("${twilio.from.number}")
-	private String from;
+	/** The client. */
 	private TwilioRestClient client;
-	@Value("${sms.enabled}")
-	private boolean smsEnabled;
+	/** The twilio credentials. */
+	private TwilioCredentials twilioCredentials;
+
+	/**
+	 * Instantiates a new twilio sms.
+	 *
+	 * @throws TwilioClientException the twilio client exception
+	 */
+	private TwilioSMS() throws TwilioClientException {
+		twilioCredentials = new TwilioCredentials();
+	}
 
 	/**
 	 * Send message.
@@ -41,14 +45,16 @@ public class TwilioSMS {
 	 * @throws TwilioRestException the twilio rest exception
 	 */
 	public void sendMessage(String to, String body) throws TwilioRestException {
-		if (!smsEnabled || StringUtils.isBlank(to) || StringUtils.isBlank(body)) {
+		if (!twilioCredentials.isSmsEnabled() || StringUtils.isBlank(to)
+				|| StringUtils.isBlank(body)) {
 			return;
 		}
 		logger.debug("Sending SMS to " + to + " with body: " + body);
 		// Build the parameters 
 		List <NameValuePair> params = Lists.newArrayList();
 		params.add(new BasicNameValuePair("To", to));
-		params.add(new BasicNameValuePair("From", from));
+		params.add(new BasicNameValuePair("From", twilioCredentials
+				.getFromNumber()));
 		params.add(new BasicNameValuePair("Body", body));
 		MessageFactory messageFactory = getClient().getAccount()
 				.getMessageFactory();
@@ -63,7 +69,8 @@ public class TwilioSMS {
 	 */
 	private TwilioRestClient getClient() {
 		if (client == null) {
-			client = new TwilioRestClient(sid, auth_token);
+			client = new TwilioRestClient(twilioCredentials.getSid(),
+					twilioCredentials.getAuthToken());
 		}
 		return client;
 	}

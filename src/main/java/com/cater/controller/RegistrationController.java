@@ -139,9 +139,8 @@ public class RegistrationController {
 					.sendRegistrationConfirmationEmail(
 							customer_restaurant_name,
 							confirmationToken_URLSafe, username);
-			/*if (data.isSmsOk()) {
-				smsHelper.sendRegistrationConfirmationSMS(data.getPhone());
-			}*/
+			smsHelper.sendRegistrationConfirmationSMS(login, data.isSmsOk(),
+					data.getPhone());
 			if (sendEmailStatus) {
 				return "t_registerSuccess";
 			}
@@ -157,6 +156,7 @@ public class RegistrationController {
 			return "t_500";
 		}
 	}
+
 
 	/**
 	 * Registration confirmation.

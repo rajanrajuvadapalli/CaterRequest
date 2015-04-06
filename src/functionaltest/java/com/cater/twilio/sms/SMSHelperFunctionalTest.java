@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.cater.constants.Roles;
+import com.cater.model.Login;
+
 /**
  * Description: 
  * Created: Mar 27, 2015
@@ -21,6 +24,11 @@ public class SMSHelperFunctionalTest {
 
 	@Test
 	public void testSendRegistrationConfirmationSMS() {
-		fixture.sendRegistrationConfirmationSMS("9165204113");
+		Login login = new Login();
+		login.setRole(Roles.CUSTOMER.toString());
+		login.setPassword("1234ABCDE567890");
+		boolean isSmsOk = true;
+		String phoneNumber = "9165204113";
+		fixture.sendRegistrationConfirmationSMS(login, isSmsOk, phoneNumber);
 	}
 }
