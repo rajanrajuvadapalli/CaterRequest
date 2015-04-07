@@ -42,7 +42,7 @@ function validatePhoneVerificationCode() {
 		processData : false,
 		success : function(response) {
 			alert(response);
-			window.location.href = '/cater4party/settings/personalInfo';
+			window.location.href = contextPath + '/settings/personalInfo';
 		},
 		error : function(xhr, status, error) {
 			alert(response + " " + error);
