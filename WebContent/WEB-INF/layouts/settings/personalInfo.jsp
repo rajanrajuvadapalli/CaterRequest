@@ -139,6 +139,10 @@
 									hidden="true" value="${sessionScope.user.loginID}"
 									id="pvc-loginID"> <input type="text" hidden="true"
 									value="${sessionScope.user.role.value}" id="pvc-role">
+
+								<input type="text" hidden="true"
+									value="${pageContext.request.contextPath}" id="contextpath">
+
 							</div>
 							<div class="col-sm-1">
 								<button formaction="" id="pvc" class="btn btn-warning"

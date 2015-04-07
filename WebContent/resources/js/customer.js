@@ -17,7 +17,8 @@ $('document').ready(function() {
 function validatePhoneVerificationCode() {
 	var loginID = $('input[id=pvc-loginID]').val();
 	var role = $('input[id=pvc-role]').val();
-	var url = "/cater4party/rest/phone/verify/" + loginID + "?role=" + role;
+	var contextPath = $('input[id=contextpath]').val();
+	var url = contextPath + "/rest/phone/verify/" + loginID + "?role=" + role;
 	var pvc = $('input[id=pvc]').val();
 	/*
 	 * console.log("login ID: " + loginID); console.log("Role: " + role);
