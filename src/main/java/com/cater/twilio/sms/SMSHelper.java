@@ -147,9 +147,10 @@ public class SMSHelper {
 	 * @param login the login
 	 * @param isSmsOk the is sms ok
 	 * @param phoneNumber the phone number
+	 * @return true, if successful
 	 */
-	public void sendRegistrationConfirmationSMS(Login login, boolean isSmsOk,
-			String phoneNumber) {
+	public boolean sendRegistrationConfirmationSMS(Login login,
+			boolean isSmsOk, String phoneNumber) {
 		try {
 			//If customer opts for SMS, send verification code to their mobile numbers.
 			//If restaurant, always send verification code to their mobile numbers.
@@ -162,10 +163,12 @@ public class SMSHelper {
 						+ "Please check your registered email and click on the confirmation link to activate your account."
 						+ "Your verification code is: " + phoneVerificationCode;
 				twilioSms.sendMessage(to, msg);
+				return true;
 			}
 		}
 		catch (TwilioRestException e) {
 			logger.error("Failed to send SMS.", e);
 		}
+		return false;
 	}
 }

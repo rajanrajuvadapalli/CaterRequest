@@ -205,10 +205,11 @@ public class SettingsController {
 				if (updateResult.isPhoneNumberUpdated()) {
 					Login login = loginService.findLoginWithId(user
 							.getLoginID());
-					smsHelper.sendRegistrationConfirmationSMS(login,
-							data.isSmsOk(), data.getPhone());
-					successMessages
-							.add("We sent an verification code to your new phone number. Please verify below.");
+					if (smsHelper.sendRegistrationConfirmationSMS(login,
+							data.isSmsOk(), data.getPhone())) {
+						successMessages
+								.add("We sent an verification code to your new phone number. Please verify below.");
+					}
 				}
 				modelMap.addAttribute("successMessages", successMessages);
 				checkUserInSessionAndRetrieveData(session);
