@@ -60,4 +60,8 @@ public class LoginService {
 	public Login findLoginWithId(Integer loginId) {
 		return loginDAO.findById(loginId);
 	}
+
+	public void saveOrUpdate(Login login) {
+		loginDAO.saveOrUpdate(login);
+	}
 }

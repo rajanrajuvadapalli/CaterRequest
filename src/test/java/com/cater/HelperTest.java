@@ -2,6 +2,8 @@ package com.cater;
 
 import static org.junit.Assert.assertEquals;
 
+import java.security.NoSuchAlgorithmException;
+
 import org.junit.Test;
 
 public class HelperTest {
@@ -24,5 +26,13 @@ public class HelperTest {
 		String phone = "(916) 215-1111";
 		String massagedPhone = Helper.extractJust10digitNumber(phone);
 		assertEquals("9162151111", massagedPhone);
+	}
+	
+	@Test
+	public void testGenerateMD5() throws NoSuchAlgorithmException {
+		String inputString = "11111";
+		String md5Expected = "b0baee9d279d34fa1dfd71aadb908c3f";
+		String md5Actual = Helper.generateMD5(inputString);
+		assertEquals(md5Expected, md5Actual);
 	}
 }

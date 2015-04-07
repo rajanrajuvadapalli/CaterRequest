@@ -26,6 +26,7 @@ import com.cater.service.RegisterService;
 import com.cater.service.RestaurantService;
 import com.cater.twilio.sms.SMSHelper;
 import com.cater.ui.data.RegistrationData;
+import com.cater.ui.data.User;
 import com.google.common.collect.Lists;
 
 /**
@@ -34,20 +35,28 @@ import com.google.common.collect.Lists;
  */
 @Controller
 public class RegistrationController {
+	/** The Constant logger. */
 	private static final Logger logger = Logger
 			.getLogger(RegistrationController.class);
+	/** The register service. */
 	@Autowired
 	private RegisterService registerService;
+	/** The login service. */
 	@Autowired
 	private LoginService loginService;
+	/** The customer service. */
 	@Autowired
 	private CustomerService customerService;
+	/** The restaurant service. */
 	@Autowired
 	private RestaurantService restaurantService;
+	/** The email helper. */
 	@Autowired
 	private EmailHelper emailHelper;
+	/** The sms helper. */
 	@Autowired
 	private SMSHelper smsHelper;
+	/** The customer care contact number. */
 	@Value("${customer.care.contact.number}")
 	private String customerCareContactNumber;
 
@@ -70,6 +79,7 @@ public class RegistrationController {
 	 *
 	 * @param modelMap the model map
 	 * @param request the request
+	 * @param session the session
 	 * @return the string
 	 */
 	@RequestMapping(value = { "register" }, method = RequestMethod.POST)
@@ -157,7 +167,6 @@ public class RegistrationController {
 		}
 	}
 
-
 	/**
 	 * Registration confirmation.
 	 *
@@ -205,5 +214,45 @@ public class RegistrationController {
 			modelMap.addAttribute("successMessages", successMessages);
 		}
 		return "t_login";
+	}
+
+	/**
+	 * Reset password.
+	 *
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param session the session
+	 * @param resetToken_URLSafe the reset token_ url safe
+	 * @return the string
+	 */
+	@RequestMapping(value = { "resetpassword" })
+	public String resetPassword(ModelMap modelMap, HttpServletRequest request,
+			HttpSession session,
+			@RequestParam("token") String resetToken_URLSafe) {
+		String resetToken = new String(Base64.decodeBase64(resetToken_URLSafe));
+		logger.info("Received request for password reset: " + resetToken);
+		String[] tokens = StringUtils.split(resetToken, "@");
+		List <String> errors = Lists.newArrayList();
+		modelMap.addAttribute("errors", errors);
+		if (tokens == null || tokens.length != 3) {
+			errors.add("Invalid link used.");
+			return "t_login";
+		}
+		String username = tokens[0] + "@" + tokens[2];
+		String pwd = tokens[1];
+		Login login = loginService.retrieveLoginFor(username, pwd);
+		if (login == null) {
+			errors.add("Invalid link used.");
+			return "t_login";
+		}
+		//Redirect to change password screen.
+		User user = new User();
+		user.setLoginID(login.getId());
+		user.setUsername(username);
+		Roles role = Roles.get(login.getRole());
+		user.setRole(role);
+		session.setAttribute("user", user);
+		session.setAttribute("passwordreset", Boolean.TRUE);
+		return "redirect:settings/changePassword";
 	}
 }

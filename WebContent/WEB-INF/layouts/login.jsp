@@ -60,8 +60,7 @@
 			placeholder="Email address" required autofocus> <label
 			for="inputPassword" class="sr-only">Password</label> <input
 			type="password" name="pwd" id="pwd" class="form-control"
-			placeholder="Password" required><a class="popup-with-form"
-			href="#forgot-pwd-form" style="font-size: 16px;">Forgot Password?</a>
+			placeholder="Password" required>
 		<!-- <div class="checkbox">
 			<label> <input type="checkbox" value="remember-me">
 				Remember me
@@ -70,17 +69,17 @@
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
 			in</button>
 	</form>
+	<br /> <a class="popup-with-form" href="#forgot-pwd-form"
+		style="font-size: 16px;">Forgot Password?</a>
 
-
-	<form class="form-signin mfp-hide white-popup-block" method="POST"
+	<form class="mfp-hide white-popup-block forgotPassword" method="POST"
 		id="forgot-pwd-form"
 		action="${pageContext.request.contextPath}/forgotPassword"
 		ectype="application/x-www-form-urlencoded">
 		<h2 class="form-signin-heading">Forgot Password</h2>
 		<label for="inputEmail" class="sr-only">Email address</label> <input
 			type="email" name="username" id="username" class="form-control"
-			placeholder="Email address" required autofocus>
-
+			placeholder="Email address" required autofocus> <br />
 		<button type="submit" class="btn btn-lg btn-primary">Reset</button>
 	</form>
 

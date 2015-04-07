@@ -262,6 +262,11 @@ public class SettingsController {
 				}
 			}
 		}
+		//If we change the password as a result of password reset, then redirect to dashboard.
+		if (session.getAttribute("passwordreset") != null) {
+			session.removeAttribute("passwordreset");
+			return "redirect:/dashboard";
+		}
 		return "settings/t_changePassword";
 	}
 }

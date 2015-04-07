@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 
 import com.cater.constants.QuoteStatus;
 import com.cater.constants.Roles;
-import com.cater.controller.MenuController;
 import com.cater.model.Customer;
 import com.cater.model.Event;
 import com.cater.model.Quote;
@@ -21,8 +20,9 @@ import com.cater.twilio.sms.SMSHelper;
 
 /**
  * The Class EmailHelper.
+ *
+ * @author Hari
  * @since 01/22/2015
- * @author Hari 
  */
 @Component
 public class EmailHelper {
@@ -34,8 +34,13 @@ public class EmailHelper {
 	/** The amazon ses. */
 	@Autowired
 	private AmazonSES amazonSES;
+	/** The email subject_registration confirmation. */
 	@Value("${email.subject.registration.confirmation}")
 	private String emailSubject_registrationConfirmation;
+	/** The email subject_password reset. */
+	@Value("${email.subject.password.reset}")
+	private String emailSubject_passwordReset;
+	/** The email subject_notification. */
 	@Value("${email.subject.notification}")
 	private String emailSubject_notification;
 
@@ -50,7 +55,7 @@ public class EmailHelper {
 	public boolean sendRegistrationConfirmationEmail(String username,
 			String confirmationToken, String... toAddresses) {
 		try {
-			File f = new File(MenuController.class.getResource(
+			File f = new File(EmailHelper.class.getResource(
 					"/email/registrationConfirmation.html").getFile());
 			String emailBody = FileUtils.readFileToString(f);
 			String[] searchList = new String[2];
@@ -84,7 +89,7 @@ public class EmailHelper {
 			String subject, String message) {
 		try {
 			String emailSubject = "Message from " + name + " [" + subject + "]";
-			File f = new File(MenuController.class.getResource(
+			File f = new File(EmailHelper.class.getResource(
 					"/email/contactUs.html").getFile());
 			String emailBody = FileUtils.readFileToString(f);
 			String[] searchList = new String[3];
@@ -137,7 +142,7 @@ public class EmailHelper {
 					: customer.getContactEmail();
 			String username = role == Roles.RESTAURANT ? restaurant.getName()
 					: customer.getName();
-			File f = new File(MenuController.class.getResource(
+			File f = new File(EmailHelper.class.getResource(
 					"/email/notification.html").getFile());
 			String emailBody = FileUtils.readFileToString(f);
 			String[] searchList = new String[5];
@@ -161,6 +166,33 @@ public class EmailHelper {
 		}
 		catch (IOException e) {
 			logger.error("Error while sending notificaiton email.");
+			return false;
+		}
+		return true;
+	}
+
+	public boolean sendPasswordResetEmail(String newPwdRaw,
+			String resetToken_URLSafe,
+			String toAddress) {
+		try {
+			File f = new File(EmailHelper.class.getResource(
+					"/email/passwordReset.html").getFile());
+			String emailBody = FileUtils.readFileToString(f);
+			String[] searchList = new String[3];
+			String[] replacementList = new String[3];
+			searchList[0] = "${USERNAME}";
+			replacementList[0] = toAddress;
+			searchList[1] = "${TEMP_PWD}";
+			replacementList[1] = newPwdRaw;
+			searchList[2] = "${TOKEN}";
+			replacementList[2] = resetToken_URLSafe;
+			emailBody = StringUtils.replaceEach(emailBody, searchList,
+					replacementList);
+			amazonSES.sendEmail(emailSubject_passwordReset, emailBody,
+					toAddress);
+		}
+		catch (IOException e) {
+			logger.error("Error while sending registration confirmation email.");
 			return false;
 		}
 		return true;
