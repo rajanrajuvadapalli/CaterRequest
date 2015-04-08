@@ -1,5 +1,5 @@
 {
-    "cuisine": "INDIAN",
+    "cuisine": "INDIAN_SOUTH",
     "categories": [
         {
             "name": "VEG APPETIZERS",
@@ -31,6 +31,11 @@
                 },
                 {
                     "name": "Vegetable Cutlets",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Papads",
                     "description": "",
                     "isSelected": false
                 }
@@ -96,6 +101,31 @@
                 },
                 {
                     "name": "Shrimp Pakora",
+                    "description": "",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "name": "SOUPS",
+            "items": [
+                {
+                    "name": "Sambar",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Rasam",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Chicken Corn Soup",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Hot and Sour Chicken Soup",
                     "description": "",
                     "isSelected": false
                 }
@@ -426,6 +456,111 @@
                 },
                 {
                     "name": "Spinach Naan",
+                    "description": "",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "name": "DESSERTS AND SWEETS",
+            "items": [
+                {
+                    "name": "Julab Jamoon",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Beets Halwa",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Carrot Halwa",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Double Ka meeta",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Fruit Custard",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Mango Mousse",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Rice Kheer",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Semya Payasam",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Mysore Pak",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Kheer",
+                    "description": "",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "name": "CHATNEYS AND PICKLES",
+            "items": [
+                {
+                    "name": "Mango pickle",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Cauliflower pickle",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Mixed veg pickle",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Coconut chatney",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Tomato chatney",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Mint chatney",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Tamrind chatney",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Raita",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Curd",
                     "description": "",
                     "isSelected": false
                 }

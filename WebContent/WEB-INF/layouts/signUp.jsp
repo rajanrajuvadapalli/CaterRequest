@@ -215,11 +215,12 @@
 				</div>
 			</div>
 		</div>
+		<div align="left" id="customer">
+			<span style="color: gray; font-size: 14px;"><sup>*</sup>carrier
+				charges may apply</span>
+		</div>
 	</form>
-	<div align="left">
-		<span style="color: gray; font-size: 14px;"><sup>*</sup>carrier
-			charges may apply</span>
-	</div>
+
 </div>
 <br>
 <br>
