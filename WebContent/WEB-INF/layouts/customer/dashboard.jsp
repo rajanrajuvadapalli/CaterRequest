@@ -142,6 +142,7 @@
 											action="${pageContext.request.contextPath}/menu/selectMenu"
 											onsubmit="return validateCuisine(${e.id});"
 											ectype="application/x-www-form-urlencoded">
+											<br/>
 											<input type="text" hidden="true" name="eventId"
 												value="${e.id}"> <span id="cuisineType"></span><br />
 											<button type="submit" class="btn btn-sm btn-warning">Select
