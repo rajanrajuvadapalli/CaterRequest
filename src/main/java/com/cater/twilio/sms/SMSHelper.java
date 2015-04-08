@@ -171,4 +171,28 @@ public class SMSHelper {
 		}
 		return false;
 	}
+
+	/**
+	 * Resend phone verification sms.
+	 *
+	 * @param login the login
+	 * @param phoneNumber the phone number
+	 * @return true, if successful
+	 */
+	public boolean resendPhoneVerificationSMS(Login login, String phoneNumber) {
+		try {
+			String phoneVerificationCode = StringUtils
+					.upperCase(
+							StringUtils.substring(login.getPassword(), 4, 9),
+							Locale.US);
+			String to = Helper.extractJust10digitNumber(phoneNumber);
+			String msg = "Your verification code is: " + phoneVerificationCode;
+			twilioSms.sendMessage(to, msg);
+			return true;
+		}
+		catch (TwilioRestException e) {
+			logger.error("Failed to send SMS.", e);
+		}
+		return false;
+	}
 }
