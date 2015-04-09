@@ -81,7 +81,7 @@ public class RestaurantDAO extends DataAccessObject {
 		logger.debug("Finding Restaurant with login ID: " + loginID);
 		try {
 			Session session = getSessionFactory().getCurrentSession();
-			List<?> list = session
+			List <?> list = session
 					.createCriteria(Restaurant.class, "res")
 					.createAlias("res.login", "login", JoinType.LEFT_OUTER_JOIN)
 					.add(Restrictions.eq("login.id", loginID)).list();
@@ -104,7 +104,7 @@ public class RestaurantDAO extends DataAccessObject {
 	 *
 	 * @return the list
 	 */
-	public List<Restaurant> fetchAllRestaurants() {
+	public List <Restaurant> fetchAllRestaurants() {
 		return super.fetchAll(Restaurant.class);
 	}
 
@@ -115,16 +115,17 @@ public class RestaurantDAO extends DataAccessObject {
 	 * @return the sets the
 	 */
 	@SuppressWarnings("unchecked")
-	public Set<Restaurant> fetchRestaurantsOfType(String cuisine) {
+	public Set <Restaurant> fetchRestaurantsOfType(String cuisine) {
 		logger.debug("Finding Restaurants of type : " + cuisine);
 		if (StringUtils.isNotBlank(cuisine)) {
 			try {
 				Session session = getSessionFactory().getCurrentSession();
-				List<Restaurant> list = session
+				List <Restaurant> list = session
 						.createCriteria(Restaurant.class, "res")
 						.add(Restrictions.eq("res.cuisineType", cuisine))
+						.add(Restrictions.eq("res.isNumberVerified", true))
 						.list();
-				Set<Restaurant> restaurants = Sets.newHashSet();
+				Set <Restaurant> restaurants = Sets.newHashSet();
 				for (Restaurant r : list) {
 					restaurants.add(r);
 				}
