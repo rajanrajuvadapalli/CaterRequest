@@ -36,6 +36,7 @@ function populateCuisineTypes() {
 							+ "	<option value=\"FRENCH\"> 		FRENCH             </option>              "
 							+ "	<option value=\"GREEK\"> 		GREEK              </option>              "
 							+ "	<option value=\"INDIAN\" selected> 		INDIAN             </option>              "
+							+ "	<option value=\"SOUTHINDIAN\"> 	SOUTHINDIAN         </option>              "
 							+ "	<option value=\"INDONESIAN\"> 	INDONESIAN         </option>              "
 							+ "	<option value=\"ITALIAN\"> 		ITALIAN            </option>              "
 							+ "	<option value=\"JAPANESE\"> 	JAPANESE           </option>              "

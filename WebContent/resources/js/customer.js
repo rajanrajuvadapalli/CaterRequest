@@ -70,7 +70,7 @@ function validateEventForm() {
 
 function validateCuisine(formId) {
 	var element = $('form[id=' + formId + '] select[id=cuisineType]');
-	if (element.val() != "INDIAN") {
+	if (element.val() != "INDIAN" && element.val() != "SOUTHINDIAN"   ) {
 		alert("Sorry! " + element.val()
 				+ " restaurants are not registered with us at this moment.");
 		return false;
