@@ -38,6 +38,21 @@
                     "name": "Papads",
                     "description": "",
                     "isSelected": false
+                },
+                {
+                    "name": "Gobi Manchurian",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Medu Vada",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Vegitable Pakora",
+                    "description": "",
+                    "isSelected": false
                 }
             ]
         },
@@ -511,6 +526,11 @@
                 },
                 {
                     "name": "Kheer",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "name": "Ravva Kesari",
                     "description": "",
                     "isSelected": false
                 }
