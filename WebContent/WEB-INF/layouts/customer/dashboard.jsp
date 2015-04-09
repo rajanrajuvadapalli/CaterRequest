@@ -126,10 +126,10 @@
 										</c:choose></td>
 									<td><c:if test="${not empty e2m.get(e.id)}">
 											<c:forEach items="${e2m.get(e.id)}" var="cuisine">
-												${cuisine}<a
+												${cuisine} <a
 													href="${pageContext.request.contextPath}/menu/selectMenu?eventId=${e.id}&cuisineType=${cuisine}">
 													<img alt="edit"
-													src="${pageContext.request.contextPath}/resources/images/edit.png">
+													src="${pageContext.request.contextPath}/resources/images/edit.png">&nbsp;Edit
 												</a>
 												<br />
 											</c:forEach>
@@ -142,8 +142,7 @@
 											action="${pageContext.request.contextPath}/menu/selectMenu"
 											onsubmit="return validateCuisine(${e.id});"
 											ectype="application/x-www-form-urlencoded">
-											<br/>
-											<input type="text" hidden="true" name="eventId"
+											<br /> <input type="text" hidden="true" name="eventId"
 												value="${e.id}"> <span id="cuisineType"></span><br />
 											<button type="submit" class="btn btn-sm btn-warning">Select
 												Menu</button>
