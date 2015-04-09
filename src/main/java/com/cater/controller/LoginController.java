@@ -22,7 +22,6 @@ import com.cater.service.LoginService;
 import com.cater.ui.data.User;
 import com.google.common.collect.Lists;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class LoginController.
  */
@@ -74,8 +73,8 @@ public class LoginController {
 	/**
 	 * Login.
 	 *
-	 * @param modelMap            the model map
-	 * @param request            the request
+	 * @param modelMap the model map
+	 * @param request the request
 	 * @param session the session
 	 * @return the string
 	 */

@@ -35,22 +35,30 @@ import com.cater.model.Restaurant;
 import com.cater.service.CustomerService;
 import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
-import com.fasterxml.jackson.core.JsonParseException;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
+/**
+ * The Class MenuController.
+ */
 @Controller
 @RequestMapping(value = { "menu" })
 public class MenuController {
+	/** The Constant logger. */
 	private static final Logger logger = Logger.getLogger(MenuController.class);
+	/** The customer service. */
 	@Autowired
 	private CustomerService customerService;
+	/** The restaurant service. */
 	@Autowired
 	private RestaurantService restaurantService;
+	/** The menu serializer. */
 	@Autowired
 	private MenuSerializer menuSerializer;
+	/** The menu deserializer. */
 	@Autowired
 	private MenuDeserializer menuDeserializer;
+	/** The menu dao. */
 	@Autowired
 	private MenuDAO menuDAO;
 
@@ -60,7 +68,7 @@ public class MenuController {
 	 * @param httpSession the http session
 	 * @param modelMap the model map
 	 * @param request the request
-	 * @param cuisines the cuisines
+	 * @param cuisine the cuisine
 	 * @return the string
 	 */
 	@RequestMapping(value = { "selectMenu" }, method = RequestMethod.GET)
@@ -127,6 +135,7 @@ public class MenuController {
 	 * @param modelMap the model map
 	 * @param request the request
 	 * @param itemNames the item names
+	 * @param cuisine the cuisine
 	 * @return the string
 	 */
 	@RequestMapping(value = { "saveMenu" }, method = RequestMethod.POST)
@@ -213,59 +222,6 @@ public class MenuController {
 	}
 
 	/**
-	 * Request quote.
-	 *
-	 * @param httpSession the http session
-	 * @param modelMap the model map
-	 * @param request the request
-	 * @param rNames the r names
-	 * @return the string
-	 */
-	/*@RequestMapping(value = { "requestQuote" }, method = RequestMethod.POST)
-	public String requestQuote(
-			HttpSession httpSession,
-			ModelMap modelMap,
-			HttpServletRequest request,
-			@RequestParam(value = "restaurantId", required = true) String[] restaurantIds) {
-		User user = (User) httpSession.getAttribute("user");
-		if (user == null) {
-			return "t_home";
-		}
-		com.cater.model.Menu menuModel = null;
-		Integer menuId = (Integer) httpSession.getAttribute("menuId");
-		if (menuId != null) {
-			menuModel = customerService.findMenuWithId(menuId);
-		}
-		String eventId = (String) httpSession.getAttribute("eventId");
-		Event event = customerService.findEventWithId(Integer.valueOf(eventId));
-		for (String restaurantId : restaurantIds) {
-			//Find if a quote already exists.
-			Quote quote = restaurantService.findQuoteWithRestaurantIdAndMenuId(
-					Integer.parseInt(restaurantId), menuId);
-			Restaurant restaurant = restaurantService
-					.findRestaurantWithId(Integer.parseInt(restaurantId));
-			if (quote == null) {
-				quote = new Quote();
-				quote.setStatus(QuoteStatus.CREATED.toString());
-				quote.setMenu(menuModel);
-				quote.setRestaurant(restaurant);
-			}
-			else {
-				quote.setStatus(QuoteStatus.CUSTOMER_UPDATED_MENU.toString());
-			}
-			restaurantService.saveOrUpdateQuote(quote);
-			restaurantService.sendNotification(quote);
-		}
-		List <String> successMessages = Lists.newArrayList();
-		successMessages
-				.add("Your request for quotes is successfully submitted for '"
-						+ event.getName() + "'.");
-		modelMap.addAttribute("successMessages", successMessages);
-		httpSession.removeAttribute("eventId");
-		httpSession.removeAttribute("menuId");
-		return "customer/t_dashboard";
-	}*/
-	/**
 	 * View.
 	 *
 	 * @param httpSession the http session
@@ -273,8 +229,6 @@ public class MenuController {
 	 * @param request the request
 	 * @param menuId the menu id
 	 * @return the string
-	 * @throws IOException 
-	 * @throws JsonParseException 
 	 */
 	@RequestMapping(value = { "view/{menuId}" }, method = RequestMethod.GET)
 	public String view(HttpSession httpSession, ModelMap modelMap,

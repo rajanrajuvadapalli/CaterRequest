@@ -66,14 +66,14 @@ public class EventDAO extends DataAccessObject {
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Event> findByCustomerID(Integer customerID) {
+	public List <Event> findByCustomerID(Integer customerID) {
 		if (customerID == null) {
 			return null;
 		}
 		logger.debug("Finding Event with customer ID: " + customerID);
 		try {
 			Session session = getSessionFactory().getCurrentSession();
-			List<Event> list = (List<Event>) session
+			List <Event> list = (List <Event>) session
 					.createCriteria(Event.class, "event")
 					.createAlias("event.customer", "customer",
 							JoinType.LEFT_OUTER_JOIN)
@@ -94,7 +94,7 @@ public class EventDAO extends DataAccessObject {
 	 *
 	 * @return the list
 	 */
-	public List<Event> fetchAllEvents() {
+	public List <Event> fetchAllEvents() {
 		return super.fetchAll(Event.class);
 	}
 

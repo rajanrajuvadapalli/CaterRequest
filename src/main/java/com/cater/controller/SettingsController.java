@@ -26,7 +26,6 @@ import com.cater.ui.data.RegistrationData;
 import com.cater.ui.data.User;
 import com.google.common.collect.Lists;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SettingsController.
  */

@@ -74,7 +74,7 @@ public class LoginDAO extends DataAccessObject {
 					criteria = criteria.add(Restrictions.eq("password",
 							password));
 				}
-				List<?> results = criteria.list();
+				List <?> results = criteria.list();
 				if (CollectionUtils.isNotEmpty(results)) {
 					login = (Login) results.iterator().next();
 				}

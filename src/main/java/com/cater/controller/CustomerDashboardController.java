@@ -42,34 +42,28 @@ import com.google.common.collect.Maps;
 @Controller
 @RequestMapping(value = { "customer" })
 public class CustomerDashboardController {
+	/** The Constant logger. */
 	private static final Logger logger = Logger
 			.getLogger(CustomerDashboardController.class);
+	/** The Constant SDF. */
 	private static final SimpleDateFormat SDF = new SimpleDateFormat(
 			"MM/dd/yyyy HH:mm", Locale.US);
+	/** The Constant NUMERIC. */
 	private static final Pattern NUMERIC = Pattern.compile("[0-9]+");
+	/** The customer service. */
 	@Autowired
 	private CustomerService customerService;
+	/** The restaurant service. */
 	@Autowired
 	private RestaurantService restaurantService;
 
 	/**
-	 * List events.
+	 * Gets the dashboard.
 	 *
-	 * @param httpSession the http session
-	 * @return the list
+	 * @param modelMap the model map
+	 * @param session the session
+	 * @return the dashboard
 	 */
-	/*@RequestMapping(value = { "listEvents" }, method = RequestMethod.GET)
-	public String listEvents(HttpSession httpSession, ModelMap modelMap) {
-		User user = (User) httpSession.getAttribute("user");
-		if (user != null) {
-			Customer c = customerService.findCustomerWithLoginId(user
-					.getLoginID());
-			if (c != null) {
-				modelMap.addAttribute("events", c.getEvents());
-			}
-		}
-		return "notiles/_eventsList";
-	}*/
 	@RequestMapping(value = { "dashboard" })
 	public String getDashboard(ModelMap modelMap, HttpSession session) {
 		User user = (User) session.getAttribute("user");
@@ -82,7 +76,7 @@ public class CustomerDashboardController {
 		List <Event> events = customer.getEvents();
 		modelMap.put("events", events);
 		Map <Integer, List <String>> e2m = Maps.newHashMap();
-		Map <Integer, Map<String, List <Quote>>> e2q = Maps.newHashMap();
+		Map <Integer, Map <String, List <Quote>>> e2q = Maps.newHashMap();
 		for (Event e : events) {
 			List <Menu> menus = customerService.findMenusWithEventId(e.getId());
 			List <String> selectedCusines = Lists.newLinkedList();
@@ -94,7 +88,7 @@ public class CustomerDashboardController {
 			e2m.put(e.getId(), selectedCusines);
 			List <Quote> quotes = restaurantService.findQuotesWithEventId(e
 					.getId());
-			Map<String, List <Quote>> groupedQuotes = groupQuotesPerCuisine(quotes);
+			Map <String, List <Quote>> groupedQuotes = groupQuotesPerCuisine(quotes);
 			e2q.put(e.getId(), groupedQuotes);
 		}
 		modelMap.put("e2m", e2m);
@@ -103,14 +97,20 @@ public class CustomerDashboardController {
 		return "customer/t_dashboard";
 	}
 
-	private Map<String, List<Quote>> groupQuotesPerCuisine(List<Quote> quotes) {
-		Map<String, List <Quote>> groupedQuotes = Maps.newHashMap();
-		for(Quote q: quotes) {
+	/**
+	 * Group quotes per cuisine.
+	 *
+	 * @param quotes the quotes
+	 * @return the map
+	 */
+	private Map <String, List <Quote>> groupQuotesPerCuisine(List <Quote> quotes) {
+		Map <String, List <Quote>> groupedQuotes = Maps.newHashMap();
+		for (Quote q : quotes) {
 			Restaurant r = q.getRestaurant();
-			if(r!=null) {
+			if (r != null) {
 				String cuisine = r.getCuisineType();
 				List <Quote> q2 = groupedQuotes.get(cuisine);
-				if(q2==null) {
+				if (q2 == null) {
 					q2 = Lists.newArrayList();
 					groupedQuotes.put(cuisine, q2);
 				}
@@ -182,62 +182,6 @@ public class CustomerDashboardController {
 		return "redirect:/customer/dashboard";
 	}
 
-	/**
-	 * Select restaurant.
-	 *
-	 * @param httpSession the http session
-	 * @param modelMap the model map
-	 * @param request the request
-	 * @return the string
-	 */
-	/*@RequestMapping(value = { "event/selectRestaurant" }, method = RequestMethod.POST)
-	public String selectRestaurant(HttpSession httpSession, ModelMap modelMap,
-			HttpServletRequest request) {
-		User user = (User) httpSession.getAttribute("user");
-		if (user == null) {
-			return "t_home";
-		}
-		String cuisine = request.getParameter("cuisine");
-		httpSession.setAttribute("cuisine", cuisine);
-		String eventId = request.getParameter("eventId");
-		httpSession.setAttribute("eventId", eventId);
-		//First check the DB if a menu is selected earlier for this cuisine
-		Event e = customerService.findEventWithId(Integer.valueOf(eventId));
-		List <com.cater.model.Menu> availableMenus = customerService
-				.findMenusWithEventId(e.getId());
-		com.cater.model.Menu existingMenu = null;
-		if (CollectionUtils.isNotEmpty(availableMenus)) {
-			//Get the quote for the cuisine.
-			for (com.cater.model.Menu menuModel : availableMenus) {
-				if (StringUtils.equalsIgnoreCase(cuisine,
-						menuModel.getCuisineType())) {
-					httpSession.setAttribute("menuId", menuModel.getId());
-					existingMenu = menuModel;
-					break;
-				}
-			}
-		}
-		if (existingMenu == null) {
-			existingMenu = new com.cater.model.Menu();
-			existingMenu.setCuisineType(cuisine);
-			existingMenu.setEvent(e);
-			customerService.saveOrUpdateMenu(existingMenu);
-		}
-		httpSession.setAttribute("menuId", existingMenu.getId());
-		Set <Restaurant> restaurants = restaurantService
-				.fetchRestaurantsOfType(cuisine);
-		modelMap.put("restaurants", restaurants);
-		Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
-		for (Restaurant r : restaurants) {
-			Quote q = restaurantService.findQuoteWithRestaurantIdAndMenuId(
-					r.getId(), existingMenu.getId());
-			if (q != null) {
-				previouslySelectedRestaurants.add(r.getId());
-			}
-		}
-		modelMap.put("prevR", previouslySelectedRestaurants);
-		return "menus/t__cateringRestaurants";
-	}*/
 	/**
 	 * Request quote.
 	 *
