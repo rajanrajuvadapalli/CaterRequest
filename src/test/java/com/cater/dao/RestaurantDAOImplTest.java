@@ -22,7 +22,7 @@ import com.cater.model.Restaurant;
 /**
  * Description: 
  * @since Nov 23, 2014
- * @author Hari 
+ *  
  */
 @Component
 public class RestaurantDAOImplTest extends AbstractDAOImplTest {

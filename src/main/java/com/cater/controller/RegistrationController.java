@@ -31,7 +31,7 @@ import com.google.common.collect.Lists;
 
 /**
  * The Class RegistrationController.
- * @author Hari 
+ *  
  */
 @Controller
 public class RegistrationController {

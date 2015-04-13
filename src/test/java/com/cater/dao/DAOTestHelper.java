@@ -7,7 +7,7 @@ import org.hibernate.Transaction;
 /**
  * Description: 
  * @since Nov 23, 2014
- * @author Hari 
+ *  
  */
 public final class DAOTestHelper {
 	public static void clearTables(SessionFactory sessionFactory) {

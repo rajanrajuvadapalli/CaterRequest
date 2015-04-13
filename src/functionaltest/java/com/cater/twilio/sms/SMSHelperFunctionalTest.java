@@ -13,7 +13,7 @@ import com.cater.model.Login;
 /**
  * Description: 
  * Created: Mar 27, 2015
- * @author Hari 
+ *  
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:test-applicationContext-hibernate.xml" })

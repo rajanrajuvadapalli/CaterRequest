@@ -18,7 +18,7 @@ import com.cater.model.Customer;
  * Description:.
  *
  * @since Nov 22, 2014
- * @author Hari
+ * 
  */
 @Component
 public class CustomerDAO extends DataAccessObject {

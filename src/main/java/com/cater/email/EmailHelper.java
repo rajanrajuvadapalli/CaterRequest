@@ -21,7 +21,7 @@ import com.cater.twilio.sms.SMSHelper;
 /**
  * The Class EmailHelper.
  *
- * @author Hari
+ * 
  * @since 01/22/2015
  */
 @Component

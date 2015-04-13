@@ -18,7 +18,7 @@ import com.cater.ui.data.RegistrationData;
 /**
  * Description: I save the registration data entered on the signup form to the database.
  * @since Nov 23, 2014
- * @author Hari 
+ *  
  */
 @Component
 public class RegisterService {

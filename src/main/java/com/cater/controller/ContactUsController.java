@@ -20,7 +20,7 @@ import com.google.common.collect.Lists;
  * Description:.
  *
  * @since Jan 29, 2015
- * @author Hari Samala
+ * 
  */
 @Controller
 @RequestMapping(value = { "contactUs" })

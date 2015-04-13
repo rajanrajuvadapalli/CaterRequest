@@ -30,7 +30,7 @@ import com.twilio.sdk.TwilioRestException;
 /**
  * Description: Created: Mar 27, 2015.
  * 
- * @author Hari
+ * 
  */
 @Component
 public class SMSHelper {

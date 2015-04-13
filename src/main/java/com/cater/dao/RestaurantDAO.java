@@ -21,7 +21,7 @@ import com.google.common.collect.Sets;
  * Description:.
  *
  * @since Nov 23, 2014
- * @author Hari
+ * 
  */
 @Component
 public class RestaurantDAO extends DataAccessObject {

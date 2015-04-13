@@ -11,7 +11,7 @@ import com.cater.model.Login;
 /**
  * Description: I validate login credentails.
  *
- * @author Hari
+ * 
  * @since Nov 23, 2014
  */
 @Component

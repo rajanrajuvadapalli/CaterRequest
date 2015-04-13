@@ -17,7 +17,7 @@ import com.twilio.sdk.resource.instance.Message;
 /**
  * Description: I use Twilio's RESTful API to send SMS messages.
  * Created: Mar 27, 2015
- * @author Hari 
+ *  
  */
 @Component
 public class TwilioSMS {

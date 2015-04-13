@@ -16,7 +16,7 @@ import com.cater.ui.data.User;
  * Description:.
  *
  * @since Jan 27, 2015
- * @author Hari Samala
+ * 
  */
 @Controller
 @RequestMapping(value = { "admin" })
