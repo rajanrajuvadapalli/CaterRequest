@@ -10,6 +10,10 @@
 
 <c:if test="${not empty errors}">
 	<div class="alert alert-danger">
+		<button type="button" class="close btn-lg" data-dismiss="alert"
+			aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
 		<ul>
 			<c:forEach items="${errors}" var="e">
 				<li align="left">${e}</li>
@@ -21,6 +25,10 @@
 
 <c:if test="${not empty successMessages}">
 	<div class="alert alert-success">
+		<button type="button" class="close btn-lg" data-dismiss="alert"
+			aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
 		<ul>
 			<c:forEach items="${successMessages}" var="sm">
 				<li align="left">${sm}</li>
@@ -32,6 +40,10 @@
 
 <c:if test="${not empty warnings}">
 	<div class="alert alert-warning">
+		<button type="button" class="close btn-lg" data-dismiss="alert"
+			aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
 		<ul>
 			<c:forEach items="${warnings}" var="w">
 				<li align="left">${w}</li>
@@ -65,8 +77,8 @@
 					<label for="datetimepicker" class="col-sm-3 control-label">Date/Time
 						:</label>
 					<div class="col-sm-6">
-						<input hidden="hidden" value="${event.date_time}" id="eventDate"> <input
-							type="text" size="30" maxlength="50" name="datetimepicker"
+						<input hidden="hidden" value="${event.date_time}" id="eventDate">
+						<input type="text" size="30" maxlength="50" name="datetimepicker"
 							id="datetimepicker" required="required" class="form-control">
 					</div>
 				</div>
@@ -169,6 +181,5 @@
 <script>
 	var eventDate = $("input[id=eventDate]").val();
 	//console.log(eventDate);
-	$("#datetimepicker").datetimepicker().datetimepicker("setDate",
-			new Date(eventDate));
+	$("#datetimepicker").datetimepicker({value: new Date(eventDate)});
 </script>

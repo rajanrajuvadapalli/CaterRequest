@@ -10,6 +10,10 @@
 
 <c:if test="${not empty errors}">
 	<div class="alert alert-danger">
+		<button type="button" class="close btn-lg" data-dismiss="alert"
+			aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
 		<ul>
 			<c:forEach items="${errors}" var="e">
 				<li align="left">${e}</li>
@@ -21,6 +25,10 @@
 
 <c:if test="${not empty successMessages}">
 	<div class="alert alert-success">
+		<button type="button" class="close btn-lg" data-dismiss="alert"
+			aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
 		<ul>
 			<c:forEach items="${successMessages}" var="sm">
 				<li align="left">${sm}</li>
@@ -32,6 +40,10 @@
 
 <c:if test="${not empty warnings}">
 	<div class="alert alert-warning">
+		<button type="button" class="close btn-lg" data-dismiss="alert"
+			aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
 		<ul>
 			<c:forEach items="${warnings}" var="w">
 				<li align="left">${w}</li>
@@ -56,8 +68,8 @@
 						:</label>
 					<div class="col-sm-6">
 						<input type="text" size="50" maxlength="250" name="name"
-							required="required" placeholder="Ex.: Victoria's Birthday party" autofocus
-							class="form-control">
+							required="required" placeholder="Ex.: Victoria's Birthday party"
+							autofocus class="form-control">
 					</div>
 				</div>
 
@@ -144,9 +156,14 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-4 col-sm-offset-4">
-			<button type="submit"
-				class="btn btn-lg btn-primary btn-block">Create Event</button>
+		<div class="col-sm-2">
+			<button type="button" class="btn btn-lg btn-primary btn-block"
+				onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">
+				Cancel</button>
+		</div>
+		<div class="col-sm-4 col-sm-offset-2">
+			<button type="submit" class="btn btn-lg btn-primary btn-block">Create
+				Event</button>
 		</div>
 </form>
 

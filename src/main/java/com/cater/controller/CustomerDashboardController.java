@@ -48,7 +48,7 @@ public class CustomerDashboardController {
 			.getLogger(CustomerDashboardController.class);
 	/** The Constant SDF. */
 	private static final SimpleDateFormat SDF = new SimpleDateFormat(
-			"MM/dd/yyyy HH:mm", Locale.US);
+			"yyyy/MM/dd HH:mm", Locale.US);
 	/** The Constant NUMERIC. */
 	private static final Pattern NUMERIC = Pattern.compile("[0-9]+");
 	/** The customer service. */

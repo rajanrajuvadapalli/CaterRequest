@@ -1,5 +1,8 @@
 $('document').ready(function() {
-	$("input[id=datetimepicker]").datetimepicker();
+	$("input[id=datetimepicker]").datetimepicker({
+		dayOfWeekStart : 1,
+		lang : 'en'
+	});
 	$('.popup-with-form').magnificPopup({
 		type : 'inline',
 		fixedContentPos : false,
@@ -15,10 +18,12 @@ $('document').ready(function() {
 
 function validateEventForm() {
 	// Validate that the date is in the future.
-	var dateObject = $('input[id=datetimepicker]').datetimepicker('getDate');
-	if (new Date() > dateObject) {
-		alert("Please enter a date in the future. \nNow: "
-				+ new Date() + "\nEntered date: "
+	var dateObject = $('input[id=datetimepicker]').val();
+	// console.log("User entered: " + dateObject);
+	var now = moment().format("YYYY/MM/DD HH:mm");
+	// console.log("Now: " + now);
+	if (dateObject < now) {
+		alert("Please enter a date in the future." + "\nEntered date: "
 				+ dateObject);
 		return false;
 	}

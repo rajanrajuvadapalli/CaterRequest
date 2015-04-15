@@ -2,8 +2,11 @@
 	href="${pageContext.request.contextPath}/resources/style.css"
 	type="text/css" />
 <!--<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/menu.css" type="text/css" /> -->
-<link rel="stylesheet"
+<%-- <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/jquery-ui-timepicker-addon.css"
+	type="text/css" /> --%>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/jquery.datetimepicker.css"
 	type="text/css" />
 <link rel="stylesheet" media="all"
 	href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css"
@@ -31,8 +34,10 @@
 	src="${pageContext.request.contextPath}/resources/js/jquery.validate.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/js/additional-methods.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/jquery-ui-timepicker-addon.js"></script>
+<%-- <script
+	src="${pageContext.request.contextPath}/resources/js/jquery-ui-timepicker-addon.js"></script> --%>
+<script src="${pageContext.request.contextPath}/resources/js/jquery.datetimepicker.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/moment.js"></script>
 <!-- http://www.kryogenix.org/code/browser/sorttable/ -->
 <script
 	src="${pageContext.request.contextPath}/resources/js/sorttable.js"></script>
