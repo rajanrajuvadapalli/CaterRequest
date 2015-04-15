@@ -58,7 +58,7 @@ function validateCuisine(formId) {
 
 function validateMenuFormOnSubmit() {
 	var atLeast1selected = false;
-	$("form[id=menu-form] input[name=itemName]").each(function() {
+	$("form[id=menu-form] input[name=itemCode]").each(function() {
 		if (this.checked) {
 			atLeast1selected = true;
 		}

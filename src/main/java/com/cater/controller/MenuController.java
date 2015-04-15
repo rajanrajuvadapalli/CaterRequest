@@ -143,7 +143,7 @@ public class MenuController {
 			HttpSession httpSession,
 			ModelMap modelMap,
 			HttpServletRequest request,
-			@RequestParam(value = "itemName", required = true) String[] itemNames,
+			@RequestParam(value = "itemCode", required = true) String[] itemCodes,
 			@RequestParam(value = "cuisineType", required = true) String cuisine) {
 		User user = (User) httpSession.getAttribute("user");
 		if (user == null) {
@@ -157,12 +157,12 @@ public class MenuController {
 			File f = new File(MenuController.class.getResource(menuJson)
 					.getFile());
 			Menu menu = new MenuDeserializer().readJSON(f);
-			for (String selectedItem : itemNames) {
-				logger.debug("Selected item: " + selectedItem);
+			for (String selectedItemCode : itemCodes) {
+				logger.debug("Selected item code: " + selectedItemCode);
 				for (MenuCategory cat : menu.getCategories()) {
 					for (MenuItem menuItem : cat.getItems()) {
-						if (StringUtils
-								.equals(selectedItem, menuItem.getName())) {
+						if (StringUtils.equals(selectedItemCode,
+								menuItem.getCode())) {
 							menuItem.setSelected(true);
 						}
 					}
