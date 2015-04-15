@@ -20,8 +20,6 @@ import com.cater.twilio.sms.SMSHelper;
 
 /**
  * The Class EmailHelper.
- *
- * 
  * @since 01/22/2015
  */
 @Component
@@ -127,7 +125,7 @@ public class EmailHelper {
 	 *
 	 * @param role the role
 	 * @param quote the quote
-	 * @param optionalMessage 
+	 * @param optionalMessage the optional message
 	 * @return true, if successful
 	 */
 	public boolean sendNotificationEmailTo(Roles role, Quote quote,
@@ -161,7 +159,7 @@ public class EmailHelper {
 			searchList[4] = "${RESTAURANT_NAME}";
 			replacementList[4] = restaurant.getName();
 			searchList[5] = "${COMMENTS}";
-			replacementList[5] = optionalMessage;
+			replacementList[5] = StringUtils.defaultString(optionalMessage);
 			emailBody = StringUtils.replaceEach(emailBody, searchList,
 					replacementList);
 			String[] toAddresses = new String[] { to };
@@ -175,9 +173,16 @@ public class EmailHelper {
 		return true;
 	}
 
+	/**
+	 * Send password reset email.
+	 *
+	 * @param newPwdRaw the new pwd raw
+	 * @param resetToken_URLSafe the reset token_ url safe
+	 * @param toAddress the to address
+	 * @return true, if successful
+	 */
 	public boolean sendPasswordResetEmail(String newPwdRaw,
-			String resetToken_URLSafe,
-			String toAddress) {
+			String resetToken_URLSafe, String toAddress) {
 		try {
 			File f = new File(EmailHelper.class.getResource(
 					"/email/passwordReset.html").getFile());
