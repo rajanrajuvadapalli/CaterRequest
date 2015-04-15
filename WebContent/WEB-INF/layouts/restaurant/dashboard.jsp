@@ -9,6 +9,10 @@
 
 <c:if test="${not empty errors}">
 	<div class="alert alert-danger">
+		<button type="button" class="close btn-lg" data-dismiss="alert"
+			aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
 		<ul>
 			<c:forEach items="${errors}" var="e">
 				<li align="left">${e}</li>
@@ -20,6 +24,10 @@
 
 <c:if test="${not empty successMessages}">
 	<div class="alert alert-success">
+		<button type="button" class="close btn-lg" data-dismiss="alert"
+			aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
 		<ul>
 			<c:forEach items="${successMessages}" var="sm">
 				<li align="left">${sm}</li>
@@ -31,6 +39,10 @@
 
 <c:if test="${not empty warnings}">
 	<div class="alert alert-warning">
+		<button type="button" class="close btn-lg" data-dismiss="alert"
+			aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
 		<ul>
 			<c:forEach items="${warnings}" var="w">
 				<li align="left">${w}</li>
@@ -80,6 +92,11 @@
 											<c:when
 												test="${q.status.toString() == 'CUSTOMER_UPDATED_MENU'}">
 												Customer has updated the menu. <span class="badge"
+													style="background-color: #FF3300;">&nbsp;&#134;&nbsp;</span>
+											</c:when>
+											<c:when
+												test="${q.status.toString() == 'CUSTOMER_UPDATED_COUNT'}">
+												Customer has updated the person count. <span class="badge"
 													style="background-color: #FF3300;">&nbsp;&#134;&nbsp;</span>
 											</c:when>
 											<c:when

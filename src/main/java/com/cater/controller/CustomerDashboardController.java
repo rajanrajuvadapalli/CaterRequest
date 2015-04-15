@@ -17,6 +17,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -183,6 +184,107 @@ public class CustomerDashboardController {
 	}
 
 	/**
+	 * Edits the event.
+	 *
+	 * @param httpSession the http session
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param eventId the event id
+	 * @return the string
+	 */
+	@RequestMapping(value = { "event/edit/{eventId}" }, method = RequestMethod.GET)
+	public String editEvent(HttpSession httpSession, ModelMap modelMap,
+			HttpServletRequest request,
+			@PathVariable(value = "eventId") Integer eventId) {
+		User user = (User) httpSession.getAttribute("user");
+		if (user == null) {
+			return "t_home";
+		}
+		Event event = customerService.findEventWithId(eventId);
+		modelMap.put("event", event);
+		return "customer/t_editEvent";
+	}
+
+	/**
+	 * Update event.
+	 *
+	 * @param httpSession the http session
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param redirectAttributes the redirect attributes
+	 * @return the string
+	 */
+	@RequestMapping(value = { "event/update/{eventId}" }, method = RequestMethod.POST)
+	public String updateEvent(HttpSession httpSession, ModelMap modelMap,
+			HttpServletRequest request,
+			@PathVariable(value = "eventId") Integer eventId,
+			RedirectAttributes redirectAttributes) {
+		User user = (User) httpSession.getAttribute("user");
+		if (user == null) {
+			return "t_home";
+		}
+		Event e = customerService.findEventWithId(eventId);
+		if (e != null) {
+			e.setName(StringUtils.defaultString(request.getParameter("name")));
+			Address a = e.getLocation();
+			a.setStreet1(StringUtils.defaultString(request
+					.getParameter("street1")));
+			a.setStreet2(StringUtils.defaultString(request
+					.getParameter("street2")));
+			a.setCity(StringUtils.defaultString(request.getParameter("city")));
+			a.setState(StringUtils.defaultString(request.getParameter("state")));
+			a.setZip(StringUtils.defaultString(request.getParameter("zip")));
+			e.setLocation(a);
+			Date dateTime;
+			try {
+				synchronized (this) {
+					dateTime = SDF.parse(StringUtils.defaultString(request
+							.getParameter("datetimepicker")));
+					e.setDate_time(dateTime);
+				}
+			}
+			catch (ParseException e1) {
+				logger.error(e1);
+			}
+			String personCountParameter = request.getParameter("person_count");
+			if (StringUtils.isNotBlank(personCountParameter)
+					&& NUMERIC.matcher(personCountParameter).matches()) {
+				Integer newPersonCount = Integer.valueOf(personCountParameter);
+				updateQuoteStatuses(e, newPersonCount);
+				e.setPersonCount(Integer.parseInt(personCountParameter));
+			}
+			customerService.saveOrUpdateEvent(e);
+			List <String> successMessages = Lists.newArrayList();
+			successMessages.add("Successfully updated event: '" + e.getName()
+					+ "'.");
+			redirectAttributes.addFlashAttribute("successMessages",
+					successMessages);
+		}
+		return "redirect:/customer/dashboard";
+	}
+
+	/**
+	 * Update quote statuses.
+	 *
+	 * @param e the e
+	 * @param newPersonCount the new person count
+	 */
+	private void updateQuoteStatuses(Event e, Integer newPersonCount) {
+		if (!e.getPersonCount().equals(newPersonCount)) {
+			String message = "Old count: " + e.getPersonCount()
+					+ ", New count: " + newPersonCount;
+			List <Quote> quotes = restaurantService.findQuotesWithEventId(e
+					.getId());
+			if (CollectionUtils.isNotEmpty(quotes)) {
+				for (Quote q : quotes) {
+					q.setStatus(QuoteStatus.CUSTOMER_UPDATED_COUNT.toString());
+					restaurantService.sendNotification(q, message);
+				}
+			}
+		}
+	}
+
+	/**
 	 * Request quote.
 	 *
 	 * @param httpSession the http session
@@ -221,7 +323,7 @@ public class CustomerDashboardController {
 				quote.setMenu(menuModel);
 				quote.setRestaurant(restaurant);
 				restaurantService.saveOrUpdateQuote(quote);
-				restaurantService.sendNotification(quote);
+				restaurantService.sendNotification(quote, null);
 			}
 		}
 		String eventName = (String) httpSession.getAttribute("eventName");

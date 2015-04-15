@@ -15,9 +15,11 @@ $('document').ready(function() {
 
 function validateEventForm() {
 	// Validate that the date is in the future.
-	var dateObject = $('input[id=datetimepicker]').datepicker('getDate');
-	if (new Date().getTime() > dateObject) {
-		alert("Please enter a date in the future.");
+	var dateObject = $('input[id=datetimepicker]').datetimepicker('getDate');
+	if (new Date() > dateObject) {
+		alert("Please enter a date in the future. \nNow: "
+				+ new Date() + "\nEntered date: "
+				+ dateObject);
 		return false;
 	}
 	var numberOfPeople = $('input[id=person_count]').val();

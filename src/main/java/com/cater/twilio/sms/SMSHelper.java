@@ -80,9 +80,11 @@ public class SMSHelper {
 	 *            the role
 	 * @param quote
 	 *            the quote
+	 * @param optionalMessage 
 	 * @return true, if successful
 	 */
-	public boolean sendNotificationSMSto(Roles role, Quote quote) {
+	public boolean sendNotificationSMSto(Roles role, Quote quote,
+			String optionalMessage) {
 		if (quote == null) {
 			logger.error("Quote cannot be null.");
 			return false;
@@ -104,6 +106,9 @@ public class SMSHelper {
 				else if (role == Roles.CUSTOMER) {
 					messageBuilder.append(" Restaurant name: "
 							+ restaurant.getName());
+				}
+				if (StringUtils.isNotBlank(optionalMessage)) {
+					messageBuilder.append(optionalMessage);
 				}
 				messageBuilder
 						.append(" --Please login to your account at http://www.caterrequest.com/login for more details.--");

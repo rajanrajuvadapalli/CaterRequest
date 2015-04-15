@@ -206,7 +206,7 @@ public class MenuController {
 						quote.setStatus(QuoteStatus.CUSTOMER_UPDATED_MENU
 								.toString());
 						restaurantService.saveOrUpdateQuote(quote);
-						restaurantService.sendNotification(quote);
+						restaurantService.sendNotification(quote, null);
 					}
 				}
 			}

@@ -127,9 +127,11 @@ public class EmailHelper {
 	 *
 	 * @param role the role
 	 * @param quote the quote
+	 * @param optionalMessage 
 	 * @return true, if successful
 	 */
-	public boolean sendNotificationEmailTo(Roles role, Quote quote) {
+	public boolean sendNotificationEmailTo(Roles role, Quote quote,
+			String optionalMessage) {
 		if (quote == null) {
 			logger.error("Quote cannot be null.");
 			return false;
@@ -145,8 +147,8 @@ public class EmailHelper {
 			File f = new File(EmailHelper.class.getResource(
 					"/email/notification.html").getFile());
 			String emailBody = FileUtils.readFileToString(f);
-			String[] searchList = new String[5];
-			String[] replacementList = new String[5];
+			String[] searchList = new String[6];
+			String[] replacementList = new String[6];
 			searchList[0] = "${USERNAME}";
 			replacementList[0] = username;
 			searchList[1] = "${STATUS_MESSAGE}";
@@ -158,6 +160,8 @@ public class EmailHelper {
 			replacementList[3] = customer.getName();
 			searchList[4] = "${RESTAURANT_NAME}";
 			replacementList[4] = restaurant.getName();
+			searchList[5] = "${COMMENTS}";
+			replacementList[5] = optionalMessage;
 			emailBody = StringUtils.replaceEach(emailBody, searchList,
 					replacementList);
 			String[] toAddresses = new String[] { to };
