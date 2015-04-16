@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.time.DateFormatUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -144,8 +145,8 @@ public class EmailHelper {
 			File f = new File(MenuController.class.getResource(
 					"/email/notification.html").getFile());
 			String emailBody = FileUtils.readFileToString(f);
-			String[] searchList = new String[5];
-			String[] replacementList = new String[5];
+			String[] searchList = new String[7];
+			String[] replacementList = new String[7];
 			searchList[0] = "${USERNAME}";
 			replacementList[0] = username;
 			searchList[1] = "${STATUS_MESSAGE}";
@@ -153,10 +154,16 @@ public class EmailHelper {
 					QuoteStatus.valueOf(quote.getStatus()));
 			searchList[2] = "${EVENT_NAME}";
 			replacementList[2] = event.getName();
-			searchList[3] = "${CUSTOMER_NAME}";
-			replacementList[3] = customer.getName();
-			searchList[4] = "${RESTAURANT_NAME}";
-			replacementList[4] = restaurant.getName();
+			searchList[3] = "${EVENT_TIME}";
+			replacementList[3] =DateFormatUtils.format(event.getDate_time(), "yyyy-MM-dd HH:mm:SS");
+			searchList[4] = "${CUSTOMER_NAME}";
+			replacementList[4] = customer.getName();
+			searchList[5] = "${RESTAURANT_NAME}";
+			replacementList[5] = restaurant.getName();
+			searchList[6] = "${QUOTE_PRICE}";
+			replacementList[6] = quote.getPrice().toString();
+			
+			
 			emailBody = StringUtils.replaceEach(emailBody, searchList,
 					replacementList);
 			String[] toAddresses = new String[] { to };
