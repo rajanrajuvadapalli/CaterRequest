@@ -78,6 +78,16 @@ function validateCuisine(formId) {
 	return true;
 }
 
+$(document).ready(function() {
+	// Bind the `onClick` event for the `restaurantName` input field
+	$('input[name=restaurantName]').on('click', function(e) {
+		var $restaurantNameInputField = $(this);
+		var $containerForm = $restaurantNameInputField.closest('form');
+		var quoteId = $restaurantNameInputField.data('quote-id');
+		$containerForm.find('input[name=xquoteId]').val(quoteId);
+	});
+});
+
 /*
  * function listCustomerEvents() { // Make an ajax call and get list of events
  * var element = $("td[id=customerDashboardData]"); element.html("<div
