@@ -2,6 +2,7 @@ package com.cater.twilio.sms;
 
 import static com.cater.constants.QuoteStatus.APPROVED;
 import static com.cater.constants.QuoteStatus.CREATED;
+import static com.cater.constants.QuoteStatus.CUSTOMER_ORDER_CONFIRMED;
 import static com.cater.constants.QuoteStatus.CUSTOMER_UPDATED_MENU;
 import static com.cater.constants.QuoteStatus.DENIED;
 import static com.cater.constants.QuoteStatus.PAID;
@@ -54,6 +55,7 @@ public class SMSHelper {
 		restaurantStatusMessages.put(DENIED,
 				"Customer has denied your quoted price.");
 		restaurantStatusMessages.put(PAID, "Customer has paid.");
+		restaurantStatusMessages.put(CUSTOMER_ORDER_CONFIRMED, "Customer has approved your quoted price.");
 	}
 	static {
 		Map <QuoteStatus, String> customerStatusMessages = Maps.newHashMap();
@@ -71,6 +73,7 @@ public class SMSHelper {
 		customerStatusMessages.put(DENIED,
 				"You denied restaurant's quoted price.");
 		customerStatusMessages.put(PAID, "You paid.");
+		customerStatusMessages.put(CUSTOMER_ORDER_CONFIRMED, "Your order has been placed.");
 	}
 
 	/**
