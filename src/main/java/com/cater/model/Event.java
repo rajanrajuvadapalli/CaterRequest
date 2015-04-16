@@ -44,6 +44,16 @@ public class Event extends TimestampEntity implements Serializable {
 	private Integer personCount;
 	@Column(name = "budget_total", nullable = true)
 	private Integer budgetTotal;
+	@Column(name = "status", length = 30, nullable = true)
+	private String status;
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public Integer getId() {
 		return id;
@@ -156,4 +166,8 @@ public class Event extends TimestampEntity implements Serializable {
 		else if (!personCount.equals(other.personCount)) return false;
 		return true;
 	}
+	public static final String STATUS_ACTIVE="ACTIVE";
+	public static final String STATUS_CONFIRMED="CONFIRMED";
+	public static final String STATUS_COMPLETE="COMPLETE";
+	
 }
