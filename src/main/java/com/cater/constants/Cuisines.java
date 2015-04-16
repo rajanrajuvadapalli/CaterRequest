@@ -3,7 +3,7 @@ package com.cater.constants;
 /**
  * Description: 
  * @since Nov 23, 2014
- * @author Hari 
+ *  
  */
 public enum Cuisines {
 	AMERICAN, CHINESE, CONTINENTAL, CUBAN, FRENCH, GREEK, INDIAN, SOUTHINDIAN, INDONESIAN, ITALIAN, JAPANESE, KOREAN, LEBANESE, MALAYSIAN, MEXICAN, RUSSIAN, SINGAPORE, SPANISH, THAI, TIBETAN, VIETNAMESE;

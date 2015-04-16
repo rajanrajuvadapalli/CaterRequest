@@ -7,12 +7,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-@JsonPropertyOrder({ "name", "items" })
+@JsonPropertyOrder({ "code", "name", "items" })
 public class MenuCategory {
+	@JsonProperty(value = "code")
+	private String code;
 	@JsonProperty(value = "name")
 	private String name;
 	@JsonProperty(value = "items")
-	private List<MenuItem> items;
+	private List <MenuItem> items;
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
 
 	public String getName() {
 		return name;
@@ -22,11 +32,11 @@ public class MenuCategory {
 		this.name = name;
 	}
 
-	public List<MenuItem> getItems() {
+	public List <MenuItem> getItems() {
 		return items;
 	}
 
-	public void setItems(List<MenuItem> items) {
+	public void setItems(List <MenuItem> items) {
 		this.items = items;
 	}
 }

@@ -7,13 +7,16 @@ import org.springframework.stereotype.Component;
 import com.cater.dao.LoginDAO;
 import com.cater.model.Login;
 
+// TODO: Auto-generated Javadoc
 /**
  * Description: I validate login credentails.
+ *
+ * 
  * @since Nov 23, 2014
- * @author Hari 
  */
 @Component
 public class LoginService {
+	/** The login dao. */
 	@Autowired
 	private LoginDAO loginDAO;
 
@@ -46,5 +49,19 @@ public class LoginService {
 			return loginDAO.saveOrUpdate(login);
 		}
 		return false;
+	}
+
+	/**
+	 * Find login with id.
+	 *
+	 * @param loginId the login id
+	 * @return the login
+	 */
+	public Login findLoginWithId(Integer loginId) {
+		return loginDAO.findById(loginId);
+	}
+
+	public void saveOrUpdate(Login login) {
+		loginDAO.saveOrUpdate(login);
 	}
 }

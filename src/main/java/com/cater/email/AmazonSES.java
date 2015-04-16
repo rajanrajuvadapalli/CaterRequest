@@ -21,7 +21,7 @@ import com.amazonaws.services.simpleemail.model.SendEmailRequest;
 /**
  * The Class AmazonSES.
  * @since 01/22/2015
- * @author Hari 
+ *  
  */
 @Component
 public class AmazonSES {

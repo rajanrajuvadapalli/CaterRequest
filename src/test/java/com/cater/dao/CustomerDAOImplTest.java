@@ -18,7 +18,7 @@ import com.cater.model.Login;
 /**
  * Description: 
  * @since Nov 22, 2014
- * @author Hari 
+ *  
  */
 @Component
 public class CustomerDAOImplTest extends AbstractDAOImplTest {

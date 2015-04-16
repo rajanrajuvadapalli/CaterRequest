@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 /**
  * Description: 
  * @since Nov 23, 2014
- * @author Hari 
+ *  
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:test-applicationContext-hibernate.xml" })

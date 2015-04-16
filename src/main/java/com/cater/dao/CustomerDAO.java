@@ -18,7 +18,7 @@ import com.cater.model.Customer;
  * Description:.
  *
  * @since Nov 22, 2014
- * @author Hari
+ * 
  */
 @Component
 public class CustomerDAO extends DataAccessObject {
@@ -78,7 +78,7 @@ public class CustomerDAO extends DataAccessObject {
 		logger.debug("Finding Customer with login ID: " + loginID);
 		try {
 			Session session = getSessionFactory().getCurrentSession();
-			List<?> list = session
+			List <?> list = session
 					.createCriteria(Customer.class, "cus")
 					.createAlias("cus.login", "login", JoinType.LEFT_OUTER_JOIN)
 					.add(Restrictions.eq("login.id", loginID)).list();
@@ -101,7 +101,7 @@ public class CustomerDAO extends DataAccessObject {
 	 *
 	 * @return the list
 	 */
-	public List<Customer> fetchAllCustomers() {
+	public List <Customer> fetchAllCustomers() {
 		return super.fetchAll(Customer.class);
 	}
 

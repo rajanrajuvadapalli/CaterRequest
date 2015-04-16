@@ -57,14 +57,14 @@ public class MenuDAO extends DataAccessObject {
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Menu> findMenusWithEventId(Integer eventID) {
+	public List <Menu> findMenusWithEventId(Integer eventID) {
 		if (eventID == null) {
 			return null;
 		}
 		logger.debug("Finding menus with event ID: " + eventID);
 		try {
 			Session session = getSessionFactory().getCurrentSession();
-			List<Menu> list = (List<Menu>) session
+			List <Menu> list = (List <Menu>) session
 					.createCriteria(Menu.class, "menu")
 					.createAlias("menu.event", "event",
 							JoinType.LEFT_OUTER_JOIN)

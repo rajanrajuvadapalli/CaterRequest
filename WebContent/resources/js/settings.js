@@ -1,6 +1,8 @@
 $('document').ready(function() {
 	validateProfileForm();
 	validateAccountSettingsForm();
+	$('button[id=pvc]').click(validatePhoneVerificationCode);
+	$('button[id=send-pvc]').click(sendPhoneVerificationCode);
 });
 
 function validateProfileForm() {
@@ -78,3 +80,77 @@ function validateAccountSettingsForm() {
 	});
 }
 
+function validatePhoneVerificationCode() {
+	var loginID = $('input[id=pvc-loginID]').val();
+	var role = $('input[id=pvc-role]').val();
+	var contextPath = $('input[id=contextpath]').val();
+	var url = contextPath + "/rest/phone/verify/" + loginID + "/" + role;
+	var pvc = $('input[id=pvc]').val();
+	/*
+	 * console.log("login ID: " + loginID); console.log("Role: " + role);
+	 * console.log("URL: " + url); console.log("phone verification code: " +
+	 * pvc);
+	 */
+
+	if (pvc == null || pvc.length != 5) {
+		alert("Please enter the complete verification code.");
+		$('input[id=pvc]').focus();
+		return false;
+	}
+
+	$.ajax({
+		url : url,
+		data : pvc,
+		type : "POST",
+		contentType : "text/plain;",
+		// accepts : "text/plain",
+		async : false,
+		processData : false,
+		success : function(response) {
+			alert(response);
+			window.location.href = contextPath + '/settings/personalInfo';
+		},
+		error : function(xhr, status, error) {
+			alert(response + " " + error);
+		}
+	});
+	return false;
+}
+
+function sendPhoneVerificationCode() {
+	var loginID = $('input[id=pvc-loginID]').val();
+	var role = $('input[id=pvc-role]').val();
+	var contextPath = $('input[id=contextpath]').val();
+	var url = contextPath + "/rest/phone/verify/sendcode/" + loginID + "/"
+			+ role;
+	var phoneNumber = $('input[id=phone]').val();
+	/*
+	 * console.log("login ID: " + loginID); console.log("Role: " + role);
+	 * console.log("URL: " + url); console.log("phone number: " + phoneNumber);
+	 */
+
+	if (phoneNumber == null || phoneNumber.length == 0) {
+		alert("Please enter a phone number.");
+		$('input[id=phone]').focus();
+		return false;
+	}
+
+	$.ajax({
+		url : url,
+		data : phoneNumber,
+		type : "POST",
+		contentType : "text/plain;",
+		// accepts : "text/plain",
+		async : false,
+		processData : false,
+		success : function(response) {
+			alert(response);
+			window.location.href = contextPath + '/settings/personalInfo';
+			btn.button('complete');
+		},
+		error : function(xhr, status, error) {
+			alert(response + " " + error);
+		}
+	});
+	return false;
+}

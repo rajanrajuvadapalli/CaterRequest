@@ -1,70 +1,108 @@
 {
-    "cuisine": "INDIAN",
+    "cuisine": "INDIAN_SOUTH",
     "categories": [
         {
+            "code": "C1",
             "name": "VEG APPETIZERS",
             "items": [
                 {
+                    "code": "C1_1",
                     "name": "Baby Corn Manchurian",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C1_2",
                     "name": "Egg Puffs",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C1_3",
                     "name": "Hot Chili Pakoras",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C1_4",
                     "name": "Onion Pakora",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C1_5",
                     "name": "Samosa",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C1_6",
                     "name": "Vegetable Cutlets",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C1_7",
+                    "name": "Papads",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C1_8",
+                    "name": "Gobi Manchurian",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C1_9",
+                    "name": "Medu Vada",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C1_10",
+                    "name": "Vegetable Pakora",
                     "description": "",
                     "isSelected": false
                 }
             ]
         },
         {
+            "code": "C2",
             "name": "NON-VEG APPETIZERS",
             "items": [
                 {
+                    "code": "C2_1",
                     "name": "Chicken 65",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C2_2",
                     "name": "Chicken Manchurian",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C2_3",
                     "name": "Chicken Pepper Fry",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C2_4",
                     "name": "Chicken Tikka Kabob",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C2_5",
                     "name": "Chilli Chicken",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C2_6",
                     "name": "Tandoori Chicken",
                     "description": "",
                     "isSelected": false
@@ -72,29 +110,35 @@
             ]
         },
         {
+            "code": "C3",
             "name": "SEAFOOD APPETIZERS",
             "items": [
                 {
+                    "code": "C3_1",
                     "name": "Apollo Fish",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C3_2",
                     "name": "Chilli Fish",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C3_3",
                     "name": "Chilli Shrimp",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C3_4",
                     "name": "Fish Pakora",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C3_5",
                     "name": "Shrimp Pakora",
                     "description": "",
                     "isSelected": false
@@ -102,24 +146,59 @@
             ]
         },
         {
+            "code": "C4",
+            "name": "SOUPS",
+            "items": [
+                {
+                    "code": "C4_1",
+                    "name": "Sambar",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C4_2",
+                    "name": "Rasam",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C4_3",
+                    "name": "Chicken Corn Soup",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C4_4",
+                    "name": "Hot and Sour Chicken Soup",
+                    "description": "",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "code": "C5",
             "name": "DAL-LENTILS",
             "items": [
                 {
+                    "code": "C5_1",
                     "name": "Dal Makhani",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C5_2",
                     "name": "Dal Thadka",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C5_3",
                     "name": "Mango Dal",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C5_4",
                     "name": "Tomato Dal",
                     "description": "",
                     "isSelected": false
@@ -127,159 +206,191 @@
             ]
         },
         {
+            "code": "C6",
             "name": "VEG CURRIES",
             "items": [
                 {
+                    "code": "C6_1",
                     "name": "Aloo Baingan",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C6_2",
                     "name": "Aloo Fry",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C6_3",
                     "name": "Aloo Gobi",
                     "description": "",
                     "isSelected": false
                 },
                 {
-                    "name": "Aloo Khurma",
+                    "code": "C6_4",
+                    "name": "Aloo Korma",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C6_5",
                     "name": "Baingan Bartha",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C6_6",
                     "name": "Bhindi Fry",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C6_7",
                     "name": "Channa Masala",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C6_8",
                     "name": "Gutti Vankaya",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C6_9",
                     "name": "Malai Kofta",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C6_10",
                     "name": "Mixed Vegetable Fry",
                     "description": "",
                     "isSelected": false
                 },
                 {
-                    "name": "Mixed Vegetable Khurma",
+                    "code": "C6_11",
+                    "name": "Mixed Vegetable Korma",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C6_12",
                     "name": "Mutter Panneer",
                     "description": "",
                     "isSelected": false
                 },
                 {
-                    "name": "Navaratan Khurma",
+                    "code": "C6_13",
+                    "name": "Navratan Korma",
                     "description": "",
                     "isSelected": false
                 },
                 {
-                    "name": "Panneer Butter Masala",
+                    "code": "C6_14",
+                    "name": "Paneer Butter Masala",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C6_15",
                     "name": "Rajma Dal Curry",
                     "description": "",
                     "isSelected": false
                 },
                 {
-                    "name": "Sag Panneer",
+                    "code": "C6_16",
+                    "name": "Saag Paneer",
                     "description": "",
                     "isSelected": false
                 }
             ]
         },
         {
+            "code": "C7",
             "name": "NON-VEG CURRIES",
             "items": [
                 {
+                    "code": "C7_1",
                     "name": "Chicken Chettinadu",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C7_2",
                     "name": "Chicken Curry",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C7_3",
                     "name": "Chicken Fry",
                     "description": "",
                     "isSelected": false
                 },
                 {
-                    "name": "Chicken Khurma",
+                    "code": "C7_4",
+                    "name": "Chicken Korma",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C7_5",
                     "name": "Chicken Makhani (Butter Chicken)",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C7_6",
                     "name": "Chicken Pepper Fry",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C7_7",
                     "name": "Chicken Tikka Masala",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C7_8",
                     "name": "Egg Curry",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C7_9",
                     "name": "Goat Curry",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C7_10",
                     "name": "Goat Kadai",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C7_11",
                     "name": "Gongura Mutton",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C7_12",
                     "name": "Kheema Mutter",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C7_13",
                     "name": "Lamb Curry",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C7_14",
                     "name": "Lamb Rogan Josh",
                     "description": "",
                     "isSelected": false
@@ -287,29 +398,35 @@
             ]
         },
         {
+            "code": "C8",
             "name": "SEAFOOD CURRIES",
             "items": [
                 {
+                    "code": "C8_1",
                     "name": "Andhra Fish Curry",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C8_2",
                     "name": "Fish Pulusu",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C8_3",
                     "name": "Malabar Fish Curry",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C8_4",
                     "name": "Malabar Shrimp",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C8_5",
                     "name": "Shrimp Curry",
                     "description": "",
                     "isSelected": false
@@ -317,49 +434,59 @@
             ]
         },
         {
+            "code": "C9",
             "name": "VEG RICE ITEMS",
             "items": [
                 {
-                    "name": "Bisi Bela Bath",
+                    "code": "C9_1",
+                    "name": "Bisi Bele Bath",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C9_2",
                     "name": "Curd Rice",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C9_3",
                     "name": "Jeera Rice",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C9_4",
                     "name": "Lemon Rice",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C9_5",
                     "name": "Pulihora Rice",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C9_6",
                     "name": "Vegetabe Fried Rice",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C9_7",
                     "name": "Vegetable Biryani",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C9_8",
                     "name": "Vegetable Pulao",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C9_9",
                     "name": "White Rice",
                     "description": "",
                     "isSelected": false
@@ -367,29 +494,35 @@
             ]
         },
         {
+            "code": "C10",
             "name": "NON-VEG RICE ITEMS",
             "items": [
                 {
+                    "code": "C10_1",
                     "name": "Chicken Biryani",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C10_2",
                     "name": "Chicken Fried Rice",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C10_3",
                     "name": "Goat Biryani",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C10_4",
                     "name": "Hyderabadi Chicken Biryani",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C10_5",
                     "name": "Lamb Biryani",
                     "description": "",
                     "isSelected": false
@@ -397,35 +530,174 @@
             ]
         },
         {
+            "code": "C11",
             "name": "BREAD",
             "items": [
                 {
+                    "code": "C11_1",
                     "name": "Butten Naan",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C11_2",
                     "name": "Garlic Naan",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C11_3",
                     "name": "Keema Naan",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C11_4",
                     "name": "Naan",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C11_5",
                     "name": "Roti",
                     "description": "",
                     "isSelected": false
                 },
                 {
+                    "code": "C11_6",
                     "name": "Spinach Naan",
+                    "description": "",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "code": "C12",
+            "name": "DESSERTS AND SWEETS",
+            "items": [
+                {
+                    "code": "C12_1",
+                    "name": "Gulab Jamoon",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C12_2",
+                    "name": "Beets Halwa",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C12_3",
+                    "name": "Carrot Halwa",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C12_4",
+                    "name": "Double Ka Meeta",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C12_5",
+                    "name": "Fruit Custard",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C12_6",
+                    "name": "Mango Mousse",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C12_7",
+                    "name": "Rice Kheer",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C12_8",
+                    "name": "Semya Payasam",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C12_9",
+                    "name": "Mysore Pak",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C12_10",
+                    "name": "Kheer",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C12_11",
+                    "name": "Rava Kesari",
+                    "description": "",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "code": "C13",
+            "name": "CHUTNEYS AND PICKLES",
+            "items": [
+                {
+                    "code": "C13_1",
+                    "name": "Mango pickle",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C13_2",
+                    "name": "Cauliflower pickle",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C13_3",
+                    "name": "Mixed veg pickle",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C13_4",
+                    "name": "Coconut chutney",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C13_5",
+                    "name": "Tomato chutney",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C13_6",
+                    "name": "Mint chutney",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C13_7",
+                    "name": "Tamarind chutney",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C13_8",
+                    "name": "Raita",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C13_9",
+                    "name": "Curd",
                     "description": "",
                     "isSelected": false
                 }

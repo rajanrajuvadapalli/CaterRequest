@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 
 import com.cater.constants.QuoteStatus;
 import com.cater.constants.Roles;
-import com.cater.controller.MenuController;
 import com.cater.model.Customer;
 import com.cater.model.Event;
 import com.cater.model.Quote;
@@ -23,7 +22,6 @@ import com.cater.twilio.sms.SMSHelper;
 /**
  * The Class EmailHelper.
  * @since 01/22/2015
- * @author Hari 
  */
 @Component
 public class EmailHelper {
@@ -35,8 +33,13 @@ public class EmailHelper {
 	/** The amazon ses. */
 	@Autowired
 	private AmazonSES amazonSES;
+	/** The email subject_registration confirmation. */
 	@Value("${email.subject.registration.confirmation}")
 	private String emailSubject_registrationConfirmation;
+	/** The email subject_password reset. */
+	@Value("${email.subject.password.reset}")
+	private String emailSubject_passwordReset;
+	/** The email subject_notification. */
 	@Value("${email.subject.notification}")
 	private String emailSubject_notification;
 
@@ -45,25 +48,21 @@ public class EmailHelper {
 	 *
 	 * @param username the username
 	 * @param confirmationToken the confirmation token
-	 * @param phoneVerificationCode the phone verification code
 	 * @param toAddresses the to addresses
 	 * @return true, if successful
 	 */
 	public boolean sendRegistrationConfirmationEmail(String username,
-			String confirmationToken, String phoneVerificationCode,
-			String... toAddresses) {
+			String confirmationToken, String... toAddresses) {
 		try {
-			File f = new File(MenuController.class.getResource(
+			File f = new File(EmailHelper.class.getResource(
 					"/email/registrationConfirmation.html").getFile());
 			String emailBody = FileUtils.readFileToString(f);
-			String[] searchList = new String[3];
-			String[] replacementList = new String[3];
+			String[] searchList = new String[2];
+			String[] replacementList = new String[2];
 			searchList[0] = "${USERNAME}";
 			replacementList[0] = username;
 			searchList[1] = "${TOKEN}";
 			replacementList[1] = confirmationToken;
-			searchList[2] = "${PVC}";
-			replacementList[2] = phoneVerificationCode;
 			emailBody = StringUtils.replaceEach(emailBody, searchList,
 					replacementList);
 			amazonSES.sendEmail(emailSubject_registrationConfirmation,
@@ -89,7 +88,7 @@ public class EmailHelper {
 			String subject, String message) {
 		try {
 			String emailSubject = "Message from " + name + " [" + subject + "]";
-			File f = new File(MenuController.class.getResource(
+			File f = new File(EmailHelper.class.getResource(
 					"/email/contactUs.html").getFile());
 			String emailBody = FileUtils.readFileToString(f);
 			String[] searchList = new String[3];
@@ -127,9 +126,11 @@ public class EmailHelper {
 	 *
 	 * @param role the role
 	 * @param quote the quote
+	 * @param optionalMessage the optional message
 	 * @return true, if successful
 	 */
-	public boolean sendNotificationEmailTo(Roles role, Quote quote) {
+	public boolean sendNotificationEmailTo(Roles role, Quote quote,
+			String optionalMessage) {
 		if (quote == null) {
 			logger.error("Quote cannot be null.");
 			return false;
@@ -142,7 +143,7 @@ public class EmailHelper {
 					: customer.getContactEmail();
 			String username = role == Roles.RESTAURANT ? restaurant.getName()
 					: customer.getName();
-			File f = new File(MenuController.class.getResource(
+			File f = new File(EmailHelper.class.getResource(
 					"/email/notification.html").getFile());
 			String emailBody = FileUtils.readFileToString(f);
 			String[] searchList = new String[7];
@@ -172,6 +173,40 @@ public class EmailHelper {
 		}
 		catch (IOException e) {
 			logger.error("Error while sending notificaiton email.");
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Send password reset email.
+	 *
+	 * @param newPwdRaw the new pwd raw
+	 * @param resetToken_URLSafe the reset token_ url safe
+	 * @param toAddress the to address
+	 * @return true, if successful
+	 */
+	public boolean sendPasswordResetEmail(String newPwdRaw,
+			String resetToken_URLSafe, String toAddress) {
+		try {
+			File f = new File(EmailHelper.class.getResource(
+					"/email/passwordReset.html").getFile());
+			String emailBody = FileUtils.readFileToString(f);
+			String[] searchList = new String[3];
+			String[] replacementList = new String[3];
+			searchList[0] = "${USERNAME}";
+			replacementList[0] = toAddress;
+			searchList[1] = "${TEMP_PWD}";
+			replacementList[1] = newPwdRaw;
+			searchList[2] = "${TOKEN}";
+			replacementList[2] = resetToken_URLSafe;
+			emailBody = StringUtils.replaceEach(emailBody, searchList,
+					replacementList);
+			amazonSES.sendEmail(emailSubject_passwordReset, emailBody,
+					toAddress);
+		}
+		catch (IOException e) {
+			logger.error("Error while sending registration confirmation email.");
 			return false;
 		}
 		return true;

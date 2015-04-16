@@ -109,17 +109,26 @@
 					<div class="row">
 						<div class="col-sm-3">
 							<input type="text" size="20" maxlength="20" name="phone"
-								class="form-control" required="required"
+								id="phone" class="form-control" required="required"
 								value="${sessionScope.user.data.phone}">
 						</div>
-						<c:if test="${sessionScope.user.data.numberVerified}">
-							<div class="col-xs-1" align="left">
-								<span class="glyphicon glyphicon-ok" style="color: green;"></span>
-							</div>
-						</c:if>
+						<c:choose>
+							<c:when test="${sessionScope.user.data.numberVerified}">
+								<div class="col-xs-1" align="left">
+									<span class="glyphicon glyphicon-ok" style="color: green;"></span>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="col-sm-3" align="left">
+									<button formaction="" id="send-pvc" class="btn btn-warning">Re-send
+										verification code</button>
+								</div>
+
+							</c:otherwise>
+						</c:choose>
 						<br />
-						<div class="col-sm-6" id="customer" align="left">
-							<input type="checkbox" name="smsOk"
+						<div class="col-sm-6 col-sm-offset-3" id="customer" align="left">
+							&nbsp;&nbsp;<input type="checkbox" name="smsOk"
 								${sessionScope.user.data.smsOk?"checked":""}
 								style="-webkit-transform: scale(1.5); -o-transform: scale(1.5); -ms-transform: scale(1.5); -moz-transform: scale(1.5); padding: 10px;">
 							&nbsp;Send me text alerts<sup>*</sup>
@@ -139,10 +148,13 @@
 									hidden="true" value="${sessionScope.user.loginID}"
 									id="pvc-loginID"> <input type="text" hidden="true"
 									value="${sessionScope.user.role.value}" id="pvc-role">
+
+								<input type="text" hidden="true"
+									value="${pageContext.request.contextPath}" id="contextpath">
+
 							</div>
 							<div class="col-sm-1">
-								<button formaction="" id="pvc" class="btn btn-warning"
-									data-loading-text="Verifying...">Verify</button>
+								<button formaction="" id="pvc" class="btn btn-warning">Verify</button>
 							</div>
 						</div>
 					</div>

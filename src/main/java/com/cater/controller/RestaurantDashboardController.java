@@ -21,16 +21,28 @@ import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
 import com.google.common.collect.Lists;
 
+/**
+ * The Class RestaurantDashboardController.
+ */
 @Controller
 @RequestMapping(value = { "restaurant" })
 public class RestaurantDashboardController {
 	/*private static final Logger logger = Logger
 			.getLogger(RestaurantDashboardController.class);*/
+	/** The restaurant service. */
 	@Autowired
 	private RestaurantService restaurantService;
+	/** The customer service. */
 	@Autowired
 	private CustomerService customerService;
 
+	/**
+	 * Gets the dashboard.
+	 *
+	 * @param modelMap the model map
+	 * @param session the session
+	 * @return the dashboard
+	 */
 	@RequestMapping(value = { "dashboard" })
 	public String getDashboard(ModelMap modelMap, HttpSession session) {
 		User user = (User) session.getAttribute("user");
@@ -45,30 +57,12 @@ public class RestaurantDashboardController {
 	}
 
 	/**
-	 * List quotes.
-	 *
-	 * @param httpSession the http session
-	 * @param modelMap the model map
-	 * @return the string
-	 */
-	/*@RequestMapping(value = { "listQuotes" }, method = RequestMethod.GET)
-	public String listQuotes(HttpSession httpSession, ModelMap modelMap) {
-		User user = (User) httpSession.getAttribute("user");
-		if (user != null) {
-			Restaurant restaurant = restaurantService
-					.findRestaurantWithLoginId(user.getLoginID());
-			if (restaurant != null) {
-				modelMap.addAttribute("quotes", restaurant.getQuotes());
-			}
-		}
-		return "notiles/_quotesListRestaurant";
-	}*/
-	/**
 	 * Submit price.
 	 *
 	 * @param httpSession the http session
 	 * @param modelMap the model map
 	 * @param request the request
+	 * @param redirectAttributes the redirect attributes
 	 * @return the string
 	 */
 	@RequestMapping(value = { "submitprice" }, method = RequestMethod.POST)
@@ -104,22 +98,4 @@ public class RestaurantDashboardController {
 		}
 		return "redirect:/dashboard";
 	}
-	/**
-	 * List docs.
-	 *
-	 * @param httpSession the http session
-	 * @param modelMap the model map
-	 * @param request the request
-	 * @return the string
-	 */
-	/*@RequestMapping(value = { "listDocs" }, method = RequestMethod.GET)
-	public String listDocs(HttpSession httpSession, ModelMap modelMap,
-			HttpServletRequest request) {
-		User user = (User) httpSession.getAttribute("user");
-		if (user == null) {
-			return "redirect:/home";
-		}
-		//Sweep the directory for this restaurant
-		return "notiles/_docsListRestaurant";
-	}*/
 }

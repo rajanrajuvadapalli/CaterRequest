@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="page-header">
-	<h1>Create Event</h1>
+	<h1>Update Event</h1>
 </div>
 
 <c:if test="${not empty errors}">
@@ -53,7 +53,7 @@
 </c:if>
 
 <form class="form-horizontal" method="POST" id="event-form"
-	action="${pageContext.request.contextPath}/customer/createEvent"
+	action="${pageContext.request.contextPath}/customer/event/update/${event.id}"
 	ectype="application/x-www-form-urlencoded" autocomplete="off"
 	onsubmit="return validateEventForm();">
 	<div class="col-sm-12">
@@ -69,7 +69,7 @@
 					<div class="col-sm-6">
 						<input type="text" size="50" maxlength="250" name="name"
 							required="required" placeholder="Ex.: Victoria's Birthday party"
-							autofocus class="form-control">
+							autofocus class="form-control" value="${event.name}">
 					</div>
 				</div>
 
@@ -77,6 +77,7 @@
 					<label for="datetimepicker" class="col-sm-3 control-label">Date/Time
 						:</label>
 					<div class="col-sm-6">
+						<input hidden="hidden" value="${event.date_time}" id="eventDate">
 						<input type="text" size="30" maxlength="50" name="datetimepicker"
 							id="datetimepicker" required="required" class="form-control">
 					</div>
@@ -88,7 +89,8 @@
 					<div class="col-sm-6">
 						<input type="text" size="20" maxlength="20" name="person_count"
 							id="person_count" required="required" pattern="[0-9]+"
-							title="Must be a Number" class="form-control">
+							title="Must be a Number" class="form-control"
+							value="${event.personCount}">
 					</div>
 				</div>
 
@@ -117,7 +119,8 @@
 							1 :</label>
 						<div class="col-sm-6">
 							<input type="text" size="30" maxlength="50" name="street1"
-								required="required" placeholder="Line 1" class="form-control">
+								required="required" placeholder="Line 1" class="form-control"
+								value="${event.location.street1}">
 						</div>
 					</div>
 
@@ -126,7 +129,8 @@
 							2 :</label>
 						<div class="col-sm-6">
 							<input type="text" size="30" maxlength="50" name="street2"
-								placeholder="Line 2" class="form-control">
+								placeholder="Line 2" class="form-control"
+								value="${event.location.street2}">
 						</div>
 					</div>
 
@@ -134,7 +138,8 @@
 						<label for="city" class="col-sm-3 control-label">City :</label>
 						<div class="col-sm-6">
 							<input type="text" size="30" name="city" required="required"
-								placeholder="City" class="form-control">
+								placeholder="City" class="form-control"
+								value="${event.location.city}">
 						</div>
 					</div>
 
@@ -150,7 +155,7 @@
 						<div class="col-sm-6">
 							<input type="text" size="10" name="zip" maxlength="10"
 								required="required" placeholder="Ex.: xxxxx"
-								class="form-control">
+								class="form-control" value="${event.location.zip}">
 						</div>
 					</div>
 				</div>
@@ -162,10 +167,19 @@
 				Cancel</button>
 		</div>
 		<div class="col-sm-4 col-sm-offset-2">
-			<button type="submit" class="btn btn-lg btn-primary btn-block">Create
+			<button type="submit" class="btn btn-lg btn-primary btn-block">Update
 				Event</button>
+		</div>
+		<div class="col-sm-2 col-sm-offset-2">
+			<button type="reset" class="btn btn-lg btn-primary btn-block">Reset</button>
 		</div>
 </form>
 
 <br />
 <br />
+
+<script>
+	var eventDate = $("input[id=eventDate]").val();
+	//console.log(eventDate);
+	$("#datetimepicker").datetimepicker({value: new Date(eventDate)});
+</script>

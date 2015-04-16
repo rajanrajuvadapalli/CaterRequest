@@ -23,6 +23,16 @@ body {
 }
 
 .menuOptions {
+	left: 35%;
+    width: 500px;
+	position: fixed;
+    top: 20px;
+	background: white;
+	padding: 20px 30px;
+	text-align: left;
+}
+
+.forgotPassword {
 	background: white;
 	padding: 20px 30px;
 	text-align: left;
