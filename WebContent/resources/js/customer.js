@@ -1,5 +1,8 @@
 $('document').ready(function() {
-	$("input[id=datetimepicker]").datetimepicker();
+	$("input[id=datetimepicker]").datetimepicker({
+		dayOfWeekStart : 1,
+		lang : 'en'
+	});
 	$('.popup-with-form').magnificPopup({
 		type : 'inline',
 		fixedContentPos : false,
@@ -11,53 +14,17 @@ $('document').ready(function() {
 		removalDelay : 300,
 		mainClass : 'my-mfp-zoom-in'
 	});
-	$('button[id=pvc]').click(validatePhoneVerificationCode);
 });
-
-function validatePhoneVerificationCode() {
-	var loginID = $('input[id=pvc-loginID]').val();
-	var role = $('input[id=pvc-role]').val();
-	var url = "/cater4party/rest/phone/verify/" + loginID + "?role=" + role;
-	var pvc = $('input[id=pvc]').val();
-	/*
-	 * console.log("login ID: " + loginID); console.log("Role: " + role);
-	 * console.log("URL: " + url); console.log("phone verification code: " +
-	 * pvc);
-	 */
-
-	if (pvc == null || pvc.length != 5) {
-		alert("Please enter the complete verification code.");
-		$('input[id=pvc]').focus();
-		return false;
-	}
-
-	$.ajax({
-		url : url,
-		data : pvc,
-		type : "POST",
-		contentType : "text/plain;",
-		// accepts : "text/plain",
-		async : false,
-		processData : false,
-		success : function(response) {
-			alert(response);
-			window.location.href = '/cater4party/settings/personalInfo';
-		},
-		error : function(xhr, status, error) {
-			alert(response + " " + error);
-		}/*
-			 * , statusCode : { 404 : function() { alert("page not found"); },
-			 * 400 : function() { alert("400"); } }
-			 */
-	});
-	return false;
-}
 
 function validateEventForm() {
 	// Validate that the date is in the future.
-	var dateObject = $('input[id=datetimepicker]').datepicker('getDate');
-	if (new Date().getTime() > dateObject) {
-		alert("Please enter a date in the future.");
+	var dateObject = $('input[id=datetimepicker]').val();
+	// console.log("User entered: " + dateObject);
+	var now = moment().format("YYYY/MM/DD HH:mm");
+	// console.log("Now: " + now);
+	if (dateObject < now) {
+		alert("Please enter a date in the future." + "\nEntered date: "
+				+ dateObject);
 		return false;
 	}
 	var numberOfPeople = $('input[id=person_count]').val();
@@ -70,7 +37,7 @@ function validateEventForm() {
 
 function validateCuisine(formId) {
 	var element = $('form[id=' + formId + '] select[id=cuisineType]');
-	if (element.val() != "INDIAN" && element.val() != "SOUTHINDIAN"   ) {
+	if (element.val() != "INDIAN_SOUTH") {
 		alert("Sorry! " + element.val()
 				+ " restaurants are not registered with us at this moment.");
 		return false;
@@ -91,7 +58,7 @@ function validateCuisine(formId) {
 
 function validateMenuFormOnSubmit() {
 	var atLeast1selected = false;
-	$("form[id=menu-form] input[name=itemName]").each(function() {
+	$("form[id=menu-form] input[name=itemCode]").each(function() {
 		if (this.checked) {
 			atLeast1selected = true;
 		}

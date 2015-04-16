@@ -74,7 +74,7 @@ public class CustomerService {
 	}
 
 	public void sendNotification(Quote quote) {
-		emailHelper.sendNotificationEmailTo(Roles.CUSTOMER, quote);
-		smsHelper.sendNotificationSMSto(Roles.CUSTOMER, quote);
+		emailHelper.sendNotificationEmailTo(Roles.CUSTOMER, quote, null);
+		smsHelper.sendNotificationSMSto(Roles.CUSTOMER, quote, null);
 	}
 }

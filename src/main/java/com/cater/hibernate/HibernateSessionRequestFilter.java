@@ -18,7 +18,7 @@ import org.springframework.web.context.WebApplicationContext;
 /** 
  * Description: 
  * @since Jan 28, 2015
- * @author Hari Samala
+ * 
  * 
  * @see <a href="http://stackoverflow.com/questions/6722158/best-way-to-handle-hibernate-sessions-in-a-layered-spring-mvc-web-application">stackoverflow</a>
  * @see <a href="https://developer.jboss.org/wiki/OpenSessionInView">Example</a>

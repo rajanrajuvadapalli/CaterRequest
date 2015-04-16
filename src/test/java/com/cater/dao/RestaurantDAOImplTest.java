@@ -5,6 +5,9 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Set;
+
+import org.apache.commons.collections.CollectionUtils;
 import org.hibernate.PropertyValueException;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +22,7 @@ import com.cater.model.Restaurant;
 /**
  * Description: 
  * @since Nov 23, 2014
- * @author Hari 
+ *  
  */
 @Component
 public class RestaurantDAOImplTest extends AbstractDAOImplTest {
@@ -109,5 +112,28 @@ public class RestaurantDAOImplTest extends AbstractDAOImplTest {
 		assertEquals(persistedRestaurant.getAddress().getCity(), "Rancho");
 		assertEquals(persistedRestaurant.getAddress().getState(), "CA");
 		assertEquals(persistedRestaurant.getAddress().getZip(), "958250000");
+	}
+
+	@Test
+	public void testFetchRestaurantsOfType_numberNotVerified() {
+		Restaurant restaurant = createSampleRestaurant();
+		restaurant.setNumberVerified(false);
+		fixture.saveOrUpdate(restaurant);
+		String cuisine = "MEXICAN";
+		Set <Restaurant> restaurants = fixture.fetchRestaurantsOfType(cuisine);
+		//we should not get any, since the restaurant is not verified
+		assertTrue(CollectionUtils.isEmpty(restaurants));
+	}
+
+	@Test
+	public void testFetchRestaurantsOfType_numberVerified() {
+		Restaurant restaurant = createSampleRestaurant();
+		restaurant.setNumberVerified(true);
+		fixture.saveOrUpdate(restaurant);
+		String cuisine = "MEXICAN";
+		Set <Restaurant> restaurants = fixture.fetchRestaurantsOfType(cuisine);
+		//we should not get any, since the restaurant is not verified
+		assertTrue(CollectionUtils.isNotEmpty(restaurants));
+		assertEquals(1, restaurants.size());
 	}
 }

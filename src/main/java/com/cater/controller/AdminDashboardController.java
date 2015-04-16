@@ -12,21 +12,28 @@ import com.cater.service.CustomerService;
 import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
 
-/** 
- * Description: 
+/**
+ * Description:.
+ *
  * @since Jan 27, 2015
- * @author Hari Samala
+ * 
  */
 @Controller
 @RequestMapping(value = { "admin" })
 public class AdminDashboardController {
-	/*private static final Logger logger = Logger
-			.getLogger(AdminDashboardController.class);*/
+	/** The customer service. */
 	@Autowired
 	private CustomerService customerService;
+	/** The restaurant service. */
 	@Autowired
 	private RestaurantService restaurantService;
 
+	/**
+	 * Gets the dashboard.
+	 *
+	 * @param session the session
+	 * @return the dashboard
+	 */
 	@RequestMapping(value = { "dashboard" })
 	public String getDashboard(HttpSession session) {
 		User user = (User) session.getAttribute("user");
@@ -38,6 +45,13 @@ public class AdminDashboardController {
 		return "redirect:listCustomers";
 	}
 
+	/**
+	 * List customers.
+	 *
+	 * @param modelMap the model map
+	 * @param session the session
+	 * @return the string
+	 */
 	@RequestMapping(value = { "listCustomers" }, method = RequestMethod.GET)
 	public String listCustomers(ModelMap modelMap, HttpSession session) {
 		modelMap.put("customers", customerService.fetchAllCustomers());
@@ -45,6 +59,13 @@ public class AdminDashboardController {
 		return "admin/t_listCustomers";
 	}
 
+	/**
+	 * List events.
+	 *
+	 * @param modelMap the model map
+	 * @param session the session
+	 * @return the string
+	 */
 	@RequestMapping(value = { "listEvents" }, method = RequestMethod.GET)
 	public String listEvents(ModelMap modelMap, HttpSession session) {
 		modelMap.put("events", customerService.fetchAllEvents());
@@ -52,6 +73,13 @@ public class AdminDashboardController {
 		return "admin/t_listEvents";
 	}
 
+	/**
+	 * List restaurants.
+	 *
+	 * @param modelMap the model map
+	 * @param session the session
+	 * @return the string
+	 */
 	@RequestMapping(value = { "listRestaurants" }, method = RequestMethod.GET)
 	public String listRestaurants(ModelMap modelMap, HttpSession session) {
 		modelMap.put("restaurants", restaurantService.fetchAllRestaurants());
@@ -59,6 +87,11 @@ public class AdminDashboardController {
 		return "admin/t_listRestaurants";
 	}
 
+	/**
+	 * Refresh counts.
+	 *
+	 * @param session the session
+	 */
 	public void refreshCounts(HttpSession session) {
 		session.setAttribute("nCustomers",
 				customerService.getNumberOfCustomers());

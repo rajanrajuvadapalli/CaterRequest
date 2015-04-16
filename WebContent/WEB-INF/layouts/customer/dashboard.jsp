@@ -10,6 +10,10 @@
 
 <c:if test="${not empty errors}">
 	<div class="alert alert-danger">
+		<button type="button" class="close btn-lg" data-dismiss="alert"
+			aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
 		<ul>
 			<c:forEach items="${errors}" var="e">
 				<li align="left">${e}</li>
@@ -21,6 +25,10 @@
 
 <c:if test="${not empty successMessages}">
 	<div class="alert alert-success">
+		<button type="button" class="close btn-lg" data-dismiss="alert"
+			aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
 		<ul>
 			<c:forEach items="${successMessages}" var="sm">
 				<li align="left">${sm}</li>
@@ -32,6 +40,10 @@
 
 <c:if test="${not empty warnings}">
 	<div class="alert alert-warning">
+		<button type="button" class="close btn-lg" data-dismiss="alert"
+			aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
 		<ul>
 			<c:forEach items="${warnings}" var="w">
 				<li align="left">${w}</li>
@@ -73,7 +85,11 @@
 							</tr>
 							<c:forEach items="${events}" var="e">
 								<tr>
-									<td>${e.name}</td>
+									<td>${e.name} <br/>(${e.personCount} count)<br /> <a
+										href="${pageContext.request.contextPath}/customer/event/edit/${e.id}">
+											<img alt="edit"
+											src="${pageContext.request.contextPath}/resources/images/edit.png">&nbsp;Edit
+									</a></td>
 									<td>${e.date_time}</td>
 									<td>${e.location.street1}${e.location.street2},
 										${e.location.city}, ${e.location.state} - ${e.location.zip}</td>
@@ -114,10 +130,10 @@
 										</c:choose></td>
 									<td><c:if test="${not empty e2m.get(e.id)}">
 											<c:forEach items="${e2m.get(e.id)}" var="cuisine">
-												${cuisine}<a
+												${cuisine} <a
 													href="${pageContext.request.contextPath}/menu/selectMenu?eventId=${e.id}&cuisineType=${cuisine}">
 													<img alt="edit"
-													src="${pageContext.request.contextPath}/resources/images/edit.png">
+													src="${pageContext.request.contextPath}/resources/images/edit.png">&nbsp;Edit
 												</a>
 												<br />
 											</c:forEach>
@@ -130,7 +146,7 @@
 											action="${pageContext.request.contextPath}/menu/selectMenu"
 											onsubmit="return validateCuisine(${e.id});"
 											ectype="application/x-www-form-urlencoded">
-											<input type="text" hidden="true" name="eventId"
+											<br /> <input type="text" hidden="true" name="eventId"
 												value="${e.id}"> <span id="cuisineType"></span><br />
 											<button type="submit" class="btn btn-sm btn-warning">Select
 												Menu</button>

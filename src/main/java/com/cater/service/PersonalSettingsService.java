@@ -1,8 +1,13 @@
+/*
+ * 
+ */
 package com.cater.service;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.cater.Helper;
 import com.cater.constants.Roles;
 import com.cater.dao.CustomerDAO;
 import com.cater.dao.RestaurantDAO;
@@ -23,9 +28,6 @@ public class PersonalSettingsService {
 	@Autowired
 	private RestaurantDAO restaurantDAO;
 
-	/** The address dao. */
-	/*@Autowired
-	private AddressDAO addressDAO;*/
 	/**
 	 * Gets the user with login id.
 	 *
@@ -50,9 +52,9 @@ public class PersonalSettingsService {
 	 * @param customerID the customer id
 	 * @param restaurantID the restaurant id
 	 * @param data the data
-	 * @return true, if successful
+	 * @return the update result
 	 */
-	public boolean updateDataFor(Roles role, Integer customerID,
+	public UpdateResult updateDataFor(Roles role, Integer customerID,
 			Integer restaurantID, RegistrationData data) {
 		if (Roles.CUSTOMER == role) {
 			return updateDataForCustomer(customerID, data);
@@ -60,7 +62,7 @@ public class PersonalSettingsService {
 		else if (Roles.RESTAURANT == role) {
 			return updateDataForRestaurant(restaurantID, data);
 		}
-		return true;
+		return null;
 	}
 
 	/**
@@ -68,14 +70,26 @@ public class PersonalSettingsService {
 	 *
 	 * @param customerID the customer id
 	 * @param data the data
-	 * @return true, if successful
+	 * @return the update result
 	 */
-	private boolean updateDataForCustomer(Integer customerID,
+	private UpdateResult updateDataForCustomer(Integer customerID,
 			RegistrationData data) {
+		UpdateResult result = null;
 		if (data != null) {
+			result = new UpdateResult();
 			Customer customer = customerDAO.findById(customerID);
 			if (customer != null) {
 				customer.setName(data.getName());
+				//If the phone number is changed, the customer has to re-verify the number.
+				String oldNumber = customer.getContactNumber();
+				String newNumber = data.getPhone();
+				if (StringUtils.isNotBlank(oldNumber)
+						&& !StringUtils.equals(
+								Helper.extractJust10digitNumber(oldNumber),
+								Helper.extractJust10digitNumber(newNumber))) {
+					result.setPhoneNumberUpdated(true);
+					customer.setNumberVerified(false);
+				}
 				customer.setContactNumber(data.getPhone());
 				customer.setSmsOk(data.isSmsOk());
 				Address address = customer.getAddress();
@@ -89,10 +103,10 @@ public class PersonalSettingsService {
 				address.setState(data.getState());
 				address.setZip(data.getZip());
 				customerDAO.saveOrUpdate(customer);
-				return true;
+				result.setUpdateSuccess(true);
 			}
 		}
-		return false;
+		return result;
 	}
 
 	/**
@@ -100,16 +114,28 @@ public class PersonalSettingsService {
 	 *
 	 * @param restaurantID the restaurant id
 	 * @param data the data
-	 * @return true, if successful
+	 * @return the update result
 	 */
-	private boolean updateDataForRestaurant(Integer restaurantID,
+	private UpdateResult updateDataForRestaurant(Integer restaurantID,
 			RegistrationData data) {
+		UpdateResult result = null;
 		if (data != null) {
+			result = new UpdateResult();
 			Restaurant restaurant = restaurantDAO.findById(restaurantID);
 			if (restaurant != null) {
 				restaurant.setName(data.getRestaurantName());
 				restaurant.setCuisineType(data.getCuisineType());
 				restaurant.setWebsiteUrl(data.getUrl());
+				//If the phone number is changed, the restaurant has to re-verify the number.
+				String oldNumber = restaurant.getContactNumber();
+				String newNumber = data.getPhone();
+				if (StringUtils.isNotBlank(oldNumber)
+						&& !StringUtils.equals(
+								Helper.extractJust10digitNumber(oldNumber),
+								Helper.extractJust10digitNumber(newNumber))) {
+					result.setPhoneNumberUpdated(true);
+					restaurant.setNumberVerified(false);
+				}
 				restaurant.setContactNumber(data.getPhone());
 				Address address = restaurant.getAddress();
 				if (address == null) {
@@ -122,9 +148,9 @@ public class PersonalSettingsService {
 				address.setState(data.getState());
 				address.setZip(data.getZip());
 				restaurantDAO.saveOrUpdate(restaurant);
-				return true;
+				result.setUpdateSuccess(true);
 			}
 		}
-		return false;
+		return result;
 	}
 }

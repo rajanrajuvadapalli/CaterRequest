@@ -1,16 +1,34 @@
 package com.cater;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Helper.
+ */
 public final class Helper {
+	/** The Constant phonePattern. */
 	private static final Pattern phonePattern = Pattern.compile("[0-9]{10}");
 
+	/**
+	 * Instantiates a new helper.
+	 */
 	private Helper() {
-		//All methods are static
+		// All methods are static
 	}
 
+	/**
+	 * Format phone.
+	 * 
+	 * @param phone
+	 *            the phone
+	 * @return the string
+	 */
 	public static String formatPhone(String phone) {
 		if (StringUtils.isNotBlank(phone)
 				&& phonePattern.matcher(phone).matches()) {
@@ -22,12 +40,38 @@ public final class Helper {
 		return phone;
 	}
 
+	/**
+	 * String to integer.
+	 * 
+	 * @param aString
+	 *            the a string
+	 * @return the integer
+	 */
 	public static Integer stringToInteger(String aString) {
 		try {
 			return Integer.parseInt(aString);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return null;
 		}
+	}
+
+	/**
+	 * Extract just10digit number.
+	 * 
+	 * @param phone
+	 *            the phone
+	 * @return the string
+	 */
+	public static String extractJust10digitNumber(String phone) {
+		String massagedPhone = StringUtils.replaceEach(
+				StringUtils.defaultString(phone), new String[] { "-", "(", ")",
+						" " }, new String[] { "", "", "", "" });
+		return massagedPhone;
+	}
+
+	public static String generateMD5(String aString) throws NoSuchAlgorithmException {
+		MessageDigest m = MessageDigest.getInstance("MD5");
+		m.update(aString.getBytes(), 0, aString.length());
+		return new BigInteger(1, m.digest()).toString(16);
 	}
 }

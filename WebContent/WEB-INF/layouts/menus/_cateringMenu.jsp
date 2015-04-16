@@ -31,7 +31,7 @@
 					</div>
 					<div class="panel-body" align="left">
 						<c:forEach items="${category.items}" var="item">
-							<input type="checkbox" value="${item.name}" name="itemName"
+							<input type="checkbox" value="${item.code}" name="itemCode"
 								${item.isSelected()?"checked":""}>
 						${item.name}<br>
 						</c:forEach>

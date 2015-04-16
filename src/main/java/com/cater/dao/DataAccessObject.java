@@ -15,7 +15,7 @@ import com.cater.model.TimestampEntity;
  * Description:.
  *
  * @since Nov 22, 2014
- * @author Hari
+ * 
  */
 @Component
 public class DataAccessObject {
@@ -42,7 +42,7 @@ public class DataAccessObject {
 	 * @param object the object
 	 * @return true, if successful
 	 */
-	public boolean save(Class<? extends TimestampEntity> clazz, Object object) {
+	public boolean save(Class <? extends TimestampEntity> clazz, Object object) {
 		if (object == null) {
 			logger.error("Cannot save or update null value for " + clazz);
 		}
@@ -71,7 +71,7 @@ public class DataAccessObject {
 	 * @param object the object
 	 * @return true, if successful
 	 */
-	public boolean update(Class<? extends TimestampEntity> clazz, Object object) {
+	public boolean update(Class <? extends TimestampEntity> clazz, Object object) {
 		if (object == null) {
 			logger.error("Cannot update null value for " + clazz);
 		}
@@ -102,7 +102,7 @@ public class DataAccessObject {
 	 * @return the t
 	 */
 	@SuppressWarnings("unchecked")
-	public <T extends TimestampEntity> T findById(Class<T> clazz, Integer id) {
+	public <T extends TimestampEntity> T findById(Class <T> clazz, Integer id) {
 		if (id == null) {
 			return null;
 		}
@@ -129,7 +129,7 @@ public class DataAccessObject {
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
-	protected <T extends TimestampEntity> List<T> fetchAll(Class<T> clazz) {
+	protected <T extends TimestampEntity> List <T> fetchAll(Class <T> clazz) {
 		logger.debug("Fetching all objects of type " + clazz);
 		try {
 			Session session = getSessionFactory().getCurrentSession();
