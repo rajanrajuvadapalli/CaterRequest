@@ -37,6 +37,7 @@ import com.cater.ui.data.User;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class CustomerDashboardController.
  */
@@ -123,7 +124,7 @@ public class CustomerDashboardController {
 
 	/**
 	 * Gets the creates the event form.
-	 *
+	 * 
 	 * @return the creates the event form
 	 */
 	@RequestMapping(value = { "createEvent" }, method = RequestMethod.GET)
@@ -133,10 +134,13 @@ public class CustomerDashboardController {
 
 	/**
 	 * Creates the event.
-	 *
-	 * @param httpSession the http session
-	 * @param modelMap the model map
-	 * @param request the request
+	 * 
+	 * @param httpSession
+	 *            the http session
+	 * @param modelMap
+	 *            the model map
+	 * @param request
+	 *            the request
 	 * @return the string
 	 */
 	@RequestMapping(value = { "createEvent" }, method = RequestMethod.POST)
@@ -211,6 +215,7 @@ public class CustomerDashboardController {
 	 * @param httpSession the http session
 	 * @param modelMap the model map
 	 * @param request the request
+	 * @param eventId the event id
 	 * @param redirectAttributes the redirect attributes
 	 * @return the string
 	 */
@@ -291,6 +296,7 @@ public class CustomerDashboardController {
 	 * @param modelMap the model map
 	 * @param request the request
 	 * @param restaurantIds the restaurant ids
+	 * @param redirectAttributes the redirect attributes
 	 * @return the string
 	 */
 	@RequestMapping(value = { "event/requestQuote" }, method = RequestMethod.POST)
@@ -300,6 +306,7 @@ public class CustomerDashboardController {
 			HttpServletRequest request,
 			@RequestParam(value = "restaurantId", required = true) String[] restaurantIds,
 			RedirectAttributes redirectAttributes) {
+		System.out.println("resturantIDs" + restaurantIds);
 		User user = (User) httpSession.getAttribute("user");
 		if (user == null) {
 			return "t_home";
@@ -311,7 +318,7 @@ public class CustomerDashboardController {
 		}
 		List <String> selectedRestaurantNames = Lists.newArrayList();
 		for (String restaurantId : restaurantIds) {
-			//Find if a quote already exists.
+			// Find if a quote already exists.
 			Quote quote = restaurantService.findQuoteWithRestaurantIdAndMenuId(
 					Helper.stringToInteger(restaurantId), menuId);
 			Restaurant restaurant = restaurantService
@@ -339,5 +346,55 @@ public class CustomerDashboardController {
 		httpSession.removeAttribute("eventName");
 		httpSession.removeAttribute("menuId");
 		return "redirect:/customer/dashboard";
+	}
+
+	/**
+	 * Confirm order.
+	 *
+	 * @param httpSession the http session
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param restaurantId the restaurant id
+	 * @param eventId the event id
+	 * @param quoteId the quote id
+	 * @return the string
+	 */
+	@RequestMapping(value = { "orderConfirmation" }, method = RequestMethod.POST)
+	public String confirmOrder(
+			HttpSession httpSession,
+			ModelMap modelMap,
+			HttpServletRequest request,
+			@RequestParam(value = "restaurantName", required = true) Integer restaurantId,
+			@RequestParam(value = "xeventId", required = true) Integer eventId,
+			@RequestParam(value = "xquoteId", required = true) Integer quoteId) {
+		User user = (User) httpSession.getAttribute("user");
+		if (user == null) {
+			return "t_home";
+		}
+		Customer c = customerService.findCustomerWithLoginId(user.getLoginID());
+		Restaurant restaurant = restaurantService
+				.findRestaurantWithId(restaurantId);
+		if (quoteId != null) {
+			Quote quote = restaurantService.findQuoteWithId(quoteId);
+			quote.setStatus(QuoteStatus.APPROVED.toString());
+			Event event = customerService.findEventWithId(eventId);
+			quote.setRestaurant(restaurant);
+			event.setStatus(Event.STATUS_CONFIRMED);
+			customerService.saveOrUpdateEvent(event);
+			restaurantService.saveOrUpdateQuote(quote);
+			restaurantService.sendNotification(quote);
+			customerService.sendNotification(quote);
+		}
+		return "redirect:/customer/orderConfirmation";
+	}
+
+	/**
+	 * Gets the order confirmation.
+	 *
+	 * @return the order confirmation
+	 */
+	@RequestMapping(value = { "orderConfirmation" }, method = RequestMethod.GET)
+	public String getOrderConfirmation() {
+		return "customer/orderConfirmation";
 	}
 }
