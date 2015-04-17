@@ -163,8 +163,8 @@ public class EmailHelper {
 			searchList[5] = "${RESTAURANT_NAME}";
 			replacementList[5] = restaurant.getName();
 			searchList[6] = "${QUOTE_PRICE}";
-			replacementList[6] = StringUtils.defaultString(quote.getPrice()
-					.toString());
+			replacementList[6] = quote.getPrice() == null ? "" : StringUtils
+					.defaultString(quote.getPrice().toString());
 			searchList[7] = "${COMMENTS}";
 			replacementList[7] = StringUtils.defaultString(optionalMessage);
 			emailBody = StringUtils.replaceEach(emailBody, searchList,

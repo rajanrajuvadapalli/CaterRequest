@@ -364,6 +364,7 @@ public class CustomerDashboardController {
 			HttpSession httpSession,
 			ModelMap modelMap,
 			HttpServletRequest request,
+			RedirectAttributes redirectAttributes,
 			@RequestParam(value = "restaurantName", required = true) Integer restaurantId,
 			@RequestParam(value = "xeventId", required = true) Integer eventId,
 			@RequestParam(value = "xquoteId", required = true) Integer quoteId) {
@@ -371,21 +372,36 @@ public class CustomerDashboardController {
 		if (user == null) {
 			return "t_home";
 		}
-		//Customer c = customerService.findCustomerWithLoginId(user.getLoginID());
 		Restaurant restaurant = restaurantService
 				.findRestaurantWithId(restaurantId);
-		if (quoteId != null) {
-			Quote quote = restaurantService.findQuoteWithId(quoteId);
-			quote.setStatus(QuoteStatus.APPROVED.toString());
-			Event event = customerService.findEventWithId(eventId);
-			quote.setRestaurant(restaurant);
-			event.setStatus(EventStatus.CONFIRMED.toString());
-			customerService.saveOrUpdateEvent(event);
-			restaurantService.saveOrUpdateQuote(quote);
-			restaurantService.sendNotification(quote, null);
-			customerService.sendNotification(quote);
+		List <String> errors = Lists.newArrayList();
+		redirectAttributes.addFlashAttribute("errors", errors);
+		List <String> successMessages = Lists.newArrayList();
+		redirectAttributes
+				.addFlashAttribute("successMessages", successMessages);
+		if (quoteId == null || eventId == null) {
+			errors.add("Please choose a quote.");
 		}
-		return "redirect:/customer/orderConfirmation";
+		else {
+			Quote quote = restaurantService.findQuoteWithId(quoteId);
+			if (quote == null || quote.getPrice() == null
+					|| quote.getPrice() == 0) {
+				errors.add("Cannot confirm order with no quotes.");
+			}
+			else {
+				quote.setStatus(QuoteStatus.APPROVED.toString());
+				Event event = customerService.findEventWithId(eventId);
+				quote.setRestaurant(restaurant);
+				event.setStatus(EventStatus.CONFIRMED.toString());
+				customerService.saveOrUpdateEvent(event);
+				restaurantService.saveOrUpdateQuote(quote);
+				restaurantService.sendNotification(quote, null);
+				customerService.sendNotification(quote);
+				successMessages
+						.add("Congratulations, your Order has been placed!");
+			}
+		}
+		return "redirect:/customer/dashboard";
 	}
 
 	/**
