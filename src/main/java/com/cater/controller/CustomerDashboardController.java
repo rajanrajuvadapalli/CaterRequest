@@ -403,14 +403,4 @@ public class CustomerDashboardController {
 		}
 		return "redirect:/customer/dashboard";
 	}
-
-	/**
-	 * Gets the order confirmation.
-	 *
-	 * @return the order confirmation
-	 */
-	@RequestMapping(value = { "orderConfirmation" }, method = RequestMethod.GET)
-	public String getOrderConfirmation() {
-		return "customer/orderConfirmation";
-	}
 }

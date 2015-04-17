@@ -150,7 +150,7 @@
 															</c:forEach>
 															<class="col-sm-2">
 															<button type="submit" width="50px"
-																class="btn btn-lg btn-primary">confirm order</button>
+																class="btn btn-lg btn-primary">Confirm Order</button>
 														</form>
 													</c:when>
 													<c:otherwise>
@@ -160,7 +160,7 @@
 																	<c:forEach items="${q2c.value}" var="q">
 																		<c:if test="${ q.status eq 'APPROVED'}">
 
-																			<u>${q.restaurant.name}</u> &nbsp;
+																			<b>${q.restaurant.name}:</b> &nbsp;
 																<fmt:setLocale value="en_US" />
 																			<a
 																				href="${pageContext.request.contextPath}/menu/view/${q.menu.id}"><b><fmt:formatNumber

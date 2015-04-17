@@ -273,7 +273,7 @@ public class MenuController {
 									restaurant.getId(), menuId);
 					modelMap.put("quote", quote);
 				}
-				modelMap.put("eventName", menuModel.getEvent().getName());
+				modelMap.put("event", menuModel.getEvent());
 			}
 		}
 		catch (Exception ex) {
