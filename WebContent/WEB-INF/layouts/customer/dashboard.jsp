@@ -85,11 +85,15 @@
 							</tr>
 							<c:forEach items="${events}" var="e">
 								<tr>
-									<td>${e.name}<br />(${e.personCount} count)<br /> <a
-										href="${pageContext.request.contextPath}/customer/event/edit/${e.id}">
-											<img alt="edit"
-											src="${pageContext.request.contextPath}/resources/images/edit.png">&nbsp;Edit
-									</a></td>
+									<td>${e.name}<br />(${e.personCount} count)<br /> <c:if
+											test="${e.status eq 'ACTIVE'}">
+											<a
+												href="${pageContext.request.contextPath}/customer/event/edit/${e.id}">
+
+												<img alt="edit"
+												src="${pageContext.request.contextPath}/resources/images/edit.png">&nbsp;Edit
+											</a>
+										</c:if></td>
 									<td>${e.date_time}</td>
 									<td>${e.location.street1}${e.location.street2},
 										${e.location.city}, ${e.location.state} - ${e.location.zip}</td>

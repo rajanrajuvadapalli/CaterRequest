@@ -28,6 +28,12 @@
 	</c:forEach>
 </div>
 
+<div class="col-sm-2">
+	<button type="button" class="btn btn-lg btn-primary btn-block"
+		onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">
+		Back</button>
+</div>
+
 <div class="col-sm-12">
 	<c:if test="${user.role == 'RESTAURANT'}">
 		<hr>
