@@ -15,6 +15,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.cater.constants.EventStatus;
 import com.cater.constants.Roles;
 import com.cater.model.Address;
 import com.cater.model.Customer;
@@ -38,6 +39,7 @@ public class EventDAOImplTest extends AbstractDAOImplTest {
 
 	private Event createSampleEvent() {
 		Event event = new Event();
+		event.setStatus(EventStatus.ACTIVE.toString());
 		event.setName("Sample Event");
 		Customer c = createSampleCustomer();
 		customerDAO.saveOrUpdate(c);
@@ -113,6 +115,7 @@ public class EventDAOImplTest extends AbstractDAOImplTest {
 		Event persistedEvent = fixture.findById(event.getId());
 		assertNotNull(persistedEvent);
 		assertEquals(persistedEvent.getName(), "Sample Event");
+		assertEquals(persistedEvent.getStatus(), "ACTIVE");
 		assertEquals(df.format(persistedEvent.getDate_time()),
 				df.format(DATE_1));
 		assertNotNull(persistedEvent.getCustomer());
