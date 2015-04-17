@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cater.Helper;
+import com.cater.constants.EventStatus;
 import com.cater.constants.QuoteStatus;
 import com.cater.model.Address;
 import com.cater.model.Customer;
@@ -152,6 +153,7 @@ public class CustomerDashboardController {
 		Customer c = customerService.findCustomerWithLoginId(user.getLoginID());
 		logger.debug("Creating event for " + c.getName());
 		Event e = new Event();
+		e.setStatus(EventStatus.ACTIVE.toString());
 		e.setName(StringUtils.defaultString(request.getParameter("name")));
 		Address a = new Address();
 		a.setStreet1(StringUtils.defaultString(request.getParameter("street1")));
@@ -377,7 +379,7 @@ public class CustomerDashboardController {
 			quote.setStatus(QuoteStatus.APPROVED.toString());
 			Event event = customerService.findEventWithId(eventId);
 			quote.setRestaurant(restaurant);
-			event.setStatus(Event.STATUS_CONFIRMED);
+			event.setStatus(EventStatus.CONFIRMED.toString());
 			customerService.saveOrUpdateEvent(event);
 			restaurantService.saveOrUpdateQuote(quote);
 			restaurantService.sendNotification(quote, null);
