@@ -37,7 +37,6 @@ import com.cater.ui.data.User;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class CustomerDashboardController.
  */
@@ -306,7 +305,6 @@ public class CustomerDashboardController {
 			HttpServletRequest request,
 			@RequestParam(value = "restaurantId", required = true) String[] restaurantIds,
 			RedirectAttributes redirectAttributes) {
-		System.out.println("resturantIDs" + restaurantIds);
 		User user = (User) httpSession.getAttribute("user");
 		if (user == null) {
 			return "t_home";
@@ -371,7 +369,7 @@ public class CustomerDashboardController {
 		if (user == null) {
 			return "t_home";
 		}
-		Customer c = customerService.findCustomerWithLoginId(user.getLoginID());
+		//Customer c = customerService.findCustomerWithLoginId(user.getLoginID());
 		Restaurant restaurant = restaurantService
 				.findRestaurantWithId(restaurantId);
 		if (quoteId != null) {
@@ -382,7 +380,7 @@ public class CustomerDashboardController {
 			event.setStatus(Event.STATUS_CONFIRMED);
 			customerService.saveOrUpdateEvent(event);
 			restaurantService.saveOrUpdateQuote(quote);
-			restaurantService.sendNotification(quote);
+			restaurantService.sendNotification(quote, null);
 			customerService.sendNotification(quote);
 		}
 		return "redirect:/customer/orderConfirmation";
