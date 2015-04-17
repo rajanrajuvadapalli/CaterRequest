@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import com.cater.Helper;
 import com.cater.constants.QuoteStatus;
 import com.cater.constants.Roles;
 import com.cater.model.Customer;
@@ -163,8 +164,7 @@ public class EmailHelper {
 			searchList[5] = "${RESTAURANT_NAME}";
 			replacementList[5] = restaurant.getName();
 			searchList[6] = "${QUOTE_PRICE}";
-			replacementList[6] = quote.getPrice() == null ? "" : StringUtils
-					.defaultString(quote.getPrice().toString());
+			replacementList[6] = Helper.formatCurrency(quote.getPrice());
 			searchList[7] = "${COMMENTS}";
 			replacementList[7] = StringUtils.defaultString(optionalMessage);
 			emailBody = StringUtils.replaceEach(emailBody, searchList,
