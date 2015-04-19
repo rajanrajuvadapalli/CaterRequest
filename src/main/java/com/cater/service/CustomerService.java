@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.cater.constants.Roles;
+import com.cater.dao.AddressDAO;
 import com.cater.dao.CustomerDAO;
 import com.cater.dao.EventDAO;
 import com.cater.dao.MenuDAO;
+import com.cater.dao.QuoteDAO;
 import com.cater.email.EmailHelper;
+import com.cater.model.Address;
 import com.cater.model.Customer;
 import com.cater.model.Event;
 import com.cater.model.Menu;
@@ -24,6 +27,10 @@ public class CustomerService {
 	private EventDAO eventDAO;
 	@Autowired
 	private MenuDAO menuDAO;
+	@Autowired
+	private QuoteDAO quoteDAO;
+	@Autowired
+	private AddressDAO addressDAO;
 	@Autowired
 	private EmailHelper emailHelper;
 	@Autowired
@@ -55,6 +62,22 @@ public class CustomerService {
 
 	public Menu findMenuWithId(Integer menuId) {
 		return menuDAO.findById(menuId);
+	}
+
+	public void deleteEvent(Event event) {
+		eventDAO.deleteEvent(event);
+	}
+
+	public void deleteMenu(Menu menu) {
+		menuDAO.deleteMenu(menu);
+	}
+
+	public void deleteQuote(Quote quote) {
+		quoteDAO.deleteQuote(quote);
+	}
+
+	public void deleteAddress(Address address) {
+		addressDAO.deleteAddress(address);
 	}
 
 	public boolean saveOrUpdateMenu(Menu m) {

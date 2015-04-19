@@ -116,4 +116,14 @@ public class EventDAO extends DataAccessObject {
 			return 0;
 		}
 	}
+
+	/**
+	 * Delete event.
+	 *
+	 * @param eventId the event id
+	 */
+	public void deleteEvent(Event event) {
+		logger.debug("Deleting event with id: " + event.getId());
+		super.delete(Event.class, event.getId());
+	}
 }

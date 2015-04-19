@@ -1,6 +1,7 @@
 package com.cater.controller;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -86,11 +87,20 @@ public class RestaurantDashboardController {
 							.size() > 1) {
 				//Since the quotes are ORDERED by price in ASC order,
 				//the first element should be the best quote.
-				Quote bestQuote = allQuotesForThisMenu.iterator().next();
-				if (rQuote.getId() != bestQuote.getId()) {
-					//If the current restaurant's quote is not the best quote, find the %
-					Double percent = rQuote.getPrice() / bestQuote.getPrice();
-					bargain.put(rQuote.getId(), percent);
+				Iterator <Quote> iteratorForBestQuote = allQuotesForThisMenu
+						.iterator();
+				while (iteratorForBestQuote.hasNext()) {
+					Quote bestQuote = iteratorForBestQuote.next();
+					if (bestQuote == null || bestQuote.getPrice() == null) {
+						continue;
+					}
+					if (rQuote.getId() != bestQuote.getId()) {
+						//If the current restaurant's quote is not the best quote, find the %
+						Double percent = rQuote.getPrice()
+								/ bestQuote.getPrice();
+						bargain.put(rQuote.getId(), percent);
+					}
+					break;
 				}
 			}
 		}

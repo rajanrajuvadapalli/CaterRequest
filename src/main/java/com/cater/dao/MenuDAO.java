@@ -64,11 +64,12 @@ public class MenuDAO extends DataAccessObject {
 		logger.debug("Finding menus with event ID: " + eventID);
 		try {
 			Session session = getSessionFactory().getCurrentSession();
-			List <Menu> list = (List <Menu>) session
+			List <Menu> list = session
 					.createCriteria(Menu.class, "menu")
 					.createAlias("menu.event", "event",
 							JoinType.LEFT_OUTER_JOIN)
 					.add(Restrictions.eq("event.id", eventID)).list();
+			logger.debug("Found " + list.size() + " results.");
 			return list;
 		}
 		catch (HibernateException he) {
@@ -77,5 +78,15 @@ public class MenuDAO extends DataAccessObject {
 							+ eventID, he);
 			throw he;
 		}
+	}
+
+	/**
+	 * Delete menu.
+	 *
+	 * @param menu the menu
+	 */
+	public void deleteMenu(Menu menu) {
+		logger.debug("Deleting menu with id: " + menu.getId());
+		super.delete(Menu.class, menu.getId());
 	}
 }

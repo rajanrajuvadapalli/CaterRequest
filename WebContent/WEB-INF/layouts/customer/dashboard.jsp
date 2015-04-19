@@ -182,7 +182,7 @@
 											<a class="popup-with-form" href="#${e.id}"><span
 												class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 												Add Menu</a>
-											<form class=" mfp-hide white-popup-block menuOptions"
+											<form class=" mfp-hide white-popup-block popupOptions"
 												method="GET" id="${e.id}"
 												action="${pageContext.request.contextPath}/menu/selectMenu"
 												onsubmit="return validateCuisine(${e.id});"

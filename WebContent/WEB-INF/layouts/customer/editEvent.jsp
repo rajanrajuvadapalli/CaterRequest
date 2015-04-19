@@ -52,6 +52,26 @@
 	</div>
 </c:if>
 
+<div align="right">
+	<a class="popup-with-form" href="#deleteConfirm">
+		<button class="btn btn-lg btn-danger">Delete Event</button>
+	</a>
+</div>
+<br />
+
+<div class="mfp-hide white-popup-block popupOptions" id="deleteConfirm">
+	<form class="form-horizontal" method="POST" id="event-form"
+		action="${pageContext.request.contextPath}/customer/event/delete/${event.id}"
+		ectype="application/x-www-form-urlencoded" autocomplete="off">
+		Are you sure you want to delete this event?<br />
+		<br />
+		<div align="center">
+			<button type="submit" class="btn btn-lg btn-danger">Confirm
+				Delete</button>
+		</div>
+	</form>
+</div>
+
 <form class="form-horizontal" method="POST" id="event-form"
 	action="${pageContext.request.contextPath}/customer/event/update/${event.id}"
 	ectype="application/x-www-form-urlencoded" autocomplete="off"
@@ -162,7 +182,7 @@
 			</div>
 		</div>
 		<div class="col-sm-2">
-			<button type="button" class="btn btn-lg btn-primary btn-block"
+			<button type="button" class="btn btn-lg btn-warning btn-block"
 				onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">
 				Cancel</button>
 		</div>
@@ -171,7 +191,7 @@
 				Event</button>
 		</div>
 		<div class="col-sm-2 col-sm-offset-2">
-			<button type="reset" class="btn btn-lg btn-primary btn-block">Reset</button>
+			<button type="reset" class="btn btn-lg btn-warning btn-block">Reset</button>
 		</div>
 </form>
 
@@ -181,5 +201,7 @@
 <script>
 	var eventDate = $("input[id=eventDate]").val();
 	//console.log(eventDate);
-	$("#datetimepicker").datetimepicker({value: new Date(eventDate)});
+	$("#datetimepicker").datetimepicker({
+		value : new Date(eventDate)
+	});
 </script>

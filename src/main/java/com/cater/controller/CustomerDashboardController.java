@@ -291,6 +291,49 @@ public class CustomerDashboardController {
 	}
 
 	/**
+	 * Delete event.
+	 *
+	 * @param httpSession the http session
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param eventId the event id
+	 * @param redirectAttributes the redirect attributes
+	 * @return the string
+	 */
+	@RequestMapping(value = { "event/delete/{eventId}" }, method = RequestMethod.POST)
+	public String deleteEvent(HttpSession httpSession, ModelMap modelMap,
+			HttpServletRequest request,
+			@PathVariable(value = "eventId") Integer eventId,
+			RedirectAttributes redirectAttributes) {
+		User user = (User) httpSession.getAttribute("user");
+		if (user == null) {
+			return "t_home";
+		}
+		Event event = customerService.findEventWithId(eventId);
+		if (event != null) {
+			String eventName = event.getName();
+			Address eventAddress = event.getLocation();
+			List <Quote> quotes = restaurantService
+					.findQuotesWithEventId(eventId);
+			List <Menu> menus = customerService.findMenusWithEventId(eventId);
+			for (Quote quote : quotes) {
+				customerService.deleteQuote(quote);
+			}
+			for (Menu menu : menus) {
+				customerService.deleteMenu(menu);
+			}
+			customerService.deleteEvent(event);
+			customerService.deleteAddress(eventAddress);
+			List <String> successMessages = Lists.newArrayList();
+			successMessages.add("Successfully deleted event: '" + eventName
+					+ "'.");
+			redirectAttributes.addFlashAttribute("successMessages",
+					successMessages);
+		}
+		return "redirect:/customer/dashboard";
+	}
+
+	/**
 	 * Request quote.
 	 *
 	 * @param httpSession the http session
