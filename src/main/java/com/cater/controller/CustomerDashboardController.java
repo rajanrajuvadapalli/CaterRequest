@@ -372,8 +372,6 @@ public class CustomerDashboardController {
 		if (user == null) {
 			return "t_home";
 		}
-		Restaurant restaurant = restaurantService
-				.findRestaurantWithId(restaurantId);
 		List <String> errors = Lists.newArrayList();
 		redirectAttributes.addFlashAttribute("errors", errors);
 		List <String> successMessages = Lists.newArrayList();
@@ -390,11 +388,14 @@ public class CustomerDashboardController {
 			}
 			else {
 				quote.setStatus(QuoteStatus.APPROVED.toString());
-				Event event = customerService.findEventWithId(eventId);
-				quote.setRestaurant(restaurant);
-				event.setStatus(EventStatus.CONFIRMED.toString());
-				customerService.saveOrUpdateEvent(event);
-				restaurantService.saveOrUpdateQuote(quote);
+				//Reject all other quotes
+				for (Quote q : quote.getMenu().getQuotes()) {
+					if (!q.getId().equals(quote.getId())) {
+						q.setStatus(QuoteStatus.DENIED.toString());
+					}
+				}
+				quote.getMenu().getEvent()
+						.setStatus(EventStatus.CONFIRMED.toString());
 				restaurantService.sendNotification(quote, null);
 				customerService.sendNotification(quote);
 				successMessages
