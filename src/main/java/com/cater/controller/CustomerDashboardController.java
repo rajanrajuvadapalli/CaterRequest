@@ -155,6 +155,8 @@ public class CustomerDashboardController {
 		Event e = new Event();
 		e.setStatus(EventStatus.ACTIVE.toString());
 		e.setName(StringUtils.defaultString(request.getParameter("name")));
+		e.setPickUp(StringUtils.equals("1", StringUtils.defaultString(request
+				.getParameter("deliveryOption"))));
 		Address a = new Address();
 		a.setStreet1(StringUtils.defaultString(request.getParameter("street1")));
 		a.setStreet2(StringUtils.defaultString(request.getParameter("street2")));
@@ -232,6 +234,8 @@ public class CustomerDashboardController {
 		Event e = customerService.findEventWithId(eventId);
 		if (e != null) {
 			e.setName(StringUtils.defaultString(request.getParameter("name")));
+			e.setPickUp(StringUtils.equals("1", StringUtils
+					.defaultString(request.getParameter("deliveryOption"))));
 			Address a = e.getLocation();
 			a.setStreet1(StringUtils.defaultString(request
 					.getParameter("street1")));
