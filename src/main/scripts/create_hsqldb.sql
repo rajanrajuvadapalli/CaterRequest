@@ -55,7 +55,8 @@ ALTER TABLE cater4party.Restaurant ADD FOREIGN KEY (login_sk) REFERENCES cater4p
 CREATE TABLE cater4party.Event
 (
 	id INT NOT NULL IDENTITY
-	,customer_sk INT NOT NULL 
+	,customer_sk INT NOT NULL
+	,status VARCHAR(30)  NULL
 	,name VARCHAR(250) NOT NULL 
 	,location_sk INT NOT NULL 
 	,date_time DATETIME NOT NULL 
@@ -92,5 +93,4 @@ CREATE TABLE cater4party.Quote
 ALTER TABLE cater4party.Quote ADD FOREIGN KEY (menu_sk) REFERENCES cater4party.Menu(id);
 -- Create Foreign Key: Quote.restaurant_sk -> Restaurant.id
 ALTER TABLE cater4party.Quote ADD FOREIGN KEY (restaurant_sk) REFERENCES cater4party.Restaurant(id);
-
 

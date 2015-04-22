@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import com.cater.Helper;
 import com.cater.constants.QuoteStatus;
 import com.cater.constants.Roles;
 import com.cater.model.Customer;
@@ -146,8 +147,8 @@ public class EmailHelper {
 			File f = new File(EmailHelper.class.getResource(
 					"/email/notification.html").getFile());
 			String emailBody = FileUtils.readFileToString(f);
-			String[] searchList = new String[7];
-			String[] replacementList = new String[7];
+			String[] searchList = new String[8];
+			String[] replacementList = new String[8];
 			searchList[0] = "${USERNAME}";
 			replacementList[0] = username;
 			searchList[1] = "${STATUS_MESSAGE}";
@@ -156,15 +157,16 @@ public class EmailHelper {
 			searchList[2] = "${EVENT_NAME}";
 			replacementList[2] = event.getName();
 			searchList[3] = "${EVENT_TIME}";
-			replacementList[3] =DateFormatUtils.format(event.getDate_time(), "yyyy-MM-dd HH:mm:SS");
+			replacementList[3] = DateFormatUtils.format(event.getDate_time(),
+					"yyyy-MM-dd HH:mm:SS");
 			searchList[4] = "${CUSTOMER_NAME}";
 			replacementList[4] = customer.getName();
 			searchList[5] = "${RESTAURANT_NAME}";
 			replacementList[5] = restaurant.getName();
 			searchList[6] = "${QUOTE_PRICE}";
-			replacementList[6] = quote.getPrice().toString();
-			
-			
+			replacementList[6] = Helper.formatCurrency(quote.getPrice());
+			searchList[7] = "${COMMENTS}";
+			replacementList[7] = StringUtils.defaultString(optionalMessage);
 			emailBody = StringUtils.replaceEach(emailBody, searchList,
 					replacementList);
 			String[] toAddresses = new String[] { to };

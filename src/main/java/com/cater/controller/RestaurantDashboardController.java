@@ -1,10 +1,15 @@
 package com.cater.controller;
 
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
+import javax.annotation.Nullable;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,7 +24,10 @@ import com.cater.model.Restaurant;
 import com.cater.service.CustomerService;
 import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 /**
  * The Class RestaurantDashboardController.
@@ -53,7 +61,71 @@ public class RestaurantDashboardController {
 				.findRestaurantWithLoginId(user.getLoginID());
 		modelMap.put("restaurant", restaurant);
 		((User) session.getAttribute("user")).setName(restaurant.getName());
+		Map <Integer, Double> bargainMap = getBargainPercentages(restaurant);
+		modelMap.put("bargain", bargainMap);
 		return "restaurant/t_dashboard";
+	}
+
+	/**
+	 * Gets the bargain percentages.
+	 *
+	 * @param restaurant the restaurant
+	 * @return the bargain percentages
+	 */
+	private Map <Integer, Double> getBargainPercentages(Restaurant restaurant) {
+		Map <Integer, Double> bargain = Maps.newHashMap();
+		//For each quote, compare with other restaurant's quote and calculate %
+		for (Quote rQuote : restaurant.getQuotes()) {
+			Collection <Quote> allQuotesForThisEvent;
+			Collection <Quote> allQuotesForThisMenu;
+			if (rQuote != null
+					&& rQuote.getPrice() != null
+					&& (allQuotesForThisEvent = rQuote.getMenu().getQuotes())
+							.size() > 1
+					&& (allQuotesForThisMenu = filterByCuisine(
+							allQuotesForThisEvent, restaurant.getCuisineType()))
+							.size() > 1) {
+				//Since the quotes are ORDERED by price in ASC order,
+				//the first element should be the best quote.
+				Iterator <Quote> iteratorForBestQuote = allQuotesForThisMenu
+						.iterator();
+				while (iteratorForBestQuote.hasNext()) {
+					Quote bestQuote = iteratorForBestQuote.next();
+					if (bestQuote == null || bestQuote.getPrice() == null) {
+						continue;
+					}
+					if (rQuote.getId() != bestQuote.getId()) {
+						//If the current restaurant's quote is not the best quote, find the %
+						Double percent = rQuote.getPrice()
+								/ bestQuote.getPrice();
+						bargain.put(rQuote.getId(), percent);
+					}
+					break;
+				}
+			}
+		}
+		return bargain;
+	}
+
+	/**
+	 * Filter by cuisine.
+	 *
+	 * @param allQuotesForThisMenu the all quotes for this menu
+	 * @param cuisineType the cuisine type
+	 * @return the collection
+	 */
+	private Collection <Quote> filterByCuisine(
+			Collection <Quote> allQuotesForThisMenu, final String cuisineType) {
+		return Collections2.filter(allQuotesForThisMenu,
+				new Predicate <Quote>() {
+					@Override
+					public boolean apply(@Nullable Quote input) {
+						return input != null
+								&& input.getRestaurant() != null
+								&& StringUtils.equalsIgnoreCase(cuisineType,
+										input.getRestaurant().getCuisineType());
+					}
+				});
 	}
 
 	/**

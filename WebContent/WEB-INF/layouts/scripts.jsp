@@ -37,7 +37,7 @@
 <%-- <script
 	src="${pageContext.request.contextPath}/resources/js/jquery-ui-timepicker-addon.js"></script> --%>
 <script src="${pageContext.request.contextPath}/resources/js/jquery.datetimepicker.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/moment.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/moment.min.js"></script>
 <!-- http://www.kryogenix.org/code/browser/sorttable/ -->
 <script
 	src="${pageContext.request.contextPath}/resources/js/sorttable.js"></script>

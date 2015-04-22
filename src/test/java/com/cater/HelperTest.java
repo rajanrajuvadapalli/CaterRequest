@@ -27,12 +27,26 @@ public class HelperTest {
 		String massagedPhone = Helper.extractJust10digitNumber(phone);
 		assertEquals("9162151111", massagedPhone);
 	}
-	
+
 	@Test
 	public void testGenerateMD5() throws NoSuchAlgorithmException {
 		String inputString = "11111";
 		String md5Expected = "b0baee9d279d34fa1dfd71aadb908c3f";
 		String md5Actual = Helper.generateMD5(inputString);
 		assertEquals(md5Expected, md5Actual);
+	}
+
+	@Test
+	public void testFormatCurrency_1() {
+		Double amount = null;
+		String actual = Helper.formatCurrency(amount);
+		assertEquals("", actual);
+	}
+
+	@Test
+	public void testFormatCurrency_2() {
+		Double amount = 12345.789;
+		String actual = Helper.formatCurrency(amount);
+		assertEquals("$12,345.79", actual);
 	}
 }

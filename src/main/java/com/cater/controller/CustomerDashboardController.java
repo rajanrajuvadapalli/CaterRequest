@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cater.Helper;
+import com.cater.constants.EventStatus;
 import com.cater.constants.QuoteStatus;
 import com.cater.model.Address;
 import com.cater.model.Customer;
@@ -74,20 +75,20 @@ public class CustomerDashboardController {
 		Customer customer = customerService.findCustomerWithLoginId(user
 				.getLoginID());
 		modelMap.put("customer", customer);
-		List<Event> events = customer.getEvents();
+		List <Event> events = customer.getEvents();
 		modelMap.put("events", events);
 		Map <Integer, List <String>> e2m = Maps.newHashMap();
 		Map <Integer, Map <String, List <Quote>>> e2q = Maps.newHashMap();
 		for (Event e : events) {
-			List<Menu> menus = customerService.findMenusWithEventId(e.getId());
-			List<String> selectedCusines = Lists.newLinkedList();
+			List <Menu> menus = customerService.findMenusWithEventId(e.getId());
+			List <String> selectedCusines = Lists.newLinkedList();
 			if (CollectionUtils.isNotEmpty(menus)) {
 				for (Menu m : menus) {
 					selectedCusines.add(m.getCuisineType());
 				}
 			}
 			e2m.put(e.getId(), selectedCusines);
-			List<Quote> quotes = restaurantService.findQuotesWithEventId(e
+			List <Quote> quotes = restaurantService.findQuotesWithEventId(e
 					.getId());
 			Map <String, List <Quote>> groupedQuotes = groupQuotesPerCuisine(quotes);
 			e2q.put(e.getId(), groupedQuotes);
@@ -152,6 +153,7 @@ public class CustomerDashboardController {
 		Customer c = customerService.findCustomerWithLoginId(user.getLoginID());
 		logger.debug("Creating event for " + c.getName());
 		Event e = new Event();
+		e.setStatus(EventStatus.ACTIVE.toString());
 		e.setName(StringUtils.defaultString(request.getParameter("name")));
 		Address a = new Address();
 		a.setStreet1(StringUtils.defaultString(request.getParameter("street1")));
@@ -167,7 +169,8 @@ public class CustomerDashboardController {
 						.getParameter("datetimepicker")));
 				e.setDate_time(dateTime);
 			}
-		} catch (ParseException e1) {
+		}
+		catch (ParseException e1) {
 			logger.error(e1);
 		}
 		e.setCustomer(c);
@@ -213,6 +216,7 @@ public class CustomerDashboardController {
 	 * @param httpSession the http session
 	 * @param modelMap the model map
 	 * @param request the request
+	 * @param eventId the event id
 	 * @param redirectAttributes the redirect attributes
 	 * @return the string
 	 */
@@ -287,16 +291,56 @@ public class CustomerDashboardController {
 	}
 
 	/**
+	 * Delete event.
+	 *
+	 * @param httpSession the http session
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param eventId the event id
+	 * @param redirectAttributes the redirect attributes
+	 * @return the string
+	 */
+	@RequestMapping(value = { "event/delete/{eventId}" }, method = RequestMethod.POST)
+	public String deleteEvent(HttpSession httpSession, ModelMap modelMap,
+			HttpServletRequest request,
+			@PathVariable(value = "eventId") Integer eventId,
+			RedirectAttributes redirectAttributes) {
+		User user = (User) httpSession.getAttribute("user");
+		if (user == null) {
+			return "t_home";
+		}
+		Event event = customerService.findEventWithId(eventId);
+		if (event != null) {
+			String eventName = event.getName();
+			Address eventAddress = event.getLocation();
+			List <Quote> quotes = restaurantService
+					.findQuotesWithEventId(eventId);
+			List <Menu> menus = customerService.findMenusWithEventId(eventId);
+			for (Quote quote : quotes) {
+				customerService.deleteQuote(quote);
+			}
+			for (Menu menu : menus) {
+				customerService.deleteMenu(menu);
+			}
+			customerService.deleteEvent(event);
+			customerService.deleteAddress(eventAddress);
+			List <String> successMessages = Lists.newArrayList();
+			successMessages.add("Successfully deleted event: '" + eventName
+					+ "'.");
+			redirectAttributes.addFlashAttribute("successMessages",
+					successMessages);
+		}
+		return "redirect:/customer/dashboard";
+	}
+
+	/**
 	 * Request quote.
-	 * 
-	 * @param httpSession
-	 *            the http session
-	 * @param modelMap
-	 *            the model map
-	 * @param request
-	 *            the request
-	 * @param restaurantIds
-	 *            the restaurant ids
+	 *
+	 * @param httpSession the http session
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param restaurantIds the restaurant ids
+	 * @param redirectAttributes the redirect attributes
 	 * @return the string
 	 */
 	@RequestMapping(value = { "event/requestQuote" }, method = RequestMethod.POST)
@@ -306,7 +350,6 @@ public class CustomerDashboardController {
 			HttpServletRequest request,
 			@RequestParam(value = "restaurantId", required = true) String[] restaurantIds,
 			RedirectAttributes redirectAttributes) {
-		System.out.println("resturantIDs" + restaurantIds);
 		User user = (User) httpSession.getAttribute("user");
 		if (user == null) {
 			return "t_home";
@@ -316,7 +359,7 @@ public class CustomerDashboardController {
 		if (menuId != null) {
 			menuModel = customerService.findMenuWithId(menuId);
 		}
-		List<String> selectedRestaurantNames = Lists.newArrayList();
+		List <String> selectedRestaurantNames = Lists.newArrayList();
 		for (String restaurantId : restaurantIds) {
 			// Find if a quote already exists.
 			Quote quote = restaurantService.findQuoteWithRestaurantIdAndMenuId(
@@ -334,7 +377,7 @@ public class CustomerDashboardController {
 			}
 		}
 		String eventName = (String) httpSession.getAttribute("eventName");
-		List<String> successMessages = Lists.newArrayList();
+		List <String> successMessages = Lists.newArrayList();
 		successMessages
 				.add("Your request for quotes is successfully submitted for '"
 						+ eventName + "'.");
@@ -348,47 +391,60 @@ public class CustomerDashboardController {
 		return "redirect:/customer/dashboard";
 	}
 
+	/**
+	 * Confirm order.
+	 *
+	 * @param httpSession the http session
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param restaurantId the restaurant id
+	 * @param eventId the event id
+	 * @param quoteId the quote id
+	 * @return the string
+	 */
 	@RequestMapping(value = { "orderConfirmation" }, method = RequestMethod.POST)
 	public String confirmOrder(
 			HttpSession httpSession,
 			ModelMap modelMap,
 			HttpServletRequest request,
+			RedirectAttributes redirectAttributes,
 			@RequestParam(value = "restaurantName", required = true) Integer restaurantId,
 			@RequestParam(value = "xeventId", required = true) Integer eventId,
 			@RequestParam(value = "xquoteId", required = true) Integer quoteId) {
-
-		
 		User user = (User) httpSession.getAttribute("user");
 		if (user == null) {
 			return "t_home";
 		}
-		Customer c = customerService.findCustomerWithLoginId(user.getLoginID());
-		
-
-		Restaurant restaurant = restaurantService
-				.findRestaurantWithId(restaurantId);
-
-		if (quoteId != null) {
-			Quote quote = restaurantService.findQuoteWithId(quoteId);
-			quote.setStatus(QuoteStatus.APPROVED.toString());
-			Event event = customerService.findEventWithId(eventId);
-
-			quote.setRestaurant(restaurant);
-			event.setStatus(Event.STATUS_CONFIRMED);
-			customerService.saveOrUpdateEvent(event);
-            restaurantService.saveOrUpdateQuote(quote);
-			restaurantService.sendNotification(quote);
-			customerService.sendNotification(quote);
-
+		List <String> errors = Lists.newArrayList();
+		redirectAttributes.addFlashAttribute("errors", errors);
+		List <String> successMessages = Lists.newArrayList();
+		redirectAttributes
+				.addFlashAttribute("successMessages", successMessages);
+		if (quoteId == null || eventId == null) {
+			errors.add("Please choose a quote.");
 		}
-
-		return "redirect:/customer/orderConfirmation";
-
+		else {
+			Quote quote = restaurantService.findQuoteWithId(quoteId);
+			if (quote == null || quote.getPrice() == null
+					|| quote.getPrice() == 0) {
+				errors.add("Cannot confirm order with no quotes.");
+			}
+			else {
+				quote.setStatus(QuoteStatus.APPROVED.toString());
+				//Reject all other quotes
+				for (Quote q : quote.getMenu().getQuotes()) {
+					if (!q.getId().equals(quote.getId())) {
+						q.setStatus(QuoteStatus.DENIED.toString());
+					}
+				}
+				quote.getMenu().getEvent()
+						.setStatus(EventStatus.CONFIRMED.toString());
+				restaurantService.sendNotification(quote, null);
+				customerService.sendNotification(quote);
+				successMessages
+						.add("Congratulations, your Order has been placed!");
+			}
+		}
+		return "redirect:/customer/dashboard";
 	}
-
-	@RequestMapping(value = { "orderConfirmation" }, method = RequestMethod.GET)
-	public String getOrderConfirmation() {
-		return "customer/orderConfirmation";
-	}
-
 }

@@ -6,12 +6,13 @@ import org.springframework.stereotype.Component;
 import com.cater.model.Address;
 
 /**
- * Description: 
+ * Description:.
+ *
  * @since Nov 22, 2014
- *  
  */
 @Component
 public class AddressDAO extends DataAccessObject {
+	/** The Constant logger. */
 	private static final Logger logger = Logger.getLogger(AddressDAO.class);
 
 	/**
@@ -35,7 +36,23 @@ public class AddressDAO extends DataAccessObject {
 		}
 	}
 
+	/**
+	 * Find by id.
+	 *
+	 * @param id the id
+	 * @return the address
+	 */
 	public Address findById(Integer id) {
 		return super.findById(Address.class, id);
+	}
+
+	/**
+	 * Delete address.
+	 *
+	 * @param address the address
+	 */
+	public void deleteAddress(Address address) {
+		logger.debug("Deleting address with id: " + address.getId());
+		super.delete(Address.class, address.getId());
 	}
 }

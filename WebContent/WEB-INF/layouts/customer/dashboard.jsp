@@ -85,120 +85,114 @@
 							</tr>
 							<c:forEach items="${events}" var="e">
 								<tr>
-									<td>${e.name} <br/>(${e.personCount} count)<br /> <a
-										href="${pageContext.request.contextPath}/customer/event/edit/${e.id}">
-											<img alt="edit"
-											src="${pageContext.request.contextPath}/resources/images/edit.png">&nbsp;Edit
-									</a></td>
+									<td>${e.name}<br />(${e.personCount} count)<br /> <c:if
+											test="${e.status eq 'ACTIVE'}">
+											<a
+												href="${pageContext.request.contextPath}/customer/event/edit/${e.id}">
+
+												<img alt="edit"
+												src="${pageContext.request.contextPath}/resources/images/edit.png">&nbsp;Edit
+											</a>
+										</c:if></td>
 									<td>${e.date_time}</td>
 									<td>${e.location.street1}${e.location.street2},
 										${e.location.city}, ${e.location.state} - ${e.location.zip}</td>
-									<td>
-									<c:if test ="${e.status eq 'ACTIVE'}"><b></b></c:if>
-									<c:choose>
-									    <c:when test="${empty e2m.get(e.id)}">Please select a menu and create your request.</c:when>
-									    <c:when test="${empty e2q.get(e.id)}">	0 restaurants have responded to your request.
+									<td><c:choose>
+											<c:when test="${empty e2m.get(e.id)}">Please select a menu and create your request.</c:when>
+											<c:when test="${empty e2q.get(e.id)}">	0 restaurants have responded to your request.
 										</c:when>
-										<c:otherwise>
-											<c:choose>
-											    <c:when test="${e.status eq 'ACTIVE'}">
-											       <form class="form-horizontal" method="POST"
-							                             id="select-restaurant-form"
-							                             action="${pageContext.request.contextPath}/customer/orderConfirmation"
-							                             ectype="application/x-www-form-urlencoded" autocomplete="off">
-							                             <input type="hidden" name="xeventId" value="${e.id}">
-							                             <input type="hidden" name="xquoteId" value="">
-												         <c:forEach items="${e2q.get(e.id)}" var="q2c">
-												           	<c:if test="${not empty q2c}">
-														    <div>
-															<div class="panel panel-info">
-															   <div class="panel-heading">
-																   <h3 class="panel-title">${q2c.key}</h3>
-															   </div>
-															   <div class="panel-body">
-																  <div>
-																  <input type="hidden" name="xcuisineType" value="${cuisine}">
-																    	<c:forEach items="${q2c.value}" var="q">
-																	  	 <div class="radio">
-                                                                          <label><input type="radio" value="${q.restaurant.id}" data-quote-id="${q.id}" name="restaurantName">
-                                                                            ${q.restaurant.name}
-                                                                           </label>
-                                                                         </div>
-																		 <c:choose>
-																				<c:when test="${empty q.price}">Not responded</c:when>
-																				<c:otherwise>
-																					<fmt:setLocale value="en_US" />
-																					<b><fmt:formatNumber value="${q.price}"
-																							type="currency" /></b>
-																				</c:otherwise>
-																		 </c:choose>
-																		 <br>
-																		</c:forEach>
-																		
-																	</div>
-																</div>
-															  </div>
-														    </div>
-													       </c:if>
-												         </c:forEach>
-												         <class="col-sm-2">
-								                              <button type="submit" width="50px" class="btn btn-lg btn-primary">confirm order</button>
-							                         </form>
-											     </c:when>
-											     <c:otherwise>
-											  	 <c:forEach items="${e2q.get(e.id)}" var="q2c">
-											  	    <div class="panel-body">
-													  <div>
-														<c:forEach items="${q2c.value}" var="q">
-														   <c:if test = "${ q.status eq 'APPROVED'}">
-														   
-														      <u>${q.restaurant.name}</u> &nbsp;
-																<fmt:setLocale value="en_US" />
-																<a href="${pageContext.request.contextPath}/menu/view/${q.menu.id}"><b><fmt:formatNumber value="${q.price}" type="currency" /></b></a>
-																
-														   </c:if>
-															<br>
-													    </c:forEach>
-													 </div>
-													</div>
-												</c:forEach>
-											  </c:otherwise>
-										   </c:choose>
-									</c:otherwise>
-									</c:choose>
-									</td>
-									<td>
-									<c:choose>
-									   <c:when test="${e.status eq 'ACTIVE'}">
-									   <c:if test="${not empty e2m.get(e.id)}">
-											<c:forEach items="${e2m.get(e.id)}" var="cuisine">
-												${cuisine} <a
-													href="${pageContext.request.contextPath}/menu/selectMenu?eventId=${e.id}&cuisineType=${cuisine}">
-													<img alt="edit"
-													src="${pageContext.request.contextPath}/resources/images/edit.png">&nbsp;Edit
-												</a>
-												<br />
-											</c:forEach>
-											<hr>
-										</c:if> <a class="popup-with-form" href="#${e.id}"><span
-											class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-											Add Menu</a>
-										<form class=" mfp-hide white-popup-block menuOptions"
-											method="GET" id="${e.id}"
-											action="${pageContext.request.contextPath}/menu/selectMenu"
-											onsubmit="return validateCuisine(${e.id});"
-											ectype="application/x-www-form-urlencoded">
-											<br /> <input type="text" hidden="true" name="eventId"
-												value="${e.id}"> <span id="cuisineType"></span><br />
-											<button type="submit" class="btn btn-sm btn-warning">Select
-												Menu</button>
-										</form>
-									   
-									   </c:when>
-									   
-									</c:choose>
-									     </td>
+											<c:otherwise>
+												<c:choose>
+													<c:when test="${e.status eq 'ACTIVE'}">
+														<form class="form-horizontal" method="POST"
+															id="order-confirm-form"
+															action="${pageContext.request.contextPath}/customer/orderConfirmation"
+															ectype="application/x-www-form-urlencoded"
+															autocomplete="off">
+															<input type="hidden" name="xeventId" value="${e.id}">
+															<input type="hidden" name="xquoteId" value="">
+															<c:forEach items="${e2q.get(e.id)}" var="q2c">
+																<c:if test="${not empty q2c}">
+																	<div>
+																		<div class="panel panel-info">
+																			<div class="panel-heading">
+																				<h3 class="panel-title">${q2c.key}</h3>
+																			</div>
+																			<div class="panel-body">
+																				<div>
+																					<input type="hidden" name="xcuisineType"
+																						value="${cuisine}">
+																					<c:forEach items="${q2c.value}" var="q">
+																						<div class="radio">
+																							<label><input type="radio"
+																								value="${q.restaurant.id}" required="required"
+																								data-quote-id="${q.id}" name="restaurantName">
+																								${q.restaurant.name} </label>
+																						</div>
+																						<c:choose>
+																							<c:when test="${empty q.price}">Not responded</c:when>
+																							<c:otherwise>
+																								<fmt:setLocale value="en_US" />
+																								<b><fmt:formatNumber value="${q.price}"
+																										type="currency" /></b>
+																							</c:otherwise>
+																						</c:choose>
+																						<br>
+																					</c:forEach>
 
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</c:if>
+															</c:forEach>
+															<class="col-sm-2">
+															<button type="submit" width="50px"
+																class="btn btn-lg btn-primary">Confirm Order</button>
+														</form>
+													</c:when>
+													<c:otherwise>
+														<c:forEach items="${e2q.get(e.id)}" var="q2c">
+															<c:forEach items="${q2c.value}" var="q">
+																<c:if test="${ q.status eq 'APPROVED'}">
+																	<b>${q.restaurant.name}:</b> &nbsp;
+																<fmt:setLocale value="en_US" />
+																	<a
+																		href="${pageContext.request.contextPath}/menu/view/${q.menu.id}"><b><fmt:formatNumber
+																				value="${q.price}" type="currency" /></b></a>
+																</c:if>
+															</c:forEach>
+														</c:forEach>
+													</c:otherwise>
+												</c:choose>
+											</c:otherwise>
+										</c:choose></td>
+									<td><c:if test="${e.status eq 'ACTIVE'}">
+											<c:if test="${not empty e2m.get(e.id)}">
+												<c:forEach items="${e2m.get(e.id)}" var="cuisine">
+												${cuisine} <a
+														href="${pageContext.request.contextPath}/menu/selectMenu?eventId=${e.id}&cuisineType=${cuisine}">
+														<img alt="edit"
+														src="${pageContext.request.contextPath}/resources/images/edit.png">&nbsp;Edit
+													</a>
+													<br />
+												</c:forEach>
+												<hr>
+											</c:if>
+											<a class="popup-with-form" href="#${e.id}"><span
+												class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+												Add Menu</a>
+											<form class=" mfp-hide white-popup-block popupOptions"
+												method="GET" id="${e.id}"
+												action="${pageContext.request.contextPath}/menu/selectMenu"
+												onsubmit="return validateCuisine(${e.id});"
+												ectype="application/x-www-form-urlencoded">
+												<br /> <input type="text" hidden="true" name="eventId"
+													value="${e.id}"> <span id="cuisineType"></span><br />
+												<button type="submit" class="btn btn-sm btn-warning">Select
+													Menu</button>
+											</form>
+										</c:if></td>
 								</tr>
 							</c:forEach>
 						</table>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -141,5 +142,20 @@ public class DataAccessObject {
 							+ clazz, he);
 			throw he;
 		}
+	}
+
+	/**
+	 * Delete.
+	 *
+	 * @param <T> the generic type
+	 * @param clazz the clazz
+	 * @param id the id
+	 */
+	protected <T extends TimestampEntity> void delete(Class <T> clazz,
+			Integer id) {
+		Session session = getSessionFactory().getCurrentSession();
+		Query q = session.createQuery("delete " + clazz.getSimpleName()
+				+ " where id = " + id);
+		q.executeUpdate();
 	}
 }

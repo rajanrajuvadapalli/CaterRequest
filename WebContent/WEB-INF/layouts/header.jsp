@@ -4,6 +4,20 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<div id="browserwarning" class="browserwarning hidden">This
+	website is optimized for Chrome browser. Please use Chrome browser for
+	better user experience.</div>
+
+<script type="text/javascript">
+	//If Chrome, hide the warning message.
+	//Source:http://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser
+	var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+	var isChrome = !!window.chrome && !isOpera;
+	if (!isChrome) {
+		$('div[id=browserwarning]').removeClass("hidden");
+	}
+</script>
+
 <c:if test="${not empty sessionScope.user}">
 	<c:choose>
 		<c:when test="${not empty sessionScope.user.name}">

@@ -3,6 +3,8 @@ package com.cater;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
@@ -50,7 +52,8 @@ public final class Helper {
 	public static Integer stringToInteger(String aString) {
 		try {
 			return Integer.parseInt(aString);
-		} catch (Exception ex) {
+		}
+		catch (Exception ex) {
 			return null;
 		}
 	}
@@ -69,9 +72,30 @@ public final class Helper {
 		return massagedPhone;
 	}
 
-	public static String generateMD5(String aString) throws NoSuchAlgorithmException {
+	/**
+	 * Generate m d5.
+	 *
+	 * @param aString the a string
+	 * @return the string
+	 * @throws NoSuchAlgorithmException the no such algorithm exception
+	 */
+	public static String generateMD5(String aString)
+			throws NoSuchAlgorithmException {
 		MessageDigest m = MessageDigest.getInstance("MD5");
 		m.update(aString.getBytes(), 0, aString.length());
 		return new BigInteger(1, m.digest()).toString(16);
+	}
+
+	/**
+	 * Format currency.
+	 *
+	 * @param amount the amount
+	 * @return the string
+	 */
+	public static String formatCurrency(Double amount) {
+		if (amount == null) {
+			return StringUtils.EMPTY;
+		}
+		return NumberFormat.getCurrencyInstance(Locale.US).format(amount);
 	}
 }

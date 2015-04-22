@@ -108,9 +108,17 @@
 											</c:when>
 											<c:when test="${q.status.toString() == 'DENIED'}">Customer denied your quote.</c:when>
 											<c:when test="${q.status.toString() == 'PAID'}">Customer has paid.</c:when>
+											<c:when test="${q.status.toString() == 'CUSTOMER_ORDER_CONFIRMED'}">Customer has confirmed the order.</c:when>
 										</c:choose></td>
 									<td><fmt:setLocale value="en_US" /> <fmt:formatNumber
-											value="${q.price}" type="currency" /></td>
+											value="${q.price}" type="currency" /> <c:if
+											test="${not empty bargain && bargain.containsKey(q.id)}">
+											<span class="label label-warning"
+												title="Your quote is higher than the best quote received for this event.">
+												<fmt:formatNumber value="${bargain.get(q.id)}"
+													type="percent" />
+											</span>
+										</c:if></td>
 								</tr>
 							</c:forEach>
 						</table>

@@ -51,6 +51,12 @@ public class QuoteDAO extends DataAccessObject {
 		return super.findById(Quote.class, id);
 	}
 
+	/**
+	 * Find by event id.
+	 *
+	 * @param eventID the event id
+	 * @return the list
+	 */
 	@SuppressWarnings("unchecked")
 	public List <Quote> findByEventId(Integer eventID) {
 		if (eventID == null) {
@@ -60,12 +66,14 @@ public class QuoteDAO extends DataAccessObject {
 		Session session = null;
 		try {
 			session = getSessionFactory().getCurrentSession();
-			return (List <Quote>) session
+			List <Quote> list = session
 					.createCriteria(Quote.class, "quote")
 					.createAlias("quote.menu", "menu", JoinType.LEFT_OUTER_JOIN)
 					.createAlias("menu.event", "event",
 							JoinType.LEFT_OUTER_JOIN)
 					.add(Restrictions.eq("event.id", eventID)).list();
+			logger.debug("Found " + list.size() + " results.");
+			return list;
 		}
 		catch (HibernateException he) {
 			logger.error(
@@ -110,5 +118,15 @@ public class QuoteDAO extends DataAccessObject {
 			throw he;
 		}
 		return null;
+	}
+
+	/**
+	 * Delete quote.
+	 *
+	 * @param quote the quote
+	 */
+	public void deleteQuote(Quote quote) {
+		logger.debug("Deleting quote with id: " + quote.getId());
+		super.delete(Quote.class, quote.getId());
 	}
 }

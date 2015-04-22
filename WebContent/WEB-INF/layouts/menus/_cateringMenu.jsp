@@ -42,7 +42,13 @@
 </div>
 
 <div class="col-sm-2">
-	<button type="submit" width="50px"
+	<button type="button" class="btn btn-lg btn-primary btn-block"
+		onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">
+		Cancel</button>
+</div>
+
+<div class="col-sm-2 col-sm-offset-8">
+	<button type="submit" 
 		class="btn btn-lg btn-primary btn-block">Next</button>
 </div>
 

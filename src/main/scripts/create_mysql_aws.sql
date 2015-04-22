@@ -58,7 +58,8 @@ CREATE TABLE mycaterdb.Event
 (
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
-	,`customer_sk` INT NOT NULL 
+	,`customer_sk` INT NOT NULL
+	,`status` VARCHAR(30)  NULL
 	,`name` VARCHAR(250) NOT NULL 
 	,`location_sk` INT NOT NULL 
 	,`date_time` DATETIME NOT NULL
