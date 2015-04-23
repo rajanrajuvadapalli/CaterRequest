@@ -42,6 +42,8 @@ public class Event extends TimestampEntity implements Serializable {
 	private Date date_time;
 	@Column(name = "person_count", nullable = true)
 	private Integer personCount;
+	@Column(name = "pick_up", nullable = false, unique = false, updatable = true)
+	private boolean pickUp;
 	@Column(name = "budget_total", nullable = true)
 	private Integer budgetTotal;
 	@Column(name = "status", length = 30, nullable = true)
@@ -103,6 +105,14 @@ public class Event extends TimestampEntity implements Serializable {
 		this.personCount = personCount;
 	}
 
+	public boolean isPickUp() {
+		return pickUp;
+	}
+
+	public void setPickUp(boolean pickUp) {
+		this.pickUp = pickUp;
+	}
+
 	public Integer getBudgetTotal() {
 		return budgetTotal;
 	}
@@ -127,43 +137,70 @@ public class Event extends TimestampEntity implements Serializable {
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result
 				+ ((personCount == null) ? 0 : personCount.hashCode());
+		result = prime * result + (pickUp ? 1231 : 1237);
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) return true;
-		if (!super.equals(obj)) return false;
-		if (getClass() != obj.getClass()) return false;
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
 		Event other = (Event) obj;
 		if (budgetTotal == null) {
-			if (other.budgetTotal != null) return false;
+			if (other.budgetTotal != null)
+				return false;
 		}
-		else if (!budgetTotal.equals(other.budgetTotal)) return false;
+		else if (!budgetTotal.equals(other.budgetTotal))
+			return false;
 		if (customer == null) {
-			if (other.customer != null) return false;
+			if (other.customer != null)
+				return false;
 		}
-		else if (!customer.equals(other.customer)) return false;
+		else if (!customer.equals(other.customer))
+			return false;
 		if (date_time == null) {
-			if (other.date_time != null) return false;
+			if (other.date_time != null)
+				return false;
 		}
-		else if (!date_time.equals(other.date_time)) return false;
+		else if (!date_time.equals(other.date_time))
+			return false;
 		if (id == null) {
-			if (other.id != null) return false;
+			if (other.id != null)
+				return false;
 		}
-		else if (!id.equals(other.id)) return false;
+		else if (!id.equals(other.id))
+			return false;
 		if (location == null) {
-			if (other.location != null) return false;
+			if (other.location != null)
+				return false;
 		}
-		else if (!location.equals(other.location)) return false;
+		else if (!location.equals(other.location))
+			return false;
 		if (name == null) {
-			if (other.name != null) return false;
+			if (other.name != null)
+				return false;
 		}
-		else if (!name.equals(other.name)) return false;
+		else if (!name.equals(other.name))
+			return false;
 		if (personCount == null) {
-			if (other.personCount != null) return false;
+			if (other.personCount != null)
+				return false;
 		}
-		else if (!personCount.equals(other.personCount)) return false;
+		else if (!personCount.equals(other.personCount))
+			return false;
+		if (pickUp != other.pickUp)
+			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		}
+		else if (!status.equals(other.status))
+			return false;
 		return true;
 	}
 	public static final String STATUS_ACTIVE="ACTIVE";

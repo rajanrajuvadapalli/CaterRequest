@@ -178,6 +178,17 @@
 								class="form-control" value="${event.location.zip}">
 						</div>
 					</div>
+					
+					<div class="form-group">
+						<label for="deliveryOption" class="col-sm-3 control-label">Delivery Option :</label>
+						<div class="col-sm-6">
+							<select class="form-control inputs" name="deliveryOption"
+								id="deliveryOption" required="required" >
+								<option value="1" ${event.isPickUp()?'selected':''}>Pick Up</option>
+								<option value="2" ${event.isPickUp()?'':'selected'}>Delivered</option>
+							</select>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

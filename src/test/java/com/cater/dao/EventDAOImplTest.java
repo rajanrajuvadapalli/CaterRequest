@@ -116,6 +116,7 @@ public class EventDAOImplTest extends AbstractDAOImplTest {
 		assertNotNull(persistedEvent);
 		assertEquals(persistedEvent.getName(), "Sample Event");
 		assertEquals(persistedEvent.getStatus(), "ACTIVE");
+		assertFalse(persistedEvent.isPickUp());
 		assertEquals(df.format(persistedEvent.getDate_time()),
 				df.format(DATE_1));
 		assertNotNull(persistedEvent.getCustomer());

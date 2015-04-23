@@ -100,6 +100,11 @@
 													style="background-color: #FF3300;">&nbsp;&#134;&nbsp;</span>
 											</c:when>
 											<c:when
+												test="${q.status.toString() == 'CUSTOMER_UPDATED_DATE'}">
+												Customer has updated the date and/or time of the event. <span class="badge"
+													style="background-color: #FF3300;">&nbsp;&#134;&nbsp;</span>
+											</c:when>
+											<c:when
 												test="${q.status.toString() == 'RESTAURANT_SUBMITTED_PRICE'}">Customer is reviewing your price quote.</c:when>
 											<c:when
 												test="${q.status.toString() == 'RESTAURANT_UPDATED_PRICE'}">Customer is reviewing your updated price quote.</c:when>

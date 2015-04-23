@@ -39,9 +39,11 @@
 			<div class="panel-body" align="left">
 				<b>Event name:</b> ${event.name}<br /> <b>Time:</b>
 				${event.date_time}<br /> <b>Number of people:</b> <span
-					style="color: red;">${event.personCount}</span><br /> <b>Customer
-					name:</b> ${event.customer.name}<br /> <b>Customer contact number:</b>
-				${event.customer.contactNumber}<br />
+					style="color: red;">${event.personCount}</span><br /> <b>Delivery
+					Option:</b> <span style="color: red;">${event.isPickUp()?'Pick Up':'Delivered'}</span><br />
+				<b>Customer name:</b> ${event.customer.name}<br /> <b>Customer
+					contact number:</b> ${event.customer.contactNumber}<br />
+
 			</div>
 		</div>
 	</div>

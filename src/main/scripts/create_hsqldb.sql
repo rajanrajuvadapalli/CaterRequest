@@ -60,7 +60,8 @@ CREATE TABLE cater4party.Event
 	,name VARCHAR(250) NOT NULL 
 	,location_sk INT NOT NULL 
 	,date_time DATETIME NOT NULL 
-	,person_count INT NULL 
+	,person_count INT NULL
+	,pick_up BIT NOT NULL
 	,budget_total INT NULL 
 	,create_ts DATETIME NOT NULL 
 	,lupd_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP );

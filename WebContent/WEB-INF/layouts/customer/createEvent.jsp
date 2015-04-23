@@ -153,6 +153,18 @@
 								class="form-control">
 						</div>
 					</div>
+					
+					<div class="form-group">
+						<label for="deliveryOption" class="col-sm-3 control-label">Delivery Option :</label>
+						<div class="col-sm-6">
+							<select class="form-control inputs" name="deliveryOption"
+								id="deliveryOption" required="required">
+								<option value="" selected="selected">Choose one...</option>
+								<option value="1">Pick Up</option>
+								<option value="2">Delivered</option>
+							</select>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

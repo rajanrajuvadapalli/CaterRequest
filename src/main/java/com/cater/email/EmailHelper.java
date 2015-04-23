@@ -131,7 +131,7 @@ public class EmailHelper {
 	 * @return true, if successful
 	 */
 	public boolean sendNotificationEmailTo(Roles role, Quote quote,
-			String optionalMessage) {
+			StringBuilder optionalMessage) {
 		if (quote == null) {
 			logger.error("Quote cannot be null.");
 			return false;
@@ -166,7 +166,8 @@ public class EmailHelper {
 			searchList[6] = "${QUOTE_PRICE}";
 			replacementList[6] = Helper.formatCurrency(quote.getPrice());
 			searchList[7] = "${COMMENTS}";
-			replacementList[7] = StringUtils.defaultString(optionalMessage);
+			replacementList[7] = optionalMessage == null ? "" : optionalMessage
+					.toString();
 			emailBody = StringUtils.replaceEach(emailBody, searchList,
 					replacementList);
 			String[] toAddresses = new String[] { to };
