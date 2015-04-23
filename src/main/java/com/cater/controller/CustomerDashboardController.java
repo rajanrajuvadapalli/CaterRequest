@@ -83,22 +83,27 @@ public class CustomerDashboardController {
 		List <Event> events = customer.getEvents();
 		modelMap.put("events", events);
 		Map <Integer, List <String>> e2m = Maps.newHashMap();
+		Map <Integer, List <Integer>> e2mid = Maps.newHashMap();
 		Map <Integer, Map <String, List <Quote>>> e2q = Maps.newHashMap();
 		for (Event e : events) {
 			List <Menu> menus = customerService.findMenusWithEventId(e.getId());
-			List <String> selectedCusines = Lists.newLinkedList();
+			List <String> selectedMenuCusines = Lists.newLinkedList();
+			List <Integer> selectedMenuCusineIds = Lists.newLinkedList();
 			if (CollectionUtils.isNotEmpty(menus)) {
 				for (Menu m : menus) {
-					selectedCusines.add(m.getCuisineType());
+					selectedMenuCusines.add(m.getCuisineType());
+					selectedMenuCusineIds.add(m.getId());
 				}
 			}
-			e2m.put(e.getId(), selectedCusines);
+			e2m.put(e.getId(), selectedMenuCusines);
+			e2mid.put(e.getId(), selectedMenuCusineIds);
 			List <Quote> quotes = restaurantService.findQuotesWithEventId(e
 					.getId());
 			Map <String, List <Quote>> groupedQuotes = groupQuotesPerCuisine(quotes);
 			e2q.put(e.getId(), groupedQuotes);
 		}
 		modelMap.put("e2m", e2m);
+		modelMap.put("e2mid", e2mid);
 		modelMap.put("e2q", e2q);
 		((User) session.getAttribute("user")).setName(customer.getName());
 		return "customer/t_dashboard";

@@ -165,13 +165,10 @@
 								</c:choose></td>
 							<td><c:if test="${e.status eq 'ACTIVE'}">
 									<c:if test="${not empty e2m.get(e.id)}">
-										<c:forEach items="${e2m.get(e.id)}" var="cuisine">
-												${cuisine} <a
-												href="${pageContext.request.contextPath}/menu/selectMenu?eventId=${e.id}&cuisineType=${cuisine}"
-											> <img alt="edit"
-												src="${pageContext.request.contextPath}/resources/images/edit.png"
-											>&nbsp;Edit
-											</a>
+										<c:forEach items="${e2m.get(e.id)}" var="cuisine" varStatus="loop">
+											<a
+												href="${pageContext.request.contextPath}/menu/view/${e2mid.get(e.id).get(loop.index)}"
+											>${cuisine}</a>
 											<br />
 										</c:forEach>
 										<hr>

@@ -3,16 +3,22 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <div class="page-header">
 	<h1>${event.name}</h1>
 </div>
-
 <div class="panel panel-warning">
 	<div class="panel-heading">
 		<h3 class="panel-title">Menu</h3>
 	</div>
 	<div class="panel-body" align="left">
+		<div align="right">
+			<c:if test="${event.status == 'ACTIVE' }">
+				<a
+					href="${pageContext.request.contextPath}/menu/selectMenu?eventId=${event.id}&cuisineType=${menu.cuisine}"
+					role="button" class="btn btn-primary"
+				> Edit Menu</a>
+			</c:if>
+		</div>
 		<c:forEach items="${menu.categories}" var="category">
 			<c:if test="${not empty category.items}">
 				<div class="col-sm-12">
@@ -29,7 +35,6 @@
 		</c:forEach>
 	</div>
 </div>
-
 <div class="row">
 	<div class="col-sm-6">
 		<div class="panel panel-success">
@@ -39,11 +44,12 @@
 			<div class="panel-body" align="left">
 				<b>Event name:</b> ${event.name}<br /> <b>Time:</b>
 				${event.date_time}<br /> <b>Number of people:</b> <span
-					style="color: red;">${event.personCount}</span><br /> <b>Delivery
-					Option:</b> <span style="color: red;">${event.isPickUp()?'Pick Up':'Delivered'}</span><br />
-				<b>Customer name:</b> ${event.customer.name}<br /> <b>Customer
-					contact number:</b> ${event.customer.contactNumber}<br />
-
+					style="color: red;"
+				>${event.personCount}</span><br /> <b>Delivery Option:</b> <span
+					style="color: red;"
+				>${event.isPickUp()?'Pick Up':'Delivered'}</span><br /> <b>Customer
+					name:</b> ${event.customer.name}<br /> <b>Customer contact number:</b>
+				${event.customer.contactNumber}<br />
 			</div>
 		</div>
 	</div>
@@ -59,9 +65,11 @@
 							<form class="form-horizontal" method="POST"
 								id="submit-price-form"
 								action="${pageContext.request.contextPath}/restaurant/submitprice"
-								ectype="application/x-www-form-urlencoded" autocomplete="off">
+								ectype="application/x-www-form-urlencoded" autocomplete="off"
+							>
 								<input type="text" hidden="true" value="${quote.id}"
-									name="quoteId">
+									name="quoteId"
+								>
 								<c:choose>
 									<c:when test="${quote.price != null}">
 										<div class="form-group">
@@ -70,7 +78,8 @@
 											<div class="col-sm-2" align="left">
 												<fmt:setLocale value="en_US" />
 												<span style="color: red;"><fmt:formatNumber
-														value="${quote.price}" type="currency" /></span>
+														value="${quote.price}" type="currency"
+													/></span>
 											</div>
 										</div>
 										<div class="form-group">
@@ -80,7 +89,8 @@
 												<input type="text" size="30" maxlength="50" name="price"
 													required="required" pattern="[0-9]+(\.[0-9]{2})?"
 													title="Example: 250.60" placeholder="0.00"
-													class="form-control inputs">
+													class="form-control inputs"
+												>
 											</div>
 											<div class="col-sm-2" align="left">
 												<button type="submit" class="btn btn-primary">Udpate</button>
@@ -94,7 +104,8 @@
 												<input type="text" size="30" maxlength="50" name="price"
 													required="required" pattern="[0-9]+(\.[0-9]{2})?"
 													title="Example: 250.60" placeholder="0.00"
-													class="form-control inputs">
+													class="form-control inputs"
+												>
 											</div>
 											<div class="col-sm-2" align="left">
 												<button type="submit" class="btn btn-primary">Submit</button>
@@ -110,7 +121,8 @@
 							<div class="col-sm-2" align="left">
 								<fmt:setLocale value="en_US" />
 								<span style="color: red;"><fmt:formatNumber
-										value="${quote.price}" type="currency" /></span>
+										value="${quote.price}" type="currency"
+									/></span>
 							</div>
 						</c:otherwise>
 					</c:choose>
@@ -119,9 +131,8 @@
 		</div>
 	</c:if>
 </div>
-
 <div class="col-sm-1">
 	<button type="button" class="btn btn-primary btn-block"
-		onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">
-		Back</button>
+		onclick="window.location.href='${pageContext.request.contextPath}/dashboard'"
+	>Back</button>
 </div>
