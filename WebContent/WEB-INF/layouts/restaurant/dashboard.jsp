@@ -52,12 +52,6 @@
 </c:if>
 
 <div class="col-sm-12">
-	<div class="panel panel-success">
-		<div class="panel-heading">
-			<h3 class="panel-title">Quotes</h3>
-		</div>
-		<div class="panel-body">
-
 			<c:choose>
 				<c:when test="${empty restaurant.quotes}">
 				You currently do not have any request for quotes.
@@ -130,6 +124,4 @@
 					</div>
 				</c:otherwise>
 			</c:choose>
-		</div>
-	</div>
 </div>

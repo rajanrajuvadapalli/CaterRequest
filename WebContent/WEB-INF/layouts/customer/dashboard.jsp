@@ -58,13 +58,7 @@
 		<a href="${pageContext.request.contextPath}/customer/createEvent"
 			role="button" class="btn btn-lg btn-primary"> Create Event</a>
 	</div>
-	<br>
-	<div class="panel panel-success">
-		<div class="panel-heading">
-			<h3 class="panel-title">Events</h3>
-		</div>
-		<div class="panel-body">
-
+	<br/>
 			<c:choose>
 				<c:when test="${empty events}">
 		Welcome to your dashboard. <br>
@@ -199,7 +193,4 @@
 					</div>
 				</c:otherwise>
 			</c:choose>
-
-		</div>
-	</div>
 </div>

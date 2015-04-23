@@ -53,6 +53,8 @@ public class CustomerDashboardController {
 	/** The Constant SDF. */
 	private static final SimpleDateFormat SDF = new SimpleDateFormat(
 			"yyyy/MM/dd HH:mm", Locale.US);
+	private static final SimpleDateFormat SDF_1 = new SimpleDateFormat(
+			"EEE, d MMM yyyy hh:mm aaa z", Locale.US);
 	/** The Constant NUMERIC. */
 	private static final Pattern NUMERIC = Pattern.compile("[0-9]+");
 	/** The customer service. */
@@ -260,10 +262,10 @@ public class CustomerDashboardController {
 					if (!e.getDate_time().equals(dateTime)) {
 						isDateChanged = true;
 						message.append("Old date/time: ")
-								.append(e.getDate_time().toString())
+								.append(SDF_1.format(e.getDate_time()))
 								.append("\n");
 						message.append("New date/time: ")
-								.append(dateTime.toString()).append("\n");
+								.append(SDF_1.format(dateTime)).append("\n");
 					}
 					e.setDate_time(dateTime);
 				}
@@ -275,9 +277,9 @@ public class CustomerDashboardController {
 			int newPersonCount = stringToInt(personCountParameter);
 			if (e.getPersonCount() != newPersonCount) {
 				isPersonCountChanged = true;
-				message.append("Old count: ").append(e.getPersonCount())
+				message.append("Old person count: ").append(e.getPersonCount())
 						.append("\n");
-				message.append("New count: ").append(newPersonCount)
+				message.append("New person count: ").append(newPersonCount)
 						.append("\n");
 				e.setPersonCount(Integer.parseInt(personCountParameter));
 			}

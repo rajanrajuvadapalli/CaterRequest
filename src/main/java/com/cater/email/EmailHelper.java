@@ -12,13 +12,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.cater.Helper;
-import com.cater.constants.QuoteStatus;
 import com.cater.constants.Roles;
 import com.cater.model.Customer;
 import com.cater.model.Event;
 import com.cater.model.Quote;
 import com.cater.model.Restaurant;
-import com.cater.twilio.sms.SMSHelper;
 
 /**
  * The Class EmailHelper.
@@ -119,7 +117,7 @@ public class EmailHelper {
 	 * @return the string
 	 */
 	private String stringToHtml(String message) {
-		return StringUtils.replace(message, "\n", "<br>");
+		return StringUtils.replace(message, "\n", "<br/>");
 	}
 
 	/**
@@ -152,8 +150,9 @@ public class EmailHelper {
 			searchList[0] = "${USERNAME}";
 			replacementList[0] = username;
 			searchList[1] = "${STATUS_MESSAGE}";
-			replacementList[1] = SMSHelper.messages.get(role).get(
-					QuoteStatus.valueOf(quote.getStatus()));
+			replacementList[1] = "";
+			//SMSHelper.messages.get(role).get(
+			//QuoteStatus.valueOf(quote.getStatus()));
 			searchList[2] = "${EVENT_NAME}";
 			replacementList[2] = event.getName();
 			searchList[3] = "${EVENT_TIME}";
@@ -166,8 +165,8 @@ public class EmailHelper {
 			searchList[6] = "${QUOTE_PRICE}";
 			replacementList[6] = Helper.formatCurrency(quote.getPrice());
 			searchList[7] = "${COMMENTS}";
-			replacementList[7] = optionalMessage == null ? "" : optionalMessage
-					.toString();
+			replacementList[7] = optionalMessage == null ? ""
+					: stringToHtml(optionalMessage.toString());
 			emailBody = StringUtils.replaceEach(emailBody, searchList,
 					replacementList);
 			String[] toAddresses = new String[] { to };
