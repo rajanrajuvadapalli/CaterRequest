@@ -3,6 +3,8 @@ package com.cater.twilio.sms;
 import static com.cater.constants.QuoteStatus.APPROVED;
 import static com.cater.constants.QuoteStatus.CREATED;
 import static com.cater.constants.QuoteStatus.CUSTOMER_ORDER_CONFIRMED;
+import static com.cater.constants.QuoteStatus.CUSTOMER_UPDATED_COUNT;
+import static com.cater.constants.QuoteStatus.CUSTOMER_UPDATED_DATE;
 import static com.cater.constants.QuoteStatus.CUSTOMER_UPDATED_MENU;
 import static com.cater.constants.QuoteStatus.DENIED;
 import static com.cater.constants.QuoteStatus.PAID;
@@ -50,6 +52,10 @@ public class SMSHelper {
 				"You have a new request for quote.");
 		restaurantStatusMessages.put(CUSTOMER_UPDATED_MENU,
 				"Customer has updated the menu.");
+		restaurantStatusMessages.put(CUSTOMER_UPDATED_COUNT,
+				"Customer has updated the person count.");
+		restaurantStatusMessages.put(CUSTOMER_UPDATED_DATE,
+				"Customer has updated the date and/or time of the event.");
 		restaurantStatusMessages.put(APPROVED,
 				"Customer has approved your quoted price.");
 		restaurantStatusMessages.put(DENIED,
@@ -76,18 +82,17 @@ public class SMSHelper {
 		customerStatusMessages.put(CUSTOMER_ORDER_CONFIRMED, "Your order has been placed.");
 	}
 
+
 	/**
-	 * Send notification sm sto.
+	 * Send notification sms to.
 	 *
-	 * @param role
-	 *            the role
-	 * @param quote
-	 *            the quote
-	 * @param optionalMessage 
+	 * @param role the role
+	 * @param quote the quote
+	 * @param optionalMessage the optional message
 	 * @return true, if successful
 	 */
 	public boolean sendNotificationSMSto(Roles role, Quote quote,
-			String optionalMessage) {
+			StringBuilder optionalMessage) {
 		if (quote == null) {
 			logger.error("Quote cannot be null.");
 			return false;
@@ -110,7 +115,7 @@ public class SMSHelper {
 					messageBuilder.append(" Restaurant name: "
 							+ restaurant.getName());
 				}
-				if (StringUtils.isNotBlank(optionalMessage)) {
+				if (optionalMessage != null) {
 					messageBuilder.append(optionalMessage);
 				}
 				messageBuilder

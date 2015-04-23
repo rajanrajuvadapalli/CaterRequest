@@ -1,5 +1,8 @@
 package com.cater.controller;
 
+import static com.cater.constants.QuoteStatus.CUSTOMER_UPDATED_COUNT;
+import static com.cater.constants.QuoteStatus.CUSTOMER_UPDATED_DATE;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -245,11 +248,23 @@ public class CustomerDashboardController {
 			a.setState(StringUtils.defaultString(request.getParameter("state")));
 			a.setZip(StringUtils.defaultString(request.getParameter("zip")));
 			e.setLocation(a);
+			StringBuilder message = new StringBuilder();
+			boolean isDateChanged = false;
+			boolean isPersonCountChanged = false;
 			Date dateTime;
 			try {
 				synchronized (this) {
 					dateTime = SDF.parse(StringUtils.defaultString(request
 							.getParameter("datetimepicker")));
+					//If customer changes date, send notification
+					if (!e.getDate_time().equals(dateTime)) {
+						isDateChanged = true;
+						message.append("Old date/time: ")
+								.append(e.getDate_time().toString())
+								.append("\n");
+						message.append("New date/time: ")
+								.append(dateTime.toString()).append("\n");
+					}
 					e.setDate_time(dateTime);
 				}
 			}
@@ -257,10 +272,13 @@ public class CustomerDashboardController {
 				logger.error(e1);
 			}
 			String personCountParameter = request.getParameter("person_count");
-			if (StringUtils.isNotBlank(personCountParameter)
-					&& NUMERIC.matcher(personCountParameter).matches()) {
-				Integer newPersonCount = Integer.valueOf(personCountParameter);
-				updateQuoteStatuses(e, newPersonCount);
+			int newPersonCount = stringToInt(personCountParameter);
+			if (e.getPersonCount() != newPersonCount) {
+				isPersonCountChanged = true;
+				message.append("Old count: ").append(e.getPersonCount())
+						.append("\n");
+				message.append("New count: ").append(newPersonCount)
+						.append("\n");
 				e.setPersonCount(Integer.parseInt(personCountParameter));
 			}
 			customerService.saveOrUpdateEvent(e);
@@ -269,29 +287,53 @@ public class CustomerDashboardController {
 					+ "'.");
 			redirectAttributes.addFlashAttribute("successMessages",
 					successMessages);
+			updateQuoteStatusAndSendNotifications(e, message, isDateChanged,
+					isPersonCountChanged);
 		}
 		return "redirect:/customer/dashboard";
 	}
 
 	/**
-	 * Update quote statuses.
+	 * Update quote status and send notifications.
 	 *
 	 * @param e the e
-	 * @param newPersonCount the new person count
+	 * @param message the message
+	 * @param isDateChanged the is date changed
+	 * @param isPersonCountChanged the is person count changed
 	 */
-	private void updateQuoteStatuses(Event e, Integer newPersonCount) {
-		if (!e.getPersonCount().equals(newPersonCount)) {
-			String message = "Old count: " + e.getPersonCount()
-					+ ", New count: " + newPersonCount;
-			List <Quote> quotes = restaurantService.findQuotesWithEventId(e
-					.getId());
-			if (CollectionUtils.isNotEmpty(quotes)) {
-				for (Quote q : quotes) {
-					q.setStatus(QuoteStatus.CUSTOMER_UPDATED_COUNT.toString());
-					restaurantService.sendNotification(q, message);
-				}
+	private void updateQuoteStatusAndSendNotifications(Event e,
+			StringBuilder message, boolean isDateChanged,
+			boolean isPersonCountChanged) {
+		if (!isDateChanged && !isPersonCountChanged) {
+			return;
+		}
+		StringBuilder message2 = new StringBuilder(
+				"Customer has updated the following event details:\n");
+		message2.append(message);
+		List <Quote> quotes = restaurantService
+				.findQuotesWithEventId(e.getId());
+		QuoteStatus status = isPersonCountChanged ? CUSTOMER_UPDATED_COUNT
+				: CUSTOMER_UPDATED_DATE;
+		if (CollectionUtils.isNotEmpty(quotes)) {
+			for (Quote q : quotes) {
+				q.setStatus(status.toString());
+				restaurantService.sendNotification(q, message2);
 			}
 		}
+	}
+
+	/**
+	 * String to int.
+	 *
+	 * @param aString the a string
+	 * @return the int
+	 */
+	private int stringToInt(String aString) {
+		if (StringUtils.isNotBlank(aString)
+				&& NUMERIC.matcher(aString).matches()) {
+			return Integer.valueOf(aString);
+		}
+		return 0;
 	}
 
 	/**

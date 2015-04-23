@@ -65,7 +65,7 @@ public class RestaurantService {
 		return restaurantDAO.getNumberOfRestaurants();
 	}
 
-	public void sendNotification(Quote quote, String optionalMessage) {
+	public void sendNotification(Quote quote, StringBuilder optionalMessage) {
 		emailHelper.sendNotificationEmailTo(Roles.RESTAURANT, quote,
 				optionalMessage);
 		smsHelper.sendNotificationSMSto(Roles.RESTAURANT, quote,
