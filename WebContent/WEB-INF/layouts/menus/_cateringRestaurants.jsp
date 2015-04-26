@@ -4,13 +4,19 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+
 <div class="page-header">
 	<h1>${sessionScope.eventName}/${cuisineType} menu</h1>
+	<input type="hidden" name="eventAddress" id="event-address" class="event-address" value="${eventLocation.street1} ${eventLocation.street2}, ${eventLocation.city}, ${eventLocation.state} ${eventLocation.zip}" />
+	
+
+	
 </div>
+
 
 <div class="col-sm-12">
 	<h2>Select restaurants you are interested in</h2>
-	<div class="col-sm-6 col-sm-offset-3">
+	
 		<div class="panel panel-warning">
 			<div class="panel-heading">
 				<h3 class="panel-title">Restaurants</h3>
@@ -31,8 +37,9 @@
 							ectype="application/x-www-form-urlencoded" autocomplete="off">
 
 							<c:forEach items="${restaurants}" var="r">
-								<input type="checkbox" value="${r.id}" name="restaurantId"
-									${prevR.contains(r.id)?"checked":""}>&nbsp;${r.name}
+								<input type="checkbox" value="${r.id}" class="restaurant-address" name="restaurantId" 
+									${prevR.contains(r.id)?"checked":""} data-restaurant-address="${r.address.street1} ${r.address.street2}, ${r.address.city}, ${r.address.state} ${r.address.zip}" data-restaurant-name="${r.name}">
+	                         
 							</br>
 							</c:forEach>
 							<br>
@@ -47,5 +54,5 @@
 				</c:choose>
 			</div>
 		</div>
-	</div>
+	
 </div>
