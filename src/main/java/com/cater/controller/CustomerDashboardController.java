@@ -53,6 +53,8 @@ public class CustomerDashboardController {
 	/** The Constant SDF. */
 	private static final SimpleDateFormat SDF = new SimpleDateFormat(
 			"yyyy/MM/dd HH:mm", Locale.US);
+	private static final SimpleDateFormat SDF_1 = new SimpleDateFormat(
+			"EEE, d MMM yyyy hh:mm aaa z", Locale.US);
 	/** The Constant NUMERIC. */
 	private static final Pattern NUMERIC = Pattern.compile("[0-9]+");
 	/** The customer service. */
@@ -81,22 +83,27 @@ public class CustomerDashboardController {
 		List <Event> events = customer.getEvents();
 		modelMap.put("events", events);
 		Map <Integer, List <String>> e2m = Maps.newHashMap();
+		Map <Integer, List <Integer>> e2mid = Maps.newHashMap();
 		Map <Integer, Map <String, List <Quote>>> e2q = Maps.newHashMap();
 		for (Event e : events) {
 			List <Menu> menus = customerService.findMenusWithEventId(e.getId());
-			List <String> selectedCusines = Lists.newLinkedList();
+			List <String> selectedMenuCusines = Lists.newLinkedList();
+			List <Integer> selectedMenuCusineIds = Lists.newLinkedList();
 			if (CollectionUtils.isNotEmpty(menus)) {
 				for (Menu m : menus) {
-					selectedCusines.add(m.getCuisineType());
+					selectedMenuCusines.add(m.getCuisineType());
+					selectedMenuCusineIds.add(m.getId());
 				}
 			}
-			e2m.put(e.getId(), selectedCusines);
+			e2m.put(e.getId(), selectedMenuCusines);
+			e2mid.put(e.getId(), selectedMenuCusineIds);
 			List <Quote> quotes = restaurantService.findQuotesWithEventId(e
 					.getId());
 			Map <String, List <Quote>> groupedQuotes = groupQuotesPerCuisine(quotes);
 			e2q.put(e.getId(), groupedQuotes);
 		}
 		modelMap.put("e2m", e2m);
+		modelMap.put("e2mid", e2mid);
 		modelMap.put("e2q", e2q);
 		((User) session.getAttribute("user")).setName(customer.getName());
 		return "customer/t_dashboard";
@@ -260,10 +267,10 @@ public class CustomerDashboardController {
 					if (!e.getDate_time().equals(dateTime)) {
 						isDateChanged = true;
 						message.append("Old date/time: ")
-								.append(e.getDate_time().toString())
+								.append(SDF_1.format(e.getDate_time()))
 								.append("\n");
 						message.append("New date/time: ")
-								.append(dateTime.toString()).append("\n");
+								.append(SDF_1.format(dateTime)).append("\n");
 					}
 					e.setDate_time(dateTime);
 				}
@@ -275,9 +282,9 @@ public class CustomerDashboardController {
 			int newPersonCount = stringToInt(personCountParameter);
 			if (e.getPersonCount() != newPersonCount) {
 				isPersonCountChanged = true;
-				message.append("Old count: ").append(e.getPersonCount())
+				message.append("Old person count: ").append(e.getPersonCount())
 						.append("\n");
-				message.append("New count: ").append(newPersonCount)
+				message.append("New person count: ").append(newPersonCount)
 						.append("\n");
 				e.setPersonCount(Integer.parseInt(personCountParameter));
 			}

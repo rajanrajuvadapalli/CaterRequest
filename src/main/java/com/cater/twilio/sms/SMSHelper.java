@@ -61,7 +61,8 @@ public class SMSHelper {
 		restaurantStatusMessages.put(DENIED,
 				"Customer has denied your quoted price.");
 		restaurantStatusMessages.put(PAID, "Customer has paid.");
-		restaurantStatusMessages.put(CUSTOMER_ORDER_CONFIRMED, "Customer has approved your quoted price.");
+		restaurantStatusMessages.put(CUSTOMER_ORDER_CONFIRMED,
+				"Customer has approved your quoted price.");
 	}
 	static {
 		Map <QuoteStatus, String> customerStatusMessages = Maps.newHashMap();
@@ -79,9 +80,9 @@ public class SMSHelper {
 		customerStatusMessages.put(DENIED,
 				"You denied restaurant's quoted price.");
 		customerStatusMessages.put(PAID, "You paid.");
-		customerStatusMessages.put(CUSTOMER_ORDER_CONFIRMED, "Your order has been placed.");
+		customerStatusMessages.put(CUSTOMER_ORDER_CONFIRMED,
+				"Your order has been placed.");
 	}
-
 
 	/**
 	 * Send notification sms to.
@@ -104,22 +105,24 @@ public class SMSHelper {
 			String to = role == Roles.RESTAURANT ? restaurant
 					.getContactNumber() : customer.getContactNumber();
 			if (canWeSendSms(role, restaurant, customer)) {
-				StringBuilder messageBuilder = new StringBuilder(messages.get(
-						role).get(QuoteStatus.valueOf(quote.getStatus())));
-				messageBuilder.append(" Event name: " + event.getName());
+				StringBuilder messageBuilder = new StringBuilder();
+				//new StringBuilder(messages.get(
+				//role).get(QuoteStatus.valueOf(quote.getStatus())));
+				messageBuilder.append("Event name: ").append(event.getName())
+						.append(" ");
 				if (role == Roles.RESTAURANT) {
-					messageBuilder.append(" Customer name: "
-							+ customer.getName());
+					messageBuilder.append("Customer name: ")
+							.append(customer.getName()).append(" ");
 				}
 				else if (role == Roles.CUSTOMER) {
-					messageBuilder.append(" Restaurant name: "
-							+ restaurant.getName());
+					messageBuilder.append("Restaurant name: ")
+							.append(restaurant.getName()).append(" ");
 				}
 				if (optionalMessage != null) {
-					messageBuilder.append(optionalMessage);
+					messageBuilder.append(optionalMessage).append(" ");
 				}
 				messageBuilder
-						.append(" --Please login to your account at http://www.caterrequest.com/login for more details.--");
+						.append("--Please login to your account at http://www.caterrequest.com/login for more details.--");
 				twilioSms.sendMessage(to, messageBuilder.toString());
 			}
 			else {
