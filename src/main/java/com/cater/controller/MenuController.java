@@ -196,6 +196,7 @@ public class MenuController {
 			Set <Restaurant> restaurants = restaurantService
 					.fetchRestaurantsOfType(cuisine);
 			modelMap.put("restaurants", restaurants);
+			modelMap.put("eventLocation",e.getLocation());
 			Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
 			for (Restaurant r : restaurants) {
 				Quote quote = restaurantService
