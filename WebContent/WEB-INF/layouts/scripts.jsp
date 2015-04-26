@@ -3,7 +3,7 @@
 	type="text/css" />
 <!--<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/menu.css" type="text/css" /> -->
 <%-- <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/jquery-ui-timepicker-addon.css"
+	href="${pageContext.request.contextPath}/resources/jquery-ui-timepicker.css"
 	type="text/css" /> --%>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/jquery.datetimepicker.css"
@@ -17,6 +17,9 @@
 
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAA7j_Q-rshuWkc8HyFI4V2HxQYPm-xtd00hTQOC0OXpAMO40FHAxT29dNBGfxqMPq5zwdeiDSHEPL89A" type="text/javascript"></script>
+
+
 <!-- <script src = "http://www.myersdaily.org/joseph/javascript/md5.js"></script> -->
 <script src="${pageContext.request.contextPath}/resources/js/md5.js"></script>
 <script
@@ -26,6 +29,8 @@
 <script src="${pageContext.request.contextPath}/resources/js/admin.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/js/customer.js"></script>
+	<script
+	src="${pageContext.request.contextPath}/resources/js/distanceCalculator.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/js/restaurant.js"></script>
 <script
@@ -35,7 +40,7 @@
 <script
 	src="${pageContext.request.contextPath}/resources/js/additional-methods.min.js"></script>
 <%-- <script
-	src="${pageContext.request.contextPath}/resources/js/jquery-ui-timepicker-addon.js"></script> --%>
+	src="${pageContext.request.contextPath}/resources/js/jquery-ui-timepicker.js"></script> --%>
 <script src="${pageContext.request.contextPath}/resources/js/jquery.datetimepicker.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/moment.min.js"></script>
 <!-- http://www.kryogenix.org/code/browser/sorttable/ -->
