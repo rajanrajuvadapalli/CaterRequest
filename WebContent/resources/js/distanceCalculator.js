@@ -29,7 +29,7 @@ $(function() {
 		for (var i = 0; i < restaurantAddresses.length; i++) {
 			$currentRestaurant = $($restaurants[i]);
 			currentRestaurantName = $currentRestaurant.data('restaurant-name');
-			$currentRestaurant.after('<b>'+ currentRestaurantName + '</b>' + '( ' + restaurantAddresses[i] + '- Distance: ' + distances[i] + ')');
+			$currentRestaurant.after('<b>'+ currentRestaurantName + '</b>' + ' (' + restaurantAddresses[i] + ' - Distance: ' + distances[i] + ')');
 		}
 	};
 
