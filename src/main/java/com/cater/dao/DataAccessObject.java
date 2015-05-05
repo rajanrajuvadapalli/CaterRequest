@@ -1,5 +1,6 @@
 package com.cater.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -39,11 +40,12 @@ public class DataAccessObject {
 	/**
 	 * Save.
 	 *
+	 * @param <T> the generic type
 	 * @param clazz the clazz
 	 * @param object the object
 	 * @return true, if successful
 	 */
-	public boolean save(Class <? extends TimestampEntity> clazz, Object object) {
+	public <T extends TimestampEntity> boolean save(Class <T> clazz, T object) {
 		if (object == null) {
 			logger.error("Cannot save or update null value for " + clazz);
 		}
@@ -51,6 +53,7 @@ public class DataAccessObject {
 			logger.debug("Saving or updating object of " + clazz);
 			try {
 				Session session = getSessionFactory().getCurrentSession();
+				object.setUpdated(new Date());
 				session.saveOrUpdate(object);
 				logger.debug("Successfully saved object of " + clazz);
 				return true;
@@ -68,11 +71,12 @@ public class DataAccessObject {
 	/**
 	 * Update.
 	 *
+	 * @param <T> the generic type
 	 * @param clazz the clazz
 	 * @param object the object
 	 * @return true, if successful
 	 */
-	public boolean update(Class <? extends TimestampEntity> clazz, Object object) {
+	public <T extends TimestampEntity> boolean update(Class <T> clazz, T object) {
 		if (object == null) {
 			logger.error("Cannot update null value for " + clazz);
 		}
@@ -80,6 +84,7 @@ public class DataAccessObject {
 			logger.debug("Updating object of " + clazz);
 			try {
 				Session session = getSessionFactory().getCurrentSession();
+				object.setUpdated(new Date());
 				session.update(object);
 				logger.debug("Successfully updated object of " + clazz);
 				return true;
