@@ -11,7 +11,6 @@
 	<meta http-equiv="content-type" content="text/html" />
 	<title><t:getAsString name="title" /></title>
 	<c:import url="scripts_css.jsp"></c:import>
-	<c:import url="scripts_js.jsp"></c:import>
 </head>
 
 <body id="page-top">
