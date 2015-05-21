@@ -60,8 +60,9 @@
 
 			<form class="form-horizontal" method="POST" id="profileForm"
 				action="${pageContext.request.contextPath}/settings/personalInfo"
-				novalidate ectype="application/x-www-form-urlencoded"
-				autocomplete="off">
+				ectype="application/x-www-form-urlencoded"
+				autocomplete="off"
+				onsubmit="return validateProfileForm();">
 				<c:if test="${sessionScope.user.role.value == 'CUSTOMER'}">
 					<div class="form-group">
 
@@ -110,6 +111,8 @@
 						<div class="col-sm-3">
 							<input type="text" size="20" maxlength="20" name="phone"
 								id="phone" class="form-control" required="required"
+								placeholder="Ex.: xxxxxxxxxx"
+								pattern="\d{10}"
 								value="${sessionScope.user.data.phone}">
 						</div>
 						<c:choose>
@@ -120,7 +123,7 @@
 							</c:when>
 							<c:otherwise>
 								<div class="col-sm-3" align="left">
-									<button formaction="" id="send-pvc" class="btn btn-warning">Re-send
+									<button formaction="" id="send-pvc" class="btn btn-default">Re-send
 										verification code</button>
 								</div>
 
@@ -154,7 +157,7 @@
 
 							</div>
 							<div class="col-sm-1">
-								<button formaction="" id="pvc" class="btn btn-warning">Verify</button>
+								<button formaction="" id="pvc" class="btn btn-default">Verify</button>
 							</div>
 						</div>
 					</div>
@@ -188,7 +191,7 @@
 				<div class="form-group">
 					<label for="state" class="col-sm-3 control-label">State: </label>
 					<div class="col-sm-6">
-						<input size="30" maxlength="50" name="state" class="form-control"
+						<input type="text" size="30" maxlength="50" name="state" class="form-control"
 							value="${sessionScope.user.data.state}">
 					</div>
 				</div>
@@ -197,7 +200,10 @@
 
 					<div class="col-sm-6">
 						<input type="text" size="10" name="zip" maxlength="10"
-							class="form-control" value="${sessionScope.user.data.zip}">
+							class="form-control"
+							placeholder="Ex.: xxxxx"
+							pattern="^\d{5}(\-\d{4})?$"
+							value="${sessionScope.user.data.zip}">
 					</div>
 				</div>
 
@@ -205,7 +211,7 @@
 					<label class="col-sm-3 control-label"></label>
 
 					<div class="col-sm-6" align="left">
-						<button type="submit" class="btn btn-lg btn-primary">Update
+						<button type="submit" class="btn btn-default">Update
 						</button>
 					</div>
 				</div>

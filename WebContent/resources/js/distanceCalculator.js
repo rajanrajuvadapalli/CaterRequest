@@ -20,7 +20,7 @@ $(function() {
 	};
 
 	var displayDistances = function(response, status) {
-		var distances = $.map(response.rows[0].elements, function(element, index) { return element.distance.text; });
+		//var distances = $.map(response.rows[0].elements, function(element, index) { return element.distance.text; });
 		var restaurantAddresses = response.destinationAddresses;
 		var $restaurants = $('.restaurant-address');
 		var currentRestaurantName = "";
@@ -29,7 +29,8 @@ $(function() {
 		for (var i = 0; i < restaurantAddresses.length; i++) {
 			$currentRestaurant = $($restaurants[i]);
 			currentRestaurantName = $currentRestaurant.data('restaurant-name');
-			$currentRestaurant.after('<b>'+ currentRestaurantName + '</b>' + ' (' + restaurantAddresses[i] + ' - Distance: ' + distances[i] + ')');
+			//$currentRestaurant.after('<b>'+ currentRestaurantName + '</b>' + ' (' + restaurantAddresses[i] + ' - Distance: ' + distances[i] + ')');
+			$currentRestaurant.after('<b>'+ currentRestaurantName + '</b>');
 		}
 	};
 

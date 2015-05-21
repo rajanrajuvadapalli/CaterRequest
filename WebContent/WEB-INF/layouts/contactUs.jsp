@@ -72,7 +72,7 @@
 		<div class="panel-body" style="font-size: 18px;">
 			<form class="form-horizontal" method="POST" id="contactUsForm"
 				action="${pageContext.request.contextPath}/contactUs/email"
-				novalidate ectype="application/x-www-form-urlencoded"
+				ectype="application/x-www-form-urlencoded"
 				autocomplete="off">
 				<div class="form-group">
 					<label for="name" class="col-sm-2 control-label">Name: </label>
@@ -112,7 +112,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label"> </label>
 					<div class="col-sm-6" align="left">
-						<button type="submit" class="btn btn-lg btn-primary">Submit
+						<button type="submit" class="btn btn-default">Submit
 						</button>
 					</div>
 				</div>

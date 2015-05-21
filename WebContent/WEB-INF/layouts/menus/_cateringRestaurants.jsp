@@ -39,7 +39,7 @@
 						</c:forEach>
 						<br>
 						<div class="col-sm-2">
-							<button type="submit" class="btn btn-lg btn-primary">Next</button>
+							<button type="submit" class="btn btn-default">Next</button>
 						</div>
 						<input type="hidden" name="cuisineType" value="${menu.cuisine}">
 					</form>

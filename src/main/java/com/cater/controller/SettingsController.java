@@ -12,7 +12,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.cater.Helper;
 import com.cater.constants.Roles;
 import com.cater.model.Address;
 import com.cater.model.Customer;
@@ -181,8 +180,8 @@ public class SettingsController {
 			data.setUrl(StringUtils.defaultString(request.getParameter("url")));
 			//data.setEmail(StringUtils.defaultString(request.getParameter("email")));
 			//data.setPassword(StringUtils.defaultString(request.getParameter("pwd1")));
-			data.setPhone(Helper.formatPhone(StringUtils.defaultString(request
-					.getParameter("phone"))));
+			data.setPhone(StringUtils.defaultString(request
+					.getParameter("phone")));
 			data.setSmsOk(StringUtils.equalsIgnoreCase("on",
 					request.getParameter("smsOk")));
 			data.setStreet1(StringUtils.defaultString(request

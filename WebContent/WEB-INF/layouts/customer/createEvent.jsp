@@ -141,7 +141,10 @@
 					<div class="form-group">
 						<label for="state" class="col-sm-3 control-label">State :</label>
 						<div class="col-sm-6">
-							<select id="state" name="state" class="form-control bfh-states"></select>
+							<input type="text" size="2" name="state" required="required"
+								placeholder="State" class="form-control">
+							<!-- <select id="state" name="state"
+								class="form-control bfh-states inputs"></select> -->
 						</div>
 					</div>
 
@@ -150,6 +153,7 @@
 						<div class="col-sm-6">
 							<input type="text" size="10" name="zip" maxlength="10"
 								required="required" placeholder="Ex.: xxxxx"
+								pattern="^\d{5}(\-\d{4})?$"
 								class="form-control">
 						</div>
 					</div>
@@ -158,7 +162,7 @@
 						<label for="deliveryOption" class="col-sm-3 control-label">Delivery Option :</label>
 						<div class="col-sm-6">
 							<select class="form-control inputs" name="deliveryOption"
-								id="deliveryOption" required="required">
+								id="deliveryOption">
 								<option value="" selected="selected">Choose one...</option>
 								<option value="1">Pick Up</option>
 								<option value="2">Delivered</option>
@@ -169,15 +173,24 @@
 			</div>
 		</div>
 		<div class="col-sm-2">
-			<button type="button" class="btn btn-lg btn-primary btn-block"
+			<button type="button" class="btn btn-default"
 				onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">
 				Cancel</button>
 		</div>
 		<div class="col-sm-4 col-sm-offset-2">
-			<button type="submit" class="btn btn-lg btn-primary btn-block">Create
+			<button type="submit" class="btn btn-default">Create
 				Event</button>
 		</div>
 </form>
 
 <br />
 <br />
+
+<script>
+$('document').ready(function() {
+	$("input[id=datetimepicker]").datetimepicker({
+		dayOfWeekStart : 1,
+		lang : 'en'
+	});
+});
+</script>

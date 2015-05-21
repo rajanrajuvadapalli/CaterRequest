@@ -21,7 +21,7 @@ $('document').ready(function() {
 	});
 }*/
 
-/*
+
 function validateSelectRestaurantForm() {
 	var atLeast1Selected = false;
 	$(":checkbox").each(function() {
@@ -35,7 +35,7 @@ function validateSelectRestaurantForm() {
 		alert("Please select at least 1 restaurant.");
 		return false;
 	}
-}*/
+}
 
 /*
 function listRestaurantDocs() {

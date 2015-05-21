@@ -1,11 +1,11 @@
 $('document').ready(function() {
-	validateContactUsFormOnSubmit();
+	//validateContactUsFormOnSubmit();
 	//$("div[id=customersList]").show();
 	//$("div[id=restaurantsList]").hide();
 	//$("div[id=eventsList]").hide();
 });
 
-function validateContactUsFormOnSubmit() {
+/*function validateContactUsFormOnSubmit() {
 	$("form[id=contactUsForm]")
 			.validate(
 					{
@@ -13,7 +13,7 @@ function validateContactUsFormOnSubmit() {
 							form.submit();
 						}
 					});
-}
+}*/
 
 /*
 function listCustomers() {

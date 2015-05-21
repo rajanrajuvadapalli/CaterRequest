@@ -51,7 +51,7 @@
 <div class="col-sm-12">
 	<div align="right">
 		<a href="${pageContext.request.contextPath}/customer/createEvent"
-			role="button" class="btn btn-lg btn-primary"
+			role="button" class="btn btn-default"
 		> Create Event</a>
 	</div>
 	<br />
@@ -116,7 +116,7 @@
 																				value="${cuisine}"
 																			>
 																			<c:forEach items="${q2c.value}" var="q">
-																				<div class="radio">
+																				<div>
 																					<label><input type="radio"
 																						value="${q.restaurant.id}" required="required"
 																						data-quote-id="${q.id}" name="restaurantName"
@@ -141,7 +141,7 @@
 													</c:forEach>
 													<class="col-sm-2">
 													<button type="submit" width="50px"
-														class="btn btn-lg btn-primary"
+														class="btn btn-default"
 													>Confirm Order</button>
 												</form>
 											</c:when>
@@ -185,7 +185,7 @@
 										<br /> <input type="text" hidden="true" name="eventId"
 											value="${e.id}"
 										> <span id="cuisineType"></span><br />
-										<button type="submit" class="btn btn-sm btn-warning">Select
+										<button type="submit" class="btn btn-default">Select
 											Menu</button>
 									</form>
 								</c:if></td>
@@ -196,3 +196,13 @@
 		</c:otherwise>
 	</c:choose>
 </div>
+
+<script>
+	// Bind the 'onClick' event for the 'restaurantName' input field
+	$('input[name=restaurantName]').on('click', function(e) {
+		var $restaurantNameInputField = $(this);
+		var $containerForm = $restaurantNameInputField.closest('form');
+		var quoteId = $restaurantNameInputField.data('quote-id');
+		$containerForm.find('input[name=xquoteId]').val(quoteId);
+	});
+</script>

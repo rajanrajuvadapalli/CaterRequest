@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.cater.Helper;
 import com.cater.constants.Roles;
 import com.cater.email.EmailHelper;
 import com.cater.model.Login;
@@ -71,7 +70,8 @@ public class RegistrationController {
 	@RequestMapping(value = { "register" }, method = RequestMethod.GET)
 	public String getRegisterForm(ModelMap modelMap,
 			HttpServletRequest request, HttpSession session) {
-		return "t_signUp";
+		String registerAs = request.getParameter("as");
+		return StringUtils.equalsIgnoreCase(registerAs, "customer")? "t_signUp_customer":"t_signUp_restaurant";
 	}
 
 	/**
@@ -88,6 +88,7 @@ public class RegistrationController {
 		try {
 			//First check if the email (user name used to login) is in use.
 			String username = request.getParameter("email");
+			String registerAs = request.getParameter("as");
 			Login login = loginService.retrieveLoginFor(username, null);
 			if (login != null) {
 				List <String> warnings = Lists.newArrayList();
@@ -98,7 +99,7 @@ public class RegistrationController {
 							+ ") for a confirmation email to complete the registration process.");
 				}
 				modelMap.addAttribute("warnings", warnings);
-				return "t_signUp";
+				return StringUtils.equalsIgnoreCase(registerAs, "customer")? "t_signUp_customer":"t_signUp_restaurant";
 			}
 			RegistrationData data = new RegistrationData();
 			data.setName(StringUtils.defaultString(request.getParameter("name")));
@@ -110,8 +111,8 @@ public class RegistrationController {
 			data.setEmail(StringUtils.defaultString(username));
 			data.setPassword(StringUtils.defaultString(request
 					.getParameter("pwd1")));
-			data.setPhone(Helper.formatPhone(StringUtils.defaultString(request
-					.getParameter("phone"))));
+			data.setPhone(StringUtils.defaultString(request
+					.getParameter("phone")));
 			data.setSmsOk(StringUtils.equalsIgnoreCase("on",
 					request.getParameter("smsOk")));
 			data.setStreet1(StringUtils.defaultString(request
@@ -159,7 +160,7 @@ public class RegistrationController {
 				errors.add("Ouch! Something went wrong. Please contact technical support at "
 						+ customerCareContactNumber);
 				modelMap.addAttribute("errors", errors);
-				return "t_signUp";
+				return StringUtils.equalsIgnoreCase(registerAs, "customer")? "t_signUp_customer":"t_signUp_restaurant";
 			}
 		}
 		catch (Exception e) {

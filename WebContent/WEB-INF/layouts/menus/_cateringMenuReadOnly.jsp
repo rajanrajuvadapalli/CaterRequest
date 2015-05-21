@@ -15,7 +15,7 @@
 			<c:if test="${event.status == 'ACTIVE' }">
 				<a
 					href="${pageContext.request.contextPath}/menu/selectMenu?eventId=${event.id}&cuisineType=${menu.cuisine}"
-					role="button" class="btn btn-primary"
+					role="button" class="btn btn-default"
 				> Edit Menu</a>
 			</c:if>
 		</div>
@@ -93,7 +93,7 @@
 												>
 											</div>
 											<div class="col-sm-2" align="left">
-												<button type="submit" class="btn btn-primary">Udpate</button>
+												<button type="submit" class="btn btn-default">Udpate</button>
 											</div>
 										</div>
 									</c:when>
@@ -108,7 +108,7 @@
 												>
 											</div>
 											<div class="col-sm-2" align="left">
-												<button type="submit" class="btn btn-primary">Submit</button>
+												<button type="submit" class="btn btn-default">Submit</button>
 											</div>
 										</div>
 									</c:otherwise>
@@ -132,7 +132,7 @@
 	</c:if>
 </div>
 <div class="col-sm-1">
-	<button type="button" class="btn btn-primary btn-block"
+	<button type="button" class="btn btn-default"
 		onclick="window.location.href='${pageContext.request.contextPath}/dashboard'"
 	>Back</button>
 </div>
