@@ -21,7 +21,7 @@ if( $body.hasClass('map-fullscreen') ) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function createHomepageGoogleMap(_latitude,_longitude,json){
-    $.get("/cater4party/resources/assets/external/_infobox.js", function() {
+    $.get("resources/assets/external/_infobox.js", function() {
         gMap();
     });
     function gMap(){
@@ -99,7 +99,7 @@ function createHomepageGoogleMap(_latitude,_longitude,json){
                 boxClass: "infobox",
                 enableEventPropagation: true,
                 closeBoxMargin: "0px 0px -30px 0px",
-                closeBoxURL: "/cater4party/resources/assets/img/close.png",
+                closeBoxURL: "resources/assets/img/close.png",
                 infoBoxClearance: new google.maps.Size(1, 1)
             };
 
@@ -342,7 +342,7 @@ function createHomepageGoogleMap(_latitude,_longitude,json){
 
 function createHomepageOSM(_latitude,_longitude,json,mapProvider){
 
-    $.get("/cater4party/resources/assets/external/_infobox.js", function() {
+    $.get("resources/assets/external/_infobox.js", function() {
         osmMap();
     });
 
