@@ -42,14 +42,14 @@
 </div>
 
 <div class="col-sm-2">
-	<button type="button" class="btn btn-lg btn-primary btn-block"
+	<button type="button" class="btn btn-default"
 		onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">
 		Cancel</button>
 </div>
 
 <div class="col-sm-2 col-sm-offset-8">
 	<button type="submit" 
-		class="btn btn-lg btn-primary btn-block">Next</button>
+		class="btn btn-default">Next</button>
 </div>
 
 

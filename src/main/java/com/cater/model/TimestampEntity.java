@@ -24,6 +24,10 @@ public class TimestampEntity {
 		return updated;
 	}
 
+	public void setUpdated(Date updated) {
+		this.updated = updated;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -32,7 +36,7 @@ public class TimestampEntity {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((created == null) ? 0 : created.hashCode());
-		result = prime * result + ((updated == null) ? 0 : updated.hashCode());
+		//result = prime * result + ((updated == null) ? 0 : updated.hashCode());
 		return result;
 	}
 
@@ -49,10 +53,10 @@ public class TimestampEntity {
 			if (other.created != null) return false;
 		}
 		else if (!created.equals(other.created)) return false;
-		if (updated == null) {
+		/*if (updated == null) {
 			if (other.updated != null) return false;
 		}
-		else if (!updated.equals(other.updated)) return false;
+		else if (!updated.equals(other.updated)) return false;*/
 		return true;
 	}
 }

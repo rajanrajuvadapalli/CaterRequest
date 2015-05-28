@@ -1,29 +1,8 @@
 //Hide the registration form on load
 //Instead show the options first
 $('document').ready(function() {
-	$("[id=register-options]").show();
-	$("[id=register-form]").hide();
 	populateCuisineTypes();
-	$('#state').bfhstates({
-		country : 'US',
-		state : 'CA'
-	});
-	validateRegistrationFormOnSubmit();
-	validateLoginForm();
 });
-
-function showRegistrationFormFor(user) {
-	$("[id=register-options]").hide();
-	$("[id=register-form]").show();
-	// Show form elements specific to the user
-	if (user == 'customer') {
-		$("[id=customer]").show();
-		$("[id=restaurant]").hide();
-	} else if (user == 'restaurant') {
-		$("[id=customer]").hide();
-		$("[id=restaurant]").show();
-	}
-}
 
 function populateCuisineTypes() {
 	$("span[id=cuisineType]")
@@ -52,83 +31,57 @@ function populateCuisineTypes() {
 							+ "</select>                                                          ");
 }
 
+
 function validateRegistrationFormOnSubmit() {
-	$("form[id=register-form]")
-			.validate(
-					{
-						rules : {
-							name : {
-								minlength : 4
-							},
-							restaurantName : {
-								minlength : 4
-							},
-							pwd1 : {
-								minlength : 5
-							},
-							pwd2 : {
-								minlength : 5,
-								equalTo : "#pwd1"
-							},
-							phone : {
-								phoneUS : true
-							},
-							zip : {
-								pattern : /^\d{5}(\-\d{4})?$/
-							}
-						},
-						messages : {
-							name : {
-								required : "Please enter your name.",
-								minlength : "Name must at least be 4 characters"
-							},
-							restaurantName : {
-								required : "Please enter your restaurant's name.",
-								minlength : "Name must at least be 4 characters"
-							},
-							pwd1 : {
-								required : "Please provide a password",
-								minlength : "Your password must be at least 5 characters long"
-							},
-							pwd2 : {
-								required : "Please provide a password",
-								minlength : "Your password must be at least 5 characters long",
-								equalTo : "Please enter the same password as above"
-							},
-							zip : {
-								pattern : "Please enter a valid zip in the form xxxxx or xxxxx-xxxx"
-							}
-						},
-						submitHandler : function(form) {
-							var hash = md5($("#pwd1").val());
-							$("#pwd1").val(hash);
-							$("#pwd2").val("");
-							form.submit();
-						}
-					});
+	var customerName = $("input[name=name]");
+	if (customerName.val()!=null && customerName.val().length>0 && customerName.val().length<4) {
+		alert("Name must at least be 4 characters");
+		customerName.focus();
+		return false;
+	}
+	var restaurantName = $("input[name=restaurantName]");
+	if (restaurantName.val()!=null && restaurantName.val().length>0 && restaurantName.val().length<4) {
+		alert("Restaurant name must at least be 4 characters");
+		restaurantName.focus();
+		return false;
+	}
+	var pwd1 = $("input[name=pwd1]");
+	if (pwd1.val().length<5) {
+		alert("Your password must be at least 5 characters long");
+		pwd1.focus();
+		return false;
+	}
+	var pwd2 = $("input[name=pwd2]");
+	if (pwd2.val().length<5) {
+		alert("Your other password must be at least 5 characters long");
+		pwd2.focus();
+		return false;
+	}
+	if (pwd1.val() != pwd2.val()) {
+		alert("Your passwords do not match");
+		pwd2.focus();
+		return false;
+	}
+	var state = $("input[name=state]");
+	if (state.val()!=null && state.val().length!=2) {
+		alert("State code should be 2 characters");
+		state.focus();
+		return false;
+	}
+	var hash = md5($("#pwd1").val());
+	$("#pwd1").val(hash);
+	$("#pwd2").val("");
+	return true;
 }
 
 function validateLoginForm() {
-	$("form[id=loginForm]").validate({
-		rules : {
-			pwd : {
-				minlength : 5
-			}
-		},
-		messages : {
-			username : {
-				required : "Please enter your email."
-			},
-			pwd : {
-				required : "Please provide a password",
-				minlength : "Your password must be at least 5 characters long"
-			}
-
-		},
-		submitHandler : function(form) {
-			var hash = md5($("#pwd").val());
-			$("#pwd").val(hash);
-			form.submit();
-		}
-	});
+	var pwd = $("input[name=pwd]");
+	if (pwd.val()!=null && pwd.val().length>0 && pwd.val().length<5) {
+		alert("Your password must be at least 5 characters long");
+		pwd.focus();
+		return false;
+	}
+	var hash = md5($("#pwd").val());
+	$("#pwd").val(hash);
+	return true;
 }

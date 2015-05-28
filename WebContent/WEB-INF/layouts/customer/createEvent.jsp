@@ -3,11 +3,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
- 
+
 <div class="page-header">
 	<h1>Create Event</h1>
 </div>
-
 
 <c:if test="${not empty errors}">
 	<div class="alert alert-danger">
@@ -117,7 +116,7 @@
 						<label for="street1" class="col-sm-3 control-label">Street
 							1 :</label>
 						<div class="col-sm-6">
-							<input type="text" size="30" maxlength="50" name="street1" id="street1"
+							<input type="text" size="30" maxlength="50" name="street1"
 								required="required" placeholder="Line 1" class="form-control">
 						</div>
 					</div>
@@ -125,8 +124,8 @@
 					<div class="form-group">
 						<label for="street2" class="col-sm-3 control-label">Street
 							2 :</label>
-						<div class="col-sm-6"> 
-							<input type="text" size="30" maxlength="50" name="street2" id="street2"
+						<div class="col-sm-6">
+							<input type="text" size="30" maxlength="50" name="street2"
 								placeholder="Line 2" class="form-control">
 						</div>
 					</div>
@@ -134,7 +133,7 @@
 					<div class="form-group">
 						<label for="city" class="col-sm-3 control-label">City :</label>
 						<div class="col-sm-6">
-							<input type="text" size="30" name="city" required="required" id="city"
+							<input type="text" size="30" name="city" required="required"
 								placeholder="City" class="form-control">
 						</div>
 					</div>
@@ -142,25 +141,28 @@
 					<div class="form-group">
 						<label for="state" class="col-sm-3 control-label">State :</label>
 						<div class="col-sm-6">
-							<select id="state" name="state" class="form-control bfh-states" id="state"></select>
+							<input type="text" size="2" name="state" required="required"
+								placeholder="State" class="form-control">
+							<!-- <select id="state" name="state"
+								class="form-control bfh-states inputs"></select> -->
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="zip" class="col-sm-3 control-label">Zip :</label>
 						<div class="col-sm-6">
-							<input type="text" size="10" name="zip" maxlength="10" id="zip"
+							<input type="text" size="10" name="zip" maxlength="10"
 								required="required" placeholder="Ex.: xxxxx"
+								pattern="^\d{5}(\-\d{4})?$"
 								class="form-control">
 						</div>
 					</div>
-					
 					
 					<div class="form-group">
 						<label for="deliveryOption" class="col-sm-3 control-label">Delivery Option :</label>
 						<div class="col-sm-6">
 							<select class="form-control inputs" name="deliveryOption"
-								id="deliveryOption" required="required">
+								id="deliveryOption">
 								<option value="" selected="selected">Choose one...</option>
 								<option value="1">Pick Up</option>
 								<option value="2">Delivered</option>
@@ -171,15 +173,24 @@
 			</div>
 		</div>
 		<div class="col-sm-2">
-			<button type="button" class="btn btn-lg btn-primary btn-block"
+			<button type="button" class="btn btn-default"
 				onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">
 				Cancel</button>
 		</div>
 		<div class="col-sm-4 col-sm-offset-2">
-			<button type="submit" class="btn btn-lg btn-primary btn-block" onclick="return codeAddress();">Create
+			<button type="submit" class="btn btn-default">Create
 				Event</button>
 		</div>
 </form>
 
 <br />
 <br />
+
+<script>
+$('document').ready(function() {
+	$("input[id=datetimepicker]").datetimepicker({
+		dayOfWeekStart : 1,
+		lang : 'en'
+	});
+});
+</script>

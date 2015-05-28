@@ -1,8 +1,8 @@
 $('document').ready(function() {
-	$("input[id=datetimepicker]").datetimepicker({
+	/*$("input[id=datetimepicker]").datetimepicker({
 		dayOfWeekStart : 1,
 		lang : 'en'
-	});
+	});*/
 	$('.popup-with-form').magnificPopup({
 		type : 'inline',
 		fixedContentPos : false,
@@ -32,6 +32,12 @@ function validateEventForm() {
 		alert("Number of people should be 2 or more.");
 		return false;
 	}
+	var deliveryOption = $('select[id=deliveryOption]');
+	if (deliveryOption.val() == '') {
+		alert("Please select the delivery option.");
+		deliveryOption.focus();
+		return false;
+	}
 	return true;
 }
 
@@ -44,27 +50,6 @@ function validateCuisine(formId) {
 	}
 	return true;
 }
-
-$(document).ready(function() {
-	// Bind the `onClick` event for the `restaurantName` input field
-	$('input[name=restaurantName]').on('click', function(e) {
-		var $restaurantNameInputField = $(this);
-		var $containerForm = $restaurantNameInputField.closest('form');
-		var quoteId = $restaurantNameInputField.data('quote-id');
-		$containerForm.find('input[name=xquoteId]').val(quoteId);
-	});
-});
-
-/*
- * function listCustomerEvents() { // Make an ajax call and get list of events
- * var element = $("td[id=customerDashboardData]"); element.html("<div
- * class=\"sideMenuItemsDetail\">Fetching data...</div>"); $.ajax({ url :
- * "/cater4party/customer/listEvents", type : "GET", context : document.body,
- * success : function(response) { // console.log(response);
- * element.html(response); }, error : function(xhr, status, error) {
- * element.html("<div class=\"sideMenuItemsDetail\">Status:" + status + ", <br>Error:" +
- * error + "</div>"); } }); }
- */
 
 function validateMenuFormOnSubmit() {
 	var atLeast1selected = false;

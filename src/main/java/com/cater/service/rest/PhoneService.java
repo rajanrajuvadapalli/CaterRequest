@@ -158,12 +158,12 @@ public class PhoneService {
 			if (StringUtils.equalsIgnoreCase("customer", role)) {
 				logger.debug("Updating consumer table.");
 				Customer customer = customerDAO.findByLoginID(loginId);
-				customer.setContactNumber(Helper.formatPhone(phoneNumber));
+				customer.setContactNumber(phoneNumber);
 			}
 			else if (StringUtils.equalsIgnoreCase("restaurant", role)) {
 				logger.debug("Updating restaurant table.");
 				Restaurant restaurant = restaurantDAO.findByLoginID(loginId);
-				restaurant.setContactNumber(Helper.formatPhone(phoneNumber));
+				restaurant.setContactNumber(phoneNumber);
 			}
 			smsHelper.resendPhoneVerificationSMS(login, phoneNumber);
 			return Response

@@ -9,7 +9,6 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Helper.
  */

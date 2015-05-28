@@ -51,22 +51,23 @@
 	</c:if>
 
 	<form class="form-signin" method="POST" id="loginForm"
-		action="${pageContext.request.contextPath}/login" novalidate
-		ectype="application/x-www-form-urlencoded" autocomplete="off">
+		action="${pageContext.request.contextPath}/login"
+		ectype="application/x-www-form-urlencoded"
+		onsubmit="return validateLoginForm();">
 
 		<h2 class="form-signin-heading">Please sign in</h2>
-		<label for="inputEmail" class="sr-only">Email address</label> <input
-			type="email" name="username" id="username" class="form-control"
-			placeholder="Email address" required autofocus> <label
-			for="inputPassword" class="sr-only">Password</label> <input
-			type="password" name="pwd" id="pwd" class="form-control"
-			placeholder="Password" required>
+		<label for="inputEmail" class="sr-only">Email address</label>
+		<input type="email" name="username" id="username" class="form-control"
+			placeholder="Email address" required autofocus>
+		<label for="inputPassword" class="sr-only">Password</label>
+		<input type="password" name="pwd" id="pwd" class="form-control"
+			placeholder="Password" required="required">
 		<!-- <div class="checkbox">
 			<label> <input type="checkbox" value="remember-me">
 				Remember me
 			</label>
 		</div> -->
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
+		<button class="btn btn-default" type="submit">Sign
 			in</button>
 	</form>
 	<br /> <a class="popup-with-form" href="#forgot-pwd-form"
@@ -80,7 +81,7 @@
 		<label for="inputEmail" class="sr-only">Email address</label> <input
 			type="email" name="username" id="username" class="form-control"
 			placeholder="Email address" required autofocus> <br />
-		<button type="submit" class="btn btn-lg btn-primary">Reset</button>
+		<button type="submit" class="btn btn-default">Reset</button>
 	</form>
 
 </div>

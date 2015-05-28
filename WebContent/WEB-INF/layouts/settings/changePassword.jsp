@@ -50,7 +50,8 @@
 			<form class="form-horizontal" method="POST" id="accountSettingsForm"
 				action="${pageContext.request.contextPath}/settings/changePassword"
 				novalidate ectype="application/x-www-form-urlencoded"
-				autocomplete="off">
+				autocomplete="off"
+				onsubmit="return validateAccountSettingsForm();">
 				<div class="form-group">
 					<label for="currPwd" class="col-sm-3 control-label">Current
 						Password: </label>
@@ -81,7 +82,7 @@
 					<label class="col-sm-3 control-label"></label>
 
 					<div class="col-sm-6" align="left">
-						<button type="submit" class="btn btn-lg btn-primary">Update
+						<button type="submit" class="btn btn-default">Update
 						</button>
 					</div>
 				</div>

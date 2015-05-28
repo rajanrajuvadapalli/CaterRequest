@@ -53,40 +53,17 @@
 </c:if>
 
 <div class="container container-fluid">
-	<div id="register-options">
-		<h3 class="text-muted">Would you like to register as</h3>
-		<br> <br> <br>
-		<div class="row" align="center">
-			<div class="col-sm-4 col-sm-offset-2 image-button img-rounded">
-				<img
-					src="${pageContext.request.contextPath}/resources/images/individual.png"
-					alt="customer" onclick="showRegistrationFormFor('customer')" />
-			</div>
-			<div class="col-sm-4 image-button img-rounded">
-				<img
-					src="${pageContext.request.contextPath}/resources/images/chef.jpg"
-					alt="restaurant" onclick="showRegistrationFormFor('restaurant')" />
-			</div>
-		</div>
-	</div>
-
 	<form class="form-horizontal" method="POST" id="register-form"
-		action="${pageContext.request.contextPath}/register" novalidate
-		ectype="application/x-www-form-urlencoded" autocomplete="off">
+		action="${pageContext.request.contextPath}/register"
+		ectype="application/x-www-form-urlencoded"
+		onsubmit="return validateRegistrationFormOnSubmit();">
+		<input type="hidden" name="as" value="restaurant">
 		<div class="col-sm-12">
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<h3 class="panel-title">Personal Info</h3>
 				</div>
 				<div class="panel-body">
-					<div class="form-group" id="customer">
-						<label for="name" class="col-sm-4 control-label">Name&nbsp;:</label>
-						<div class="col-sm-6">
-							<input type="text" size="30" maxlength="50" name="name"
-								required="required" placeholder="First   Last"
-								class="form-control">
-						</div>
-					</div>
 					<div class="form-group" id="restaurant">
 						<label for="restaurantName" class="col-sm-4 control-label">Restaurant&nbsp;Name&nbsp;:</label>
 						<div class="col-sm-6">
@@ -138,13 +115,12 @@
 							Phone&nbsp;:</label>
 						<div class="col-sm-6" align="left">
 							<input type="text" size="30" name="phone" required="required"
-								placeholder="Ex.: xxx-xxx-xxxx" class="form-control">
-							&nbsp;<input type="checkbox" name="smsOk" id="customer"
-								style="-webkit-transform: scale(1.5); -o-transform: scale(1.5); -ms-transform: scale(1.5); -moz-transform: scale(1.5); padding: 10px;">&nbsp;&nbsp;<span
-								id="customer">Send me text alerts <sup>*</sup></span>
+								placeholder="Ex.: xxxxxxxxxx"
+								pattern="\d{10}"
+								class="form-control">
 						</div>
 					</div>
-					<div class="form-group" id="customer">
+					<div class="form-group">
 						<label for="pwd2" class="col-sm-4 control-label">How did
 							you hear about us&nbsp;?</label>
 						<div class="col-sm-6">
@@ -194,8 +170,10 @@
 					<div class="form-group">
 						<label for="state" class="col-sm-4 control-label">State&nbsp;:</label>
 						<div class="col-sm-6">
-							<select id="state" name="state"
-								class="form-control bfh-states inputs"></select>
+							<input type="text" size="2" name="state" required="required"
+								placeholder="State" class="form-control">
+							<!-- <select id="state" name="state"
+								class="form-control bfh-states inputs"></select> -->
 						</div>
 					</div>
 					<div class="form-group">
@@ -203,25 +181,18 @@
 						<div class="col-sm-6">
 							<input type="text" size="10" name="zip" maxlength="10"
 								required="required" placeholder="Ex.: xxxxx"
+								pattern="^\d{5}(\-\d{4})?$"
 								class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-4 control-label"></label>
 						<div class="col-sm-6" align="left">
-							<button type="submit" class="btn btn-lg btn-primary">Register</button>
+							<button type="submit" class="btn btn-default">Register</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div align="left" id="customer">
-			<span style="color: gray; font-size: 14px;"><sup>*</sup>carrier
-				charges may apply</span>
-		</div>
 	</form>
-
 </div>
-<br>
-<br>
-

@@ -54,7 +54,7 @@
 
 <div align="right">
 	<a class="popup-with-form" href="#deleteConfirm">
-		<button class="btn btn-lg btn-danger">Delete Event</button>
+		<button class="btn btn-default">Delete Event</button>
 	</a>
 </div>
 <br />
@@ -66,7 +66,7 @@
 		Are you sure you want to delete this event?<br />
 		<br />
 		<div align="center">
-			<button type="submit" class="btn btn-lg btn-danger">Confirm
+			<button type="submit" class="btn btn-default">Confirm
 				Delete</button>
 		</div>
 	</form>
@@ -138,7 +138,7 @@
 						<label for="street1" class="col-sm-3 control-label">Street
 							1 :</label>
 						<div class="col-sm-6">
-							<input type="text" size="30" maxlength="50" name="street1" id ="street1"
+							<input type="text" size="30" maxlength="50" name="street1"
 								required="required" placeholder="Line 1" class="form-control"
 								value="${event.location.street1}">
 						</div>
@@ -148,7 +148,7 @@
 						<label for="street2" class="col-sm-3 control-label">Street
 							2 :</label>
 						<div class="col-sm-6">
-							<input type="text" size="30" maxlength="50" name="street2" id ="street2"
+							<input type="text" size="30" maxlength="50" name="street2"
 								placeholder="Line 2" class="form-control"
 								value="${event.location.street2}">
 						</div>
@@ -157,7 +157,7 @@
 					<div class="form-group">
 						<label for="city" class="col-sm-3 control-label">City :</label>
 						<div class="col-sm-6">
-							<input type="text" size="30" name="city" required="required" id ="city"
+							<input type="text" size="30" name="city" required="required"
 								placeholder="City" class="form-control"
 								value="${event.location.city}">
 						</div>
@@ -166,14 +166,18 @@
 					<div class="form-group">
 						<label for="state" class="col-sm-3 control-label">State :</label>
 						<div class="col-sm-6">
-							<select id="state" name="state"  id ="state" class="form-control bfh-states"></select>
+							<input type="text" size="2" name="state" required="required"
+								placeholder="State" class="form-control"
+								value="${event.location.state}">
+							<!-- <select id="state" name="state"
+								class="form-control bfh-states inputs"></select> -->
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="zip" class="col-sm-3 control-label">Zip :</label>
 						<div class="col-sm-6">
-							<input type="text" size="10" name="zip" id ="zip" maxlength="10"
+							<input type="text" size="10" name="zip" maxlength="10"
 								required="required" placeholder="Ex.: xxxxx"
 								class="form-control" value="${event.location.zip}">
 						</div>
@@ -183,7 +187,7 @@
 						<label for="deliveryOption" class="col-sm-3 control-label">Delivery Option :</label>
 						<div class="col-sm-6">
 							<select class="form-control inputs" name="deliveryOption"
-								id="deliveryOption" required="required" >
+								id="deliveryOption" >
 								<option value="1" ${event.isPickUp()?'selected':''}>Pick Up</option>
 								<option value="2" ${event.isPickUp()?'':'selected'}>Delivered</option>
 							</select>
@@ -193,16 +197,16 @@
 			</div>
 		</div>
 		<div class="col-sm-2">
-			<button type="button" class="btn btn-lg btn-warning btn-block"
+			<button type="button" class="btn btn-default"
 				onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">
 				Cancel</button>
 		</div>
 		<div class="col-sm-4 col-sm-offset-2">
-			<button type="submit" class="btn btn-lg btn-primary btn-block" onclick = "return codeAddress();">Update
+			<button type="submit" class="btn btn-default">Update
 				Event</button>
 		</div>
 		<div class="col-sm-2 col-sm-offset-2">
-			<button type="reset" class="btn btn-lg btn-warning btn-block">Reset</button>
+			<button type="reset" class="btn btn-default">Reset</button>
 		</div>
 </form>
 
@@ -210,9 +214,11 @@
 <br />
 
 <script>
+$('document').ready(function() {
 	var eventDate = $("input[id=eventDate]").val();
 	//console.log(eventDate);
 	$("#datetimepicker").datetimepicker({
 		value : new Date(eventDate)
 	});
+});
 </script>

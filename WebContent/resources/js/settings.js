@@ -1,83 +1,54 @@
 $('document').ready(function() {
-	validateProfileForm();
-	validateAccountSettingsForm();
+	//validateProfileForm();
+	//validateAccountSettingsForm();
 	$('button[id=pvc]').click(validatePhoneVerificationCode);
 	$('button[id=send-pvc]').click(sendPhoneVerificationCode);
 });
 
 function validateProfileForm() {
-	$("form[id=profileForm]")
-			.validate(
-					{
-						rules : {
-							name : {
-								minlength : 4
-							},
-							restaurantName : {
-								minlength : 4
-							},
-							phone : {
-								phoneUS : true
-							},
-							zip : {
-								pattern : /^\d{5}(\-\d{4})?$/
-							}
-						},
-						messages : {
-							name : {
-								required : "Please enter your name.",
-								minlength : "Name must at least be 4 characters"
-							},
-							restaurantName : {
-								required : "Please enter your restaurant's name.",
-								minlength : "Name must at least be 4 characters"
-							},
-							zip : {
-								pattern : "Please enter a valid zip in the form xxxxx or xxxxx-xxxx"
-							}
-						},
-						submitHandler : function(form) {
-							form.submit();
-						}
-					});
+	var customerName = $("input[name=name]");
+	if (customerName.val()!=null && customerName.val().length>0 && customerName.val().length<4) {
+		alert("Name must at least be 4 characters");
+		customerName.focus();
+		return false;
+	}
+	var restaurantName = $("input[name=restaurantName]");
+	if (restaurantName.val()!=null && restaurantName.val().length>0 && restaurantName.val().length<4) {
+		alert("Restaurant name must at least be 4 characters");
+		restaurantName.focus();
+		return false;
+	}
+	return true;
 }
 
 function validateAccountSettingsForm() {
-	$("form[id=accountSettingsForm]").validate({
-		rules : {
-			currPwd : {
-				minlength : 5
-			},
-			newPwd1 : {
-				minlength : 5
-			},
-			newPwd2 : {
-				minlength : 5,
-				equalTo : "#newPwd1"
-			}
-		},
-		messages : {
-			currPwd : {
-				required : "Please provide a current password",
-				minlength : "Your password must be at least 5 characters long"
-			},
-			pwd1 : {
-				required : "Please provide a new password",
-				minlength : "Your password must be at least 5 characters long"
-			},
-			pwd2 : {
-				required : "Please retype new password",
-				minlength : "Your password must be at least 5 characters long",
-				equalTo : "Please enter the same password as above"
-			}
-		},
-		submitHandler : function(form) {
-			$("#currPwd").val(md5($("#currPwd").val()));
-			$("#newPwd1").val(md5($("#newPwd1").val()));
-			$("#newPwd2").val("");
-			form.submit();
-		}
-	});
+	var currPwd = $("input[name=currPwd]");
+	if (currPwd.val().length<5) {
+		alert("Your password must be at least 5 characters long");
+		currPwd.focus();
+		return false;
+	}
+	var newPwd1 = $("input[name=newPwd1]");
+	if (newPwd1.val().length<5) {
+		alert("Your New password must be at least 5 characters long");
+		newPwd1.focus();
+		return false;
+	}
+	var newPwd2 = $("input[name=newPwd2]");
+	if (newPwd2.val().length<5) {
+		alert("Your new2 password must be at least 5 characters long");
+		newPwd2.focus();
+		return false;
+	}
+	if (newPwd1.val() != newPwd2.val()) {
+		alert("Your passwords do not match");
+		newPwd2.focus();
+		return false;
+	}
+	$("#currPwd").val(md5($("#currPwd").val()));
+	$("#newPwd1").val(md5($("#newPwd1").val()));
+	$("#newPwd2").val("");
+	return true;
 }
 
 function validatePhoneVerificationCode() {
