@@ -138,7 +138,7 @@
 						<label for="street1" class="col-sm-3 control-label">Street
 							1 :</label>
 						<div class="col-sm-6">
-							<input type="text" size="30" maxlength="50" name="street1"
+							<input type="text" size="30" maxlength="50" name="street1" id ="street1"
 								required="required" placeholder="Line 1" class="form-control"
 								value="${event.location.street1}">
 						</div>
@@ -148,7 +148,7 @@
 						<label for="street2" class="col-sm-3 control-label">Street
 							2 :</label>
 						<div class="col-sm-6">
-							<input type="text" size="30" maxlength="50" name="street2"
+							<input type="text" size="30" maxlength="50" name="street2" id ="street2"
 								placeholder="Line 2" class="form-control"
 								value="${event.location.street2}">
 						</div>
@@ -157,7 +157,7 @@
 					<div class="form-group">
 						<label for="city" class="col-sm-3 control-label">City :</label>
 						<div class="col-sm-6">
-							<input type="text" size="30" name="city" required="required"
+							<input type="text" size="30" name="city" required="required" id ="city"
 								placeholder="City" class="form-control"
 								value="${event.location.city}">
 						</div>
@@ -166,14 +166,14 @@
 					<div class="form-group">
 						<label for="state" class="col-sm-3 control-label">State :</label>
 						<div class="col-sm-6">
-							<select id="state" name="state" class="form-control bfh-states"></select>
+							<select id="state" name="state"  id ="state" class="form-control bfh-states"></select>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="zip" class="col-sm-3 control-label">Zip :</label>
 						<div class="col-sm-6">
-							<input type="text" size="10" name="zip" maxlength="10"
+							<input type="text" size="10" name="zip" id ="zip" maxlength="10"
 								required="required" placeholder="Ex.: xxxxx"
 								class="form-control" value="${event.location.zip}">
 						</div>
@@ -198,7 +198,7 @@
 				Cancel</button>
 		</div>
 		<div class="col-sm-4 col-sm-offset-2">
-			<button type="submit" class="btn btn-lg btn-primary btn-block">Update
+			<button type="submit" class="btn btn-lg btn-primary btn-block" onclick = "return codeAddress();">Update
 				Event</button>
 		</div>
 		<div class="col-sm-2 col-sm-offset-2">
