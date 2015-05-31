@@ -332,7 +332,7 @@ function setInputsWidth(){
 // Autocomplete address ------------------------------------------------------------------------------------------------
 
 function autoComplete(){
-    if( !$("script[src='assets/js/leaflet.js']").length ){
+    if( !$("script[src='resources/assets/js/leaflet.js']").length ){
         var input = document.getElementById('location') ;
         var autocomplete = new google.maps.places.Autocomplete(input, {
             types: ["geocode"]
@@ -407,7 +407,7 @@ function rating(element){
 // Owl Carousel in Modal Window ----------------------------------------------------------------------------------------
 
 function drawOwlCarousel(_rtl){
-    $.getScript( "resources/assets/js/owl.carousel.min.js", function( data, textStatus, jqxhr ) {
+    $.getScript( "/cater4party/resources/assets/js/owl.carousel.min.js", function( data, textStatus, jqxhr ) {
         $(".image .gallery").owlCarousel({
             rtl: _rtl,
             items: 1,
@@ -458,7 +458,7 @@ function equalHeight(container){
 // Initialize Owl carousel ---------------------------------------------------------------------------------------------
 
 function initializeOwl(_rtl){
-    $.getScript( "resources/assets/js/owl.carousel.min.js", function( data, textStatus, jqxhr ) {
+    $.getScript( "/cater4party/resources/assets/js/owl.carousel.min.js", function( data, textStatus, jqxhr ) {
         if ($('.owl-carousel').length > 0) {
             if ($('.carousel-full-width').length > 0) {
                 setCarouselWidth();
@@ -553,7 +553,7 @@ function drawItemSpecific(category, json, a){
 function quickView(id){
     $.ajax({
         type: 'POST',
-        url: 'assets/external/_modal.html',
+        url: 'resources/assets/external/_modal.html',
         data: id,
         success: function (data) {
             // Create HTML element with loaded data

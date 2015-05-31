@@ -35,7 +35,7 @@ function createHomepageGoogleMap(_latitude,_longitude,json){
     };
     var clusterStyles = [
         {
-            url: 'assets/img/cluster.png',
+            url: 'resources/assets/img/cluster.png',
             height: 34,
             width: 34
         }

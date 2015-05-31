@@ -5,8 +5,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<c:import url="scripts_js.jsp"></c:import>
-
 <div class="footer-bottom">
 	<div class="container">
 	    <span style="margin-top:10px" >&copy; 2015 CaterRequest, Inc. All Rights Reserved.</span>
