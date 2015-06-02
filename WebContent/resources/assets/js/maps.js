@@ -175,7 +175,7 @@ function createHomepageGoogleMap(_latitude,_longitude,json){
 
         var clusterStyles = [
             {
-                url: 'assets/img/cluster.png',
+                url: 'resources/assets/img/cluster.png',
                 height: 34,
                 width: 34
             }
@@ -636,7 +636,7 @@ function multiChoice(sameLatitude, sameLongitude, json) {
             }
         });
         $('body').append('<div class="modal-window multichoice fade_in"></div>');
-        $('.modal-window').load( 'assets/external/_modal-multichoice.html', function() {
+        $('.modal-window').load( 'resources/assets/external/_modal-multichoice.html', function() {
             $('.modal-window .modal-wrapper .items').html( multipleItems );
             rating('.modal-window');
         });
