@@ -121,7 +121,7 @@
                         <header><h2>Search</h2></header>
                         <form class="subscribe form-inline border-less-inputs" action="${pageContext.request.contextPath}/search" method="GET" role="form">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="zip_code" id="zip_code" placeholder="Enter ZIP Code for restaurants nearby">
+                                <input type="text" id="main-search" name="zip_code" id="zip_code" placeholder="Enter ZIP Code for restaurants nearby">
                                 <span class="input-group-btn">
                                     <button type="submit" class="btn btn-default btn-large">Search<i class="fa fa-angle-right"></i></button>
                                 </span>
@@ -130,7 +130,7 @@
                         <!--/.subscribe-->
                     </div>
                     <!--/.container-->
-                </section>
+            </section>
 		<!--end Subscribe-->
 		<!-- Why choose CaterRequest -->
 		<section id="featured" class="block equal-height">
