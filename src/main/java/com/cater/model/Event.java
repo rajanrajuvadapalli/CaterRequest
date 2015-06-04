@@ -203,4 +203,8 @@ public class Event extends TimestampEntity implements Serializable {
 			return false;
 		return true;
 	}
+	public static final String STATUS_ACTIVE="ACTIVE";
+	public static final String STATUS_CONFIRMED="CONFIRMED";
+	public static final String STATUS_COMPLETE="COMPLETE";
+	
 }
