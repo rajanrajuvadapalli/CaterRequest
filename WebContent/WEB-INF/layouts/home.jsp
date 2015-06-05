@@ -19,8 +19,12 @@
 				<div class="container">
 					<h1>Order food for your party in just one click!</h1>
 				</div>
-				<button type="submit" class="btn btn-default btn-large">How
-					it Works</button>
+				<form class="form-horizontal" method="GET" id="register-form"
+						action="${pageContext.request.contextPath}/register"
+						ectype="application/x-www-form-urlencoded" autocomplete="off">
+						<input type="hidden" name="as" value="customer">
+						<button type="submit" class="btn btn-default">Lets get started</button>
+					</form>
 			</div>
 			<div class="background">
 				<img
@@ -116,23 +120,40 @@
 		</section>
 		<!--end How CaterRequest works-->
 		<!--Subscribe-->
-		 <section id="main-search" class="block">
-                    <div class="container">
-                        <header><h2>Search</h2></header>
-                        <form class="subscribe form-inline border-less-inputs" action="${pageContext.request.contextPath}/search" method="GET" role="form">
-                            <div class="form-group">
-                                <input type="text" id="main-search" name="zip_code" id="zip_code" placeholder="Enter ZIP Code for restaurants nearby">
-                               
-                                <input type="text" id="main-search" value="${cuisine}" name="cuisine_type" id="cuisine_type" placeholder="Enter Cuisine Type">
-                                <span class="input-group-btn">
-                                    <button type="submit" class="btn btn-default btn-large">Search<i class="fa fa-angle-right"></i></button>
-                                </span>
-                            </div>
-                        </form>
-                        <!--/.subscribe-->
-                    </div>
-                    <!--/.container-->
-            </section>
+		<section id="main-search" class="block">
+			<div class="container">
+				<header>
+					<h2>Search for restaurants nearby</h2>
+				</header>
+				<form class="subscribe form-inline border-less-inputs"
+					action="${pageContext.request.contextPath}/search" method="GET"
+					role="form"
+				>
+					<div class="row">
+						<div class="col-sm-4">
+							<input type="text" id="main-search" name="zip_code" id="zip_code"
+								placeholder="Enter ZIP Code"
+							>
+						</div>
+						<div class="col-sm-4">
+							<input type="text" id="main-search" value="${cuisine}"
+								name="cuisine_type" id="cuisine_type"
+								placeholder="Enter Cuisine Type"
+							>
+						</div>
+						<div class="col-sm-4">
+							<span class="input-group-btn">
+								<button type="submit" class="btn btn-default">
+									Search<i class="fa fa-angle-right"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+				</form>
+				<!--/.subscribe-->
+			</div>
+			<!--/.container-->
+		</section>
 		<!--end Subscribe-->
 		<!-- Why choose CaterRequest -->
 		<section id="featured" class="block equal-height">

@@ -25,7 +25,7 @@
 <div class="header">
     <div class="wrapper">
 	<div class="brand">
-	    <a href="${pageContext.request.contextPath}"><img src="${pageContext.request.contextPath}/resources/assets/img/logo.png" alt="logo"></a>
+	    <a href="${pageContext.request.contextPath}/home"><img src="${pageContext.request.contextPath}/resources/assets/img/logo.png" alt="logo"></a>
 	</div>
 	<nav class="navigation-items">
 	    <div class="wrapper">
@@ -37,8 +37,9 @@
 					<li><a href="${pageContext.request.contextPath}/register?as=customer"><strong>Register</strong></a></li>
 					<li>
 					<form class="form-horizontal" method="GET" id="register-form"
-						action="${pageContext.request.contextPath}/register?as=restaurant"
+						action="${pageContext.request.contextPath}/register"
 						ectype="application/x-www-form-urlencoded" autocomplete="off">
+						<input type="hidden" name="as" value="restaurant"> 
 						<button type="submit" class="btn btn-default">List Your Restaurant</button>
 					</form>
 					</li>
