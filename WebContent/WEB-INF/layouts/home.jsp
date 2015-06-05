@@ -122,6 +122,8 @@
                         <form class="subscribe form-inline border-less-inputs" action="${pageContext.request.contextPath}/search" method="GET" role="form">
                             <div class="form-group">
                                 <input type="text" id="main-search" name="zip_code" id="zip_code" placeholder="Enter ZIP Code for restaurants nearby">
+                               
+                                <input type="text" id="main-search" value="${cuisine}" name="cuisine_type" id="cuisine_type" placeholder="Enter Cuisine Type">
                                 <span class="input-group-btn">
                                     <button type="submit" class="btn btn-default btn-large">Search<i class="fa fa-angle-right"></i></button>
                                 </span>
