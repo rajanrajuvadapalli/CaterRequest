@@ -14,7 +14,8 @@
 <![endif]-->
 
 <!-- <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script> -->
-<script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAA7j_Q-rshuWkc8HyFI4V2HxQYPm-xtd00hTQOC0OXpAMO40FHAxT29dNBGfxqMPq5zwdeiDSHEPL89A" type="text/javascript"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlobAYE25Q2m62_DX3wc1AMimO2Xr-WHc"></script>
+<!-- <script src="http://maps.google.com/maps?file=api&v=2&key=AIzaSyAlobAYE25Q2m62_DX3wc1AMimO2Xr-WHc" type="text/javascript"></script>  -->
 <!-- <script src = "http://www.myersdaily.org/joseph/javascript/md5.js"></script> -->
 <script src="${pageContext.request.contextPath}/resources/js/md5.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/register.js"></script>

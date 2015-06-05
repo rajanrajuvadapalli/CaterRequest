@@ -116,28 +116,23 @@
 		</section>
 		<!--end How CaterRequest works-->
 		<!--Subscribe-->
-		<section id="subscribe" class="block">
-			<div class="container">
-				<header>
-					<h2>Search</h2>
-				</header>
-				<form class="subscribe form-inline border-less-inputs" action="?"
-					method="post" role="form"
-				>
-					<div class="input-group">
-						<input type="email" class="form-control" id="subscribe_email"
-							placeholder="Enter ZIP Code for restaurants nearby"
-						> <span class="input-group-btn">
-							<button type="submit" class="btn btn-default btn-large">
-								Search<i class="fa fa-angle-right"></i>
-							</button>
-						</span>
-					</div>
-				</form>
-				<!--/.subscribe-->
-			</div>
-			<!--/.container-->
-		</section>
+		 <section id="main-search" class="block">
+                    <div class="container">
+                        <header><h2>Search</h2></header>
+                        <form class="subscribe form-inline border-less-inputs" action="${pageContext.request.contextPath}/search" method="GET" role="form">
+                            <div class="form-group">
+                                <input type="text" id="main-search" name="zip_code" id="zip_code" placeholder="Enter ZIP Code for restaurants nearby">
+                               
+                                <input type="text" id="main-search" value="${cuisine}" name="cuisine_type" id="cuisine_type" placeholder="Enter Cuisine Type">
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-default btn-large">Search<i class="fa fa-angle-right"></i></button>
+                                </span>
+                            </div>
+                        </form>
+                        <!--/.subscribe-->
+                    </div>
+                    <!--/.container-->
+            </section>
 		<!--end Subscribe-->
 		<!-- Why choose CaterRequest -->
 		<section id="featured" class="block equal-height">
