@@ -11,6 +11,7 @@
        <form class="subscribe form-inline border-less-inputs" action="${pageContext.request.contextPath}/search" method="GET" role="form">
           <div class="form-group">
               <input type="text" id="main-search" value="${eventLocation}" name="zip_code" id="zip_code" placeholder="Enter ZIP Code for restaurants nearby">
+              <input type="text" id="main-search" value="${cuisine}" name="cuisine_type" id="cuisine_type" placeholder="Enter Cuisine Type">
                    <span class="input-group-btn">
                    <button type="submit" class="btn btn-default btn-large">Search<i class="fa fa-angle-right"></i></button>
                    </span>
@@ -18,18 +19,24 @@
        </form>
 </div>
 <div class="container">
-		<c:choose>
-			<c:when test="${empty restaurants}">Sorry! No restaurants registered with us.</c:when>
-			<c:otherwise>					
-				<c:forEach items="${restaurants}" var="r">
+		<div class="panel-heading">
+			<h3 class="panel-title">RESTAURANTS</h3>
+		</div>
+		<div class="panel-body" align="left">
+			<c:choose>
+				<c:when test="${empty restaurants}">Sorry! No <c:out
+						value="${cuisine}"></c:out> restaurants registered with us.
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${restaurants}" var="r">
 					<span class="restaurants" style="display: none;" data-restaurant-id="${r.id}" data-restaurant-address="${r.address.street1} ${r.address.street2}, ${r.address.city}, ${r.address.state} ${r.address.zip}" data-restaurant-name="${r.name}"></span>
-					<br />
+					
 				</c:forEach>
 					<div class="display-restaurants"></div>
-					<br>
-			</c:otherwise>
-		</c:choose>
-		<br>
-</div>	
+					
+				</c:otherwise>
+			</c:choose>
+		</div>
+	</div>
 
 

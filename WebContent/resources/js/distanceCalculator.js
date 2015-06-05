@@ -21,6 +21,10 @@ $(function() {
 
 	var displayDistances = function(response, status) {
 		// status = 'INVALID_REQUEST' => throw and handle error case
+		if (status != google.maps.DistanceMatrixStatus.OK) {
+		    alert('Error was: ' + status);
+		  } 
+		else {
 		var distances = $.map(response.rows[0].elements, function(element, index) { return { text: element.distance.text, value: element.distance.value }; });
 		var restaurantAddresses = response.destinationAddresses;
 		var $restaurants = $('.restaurants');
@@ -35,7 +39,10 @@ $(function() {
 			currentRestaurantName = $currentRestaurant.data('restaurant-name');
 			currentRestaurantId = $currentRestaurant.data('restaurant-id');
 	        // Adding restaurant name, address and distance to array object
-			restaurantsAndDistances.push({ id: currentRestaurantId, name:currentRestaurantName, address : restaurantAddresses[i], distance: distances[i].text, distanceValue: distances[i].value });
+			// Adds only restaurants which are less than 50 miles radius
+			if(distances[i].value<= 80467){
+				restaurantsAndDistances.push({ id: currentRestaurantId, name:currentRestaurantName, address : restaurantAddresses[i], distance: distances[i].text, distanceValue: distances[i].value });	
+			}
 		}
 		// sorting with distance
 		restaurantsAndDistances.sort(function (a, b) {
@@ -54,6 +61,7 @@ $(function() {
 		}
 		
 		$('.restaurants').remove();
+		}	
 
 	};
 
