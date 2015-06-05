@@ -20,6 +20,7 @@
 	</bean>
 	
 	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:resources mapping="/cater4party/resources/**" location="/resources/" />
 	
 	<mvc:annotation-driven />
 	
