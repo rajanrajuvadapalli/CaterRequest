@@ -54,10 +54,10 @@ $(function() {
 		
 		if ('catering' == $restaurantsContainer.data('page')) {
 			for (var i = 0; i < restaurantsAndDistances.length; i++)
-				$restaurantsContainer.append('<input type="checkbox" class="restaurant-details" name="restaurantId" value="' + restaurantsAndDistances[i].id + '"  />'+ ' <b>'+ restaurantsAndDistances[i].name + '</b> - ' + restaurantsAndDistances[i].address + '(' + restaurantsAndDistances[i].distance + ')' +'<br>');	
+				$restaurantsContainer.append('<input type="checkbox" class="restaurant-details" name="restaurantId" value="' + restaurantsAndDistances[i].id + '"  />'+ ' <b>'+ restaurantsAndDistances[i].name + ' - '+ restaurantsAndDistances[i].distance+' </b> <br>  ' + restaurantsAndDistances[i].address  +'<br>');	
 		} else {
 			for (var i = 0; i < restaurantsAndDistances.length; i++)
-				$restaurantsContainer.append('<div class="restaurant-details">'+ ' <b>'+ restaurantsAndDistances[i].name + '</b> - ' + restaurantsAndDistances[i].address + '(' + restaurantsAndDistances[i].distance + ')' +'</div>');	
+				$restaurantsContainer.append('<div class="restaurant-details">'+ ' <b>'+ restaurantsAndDistances[i].name + ' - '+ restaurantsAndDistances[i].distance+ ' </b> <br> ' + restaurantsAndDistances[i].address  +'<br> </div>');	
 		}
 		
 		$('.restaurants').remove();
