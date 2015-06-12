@@ -6,10 +6,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="footer-bottom">
-	<div class="container">
-	    <span style="margin-top:10px" >&copy; 2015 CaterRequest, Inc. All Rights Reserved.</span>
+	<div class="container" align="center">
+	    <!-- <span style="margin-top:10px" >&copy; 2015 CaterRequest, Inc. All Rights Reserved.</span>
 		<span class="right">
 		    <a href="#page-top" class="to-top roll"><i class="fa fa-angle-up"></i></a>
-		</span>
+		</span> -->
 	</div>
 </div>
