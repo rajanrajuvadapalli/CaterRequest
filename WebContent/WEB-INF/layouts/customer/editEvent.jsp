@@ -166,11 +166,7 @@
 					<div class="form-group">
 						<label for="state" class="col-sm-3 control-label">State :</label>
 						<div class="col-sm-6">
-							<input type="text" size="2" name="state" required="required"
-								placeholder="State" class="form-control"
-								value="${event.location.state}">
-							<!-- <select id="state" name="state"
-								class="form-control bfh-states inputs"></select> -->
+							<span id="stateArea"></span>
 						</div>
 					</div>
 
@@ -215,6 +211,7 @@
 
 <script>
 $('document').ready(function() {
+	populateStateDropDown();
 	var eventDate = $("input[id=eventDate]").val();
 	//console.log(eventDate);
 	$("#datetimepicker").datetimepicker({
