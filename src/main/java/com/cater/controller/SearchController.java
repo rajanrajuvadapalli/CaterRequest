@@ -28,16 +28,15 @@ public class SearchController {
 		String zipCode = StringUtils.defaultString(request
 				.getParameter("zip_code"));
 		String cuisineType = StringUtils.defaultString(request
-				.getParameter("cuisine_type"));
+				.getParameter("cuisineType"));
 		if (cuisineType != null && !cuisineType.equals("")) {
 			modelMap.put("restaurants",
 					restaurantService.fetchRestaurantsOfType(cuisineType));
 			modelMap.put("cuisine", cuisineType);
-		} 
-		else {
+		} else {
 			modelMap.put("restaurants", restaurantService.fetchAllRestaurants());
 		}
 		modelMap.put("eventLocation", zipCode);
-        return "t_search";
+		return "t_search";
 	}
 }

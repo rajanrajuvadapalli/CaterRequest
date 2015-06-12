@@ -20,17 +20,17 @@
 					<h1>Order food for your party in just one click!</h1>
 				</div>
 				<form class="form-horizontal" method="GET" id="register-form"
-						action="${pageContext.request.contextPath}/register"
-						ectype="application/x-www-form-urlencoded" autocomplete="off">
-						<input type="hidden" name="as" value="customer">
-						<button type="submit" class="btn btn-default">Lets get started</button>
-					</form>
+					action="${pageContext.request.contextPath}/register"
+					ectype="application/x-www-form-urlencoded" autocomplete="off">
+					<input type="hidden" name="as" value="customer">
+					<button type="submit" class="btn btn-default">Lets get
+						started</button>
+				</form>
 			</div>
 			<div class="background">
 				<img
 					src="${pageContext.request.contextPath}/resources/assets/img/restaurant-bg.jpg"
-					alt=""
-				>
+					alt="">
 			</div>
 		</section>
 		<!--end Hero Image-->
@@ -125,23 +125,19 @@
 				<header>
 					<h2>Search for restaurants nearby</h2>
 				</header>
-				<form class="subscribe form-inline border-less-inputs"
+				<form class="form-inline"
 					action="${pageContext.request.contextPath}/search" method="GET"
-					role="form"
-				>
+					role="form">
 					<div class="row">
-						<div class="col-sm-4">
-							<input type="text" id="main-search" name="zip_code" id="zip_code"
-								placeholder="Enter ZIP Code"
-							>
+						<div class="col-sm-2">
+							<input type="text" id="main-search" size="5" maxlength="5"
+								name="zip_code" id="zip_code" required="required"
+								placeholder="Enter ZIP Code">
 						</div>
-						<div class="col-sm-4">
-							<input type="text" id="main-search" value="${cuisine}"
-								name="cuisine_type" id="cuisine_type"
-								placeholder="Enter Cuisine Type"
-							>
+						<div class="col-sm-2">
+							<span id="cuisineType"></span>
 						</div>
-						<div class="col-sm-4">
+						<div class="col-sm-2">
 							<span class="input-group-btn">
 								<button type="submit" class="btn btn-default">
 									Search<i class="fa fa-angle-right"></i>
@@ -246,8 +242,7 @@
 						<figure>
 							<img
 								src="${pageContext.request.contextPath}/resources/images/people/VijayBhupathi.jpg"
-								alt=""
-							>
+								alt="">
 						</figure>
 						<div class="description">
 							<p>This is an awesome service. You make ordering food for
@@ -278,8 +273,7 @@
 						<figure>
 							<img
 								src="${pageContext.request.contextPath}/resources/assets/img/marker.png"
-								alt=""
-							>
+								alt="">
 						</figure>
 						<div class="description">
 							<h2>Get the best value for money</h2>
@@ -298,11 +292,16 @@
 			<div class="background">
 				<img
 					src="${pageContext.request.contextPath}/resources/assets/img/about-us-bg.jpg"
-					alt=""
-				>
+					alt="">
 			</div>
 			<!--/.bakcground-->
 		</section>
 		<!-- End about 1 -->
 	</div>
 </div>
+
+<script>
+	$('document').ready(function() {
+		populateCuisineTypes();
+	});
+</script>
