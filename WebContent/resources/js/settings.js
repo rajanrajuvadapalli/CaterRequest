@@ -1,19 +1,19 @@
 $('document').ready(function() {
-	//validateProfileForm();
-	//validateAccountSettingsForm();
 	$('button[id=pvc]').click(validatePhoneVerificationCode);
 	$('button[id=send-pvc]').click(sendPhoneVerificationCode);
 });
 
 function validateProfileForm() {
 	var customerName = $("input[name=name]");
-	if (customerName.val()!=null && customerName.val().length>0 && customerName.val().length<4) {
+	if (customerName.val() != null && customerName.val().length > 0
+			&& customerName.val().length < 4) {
 		alert("Name must at least be 4 characters");
 		customerName.focus();
 		return false;
 	}
 	var restaurantName = $("input[name=restaurantName]");
-	if (restaurantName.val()!=null && restaurantName.val().length>0 && restaurantName.val().length<4) {
+	if (restaurantName.val() != null && restaurantName.val().length > 0
+			&& restaurantName.val().length < 4) {
 		alert("Restaurant name must at least be 4 characters");
 		restaurantName.focus();
 		return false;
@@ -23,19 +23,19 @@ function validateProfileForm() {
 
 function validateAccountSettingsForm() {
 	var currPwd = $("input[name=currPwd]");
-	if (currPwd.val().length<5) {
+	if (currPwd.val().length < 5) {
 		alert("Your password must be at least 5 characters long");
 		currPwd.focus();
 		return false;
 	}
 	var newPwd1 = $("input[name=newPwd1]");
-	if (newPwd1.val().length<5) {
+	if (newPwd1.val().length < 5) {
 		alert("Your New password must be at least 5 characters long");
 		newPwd1.focus();
 		return false;
 	}
 	var newPwd2 = $("input[name=newPwd2]");
-	if (newPwd2.val().length<5) {
+	if (newPwd2.val().length < 5) {
 		alert("Your new2 password must be at least 5 characters long");
 		newPwd2.focus();
 		return false;

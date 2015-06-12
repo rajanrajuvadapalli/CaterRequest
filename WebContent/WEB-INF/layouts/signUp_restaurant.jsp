@@ -196,3 +196,9 @@
 		</div>
 	</form>
 </div>
+
+<script>
+	$('document').ready(function() {
+		populateCuisineTypes();
+	});
+</script>

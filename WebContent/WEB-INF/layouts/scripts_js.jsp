@@ -18,10 +18,8 @@
 <!-- <script src="http://maps.google.com/maps?file=api&v=2&key=AIzaSyAlobAYE25Q2m62_DX3wc1AMimO2Xr-WHc" type="text/javascript"></script>  -->
 <!-- <script src = "http://www.myersdaily.org/joseph/javascript/md5.js"></script> -->
 <script src="${pageContext.request.contextPath}/resources/js/md5.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/register.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/cater-request.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/settings.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/customer.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/restaurant.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/distanceCalculator.js"></script>
 <!--<script src="${pageContext.request.contextPath}/resources/js/bootstrap-formhelpers.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery.validate.min.js"></script>
