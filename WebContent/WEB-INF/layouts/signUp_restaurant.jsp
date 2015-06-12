@@ -170,10 +170,7 @@
 					<div class="form-group">
 						<label for="state" class="col-sm-4 control-label">State&nbsp;:</label>
 						<div class="col-sm-6">
-							<input type="text" size="2" name="state" required="required"
-								placeholder="State" class="form-control">
-							<!-- <select id="state" name="state"
-								class="form-control bfh-states inputs"></select> -->
+							<span id="stateArea"></span>
 						</div>
 					</div>
 					<div class="form-group">
@@ -200,5 +197,6 @@
 <script>
 	$('document').ready(function() {
 		populateCuisineTypes();
+		populateStateDropDown();
 	});
 </script>
