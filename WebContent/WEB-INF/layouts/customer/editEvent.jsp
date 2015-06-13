@@ -166,6 +166,7 @@
 					<div class="form-group">
 						<label for="state" class="col-sm-3 control-label">State :</label>
 						<div class="col-sm-6">
+							<input type="hidden" name="stateExisting" value="${event.location.state}">
 							<span id="stateArea"></span>
 						</div>
 					</div>
@@ -212,6 +213,8 @@
 <script>
 $('document').ready(function() {
 	populateStateDropDown();
+	var existingState = $('input[name=stateExisting]').val();
+	$('select[name=state]').val(existingState);
 	var eventDate = $("input[id=eventDate]").val();
 	//console.log(eventDate);
 	$("#datetimepicker").datetimepicker({

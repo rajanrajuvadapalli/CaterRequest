@@ -191,8 +191,8 @@
 				<div class="form-group">
 					<label for="state" class="col-sm-3 control-label">State: </label>
 					<div class="col-sm-6">
-						<input type="text" size="30" maxlength="50" name="state" class="form-control"
-							value="${sessionScope.user.data.state}">
+						<input type="hidden" name="stateExisting" value="${sessionScope.user.data.state}">
+						<span id="stateArea"></span>
 					</div>
 				</div>
 				<div class="form-group">
@@ -224,3 +224,11 @@
 			charges may apply</span>
 	</div>
 </div>
+
+<script>
+$('document').ready(function(){
+	populateStateDropDown();
+	var existingState = $('input[name=stateExisting]').val();
+	$('select[name=state]').val(existingState);
+});
+</script>
