@@ -303,6 +303,5 @@
 <script>
 	$('document').ready(function() {
 		populateCuisineTypes();
-		calculateDistance();
 	});
 </script>
