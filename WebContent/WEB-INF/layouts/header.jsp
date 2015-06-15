@@ -87,6 +87,10 @@
 									Logout </a></li>
 						</ul>
 					</li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>

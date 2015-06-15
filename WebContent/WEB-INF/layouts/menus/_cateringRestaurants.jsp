@@ -31,10 +31,12 @@
 						onsubmit="return validateSelectRestaurantForm()"
 						ectype="application/x-www-form-urlencoded" autocomplete="off">
 						<c:forEach items="${restaurants}" var="r">
-							<span class="restaurants" style="display: none;" data-restaurant-id="${r.id}" data-restaurant-address="${r.address.street1} ${r.address.street2}, ${r.address.city}, ${r.address.state} ${r.address.zip}" data-restaurant-name="${r.name}"></span>
+							<input type="checkbox" value="${r.id}" class="restaurant-address"
+								name="restaurantId" ${prevR.contains(r.id)?"checked":""}
+								data-restaurant-address="${r.address.street1} ${r.address.street2}, ${r.address.city}, ${r.address.state} ${r.address.zip}"
+								data-restaurant-name="${r.name}">
 							<br />
 						</c:forEach>
-						<div class="display-restaurants" data-page='catering'></div>
 						<br>
 						<div class="col-sm-2">
 							<button type="submit" class="btn btn-default">Next</button>

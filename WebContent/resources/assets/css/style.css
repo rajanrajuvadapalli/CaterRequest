@@ -262,7 +262,7 @@ ul.bullets li a:hover {
   overflow: hidden;
 }
 .background img {
-  height: auto;
+  height: 100%;
   width: 100%;
   max-width: inherit;
   position: relative;
@@ -3665,7 +3665,7 @@ ul.bullets li a:hover {
 
 .text-banner {
   display: table;
-  padding: 120px 0;
+  padding: 60px 0;
   width: 100%;
 }
 .text-banner figure {
@@ -3754,7 +3754,7 @@ ul.bullets li a:hover {
 
 body {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-  opacity: 0;
+  opacity: 1;
 }
 
 .page-fade-out {

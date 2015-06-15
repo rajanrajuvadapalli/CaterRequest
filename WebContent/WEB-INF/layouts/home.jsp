@@ -272,7 +272,7 @@
 					<div class="text-banner">
 						<figure>
 							<img
-								src="${pageContext.request.contextPath}/resources/assets/img/marker.png"
+								src="${pageContext.request.contextPath}/resources/assets/img/marker2.png"
 								alt="">
 						</figure>
 						<div class="description">
@@ -291,7 +291,7 @@
 			<!--/.container-->
 			<div class="background">
 				<img
-					src="${pageContext.request.contextPath}/resources/assets/img/about-us-bg.jpg"
+					src="${pageContext.request.contextPath}/resources/assets/img/about-us-bg2.jpg"
 					alt="">
 			</div>
 			<!--/.bakcground-->
@@ -303,5 +303,6 @@
 <script>
 	$('document').ready(function() {
 		populateCuisineTypes();
+		calculateDistance();
 	});
 </script>

@@ -198,6 +198,9 @@
 </div>
 
 <script>
+$('document').ready(function() {
+	populateCuisineTypes();
+});
 	// Bind the 'onClick' event for the 'restaurantName' input field
 	$('input[name=restaurantName]').on('click', function(e) {
 		var $restaurantNameInputField = $(this);

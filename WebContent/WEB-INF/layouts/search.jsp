@@ -17,7 +17,7 @@
 					action="${pageContext.request.contextPath}/search" method="GET"
 					role="form">
 
-					<div class="form-group" id="customer">
+					<div class="form-group">
 						<label for="name" class="col-sm-3 control-label">Zip
 							code&nbsp;:</label>
 						<div class="col-sm-3">
@@ -26,7 +26,7 @@
 								required="required" class="form-control">
 						</div>
 					</div>
-					<div class="form-group" id="customer">
+					<div class="form-group">
 						<label for="name" class="col-sm-3 control-label">Cuisine
 							type&nbsp;:</label>
 						<div class="col-sm-3">
@@ -78,5 +78,6 @@
 <script>
 	$('document').ready(function() {
 		populateCuisineTypes();
+		calculateDistance();
 	});
 </script>
