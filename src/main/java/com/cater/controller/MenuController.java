@@ -35,6 +35,8 @@ import com.cater.model.Restaurant;
 import com.cater.service.CustomerService;
 import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
@@ -65,10 +67,14 @@ public class MenuController {
 	/**
 	 * Select menu form.
 	 *
-	 * @param httpSession the http session
-	 * @param modelMap the model map
-	 * @param request the request
-	 * @param cuisine the cuisine
+	 * @param httpSession
+	 *            the http session
+	 * @param modelMap
+	 *            the model map
+	 * @param request
+	 *            the request
+	 * @param cuisine
+	 *            the cuisine
 	 * @return the string
 	 */
 	@RequestMapping(value = { "selectMenu" }, method = RequestMethod.GET)
@@ -81,15 +87,15 @@ public class MenuController {
 		}
 		String eventId = request.getParameter("eventId");
 		httpSession.setAttribute("eventId", eventId);
-		//First check the DB if a menu is selected earlier for this cuisine
+		// First check the DB if a menu is selected earlier for this cuisine
 		Event e = customerService.findEventWithId(Helper
 				.stringToInteger(eventId));
 		httpSession.setAttribute("eventName", e.getName());
-		List <com.cater.model.Menu> availableMenus = customerService
+		List<com.cater.model.Menu> availableMenus = customerService
 				.findMenusWithEventId(e.getId());
 		String customerCreatedMenuData = null;
 		if (CollectionUtils.isNotEmpty(availableMenus)) {
-			//Get the quote for the cuisine.
+			// Get the quote for the cuisine.
 			for (com.cater.model.Menu menuModel : availableMenus) {
 				if (StringUtils.equalsIgnoreCase(cuisine,
 						menuModel.getCuisineType())) {
@@ -107,12 +113,11 @@ public class MenuController {
 								+ ".json").getFile());
 				Menu menu = new MenuDeserializer().readJSON(f);
 				modelMap.put("menu", menu);
-			}
-			catch (IOException ex) {
+				modelMap.put("categoryNames", getCategoriesList(menu));
+			} catch (IOException ex) {
 				logger.error("Failed to read indian menu.", ex);
 			}
-		}
-		else {
+		} else {
 			logger.debug("Customer already created menu for event "
 					+ e.getName() + " of type " + cuisine);
 			try {
@@ -120,22 +125,37 @@ public class MenuController {
 						Base64.decodeBase64(customerCreatedMenuData));
 				Menu menu = menuDeserializer.readJSON(menuJson);
 				modelMap.put("menu", menu);
-			}
-			catch (IOException ex) {
+				modelMap.put("categoryNames", getCategoriesList(menu));
+			} catch (IOException ex) {
 				logger.error("Failed to read indian menu.", ex);
 			}
 		}
 		return "menus/t__cateringMenu";
 	}
 
+	private List<String> getCategoriesList(Menu menu) {
+		List<String> categoryNames = Lists.newArrayList();
+		if (menu != null) {
+			for (MenuCategory mc : menu.getCategories()) {
+				categoryNames.add(mc.getName());
+			}
+		}
+		return categoryNames;
+	}
+
 	/**
 	 * Save menu.
 	 *
-	 * @param httpSession the http session
-	 * @param modelMap the model map
-	 * @param request the request
-	 * @param itemNames the item names
-	 * @param cuisine the cuisine
+	 * @param httpSession
+	 *            the http session
+	 * @param modelMap
+	 *            the model map
+	 * @param request
+	 *            the request
+	 * @param itemNames
+	 *            the item names
+	 * @param cuisine
+	 *            the cuisine
 	 * @return the string
 	 */
 	@RequestMapping(value = { "saveMenu" }, method = RequestMethod.POST)
@@ -143,7 +163,7 @@ public class MenuController {
 			HttpSession httpSession,
 			ModelMap modelMap,
 			HttpServletRequest request,
-			@RequestParam(value = "itemCode", required = true) String[] itemCodes,
+			@RequestParam(value = "menu_item_codes", required = true) String itemCodesJson,
 			@RequestParam(value = "cuisineType", required = true) String cuisine) {
 		User user = (User) httpSession.getAttribute("user");
 		if (user == null) {
@@ -152,11 +172,14 @@ public class MenuController {
 		String eventId = (String) httpSession.getAttribute("eventId");
 		modelMap.put("cuisineType", cuisine);
 		try {
-			String menuJson = "/menus/"
+			String menuJsonFileName = "/menus/"
 					+ StringUtils.lowerCase(cuisine, Locale.US) + ".json";
-			File f = new File(MenuController.class.getResource(menuJson)
-					.getFile());
+			File f = new File(MenuController.class
+					.getResource(menuJsonFileName).getFile());
 			Menu menu = new MenuDeserializer().readJSON(f);
+			List<String> itemCodes = new ObjectMapper().readValue(
+					itemCodesJson, new TypeReference<List<String>>() {
+					});
 			for (String selectedItemCode : itemCodes) {
 				logger.debug("Selected item code: " + selectedItemCode);
 				for (MenuCategory cat : menu.getCategories()) {
@@ -170,13 +193,12 @@ public class MenuController {
 			}
 			Event e = customerService.findEventWithId(Helper
 					.stringToInteger(eventId));
-			//Create or update menu in database
+			// Create or update menu in database
 			com.cater.model.Menu menuModel;
 			Integer menuId = (Integer) httpSession.getAttribute("menuId");
 			if (menuId == null) {
 				menuModel = new com.cater.model.Menu();
-			}
-			else {
+			} else {
 				menuModel = customerService.findMenuWithId(menuId);
 			}
 			menuModel.setEvent(e);
@@ -193,11 +215,11 @@ public class MenuController {
 			customerService.saveOrUpdateMenu(menuModel);
 			menuId = menuModel.getId();
 			httpSession.setAttribute("menuId", menuId);
-			Set <Restaurant> restaurants = restaurantService
+			Set<Restaurant> restaurants = restaurantService
 					.fetchRestaurantsOfType(cuisine);
 			modelMap.put("restaurants", restaurants);
-			modelMap.put("eventLocation",e.getLocation());
-			Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
+			modelMap.put("eventLocation", e.getLocation());
+			Set<Integer> previouslySelectedRestaurants = Sets.newHashSet();
 			for (Restaurant r : restaurants) {
 				Quote quote = restaurantService
 						.findQuoteWithRestaurantIdAndMenuId(r.getId(), menuId);
@@ -212,8 +234,7 @@ public class MenuController {
 				}
 			}
 			modelMap.put("prevR", previouslySelectedRestaurants);
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			logger.error(
 					"Exception occurred while reading menu and saving quote.",
 					e);
@@ -225,10 +246,14 @@ public class MenuController {
 	/**
 	 * View.
 	 *
-	 * @param httpSession the http session
-	 * @param modelMap the model map
-	 * @param request the request
-	 * @param menuId the menu id
+	 * @param httpSession
+	 *            the http session
+	 * @param modelMap
+	 *            the model map
+	 * @param request
+	 *            the request
+	 * @param menuId
+	 *            the menu id
 	 * @return the string
 	 */
 	@RequestMapping(value = { "view/{menuId}" }, method = RequestMethod.GET)
@@ -247,9 +272,9 @@ public class MenuController {
 			Menu newMenu = new Menu();
 			newMenu.setCuisine(menu.getCuisine());
 			if (menu != null) {
-				List <MenuCategory> categories = Lists.newArrayList();
+				List<MenuCategory> categories = Lists.newArrayList();
 				for (MenuCategory mc : menu.getCategories()) {
-					List <MenuItem> items = Lists.newArrayList();
+					List<MenuItem> items = Lists.newArrayList();
 					for (MenuItem menuItem : mc.getItems()) {
 						if (menuItem.isSelected()) {
 							items.add(menuItem);
@@ -267,8 +292,8 @@ public class MenuController {
 				Restaurant restaurant = restaurantService
 						.findRestaurantWithLoginId(user.getLoginID());
 				if (restaurant != null) {
-					//If a restaurant is requesting to see the menu, 
-					//it can also see the price it quoted before.
+					// If a restaurant is requesting to see the menu,
+					// it can also see the price it quoted before.
 					Quote quote = restaurantService
 							.findQuoteWithRestaurantIdAndMenuId(
 									restaurant.getId(), menuId);
@@ -276,8 +301,7 @@ public class MenuController {
 				}
 				modelMap.put("event", menuModel.getEvent());
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			logger.error(ex);
 		}
 		return "menus/t__cateringMenuReadOnly";
