@@ -9,7 +9,6 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -48,6 +47,7 @@ import com.google.common.collect.Sets;
 public class MenuController {
 	/** The Constant logger. */
 	private static final Logger logger = Logger.getLogger(MenuController.class);
+	private static final String MENU_DELIMITER = "|";
 	/** The customer service. */
 	@Autowired
 	private CustomerService customerService;
@@ -91,7 +91,7 @@ public class MenuController {
 		Event e = customerService.findEventWithId(Helper
 				.stringToInteger(eventId));
 		httpSession.setAttribute("eventName", e.getName());
-		List<com.cater.model.Menu> availableMenus = customerService
+		List <com.cater.model.Menu> availableMenus = customerService
 				.findMenusWithEventId(e.getId());
 		String customerCreatedMenuData = null;
 		if (CollectionUtils.isNotEmpty(availableMenus)) {
@@ -105,36 +105,41 @@ public class MenuController {
 				}
 			}
 		}
-		if (customerCreatedMenuData == null) {
-			httpSession.setAttribute("menuId", null);
-			try {
-				File f = new File(MenuController.class.getResource(
-						"/menus/" + StringUtils.lowerCase(cuisine, Locale.US)
-								+ ".json").getFile());
-				Menu menu = new MenuDeserializer().readJSON(f);
-				modelMap.put("menu", menu);
-				modelMap.put("categoryNames", getCategoriesList(menu));
-			} catch (IOException ex) {
-				logger.error("Failed to read indian menu.", ex);
+		Menu menu = null;
+		try {
+			File f = new File(MenuController.class.getResource(
+					"/menus/" + StringUtils.lowerCase(cuisine, Locale.US)
+							+ ".json").getFile());
+			menu = new MenuDeserializer().readJSON(f);
+			modelMap.put("menu", menu);
+			modelMap.put("categoryNames", getCategoriesList(menu));
+			if (customerCreatedMenuData == null) {
+				httpSession.setAttribute("menuId", null);
 			}
-		} else {
-			logger.debug("Customer already created menu for event "
-					+ e.getName() + " of type " + cuisine);
-			try {
-				String menuJson = new String(
-						Base64.decodeBase64(customerCreatedMenuData));
-				Menu menu = menuDeserializer.readJSON(menuJson);
-				modelMap.put("menu", menu);
-				modelMap.put("categoryNames", getCategoriesList(menu));
-			} catch (IOException ex) {
-				logger.error("Failed to read indian menu.", ex);
+			else {
+				logger.debug("Customer already created menu for event "
+						+ e.getName() + " of type " + cuisine);
+				for (String previouslySelectedItemCode : StringUtils.split(
+						customerCreatedMenuData, MENU_DELIMITER)) {
+					for (MenuCategory cat : menu.getCategories()) {
+						for (MenuItem menuItem : cat.getItems()) {
+							if (StringUtils.equals(previouslySelectedItemCode,
+									menuItem.getCode())) {
+								menuItem.setSelected(true);
+							}
+						}
+					}
+				}
 			}
+		}
+		catch (IOException ex) {
+			logger.error("Failed to read menu.", ex);
 		}
 		return "menus/t__cateringMenu";
 	}
 
-	private List<String> getCategoriesList(Menu menu) {
-		List<String> categoryNames = Lists.newArrayList();
+	private List <String> getCategoriesList(Menu menu) {
+		List <String> categoryNames = Lists.newArrayList();
 		if (menu != null) {
 			for (MenuCategory mc : menu.getCategories()) {
 				categoryNames.add(mc.getName());
@@ -172,25 +177,27 @@ public class MenuController {
 		String eventId = (String) httpSession.getAttribute("eventId");
 		modelMap.put("cuisineType", cuisine);
 		try {
-			String menuJsonFileName = "/menus/"
-					+ StringUtils.lowerCase(cuisine, Locale.US) + ".json";
-			File f = new File(MenuController.class
-					.getResource(menuJsonFileName).getFile());
-			Menu menu = new MenuDeserializer().readJSON(f);
-			List<String> itemCodes = new ObjectMapper().readValue(
-					itemCodesJson, new TypeReference<List<String>>() {
+			// String menuJsonFileName = "/menus/"
+			// + StringUtils.lowerCase(cuisine, Locale.US) + ".json";
+			// File f = new File(MenuController.class
+			// .getResource(menuJsonFileName).getFile());
+			// Menu menu = new MenuDeserializer().readJSON(f);
+			List <String> itemCodes = new ObjectMapper().readValue(
+					itemCodesJson, new TypeReference <List <String>>() {
 					});
+			/*
+			 * for (String selectedItemCode : itemCodes) {
+			 * logger.debug("Selected item code: " + selectedItemCode); for
+			 * (MenuCategory cat : menu.getCategories()) { for (MenuItem
+			 * menuItem : cat.getItems()) { if
+			 * (StringUtils.equals(selectedItemCode, menuItem.getCode())) {
+			 * menuItem.setSelected(true); } } } }
+			 */
+			StringBuilder stringBuilder = new StringBuilder();
 			for (String selectedItemCode : itemCodes) {
-				logger.debug("Selected item code: " + selectedItemCode);
-				for (MenuCategory cat : menu.getCategories()) {
-					for (MenuItem menuItem : cat.getItems()) {
-						if (StringUtils.equals(selectedItemCode,
-								menuItem.getCode())) {
-							menuItem.setSelected(true);
-						}
-					}
-				}
+				stringBuilder.append(selectedItemCode).append(MENU_DELIMITER);
 			}
+			String newData = stringBuilder.toString();
 			Event e = customerService.findEventWithId(Helper
 					.stringToInteger(eventId));
 			// Create or update menu in database
@@ -198,28 +205,29 @@ public class MenuController {
 			Integer menuId = (Integer) httpSession.getAttribute("menuId");
 			if (menuId == null) {
 				menuModel = new com.cater.model.Menu();
-			} else {
+			}
+			else {
 				menuModel = customerService.findMenuWithId(menuId);
 			}
 			menuModel.setEvent(e);
-			String data = menuSerializer.serialize(menu);
-			logger.debug("Json menu (" + data.length() + ") ");
-			logger.debug(data);
-			data = Base64.encodeBase64String(data.getBytes());
-			logger.debug("Encoded Json menu (" + data.length() + ")");
-			logger.debug(data);
-			boolean isMenuChanged = !StringUtils.equalsIgnoreCase(data,
+			// String data = menuSerializer.serialize(menu);
+			// logger.debug("Json menu (" + data.length() + ") ");
+			logger.debug("New menu:" + newData);
+			// data = Base64.encodeBase64String(data.getBytes());
+			// logger.debug("Encoded Json menu (" + data.length() + ")");
+			// logger.debug(data);
+			boolean isMenuChanged = !StringUtils.equalsIgnoreCase(newData,
 					menuModel.getData());
-			menuModel.setData(data);
+			menuModel.setData(newData);
 			menuModel.setCuisineType(cuisine);
 			customerService.saveOrUpdateMenu(menuModel);
 			menuId = menuModel.getId();
 			httpSession.setAttribute("menuId", menuId);
-			Set<Restaurant> restaurants = restaurantService
+			Set <Restaurant> restaurants = restaurantService
 					.fetchRestaurantsOfType(cuisine);
 			modelMap.put("restaurants", restaurants);
 			modelMap.put("eventLocation", e.getLocation());
-			Set<Integer> previouslySelectedRestaurants = Sets.newHashSet();
+			Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
 			for (Restaurant r : restaurants) {
 				Quote quote = restaurantService
 						.findQuoteWithRestaurantIdAndMenuId(r.getId(), menuId);
@@ -234,7 +242,8 @@ public class MenuController {
 				}
 			}
 			modelMap.put("prevR", previouslySelectedRestaurants);
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			logger.error(
 					"Exception occurred while reading menu and saving quote.",
 					e);
@@ -265,18 +274,27 @@ public class MenuController {
 		}
 		try {
 			com.cater.model.Menu menuModel = menuDAO.findById(menuId);
-			String menuDataJsonFromDb = new String(
-					Base64.decodeBase64(menuModel.getData()));
-			logger.debug(menuDataJsonFromDb);
-			Menu menu = new MenuDeserializer().readJSON(menuDataJsonFromDb);
+			//String menuDataJsonFromDb = new String(
+			//		Base64.decodeBase64(menuModel.getData()));
+			//logger.debug(menuDataJsonFromDb);
+			//Menu menu = new MenuDeserializer().readJSON(menuDataJsonFromDb);
+			File f = new File(MenuController.class.getResource(
+					"/menus/"
+							+ StringUtils.lowerCase(menuModel.getCuisineType(),
+									Locale.US) + ".json").getFile());
+			Menu menu = new MenuDeserializer().readJSON(f);
 			Menu newMenu = new Menu();
 			newMenu.setCuisine(menu.getCuisine());
-			if (menu != null) {
-				List<MenuCategory> categories = Lists.newArrayList();
+			if (menuModel != null && menu != null) {
+				List <String> previouslySelectedMenuItemCodes = Lists
+						.newArrayList(StringUtils.split(menuModel.getData(),
+								MENU_DELIMITER));
+				List <MenuCategory> categories = Lists.newArrayList();
 				for (MenuCategory mc : menu.getCategories()) {
-					List<MenuItem> items = Lists.newArrayList();
+					List <MenuItem> items = Lists.newArrayList();
 					for (MenuItem menuItem : mc.getItems()) {
-						if (menuItem.isSelected()) {
+						if (previouslySelectedMenuItemCodes.contains(menuItem
+								.getCode())) {
 							items.add(menuItem);
 						}
 					}
@@ -301,7 +319,8 @@ public class MenuController {
 				}
 				modelMap.put("event", menuModel.getEvent());
 			}
-		} catch (Exception ex) {
+		}
+		catch (Exception ex) {
 			logger.error(ex);
 		}
 		return "menus/t__cateringMenuReadOnly";

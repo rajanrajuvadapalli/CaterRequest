@@ -37,7 +37,8 @@ public class MenuDeserializer {
 	 * @throws JsonParseException the json parse exception
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public Menu readJSON(String aString) throws JsonParseException, IOException {
+	private Menu readJSON(String aString) throws JsonParseException,
+			IOException {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING,
 				true);
