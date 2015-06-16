@@ -8,61 +8,61 @@
                 {
                     "code": "C1_1",
                     "name": "Baby Corn Manchurian",
-                    "description": "",
+                    "description": "Baby corn battered and cooked with Manchurian sauce.",
                     "isSelected": false
                 },
                 {
                     "code": "C1_2",
                     "name": "Egg Puffs",
-                    "description": "",
+                    "description": "Egg along with spices baked in pastry sheets.",
                     "isSelected": false
                 },
                 {
                     "code": "C1_3",
-                    "name": "Hot Chili Pakoras",
-                    "description": "",
+                    "name": "Hot Chilli Pakoras",
+                    "description": "Fresh chilli dipped in batter and deep fried.",
                     "isSelected": false
                 },
                 {
                     "code": "C1_4",
                     "name": "Onion Pakora",
-                    "description": "",
+                    "description": "Delicately spiced onion, fritters dipped in batter and fried.",
                     "isSelected": false
                 },
                 {
                     "code": "C1_5",
                     "name": "Samosa",
-                    "description": "",
+                    "description": "Crisp patties stuffed with potatoes and green peas.",
                     "isSelected": false
                 },
                 {
                     "code": "C1_6",
                     "name": "Vegetable Cutlets",
-                    "description": "",
+                    "description": "Mashed potatoes and peas patties deep fried and served hot with hot and mild sauce.",
                     "isSelected": false
                 },
                 {
                     "code": "C1_7",
                     "name": "Papads",
-                    "description": "",
+                    "description": "Thin wafer like product, circular in shape, made out of pulse floor.",
                     "isSelected": false
                 },
                 {
                     "code": "C1_8",
                     "name": "Gobi Manchurian",
-                    "description": "",
+                    "description": "Cauliflower battered and cooked with Manchurian sauce.",
                     "isSelected": false
                 },
                 {
                     "code": "C1_9",
                     "name": "Medu Vada",
-                    "description": "",
+                    "description": "Deep fried lentil donuts.",
                     "isSelected": false
                 },
                 {
                     "code": "C1_10",
                     "name": "Vegetable Pakora",
-                    "description": "",
+                    "description": "Delicately spiced mixed vegetable fritters dipped in batter and fried.",
                     "isSelected": false
                 }
             ]
@@ -74,37 +74,37 @@
                 {
                     "code": "C2_1",
                     "name": "Chicken 65",
-                    "description": "",
+                    "description": "Boneless chicken cubs marinated in Indian spices and deep fried.",
                     "isSelected": false
                 },
                 {
                     "code": "C2_2",
                     "name": "Chicken Manchurian",
-                    "description": "",
+                    "description": "Boneless chicken cooked with Manchurian sauce.",
                     "isSelected": false
                 },
                 {
                     "code": "C2_3",
                     "name": "Chicken Pepper Fry",
-                    "description": "",
+                    "description": "Boneless chicken cooked with south Indian spices and tossed with roasted crushed peppercorns.",
                     "isSelected": false
                 },
                 {
                     "code": "C2_4",
                     "name": "Chicken Tikka Kabob",
-                    "description": "",
+                    "description": "Boneless chicken marinated in yoghurt with herbs and spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C2_5",
                     "name": "Chilli Chicken",
-                    "description": "",
+                    "description": "Boneless chicken, chillies and onions sauteed and cooked with chill paste.",
                     "isSelected": false
                 },
                 {
                     "code": "C2_6",
                     "name": "Tandoori Chicken",
-                    "description": "",
+                    "description": "Chicken marinated in yoghurt with special herbs and spices.",
                     "isSelected": false
                 }
             ]
@@ -116,31 +116,31 @@
                 {
                     "code": "C3_1",
                     "name": "Apollo Fish",
-                    "description": "",
+                    "description": "Fish strips battered and pan fried with garlic and chilli sauce.",
                     "isSelected": false
                 },
                 {
                     "code": "C3_2",
                     "name": "Chilli Fish",
-                    "description": "",
+                    "description": "Fish fillet battered and tossed with Manchurian sauce.",
                     "isSelected": false
                 },
                 {
                     "code": "C3_3",
                     "name": "Chilli Shrimp",
-                    "description": "",
+                    "description": "Shrimp cooked with chillies and onions sauteed with chilli paste.",
                     "isSelected": false
                 },
                 {
                     "code": "C3_4",
                     "name": "Fish Pakora",
-                    "description": "",
+                    "description": "Chunky white fish marinated in lime, ginger and garlic, coated in a spiced gram flour batter then fried.",
                     "isSelected": false
                 },
                 {
                     "code": "C3_5",
                     "name": "Shrimp Pakora",
-                    "description": "",
+                    "description": "Prawns marinated in lime, ginger and garlic, coated in a spiced gram flour batter then fried.",
                     "isSelected": false
                 }
             ]
@@ -152,25 +152,25 @@
                 {
                     "code": "C4_1",
                     "name": "Sambar",
-                    "description": "",
+                    "description": "Lentil soup simmered with tamarind juice and Indian spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C4_2",
                     "name": "Rasam",
-                    "description": "",
+                    "description": "Aromatic Indian soup simmered with tamarind juice and mild spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C4_3",
                     "name": "Chicken Corn Soup",
-                    "description": "",
+                    "description": "Soup made of corn and chicken.",
                     "isSelected": false
                 },
                 {
                     "code": "C4_4",
                     "name": "Hot and Sour Chicken Soup",
-                    "description": "",
+                    "description": "Chicken soup made of Indian spices.",
                     "isSelected": false
                 }
             ]
@@ -182,25 +182,25 @@
                 {
                     "code": "C5_1",
                     "name": "Dal Makhani",
-                    "description": "",
+                    "description": "A spicy and heavy dal preparation made with a combination of rajma and urad dal.",
                     "isSelected": false
                 },
                 {
                     "code": "C5_2",
-                    "name": "Dal Thadka",
-                    "description": "",
+                    "name": "Dal Tadka",
+                    "description": "Dal tadka is a punjabi yellow dal cooked with onion, tomato and flavoured with generous amount of tempered butter and spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C5_3",
                     "name": "Mango Dal",
-                    "description": "",
+                    "description": "Unripe mangoes cooked with yellow lentils.",
                     "isSelected": false
                 },
                 {
                     "code": "C5_4",
                     "name": "Tomato Dal",
-                    "description": "",
+                    "description": "Tomato cooked with yellow lentils.",
                     "isSelected": false
                 }
             ]
@@ -212,13 +212,13 @@
                 {
                     "code": "C6_1",
                     "name": "Aloo Baingan",
-                    "description": "",
+                    "description": "Amazing combination of potato and egg plant to make a delicious flavourful dish.",
                     "isSelected": false
                 },
                 {
                     "code": "C6_2",
                     "name": "Aloo Fry",
-                    "description": "",
+                    "description": "Potato cooked or pan fried with spices.",
                     "isSelected": false
                 },
                 {
@@ -230,79 +230,79 @@
                 {
                     "code": "C6_4",
                     "name": "Aloo Korma",
-                    "description": "",
+                    "description": "Potatoes and cauliflower cooked with Indian spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C6_5",
                     "name": "Baingan Bartha",
-                    "description": "",
+                    "description": "A delicious Punjabi flavoured roasted and cooked in onion & tomato gravy with aromatic Indian spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C6_6",
                     "name": "Bhindi Fry",
-                    "description": "",
+                    "description": "Cut okra cooked or pan fried with spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C6_7",
                     "name": "Channa Masala",
-                    "description": "",
+                    "description": "Garbanzo (chick peas) beans cooked with Indian spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C6_8",
                     "name": "Gutti Vankaya",
-                    "description": "",
+                    "description": "South Indian recipe consisting of eggplants, stuffed with a flavourful paste.",
                     "isSelected": false
                 },
                 {
                     "code": "C6_9",
                     "name": "Malai Kofta",
-                    "description": "",
+                    "description": "Vegetables and cheese dumplings cooked in mildly spiced sauce.",
                     "isSelected": false
                 },
                 {
                     "code": "C6_10",
                     "name": "Mixed Vegetable Fry",
-                    "description": "",
+                    "description": "Stir fry of mixed vegetables with Indian spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C6_11",
                     "name": "Mixed Vegetable Korma",
-                    "description": "",
+                    "description": "Mixed vegetable cooked with blend of yoghurt, nuts and spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C6_12",
-                    "name": "Mutter Panneer",
-                    "description": "",
+                    "name": "Mutter Paneer",
+                    "description": "North Indian curry made with mutter (peas) and paneer (cottage cheese).",
                     "isSelected": false
                 },
                 {
                     "code": "C6_13",
-                    "name": "Navratan Korma",
-                    "description": "",
+                    "name": "Navaratan Korma",
+                    "description": "Mixed vegetables in mild spiced sauce with dry fruits and nuts.",
                     "isSelected": false
                 },
                 {
                     "code": "C6_14",
                     "name": "Paneer Butter Masala",
-                    "description": "",
+                    "description": "Home made cheese cubes cooked with tomatoes, onion and bell peppers.",
                     "isSelected": false
                 },
                 {
                     "code": "C6_15",
                     "name": "Rajma Dal Curry",
-                    "description": "",
+                    "description": "Red kidney beans with thick gravy with many Indian spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C6_16",
                     "name": "Saag Paneer",
-                    "description": "",
+                    "description": "Indian dish of cooked spinach studded with cubed of fried paneer cheese.",
                     "isSelected": false
                 }
             ]
@@ -314,85 +314,85 @@
                 {
                     "code": "C7_1",
                     "name": "Chicken Chettinadu",
-                    "description": "",
+                    "description": "Boneless chicken cooked with south Indian spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C7_2",
                     "name": "Chicken Curry",
-                    "description": "",
+                    "description": "Boneless chicken cooked with spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C7_3",
                     "name": "Chicken Fry",
-                    "description": "",
+                    "description": "Boneless chicken pan fried with spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C7_4",
                     "name": "Chicken Korma",
-                    "description": "",
+                    "description": "Boneless chicken cooked with blend of yoghurt, nuts and spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C7_5",
                     "name": "Chicken Makhani (Butter Chicken)",
-                    "description": "",
+                    "description": "Boneless chicken cooked in butter sauce with mild spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C7_6",
                     "name": "Chicken Pepper Fry",
-                    "description": "",
+                    "description": "Boneless chicken cooked with south Indian spices and tossed with roasted crushed peppercorns.",
                     "isSelected": false
                 },
                 {
                     "code": "C7_7",
                     "name": "Chicken Tikka Masala",
-                    "description": "",
+                    "description": "Boneless chicken tikka cooked in a spicy sauce.",
                     "isSelected": false
                 },
                 {
                     "code": "C7_8",
                     "name": "Egg Curry",
-                    "description": "",
+                    "description": "Eggs cooked with spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C7_9",
                     "name": "Goat Curry",
-                    "description": "",
+                    "description": "Boneless goat cooked with spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C7_10",
                     "name": "Goat Kadai",
-                    "description": "",
+                    "description": "Goat meat prepared in mustard oil with julian ginger",
                     "isSelected": false
                 },
                 {
                     "code": "C7_11",
                     "name": "Gongura Mutton",
-                    "description": "",
+                    "description": "Mutton cooked with leafy vegetable.",
                     "isSelected": false
                 },
                 {
                     "code": "C7_12",
                     "name": "Kheema Mutter",
-                    "description": "",
+                    "description": "Minced mutton and green peas turned into a spicy dish.",
                     "isSelected": false
                 },
                 {
                     "code": "C7_13",
                     "name": "Lamb Curry",
-                    "description": "",
+                    "description": "Boneless lamb cooked with spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C7_14",
                     "name": "Lamb Rogan Josh",
-                    "description": "",
+                    "description": "Boneless lamb cooked in butter sauce with mild spices.",
                     "isSelected": false
                 }
             ]
@@ -404,31 +404,31 @@
                 {
                     "code": "C8_1",
                     "name": "Andhra Fish Curry",
-                    "description": "",
+                    "description": "Fish cooked in special tamarind (sour) sauce, pan fried and garnished with onions and chillies.",
                     "isSelected": false
                 },
                 {
                     "code": "C8_2",
                     "name": "Fish Pulusu",
-                    "description": "",
+                    "description": "Authentic recipe where in the fish is cooked with simple spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C8_3",
                     "name": "Malabar Fish Curry",
-                    "description": "",
+                    "description": "Fish cooked with mild coconut sauce.",
                     "isSelected": false
                 },
                 {
                     "code": "C8_4",
                     "name": "Malabar Shrimp",
-                    "description": "",
+                    "description": "Shrimp cooked with mild coconut sauce.",
                     "isSelected": false
                 },
                 {
                     "code": "C8_5",
                     "name": "Shrimp Curry",
-                    "description": "",
+                    "description": "Shrimp cooked with herbs and spices.",
                     "isSelected": false
                 }
             ]
@@ -440,55 +440,55 @@
                 {
                     "code": "C9_1",
                     "name": "Bisi Bele Bath",
-                    "description": "",
+                    "description": "Rice cooked with lentil soup.",
                     "isSelected": false
                 },
                 {
                     "code": "C9_2",
                     "name": "Curd Rice",
-                    "description": "",
+                    "description": "Cooked rice is combined with curd or yoghurt and then seasoned with chilly, curry leaves, ginger, urad dal, mustard seeds, channa dal and hing.",
                     "isSelected": false
                 },
                 {
                     "code": "C9_3",
                     "name": "Jeera Rice",
-                    "description": "",
+                    "description": "Jeera rice is an Indian dish consisting of rice and cumin seeds.",
                     "isSelected": false
                 },
                 {
                     "code": "C9_4",
                     "name": "Lemon Rice",
-                    "description": "",
+                    "description": "Steam cooked rice mixed with lemon sauce and mild spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C9_5",
                     "name": "Pulihora Rice",
-                    "description": "",
+                    "description": "Steam cooked rice mixed with tamarind sauce and mild spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C9_6",
-                    "name": "Vegetabe Fried Rice",
-                    "description": "",
+                    "name": "Vegetable Fried Rice",
+                    "description": "Mixed vegetables cooked and pan-fried with basmati rice.",
                     "isSelected": false
                 },
                 {
                     "code": "C9_7",
                     "name": "Vegetable Biryani",
-                    "description": "",
+                    "description": "Mixed vegetable cooked with basmati rice, mild spices and herbs.",
                     "isSelected": false
                 },
                 {
                     "code": "C9_8",
                     "name": "Vegetable Pulao",
-                    "description": "",
+                    "description": "Spicy rice dish prepared by cooking rice with various vegetables and spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C9_9",
                     "name": "White Rice",
-                    "description": "",
+                    "description": "Steamed cooked plain basamti rice.",
                     "isSelected": false
                 }
             ]
@@ -500,31 +500,31 @@
                 {
                     "code": "C10_1",
                     "name": "Chicken Biryani",
-                    "description": "",
+                    "description": "Chicken cooked with basmati rice.",
                     "isSelected": false
                 },
                 {
                     "code": "C10_2",
                     "name": "Chicken Fried Rice",
-                    "description": "",
+                    "description": "Chicken cooked and pan-fried with basmati rice.",
                     "isSelected": false
                 },
                 {
                     "code": "C10_3",
                     "name": "Goat Biryani",
-                    "description": "",
+                    "description": "Goat meat cooked with basmati rice, mild spices and herbs.",
                     "isSelected": false
                 },
                 {
                     "code": "C10_4",
                     "name": "Hyderabadi Chicken Biryani",
-                    "description": "",
+                    "description": "Chicken cooked with basmati rice in hyderabadi style.",
                     "isSelected": false
                 },
                 {
                     "code": "C10_5",
                     "name": "Lamb Biryani",
-                    "description": "",
+                    "description": "Lamb cooked with basmati rice, mild spices and herbs.",
                     "isSelected": false
                 }
             ]
@@ -536,37 +536,37 @@
                 {
                     "code": "C11_1",
                     "name": "Butten Naan",
-                    "description": "",
+                    "description": "Indian bread tossed with butter.",
                     "isSelected": false
                 },
                 {
                     "code": "C11_2",
                     "name": "Garlic Naan",
-                    "description": "",
+                    "description": "Naan stuffed with garlic and spices.",
                     "isSelected": false
                 },
                 {
                     "code": "C11_3",
                     "name": "Keema Naan",
-                    "description": "",
+                    "description": "Naan stuffed with ground lamb.",
                     "isSelected": false
                 },
                 {
                     "code": "C11_4",
                     "name": "Naan",
-                    "description": "",
+                    "description": "Indian bread made with all purpose flour baked in a clay oven.",
                     "isSelected": false
                 },
                 {
                     "code": "C11_5",
                     "name": "Roti",
-                    "description": "",
+                    "description": "Whole-wheat Indian bread baked in clay oven.",
                     "isSelected": false
                 },
                 {
                     "code": "C11_6",
                     "name": "Spinach Naan",
-                    "description": "",
+                    "description": "Naan stuffed with spinach and spices.",
                     "isSelected": false
                 }
             ]
@@ -578,67 +578,55 @@
                 {
                     "code": "C12_1",
                     "name": "Gulab Jamoon",
-                    "description": "",
+                    "description": "Indian milk cheese balls fried and soaked in honey syrup. Does not come with ice cream.",
                     "isSelected": false
                 },
                 {
                     "code": "C12_2",
                     "name": "Beets Halwa",
-                    "description": "",
+                    "description": "Beets cooked in milk and dry nuts.",
                     "isSelected": false
                 },
                 {
                     "code": "C12_3",
                     "name": "Carrot Halwa",
-                    "description": "",
+                    "description": "Carrots cooked in milk and dry nuts.",
                     "isSelected": false
                 },
                 {
                     "code": "C12_4",
                     "name": "Double Ka Meeta",
-                    "description": "",
+                    "description": "Pan-fried bread slices are dipped in a cardamom-scented syrup and simmered with milk, raisins, and nuts.",
                     "isSelected": false
                 },
                 {
                     "code": "C12_5",
                     "name": "Fruit Custard",
-                    "description": "",
+                    "description": "Fruit curd is a dessert spread and topping usually made with fruits.",
                     "isSelected": false
                 },
                 {
                     "code": "C12_6",
                     "name": "Mango Mousse",
-                    "description": "",
+                    "description": "Dessert made with heavy whipping cream and mango pulp",
                     "isSelected": false
                 },
                 {
                     "code": "C12_7",
-                    "name": "Rice Kheer",
-                    "description": "",
+                    "name": "Kheer",
+                    "description": "Delicious rice pudding, garnished with nuts and served chilled.",
                     "isSelected": false
                 },
                 {
                     "code": "C12_8",
-                    "name": "Semya Payasam",
-                    "description": "",
+                    "name": "Mysore Pak",
+                    "description": "Delicious dessert made with chickpea flour and sugar.",
                     "isSelected": false
                 },
                 {
                     "code": "C12_9",
-                    "name": "Mysore Pak",
-                    "description": "",
-                    "isSelected": false
-                },
-                {
-                    "code": "C12_10",
-                    "name": "Kheer",
-                    "description": "",
-                    "isSelected": false
-                },
-                {
-                    "code": "C12_11",
                     "name": "Rava Kesari",
-                    "description": "",
+                    "description": "Dessert made with sooji and ghee",
                     "isSelected": false
                 }
             ]
@@ -650,55 +638,55 @@
                 {
                     "code": "C13_1",
                     "name": "Mango pickle",
-                    "description": "",
+                    "description": "Spicy, hot and tangy pickle made using raw unripe mango.",
                     "isSelected": false
                 },
                 {
                     "code": "C13_2",
                     "name": "Cauliflower pickle",
-                    "description": "",
+                    "description": "Spicy, hot and tangy pickle made using Cauliflower.",
                     "isSelected": false
                 },
                 {
                     "code": "C13_3",
                     "name": "Mixed veg pickle",
-                    "description": "",
+                    "description": "Spicy, hot and tangy pickle made using mixed vegetable.",
                     "isSelected": false
                 },
                 {
                     "code": "C13_4",
                     "name": "Coconut chutney",
-                    "description": "",
+                    "description": "Chutney made with fresh coconut, lentils, subtly spiced with green chillies.",
                     "isSelected": false
                 },
                 {
                     "code": "C13_5",
                     "name": "Tomato chutney",
-                    "description": "",
+                    "description": "Spicy tangy chutney made from tomatoes.",
                     "isSelected": false
                 },
                 {
                     "code": "C13_6",
                     "name": "Mint chutney",
-                    "description": "",
+                    "description": "Chutney made with fresh mint, spiced with few green chillies.",
                     "isSelected": false
                 },
                 {
                     "code": "C13_7",
                     "name": "Tamarind chutney",
-                    "description": "",
+                    "description": "Spicy, hot and tangy chutney made using tamarind paste.",
                     "isSelected": false
                 },
                 {
                     "code": "C13_8",
                     "name": "Raita",
-                    "description": "",
+                    "description": "Home made yoghurt with onions, tomatoes and cucumber.",
                     "isSelected": false
                 },
                 {
                     "code": "C13_9",
                     "name": "Curd",
-                    "description": "",
+                    "description": "Curds is a dairy product obtained by curdling milk (Indian Yoghurt) .",
                     "isSelected": false
                 }
             ]
