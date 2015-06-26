@@ -3,7 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<div class="page-header">
+<div class="col-sm-offset-2 page-header">
 	<h1>${event.name}</h1>
 </div>
 <div class="row">
@@ -34,6 +34,19 @@
 						</div>
 					</c:if>
 				</c:forEach>
+				<c:if test="${not empty menu.comments}">
+					<c:choose>
+						<c:when test="${user.role == 'RESTAURANT'}">
+							<b>Comments from Customer:</b>
+							<br />
+						</c:when>
+						<c:otherwise>
+							<b>Your comments:</b>
+							<br />
+						</c:otherwise>
+					</c:choose>
+					<pre>${menu.comments}</pre>
+				</c:if>
 			</div>
 		</div>
 	</div>
@@ -126,7 +139,7 @@
 		</div>
 	</c:if>
 </div>
-<div class="col-sm-1">
+<div class="col-sm-1 col-sm-offset-2">
 	<button type="button" class="btn btn-default"
 		onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">Back</button>
 </div>

@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
-<div class="page-header">
+<div class="col-sm-offset-2 page-header">
 	<h1>${sessionScope.eventName}/${cuisineType}menu</h1>
 	<input type="hidden" name="eventAddress" id="event-address"
 		class="event-address"
@@ -13,7 +13,7 @@
 </div>
 
 
-<div class="col-sm-12">
+<div class="col-sm-9 col-sm-offset-2">
 	<h2>Select restaurants you are interested in</h2>
 	<div class="panel panel-warning">
 		<div class="panel-heading">

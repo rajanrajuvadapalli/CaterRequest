@@ -228,6 +228,8 @@
 										<input type="hidden" name="menu_items" id="menu-items" >
 										<input type="hidden" name="menu_item_codes" id="menu-item-codes" >
 										<input type="hidden" name="cuisineType" value="${menu.cuisine}">
+										<textarea rows="4" cols="50" name="comments" placeholder="Enter you comments to restaurant here" class="form-control">${menu.comments}</textarea>
+										<br/>
 										<button type="button" onclick="menu_submit();"
 											class="btn btn-default">Select Restaurants</button>
 									</form>

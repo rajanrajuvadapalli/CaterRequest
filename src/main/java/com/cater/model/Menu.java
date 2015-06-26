@@ -24,8 +24,10 @@ public class Menu extends TimestampEntity implements Serializable {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(name = "data", length = 5000, nullable = true)
+	@Column(name = "data", length = 50000, nullable = true)
 	private String data;
+	@Column(name = "comments", length = 1000, nullable = true)
+	private String comments;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "event_sk", nullable = false)
 	private Event event;
@@ -50,6 +52,14 @@ public class Menu extends TimestampEntity implements Serializable {
 
 	public void setData(String data) {
 		this.data = data;
+	}
+
+	public String getComments() {
+		return comments;
+	}
+
+	public void setComments(String comments) {
+		this.comments = comments;
 	}
 
 	public Event getEvent() {
@@ -81,6 +91,8 @@ public class Menu extends TimestampEntity implements Serializable {
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result
+				+ ((comments == null) ? 0 : comments.hashCode());
+		result = prime * result
 				+ ((cuisineType == null) ? 0 : cuisineType.hashCode());
 		result = prime * result + ((data == null) ? 0 : data.hashCode());
 		result = prime * result + ((event == null) ? 0 : event.hashCode());
@@ -97,6 +109,12 @@ public class Menu extends TimestampEntity implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Menu other = (Menu) obj;
+		if (comments == null) {
+			if (other.comments != null)
+				return false;
+		}
+		else if (!comments.equals(other.comments))
+			return false;
 		if (cuisineType == null) {
 			if (other.cuisineType != null)
 				return false;

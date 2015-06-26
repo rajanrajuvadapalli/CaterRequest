@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<div class="page-header">
+<div class="col-sm-offset-2 page-header">
 	<h1>Settings</h1>
 </div>
 
@@ -51,7 +51,7 @@
 	</div>
 </c:if>
 
-<div class="col-sm-12">
+<div class="col-sm-9 col-sm-offset-2 ">
 	<div class="panel panel-info">
 		<div class="panel-heading">
 			<h3 class="panel-title">Personal Info</h3>

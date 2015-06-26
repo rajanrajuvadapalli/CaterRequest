@@ -1,4 +1,4 @@
-<div class="page-header">
+<div class="col-sm-offset-2 page-header">
 	<h1>About Us</h1>
 </div>
 

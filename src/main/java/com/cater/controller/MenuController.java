@@ -94,6 +94,7 @@ public class MenuController {
 		List <com.cater.model.Menu> availableMenus = customerService
 				.findMenusWithEventId(e.getId());
 		String customerCreatedMenuData = null;
+		String customerCreatedMenuComments = null;
 		if (CollectionUtils.isNotEmpty(availableMenus)) {
 			// Get the quote for the cuisine.
 			for (com.cater.model.Menu menuModel : availableMenus) {
@@ -101,6 +102,8 @@ public class MenuController {
 						menuModel.getCuisineType())) {
 					httpSession.setAttribute("menuId", menuModel.getId());
 					customerCreatedMenuData = menuModel.getData();
+					customerCreatedMenuComments = StringUtils.defaultString(
+							StringUtils.trim(menuModel.getComments()), null);
 					break;
 				}
 			}
@@ -130,6 +133,7 @@ public class MenuController {
 						}
 					}
 				}
+				menu.setComments(customerCreatedMenuComments);
 			}
 		}
 		catch (IOException ex) {
@@ -169,7 +173,8 @@ public class MenuController {
 			ModelMap modelMap,
 			HttpServletRequest request,
 			@RequestParam(value = "menu_item_codes", required = true) String itemCodesJson,
-			@RequestParam(value = "cuisineType", required = true) String cuisine) {
+			@RequestParam(value = "cuisineType", required = true) String cuisine,
+			@RequestParam(value = "comments") String comments) {
 		User user = (User) httpSession.getAttribute("user");
 		if (user == null) {
 			return "t_home";
@@ -220,6 +225,7 @@ public class MenuController {
 					menuModel.getData());
 			menuModel.setData(newData);
 			menuModel.setCuisineType(cuisine);
+			menuModel.setComments(comments);
 			customerService.saveOrUpdateMenu(menuModel);
 			menuId = menuModel.getId();
 			httpSession.setAttribute("menuId", menuId);
@@ -306,6 +312,7 @@ public class MenuController {
 					}
 				}
 				newMenu.setCategories(categories);
+				newMenu.setComments(menuModel.getComments());
 				modelMap.put("menu", newMenu);
 				Restaurant restaurant = restaurantService
 						.findRestaurantWithLoginId(user.getLoginID());

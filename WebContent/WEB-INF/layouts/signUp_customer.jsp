@@ -4,7 +4,7 @@
 <!-- <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> -->
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<div class="page-header">
+<div class="col-sm-offset-2 page-header">
 	<h1>Registration</h1>
 </div>
 

@@ -3,7 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<div class="page-header">
+<div class="col-sm-offset-2 page-header">
 	<h1>My Dashboard</h1>
 </div>
 <c:if test="${not empty errors}">
@@ -48,7 +48,7 @@
 		</ul>
 	</div>
 </c:if>
-<div class="col-sm-12">
+<div class="col-sm-9 col-sm-offset-2">
 	<div align="right">
 		<a href="${pageContext.request.contextPath}/customer/createEvent"
 			role="button" class="btn btn-default"
@@ -85,7 +85,7 @@
 									>&nbsp;Edit
 									</a>
 								</c:if></td>
-							<td>${e.date_time}</td>
+							<td><fmt:formatDate value="${e.date_time}" pattern="EEE, d MMM yyyy hh:mm aaa" /></td>
 							<td>${e.location.street1}${e.location.street2},
 								${e.location.city}, ${e.location.state} - ${e.location.zip}</td>
 							<td><c:choose>

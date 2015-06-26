@@ -3,7 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<div class="page-header">
+<div class="col-sm-offset-2 page-header">
 	<h1>My Dashboard</h1>
 </div>
 <c:if test="${not empty errors}">
@@ -48,7 +48,7 @@
 		</ul>
 	</div>
 </c:if>
-<div class="col-sm-12">
+<div class="col-sm-9 col-sm-offset-2">
 	<c:choose>
 		<c:when test="${empty restaurant.quotes}">
 				You currently do not have any request for quotes.

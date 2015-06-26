@@ -12,7 +12,9 @@ public class Menu {
 	@JsonProperty(value = "cuisine")
 	private String cuisine;
 	@JsonProperty(value = "categories")
-	private List<MenuCategory> categories;
+	private List <MenuCategory> categories;
+	@JsonProperty(value = "comments")
+	private String comments;
 
 	public String getCuisine() {
 		return cuisine;
@@ -22,11 +24,19 @@ public class Menu {
 		this.cuisine = cuisine;
 	}
 
-	public List<MenuCategory> getCategories() {
+	public List <MenuCategory> getCategories() {
 		return categories;
 	}
 
-	public void setCategories(List<MenuCategory> categories) {
+	public void setCategories(List <MenuCategory> categories) {
 		this.categories = categories;
+	}
+
+	public String getComments() {
+		return comments;
+	}
+
+	public void setComments(String comments) {
+		this.comments = comments;
 	}
 }
