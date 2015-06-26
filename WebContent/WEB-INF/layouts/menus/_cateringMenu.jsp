@@ -97,7 +97,7 @@
 					<figure class="filter clearfix">
 						<div class="buttons pull-left">
 							<a href="javascript:;" onClick="filter('All');" id="All"
-								class="btn icon active"><i class="fa fa-th"></i>All</a>
+								class="btn icon"><i class="fa fa-th"></i>All</a>
 
 							<c:forEach items="${categoryNames}" var="category"
 								varStatus="loop">
@@ -263,6 +263,8 @@
 	$(window).load(function() {
 		var rtl = false; // Use RTL
 		initializeOwl(rtl);
+		//Show only the first category when the window loads.
+		$('#C0').click();
 	});
 	
 	$('document').ready(function(){
