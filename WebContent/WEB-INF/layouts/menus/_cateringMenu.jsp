@@ -148,7 +148,7 @@
 													</div> 
 													<div><span hidden="hidden">${item.code}</span></div>
 													<img
-													src="${pageContext.request.contextPath}/resources/assets/img/items/1.jpg"
+													src="${pageContext.request.contextPath}/imagesproxy/${menu.cuisine}/${item.code}"
 													alt="">
 													<c:if test="${item.isSelected()}">
 														<div class="turn-me-on"></div>
