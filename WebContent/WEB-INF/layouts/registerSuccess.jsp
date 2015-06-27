@@ -2,7 +2,7 @@
 	<h1>Registration</h1>
 </div>
 
-<div class="col-sm-12">
+<div class="col-sm-9 col-sm-offset-2">
 	<br> <br>
 	<p>
 		Thank you <b>${name} </b> for registering with us.

@@ -6,7 +6,7 @@
 
 
 <div class="col-sm-offset-2 page-header">
-	<h1>${sessionScope.eventName}/${cuisineType}menu</h1>
+	<h1>${sessionScope.eventName}/${cuisineType} menu</h1>
 	<input type="hidden" name="eventAddress" id="event-address"
 		class="event-address"
 		value="${eventLocation.street1} ${eventLocation.street2}, ${eventLocation.city}, ${eventLocation.state} ${eventLocation.zip}" />

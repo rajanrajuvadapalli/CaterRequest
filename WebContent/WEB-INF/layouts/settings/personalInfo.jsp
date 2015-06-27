@@ -60,8 +60,7 @@
 
 			<form class="form-horizontal" method="POST" id="profileForm"
 				action="${pageContext.request.contextPath}/settings/personalInfo"
-				ectype="application/x-www-form-urlencoded"
-				autocomplete="off"
+				ectype="application/x-www-form-urlencoded" autocomplete="off"
 				onsubmit="return validateProfileForm();">
 				<c:if test="${sessionScope.user.role.value == 'CUSTOMER'}">
 					<div class="form-group">
@@ -102,7 +101,13 @@
 								value="${sessionScope.user.data.url}">
 						</div>
 					</div>
-
+					<div class="form-group">
+						<label for="aboutus" class="col-sm-3 control-label">About your restaurant&nbsp;:</label>
+						<div class="col-sm-6">
+							<textarea rows="4" name="aboutus" class="form-control"
+								required="required">${sessionScope.user.data.aboutUs}</textarea>
+						</div>
+					</div>
 				</c:if>
 				<div class="form-group">
 					<label for="phone" class="col-sm-3 control-label">Contact
@@ -111,8 +116,7 @@
 						<div class="col-sm-3">
 							<input type="text" size="20" maxlength="20" name="phone"
 								id="phone" class="form-control" required="required"
-								placeholder="Ex.: xxxxxxxxxx"
-								pattern="\d{10}"
+								placeholder="Ex.: xxxxxxxxxx" pattern="\d{10}"
 								value="${sessionScope.user.data.phone}">
 						</div>
 						<c:choose>
@@ -191,8 +195,9 @@
 				<div class="form-group">
 					<label for="state" class="col-sm-3 control-label">State: </label>
 					<div class="col-sm-6">
-						<input type="hidden" name="stateExisting" value="${sessionScope.user.data.state}">
-						<span id="stateArea"></span>
+						<input type="hidden" name="stateExisting"
+							value="${sessionScope.user.data.state}"> <span
+							id="stateArea"></span>
 					</div>
 				</div>
 				<div class="form-group">
@@ -200,10 +205,8 @@
 
 					<div class="col-sm-6">
 						<input type="text" size="10" name="zip" maxlength="10"
-							class="form-control"
-							placeholder="Ex.: xxxxx"
-							pattern="^\d{5}(\-\d{4})?$"
-							value="${sessionScope.user.data.zip}">
+							class="form-control" placeholder="Ex.: xxxxx"
+							pattern="^\d{5}(\-\d{4})?$" value="${sessionScope.user.data.zip}">
 					</div>
 				</div>
 
@@ -211,8 +214,7 @@
 					<label class="col-sm-3 control-label"></label>
 
 					<div class="col-sm-6" align="left">
-						<button type="submit" class="btn btn-default">Update
-						</button>
+						<button type="submit" class="btn btn-default">Update</button>
 					</div>
 				</div>
 
@@ -226,9 +228,9 @@
 </div>
 
 <script>
-$('document').ready(function(){
-	populateStateDropDown();
-	var existingState = $('input[name=stateExisting]').val();
-	$('select[name=state]').val(existingState);
-});
+	$('document').ready(function() {
+		populateStateDropDown();
+		var existingState = $('input[name=stateExisting]').val();
+		$('select[name=state]').val(existingState);
+	});
 </script>

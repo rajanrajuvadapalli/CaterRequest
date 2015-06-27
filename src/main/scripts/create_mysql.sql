@@ -47,7 +47,8 @@ CREATE TABLE cater4party.Restaurant (
 	,`number_verified` BIT NOT NULL
 	,`contact_email` VARCHAR(50) NOT NULL 
 	,`cuisine_type` VARCHAR(20) NOT NULL 
-	,`website_url` VARCHAR(50)  NULL 
+	,`website_url` VARCHAR(50)  NULL
+	,`about_us` VARCHAR(5000) NULL
 	,`create_ts` DATETIME NOT NULL 
 	,`lupd_ts` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
 -- Create Foreign Key: Restaurant.address_sk -> Address.id
@@ -80,7 +81,8 @@ CREATE TABLE cater4party.Menu
 	,PRIMARY KEY (id)
 	,`data` VARCHAR(50000)  NULL 
 	,`event_sk` INT NOT NULL 
-	,`cuisine_type` VARCHAR(20) NOT NULL 
+	,`cuisine_type` VARCHAR(20) NOT NULL
+	,`comments` VARCHAR(1000) NULL
 	,`create_ts` DATETIME NOT NULL 
 	,`lupd_ts` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
 -- Create Foreign Key: Menu.event_sk -> Event.id

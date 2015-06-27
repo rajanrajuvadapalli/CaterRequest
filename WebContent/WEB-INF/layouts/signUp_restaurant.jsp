@@ -135,6 +135,12 @@
 							</select>
 						</div>
 					</div>
+					<div class="form-group">
+						<label for="aboutus" class="col-sm-4 control-label">Tell us something about your restaurant&nbsp;:</label>
+						<div class="col-sm-6">
+							<textarea rows="4" name="aboutus" class="form-control" required="required"></textarea>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -134,6 +134,7 @@ public class SettingsController {
 			Address address = restaurant.getAddress();
 			populateAddress(data, address);
 			user.setRestaurantID(restaurant.getId());
+			data.setAboutUs(restaurant.getAboutUs());
 		}
 		user.setData(data);
 		session.setAttribute("user", user);
@@ -192,6 +193,8 @@ public class SettingsController {
 			data.setState(StringUtils.defaultString(request
 					.getParameter("state")));
 			data.setZip(StringUtils.defaultString(request.getParameter("zip")));
+			data.setAboutUs(StringUtils.defaultString(request
+					.getParameter("aboutus")));
 			UpdateResult updateResult = personalSettingsService.updateDataFor(
 					user.getRole(), customerID, restaurantID, data);
 			if (updateResult.isUpdateSuccess()) {

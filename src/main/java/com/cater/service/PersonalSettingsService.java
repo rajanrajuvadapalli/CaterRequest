@@ -126,6 +126,7 @@ public class PersonalSettingsService {
 				restaurant.setName(data.getRestaurantName());
 				restaurant.setCuisineType(data.getCuisineType());
 				restaurant.setWebsiteUrl(data.getUrl());
+				restaurant.setAboutUs(data.getAboutUs());
 				//If the phone number is changed, the restaurant has to re-verify the number.
 				String oldNumber = restaurant.getContactNumber();
 				String newNumber = data.getPhone();

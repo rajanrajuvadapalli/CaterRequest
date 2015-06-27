@@ -88,6 +88,7 @@ public class RegisterService {
 			restaurant.setContactEmail(data.getEmail());
 			restaurant.setCuisineType(data.getCuisineType());
 			restaurant.setWebsiteUrl(data.getUrl());
+			restaurant.setAboutUs(data.getAboutUs());
 			restaurantDAO.saveOrUpdate(restaurant);
 		}
 	}

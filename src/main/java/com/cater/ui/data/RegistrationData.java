@@ -17,6 +17,7 @@ public class RegistrationData {
 	private String city;
 	private String state;
 	private String zip;
+	private String aboutUs;
 
 	public String getName() {
 		return name;
@@ -138,6 +139,14 @@ public class RegistrationData {
 		this.zip = zip;
 	}
 
+	public String getAboutUs() {
+		return aboutUs;
+	}
+
+	public void setAboutUs(String aboutUs) {
+		this.aboutUs = aboutUs;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -154,7 +163,8 @@ public class RegistrationData {
 		builder.append("street2: ").append(street2).append(NEW_LINE);
 		builder.append("city: ").append(city).append(NEW_LINE);
 		builder.append("state: ").append(state).append(NEW_LINE);
-		builder.append("zip: ").append(zip).append("]");
+		builder.append("zip: ").append(zip).append(NEW_LINE);
+		builder.append("aboutUs: ").append(aboutUs).append("]");
 		return builder.toString();
 	}
 }

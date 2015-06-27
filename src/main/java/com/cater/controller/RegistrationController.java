@@ -71,7 +71,8 @@ public class RegistrationController {
 	public String getRegisterForm(ModelMap modelMap,
 			HttpServletRequest request, HttpSession session) {
 		String registerAs = request.getParameter("as");
-		return StringUtils.equalsIgnoreCase(registerAs, "customer")? "t_signUp_customer":"t_signUp_restaurant";
+		return StringUtils.equalsIgnoreCase(registerAs, "customer") ? "t_signUp_customer"
+				: "t_signUp_restaurant";
 	}
 
 	/**
@@ -99,7 +100,8 @@ public class RegistrationController {
 							+ ") for a confirmation email to complete the registration process.");
 				}
 				modelMap.addAttribute("warnings", warnings);
-				return StringUtils.equalsIgnoreCase(registerAs, "customer")? "t_signUp_customer":"t_signUp_restaurant";
+				return StringUtils.equalsIgnoreCase(registerAs, "customer") ? "t_signUp_customer"
+						: "t_signUp_restaurant";
 			}
 			RegistrationData data = new RegistrationData();
 			data.setName(StringUtils.defaultString(request.getParameter("name")));
@@ -123,6 +125,8 @@ public class RegistrationController {
 			data.setState(StringUtils.defaultString(request
 					.getParameter("state")));
 			data.setZip(StringUtils.defaultString(request.getParameter("zip")));
+			data.setAboutUs(StringUtils.defaultString(request
+					.getParameter("aboutus")));
 			logger.debug("Form data: " + data.toString());
 			login = registerService.register(data);
 			//When one signs up, logout the current user from session.
@@ -160,7 +164,8 @@ public class RegistrationController {
 				errors.add("Ouch! Something went wrong. Please contact technical support at "
 						+ customerCareContactNumber);
 				modelMap.addAttribute("errors", errors);
-				return StringUtils.equalsIgnoreCase(registerAs, "customer")? "t_signUp_customer":"t_signUp_restaurant";
+				return StringUtils.equalsIgnoreCase(registerAs, "customer") ? "t_signUp_customer"
+						: "t_signUp_restaurant";
 			}
 		}
 		catch (Exception e) {
