@@ -53,7 +53,7 @@
 
 		<form class="form-signin" method="POST" id="loginForm"
 			action="${pageContext.request.contextPath}/login"
-			ectype="application/x-www-form-urlencoded"
+			enctype="application/x-www-form-urlencoded"
 			onsubmit="return validateLoginForm();">
 
 			<h2 class="form-signin-heading">Please sign in</h2>
@@ -76,7 +76,7 @@
 		<form class="mfp-hide white-popup-block forgotPassword" method="POST"
 			id="forgot-pwd-form"
 			action="${pageContext.request.contextPath}/forgotPassword"
-			ectype="application/x-www-form-urlencoded">
+			enctype="application/x-www-form-urlencoded">
 			<h2 class="form-signin-heading">Forgot Password</h2>
 			<label for="inputEmail" class="sr-only">Email address</label> <input
 				type="email" name="username" id="username" class="form-control"

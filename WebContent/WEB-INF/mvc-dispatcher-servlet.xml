@@ -18,12 +18,13 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<mvc:resources mapping="/resources/**" location="/resources/" />
-	<mvc:resources mapping="/cater4party/resources/**" location="/resources/" />
-	
+	<mvc:resources mapping="/cater4party/resources/**"
+		location="/resources/" />
+
 	<mvc:annotation-driven />
-	
+
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
@@ -33,7 +34,12 @@
 			</list>
 		</property>
 	</bean>
-	
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="4000000" />
+	</bean>
+
 	<!-- <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" 
 		> <property name="prefix"> <value>/WEB-INF/pages/</value> </property> <property 
 		name="suffix"> <value>.jsp</value> </property> </bean> -->

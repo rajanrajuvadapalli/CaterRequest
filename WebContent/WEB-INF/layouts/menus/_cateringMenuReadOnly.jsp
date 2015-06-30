@@ -79,7 +79,7 @@
 							<form class="form-horizontal" method="POST"
 								id="submit-price-form"
 								action="${pageContext.request.contextPath}/restaurant/submitprice"
-								ectype="application/x-www-form-urlencoded" autocomplete="off">
+								enctype="application/x-www-form-urlencoded" autocomplete="off">
 								<input type="text" hidden="true" value="${quote.id}"
 									name="quoteId">
 								<c:choose>

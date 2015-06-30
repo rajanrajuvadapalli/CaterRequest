@@ -21,7 +21,7 @@
 				</div>
 				<form class="form-horizontal" method="GET" id="register-form"
 					action="${pageContext.request.contextPath}/register"
-					ectype="application/x-www-form-urlencoded" autocomplete="off">
+					enctype="application/x-www-form-urlencoded" autocomplete="off">
 					<input type="hidden" name="as" value="customer">
 					<button type="submit" class="btn btn-default">Lets get
 						started</button>

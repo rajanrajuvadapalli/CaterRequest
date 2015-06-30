@@ -55,7 +55,7 @@
 <div class="container container-fluid">
 	<form class="form-horizontal" method="POST" id="register-form"
 		action="${pageContext.request.contextPath}/register"
-		ectype="application/x-www-form-urlencoded"
+		enctype="multipart/form-data"
 		onsubmit="return validateRegistrationFormOnSubmit();">
 		<input type="hidden" name="as" value="customer">
 		<div class="col-sm-12">

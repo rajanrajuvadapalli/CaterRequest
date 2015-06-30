@@ -49,7 +49,7 @@
 		<div class="panel-body">
 			<form class="form-horizontal" method="POST" id="accountSettingsForm"
 				action="${pageContext.request.contextPath}/settings/changePassword"
-				novalidate ectype="application/x-www-form-urlencoded"
+				novalidate enctype="application/x-www-form-urlencoded"
 				autocomplete="off"
 				onsubmit="return validateAccountSettingsForm();">
 				<div class="form-group">

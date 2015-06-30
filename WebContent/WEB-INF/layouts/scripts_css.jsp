@@ -12,3 +12,5 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/jquery.datetimepicker.css" type="text/css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/magnific-popup.css" type="text/css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/menu.css" type="text/css" />
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fileinput.min.css" type="text/css" />

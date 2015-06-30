@@ -8,48 +8,50 @@
 	<h1>Settings</h1>
 </div>
 
-<c:if test="${not empty errors}">
-	<div class="alert alert-danger">
-		<button type="button" class="close btn-lg" data-dismiss="alert"
-			aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-		<ul>
-			<c:forEach items="${errors}" var="e">
-				<li align="left">${e}</li>
-			</c:forEach>
-		</ul>
+<div class="col-sm-9 col-sm-offset-2 ">
+	<c:if test="${not empty errors}">
+		<div class="alert alert-danger">
+			<button type="button" class="close btn-lg" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<ul>
+				<c:forEach items="${errors}" var="e">
+					<li align="left">${e}</li>
+				</c:forEach>
+			</ul>
 
-	</div>
-</c:if>
+		</div>
+	</c:if>
 
-<c:if test="${not empty successMessages}">
-	<div class="alert alert-success">
-		<button type="button" class="close btn-lg" data-dismiss="alert"
-			aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-		<ul>
-			<c:forEach items="${successMessages}" var="sm">
-				<li align="left">${sm}</li>
-			</c:forEach>
-		</ul>
-	</div>
-</c:if>
+	<c:if test="${not empty successMessages}">
+		<div class="alert alert-success">
+			<button type="button" class="close btn-lg" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<ul>
+				<c:forEach items="${successMessages}" var="sm">
+					<li align="left">${sm}</li>
+				</c:forEach>
+			</ul>
+		</div>
+	</c:if>
 
-<c:if test="${not empty warnings}">
-	<div class="alert alert-warning">
-		<button type="button" class="close btn-lg" data-dismiss="alert"
-			aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-		<ul>
-			<c:forEach items="${warnings}" var="w">
-				<li align="left">${w}</li>
-			</c:forEach>
-		</ul>
-	</div>
-</c:if>
+	<c:if test="${not empty warnings}">
+		<div class="alert alert-warning">
+			<button type="button" class="close btn-lg" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<ul>
+				<c:forEach items="${warnings}" var="w">
+					<li align="left">${w}</li>
+				</c:forEach>
+			</ul>
+		</div>
+	</c:if>
+</div>
 
 <div class="col-sm-9 col-sm-offset-2 ">
 	<div class="panel panel-info">
@@ -60,11 +62,10 @@
 
 			<form class="form-horizontal" method="POST" id="profileForm"
 				action="${pageContext.request.contextPath}/settings/personalInfo"
-				ectype="application/x-www-form-urlencoded" autocomplete="off"
+				enctype="multipart/form-data" autocomplete="off"
 				onsubmit="return validateProfileForm();">
 				<c:if test="${sessionScope.user.role.value == 'CUSTOMER'}">
 					<div class="form-group">
-
 						<label for="name" class="col-sm-3 control-label">Name&nbsp;:</label>
 						<div class="col-sm-6">
 							<input type="text" size="30" maxlength="50" name="name"
@@ -74,6 +75,22 @@
 					</div>
 				</c:if>
 				<c:if test="${sessionScope.user.role.value == 'RESTAURANT'}">
+					<img
+						src="${pageContext.request.contextPath}/imagesproxy/Restaurant_${sessionScope.user.restaurantID}"
+						alt="${sessionScope.user.data.restaurantName}" width="150">
+					<div class="form-group" id="restaurant">
+						<label for="profilePic" class="col-sm-3 control-label">Change
+							Picture&nbsp;:</label>
+						<div class="col-sm-6">
+							<!-- Show only image files for selection & preview. Control button labels, styles, 
+								 and icons for the browse, upload, and remove buttons. -->
+							<input id="input-profile-pic" name="input-profile-pic"
+								type="file"
+								accept="image/x-png, image/gif, image/jpeg, image/jpg"
+								class="file" data-show-upload="false" data-show-caption="true"
+								placeholder="Upload png, jpg, jpeg or gif image">
+						</div>
+					</div>
 					<div class="form-group">
 						<label for="restaurantName" class="col-sm-3 control-label">Restaurant
 							Name: </label>
@@ -87,9 +104,9 @@
 						<label for="cuisineType" class="col-sm-3 control-label">Cuisine
 							Type: </label>
 						<div class="col-sm-6">
-							<input type="text" size="30" maxlength="30" name="cuisineType"
-								id="cuisineType" required="required" class="form-control"
+							<input type="hidden" name="cuisineType" id="cuisineType"
 								value="${sessionScope.user.data.cuisineType}">
+							<span id="cuisineType"></span>
 						</div>
 					</div>
 					<div class="form-group">
@@ -102,7 +119,8 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="aboutus" class="col-sm-3 control-label">About your restaurant&nbsp;:</label>
+						<label for="aboutus" class="col-sm-3 control-label">About
+							your restaurant&nbsp;:</label>
 						<div class="col-sm-6">
 							<textarea rows="4" name="aboutus" class="form-control"
 								required="required">${sessionScope.user.data.aboutUs}</textarea>
@@ -229,8 +247,11 @@
 
 <script>
 	$('document').ready(function() {
+		populateCuisineTypes();
 		populateStateDropDown();
 		var existingState = $('input[name=stateExisting]').val();
 		$('select[name=state]').val(existingState);
+		var existingCuisine= $('input[name=cuisineType]').val();
+		$('select[name=cuisineType]').val(existingCuisine);
 	});
 </script>

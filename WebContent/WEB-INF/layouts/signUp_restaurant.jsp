@@ -55,7 +55,7 @@
 <div class="container container-fluid">
 	<form class="form-horizontal" method="POST" id="register-form"
 		action="${pageContext.request.contextPath}/register"
-		ectype="application/x-www-form-urlencoded"
+		enctype="multipart/form-data"
 		onsubmit="return validateRegistrationFormOnSubmit();">
 		<input type="hidden" name="as" value="restaurant">
 		<div class="col-sm-12">
@@ -64,6 +64,17 @@
 					<h3 class="panel-title">Personal Info</h3>
 				</div>
 				<div class="panel-body">
+					<div class="form-group" id="restaurant">
+						<label for="profilePic" class="col-sm-4 control-label">Upload Picture&nbsp;:</label>
+						<div class="col-sm-6">
+							<!-- Show only image files for selection & preview. Control button labels, styles, 
+								 and icons for the browse, upload, and remove buttons. -->
+							<input id="input-profile-pic" name="input-profile-pic" type="file" accept="image/x-png, image/gif, image/jpeg, image/jpg" 
+								class="file" required="required"
+								data-show-upload="false" data-show-caption="true"
+								placeholder="Upload png, jpg, jpeg or gif image">
+						</div>
+					</div>
 					<div class="form-group" id="restaurant">
 						<label for="restaurantName" class="col-sm-4 control-label">Restaurant&nbsp;Name&nbsp;:</label>
 						<div class="col-sm-6">
@@ -126,8 +137,8 @@
 						<div class="col-sm-6">
 							<select class="form-control inputs" name="hearAboutUs"
 								id="hearAboutUs" required="required">
-								<option value="" selected="selected">Choose one...</option>
-								<option value="friend_referral">Friend/referral</option>
+								<option value="">Choose one...</option>
+								<option value="friend_referral" selected="selected">Friend/referral</option>
 								<option value="google">Google Search</option>
 								<option value="online_ad">Online advertisement</option>
 								<option value="social_media">Social Media</option>

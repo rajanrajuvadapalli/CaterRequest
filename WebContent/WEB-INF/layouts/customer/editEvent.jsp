@@ -62,7 +62,7 @@
 <div class="mfp-hide white-popup-block popupOptions" id="deleteConfirm">
 	<form class="form-horizontal" method="POST" id="event-form"
 		action="${pageContext.request.contextPath}/customer/event/delete/${event.id}"
-		ectype="application/x-www-form-urlencoded" autocomplete="off">
+		enctype="application/x-www-form-urlencoded" autocomplete="off">
 		Are you sure you want to delete this event?<br /> <br />
 		<div align="center">
 			<button type="submit" class="btn btn-default">Confirm Delete</button>
@@ -73,7 +73,7 @@
 <div class="col-sm-9 col-sm-offset-2">
 	<form class="form-horizontal" method="POST" id="event-form"
 		action="${pageContext.request.contextPath}/customer/event/update/${event.id}"
-		ectype="application/x-www-form-urlencoded" autocomplete="off"
+		enctype="application/x-www-form-urlencoded" autocomplete="off"
 		onsubmit="return validateEventForm();">
 		<div class="col-sm-12">
 			<div class="panel panel-info">

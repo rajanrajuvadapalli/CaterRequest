@@ -29,7 +29,7 @@
 						id="select-restaurant-form"
 						action="${pageContext.request.contextPath}/customer/event/requestQuote"
 						onsubmit="return validateSelectRestaurantForm()"
-						ectype="application/x-www-form-urlencoded" autocomplete="off">
+						enctype="application/x-www-form-urlencoded" autocomplete="off">
 						<c:forEach items="${restaurants}" var="r">
 							<span class="restaurants" style="display: none;" data-restaurant-id="${r.id}" data-restaurant-address="${r.address.street1} ${r.address.street2}, ${r.address.city}, ${r.address.state} ${r.address.zip}" data-restaurant-name="${r.name}"></span>
 							<br />

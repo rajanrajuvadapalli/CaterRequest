@@ -98,7 +98,7 @@
 												<form class="form-horizontal" method="POST"
 													id="order-confirm-form"
 													action="${pageContext.request.contextPath}/customer/orderConfirmation"
-													ectype="application/x-www-form-urlencoded"
+													enctype="application/x-www-form-urlencoded"
 													autocomplete="off"
 												>
 													<input type="hidden" name="xeventId" value="${e.id}">
@@ -180,7 +180,7 @@
 										method="GET" id="${e.id}"
 										action="${pageContext.request.contextPath}/menu/selectMenu"
 										onsubmit="return validateCuisine(${e.id});"
-										ectype="application/x-www-form-urlencoded"
+										enctype="application/x-www-form-urlencoded"
 									>
 										<br /> <input type="text" hidden="true" name="eventId"
 											value="${e.id}"

@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cater.constants.Roles;
 import com.cater.model.Address;
@@ -19,6 +21,7 @@ import com.cater.model.Login;
 import com.cater.model.Restaurant;
 import com.cater.service.LoginService;
 import com.cater.service.PersonalSettingsService;
+import com.cater.service.RestaurantService;
 import com.cater.service.UpdateResult;
 import com.cater.twilio.sms.SMSHelper;
 import com.cater.ui.data.RegistrationData;
@@ -40,6 +43,8 @@ public class SettingsController {
 	/** The sms helper. */
 	@Autowired
 	private SMSHelper smsHelper;
+	@Autowired
+	private RestaurantService restaurantService;
 
 	/**
 	 * Gets the personal info.
@@ -166,16 +171,22 @@ public class SettingsController {
 	 * @return the string
 	 */
 	@RequestMapping(value = { "personalInfo" }, method = RequestMethod.POST)
-	public String updatePersonalInfo(ModelMap modelMap,
-			HttpServletRequest request, HttpSession session) {
+	public String updatePersonalInfo(
+			ModelMap modelMap,
+			HttpServletRequest request,
+			HttpSession session,
+			@RequestParam(value = "input-profile-pic", required = false) MultipartFile multipartFile) {
 		User user = (User) session.getAttribute("user");
 		if (user != null) {
 			Integer customerID = user.getCustomerID();
 			Integer restaurantID = user.getRestaurantID();
 			RegistrationData data = new RegistrationData();
 			data.setName(StringUtils.defaultString(request.getParameter("name")));
-			data.setRestaurantName(StringUtils.defaultString(request
-					.getParameter("restaurantName")));
+			String restaurantName = StringUtils.defaultString(request
+					.getParameter("restaurantName"));
+			data.setRestaurantName(restaurantName);
+			restaurantService.saveRestaurantProfilePic(restaurantID,
+					restaurantName, multipartFile);
 			data.setCuisineType(StringUtils.defaultString(request
 					.getParameter("cuisineType")));
 			data.setUrl(StringUtils.defaultString(request.getParameter("url")));

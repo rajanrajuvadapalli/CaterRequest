@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ImagesProxyController {
 	@Value("${images.location}")
 	private String imagesBaseLocation;
+	@Value("${profile.pic.folder}")
+	private String profilePicFolder;
 
 	@PostConstruct
 	private void postConstruct() {
@@ -28,6 +30,8 @@ public class ImagesProxyController {
 		//the value set in the properties file
 		imagesBaseLocation = System.getProperty("images.location",
 				imagesBaseLocation);
+		profilePicFolder = System.getProperty("profile.pic.folder",
+				profilePicFolder);
 	}
 
 	@ResponseBody
@@ -38,6 +42,29 @@ public class ImagesProxyController {
 				+ File.separator + code + ".jpg";
 		//Read file system
 		File f = new File(imageUrl);
+		InputStream in = FileUtils.openInputStream(f);
+		return IOUtils.toByteArray(in);
+	}
+
+	@ResponseBody
+	@RequestMapping(value = { "Restaurant_{id}" }, method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+	public byte[] getRestaurantPic(@PathVariable String id) throws IOException {
+		String imageUrl = profilePicFolder + File.separator + "Restaurant_"
+				+ id;
+		//Read file system
+		File f = new File(imageUrl + ".jpg");
+		if (!f.exists()) {
+			f = new File(imageUrl + ".jpeg");
+		}
+		if (!f.exists()) {
+			f = new File(imageUrl + ".png");
+		}
+		if (!f.exists()) {
+			f = new File(imageUrl + ".gif");
+		}
+		if (!f.exists()) {
+			return new byte[1];
+		}
 		InputStream in = FileUtils.openInputStream(f);
 		return IOUtils.toByteArray(in);
 	}

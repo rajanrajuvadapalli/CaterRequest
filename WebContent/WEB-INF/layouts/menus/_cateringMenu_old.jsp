@@ -12,7 +12,7 @@
 	<form class="form-horizontal" method="POST" id="menu-form"
 		action="${pageContext.request.contextPath}/menu/saveMenu"
 		onsubmit="return validateMenuFormOnSubmit();"
-		ectype="application/x-www-form-urlencoded" autocomplete="off">
+		enctype="application/x-www-form-urlencoded" autocomplete="off">
 		<div class="row">
 			<c:forEach items="${menu.categories}" var="category">
 				<div class="col-sm-6">

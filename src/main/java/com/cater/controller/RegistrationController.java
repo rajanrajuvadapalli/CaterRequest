@@ -15,10 +15,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cater.constants.Roles;
 import com.cater.email.EmailHelper;
 import com.cater.model.Login;
+import com.cater.model.Restaurant;
 import com.cater.service.CustomerService;
 import com.cater.service.LoginService;
 import com.cater.service.RegisterService;
@@ -84,8 +86,11 @@ public class RegistrationController {
 	 * @return the string
 	 */
 	@RequestMapping(value = { "register" }, method = RequestMethod.POST)
-	public String register(ModelMap modelMap, HttpServletRequest request,
-			HttpSession session) {
+	public String register(
+			ModelMap modelMap,
+			HttpServletRequest request,
+			HttpSession session,
+			@RequestParam(value = "input-profile-pic", required = false) MultipartFile multipartFile) {
 		try {
 			//First check if the email (user name used to login) is in use.
 			String username = request.getParameter("email");
@@ -147,8 +152,11 @@ public class RegistrationController {
 			}
 			else if (Roles.RESTAURANT == Roles.get(login.getRole())) {
 				modelMap.put("name", data.getRestaurantName());
-				customer_restaurant_name = restaurantService
-						.findRestaurantWithLoginId(login.getId()).getName();
+				Restaurant restaurant = restaurantService
+						.findRestaurantWithLoginId(login.getId());
+				customer_restaurant_name = restaurant.getName();
+				restaurantService.saveRestaurantProfilePic(restaurant,
+						multipartFile);
 			}
 			boolean sendEmailStatus = emailHelper
 					.sendRegistrationConfirmationEmail(
