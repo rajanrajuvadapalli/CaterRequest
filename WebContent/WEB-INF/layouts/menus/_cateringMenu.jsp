@@ -149,7 +149,6 @@
 													<div><span hidden="hidden">${item.code}</span></div>
 													<img
 													src="https://s3-us-west-2.amazonaws.com/rajrv-caterrequest-s3bucket/images_menu/${menu.cuisine}/${item.code}.jpg"
-													<!-- src="${pageContext.request.contextPath}/imagesproxy/${menu.cuisine}/${item.code}" -->
 													alt="">
 													<c:if test="${item.isSelected()}">
 														<div class="turn-me-on"></div>
