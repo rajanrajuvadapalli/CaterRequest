@@ -63,7 +63,8 @@
 					<span class="restaurants" style="display: none;"
 						data-restaurant-id="${r.id}"
 						data-restaurant-address="${r.address.street1} ${r.address.street2}, ${r.address.city}, ${r.address.state} ${r.address.zip}"
-						data-restaurant-name="${r.name}"></span>
+						data-restaurant-name="${r.name}"
+						data-restaurant-image="${pageContext.request.contextPath}/imagesproxy/Restaurant_${r.id}"></span>
 				</c:forEach>
 				<div class="display-restaurants"></div>
 			</c:otherwise>

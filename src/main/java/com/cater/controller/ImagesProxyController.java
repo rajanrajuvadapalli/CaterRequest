@@ -63,6 +63,9 @@ public class ImagesProxyController {
 			f = new File(imageUrl + ".gif");
 		}
 		if (!f.exists()) {
+			f = new File(profilePicFolder + File.separator + "not_found.jpg");
+		}
+		if (!f.exists()) {
 			return new byte[1];
 		}
 		InputStream in = FileUtils.openInputStream(f);

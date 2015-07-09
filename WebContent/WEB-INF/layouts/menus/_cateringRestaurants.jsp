@@ -9,7 +9,7 @@
 	<h1>${sessionScope.eventName}/${cuisineType} menu</h1>
 	<input type="hidden" name="eventAddress" id="event-address"
 		class="event-address"
-		value="${eventLocation.street1} ${eventLocation.street2}, ${eventLocation.city}, ${eventLocation.state} ${eventLocation.zip}" />
+		value="${eventLocation.zip}" />
 </div>
 
 
@@ -31,7 +31,11 @@
 						onsubmit="return validateSelectRestaurantForm()"
 						enctype="application/x-www-form-urlencoded" autocomplete="off">
 						<c:forEach items="${restaurants}" var="r">
-							<span class="restaurants" style="display: none;" data-restaurant-id="${r.id}" data-restaurant-address="${r.address.street1} ${r.address.street2}, ${r.address.city}, ${r.address.state} ${r.address.zip}" data-restaurant-name="${r.name}"></span>
+							<span class="restaurants" style="display: none;"
+								data-restaurant-id="${r.id}"
+								data-restaurant-address="${r.address.street1} ${r.address.street2}, ${r.address.city}, ${r.address.state} ${r.address.zip}"
+								data-restaurant-name="${r.name}"
+								data-restaurant-image="${pageContext.request.contextPath}/imagesproxy/Restaurant_${r.id}"></span>
 							<br />
 						</c:forEach>
 						<div class="display-restaurants" data-page='catering'></div>
