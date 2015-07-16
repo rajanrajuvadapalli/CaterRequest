@@ -37,6 +37,13 @@ public class RestaurantService {
 	@Value("${profile.pic.folder}")
 	private String profilePicFolder;
 
+	public RestaurantService() {
+		//If a system property is set, it will override
+		//the value set in the properties file
+		profilePicFolder = System.getProperty("profile.pic.folder",
+				profilePicFolder);
+	}
+
 	public List <Restaurant> fetchAllRestaurants() {
 		return restaurantDAO.fetchAllRestaurants();
 	}
