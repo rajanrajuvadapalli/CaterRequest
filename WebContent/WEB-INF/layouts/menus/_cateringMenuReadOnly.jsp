@@ -14,7 +14,7 @@
 			</div>
 			<div class="panel-body" align="left">
 				<div align="right">
-					<c:if test="${event.status == 'ACTIVE' }">
+					<c:if test="${event.status == 'ACTIVE' && user.role == 'CUSTOMER'}">
 						<a
 							href="${pageContext.request.contextPath}/menu/selectMenu?eventId=${event.id}&cuisineType=${menu.cuisine}"
 							role="button" class="btn btn-default"> Edit Menu</a>
