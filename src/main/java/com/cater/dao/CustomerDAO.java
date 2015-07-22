@@ -1,18 +1,23 @@
 package com.cater.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
+import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.cater.model.Customer;
+import com.cater.model.Event;
+import com.google.common.collect.Maps;
 
 /**
  * Description:.
@@ -122,5 +127,53 @@ public class CustomerDAO extends DataAccessObject {
 					"Exception occurred while Finding number of customers.", he);
 			return 0;
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public Map <Integer, String> sparseDownloadMyEvents(Integer customerID) {
+		logger.debug("Downloading sparse event details for customer with ID "
+				+ customerID);
+		Map <Integer, String> result = Maps.newHashMap();
+		try {
+			Session session = getSessionFactory().getCurrentSession();
+			List <SparseEvent> list = session
+					.createCriteria(Event.class, "e")
+					.createAlias("e.customer", "c", JoinType.RIGHT_OUTER_JOIN)
+					.add(Restrictions.eq("c.id", customerID))
+					.setProjection(
+							Projections
+									.projectionList()
+									.add(Projections.property("e.id"), "id")
+									.add(Projections.property("e.name"), "name"))
+					.setResultTransformer(
+							Transformers.aliasToBean(SparseEvent.class)).list();
+			for (SparseEvent se : list) {
+				result.put(se.id, se.name);
+			}
+			//Following code also works.
+			/*List <Object[]> list = session
+					.createCriteria(Event.class, "e")
+					.createAlias("e.customer", "c", JoinType.RIGHT_OUTER_JOIN)
+					.add(Restrictions.eq("c.id", customerID))
+					.setProjection(
+							Projections.projectionList()
+									.add(Projections.property("e.id"))
+									.add(Projections.property("e.name")))
+					.list();
+			for (Object[] o : list) {
+				result.put((Integer) o[0], (String) o[1]);
+			}*/
+		}
+		catch (HibernateException he) {
+			logger.error(
+					"Exception occurred while downloading sparse event details for customer.",
+					he);
+		}
+		return result;
+	}
+
+	public static class SparseEvent {
+		private Integer id;
+		private String name;
 	}
 }

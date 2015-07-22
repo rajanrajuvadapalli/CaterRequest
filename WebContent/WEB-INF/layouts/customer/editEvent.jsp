@@ -52,13 +52,6 @@
 	</div>
 </c:if>
 
-<div align="col-sm-offset-10">
-	<a class="popup-with-form" href="#deleteConfirm">
-		<button class="btn btn-default">Delete Event</button>
-	</a>
-</div>
-<br />
-
 <div class="mfp-hide white-popup-block popupOptions" id="deleteConfirm">
 	<form class="form-horizontal" method="POST" id="event-form"
 		action="${pageContext.request.contextPath}/customer/event/delete/${event.id}"
@@ -71,6 +64,12 @@
 </div>
 
 <div class="col-sm-9 col-sm-offset-2">
+	<div align="col-sm-2">
+		<a class="popup-with-form" href="#deleteConfirm">
+			<button class="btn btn-default">Delete Event</button>
+		</a>
+	</div>
+
 	<form class="form-horizontal" method="POST" id="event-form"
 		action="${pageContext.request.contextPath}/customer/event/update/${event.id}"
 		enctype="application/x-www-form-urlencoded" autocomplete="off"

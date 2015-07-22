@@ -1,6 +1,7 @@
 package com.cater.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -99,5 +100,9 @@ public class CustomerService {
 	public void sendNotification(Quote quote) {
 		emailHelper.sendNotificationEmailTo(Roles.CUSTOMER, quote, null);
 		smsHelper.sendNotificationSMSto(Roles.CUSTOMER, quote, null);
+	}
+
+	public Map <Integer, String> sparseDownloadMyEvents(Integer customerID) {
+		return customerDAO.sparseDownloadMyEvents(customerID);
 	}
 }

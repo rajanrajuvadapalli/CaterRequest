@@ -31,6 +31,7 @@
 <!-- http://dimsemenov.com/plugins/magnific-popup/ -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery.magnific-popup.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/fileinput.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap-tabs-x.min.js"></script>
 
 <script>
     $(window).load(function(){
