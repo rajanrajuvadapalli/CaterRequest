@@ -59,7 +59,8 @@
 			</div>
 			<div class="panel-body" align="left">
 				<b>Event name:</b> ${event.name}<br /> <b>Time:</b>
-				${event.date_time}<br /> <b>Number of people:</b> <span
+				<fmt:formatDate value="${event.date_time}"
+									pattern="EEE, d MMM yyyy hh:mm aaa" /><br /> <b>Number of people:</b> <span
 					style="color: red;">${event.personCount}</span><br /> <b>Delivery
 					Option:</b> <span style="color: red;">${event.isPickUp()?'Pick Up':'Delivered'}</span><br />
 				<b>Customer name:</b> ${event.customer.name}<br /> <b>Customer
