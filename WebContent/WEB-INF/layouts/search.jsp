@@ -3,53 +3,53 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<div class="col-sm-10 col-sm-offset-1 page-header">
+	<h1>Search</h1>
+</div>
+
 <input type="hidden" name="eventAddress" id="event-address"
 	class="event-address" value="${eventLocation}" />
 
-<div class="container">
-	<div class="col-sm-12">
-		<div class="panel panel-info">
-			<div class="panel-heading">
-				<h3 class="panel-title">Search for restaurants nearby</h3>
-			</div>
-			<div class="panel-body">
-				<form class="subscribe form-horizontal"
-					action="${pageContext.request.contextPath}/search" method="GET"
-					role="form">
-
-					<div class="form-group">
-						<label for="name" class="col-sm-3 control-label">Zip
-							code&nbsp;:</label>
-						<div class="col-sm-3">
-							<input type="text" size="5" maxlength="5"
-								value="${eventLocation}" name="zip_code" id="zip_code"
-								required="required" class="form-control">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="name" class="col-sm-3 control-label">Cuisine
-							type&nbsp;:</label>
-						<div class="col-sm-3">
-							<span id="cuisineType"></span>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-3 control-label"></label>
-						<div class="col-sm-3" align="left">
-							<span class="input-group-btn">
-								<button type="submit" class="btn btn-default">
-									Search again<i class="fa fa-angle-right"></i>
-								</button>
-							</span>
-						</div>
-					</div>
-			</div>
-			</form>
+<div class="col-sm-10 col-sm-offset-1">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">Search for restaurants nearby</h3>
 		</div>
-	</div>
-</div>
+		<div class="panel-body">
+			<form class="subscribe form-horizontal"
+				action="${pageContext.request.contextPath}/search" method="GET"
+				role="form">
 
-<div class="container">
+				<div class="form-group">
+					<label for="name" class="col-sm-3 control-label">Zip
+						code&nbsp;:</label>
+					<div class="col-sm-3">
+						<input type="text" size="5" maxlength="5" value="${eventLocation}"
+							name="zip_code" id="zip_code" required="required"
+							class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="name" class="col-sm-3 control-label">Cuisine
+						type&nbsp;:</label>
+					<div class="col-sm-3">
+						<span id="cuisineType"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label"></label>
+					<div class="col-sm-3" align="left">
+						<span class="input-group-btn">
+							<button type="submit" class="btn btn-default">
+								Search again<i class="fa fa-angle-right"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+		</div>
+		</form>
+	</div>
+
 	<div class="panel-heading">
 		<h3 class="panel-title">RESTAURANTS</h3>
 	</div>

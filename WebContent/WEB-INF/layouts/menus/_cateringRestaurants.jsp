@@ -3,17 +3,13 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-
-<div class="col-sm-offset-2 page-header">
+<div class="col-sm-10 col-sm-offset-1 page-header">
 	<h1>${sessionScope.eventName}/${cuisineType} menu</h1>
 	<input type="hidden" name="eventAddress" id="event-address"
-		class="event-address"
-		value="${eventLocation.zip}" />
+		class="event-address" value="${eventLocation.zip}" />
 </div>
 
-
-<div class="col-sm-9 col-sm-offset-2">
+<div class="col-sm-10 col-sm-offset-1">
 	<h2>Select restaurants you are interested in</h2>
 	<div class="panel panel-warning">
 		<div class="panel-heading">

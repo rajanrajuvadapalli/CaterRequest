@@ -3,9 +3,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<div class="col-sm-offset-2 page-header">
+<div class="col-sm-10 col-sm-offset-1 page-header">
 	<h1>My Dashboard</h1>
 </div>
+<div class="col-sm-10 col-sm-offset-1">
 <c:if test="${not empty errors}">
 	<div class="alert alert-danger">
 		<button type="button" class="close btn-lg" data-dismiss="alert"
@@ -48,7 +49,9 @@
 		</ul>
 	</div>
 </c:if>
-<div class="col-sm-9 col-sm-offset-2">
+</div>
+
+<div class="col-sm-10 col-sm-offset-1">
 	<div align="right">
 		<a href="${pageContext.request.contextPath}/customer/createEvent"
 			role="button" class="btn btn-default"
