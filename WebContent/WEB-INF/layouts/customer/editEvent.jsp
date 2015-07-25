@@ -56,16 +56,16 @@
 	<form class="form-horizontal" method="POST" id="event-form"
 		action="${pageContext.request.contextPath}/customer/event/delete/${event.id}"
 		enctype="application/x-www-form-urlencoded" autocomplete="off">
-		Are you sure you want to delete this event?<br /> <br />
+		<div align="center">Are you sure you want to delete this event?</div><br /> <br />
 		<div align="center">
-			<button type="submit" class="btn btn-default">Confirm Delete</button>
+			<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> Confirm Delete</button>
 		</div>
 	</form>
 </div>
 
 <div class="col-sm-2 col-sm-offset-1">
 	<a class="popup-with-form" href="#deleteConfirm">
-		<button class="btn btn-default">Delete Event</button>
+		<button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> Delete Event</button>
 		<br /> <br />
 	</a>
 </div>

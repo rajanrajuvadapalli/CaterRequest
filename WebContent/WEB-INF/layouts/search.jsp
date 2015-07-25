@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div class="col-sm-10 col-sm-offset-1 page-header">
-	<h1>Search</h1>
+	<h1><span class="glyphicon glyphicon-search"></span> Search</h1>
 </div>
 
 <input type="hidden" name="eventAddress" id="event-address"

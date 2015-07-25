@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -19,6 +20,7 @@ import com.cater.model.Address;
 import com.cater.model.Customer;
 import com.cater.model.Event;
 import com.cater.model.Login;
+import com.google.common.collect.Lists;
 
 /**
  * Description: 
@@ -133,7 +135,9 @@ public class CustomerDAOImplTest extends AbstractDAOImplTest {
 		assertTrue(fixture.saveOrUpdate(customer));
 		Event e1 = createSampleEvent();
 		e1.setCustomer(customer);
-		customer.getEvents().add(e1);
+		List <Event> events = Lists.newArrayList();
+		events.add(e1);
+		customer.setEvents(events);
 		eventDAO.saveOrUpdate(e1);
 		Map <Integer, String> result = fixture.sparseDownloadMyEvents(customer
 				.getId());

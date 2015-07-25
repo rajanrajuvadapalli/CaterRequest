@@ -123,13 +123,14 @@
 		<section id="main-search" class="block">
 			<div class="container">
 				<header>
-					<h2>Search for restaurants nearby</h2>
+					<h2><span class="glyphicon glyphicon-search"></span> Search for restaurants nearby</h2>
 				</header>
 				<form class="form-inline"
 					action="${pageContext.request.contextPath}/search" method="GET"
 					role="form">
 					<div class="row">
 						<div class="col-sm-2">
+						
 							<input type="text" id="main-search" size="5" maxlength="5"
 								name="zip_code" id="zip_code" required="required"
 								placeholder="Enter ZIP Code">

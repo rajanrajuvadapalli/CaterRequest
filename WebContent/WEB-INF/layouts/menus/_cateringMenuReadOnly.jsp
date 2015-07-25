@@ -7,7 +7,7 @@
 	<h1>${event.name}</h1>
 </div>
 <div class="row">
-	<div class="col-sm-10 col-sm-offset-1">
+	<div class="col-sm-8 col-sm-offset-2">
 		<div class="panel panel-warning">
 			<div class="panel-heading">
 				<h3 class="panel-title">Menu</h3>
@@ -17,7 +17,7 @@
 					<c:if test="${event.status == 'ACTIVE' && user.role == 'CUSTOMER'}">
 						<a
 							href="${pageContext.request.contextPath}/menu/selectMenu?eventId=${event.id}&cuisineType=${menu.cuisine}"
-							role="button" class="btn btn-default"> Edit Menu</a>
+							role="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Edit Menu</a>
 					</c:if>
 				</div>
 				<c:forEach items="${menu.categories}" var="category">
@@ -52,7 +52,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-sm-5 col-sm-offset-1">
+	<div class="col-sm-4 col-sm-offset-2">
 		<div class="panel panel-success">
 			<div class="panel-heading">
 				<h3 class="panel-title">Event details</h3>
@@ -72,7 +72,7 @@
 		</div>
 	</div>
 	<c:if test="${user.role == 'RESTAURANT'}">
-		<div class="col-sm-5">
+		<div class="col-sm-4">
 			<div class="panel panel-success">
 				<div class="panel-heading">
 					<h3 class="panel-title">Quote</h3>
@@ -143,7 +143,7 @@
 		</div>
 	</c:if>
 </div>
-<div class="col-sm-1 col-sm-offset-1">
+<div class="col-sm-1 col-sm-offset-2">
 	<button type="button" class="btn btn-default"
-		onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">Back</button>
+		onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">Back</button><br/><br/><br/><br/>
 </div>

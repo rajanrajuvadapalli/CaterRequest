@@ -3,61 +3,61 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-<div class="col-sm-offset-2 page-header">
+<div class="col-sm-10 col-sm-offset-1 page-header">
 	<h1>Create Event</h1>
 </div>
+<div class="col-sm-10 col-sm-offset-1">
+	<c:if test="${not empty errors}">
+		<div class="alert alert-danger">
+			<button type="button" class="close btn-lg" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<ul>
+				<c:forEach items="${errors}" var="e">
+					<li align="left">${e}</li>
+				</c:forEach>
+			</ul>
 
-<c:if test="${not empty errors}">
-	<div class="alert alert-danger">
-		<button type="button" class="close btn-lg" data-dismiss="alert"
-			aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-		<ul>
-			<c:forEach items="${errors}" var="e">
-				<li align="left">${e}</li>
-			</c:forEach>
-		</ul>
+		</div>
+	</c:if>
 
-	</div>
-</c:if>
+	<c:if test="${not empty successMessages}">
+		<div class="alert alert-success">
+			<button type="button" class="close btn-lg" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<ul>
+				<c:forEach items="${successMessages}" var="sm">
+					<li align="left">${sm}</li>
+				</c:forEach>
+			</ul>
 
-<c:if test="${not empty successMessages}">
-	<div class="alert alert-success">
-		<button type="button" class="close btn-lg" data-dismiss="alert"
-			aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-		<ul>
-			<c:forEach items="${successMessages}" var="sm">
-				<li align="left">${sm}</li>
-			</c:forEach>
-		</ul>
+		</div>
+	</c:if>
 
-	</div>
-</c:if>
+	<c:if test="${not empty warnings}">
+		<div class="alert alert-warning">
+			<button type="button" class="close btn-lg" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<ul>
+				<c:forEach items="${warnings}" var="w">
+					<li align="left">${w}</li>
+				</c:forEach>
+			</ul>
+		</div>
+	</c:if>
+</div>
 
-<c:if test="${not empty warnings}">
-	<div class="alert alert-warning">
-		<button type="button" class="close btn-lg" data-dismiss="alert"
-			aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-		<ul>
-			<c:forEach items="${warnings}" var="w">
-				<li align="left">${w}</li>
-			</c:forEach>
-		</ul>
-	</div>
-</c:if>
-
-<div class="col-sm-9 col-sm-offset-2">
+<div class="col-sm-10 col-sm-offset-1">
 	<form class="form-horizontal" method="POST" id="event-form"
 		action="${pageContext.request.contextPath}/customer/createEvent"
 		enctype="application/x-www-form-urlencoded" autocomplete="off"
 		onsubmit="return validateEventForm();">
-		<div class="col-sm-12">
+		<div class="col-sm-10 col-sm-offset-1">
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<h3 class="panel-title">The Basics</h3>
@@ -106,77 +106,75 @@
 				</div>
 			</div>
 
-			<div class="col-sm-12">
-				<div class="panel panel-success">
-					<div class="panel-heading">
-						<h3 class="panel-title">Event Location</h3>
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h3 class="panel-title">Event Location</h3>
+				</div>
+				<div class="panel-body">
+
+					<div class="form-group">
+						<label for="street1" class="col-sm-3 control-label">Street
+							1 :</label>
+						<div class="col-sm-6">
+							<input type="text" size="30" maxlength="50" name="street1"
+								required="required" placeholder="Line 1" class="form-control">
+						</div>
 					</div>
-					<div class="panel-body">
 
-						<div class="form-group">
-							<label for="street1" class="col-sm-3 control-label">Street
-								1 :</label>
-							<div class="col-sm-6">
-								<input type="text" size="30" maxlength="50" name="street1"
-									required="required" placeholder="Line 1" class="form-control">
-							</div>
+					<div class="form-group">
+						<label for="street2" class="col-sm-3 control-label">Street
+							2 :</label>
+						<div class="col-sm-6">
+							<input type="text" size="30" maxlength="50" name="street2"
+								placeholder="Line 2" class="form-control">
 						</div>
+					</div>
 
-						<div class="form-group">
-							<label for="street2" class="col-sm-3 control-label">Street
-								2 :</label>
-							<div class="col-sm-6">
-								<input type="text" size="30" maxlength="50" name="street2"
-									placeholder="Line 2" class="form-control">
-							</div>
+					<div class="form-group">
+						<label for="city" class="col-sm-3 control-label">City :</label>
+						<div class="col-sm-6">
+							<input type="text" size="30" name="city" required="required"
+								placeholder="City" class="form-control">
 						</div>
+					</div>
 
-						<div class="form-group">
-							<label for="city" class="col-sm-3 control-label">City :</label>
-							<div class="col-sm-6">
-								<input type="text" size="30" name="city" required="required"
-									placeholder="City" class="form-control">
-							</div>
+					<div class="form-group">
+						<label for="state" class="col-sm-3 control-label">State :</label>
+						<div class="col-sm-6">
+							<span id="stateArea"></span>
 						</div>
+					</div>
 
-						<div class="form-group">
-							<label for="state" class="col-sm-3 control-label">State :</label>
-							<div class="col-sm-6">
-								<span id="stateArea"></span>
-							</div>
+					<div class="form-group">
+						<label for="zip" class="col-sm-3 control-label">Zip :</label>
+						<div class="col-sm-6">
+							<input type="text" size="10" name="zip" maxlength="10"
+								required="required" placeholder="Ex.: xxxxx"
+								pattern="^\d{5}(\-\d{4})?$" class="form-control">
 						</div>
+					</div>
 
-						<div class="form-group">
-							<label for="zip" class="col-sm-3 control-label">Zip :</label>
-							<div class="col-sm-6">
-								<input type="text" size="10" name="zip" maxlength="10"
-									required="required" placeholder="Ex.: xxxxx"
-									pattern="^\d{5}(\-\d{4})?$" class="form-control">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="deliveryOption" class="col-sm-3 control-label">Delivery
-								Option :</label>
-							<div class="col-sm-6">
-								<select class="form-control inputs" name="deliveryOption"
-									id="deliveryOption">
-									<option value="" selected="selected">Choose one...</option>
-									<option value="1">Pick Up</option>
-									<option value="2">Delivered</option>
-								</select>
-							</div>
+					<div class="form-group">
+						<label for="deliveryOption" class="col-sm-3 control-label">Delivery
+							Option :</label>
+						<div class="col-sm-6">
+							<select class="form-control inputs" name="deliveryOption"
+								id="deliveryOption">
+								<option value="" selected="selected">Choose one...</option>
+								<option value="1">Pick Up</option>
+								<option value="2">Delivered</option>
+							</select>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-2">
+			<div class="col-sm-1">
 				<button type="button" class="btn btn-default"
 					onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">
 					Cancel</button>
 			</div>
-			<div class="col-sm-4 col-sm-offset-2">
-				<button type="submit" class="btn btn-default">Create Event</button>
+			<div class="col-sm-1 col-sm-offset-9">
+				<button type="submit" class="btn btn-default">Create Event</button><br/><br/><br/><br/>
 			</div>
 	</form>
 </div>
