@@ -3,11 +3,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-<div class="col-sm-offset-2 page-header">
+<div class="col-sm-10 col-sm-offset-1 page-header">
 	<h1>Registration</h1>
 </div>
 
+<div class="col-sm-10 col-sm-offset-1">
 <c:if test="${not empty errors}">
 	<div class="alert alert-danger">
 		<button type="button" class="close btn-lg" data-dismiss="alert"
@@ -51,6 +51,7 @@
 		</ul>
 	</div>
 </c:if>
+</div>
 
 <div class="container container-fluid">
 	<form class="form-horizontal" method="POST" id="register-form"
