@@ -24,6 +24,7 @@ function populateCuisineTypes() {
 							+ "	<option value=\"FRENCH\"> 		FRENCH             </option>              "
 							+ "	<option value=\"GREEK\"> 		GREEK              </option>              "
 							+ "	<option value=\"INDIAN_SOUTH\">	INDIAN (SOUTH)     </option>              "
+							+ "	<option value=\"INDIAN_NORTH\">	INDIAN (NORTH)     </option>              "
 							+ "	<option value=\"INDONESIAN\"> 	INDONESIAN         </option>              "
 							+ "	<option value=\"ITALIAN\"> 		ITALIAN            </option>              "
 							+ "	<option value=\"JAPANESE\"> 	JAPANESE           </option>              "
@@ -148,7 +149,7 @@ function validateEventForm() {
 
 function validateCuisine(formId) {
 	var element = $('form[id=' + formId + '] select[id=cuisineType]');
-	if (element.val() != "INDIAN_SOUTH") {
+	if (element.val() != "INDIAN_SOUTH" && element.val() != "INDIAN_NORTH") {
 		alert("Sorry! " + element.val()
 				+ " restaurants are not registered with us at this moment.");
 		return false;
