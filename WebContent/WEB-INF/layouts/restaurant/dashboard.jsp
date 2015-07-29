@@ -78,7 +78,7 @@
 							</td>
 							<td><fmt:formatDate value="${q.menu.event.date_time}"
 									pattern="EEE, d MMM yyyy hh:mm aaa" /></td>
-							<td>${q.menu.event.personCount}</td>
+							<td>${q.menu.event.personCount} adults, ${q.menu.event.kidsCount} kids</td>
 							<td><c:choose>
 									<c:when test="${q.status.toString() == 'CREATED'}">New Event.</c:when>
 									<c:when

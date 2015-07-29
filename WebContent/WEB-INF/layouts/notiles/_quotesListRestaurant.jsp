@@ -30,8 +30,8 @@
 						<td class="list">${q.menu.event.date_time}</td>
 						<td class="list">${q.menu.event.customer.name}</td>
 						<td class="list">${q.menu.event.customer.contactNumber}</td>
-						<td class="list">${q.menu.event.budgetTotal/q.menu.event.personCount}</td>
-						<td class="list">${q.menu.event.personCount}</td>
+						<td class="list">${q.menu.event.budgetTotal/(q.menu.event.personCount+q.menu.event.kidsCount)}</td>
+						<td class="list">${q.menu.event.personCount} adults, ${q.menu.event.kidsCount} kids</td>
 						<td class="list"><fmt:setLocale value="en_US" /> <fmt:formatNumber
 								value="${q.menu.event.budgetTotal}" type="currency" /></td>
 						<td class="list"><c:choose>

@@ -47,6 +47,7 @@ public class EventDAOImplTest extends AbstractDAOImplTest {
 		event.setLocation(createSampleAddress());
 		event.setDate_time(DATE_1);
 		event.setPersonCount(10);
+		event.setKidsCount(1);
 		event.setBudgetTotal(200);
 		return event;
 	}
@@ -130,6 +131,7 @@ public class EventDAOImplTest extends AbstractDAOImplTest {
 		assertEquals(persistedEvent.getLocation().getState(), "CA");
 		assertEquals(persistedEvent.getLocation().getZip(), "958300000");
 		assertEquals(persistedEvent.getPersonCount(), new Integer(10));
+		assertEquals(persistedEvent.getKidsCount(), new Integer(1));
 		assertEquals(persistedEvent.getBudgetTotal(), new Integer(200));
 	}
 }

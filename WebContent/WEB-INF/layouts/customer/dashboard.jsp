@@ -78,7 +78,7 @@
 					</tr>
 					<c:forEach items="${events}" var="e">
 						<tr>
-							<td>${e.name}<br />(${e.personCount} count)<br /> <c:if
+							<td>${e.name}<br />(${e.personCount} adults, ${e.kidsCount} kids)<br /> <c:if
 									test="${e.status eq 'ACTIVE'}">
 									<a
 										href="${pageContext.request.contextPath}/customer/event/edit/${e.id}">

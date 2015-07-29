@@ -191,6 +191,11 @@ public class CustomerDashboardController {
 				&& NUMERIC.matcher(personCountParameter).matches()) {
 			e.setPersonCount(Integer.parseInt(personCountParameter));
 		}
+		String kidsCountParameter = request.getParameter("kids_count");
+		if (StringUtils.isNotBlank(kidsCountParameter)
+				&& NUMERIC.matcher(kidsCountParameter).matches()) {
+			e.setKidsCount(Integer.parseInt(kidsCountParameter));
+		}
 		String budgetTotalParameter = request.getParameter("budget_total");
 		if (StringUtils.isNotBlank(budgetTotalParameter)
 				&& NUMERIC.matcher(budgetTotalParameter).matches()) {
@@ -258,6 +263,7 @@ public class CustomerDashboardController {
 			StringBuilder message = new StringBuilder();
 			boolean isDateChanged = false;
 			boolean isPersonCountChanged = false;
+			boolean isKidsCountChanged = false;
 			Date dateTime;
 			try {
 				synchronized (this) {
@@ -282,11 +288,21 @@ public class CustomerDashboardController {
 			int newPersonCount = stringToInt(personCountParameter);
 			if (e.getPersonCount() != newPersonCount) {
 				isPersonCountChanged = true;
-				message.append("Old person count: ").append(e.getPersonCount())
+				message.append("Old adult count: ").append(e.getPersonCount())
 						.append("\n");
-				message.append("New person count: ").append(newPersonCount)
+				message.append("New adult count: ").append(newPersonCount)
 						.append("\n");
 				e.setPersonCount(Integer.parseInt(personCountParameter));
+			}
+			String kidsCountParameter = request.getParameter("kids_count");
+			int newKidsCount = stringToInt(kidsCountParameter);
+			if (e.getKidsCount() != newKidsCount) {
+				isKidsCountChanged = true;
+				message.append("Old kids count: ").append(e.getKidsCount())
+						.append("\n");
+				message.append("New kids count: ").append(newKidsCount)
+						.append("\n");
+				e.setKidsCount(Integer.parseInt(kidsCountParameter));
 			}
 			customerService.saveOrUpdateEvent(e);
 			List <String> successMessages = Lists.newArrayList();
@@ -295,7 +311,7 @@ public class CustomerDashboardController {
 			redirectAttributes.addFlashAttribute("successMessages",
 					successMessages);
 			updateQuoteStatusAndSendNotifications(e, message, isDateChanged,
-					isPersonCountChanged);
+					isPersonCountChanged || isKidsCountChanged);
 		}
 		return "redirect:/customer/dashboard";
 	}
@@ -306,12 +322,11 @@ public class CustomerDashboardController {
 	 * @param e the e
 	 * @param message the message
 	 * @param isDateChanged the is date changed
-	 * @param isPersonCountChanged the is person count changed
+	 * @param isCountChanged the is count changed
 	 */
 	private void updateQuoteStatusAndSendNotifications(Event e,
-			StringBuilder message, boolean isDateChanged,
-			boolean isPersonCountChanged) {
-		if (!isDateChanged && !isPersonCountChanged) {
+			StringBuilder message, boolean isDateChanged, boolean isCountChanged) {
+		if (!isDateChanged && !isCountChanged) {
 			return;
 		}
 		StringBuilder message2 = new StringBuilder(
@@ -319,7 +334,7 @@ public class CustomerDashboardController {
 		message2.append(message);
 		List <Quote> quotes = restaurantService
 				.findQuotesWithEventId(e.getId());
-		QuoteStatus status = isPersonCountChanged ? CUSTOMER_UPDATED_COUNT
+		QuoteStatus status = isCountChanged ? CUSTOMER_UPDATED_COUNT
 				: CUSTOMER_UPDATED_DATE;
 		if (CollectionUtils.isNotEmpty(quotes)) {
 			for (Quote q : quotes) {

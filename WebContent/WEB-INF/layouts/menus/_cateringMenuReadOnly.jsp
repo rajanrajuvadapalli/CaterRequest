@@ -61,7 +61,8 @@
 				<b>Event name:</b> ${event.name}<br /> <b>Time:</b>
 				<fmt:formatDate value="${event.date_time}"
 					pattern="EEE, d MMM yyyy hh:mm aaa" />
-				<br /> <b>Number of people:</b> <span style="color: red;">${event.personCount}</span><br />
+				<br /> <b>Number of Adults:</b> <span style="color: red;">${event.personCount}</span><br />
+				<b>Number of Kids:</b> <span style="color: red;">${event.kidsCount}</span><br />
 				<b>Delivery Option:</b> <span style="color: red;">${event.isPickUp()?'Pick Up':'Delivered'}</span><br />
 				<b>Customer name:</b> ${event.customer.name}<br /> <b>Customer
 					contact number:</b>

@@ -103,12 +103,23 @@
 
 				<div class="form-group">
 					<label for="person_count" class="col-sm-3 control-label">Number
-						of Persons :</label>
+						of Adults :</label>
 					<div class="col-sm-6">
 						<input type="text" size="20" maxlength="20" name="person_count"
 							id="person_count" required="required" pattern="[0-9]+"
 							title="Must be a Number" class="form-control"
 							value="${event.personCount}">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="kids_count" class="col-sm-3 control-label">Number
+						of Kids :</label>
+					<div class="col-sm-6">
+						<input type="text" size="20" maxlength="20" name="kids_count"
+							id="kids_count" required="required" pattern="[0-9]+"
+							title="Must be a Number" class="form-control"
+							value="${event.kidsCount}">
 					</div>
 				</div>
 
