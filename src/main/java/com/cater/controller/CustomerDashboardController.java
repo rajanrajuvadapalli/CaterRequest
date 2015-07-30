@@ -269,14 +269,15 @@ public class CustomerDashboardController {
 				synchronized (this) {
 					dateTime = SDF.parse(StringUtils.defaultString(request
 							.getParameter("datetimepicker")));
+					String oldDateTime = SDF_1.format(e.getDate_time());
+					String newDateTime = SDF_1.format(dateTime);
 					//If customer changes date, send notification
-					if (!e.getDate_time().equals(dateTime)) {
+					if (!StringUtils.equalsIgnoreCase(oldDateTime, newDateTime)) {
 						isDateChanged = true;
-						message.append("Old date/time: ")
-								.append(SDF_1.format(e.getDate_time()))
+						message.append("Old date/time: ").append(oldDateTime)
 								.append("\n");
-						message.append("New date/time: ")
-								.append(SDF_1.format(dateTime)).append("\n");
+						message.append("New date/time: ").append(newDateTime)
+								.append("\n");
 					}
 					e.setDate_time(dateTime);
 				}

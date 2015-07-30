@@ -2,9 +2,10 @@ package com.cater.email;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang.time.DateFormatUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,8 @@ import com.cater.model.Restaurant;
 public class EmailHelper {
 	/** The Constant logger. */
 	private static final Logger logger = Logger.getLogger(EmailHelper.class);
+	private static final SimpleDateFormat SDF_1 = new SimpleDateFormat(
+			"EEE, d MMM yyyy hh:mm aaa z", Locale.US);
 	/** The admin email. */
 	@Value("${admin.email}")
 	private String ADMIN_EMAIL;
@@ -156,8 +159,7 @@ public class EmailHelper {
 			searchList[2] = "${EVENT_NAME}";
 			replacementList[2] = event.getName();
 			searchList[3] = "${EVENT_TIME}";
-			replacementList[3] = DateFormatUtils.format(event.getDate_time(),
-					"yyyy-MM-dd HH:mm:SS");
+			replacementList[3] = SDF_1.format(event.getDate_time());
 			searchList[4] = "${CUSTOMER_NAME}";
 			replacementList[4] = customer.getName();
 			searchList[5] = "${RESTAURANT_NAME}";

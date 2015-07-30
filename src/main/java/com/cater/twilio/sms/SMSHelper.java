@@ -109,14 +109,14 @@ public class SMSHelper {
 				//new StringBuilder(messages.get(
 				//role).get(QuoteStatus.valueOf(quote.getStatus())));
 				messageBuilder.append("Event name: ").append(event.getName())
-						.append(" ");
+						.append("; ");
 				if (role == Roles.RESTAURANT) {
 					messageBuilder.append("Customer name: ")
-							.append(customer.getName()).append(" ");
+							.append(customer.getName()).append("; ");
 				}
 				else if (role == Roles.CUSTOMER) {
 					messageBuilder.append("Restaurant name: ")
-							.append(restaurant.getName()).append(" ");
+							.append(restaurant.getName()).append("; ");
 				}
 				if (optionalMessage != null) {
 					messageBuilder.append(optionalMessage).append(" ");
