@@ -8,53 +8,53 @@
 </div>
 
 <div class="col-sm-10 col-sm-offset-1">
-<c:if test="${not empty errors}">
-	<div class="alert alert-danger">
-		<button type="button" class="close btn-lg" data-dismiss="alert"
-			aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-		<ul>
-			<c:forEach items="${errors}" var="e">
-				<li align="left">${e}</li>
-			</c:forEach>
-		</ul>
+	<c:if test="${not empty errors}">
+		<div class="alert alert-danger">
+			<button type="button" class="close btn-lg" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<ul>
+				<c:forEach items="${errors}" var="e">
+					<li align="left">${e}</li>
+				</c:forEach>
+			</ul>
 
-	</div>
-</c:if>
+		</div>
+	</c:if>
 
-<c:if test="${not empty successMessages}">
-	<div class="alert alert-success">
-		<button type="button" class="close btn-lg" data-dismiss="alert"
-			aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-		<ul>
-			<c:forEach items="${successMessages}" var="sm">
-				<li align="left">${sm}</li>
-			</c:forEach>
-		</ul>
+	<c:if test="${not empty successMessages}">
+		<div class="alert alert-success">
+			<button type="button" class="close btn-lg" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<ul>
+				<c:forEach items="${successMessages}" var="sm">
+					<li align="left">${sm}</li>
+				</c:forEach>
+			</ul>
 
-	</div>
-</c:if>
+		</div>
+	</c:if>
 
-<c:if test="${not empty warnings}">
-	<div class="alert alert-warning">
-		<button type="button" class="close btn-lg" data-dismiss="alert"
-			aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-		<ul>
-			<c:forEach items="${warnings}" var="w">
-				<li align="left">${w}</li>
-			</c:forEach>
-		</ul>
-	</div>
-</c:if>
+	<c:if test="${not empty warnings}">
+		<div class="alert alert-warning">
+			<button type="button" class="close btn-lg" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<ul>
+				<c:forEach items="${warnings}" var="w">
+					<li align="left">${w}</li>
+				</c:forEach>
+			</ul>
+		</div>
+	</c:if>
 </div>
 
 <div class="container container-fluid">
-	<form class="form-horizontal" method="POST" id="register-form"
+	<form class="form-horizontal" method="POST" id="customer-register-form"
 		action="${pageContext.request.contextPath}/register"
 		enctype="multipart/form-data"
 		onsubmit="return validateRegistrationFormOnSubmit();">
@@ -101,10 +101,9 @@
 							Phone&nbsp;:</label>
 						<div class="col-sm-6" align="left">
 							<input type="text" size="30" name="phone" required="required"
-								placeholder="Ex.: xxxxxxxxxx"
-								pattern="\d{10}"
-								class="form-control">
-							&nbsp;<input type="checkbox" name="smsOk" id="customer"
+								placeholder="Ex.: xxxxxxxxxx" pattern="\d{10}"
+								class="form-control"> &nbsp;<input type="checkbox"
+								name="smsOk" id="customer"
 								style="-webkit-transform: scale(1.5); -o-transform: scale(1.5); -ms-transform: scale(1.5); -moz-transform: scale(1.5); padding: 10px;">&nbsp;&nbsp;<span
 								id="customer">Send me text alerts <sup>*</sup></span>
 						</div>
@@ -113,8 +112,8 @@
 						<label for="pwd2" class="col-sm-4 control-label">How did
 							you hear about us&nbsp;?</label>
 						<div class="col-sm-6">
-							<select class="inputs" name="hearAboutUs"
-								id="hearAboutUs" required="required">
+							<select class="inputs" name="hearAboutUs" id="hearAboutUs"
+								required="required">
 								<option value="" selected="selected">Choose one...</option>
 								<option value="friend_referral">Friend/referral</option>
 								<option value="google">Google Search</option>
@@ -133,22 +132,31 @@
 					<h3 class="panel-title">Address</h3>
 				</div>
 				<div class="panel-body">
+					<input type="hidden" name="LastAddressValidated" value="">
+					<div class="alert alert-danger hidden" id="addressnotok">
+						<button type="button" class="close btn-lg" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						Address validation failed. Please check your address.<br /> If
+						the problem persists, please contact customer support.
+					</div>
 					<div class="form-group">
 						<label for="street1" class="col-sm-4 control-label">Street
-							1&nbsp;:</label>
+							&nbsp;:</label>
 						<div class="col-sm-6">
 							<input type="text" size="30" maxlength="50" name="street1"
 								required="required" placeholder="Line 1" class="form-control">
 						</div>
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label for="street2" class="col-sm-4 control-label">Street
 							2&nbsp;:</label>
 						<div class="col-sm-6">
 							<input type="text" size="30" maxlength="50" name="street2"
 								placeholder="Line 2" class="form-control">
 						</div>
-					</div>
+					</div> -->
 					<div class="form-group">
 						<label for="city" class="col-sm-4 control-label">City&nbsp;:</label>
 						<div class="col-sm-6">
@@ -167,8 +175,7 @@
 						<div class="col-sm-6">
 							<input type="text" size="10" name="zip" maxlength="10"
 								required="required" placeholder="Ex.: xxxxx"
-								pattern="^\d{5}(\-\d{4})?$"
-								class="form-control">
+								pattern="^\d{5}(\-\d{4})?$" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
@@ -188,7 +195,7 @@
 </div>
 
 <script>
-$('document').ready(function(){
-	populateStateDropDown();
-});
+	$('document').ready(function() {
+		populateStateDropDown();
+	});
 </script>

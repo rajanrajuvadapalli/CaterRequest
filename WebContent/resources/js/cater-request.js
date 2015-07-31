@@ -92,16 +92,72 @@ function validateRegistrationFormOnSubmit() {
 		pwd2.focus();
 		return false;
 	}
-	var state = $("input[name=state]");
-	if (state.val() != null && state.val().length != 2) {
+	var state = $("select[name=state]").val();
+	if (state != null && state.length != 2) {
 		alert("State code should be 2 characters");
 		state.focus();
 		return false;
 	}
+	var st1 = $("input[name=street1]").val();
+	var city = $("input[name=city]").val();
+	var zip = $("input[name=zip]").val();
+	var CurrentAddress = st1 + ", " + city + ", " + state + ", " + zip;
+	var LastAddressValidated = $("input[name=LastAddressValidated]").val();
+	// console.log("LastAddressValidated: " + LastAddressValidated);
+	// console.log("CurrentAddress: " + CurrentAddress);
+	if (LastAddressValidated != CurrentAddress) {
+		$("input[name=LastAddressValidated]").val(CurrentAddress);
+		var geocoder = new google.maps.Geocoder();
+		geocoder.geocode({
+			'address' : CurrentAddress
+		}, addressCallbackFunction);
+		return false;
+	}
 	var hash = md5($("#pwd1").val());
 	$("#pwd1").val(hash);
-	$("#pwd2").val("");
+	$("#pwd2").val(hash);
 	return true;
+}
+
+function addressCallbackFunction(results, status) {
+	if (status == google.maps.GeocoderStatus.OK) {
+		var address = results[0].formatted_address;
+		console.log("Validated address: " + address);
+		numCommas = address.match(/,/g).length;
+		if (numCommas >= 3) {
+			// Address is valid, Continue to submit form
+			var st1 = $("input[name=street1]").val();
+			var city = $("input[name=city]").val();
+			var state = $("select[name=state]").val();
+			var zip = $("input[name=zip]").val();
+			var CurrentAddress = st1 + ", " + city + ", " + state + ", " + zip;
+			var values = address.split(', ');
+			var validatedStreet = values[0];
+			var validatedCity = values[1];
+			var state_zip = values[2].split(' ');
+			var validatedState = state_zip[0];
+			var validatedZip = state_zip[1];
+			var LastAddressValidated = validatedStreet + ", " + validatedCity
+					+ ", " + validatedState + ", " + validatedZip;
+			$("input[name=LastAddressValidated]").val(LastAddressValidated);
+			$("input[name=street1]").val(validatedStreet);
+			$("input[name=city]").val(validatedCity);
+			$("input[name=state]").val(validatedState);
+			$("input[name=zip]").val(validatedZip);
+			alert("\nAddress you entered: " + CurrentAddress
+					+ "\nWe updated it to: " + LastAddressValidated
+					+ "\nPlease verify and make changes if necessary.");
+			/*
+			 * var customerName = $("input[name=name]").val(); if (customerName !=
+			 * null) { $("form[id=customer-register-form]").submit(); } else {
+			 * $("form[id=restaurant-register-form]").submit(); }
+			 */
+			return;
+		}
+	}
+	// Address is invalid
+	$("input[name=LastAddressValidated]").val("");
+	$("div[id=addressnotok]").removeClass('hidden');
 }
 
 function validateLoginForm() {

@@ -40,7 +40,7 @@
 							<li><a
 								href="${pageContext.request.contextPath}/register?as=customer"><strong>Register</strong></a></li>
 							<li>
-								<form class="form-horizontal" method="GET" id="register-form"
+								<form class="form-horizontal" method="GET" id="restaurant-register-form"
 									action="${pageContext.request.contextPath}/register"
 									enctype="application/x-www-form-urlencoded" autocomplete="off">
 									<input type="hidden" name="as" value="restaurant">

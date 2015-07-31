@@ -19,7 +19,7 @@
 				<div class="container">
 					<h1>Order food for your party in just one click!</h1>
 				</div>
-				<form class="form-horizontal" method="GET" id="register-form"
+				<form class="form-horizontal" method="GET" id="customer-register-form"
 					action="${pageContext.request.contextPath}/register"
 					enctype="application/x-www-form-urlencoded" autocomplete="off">
 					<input type="hidden" name="as" value="customer">
