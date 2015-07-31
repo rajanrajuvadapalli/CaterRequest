@@ -52,7 +52,9 @@ public class RegisterService {
 		address.setStreet2(data.getStreet2());
 		address.setCity(data.getCity());
 		address.setState(data.getState());
-		address.setZip(data.getZip());
+		String zip = StringUtils.remove(
+				StringUtils.defaultString(data.getZip()), "-");
+		address.setZip(zip);
 		addressDAO.saveOrUpdate(address);
 		return address;
 	}
