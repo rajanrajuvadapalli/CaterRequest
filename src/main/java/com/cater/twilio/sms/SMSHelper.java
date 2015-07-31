@@ -177,7 +177,9 @@ public class SMSHelper {
 				String to = Helper.extractJust10digitNumber(phoneNumber);
 				String msg = "Thank you for registering with www.CaterRequest.com. "
 						+ "Please check your registered email and click on the confirmation link to activate your account."
-						+ "Your verification code is: " + phoneVerificationCode;
+						+ "Your verification code is: "
+						+ phoneVerificationCode
+						+ " Enter this code under Settings >> Personal Info.";
 				twilioSms.sendMessage(to, msg);
 				return true;
 			}
