@@ -19,7 +19,8 @@
 				<div class="container">
 					<h1>Order food for your party in just one click!</h1>
 				</div>
-				<form class="form-horizontal" method="GET" id="customer-register-form"
+				<form class="form-horizontal" method="GET"
+					id="customer-register-form"
 					action="${pageContext.request.contextPath}/register"
 					enctype="application/x-www-form-urlencoded" autocomplete="off">
 					<input type="hidden" name="as" value="customer">
@@ -123,14 +124,17 @@
 		<section id="main-search" class="block">
 			<div class="container">
 				<header>
-					<h2><span class="glyphicon glyphicon-search"></span> Search for restaurants nearby</h2>
+					<h2>
+						<span class="glyphicon glyphicon-search"></span> Search for
+						restaurants nearby
+					</h2>
 				</header>
 				<form class="form-inline"
 					action="${pageContext.request.contextPath}/search" method="GET"
 					role="form">
 					<div class="row">
 						<div class="col-sm-2">
-						
+
 							<input type="text" id="main-search" size="5" maxlength="5"
 								name="zip_code" id="zip_code" required="required"
 								placeholder="Enter ZIP Code">
@@ -152,6 +156,46 @@
 			<!--/.container-->
 		</section>
 		<!--end Subscribe-->
+
+		<section id="featured" class="block equal-height">
+			<div class="container">
+				<header>
+					<h2>Our services are currently limited to indian restaurants
+						in the following cities</h2>
+				</header>
+
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="item">
+							<div class="image">
+								<div class="item-specific">
+									<span>Sacramento</span>
+								</div>
+								<img class="img-rounded"
+									src="${pageContext.request.contextPath}/resources/images/cities/tower-bridge-sacramento.jpg"
+									alt="" height="200px"> </a>
+							</div>
+						</div>
+						<!-- /.item-->
+					</div>
+					<div class="col-sm-3">
+						<div class="item">
+							<div class="image">
+								<div class="item-specific">
+									<span>Seattle</span>
+								</div>
+								<img class="img-rounded"
+									src="${pageContext.request.contextPath}/resources/images/cities/seattle_kerry_park.png"
+									alt="" height="200px"> </a>
+							</div>
+						</div>
+						<!-- /.item-->
+					</div>
+				</div>
+			</div>
+			<!--/.container-->
+		</section>
+
 		<!-- Why choose CaterRequest -->
 		<section id="featured" class="block equal-height">
 			<div class="container">
