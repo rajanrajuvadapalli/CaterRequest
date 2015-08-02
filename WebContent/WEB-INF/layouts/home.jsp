@@ -29,9 +29,9 @@
 				</form>
 			</div>
 			<div class="background">
-				<img
+				<!-- img
 					src="${pageContext.request.contextPath}/resources/assets/img/restaurant-bg.jpg"
-					alt="">
+					alt="" -->
 			</div>
 		</section>
 		<!--end Hero Image-->
@@ -157,7 +157,7 @@
 		</section>
 		<!--end Subscribe-->
 
-		<section id="featured" class="block equal-height">
+		<section class="block">
 			<div class="container">
 				<header>
 					<h2>Our services are currently limited to indian restaurants
@@ -173,7 +173,7 @@
 								</div>
 								<img class="img-rounded"
 									src="${pageContext.request.contextPath}/resources/images/cities/tower-bridge-sacramento.jpg"
-									alt="" height="200px"> </a>
+									alt=""> </a>
 							</div>
 						</div>
 						<!-- /.item-->
@@ -185,8 +185,8 @@
 									<span>Seattle</span>
 								</div>
 								<img class="img-rounded"
-									src="${pageContext.request.contextPath}/resources/images/cities/seattle_kerry_park.png"
-									alt="" height="200px"> </a>
+									src="${pageContext.request.contextPath}/resources/images/cities/seattle_kerry_park.jpg"
+									alt=""> </a>
 							</div>
 						</div>
 						<!-- /.item-->
@@ -312,12 +312,12 @@
 		</section>
 		<!--/.testimonials-->
 		<section id="image">
-			<div class="container">
+			<div class="container bg-container-1">
 				<div class="col-sm-8 col-sm-offset-2">
 					<div class="text-banner">
 						<figure>
 							<img
-								src="${pageContext.request.contextPath}/resources/assets/img/marker2.png"
+								src="${pageContext.request.contextPath}/resources/assets/img/marker.png"
 								alt="">
 						</figure>
 						<div class="description">
@@ -334,7 +334,7 @@
 				</div>
 			</div>
 			<!--/.container-->
-			<div class="background">
+			<!-- div class="background">
 				<img
 					src="${pageContext.request.contextPath}/resources/assets/img/about-us-bg2.jpg"
 					alt="">

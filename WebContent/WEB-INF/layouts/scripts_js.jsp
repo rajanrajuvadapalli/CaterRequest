@@ -36,7 +36,7 @@
 <script>
     $(window).load(function(){
         var rtl = false; // Use RTL
-        initializeOwl(rtl);
+        //initializeOwl(rtl);
     });
 
     autoComplete();

@@ -3,26 +3,25 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <script>
-	function remove_item(ths, itm, name, itemCode, pos) {
-		if (pos == 'up') {
-			$('.up_' + ths).remove();
-			$('.down_' + ths).parent().remove();
-		} else {
-			$('.up_' + ths).remove();
-			$('.down_' + ths).parent().remove();
+	function remove_item(ths,itm,name,itemCode,pos){
+		if(pos=='up'){
+			$('.up_'+ths).remove();
+			$('.down_'+ths).parent().remove();
+		}else{
+			$('.up_'+ths).remove();
+			$('.down_'+ths).parent().remove();
 		}
-		$('.' + itm).parent().prev().removeAttr('style');
-		$('.' + itm).children().children().children().removeAttr('style');
-		$('.' + itm).parent().prev().children().removeAttr('style');
-		$('.' + itm).removeAttr('style');
-		$('.' + itm).removeClass('seleted');
-
-		menu_items.deleteElem = function(val) {
-			for (var i = 0; i < this.length; i++) {
-				if (this[i] === val) {
-					this.splice(i, 1);
+		$('.'+itm).parent().prev().removeAttr( 'style' );
+		$('.'+itm).children().children().children().removeAttr( 'style' );
+		$('.'+itm).parent().prev().children().removeAttr( 'style' );
+		$('.'+itm).removeAttr( 'style' );
+		$('.'+itm).removeClass('seleted');
+		
+		menu_items.deleteElem = function ( val ) {
+			for ( var i = 0; i < this.length; i++ ) {
+				if ( this[i] === val ) {
+					this.splice( i, 1 );
 					return i;
 				}
 			}
@@ -35,20 +34,20 @@
 				}
 			}
 		};
-		var idx = menu_items.deleteElem(name);
+		var idx = menu_items.deleteElem( name );	
 		var idx2 = menu_item_codes.deleteElem(itemCode);
-		$('.butnote').css('margin-top', '-=45');
+		$('.butnote').css('margin-top','-=45');		
 	}
-	function menu_submit() {
+	function menu_submit(){
 		if (menu_items.length == 0) {
 			alert("Please select at least 1 item to proceed.");
 			return false;
 		}
 		console.log(menu_items);
-		console.log(menu_item_codes);
-		$('#menu-items').val(JSON.stringify(menu_items));
+		console.log(menu_item_codes); //This list is populated in custom.js script.
+		$('#menu-items').html(JSON.stringify(menu_items));
 		$('#menu-item-codes').val(JSON.stringify(menu_item_codes));
-		$("#target").submit();
+		$( "#target" ).submit();
 	}
 </script>
 
@@ -70,7 +69,7 @@
 					<div class="text-banner">
 						<figure>
 							<img
-								src="${pageContext.request.contextPath}/resources/assets/img/marker2.png"
+								src="${pageContext.request.contextPath}/resources/assets/img/marker.png"
 								alt="">
 						</figure>
 						<div class="description">
@@ -84,7 +83,7 @@
 			<!--/.container-->
 			<div class="background">
 				<img
-					src="${pageContext.request.contextPath}/resources/assets/img/about-us-bg2.jpg"
+					src="${pageContext.request.contextPath}/resources/assets/img/about-us-bg.jpg"
 					alt="">
 			</div>
 			<!--/.background-->
@@ -123,13 +122,13 @@
 					</figure>
 
 					<!--Listing Grid-->
-					<section class="block equal-height">
+					<section class="block equal-height col-md-6 col-xs-12">
 						<div class="row">
 
 							<c:forEach items="${menu.categories}" var="category"
 								varStatus="loop">
 								<c:forEach items="${category.items}" var="item">
-									<div class="col-md-2 col-sm-2">
+									<div class="col-md-4 col-sm-3 col-xs-6">
 										<div class="item" id="C${loop.index}">
 											<div class="image">
 												<div class="quick-view">
@@ -145,12 +144,12 @@
 													</div>
 													<div class="item-specific">
 														<span class="name">${item.name}</span>
-													</div> 
-													<div><span hidden="hidden">${item.code}</span></div>
-													<img
+													</div>
+													<div>
+														<span hidden="hidden">${item.code}</span>
+													</div> <img
 													src="https://s3-us-west-2.amazonaws.com/rajrv-caterrequest-s3bucket/images_menu/${menu.cuisine}/${item.code}.jpg"
-													alt="">
-													<c:if test="${item.isSelected()}">
+													alt=""> <c:if test="${item.isSelected()}">
 														<div class="turn-me-on"></div>
 													</c:if>
 												</a>
@@ -167,8 +166,8 @@
 						<!--/.row-->
 					</section>
 
-					<section>
-						<div class="col-md-7 col-sm-7">
+					<section class="col-md-6 col-xs-12">
+						<div class="col-md-12 col-sm-12">
 							<section>
 								<!-- /.block -->
 								<article class="block">
@@ -178,43 +177,21 @@
 									<div class="list-slider owl-carousel owl-theme owl-loaded">
 
 										<!-- /.slide -->
-										<div class="owl-stage-outer">
-											<div class="owl-stage"
-												style="width: 1110px; transform: translate3d(0px, 0px, 0px); transition: 0.25s; -webkit-transition: 0.25s;">
-												<div class="owl-item active"
-													style="width: 555px; margin-right: 0px;">
-													<div class="slide">
-														<header>
-															<h3>
-																<i class="fa fa-calendar"></i>Selected Items
-															</h3>
-														</header>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="owl-controls">
-											<div class="owl-nav">
-												<div class="owl-prev" style=""></div>
-												<div class="owl-next" style=""></div>
-											</div>
-											<div class="owl-dots" style="">
-												<div class="owl-dot active">
-													<span></span>
-												</div>
-												<div class="owl-dot">
-													<span></span>
-												</div>
-											</div>
+										<div class="slide">
+											<header>
+												<h3>
+													<i class="fa fa-calendar"></i>Selected Items
+												</h3>
+											</header>
 										</div>
 									</div>
 									<!-- /.list-slider -->
 								</article>
 								<!-- /.block -->
 
-							</section>
+								</section>
 						</div>
-						<div class="col-md-5 col-sm-5">
+						<div class="col-md-12 col-sm-12">
 							<section>
 								<div class="center">
 									<figure class="note butnote">ONCE THE DESIRED MENU IS
@@ -225,11 +202,14 @@
 								<div class="form-group clearfix" style="text-align: center;">
 									<form action="${pageContext.request.contextPath}/menu/saveMenu"
 										id="target" method="post">
-										<input type="hidden" name="menu_items" id="menu-items" >
-										<input type="hidden" name="menu_item_codes" id="menu-item-codes" >
-										<input type="hidden" name="cuisineType" value="${menu.cuisine}">
-										<textarea rows="4" cols="50" name="comments" placeholder="Enter you comments to restaurant here" class="form-control">${menu.comments}</textarea>
-										<br/>
+										<input type="hidden" name="menu_items" id="menu-items">
+										<input type="hidden" name="menu_item_codes"
+											id="menu-item-codes"> <input type="hidden"
+											name="cuisineType" value="${menu.cuisine}">
+										<textarea rows="4" cols="50" name="comments"
+											placeholder="Enter you comments to restaurant here"
+											class="form-control">${menu.comments}</textarea>
+										<br />
 										<button type="button" onclick="menu_submit();"
 											class="btn btn-default">Select Restaurants</button>
 									</form>
@@ -268,12 +248,12 @@
 		//Show only the first category when the window loads.
 		$('#C0').click();
 	});
-	
-	$('document').ready(function(){
+
+	$('document').ready(function() {
 		//For the items that were selected in previous transaction,
 		//send click event on the div with 'overlay' class (to simulate 'select' action).
-		$(".turn-me-on").each(function(){
-			$(this).parent().children().click(); 
+		$(".turn-me-on").each(function() {
+			$(this).parent().children().click();
 		});
 	});
 </script>
