@@ -104,8 +104,8 @@
 							Type: </label>
 						<div class="col-sm-6">
 							<input type="hidden" name="cuisineType" id="cuisineType"
-								value="${sessionScope.user.data.cuisineType}">
-							<span id="cuisineType"></span>
+								value="${sessionScope.user.data.cuisineType}"> <span
+								id="cuisineType"></span>
 						</div>
 					</div>
 					<div class="form-group">
@@ -183,16 +183,25 @@
 						</div>
 					</div>
 				</c:if>
+				<input type="hidden" name="LastAddressValidated" value="">
+				<div class="alert alert-danger hidden" id="addressnotok">
+					<button type="button" class="close btn-lg" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					Address validation failed. Please check your address.<br /> If the
+					problem persists, please contact customer support.
+				</div>
 				<div class="form-group">
 					<label for="street1" class="col-sm-3 control-label">Street
-						1: </label>
+						: </label>
 
 					<div class="col-sm-6">
 						<input type="text" size="30" maxlength="50" name="street1"
 							class="form-control" value="${sessionScope.user.data.street1}">
 					</div>
 				</div>
-				<div class="form-group">
+				<!--div class="form-group">
 					<label for="street2" class="col-sm-3 control-label">Street
 						2: </label>
 
@@ -200,7 +209,7 @@
 						<input type="text" size="30" maxlength="50" name="street2"
 							class="form-control" value="${sessionScope.user.data.street2}">
 					</div>
-				</div>
+				</div -->
 				<div class="form-group">
 					<label for="city" class="col-sm-3 control-label">City: </label>
 
@@ -250,7 +259,7 @@
 		populateStateDropDown();
 		var existingState = $('input[name=stateExisting]').val();
 		$('select[name=state]').val(existingState);
-		var existingCuisine= $('input[name=cuisineType]').val();
+		var existingCuisine = $('input[name=cuisineType]').val();
 		$('select[name=cuisineType]').val(existingCuisine);
 	});
 </script>

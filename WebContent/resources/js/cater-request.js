@@ -92,10 +92,11 @@ function validateRegistrationFormOnSubmit() {
 		pwd2.focus();
 		return false;
 	}
-	var state = $("select[name=state]").val();
+	var stateElement = $("select[name=state]");
+	var state = stateElement.val();
 	if (state != null && state.length != 2) {
 		alert("State code should be 2 characters");
-		state.focus();
+		stateElement.focus();
 		return false;
 	}
 	var st1 = $("input[name=street1]").val();
