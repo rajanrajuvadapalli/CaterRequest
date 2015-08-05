@@ -3,6 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/colors/brown.css" type="text/css">
 <!-- Page Canvas-->
 <div id="page-canvas">
 	<!--Off Canvas Navigation-->

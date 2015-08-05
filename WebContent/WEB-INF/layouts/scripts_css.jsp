@@ -4,8 +4,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/bootstrap-select.min.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/owl.carousel.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/jquery.nouislider.min.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/colors/brown.css" type="text/css">
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/colors/brown.css" type="text/css"> --%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/cummon.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/user.style.css" type="text/css">
 <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/assets/img/logo.ico">
 	
