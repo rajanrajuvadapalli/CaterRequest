@@ -55,6 +55,8 @@ $(function() {
 				currentRestaurantId = $currentRestaurant.data('restaurant-id');
 				currentRestaurantImage = $currentRestaurant
 						.data('restaurant-image');
+				currentRestaurantIsSelected = $currentRestaurant
+						.data('restaurant-isselected');
 				// Adding restaurant name, address and distance to array object
 				// Adds only restaurants which are less than 50 miles radius
 				if (distances[i].value <= 80467) {
@@ -64,7 +66,8 @@ $(function() {
 						address : restaurantAddresses[i],
 						distance : distances[i].text,
 						distanceValue : distances[i].value,
-						image : currentRestaurantImage
+						image : currentRestaurantImage,
+						isselected : currentRestaurantIsSelected
 					});
 				}
 			}
@@ -89,7 +92,9 @@ $(function() {
 									+ '</div>'
 									+ '<div class="col-sm-4">'
 									+ '<br/>'
-									+ '<input type="checkbox" class="restaurant-details" name="restaurantId" value="'
+									+ '<input type="checkbox" '
+									+ restaurantsAndDistances[i].isselected
+									+ ' class="restaurant-details" name="restaurantId" value="'
 									+ restaurantsAndDistances[i].id + '"  />'
 
 									+ ' <b>' + restaurantsAndDistances[i].name

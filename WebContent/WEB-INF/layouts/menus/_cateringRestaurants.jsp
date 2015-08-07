@@ -10,10 +10,9 @@
 </div>
 
 <div class="col-sm-10 col-sm-offset-1">
-	<h2>Select restaurants you are interested in</h2>
 	<div class="panel panel-warning">
 		<div class="panel-heading">
-			<h3 class="panel-title">Restaurants</h3>
+			<h3 class="panel-title">Select restaurants you are interested in</h3>
 		</div>
 		<div class="panel-body" align="left">
 			<c:choose>
@@ -31,7 +30,8 @@
 								data-restaurant-id="${r.id}"
 								data-restaurant-address="${r.address.street1} ${r.address.street2}, ${r.address.city}, ${r.address.state} ${r.address.zip}"
 								data-restaurant-name="${r.name}"
-								data-restaurant-image="${pageContext.request.contextPath}/imagesproxy/Restaurant_${r.id}"></span>
+								data-restaurant-image="${pageContext.request.contextPath}/imagesproxy/Restaurant_${r.id}"
+								data-restaurant-isselected="${prevR.contains(r.id)?'checked':''}"></span>
 							<br />
 						</c:forEach>
 						<div class="display-restaurants" data-page='catering'></div>
