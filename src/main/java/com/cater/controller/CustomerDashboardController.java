@@ -454,9 +454,10 @@ public class CustomerDashboardController {
 				+ StringUtils.join(selectedRestaurantNames, ", "));
 		redirectAttributes
 				.addFlashAttribute("successMessages", successMessages);
-		httpSession.removeAttribute("eventId");
-		httpSession.removeAttribute("eventName");
-		httpSession.removeAttribute("menuId");
+		//Commented to support browser 'back' button.
+		//httpSession.removeAttribute("eventId");
+		//httpSession.removeAttribute("eventName");
+		//httpSession.removeAttribute("menuId");
 		return "redirect:/customer/dashboard";
 	}
 
