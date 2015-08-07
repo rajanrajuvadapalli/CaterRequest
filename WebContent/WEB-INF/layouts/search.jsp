@@ -4,56 +4,20 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div class="col-sm-10 col-sm-offset-1 page-header">
-	<h1><span class="glyphicon glyphicon-search"></span> Search</h1>
+	<h1>
+		<span class="glyphicon glyphicon-search"></span> Search Restaurants
+	</h1>
 </div>
 
 <input type="hidden" name="eventAddress" id="event-address"
 	class="event-address" value="${eventLocation}" />
 
 <div class="col-sm-10 col-sm-offset-1">
-	<div class="panel panel-info">
-		<div class="panel-heading">
-			<h3 class="panel-title">Search for restaurants nearby</h3>
-		</div>
-		<div class="panel-body">
-			<form class="subscribe form-horizontal"
-				action="${pageContext.request.contextPath}/search" method="GET"
-				role="form">
-
-				<div class="form-group">
-					<label for="name" class="col-sm-3 control-label">Zip
-						code&nbsp;:</label>
-					<div class="col-sm-3">
-						<input type="text" size="5" maxlength="5" value="${eventLocation}"
-							name="zip_code" id="zip_code" required="required"
-							class="form-control">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="name" class="col-sm-3 control-label">Cuisine
-						type&nbsp;:</label>
-					<div class="col-sm-3">
-						<span id="cuisineType"></span>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-3 control-label"></label>
-					<div class="col-sm-3" align="left">
-						<span class="input-group-btn">
-							<button type="submit" class="btn btn-default">
-								Search again<i class="fa fa-angle-right"></i>
-							</button>
-						</span>
-					</div>
-				</div>
-		</div>
-		</form>
+	<div class="col-sm-2 right">
+		<button class="popup-with-form btn btn-default"
+			href="#start-new-search-form">Start new search</button>
 	</div>
-
-	<div class="panel-heading">
-		<h3 class="panel-title">RESTAURANTS</h3>
-	</div>
-	<div class="panel-body" align="left">
+	<div>
 		<c:choose>
 			<c:when test="${empty restaurants}">Sorry! No <c:out
 					value="${cuisine}"></c:out> restaurants registered with us.
@@ -71,10 +35,24 @@
 		</c:choose>
 	</div>
 </div>
-<br />
-<br />
-<br />
-<br />
+
+<form
+	class="mfp-hide white-popup-block form-horizontal searchRestaurantPopup"
+	id="start-new-search-form"
+	action="${pageContext.request.contextPath}/search" method="GET">
+	<h2>Search for restaurants</h2>
+	<label for="name" class="col-sm-2 control-label">Zip
+		code&nbsp;:</label> <input type="text" size="5" maxlength="5"
+		value="${eventLocation}" name="zip_code" id="zip_code"
+		required="required" class="form-control"><br /> <label
+		for="name" class="col-sm-2 control-label">Cuisine type&nbsp;:</label>
+	<span id="cuisineType"></span> <label class="col-sm-3 control-label"></label>
+	<br /> <span class="input-group-btn">
+		<button type="submit" class="btn btn-default">
+			Search again<i class="fa fa-angle-right"></i>
+		</button>
+	</span>
+</form>
 
 <script>
 	$('document').ready(function() {

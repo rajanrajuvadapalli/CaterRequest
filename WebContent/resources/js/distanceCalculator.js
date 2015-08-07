@@ -100,21 +100,28 @@ $(function() {
 									+ '</div>' + '</div>');
 			} else {
 				for (var i = 0; i < restaurantsAndDistances.length; i++)
-					$restaurantsContainer
-							.append('<div class="restaurant-details row" style="border: 1px dotted black;">'
-									+ '<div class="col-sm-2">'
-									+ '<img width="120px" src="'
-									+ restaurantsAndDistances[i].image
-									+ '" alt="">'
-									+ '</div>'
-									+ '<div class="col-sm-4">'
-									+ ' <br/> <b>'
-									+ restaurantsAndDistances[i].name
-									+ ' - '
-									+ restaurantsAndDistances[i].distance
-									+ ' </b> <br/> '
-									+ restaurantsAndDistances[i].address
-									+ '</div>' + '</div>');
+					$restaurantsContainer.append('<div class="col-sm-3">'
+							+ '<div class="panel panel-warning">'
+							+ '<div class="panel-heading">'
+							+ '<h3 class="panel-title">'
+							+ restaurantsAndDistances[i].name + ' - '
+							+ restaurantsAndDistances[i].distance + '</h3>'
+							+ '</div>' + '<div class="panel-body">'
+							+ '<img width="120px" src="'
+							+ restaurantsAndDistances[i].image + '" alt="">'
+							+ ' <br/>' + restaurantsAndDistances[i].address
+							+ '</div>' + '</div>');
+
+				/*
+				 * $restaurantsContainer .append('<div
+				 * class="restaurant-details row" style="border: 1px dotted
+				 * black;">' + '<div class="col-sm-2">' + '<img width="120px"
+				 * src="' + restaurantsAndDistances[i].image + '" alt="">' + '</div>' + '<div
+				 * class="col-sm-4">' + ' <br/> <b>' +
+				 * restaurantsAndDistances[i].name + ' - ' +
+				 * restaurantsAndDistances[i].distance + ' </b> <br/> ' +
+				 * restaurantsAndDistances[i].address + '</div>' + '</div>');
+				 */
 			}
 
 			$('.restaurants').remove();
