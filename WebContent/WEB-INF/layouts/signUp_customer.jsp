@@ -146,7 +146,7 @@
 							&nbsp;:</label>
 						<div class="col-sm-6">
 							<input type="text" size="30" maxlength="50" name="street1"
-								required="required" placeholder="Line 1" class="form-control">
+								required="required" placeholder="Street" class="form-control">
 						</div>
 					</div>
 					<!-- <div class="form-group">

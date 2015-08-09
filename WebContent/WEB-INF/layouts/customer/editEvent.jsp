@@ -56,17 +56,21 @@
 	<form class="form-horizontal" method="POST" id="event-form"
 		action="${pageContext.request.contextPath}/customer/event/delete/${event.id}"
 		enctype="application/x-www-form-urlencoded" autocomplete="off">
-		<div align="center">Are you sure you want to delete this event?</div><br /> <br />
+		<div align="center">Are you sure you want to delete this event?</div>
+		<br /> <br />
 		<div align="center">
-			<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> Confirm Delete</button>
+			<button type="submit" class="btn btn-default">
+				<span class="glyphicon glyphicon-trash"></span> Confirm Delete
+			</button>
 		</div>
 	</form>
 </div>
 
 <div class="col-sm-2 col-sm-offset-1">
 	<a class="popup-with-form" href="#deleteConfirm">
-		<button class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> Delete Event</button>
-		<br /> <br />
+		<button class="btn btn-default">
+			<span class="glyphicon glyphicon-trash"></span> Delete Event
+		</button> <br /> <br />
 	</a>
 </div>
 
@@ -82,8 +86,9 @@
 			<div class="panel-body">
 
 				<div class="form-group">
-					<label for="name" class="col-sm-3 control-label">Event Name
-						:</label>
+					<label for="name" class="col-sm-3 control-label">Event Name<span
+						style="color: red">*</span> :
+					</label>
 					<div class="col-sm-6">
 						<input type="text" size="50" maxlength="250" name="name"
 							required="required" placeholder="Ex.: Victoria's Birthday party"
@@ -92,8 +97,9 @@
 				</div>
 
 				<div class="form-group">
-					<label for="datetimepicker" class="col-sm-3 control-label">Date/Time
-						:</label>
+					<label for="datetimepicker" class="col-sm-3 control-label">Date/Time<span
+						style="color: red">*</span> :
+					</label>
 					<div class="col-sm-6">
 						<input hidden="hidden" value="${event.date_time}" id="eventDate">
 						<input type="text" size="30" maxlength="50" name="datetimepicker"
@@ -103,7 +109,8 @@
 
 				<div class="form-group">
 					<label for="person_count" class="col-sm-3 control-label">Number
-						of Adults :</label>
+						of Adults<span style="color: red">*</span> :
+					</label>
 					<div class="col-sm-6">
 						<input type="text" size="20" maxlength="20" name="person_count"
 							id="person_count" required="required" pattern="[0-9]+"
@@ -111,10 +118,11 @@
 							value="${event.personCount}">
 					</div>
 				</div>
-				
+
 				<div class="form-group">
 					<label for="kids_count" class="col-sm-3 control-label">Number
-						of Kids :</label>
+						of Kids<span style="color: red">*</span> :
+					</label>
 					<div class="col-sm-6">
 						<input type="text" size="20" maxlength="20" name="kids_count"
 							id="kids_count" required="required" pattern="[0-9]+"
@@ -141,18 +149,27 @@
 				<h3 class="panel-title">Event Location</h3>
 			</div>
 			<div class="panel-body">
-
+				<input type="hidden" name="LastAddressValidated" value="">
+				<div class="alert alert-danger hidden" id="addressnotok">
+					<button type="button" class="close btn-lg" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					Address validation failed. Please check your address.<br /> If the
+					problem persists, please contact customer support.
+				</div>
 				<div class="form-group">
-					<label for="street1" class="col-sm-3 control-label">Street
-						1 :</label>
+					<label for="street1" class="col-sm-3 control-label">Street<span
+						style="color: red">*</span> :
+					</label>
 					<div class="col-sm-6">
 						<input type="text" size="30" maxlength="50" name="street1"
-							required="required" placeholder="Line 1" class="form-control"
+							required="required" placeholder="Street" class="form-control"
 							value="${event.location.street1}">
 					</div>
 				</div>
 
-				<div class="form-group">
+				<%-- <div class="form-group">
 					<label for="street2" class="col-sm-3 control-label">Street
 						2 :</label>
 					<div class="col-sm-6">
@@ -160,10 +177,12 @@
 							placeholder="Line 2" class="form-control"
 							value="${event.location.street2}">
 					</div>
-				</div>
+				</div> --%>
 
 				<div class="form-group">
-					<label for="city" class="col-sm-3 control-label">City :</label>
+					<label for="city" class="col-sm-3 control-label">City<span
+						style="color: red">*</span> :
+					</label>
 					<div class="col-sm-6">
 						<input type="text" size="30" name="city" required="required"
 							placeholder="City" class="form-control"
@@ -172,7 +191,9 @@
 				</div>
 
 				<div class="form-group">
-					<label for="state" class="col-sm-3 control-label">State :</label>
+					<label for="state" class="col-sm-3 control-label">State<span
+						style="color: red">*</span> :
+					</label>
 					<div class="col-sm-6">
 						<input type="hidden" name="stateExisting"
 							value="${event.location.state}"> <span id="stateArea"></span>
@@ -180,7 +201,9 @@
 				</div>
 
 				<div class="form-group">
-					<label for="zip" class="col-sm-3 control-label">Zip :</label>
+					<label for="zip" class="col-sm-3 control-label">Zip<span
+						style="color: red">*</span> :
+					</label>
 					<div class="col-sm-6">
 						<input type="text" size="10" name="zip" maxlength="10"
 							required="required" placeholder="Ex.: xxxxx" class="form-control"
@@ -190,7 +213,8 @@
 
 				<div class="form-group">
 					<label for="deliveryOption" class="col-sm-3 control-label">Delivery
-						Option :</label>
+						Option<span style="color: red">*</span> :
+					</label>
 					<div class="col-sm-6">
 						<select class="form-control inputs" name="deliveryOption"
 							id="deliveryOption">
@@ -212,8 +236,7 @@
 		</div>
 		<div class="col-sm-1 col-sm-offset-4">
 			<button type="reset" class="btn btn-default">Reset</button>
-			<br /> <br />
-			<br /> <br />
+			<br /> <br /> <br /> <br />
 		</div>
 </form>
 

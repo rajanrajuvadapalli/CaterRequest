@@ -29,6 +29,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.cater.Helper;
 import com.cater.constants.EventStatus;
 import com.cater.constants.QuoteStatus;
+import com.cater.constants.Roles;
 import com.cater.model.Address;
 import com.cater.model.Customer;
 import com.cater.model.Event;
@@ -77,35 +78,44 @@ public class CustomerDashboardController {
 		if (user == null) {
 			return "t_home";
 		}
-		Customer customer = customerService.findCustomerWithLoginId(user
-				.getLoginID());
+		Customer customer = null;
+		if (user.isGuest()) {
+			customer = (Customer) session.getAttribute("customer");
+		}
+		else {
+			customer = customerService.findCustomerWithLoginId(user
+					.getLoginID());
+		}
 		modelMap.put("customer", customer);
 		List <Event> events = customer.getEvents();
 		modelMap.put("events", events);
 		Map <Integer, List <String>> e2m = Maps.newHashMap();
 		Map <Integer, List <Integer>> e2mid = Maps.newHashMap();
 		Map <Integer, Map <String, List <Quote>>> e2q = Maps.newHashMap();
-		for (Event e : events) {
-			List <Menu> menus = customerService.findMenusWithEventId(e.getId());
-			List <String> selectedMenuCusines = Lists.newLinkedList();
-			List <Integer> selectedMenuCusineIds = Lists.newLinkedList();
-			if (CollectionUtils.isNotEmpty(menus)) {
-				for (Menu m : menus) {
-					selectedMenuCusines.add(m.getCuisineType());
-					selectedMenuCusineIds.add(m.getId());
+		if (!user.isGuest()) {
+			for (Event e : events) {
+				List <Menu> menus = customerService.findMenusWithEventId(e
+						.getId());
+				List <String> selectedMenuCusines = Lists.newLinkedList();
+				List <Integer> selectedMenuCusineIds = Lists.newLinkedList();
+				if (CollectionUtils.isNotEmpty(menus)) {
+					for (Menu m : menus) {
+						selectedMenuCusines.add(m.getCuisineType());
+						selectedMenuCusineIds.add(m.getId());
+					}
 				}
+				e2m.put(e.getId(), selectedMenuCusines);
+				e2mid.put(e.getId(), selectedMenuCusineIds);
+				List <Quote> quotes = restaurantService.findQuotesWithEventId(e
+						.getId());
+				Map <String, List <Quote>> groupedQuotes = groupQuotesPerCuisine(quotes);
+				e2q.put(e.getId(), groupedQuotes);
 			}
-			e2m.put(e.getId(), selectedMenuCusines);
-			e2mid.put(e.getId(), selectedMenuCusineIds);
-			List <Quote> quotes = restaurantService.findQuotesWithEventId(e
-					.getId());
-			Map <String, List <Quote>> groupedQuotes = groupQuotesPerCuisine(quotes);
-			e2q.put(e.getId(), groupedQuotes);
+			((User) session.getAttribute("user")).setName(customer.getName());
 		}
 		modelMap.put("e2m", e2m);
 		modelMap.put("e2mid", e2mid);
 		modelMap.put("e2q", e2q);
-		((User) session.getAttribute("user")).setName(customer.getName());
 		return "customer/t_dashboard";
 	}
 
@@ -157,11 +167,21 @@ public class CustomerDashboardController {
 	public String createEvent(HttpSession httpSession, ModelMap modelMap,
 			HttpServletRequest request) {
 		User user = (User) httpSession.getAttribute("user");
+		Customer c = new Customer();
 		if (user == null) {
-			return "t_home";
+			//return "t_home";
+			//If the user is not in session, create a dummy user and continue.
+			//Do not save anything, until last step (which will be registration).
+			user = new User();
+			user.setGuest(true);
+			user.setRole(Roles.CUSTOMER);
+			user.setUsername("Guest");
+			httpSession.setAttribute("user", user);
 		}
-		Customer c = customerService.findCustomerWithLoginId(user.getLoginID());
-		logger.debug("Creating event for " + c.getName());
+		else if (!user.isGuest()) {
+			c = customerService.findCustomerWithLoginId(user.getLoginID());
+			logger.debug("Creating event for " + c.getName());
+		}
 		Event e = new Event();
 		e.setStatus(EventStatus.ACTIVE.toString());
 		e.setName(StringUtils.defaultString(request.getParameter("name")));
@@ -185,7 +205,6 @@ public class CustomerDashboardController {
 		catch (ParseException e1) {
 			logger.error(e1);
 		}
-		e.setCustomer(c);
 		String personCountParameter = request.getParameter("person_count");
 		if (StringUtils.isNotBlank(personCountParameter)
 				&& NUMERIC.matcher(personCountParameter).matches()) {
@@ -201,7 +220,21 @@ public class CustomerDashboardController {
 				&& NUMERIC.matcher(budgetTotalParameter).matches()) {
 			e.setBudgetTotal(Integer.parseInt(budgetTotalParameter));
 		}
-		customerService.saveOrUpdateEvent(e);
+		if (user.isGuest()) {
+			//For guest user, save data in session
+			e.setId(1);
+			a.setId(1);
+			c.setId(1);
+			List <Event> events = Lists.newArrayList();
+			events.add(e);
+			c.setEvents(events);
+			httpSession.setAttribute("event", e);
+			httpSession.setAttribute("customer", c);
+		}
+		else {
+			e.setCustomer(c);
+			customerService.saveOrUpdateEvent(e);
+		}
 		return "redirect:/customer/dashboard";
 	}
 
@@ -222,8 +255,14 @@ public class CustomerDashboardController {
 		if (user == null) {
 			return "t_home";
 		}
-		Event event = customerService.findEventWithId(eventId);
-		modelMap.put("event", event);
+		if (user.isGuest()) {
+			Event event = (Event) httpSession.getAttribute("event");
+			modelMap.put("event", event);
+		}
+		else {
+			Event event = customerService.findEventWithId(eventId);
+			modelMap.put("event", event);
+		}
 		return "customer/t_editEvent";
 	}
 
@@ -246,7 +285,13 @@ public class CustomerDashboardController {
 		if (user == null) {
 			return "t_home";
 		}
-		Event e = customerService.findEventWithId(eventId);
+		Event e = null;
+		if (user.isGuest()) {
+			e = (Event) httpSession.getAttribute("event");
+		}
+		else {
+			e = customerService.findEventWithId(eventId);
+		}
 		if (e != null) {
 			e.setName(StringUtils.defaultString(request.getParameter("name")));
 			e.setPickUp(StringUtils.equals("1", StringUtils
@@ -305,14 +350,17 @@ public class CustomerDashboardController {
 						.append("\n");
 				e.setKidsCount(Integer.parseInt(kidsCountParameter));
 			}
-			customerService.saveOrUpdateEvent(e);
+			if (!user.isGuest()) {
+				customerService.saveOrUpdateEvent(e);
+				updateQuoteStatusAndSendNotifications(e, message,
+						isDateChanged, isPersonCountChanged
+								|| isKidsCountChanged);
+			}
 			List <String> successMessages = Lists.newArrayList();
 			successMessages.add("Successfully updated event: '" + e.getName()
 					+ "'.");
 			redirectAttributes.addFlashAttribute("successMessages",
 					successMessages);
-			updateQuoteStatusAndSendNotifications(e, message, isDateChanged,
-					isPersonCountChanged || isKidsCountChanged);
 		}
 		return "redirect:/customer/dashboard";
 	}
@@ -378,26 +426,42 @@ public class CustomerDashboardController {
 		if (user == null) {
 			return "t_home";
 		}
-		Event event = customerService.findEventWithId(eventId);
-		if (event != null) {
-			String eventName = event.getName();
-			Address eventAddress = event.getLocation();
-			List <Quote> quotes = restaurantService
-					.findQuotesWithEventId(eventId);
-			List <Menu> menus = customerService.findMenusWithEventId(eventId);
-			for (Quote quote : quotes) {
-				customerService.deleteQuote(quote);
-			}
-			for (Menu menu : menus) {
-				customerService.deleteMenu(menu);
-			}
-			customerService.deleteEvent(event);
-			customerService.deleteAddress(eventAddress);
+		if (user.isGuest()) {
+			Event e = (Event) httpSession.getAttribute("event");
+			httpSession.removeAttribute("event");
+			Customer customer = (Customer) httpSession.getAttribute("customer");
+			List <Event> events = Lists.newArrayList();
+			customer.setEvents(events);
+			//httpSession.removeAttribute("user");
 			List <String> successMessages = Lists.newArrayList();
-			successMessages.add("Successfully deleted event: '" + eventName
+			successMessages.add("Successfully deleted event: '" + e.getName()
 					+ "'.");
 			redirectAttributes.addFlashAttribute("successMessages",
 					successMessages);
+		}
+		else {
+			Event event = customerService.findEventWithId(eventId);
+			if (event != null) {
+				String eventName = event.getName();
+				Address eventAddress = event.getLocation();
+				List <Quote> quotes = restaurantService
+						.findQuotesWithEventId(eventId);
+				List <Menu> menus = customerService
+						.findMenusWithEventId(eventId);
+				for (Quote quote : quotes) {
+					customerService.deleteQuote(quote);
+				}
+				for (Menu menu : menus) {
+					customerService.deleteMenu(menu);
+				}
+				customerService.deleteEvent(event);
+				customerService.deleteAddress(eventAddress);
+				List <String> successMessages = Lists.newArrayList();
+				successMessages.add("Successfully deleted event: '" + eventName
+						+ "'.");
+				redirectAttributes.addFlashAttribute("successMessages",
+						successMessages);
+			}
 		}
 		return "redirect:/customer/dashboard";
 	}
