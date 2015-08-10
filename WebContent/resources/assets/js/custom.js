@@ -23,7 +23,7 @@ $(document).ready(function($) {
                 var desc = $this.children().children().children().text();
                 var itemCode = $this.next().next().children().text();
                 //var price = $this.next().next().text();
-                $('.butnote').css('margin-top','+=45');
+                //$('.butnote').css('margin-top','+=45');
                 $this.addClass('seleted');
                 $this.parent().prev().css('opacity','0.95');
                 $this.parent().prev().addClass('ovrlay_'+i);

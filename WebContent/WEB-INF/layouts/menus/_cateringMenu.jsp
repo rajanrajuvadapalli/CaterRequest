@@ -36,7 +36,7 @@
 		};
 		var idx = menu_items.deleteElem( name );	
 		var idx2 = menu_item_codes.deleteElem(itemCode);
-		$('.butnote').css('margin-top','-=45');		
+		//$('.butnote').css('margin-top','-=45');		
 	}
 	function menu_submit(){
 		if (menu_items.length == 0) {
