@@ -206,12 +206,9 @@ public class MenuController {
 						.stringToInteger(eventId));
 			}
 			// Create or update menu in database
-			com.cater.model.Menu menuModel;
+			com.cater.model.Menu menuModel = new com.cater.model.Menu();
 			Integer menuId = (Integer) httpSession.getAttribute("menuId");
-			if (menuId == null) {
-				menuModel = new com.cater.model.Menu();
-			}
-			else {
+			if (menuId != null) {
 				menuModel = customerService.findMenuWithId(menuId);
 			}
 			menuModel.setEvent(e);
@@ -228,6 +225,8 @@ public class MenuController {
 			Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
 			if (user.isGuest()) {
 				httpSession.setAttribute("menuId", 1);
+				menuModel.setId(1);
+				httpSession.setAttribute("menu", menuModel);
 			}
 			else {
 				customerService.saveOrUpdateMenu(menuModel);

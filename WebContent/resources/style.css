@@ -41,6 +41,15 @@
 	position: relative;
 }
 
+.nologinPopup {
+	background: white;
+	padding: 20px 30px;
+	text-align: left;
+	max-width: 400px;
+	margin: 20px auto;
+	position: relative;
+}
+
 .my-mfp-zoom-in .zoom-anim-dialog {
 	opacity: 0;
 	-webkit-transition: all 0.2s ease-in-out;
