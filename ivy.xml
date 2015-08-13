@@ -136,6 +136,11 @@
 		<dependency org="junit" name="junit" rev="4.9" conf="testCompile" />
 		<dependency org="org.springframework" name="spring-test"
 			rev="&spring.version;" conf="compile" />
+			
+			<!--paypal-->
+			<dependency org="com.paypal.sdk" name="rest-api-sdk" rev="1.2.5"/>
+			<dependency org="com.paypal.sdk" name="paypal-core" rev="1.6.9"/>
+			
 
 	</dependencies>
 </ivy-module>
