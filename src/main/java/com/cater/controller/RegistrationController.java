@@ -19,6 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cater.constants.Roles;
 import com.cater.email.EmailHelper;
+import com.cater.model.Customer;
+import com.cater.model.Event;
 import com.cater.model.Login;
 import com.cater.model.Restaurant;
 import com.cater.service.CustomerService;
@@ -77,19 +79,11 @@ public class RegistrationController {
 				: "t_signUp_restaurant";
 	}
 
-	/**
-	 * Register.
-	 *
-	 * @param modelMap the model map
-	 * @param request the request
-	 * @param session the session
-	 * @return the string
-	 */
 	@RequestMapping(value = { "register" }, method = RequestMethod.POST)
 	public String register(
 			ModelMap modelMap,
 			HttpServletRequest request,
-			HttpSession session,
+			HttpSession httpSession,
 			@RequestParam(value = "input-profile-pic", required = false) MultipartFile multipartFile) {
 		try {
 			//First check if the email (user name used to login) is in use.
@@ -135,7 +129,8 @@ public class RegistrationController {
 			logger.debug("Form data: " + data.toString());
 			login = registerService.register(data);
 			//When one signs up, logout the current user from session.
-			session.removeAttribute("user");
+			User user = (User) httpSession.getAttribute("user");
+			httpSession.removeAttribute("user");
 			String[] username_domain = StringUtils.split(login.getUsername(),
 					"@");
 			String confirmationToken = StringUtils.join(username_domain[0],
@@ -165,6 +160,22 @@ public class RegistrationController {
 			smsHelper.sendRegistrationConfirmationSMS(login, data.isSmsOk(),
 					data.getPhone());
 			if (sendEmailStatus) {
+				//If a guest user created an account after creating an event, save the data first.
+				if (user != null && user.isGuest()) {
+					//Customer c = (Customer) httpSession.getAttribute("customer");//c.setId(null);
+					Customer c = customerService.findCustomerWithLoginId(login
+							.getId());
+					logger.debug("Creating event for " + c.getName());
+					Event e = (Event) httpSession.getAttribute("event");
+					e.setId(null);
+					e.getLocation().setId(null);
+					e.setCustomer(c);
+					customerService.saveOrUpdateEvent(e);
+					com.cater.model.Menu menuModel = (com.cater.model.Menu) httpSession
+							.getAttribute("menu");
+					menuModel.setId(null);
+					customerService.saveOrUpdateMenu(menuModel);
+				}
 				return "t_registerSuccess";
 			}
 			else {

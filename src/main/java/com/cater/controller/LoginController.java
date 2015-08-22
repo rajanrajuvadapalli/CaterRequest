@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,7 +18,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.cater.Helper;
 import com.cater.constants.Roles;
 import com.cater.email.EmailHelper;
+import com.cater.model.Customer;
+import com.cater.model.Event;
 import com.cater.model.Login;
+import com.cater.service.CustomerService;
 import com.cater.service.LoginService;
 import com.cater.ui.data.User;
 import com.google.common.collect.Lists;
@@ -27,12 +31,17 @@ import com.google.common.collect.Lists;
  */
 @Controller
 public class LoginController {
+	private static final Logger logger = Logger
+			.getLogger(LoginController.class);
 	/** The login service. */
 	@Autowired
 	private LoginService loginService;
 	/** The email helper. */
 	@Autowired
 	private EmailHelper emailHelper;
+	/** The customer service. */
+	@Autowired
+	private CustomerService customerService;
 
 	/**
 	 * Logout.
@@ -80,7 +89,7 @@ public class LoginController {
 	 */
 	@RequestMapping(value = { "login" }, method = RequestMethod.POST)
 	public String login(ModelMap modelMap, HttpServletRequest request,
-			HttpSession session) {
+			HttpSession httpSession) {
 		String username = StringUtils.defaultString(request
 				.getParameter("username"));
 		String password = StringUtils
@@ -100,12 +109,32 @@ public class LoginController {
 						+ "please click on the confirmation link in your email.");
 				return "t_login";
 			}
-			User user = new User();
+			//If a guest user created an account after creating an event, save the data first.
+			User user = (User) httpSession.getAttribute("user");
+			if (user != null && user.isGuest()) {
+				//Customer c = (Customer) httpSession.getAttribute("customer");//c.setId(null);
+				Customer c = customerService.findCustomerWithLoginId(login
+						.getId());
+				logger.debug("Creating event for " + c.getName());
+				Event e = (Event) httpSession.getAttribute("event");
+				e.setId(null);
+				e.getLocation().setId(null);
+				e.setCustomer(c);
+				customerService.saveOrUpdateEvent(e);
+				com.cater.model.Menu menuModel = (com.cater.model.Menu) httpSession
+						.getAttribute("menu");
+				menuModel.setId(null);
+				customerService.saveOrUpdateMenu(menuModel);
+				user.setGuest(false);
+			}
+			else {
+				user = new User();
+			}
+			httpSession.setAttribute("user", user);
 			user.setLoginID(login.getId());
 			user.setUsername(username);
 			Roles role = Roles.get(login.getRole());
 			user.setRole(role);
-			session.setAttribute("user", user);
 			return "redirect:dashboard";
 		}
 		catch (Exception ex) {

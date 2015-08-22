@@ -49,10 +49,13 @@
 </div>
 
 <div class="col-sm-10 col-sm-offset-1">
-	<div align="right">
-		<a href="${pageContext.request.contextPath}/customer/createEvent"
-			role="button" class="btn btn-default"> Create Event</a>
-	</div>
+	<!-- Guest cannot create an event on the dashboard, if there is already 1 event -->
+	<c:if test="${!sessionScope.user.isGuest() or empty events}">
+		<div align="right">
+			<a href="${pageContext.request.contextPath}/customer/createEvent"
+				role="button" class="btn btn-default"> Create Event</a>
+		</div>
+	</c:if>
 	<br />
 	<c:choose>
 		<c:when test="${empty events}">
@@ -78,8 +81,8 @@
 					</tr>
 					<c:forEach items="${events}" var="e">
 						<tr>
-							<td>${e.name}<br />(${e.personCount} adults, ${e.kidsCount} kids)<br /> <c:if
-									test="${e.status eq 'ACTIVE'}">
+							<td>${e.name}<br />(${e.personCount} adults, ${e.kidsCount}
+								kids)<br /> <c:if test="${e.status eq 'ACTIVE'}">
 									<a
 										href="${pageContext.request.contextPath}/customer/event/edit/${e.id}">
 										<span class="glyphicon glyphicon-edit"></span> Edit

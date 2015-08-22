@@ -52,7 +52,7 @@
 	</c:if>
 </div>
 
-<div class="col-sm-10 col-sm-offset-1 ">
+<div class="col-sm-10 col-sm-offset-1">
 	<div class="panel panel-info">
 		<div class="panel-heading">
 			<h3 class="panel-title">Personal Info</h3>
@@ -65,7 +65,9 @@
 				onsubmit="return validateProfileForm();">
 				<c:if test="${sessionScope.user.role.value == 'CUSTOMER'}">
 					<div class="form-group">
-						<label for="name" class="col-sm-3 control-label">Name&nbsp;:</label>
+						<label for="name" class="col-sm-3 control-label">Name<span
+							style="color: red">*</span>:
+						</label>
 						<div class="col-sm-6">
 							<input type="text" size="30" maxlength="50" name="name"
 								required="required" class="form-control"
@@ -92,7 +94,8 @@
 					</div>
 					<div class="form-group">
 						<label for="restaurantName" class="col-sm-3 control-label">Restaurant
-							Name: </label>
+							Name<span style="color: red">*</span>:
+						</label>
 						<div class="col-sm-6">
 							<input type="text" size="30" maxlength="50" name="restaurantName"
 								required="required" class="form-control"
@@ -101,7 +104,8 @@
 					</div>
 					<div class="form-group">
 						<label for="cuisineType" class="col-sm-3 control-label">Cuisine
-							Type: </label>
+							Type<span style="color: red">*</span>:
+						</label>
 						<div class="col-sm-6">
 							<input type="hidden" name="cuisineType" id="cuisineType"
 								value="${sessionScope.user.data.cuisineType}"> <span
@@ -110,7 +114,8 @@
 					</div>
 					<div class="form-group">
 						<label for="url" class="col-sm-3 control-label">Website
-							URL: </label>
+							URL<span style="color: red">*</span>:
+						</label>
 						<div class="col-sm-6">
 							<input type="text" size="30" maxlength="50" name="url"
 								required="required" class="form-control"
@@ -119,7 +124,8 @@
 					</div>
 					<div class="form-group">
 						<label for="aboutus" class="col-sm-3 control-label">About
-							your restaurant&nbsp;:</label>
+							your restaurant<span style="color: red">*</span>:
+						</label>
 						<div class="col-sm-6">
 							<textarea rows="4" name="aboutus" class="form-control"
 								required="required">${sessionScope.user.data.aboutUs}</textarea>
@@ -128,7 +134,8 @@
 				</c:if>
 				<div class="form-group">
 					<label for="phone" class="col-sm-3 control-label">Contact
-						Phone: </label>
+						Phone<span style="color: red">*</span>:
+					</label>
 					<div class="row">
 						<div class="col-sm-3">
 							<input type="text" size="20" maxlength="20" name="phone"
@@ -193,8 +200,9 @@
 					problem persists, please contact customer support.
 				</div>
 				<div class="form-group">
-					<label for="street1" class="col-sm-3 control-label">Street
-						: </label>
+					<label for="street1" class="col-sm-3 control-label">Street<span
+						style="color: red">*</span>:
+					</label>
 
 					<div class="col-sm-6">
 						<input type="text" size="30" maxlength="50" name="street1"
@@ -203,7 +211,7 @@
 				</div>
 				<!--div class="form-group">
 					<label for="street2" class="col-sm-3 control-label">Street
-						2: </label>
+						2<span style="color: red">*</span>: </label>
 
 					<div class="col-sm-6">
 						<input type="text" size="30" maxlength="50" name="street2"
@@ -211,7 +219,9 @@
 					</div>
 				</div -->
 				<div class="form-group">
-					<label for="city" class="col-sm-3 control-label">City: </label>
+					<label for="city" class="col-sm-3 control-label">City<span
+						style="color: red">*</span>:
+					</label>
 
 					<div class="col-sm-6">
 						<input type="text" size="30" maxlength="50" name="city"
@@ -219,7 +229,9 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="state" class="col-sm-3 control-label">State: </label>
+					<label for="state" class="col-sm-3 control-label">State<span
+						style="color: red">*</span>:
+					</label>
 					<div class="col-sm-6">
 						<input type="hidden" name="stateExisting"
 							value="${sessionScope.user.data.state}"> <span
@@ -227,7 +239,9 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="zip" class="col-sm-3 control-label">Zip: </label>
+					<label for="zip" class="col-sm-3 control-label">Zip<span
+						style="color: red">*</span>:
+					</label>
 
 					<div class="col-sm-6">
 						<input type="text" size="10" name="zip" maxlength="10"
@@ -247,10 +261,10 @@
 			</form>
 		</div>
 	</div>
-	<div align="left">
-		<span style="color: gray; font-size: 14px;"><sup>*</sup>carrier
-			charges may apply</span>
-	</div>
+</div>
+<div class="col-sm-10 col-sm-offset-1">
+	<span style="color: gray; font-size: 14px;"><sup>*</sup>carrier
+		charges may apply</span>
 </div>
 
 <script>

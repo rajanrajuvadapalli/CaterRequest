@@ -66,7 +66,9 @@
 				</div>
 				<div class="panel-body">
 					<div class="form-group" id="customer">
-						<label for="name" class="col-sm-4 control-label">Name&nbsp;:</label>
+						<label for="name" class="col-sm-4 control-label">Name<span
+							style="color: red">*</span>&nbsp;:
+						</label>
 						<div class="col-sm-6">
 							<input type="text" size="30" maxlength="50" name="name"
 								required="required" placeholder="First   Last"
@@ -74,14 +76,18 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="email" class="col-sm-4 control-label">Email/Username&nbsp;:</label>
+						<label for="email" class="col-sm-4 control-label">Email/Username<span
+							style="color: red">*</span>&nbsp;:
+						</label>
 						<div class="col-sm-6">
 							<input type="email" size="30" name="email" required="required"
 								placeholder="Ex.: jenny@gmail.com" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="pwd1" class="col-sm-4 control-label">Password&nbsp;:</label>
+						<label for="pwd1" class="col-sm-4 control-label">Password<span
+							style="color: red">*</span>&nbsp;:
+						</label>
 						<div class="col-sm-6">
 							<input type="password" size="30" name="pwd1" id="pwd1"
 								required="required" placeholder="Password" class="form-control">
@@ -89,7 +95,8 @@
 					</div>
 					<div class="form-group">
 						<label for="pwd2" class="col-sm-4 control-label">Confirm
-							Password&nbsp;:</label>
+							Password<span style="color: red">*</span>&nbsp;:
+						</label>
 						<div class="col-sm-6">
 							<input type="password" size="30" name="pwd2" id="pwd2"
 								required="required" placeholder="Re-enter Password"
@@ -98,7 +105,8 @@
 					</div>
 					<div class="form-group">
 						<label for="phone" class="col-sm-4 control-label">Contact
-							Phone&nbsp;:</label>
+							Phone<span style="color: red">*</span>&nbsp;:
+						</label>
 						<div class="col-sm-6" align="left">
 							<input type="text" size="30" name="phone" required="required"
 								placeholder="Ex.: xxxxxxxxxx" pattern="\d{10}"
@@ -110,7 +118,8 @@
 					</div>
 					<div class="form-group" id="customer">
 						<label for="pwd2" class="col-sm-4 control-label">How did
-							you hear about us&nbsp;?</label>
+							you hear about us&nbsp;?<span style="color: red">*</span>
+						</label>
 						<div class="col-sm-6">
 							<select class="inputs" name="hearAboutUs" id="hearAboutUs"
 								required="required">
@@ -142,36 +151,44 @@
 						the problem persists, please contact customer support.
 					</div>
 					<div class="form-group">
-						<label for="street1" class="col-sm-4 control-label">Street
-							&nbsp;:</label>
+						<label for="street1" class="col-sm-4 control-label">Street<span
+							style="color: red">*</span> &nbsp;:
+						</label>
 						<div class="col-sm-6">
 							<input type="text" size="30" maxlength="50" name="street1"
-								required="required" placeholder="Line 1" class="form-control">
+								required="required" placeholder="Street" class="form-control">
 						</div>
 					</div>
 					<!-- <div class="form-group">
 						<label for="street2" class="col-sm-4 control-label">Street
-							2&nbsp;:</label>
+							2<span
+							style="color: red">*</span>&nbsp;:</label>
 						<div class="col-sm-6">
 							<input type="text" size="30" maxlength="50" name="street2"
 								placeholder="Line 2" class="form-control">
 						</div>
 					</div> -->
 					<div class="form-group">
-						<label for="city" class="col-sm-4 control-label">City&nbsp;:</label>
+						<label for="city" class="col-sm-4 control-label">City<span
+							style="color: red">*</span>&nbsp;:
+						</label>
 						<div class="col-sm-6">
 							<input type="text" size="30" name="city" required="required"
 								placeholder="City" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="state" class="col-sm-4 control-label">State&nbsp;:</label>
+						<label for="state" class="col-sm-4 control-label">State<span
+							style="color: red">*</span>&nbsp;:
+						</label>
 						<div class="col-sm-6">
 							<span id="stateArea"></span>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="zip" class="col-sm-4 control-label">Zip&nbsp;:</label>
+						<label for="zip" class="col-sm-4 control-label">Zip<span
+							style="color: red">*</span>&nbsp;:
+						</label>
 						<div class="col-sm-6">
 							<input type="text" size="10" name="zip" maxlength="10"
 								required="required" placeholder="Ex.: xxxxx"

@@ -87,27 +87,34 @@ public class MenuController {
 		}
 		String eventId = request.getParameter("eventId");
 		httpSession.setAttribute("eventId", eventId);
-		// First check the DB if a menu is selected earlier for this cuisine
-		Event e = customerService.findEventWithId(Helper
-				.stringToInteger(eventId));
-		httpSession.setAttribute("eventName", e.getName());
-		List <com.cater.model.Menu> availableMenus = customerService
-				.findMenusWithEventId(e.getId());
+		Event e = null;
 		String customerCreatedMenuData = null;
 		String customerCreatedMenuComments = null;
-		if (CollectionUtils.isNotEmpty(availableMenus)) {
-			// Get the quote for the cuisine.
-			for (com.cater.model.Menu menuModel : availableMenus) {
-				if (StringUtils.equalsIgnoreCase(cuisine,
-						menuModel.getCuisineType())) {
-					httpSession.setAttribute("menuId", menuModel.getId());
-					customerCreatedMenuData = menuModel.getData();
-					customerCreatedMenuComments = StringUtils.defaultString(
-							StringUtils.trim(menuModel.getComments()), null);
-					break;
+		if (user.isGuest()) {
+			e = (Event) httpSession.getAttribute("event");
+		}
+		else {
+			// First check the DB if a menu is selected earlier for this cuisine.
+			e = customerService
+					.findEventWithId(Helper.stringToInteger(eventId));
+			List <com.cater.model.Menu> availableMenus = customerService
+					.findMenusWithEventId(e.getId());
+			if (CollectionUtils.isNotEmpty(availableMenus)) {
+				// Get the quote for the cuisine.
+				for (com.cater.model.Menu menuModel : availableMenus) {
+					if (StringUtils.equalsIgnoreCase(cuisine,
+							menuModel.getCuisineType())) {
+						httpSession.setAttribute("menuId", menuModel.getId());
+						customerCreatedMenuData = menuModel.getData();
+						customerCreatedMenuComments = StringUtils
+								.defaultString(StringUtils.trim(menuModel
+										.getComments()), null);
+						break;
+					}
 				}
 			}
 		}
+		httpSession.setAttribute("eventName", e.getName());
 		Menu menu = null;
 		try {
 			File f = new File(MenuController.class.getResource(
@@ -182,68 +189,61 @@ public class MenuController {
 		String eventId = (String) httpSession.getAttribute("eventId");
 		modelMap.put("cuisineType", cuisine);
 		try {
-			// String menuJsonFileName = "/menus/"
-			// + StringUtils.lowerCase(cuisine, Locale.US) + ".json";
-			// File f = new File(MenuController.class
-			// .getResource(menuJsonFileName).getFile());
-			// Menu menu = new MenuDeserializer().readJSON(f);
 			List <String> itemCodes = new ObjectMapper().readValue(
 					itemCodesJson, new TypeReference <List <String>>() {
 					});
-			/*
-			 * for (String selectedItemCode : itemCodes) {
-			 * logger.debug("Selected item code: " + selectedItemCode); for
-			 * (MenuCategory cat : menu.getCategories()) { for (MenuItem
-			 * menuItem : cat.getItems()) { if
-			 * (StringUtils.equals(selectedItemCode, menuItem.getCode())) {
-			 * menuItem.setSelected(true); } } } }
-			 */
 			StringBuilder stringBuilder = new StringBuilder();
 			for (String selectedItemCode : itemCodes) {
 				stringBuilder.append(selectedItemCode).append(MENU_DELIMITER);
 			}
 			String newData = stringBuilder.toString();
-			Event e = customerService.findEventWithId(Helper
-					.stringToInteger(eventId));
-			// Create or update menu in database
-			com.cater.model.Menu menuModel;
-			Integer menuId = (Integer) httpSession.getAttribute("menuId");
-			if (menuId == null) {
-				menuModel = new com.cater.model.Menu();
+			Event e = null;
+			if (user.isGuest()) {
+				e = (Event) httpSession.getAttribute("event");
 			}
 			else {
+				e = customerService.findEventWithId(Helper
+						.stringToInteger(eventId));
+			}
+			// Create or update menu in database
+			com.cater.model.Menu menuModel = new com.cater.model.Menu();
+			Integer menuId = (Integer) httpSession.getAttribute("menuId");
+			if (menuId != null) {
 				menuModel = customerService.findMenuWithId(menuId);
 			}
 			menuModel.setEvent(e);
-			// String data = menuSerializer.serialize(menu);
-			// logger.debug("Json menu (" + data.length() + ") ");
 			logger.debug("New menu:" + newData);
-			// data = Base64.encodeBase64String(data.getBytes());
-			// logger.debug("Encoded Json menu (" + data.length() + ")");
-			// logger.debug(data);
 			boolean isMenuChanged = !StringUtils.equalsIgnoreCase(newData,
 					menuModel.getData());
 			menuModel.setData(newData);
 			menuModel.setCuisineType(cuisine);
 			menuModel.setComments(comments);
-			customerService.saveOrUpdateMenu(menuModel);
-			menuId = menuModel.getId();
-			httpSession.setAttribute("menuId", menuId);
 			Set <Restaurant> restaurants = restaurantService
 					.fetchRestaurantsOfType(cuisine);
 			modelMap.put("restaurants", restaurants);
 			modelMap.put("eventLocation", e.getLocation());
 			Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
-			for (Restaurant r : restaurants) {
-				Quote quote = restaurantService
-						.findQuoteWithRestaurantIdAndMenuId(r.getId(), menuId);
-				if (quote != null) {
-					previouslySelectedRestaurants.add(r.getId());
-					if (isMenuChanged) {
-						quote.setStatus(QuoteStatus.CUSTOMER_UPDATED_MENU
-								.toString());
-						restaurantService.saveOrUpdateQuote(quote);
-						restaurantService.sendNotification(quote, null);
+			if (user.isGuest()) {
+				httpSession.setAttribute("menuId", 1);
+				menuModel.setId(1);
+				httpSession.setAttribute("menu", menuModel);
+			}
+			else {
+				customerService.saveOrUpdateMenu(menuModel);
+				menuId = menuModel.getId();
+				httpSession.setAttribute("menuId", menuId);
+				for (Restaurant r : restaurants) {
+					Quote quote = restaurantService
+							.findQuoteWithRestaurantIdAndMenuId(r.getId(),
+									menuId);
+					if (quote != null) {
+						previouslySelectedRestaurants.add(r.getId());
+						if (isMenuChanged) {
+							quote.setStatus(QuoteStatus.CUSTOMER_UPDATED_MENU
+									.toString());
+							restaurantService.saveOrUpdateQuote(quote);
+							restaurantService.sendNotification(quote, null);
+						}
 					}
 				}
 			}

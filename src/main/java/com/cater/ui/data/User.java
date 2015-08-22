@@ -13,6 +13,7 @@ public class User {
 	private String name;
 	private Roles role;
 	private RegistrationData data;
+	private boolean isGuest = false;
 
 	public int getLoginID() {
 		return loginID;
@@ -68,5 +69,13 @@ public class User {
 
 	public void setData(RegistrationData data) {
 		this.data = data;
+	}
+
+	public boolean isGuest() {
+		return isGuest;
+	}
+
+	public void setGuest(boolean isGuest) {
+		this.isGuest = isGuest;
 	}
 }

@@ -22,12 +22,21 @@
 				</div>
 				<form class="form-horizontal" method="GET"
 					id="customer-register-form"
-					action="${pageContext.request.contextPath}/register"
+					action="${pageContext.request.contextPath}/customer/createEvent"
 					enctype="application/x-www-form-urlencoded" autocomplete="off">
-					<input type="hidden" name="as" value="customer">
+ 					<!-- <input type="hidden" name="as" value="customer"> -->
 					<button type="submit" class="btn btn-default">Lets get
-						started</button>
+						started <!-- <br/> <span class="glyphicon glyphicon-user"> [Customer]</span> -->
+						</button>
 				</form>
+				<%-- <form class="form-horizontal" method="GET"
+					id="customer-register-form"
+					action="${pageContext.request.contextPath}/customer/createEvent"
+					enctype="application/x-www-form-urlencoded" autocomplete="off">
+					<input type="hidden" name="as" value="restautant">
+					<button type="submit" class="btn btn-default">Lets get
+						started <br/> <span class="glyphicon glyphicon-cutlery"> [Restaurant]</span></button>
+				</form> --%>
 			</div>
 			<div class="background">
 				<!-- img

@@ -40,7 +40,8 @@
 							<li><a
 								href="${pageContext.request.contextPath}/register?as=customer"><strong>Register</strong></a></li>
 							<li>
-								<form class="form-horizontal" method="GET" id="restaurant-register-form"
+								<form class="form-horizontal" method="GET"
+									id="restaurant-register-form"
 									action="${pageContext.request.contextPath}/register"
 									enctype="application/x-www-form-urlencoded" autocomplete="off">
 									<input type="hidden" name="as" value="restaurant">
@@ -50,26 +51,28 @@
 							</li>
 						</c:when>
 						<c:otherwise>
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown" role="button" aria-expanded="false">
-									<span class="glyphicon glyphicon-cog"></span> Settings <span
-									class="caret"></span>
-							</a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a
-										href="${pageContext.request.contextPath}/settings/personalInfo">Personal
-											Info</a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/settings/changePassword">Change
-											Password</a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/settings/paymentInfo">Payment
-											Info</a></li>
-									<!-- <li class="divider"></li>
+							<c:if test="${!sessionScope.user.isGuest()}">
+								<li class="dropdown"><a href="#" class="dropdown-toggle"
+									data-toggle="dropdown" role="button" aria-expanded="false">
+										<span class="glyphicon glyphicon-cog"></span> Settings <span
+										class="caret"></span>
+								</a>
+									<ul class="dropdown-menu" role="menu">
+										<li><a
+											href="${pageContext.request.contextPath}/settings/personalInfo">Personal
+												Info</a></li>
+										<li><a
+											href="${pageContext.request.contextPath}/settings/changePassword">Change
+												Password</a></li>
+										<li><a
+											href="${pageContext.request.contextPath}/settings/paymentInfo">Payment
+												Info</a></li>
+										<!-- <li class="divider"></li>
 							<li class="dropdown-header">Nav header</li>
 							<li><a href="#">Separated link</a></li>
 							<li><a href="#">One more separated link</a></li> -->
-								</ul></li>
+									</ul></li>
+							</c:if>
 
 							<li class="dropdown"><a href="#" class="dropdown-toggle"
 								data-toggle="dropdown" role="button" aria-expanded="false">
@@ -99,7 +102,8 @@
 
 									<li class="divider"></li>
 									<li><a href="${pageContext.request.contextPath}/logout">
-											<span class="glyphicon glyphicon-off"></span> Logout </a></li>
+											<span class="glyphicon glyphicon-off"></span> Logout
+									</a></li>
 								</ul></li>
 							<li></li>
 							<li></li>
