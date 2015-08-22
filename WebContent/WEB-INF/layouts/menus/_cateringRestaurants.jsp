@@ -31,7 +31,8 @@
 								data-restaurant-address="${r.address.street1} ${r.address.street2}, ${r.address.city}, ${r.address.state} ${r.address.zip}"
 								data-restaurant-name="${r.name}"
 								data-restaurant-image="${pageContext.request.contextPath}/imagesproxy/Restaurant_${r.id}"
-								data-restaurant-isselected="${prevR.contains(r.id)?'checked':''}"></span>
+								data-restaurant-isselected="${prevR.contains(r.id)?'checked':''}"
+								data-isguest="${sessionScope.user.isGuest()}"></span>
 							<br />
 						</c:forEach>
 						<div class="display-restaurants" data-page='catering'></div>
