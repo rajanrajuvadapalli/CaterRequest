@@ -2978,7 +2978,7 @@ ul.bullets li a:hover {
 }
 #outer-wrapper #page-canvas {
   background-color: #f4f4f2;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
 }
 
