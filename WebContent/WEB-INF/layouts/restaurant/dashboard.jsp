@@ -66,10 +66,12 @@
 					<c:forEach items="${restaurant.quotes}" var="q">
 						<tr>
 							<td>${q.menu.event.customer.name}<br /> 
+							<c:if test="${q.status.toString() == 'CUSTOMER_ORDER_CONFIRMED'}">
 							<span
 										class="glyphicon glyphicon-phone-alt" aria-hidden="true"
 									></span>&nbsp;<c:out
 									value="(${fn:substring(q.menu.event.customer.contactNumber, 0, 3)}) ${fn:substring(q.menu.event.customer.contactNumber, 3, 6)}-${fn:substring(q.menu.event.customer.contactNumber, 6, 10)}" />
+							</c:if>
 							</td>
 							<td>${q.menu.event.name}<br> <a
 								href="${pageContext.request.contextPath}/menu/view/${q.menu.id}"
