@@ -35,7 +35,7 @@ import com.cater.model.Event;
 import com.cater.model.Menu;
 import com.cater.model.Quote;
 import com.cater.model.Restaurant;
-import com.cater.payment.PaymentHelper;
+
 import com.cater.service.CustomerService;
 import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
@@ -64,8 +64,7 @@ public class CustomerDashboardController {
 	/** The restaurant service. */
 	@Autowired
 	private RestaurantService restaurantService;
-	@Autowired
-	private PaymentHelper paymentHelper;
+
 
 	/**
 	 * Gets the dashboard.
