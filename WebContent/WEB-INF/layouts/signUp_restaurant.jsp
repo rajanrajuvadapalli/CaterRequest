@@ -68,7 +68,7 @@
 				<div class="panel-body">
 					<div class="form-group" id="restaurant">
 						<label for="profilePic" class="col-sm-4 control-label">Upload
-							Picture&nbsp;:
+							Picture<span style="color: red">*</span>:
 						</label>
 						<div class="col-sm-6">
 							<!-- Show only image files for selection & preview. Control button labels, styles, 
@@ -82,7 +82,7 @@
 						</div>
 					</div>
 					<div class="form-group" id="restaurant">
-						<label for="restaurantName" class="col-sm-4 control-label">Restaurant&nbsp;Name&nbsp;<span
+						<label for="restaurantName" class="col-sm-4 control-label">Restaurant&nbsp;Name<span
 							style="color: red">*</span>:
 						</label>
 						<div class="col-sm-6">
@@ -93,7 +93,7 @@
 					</div>
 					<div class="form-group" id="restaurant">
 						<label for="cuisineType" class="col-sm-4 control-label">Cuisine
-							Type<span style="color: red">*</span>&nbsp;:
+							Type<span style="color: red">*</span>:
 						</label>
 						<div class="col-sm-6">
 							<span id="cuisineType"></span>
@@ -101,7 +101,7 @@
 					</div>
 					<div class="form-group" id="restaurant">
 						<label for="url" class="col-sm-4 control-label">Website
-							URL<span style="color: red">*</span> :
+							URL<span style="color: red">*</span>:
 						</label>
 						<div class="col-sm-6">
 							<input type="url" size="50" name="url"
@@ -110,7 +110,7 @@
 					</div>
 					<div class="form-group">
 						<label for="email" class="col-sm-4 control-label">Email/Username<span
-							style="color: red">*</span>&nbsp;:
+							style="color: red">*</span>:
 						</label>
 						<div class="col-sm-6">
 							<input type="email" size="30" name="email" required="required"
@@ -119,7 +119,7 @@
 					</div>
 					<div class="form-group">
 						<label for="pwd1" class="col-sm-4 control-label">Password<span
-							style="color: red">*</span>&nbsp;:
+							style="color: red">*</span>:
 						</label>
 						<div class="col-sm-6">
 							<input type="password" size="30" name="pwd1" id="pwd1"
@@ -128,7 +128,7 @@
 					</div>
 					<div class="form-group">
 						<label for="pwd2" class="col-sm-4 control-label">Confirm
-							Password<span style="color: red">*</span>&nbsp;:
+							Password<span style="color: red">*</span>:
 						</label>
 						<div class="col-sm-6">
 							<input type="password" size="30" name="pwd2" id="pwd2"
@@ -138,7 +138,7 @@
 					</div>
 					<div class="form-group">
 						<label for="phone" class="col-sm-4 control-label">Contact
-							Phone<span style="color: red">*</span>&nbsp;:
+							Phone<span style="color: red">*</span>:
 						</label>
 						<div class="col-sm-6" align="left">
 							<input type="text" size="30" name="phone" required="required"
@@ -148,7 +148,7 @@
 					</div>
 					<div class="form-group">
 						<label for="pwd2" class="col-sm-4 control-label">How did
-							you hear about us&nbsp;?<span style="color: red">*</span>
+							you hear about us?<span style="color: red">*</span>
 						</label>
 						<div class="col-sm-6">
 							<select class="form-control inputs" name="hearAboutUs"
@@ -164,7 +164,7 @@
 					</div>
 					<div class="form-group">
 						<label for="aboutus" class="col-sm-4 control-label">Tell
-							us something about your restaurant<span style="color: red">*</span>&nbsp;:
+							us something about your restaurant<span style="color: red">*</span>:
 						</label>
 						<div class="col-sm-6">
 							<textarea rows="4" name="aboutus" class="form-control"
@@ -191,7 +191,7 @@
 					</div>
 					<div class="form-group">
 						<label for="street1" class="col-sm-4 control-label">Street<span
-							style="color: red">*</span> &nbsp;:
+							style="color: red">*</span>:
 						</label>
 						<div class="col-sm-6">
 							<input type="text" size="30" maxlength="50" name="street1"
@@ -209,7 +209,7 @@
 					</div> -->
 					<div class="form-group">
 						<label for="city" class="col-sm-4 control-label">City<span
-							style="color: red">*</span>&nbsp;:
+							style="color: red">*</span>:
 						</label>
 						<div class="col-sm-6">
 							<input type="text" size="30" name="city" required="required"
@@ -218,7 +218,7 @@
 					</div>
 					<div class="form-group">
 						<label for="state" class="col-sm-4 control-label">State<span
-							style="color: red">*</span>&nbsp;:
+							style="color: red">*</span>:
 						</label>
 						<div class="col-sm-6">
 							<span id="stateArea"></span>
@@ -226,7 +226,7 @@
 					</div>
 					<div class="form-group">
 						<label for="zip" class="col-sm-4 control-label">Zip<span
-							style="color: red">*</span>&nbsp;:
+							style="color: red">*</span>:
 						</label>
 						<div class="col-sm-6">
 							<input type="text" size="10" name="zip" maxlength="10"
@@ -234,12 +234,7 @@
 								pattern="^\d{5}(\-\d{4})?$" class="form-control">
 						</div>
 					</div>
-					<div class="form-group">
-						<label class="col-sm-4 control-label"></label>
-						<div class="col-sm-6" align="left">
-							<button type="submit" class="btn btn-default">Register</button>
-						</div>
-					</div>
+
 				</div>
 			</div>
 		</div>
