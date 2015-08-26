@@ -1,6 +1,9 @@
 package com.cater.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,6 +22,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cater.constants.Roles;
 import com.cater.email.EmailHelper;
+import com.cater.menu.Menu;
+import com.cater.menu.MenuDeserializer;
 import com.cater.model.Customer;
 import com.cater.model.Event;
 import com.cater.model.Login;
@@ -75,8 +80,27 @@ public class RegistrationController {
 	public String getRegisterForm(ModelMap modelMap,
 			HttpServletRequest request, HttpSession session) {
 		String registerAs = request.getParameter("as");
-		return StringUtils.equalsIgnoreCase(registerAs, "customer") ? "t_signUp_customer"
-				: "t_signUp_restaurant";
+		String cuisine = request.getParameter("cuisineType");
+		if (StringUtils.equalsIgnoreCase(registerAs, "customer")) {
+			return "t_signUp_customer";
+		}
+		else {
+			try {
+				logger.debug(cuisine);
+				File f = new File(RegistrationController.class.getResource(
+						"/menus/" + StringUtils.lowerCase(cuisine, Locale.US)
+								+ ".json").getFile());
+				Menu menu = new MenuDeserializer().readJSON(f);
+				modelMap.addAttribute("menu", menu);
+			}
+			catch (IOException ex) {
+				List <String> menuerrors = Lists.newArrayList();
+				menuerrors
+						.add("Could not load the menu. Please contact customer support.");
+				modelMap.addAttribute("menuerrors", menuerrors);
+			}
+			return "t_signUp_restaurant";
+		}
 	}
 
 	@RequestMapping(value = { "register" }, method = RequestMethod.POST)

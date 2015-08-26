@@ -153,8 +153,8 @@
 						<div class="col-sm-6">
 							<select class="form-control inputs" name="hearAboutUs"
 								id="hearAboutUs" required="required">
-								<option value="">Choose one...</option>
-								<option value="friend_referral" selected="selected">Friend/referral</option>
+								<option value="" selected="selected">Choose one...</option>
+								<option value="friend_referral">Friend/referral</option>
 								<option value="google">Google Search</option>
 								<option value="online_ad">Online advertisement</option>
 								<option value="social_media">Social Media</option>
@@ -238,6 +238,43 @@
 				</div>
 			</div>
 		</div>
+		<div class="col-sm-12">
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h3 class="panel-title">Menu</h3>
+				</div>
+				<div class="panel-body">
+					<c:if test="${not empty menuerrors}">
+						<div class="alert alert-danger">
+							<ul>
+								<c:forEach items="${menuerrors}" var="e">
+									<li align="left">${e}</li>
+								</c:forEach>
+							</ul>
+						</div>
+					</c:if>
+					<c:forEach items="${menu.categories}" var="category">
+						<c:if test="${not empty category.items}">
+							<div class="col-sm-12">
+									<b>${category.name}</b>
+									<ol>
+										<c:forEach items="${category.items}" var="item">
+											<li>${item.name}</li>
+										</c:forEach>
+									</ol>
+							</div>
+						</c:if>
+					</c:forEach>
+					<div class="col-sm-6">
+						<br />
+						<br /> <input required type="checkbox" name="menuconsent"
+							value="yes"> I accept the menu. <br /> <br />
+						<button type="submit" class="btn btn-default"
+							name="register-button">Register</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</form>
 </div>
 
@@ -245,5 +282,16 @@
 	$('document').ready(function() {
 		populateCuisineTypes();
 		populateStateDropDown();
+		$("button[name=register-button]").prop('disabled', true);
+		$("input[name=menuconsent]").change(function() {
+			var element = $("button[name=register-button]");
+			if (this.checked) {
+				//element.addClass("btn-default");
+				element.prop('disabled', false);
+			} else {
+				//element.removeClass("btn-default");
+				element.prop('disabled', true);
+			}
+		});
 	});
 </script>

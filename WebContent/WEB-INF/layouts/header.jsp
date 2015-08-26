@@ -40,13 +40,18 @@
 							<li><a
 								href="${pageContext.request.contextPath}/register?as=customer"><strong>Register</strong></a></li>
 							<li>
-								<form class="form-horizontal" method="GET"
-									id="restaurant-register-form"
+							<button class="popup-with-form btn btn-default"
+								    href="#selectcuisine-form">List Your Restaurant</button>
+										
+								<form class="mfp-hide white-popup-block selectCuisinePopupOptions" method="GET"
+									id="selectcuisine-form"
 									action="${pageContext.request.contextPath}/register"
 									enctype="application/x-www-form-urlencoded" autocomplete="off">
+									<br/>
 									<input type="hidden" name="as" value="restaurant">
-									<button type="submit" class="btn btn-default">List
-										Your Restaurant</button>
+									<span id="cuisineType"></span>
+									<br/>
+									<button type="submit" class="btn btn-default">Next</button>
 								</form>
 							</li>
 						</c:when>
@@ -99,7 +104,6 @@
 												List Restaurants <span class="badge">${nRestaurants}</span>
 										</a></li>
 									</c:if>
-
 									<li class="divider"></li>
 									<li><a href="${pageContext.request.contextPath}/logout">
 											<span class="glyphicon glyphicon-off"></span> Logout
@@ -112,12 +116,14 @@
 						</c:otherwise>
 					</c:choose>
 				</ul>
-
-
 			</div>
 		</nav>
 	</div>
 </div>
 <!-- end Navigation-->
 
-
+<script>
+	$('document').ready(function() {
+		populateCuisineTypes();
+	});
+</script>
