@@ -79,5 +79,10 @@
 			<button type="submit" class="btn btn-default">Sign in</button>
 		</span>
 	</form>
-
 </div>
+
+<script>
+	$('document').ready(function() {
+		$("button[name=nologin]").click();
+	});
+</script>
