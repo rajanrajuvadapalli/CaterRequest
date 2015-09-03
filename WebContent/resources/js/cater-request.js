@@ -10,23 +10,6 @@ $('document').ready(function() {
 		removalDelay : 300,
 		mainClass : 'my-mfp-zoom-in'
 	});
-	$('.popup-youtube').magnificPopup({
-		disableOn: 700,
-		type: 'iframe',
-		mainClass: 'mfp-fade',
-		removalDelay: 0,
-		preloader: false,
-		fixedContentPos: false,
-	    iframe: {
-	        patterns: {
-	            youtube: {
-	            	index: 'youtube.com/', 
-		            id: 'v=', 
-	                src: '//www.youtube.com/embed/%id%?autoplay=1&rel=0'
-	            }
-	        }
-	    }
-	});
 });
 
 function populateCuisineTypes() {

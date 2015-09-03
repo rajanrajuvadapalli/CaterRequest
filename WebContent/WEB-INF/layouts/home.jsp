@@ -22,27 +22,14 @@
 				<div class="container">
 					<h1>Order food for your party in just one click!</h1>
 				</div>
-
-				<a class="popup-youtube btn btn-default"
-					href="http://www.youtube.com/watch?v=vMZ7oYs3cfY">How it Works</a>
-				<br /><br />
 				<form class="form-horizontal" method="GET"
 					id="customer-register-form"
 					action="${pageContext.request.contextPath}/customer/createEvent"
 					enctype="application/x-www-form-urlencoded" autocomplete="off">
 					<!-- <input type="hidden" name="as" value="customer"> -->
-					<button type="submit" class="btn btn-default">
-						Lets get started
-					</button>
-				</form>
-				<%-- <form class="form-horizontal" method="GET"
-					id="customer-register-form"
-					action="${pageContext.request.contextPath}/customer/createEvent"
-					enctype="application/x-www-form-urlencoded" autocomplete="off">
-					<input type="hidden" name="as" value="restautant">
 					<button type="submit" class="btn btn-default">Lets get
-						started <br/> <span class="glyphicon glyphicon-cutlery"> [Restaurant]</span></button>
-				</form> --%>
+						started</button>
+				</form>
 			</div>
 			<div class="background">
 				<!-- img
@@ -52,17 +39,19 @@
 		</section>
 		<!--end Hero Image-->
 		<!--How CaterRequest works-->
-		<section id="how-it-works" class="block">
-			<div class="container" align="center">
+		<section id="how-it-works" class="block center">
+			<div class="container">
 				<header>
-					<h2>Steps</h2>
+					<h2>How CaterRequest works?</h2>
 				</header>
 				<div class="row">
+					<iframe width="650" height="400"
+						src="https://www.youtube.com/embed/01JFErikHlE?rel=0;&autoplay=0"
+						allowfullscreen="" frameborder="0"></iframe>
 					<div class="feature-box">
 						<img alt="how-it-works"
 							src="${pageContext.request.contextPath}/resources/images/home_how.png">
 					</div>
-					<!--/.feature-box-->
 				</div>
 			</div>
 		</section>
@@ -226,10 +215,58 @@
 			</div>
 		</section>
 		<!-- Why choose CaterRequest -->
-		<!-- Testimonials -->
-		<section class="block background-color-white" id="testimonials">
+		<!-- Carousel -->
+		<section id="featured" class="block equal-height">
 			<div class="container">
-				<div class="owl-carousel testimonials">
+				<header>
+					<h2>Testimonials</h2>
+				</header>
+				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+						<li data-target="#myCarousel" data-slide-to="1"></li>
+					</ol>
+					<div class="carousel-inner" role="listbox">
+						<div class="item active">
+							<blockquote>
+								<figure>
+									<img
+										src="${pageContext.request.contextPath}/resources/images/people/VijayBhupathi.jpg"
+										alt="">
+								</figure>
+								<div class="description">
+									<p>This is an awesome service. You make ordering food for
+										parties easy and simple. Saved me a lot of time. Did not have
+										to dial up each and every restaurant and find out the prices.
+										I am one happy customer.</p>
+									<footer>Vijay Bhupathi</footer>
+								</div>
+							</blockquote>
+						</div>
+						<div class="item">
+							<blockquote>
+								<figure></figure>
+								<div class="description">
+									<p>The experience was fantastic! Being a working women and
+										a mother of 3yr old, finding time to talk to restaurants and
+										finalize the order was the tough part. Glad to have
+										CaterRequest, which made the whole process smooth and simple.</p>
+									<footer>Sarvani Sarangam</footer>
+								</div>
+							</blockquote>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- /.carousel -->
+
+		<!-- Testimonials -->
+		<%-- <section class="block background-color-white" id="testimonials">
+			<div class="container">
+				<!-- <div class="owl-carousel testimonials"> -->
+				<div>
 					<blockquote>
 						<figure>
 							<img
@@ -256,7 +293,7 @@
 					</blockquote>
 				</div>
 			</div>
-		</section>
+		</section> --%>
 		<!--/.testimonials-->
 		<%-- <section id="image">
 			<div class="container bg-container-1">
