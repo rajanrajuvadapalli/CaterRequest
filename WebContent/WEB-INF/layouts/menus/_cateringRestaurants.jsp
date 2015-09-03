@@ -40,7 +40,7 @@
 						<div class="col-sm-2">
 							<c:choose>
 								<c:when test="${sessionScope.user.isGuest()}">
-									<button class="popup-with-form btn btn-default"
+									<button class="popup-with-form-modal btn btn-default" name="nologin"
 										href="#nologin-form">Next</button>
 								</c:when>
 								<c:otherwise>

@@ -10,6 +10,20 @@ $('document').ready(function() {
 		removalDelay : 300,
 		mainClass : 'my-mfp-zoom-in'
 	});
+	$('.popup-with-form-modal').magnificPopup({
+		type : 'inline',
+		fixedContentPos : false,
+		fixedBgPos : true,
+		overflowY : 'auto',
+		//closeBtnInside : true,
+		//showCloseBtn: false,
+		//enableEscapeKey: false,
+		modal: true,
+		midClick : true,
+		preloader : false,
+		removalDelay : 300,
+		mainClass : 'my-mfp-zoom-in'
+	});
 });
 
 function populateCuisineTypes() {
