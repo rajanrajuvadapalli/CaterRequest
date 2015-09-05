@@ -45,9 +45,11 @@
 					<h2>How CaterRequest works?</h2>
 				</header>
 				<div class="row">
-					<iframe width="650" height="400"
-						src="https://www.youtube.com/embed/01JFErikHlE?rel=0;&autoplay=0"
-						allowfullscreen="" frameborder="0"></iframe>
+					<div class="videowrapper">
+						<iframe width="650" height="400"
+							src="https://www.youtube.com/embed/01JFErikHlE?rel=0;&autoplay=0"
+							allowfullscreen="" frameborder="0"></iframe>
+					</div>
 					<div class="feature-box">
 						<img alt="how-it-works"
 							src="${pageContext.request.contextPath}/resources/images/home_how.png">
