@@ -2,6 +2,7 @@ package com.cater.controller;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,16 +16,18 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.cater.GuestHelper;
 import com.cater.Helper;
 import com.cater.constants.Roles;
 import com.cater.email.EmailHelper;
 import com.cater.model.Customer;
-import com.cater.model.Event;
 import com.cater.model.Login;
 import com.cater.service.CustomerService;
 import com.cater.service.LoginService;
+import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * The Class LoginController.
@@ -39,9 +42,13 @@ public class LoginController {
 	/** The email helper. */
 	@Autowired
 	private EmailHelper emailHelper;
+	@Autowired
+	private GuestHelper guestHelper;
 	/** The customer service. */
 	@Autowired
 	private CustomerService customerService;
+	@Autowired
+	private RestaurantService restaurantService;
 
 	/**
 	 * Logout.
@@ -59,7 +66,7 @@ public class LoginController {
 			HttpSession session) {
 		session.removeAttribute("user");
 		session.invalidate();
-		return "redirect:login";
+		return "redirect:home";
 	}
 
 	/**
@@ -111,21 +118,14 @@ public class LoginController {
 			}
 			//If a guest user created an account after creating an event, save the data first.
 			User user = (User) httpSession.getAttribute("user");
+			boolean guestLogin = false;
 			if (user != null && user.isGuest()) {
-				//Customer c = (Customer) httpSession.getAttribute("customer");//c.setId(null);
-				Customer c = customerService.findCustomerWithLoginId(login
-						.getId());
-				logger.debug("Creating event for " + c.getName());
-				Event e = (Event) httpSession.getAttribute("event");
-				e.setId(null);
-				e.getLocation().setId(null);
-				e.setCustomer(c);
-				customerService.saveOrUpdateEvent(e);
-				com.cater.model.Menu menuModel = (com.cater.model.Menu) httpSession
-						.getAttribute("menu");
-				menuModel.setId(null);
-				customerService.saveOrUpdateMenu(menuModel);
-				user.setGuest(false);
+				guestLogin = true;
+				Customer c = guestHelper.saveDataForGuest(modelMap,
+						httpSession, login, user);
+				Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
+				modelMap.put("prevR", previouslySelectedRestaurants);
+				user.setName(c.getName());
 			}
 			else {
 				user = new User();
@@ -135,9 +135,13 @@ public class LoginController {
 			user.setUsername(username);
 			Roles role = Roles.get(login.getRole());
 			user.setRole(role);
+			if (guestLogin) {
+				return "menus/t__cateringRestaurants";
+			}
 			return "redirect:dashboard";
 		}
 		catch (Exception ex) {
+			logger.error(ex);
 			errors.add("An unknown exception occured while logging you in. Please try later.");
 		}
 		return "t_login";

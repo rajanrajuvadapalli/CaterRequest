@@ -227,6 +227,7 @@ public class MenuController {
 				httpSession.setAttribute("menuId", 1);
 				menuModel.setId(1);
 				httpSession.setAttribute("menu", menuModel);
+				httpSession.setAttribute("cuisineType", cuisine);
 			}
 			else {
 				customerService.saveOrUpdateMenu(menuModel);
