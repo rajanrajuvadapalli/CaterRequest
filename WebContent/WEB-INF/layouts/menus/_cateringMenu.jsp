@@ -4,24 +4,24 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script>
-	function remove_item(ths,itm,name,itemCode,pos){
-		if(pos=='up'){
-			$('.up_'+ths).remove();
-			$('.down_'+ths).parent().remove();
-		}else{
-			$('.up_'+ths).remove();
-			$('.down_'+ths).parent().remove();
+	function remove_item(ths, itm, name, itemCode, pos) {
+		if (pos == 'up') {
+			$('.up_' + ths).remove();
+			$('.down_' + ths).parent().remove();
+		} else {
+			$('.up_' + ths).remove();
+			$('.down_' + ths).parent().remove();
 		}
-		$('.'+itm).parent().prev().removeAttr( 'style' );
-		$('.'+itm).children().children().children().removeAttr( 'style' );
-		$('.'+itm).parent().prev().children().removeAttr( 'style' );
-		$('.'+itm).removeAttr( 'style' );
-		$('.'+itm).removeClass('seleted');
-		
-		menu_items.deleteElem = function ( val ) {
-			for ( var i = 0; i < this.length; i++ ) {
-				if ( this[i] === val ) {
-					this.splice( i, 1 );
+		$('.' + itm).parent().prev().removeAttr('style');
+		$('.' + itm).children().children().children().removeAttr('style');
+		$('.' + itm).parent().prev().children().removeAttr('style');
+		$('.' + itm).removeAttr('style');
+		$('.' + itm).removeClass('seleted');
+
+		menu_items.deleteElem = function(val) {
+			for (var i = 0; i < this.length; i++) {
+				if (this[i] === val) {
+					this.splice(i, 1);
 					return i;
 				}
 			}
@@ -34,11 +34,11 @@
 				}
 			}
 		};
-		var idx = menu_items.deleteElem( name );	
+		var idx = menu_items.deleteElem(name);
 		var idx2 = menu_item_codes.deleteElem(itemCode);
 		//$('.butnote').css('margin-top','-=45');		
 	}
-	function menu_submit(){
+	function menu_submit() {
 		if (menu_items.length == 0) {
 			alert("Please select at least 1 item to proceed.");
 			return false;
@@ -47,12 +47,13 @@
 		console.log(menu_item_codes); //This list is populated in custom.js script.
 		$('#menu-items').html(JSON.stringify(menu_items));
 		$('#menu-item-codes').val(JSON.stringify(menu_item_codes));
-		$( "#target" ).submit();
+		$("#target").submit();
 	}
 </script>
 
 <!-- Page Canvas-->
 <div id="page-canvas">
+	<input type="hidden" id="refreshed" value="no">
 	<!--Off Canvas Navigation-->
 	<nav class="off-canvas-navigation">
 		<header>Navigation</header>
@@ -189,7 +190,7 @@
 								</article>
 								<!-- /.block -->
 
-								</section>
+							</section>
 						</div>
 						<div class="col-md-12 col-sm-12">
 							<section>
@@ -247,13 +248,26 @@
 		initializeOwl(rtl);
 		//Show only the first category when the window loads.
 		$('#C0').click();
-	});
-
-	$('document').ready(function() {
 		//For the items that were selected in previous transaction,
 		//send click event on the div with 'overlay' class (to simulate 'select' action).
 		$(".turn-me-on").each(function() {
 			$(this).parent().children().click();
 		});
+		//When the user clicks back button, force reload page.
+		var e = document.getElementById("refreshed");
+		if (e.value == "no")
+			e.value = "yes";
+		else {
+			e.value = "no";
+			location.reload();
+		}
+	});
+
+	$('document').ready(function() {
+		//For the items that were selected in previous transaction,
+		//send click event on the div with 'overlay' class (to simulate 'select' action).
+		/*$(".turn-me-on").each(function() {
+			$(this).parent().children().click();
+		});*/
 	});
 </script>

@@ -92,6 +92,15 @@ public class MenuController {
 		String customerCreatedMenuComments = null;
 		if (user.isGuest()) {
 			e = (Event) httpSession.getAttribute("event");
+			//If the guest user selects the browser's back button to see the menu
+			//show the selected items.
+			Object m = httpSession.getAttribute("menu");
+			if (m != null) {
+				com.cater.model.Menu menuModel = (com.cater.model.Menu) m;
+				customerCreatedMenuData = menuModel.getData();
+				customerCreatedMenuComments = StringUtils.defaultString(
+						StringUtils.trim(menuModel.getComments()), null);
+			}
 		}
 		else {
 			// First check the DB if a menu is selected earlier for this cuisine.
@@ -206,10 +215,17 @@ public class MenuController {
 						.stringToInteger(eventId));
 			}
 			// Create or update menu in database
-			com.cater.model.Menu menuModel = new com.cater.model.Menu();
+			com.cater.model.Menu menuModel = null;
 			Integer menuId = (Integer) httpSession.getAttribute("menuId");
 			if (menuId != null) {
 				menuModel = customerService.findMenuWithId(menuId);
+			}
+			if (menuModel == null) {
+				menuModel = (com.cater.model.Menu) httpSession
+						.getAttribute("menu");
+			}
+			if (menuModel == null) {
+				menuModel = new com.cater.model.Menu();
 			}
 			menuModel.setEvent(e);
 			logger.debug("New menu:" + newData);
@@ -226,8 +242,6 @@ public class MenuController {
 			if (user.isGuest()) {
 				httpSession.setAttribute("menuId", 1);
 				menuModel.setId(1);
-				httpSession.setAttribute("menu", menuModel);
-				httpSession.setAttribute("cuisineType", cuisine);
 			}
 			else {
 				customerService.saveOrUpdateMenu(menuModel);
@@ -248,6 +262,8 @@ public class MenuController {
 					}
 				}
 			}
+			httpSession.setAttribute("menu", menuModel);
+			httpSession.setAttribute("cuisineType", cuisine);
 			modelMap.put("prevR", previouslySelectedRestaurants);
 		}
 		catch (IOException e) {
