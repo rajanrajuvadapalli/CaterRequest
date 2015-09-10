@@ -184,6 +184,12 @@
 													<i class="fa fa-calendar"></i>Selected Items
 												</h3>
 											</header>
+											<c:forEach items="${categoryNames}" var="category"
+												varStatus="loop">
+												<div id="C${loop.index}" class="hidden">
+													<br /> <b style="color: FF3300;">${category}</b>
+												</div>
+											</c:forEach>
 										</div>
 									</div>
 									<!-- /.list-slider -->

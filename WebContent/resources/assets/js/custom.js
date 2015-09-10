@@ -22,6 +22,7 @@ $(document).ready(function($) {
                 var name = $this.next().children().text();
                 var desc = $this.children().children().children().text();
                 var itemCode = $this.next().next().children().text();
+                var categoryCode = $this.parent().parent().parent().attr('id');
                 //var price = $this.next().next().text();
                 //$('.butnote').css('margin-top','+=45');
                 $this.addClass('seleted');
@@ -45,7 +46,8 @@ $(document).ready(function($) {
                             '<span class="right remove-item down_remove-item_'+i+' remove-item_'+i+'" onclick="remove_item(\'remove-item_' + i + '\',\'' + this_item + '\',\'' + name+ '\',\'' + itemCode + '\',\'down\');">X</span><div class="right ">'+'</div>'+
                             '</div>';
 
-                $('.slide').append(html);
+                $('.slide #' + categoryCode).removeClass('hidden');
+                $('.slide #' + categoryCode).append(html);
 
 
             }
