@@ -10,6 +10,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 import org.apache.log4j.Logger;
+import org.hibernate.FlushMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.StaleObjectStateException;
 import org.springframework.web.context.ContextLoader;
@@ -43,6 +44,8 @@ public class HibernateSessionRequestFilter implements Filter {
 		try {
 			//log.debug("Starting a database transaction");
 			sf.getCurrentSession().beginTransaction();
+			//Added to fix org.hibernate.NonUniqueObjectException on the server.
+			sf.getCurrentSession().setFlushMode(FlushMode.COMMIT);
 			// Call the next filter (continue request processing)  
 			chain.doFilter(request, response);
 			// Commit and cleanup  
