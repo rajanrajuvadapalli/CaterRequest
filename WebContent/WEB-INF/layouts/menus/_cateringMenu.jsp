@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script>
-	function remove_item(ths, itm, name, itemCode, pos) {
+	function remove_item(ths, itm, name, itemCode, pos, categoryCode) {
 		if (pos == 'up') {
 			$('.up_' + ths).remove();
 			$('.down_' + ths).parent().remove();
@@ -36,7 +36,11 @@
 		};
 		var idx = menu_items.deleteElem(name);
 		var idx2 = menu_item_codes.deleteElem(itemCode);
-		//$('.butnote').css('margin-top','-=45');		
+		//$('.butnote').css('margin-top','-=45');	
+		//If all the items are removed, remove the parent element.
+		if($('.slide #' + categoryCode).children().length == 2 ) {
+			$('.slide #' + categoryCode).addClass('hidden');
+		}
 	}
 	function menu_submit() {
 		if (menu_items.length == 0) {

@@ -5,6 +5,7 @@
 */
 var $ = jQuery.noConflict();
 var i=0;var this_item = '';var menu_items = [];
+var menu_items_by_cat = []
 var menu_item_codes = [];
 $(document).ready(function($) {
     "use strict";
@@ -34,7 +35,7 @@ $(document).ready(function($) {
                 var selectedSize = $(window).width > 767 ? 18 : 13;
                 $this.parent().prev().children().css('opacity','0.95').css('font-size',selectedSize+'px').css('padding-left','10px');
                 $this.css('opacity','0.95');
-                $this.parent().parent().parent().append('<span class="top-close remove-item up_remove-item_'+i+' remove-item_'+i+'" onclick="remove_item(\'remove-item_' + i + '\',\'' + this_item + '\',\'' + name + '\',\''+ itemCode + '\',\'up\');">X</span>');
+                $this.parent().parent().parent().append('<span class="top-close remove-item up_remove-item_'+i+' remove-item_'+i+'" onclick="remove_item(\'remove-item_' + i + '\',\'' + this_item + '\',\'' + name + '\',\''+ itemCode + '\',\'up\'' + ',\'' + categoryCode+ '\');">X</span>');
 
                 menu_items.push(name);
                 menu_item_codes.push(itemCode);
@@ -43,13 +44,10 @@ $(document).ready(function($) {
                                 '<h4>'+name+'</h4>'+
                                 '<figure>'+desc+'</figure>'+
                             '</div>'+
-                            '<span class="right remove-item down_remove-item_'+i+' remove-item_'+i+'" onclick="remove_item(\'remove-item_' + i + '\',\'' + this_item + '\',\'' + name+ '\',\'' + itemCode + '\',\'down\');">X</span><div class="right ">'+'</div>'+
+                            '<span class="right remove-item down_remove-item_'+i+' remove-item_'+i+'" onclick="remove_item(\'remove-item_' + i + '\',\'' + this_item + '\',\'' + name+ '\',\'' + itemCode + '\',\'down\'' + ',\'' + categoryCode+ '\');">X</span><div class="right ">'+'</div>'+
                             '</div>';
-
                 $('.slide #' + categoryCode).removeClass('hidden');
-                $('.slide #' + categoryCode).append(html);
-
-
+                $(html).appendTo('.slide #' + categoryCode);
             }
         });
     });
