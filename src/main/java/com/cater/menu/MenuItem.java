@@ -1,11 +1,16 @@
 package com.cater.menu;
 
+import com.cater.menu.pizza.PizzaMenuItem;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonPropertyOrder({ "code", "name", "description", "isSelected" })
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType")
+@JsonSubTypes({ @JsonSubTypes.Type(value = PizzaMenuItem.class) })
 public class MenuItem {
 	@JsonProperty(value = "code")
 	private String code;
