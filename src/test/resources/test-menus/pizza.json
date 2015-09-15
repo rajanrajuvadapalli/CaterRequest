@@ -1,0 +1,44 @@
+{
+    "cuisine": "PIZZA",
+    "categories": [
+        {
+            "code": "C1",
+            "name": "GARLIC AND OIL",
+            "items": [
+                {
+                	"objectType": "PizzaMenuItem",
+                    "code": "C1_1",
+                    "name": "",
+                    "description": "",
+                    "isSelected": false,
+                    "size": "BIG",
+                    "set": 1,
+                    "ing": {
+                        "GARLIC": 1,
+                        "BACON": 3
+                    }
+                }
+            ]
+        },
+        {
+            "code": "C2",
+            "name": "PEPPERONI",
+            "items": [
+                {
+                	"objectType": "PizzaMenuItem",
+                    "code": "C2_1",
+                    "name": "",
+                    "description": "",
+                    "isSelected": false,
+                    "size": "AVG",
+                    "set": 2,
+                    "ing": {
+                        "GARLIC": 0,
+                        "BACON": 2,
+                        "ANCHIOVES": 1
+                    }
+                }
+            ]
+        }
+    ]
+}
