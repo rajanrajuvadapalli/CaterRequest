@@ -15,10 +15,10 @@ $('document').ready(function() {
 		fixedContentPos : false,
 		fixedBgPos : true,
 		overflowY : 'auto',
-		//closeBtnInside : true,
-		//showCloseBtn: false,
-		//enableEscapeKey: false,
-		modal: true,
+		// closeBtnInside : true,
+		// showCloseBtn: false,
+		// enableEscapeKey: false,
+		modal : true,
 		midClick : true,
 		preloader : false,
 		removalDelay : 300,
@@ -241,8 +241,8 @@ function validateEventForm() {
 	var zip = $("input[name=zip]").val();
 	var CurrentAddress = st1 + ", " + city + ", " + state + ", " + zip;
 	var LastAddressValidated = $("input[name=LastAddressValidated]").val();
-	//console.log("LastAddressValidated: " + LastAddressValidated);
-	//console.log("CurrentAddress: " + CurrentAddress);
+	// console.log("LastAddressValidated: " + LastAddressValidated);
+	// console.log("CurrentAddress: " + CurrentAddress);
 	if (LastAddressValidated != CurrentAddress) {
 		$("input[name=LastAddressValidated]").val(CurrentAddress);
 		var geocoder = new google.maps.Geocoder();
@@ -257,7 +257,7 @@ function validateEventForm() {
 function validateCuisine(formId) {
 	var element = $('form[id=' + formId + '] select[id=cuisineType]');
 	if (element.val() != "INDIAN_SOUTH" && element.val() != "INDIAN_NORTH"
-		 && element.val() != "PIZZA") {
+			&& element.val() != "PIZZA") {
 		alert("Sorry! " + element.val()
 				+ " restaurants are not registered with us at this moment.");
 		return false;
@@ -278,4 +278,22 @@ function validateSelectRestaurantForm() {
 		alert("Please select at least 1 restaurant.");
 		return false;
 	}
+}
+
+function populatePizzaSelectedItems() {
+	var pizzaSize = $('input[name=psize]:checked').val();
+	console.log("pizzaSize=" + pizzaSize);
+	var nPizzas = $('input[name=pcount]').val();
+	console.log("nPizzas=" + nPizzas);
+	var html = '<div class="list-item">' + '<div class="left">' + '<h4>' + pizzaSize
+			+ '</h4>' + '<figure>' + nPizzas + '</figure>' + '</div>' +
+			// '<span class="right remove-item down_remove-item_'+i+'
+			// remove-item_'+i+'" onclick="remove_item(\'remove-item_' + i +
+			// '\',\'' + this_item + '\',\'' + name+ '\',\'' + itemCode +
+			// '\',\'down\'' + ',\'' + categoryCode+ '\');">X</span><div
+			// class="right ">'+'</div>'+
+			'</div>';
+	$(html).appendTo('.slide');
+
+	return true;
 }

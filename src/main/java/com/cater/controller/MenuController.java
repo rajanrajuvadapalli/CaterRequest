@@ -85,6 +85,9 @@ public class MenuController {
 		if (user == null) {
 			return "t_home";
 		}
+		if ("PIZZA".equalsIgnoreCase(cuisine)) {
+			return "menus/t__cateringMenu_pizza";
+		}
 		String eventId = request.getParameter("eventId");
 		httpSession.setAttribute("eventId", eventId);
 		Event e = null;

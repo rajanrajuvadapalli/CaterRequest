@@ -6,6 +6,7 @@
             "name": "GARLIC AND OIL",
             "items": [
                 {
+                	"objectType": "PizzaMenuItem",
                     "code": "C1_1",
                     "name": "",
                     "description": "",
@@ -24,6 +25,7 @@
             "name": "PEPPERONI",
             "items": [
                 {
+                	"objectType": "PizzaMenuItem",
                     "code": "C2_1",
                     "name": "",
                     "description": "",
