@@ -55,6 +55,8 @@ $(function() {
 				currentRestaurantId = $currentRestaurant.data('restaurant-id');
 				currentRestaurantImage = $currentRestaurant
 						.data('restaurant-image');
+				curentRestaurantReview = $currentRestaurant
+				.data('restaurant-review-image');
 				// Adding restaurant name, address and distance to array object
 				// Adds only restaurants which are less than 50 miles radius
 				if (distances[i].value <= 80467) {
@@ -64,7 +66,8 @@ $(function() {
 						address : restaurantAddresses[i],
 						distance : distances[i].text,
 						distanceValue : distances[i].value,
-						image : currentRestaurantImage
+						image : currentRestaurantImage,
+						review : curentRestaurantReview
 					});
 				}
 			}
@@ -114,7 +117,13 @@ $(function() {
 									+ restaurantsAndDistances[i].distance
 									+ ' </b> <br/> '
 									+ restaurantsAndDistances[i].address
-									+ '</div>' + '</div>');
+									+ '<br/> '
+									+ '<a>Yelp Review: </a><img  src="'
+									+ restaurantsAndDistances[i].review
+									+ '">'
+									+ '</div>' 
+									+ '</div>'
+							);
 			}
 
 			$('.restaurants').remove();

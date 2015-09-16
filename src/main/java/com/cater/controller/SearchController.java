@@ -1,5 +1,8 @@
 package com.cater.controller;
 
+import java.util.Map;
+import java.util.Set;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,12 +13,17 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.beust.jcommander.internal.Maps;
+import com.cater.model.Restaurant;
 import com.cater.service.RestaurantService;
+import com.cater.yelp.YelpAPIHelper;
 
 @Controller
 public class SearchController {
 	@Autowired
 	private RestaurantService restaurantService;
+	@Autowired
+	private YelpAPIHelper yelpHelper;
 
 	/*
 	 * search for list of restaurants
@@ -30,8 +38,19 @@ public class SearchController {
 		String cuisineType = StringUtils.defaultString(request
 				.getParameter("cuisineType"));
 		if (cuisineType != null && !cuisineType.equals("")) {
-			modelMap.put("restaurants",
-					restaurantService.fetchRestaurantsOfType(cuisineType));
+			// YelpAPIHelper yelpHelper = new YelpAPIHelper();
+			Set<Restaurant> rests = restaurantService
+					.fetchRestaurantsOfType(cuisineType);
+			
+			Map<Integer, String> r2r = Maps.newHashMap();
+
+			for (Restaurant temp : rests) {
+				String review = yelpHelper.getRatings(temp.getName(), zipCode);
+				r2r.put(temp.getId(), review);
+			}
+			modelMap.put("ratings", r2r);
+			modelMap.put("restaurants", rests);
+
 			modelMap.put("cuisine", cuisineType);
 		} else {
 			modelMap.put("restaurants", restaurantService.fetchAllRestaurants());

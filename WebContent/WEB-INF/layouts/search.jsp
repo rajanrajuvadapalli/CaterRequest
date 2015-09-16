@@ -60,11 +60,21 @@
 				</c:when>
 			<c:otherwise>
 				<c:forEach items="${restaurants}" var="r">
-					<span class="restaurants" style="display: none;"
-						data-restaurant-id="${r.id}"
-						data-restaurant-address="${r.address.street1} ${r.address.street2}, ${r.address.city}, ${r.address.state} ${r.address.zip}"
-						data-restaurant-name="${r.name}"
-						data-restaurant-image="${pageContext.request.contextPath}/imagesproxy/Restaurant_${r.id}"></span>
+				   
+				  
+				
+				  <c:forEach items="${ratings}" var="ratings">
+				    <c:if test ="${r.id eq ratings.key }">
+				   
+						 <span class="restaurants" style="display: none;"
+						 data-restaurant-id="${r.id}"
+						 data-restaurant-address="${r.address.street1} ${r.address.street2}, ${r.address.city}, ${r.address.state} ${r.address.zip}"
+						 data-restaurant-name="${r.name}"
+						 data-restaurant-image="${pageContext.request.contextPath}/imagesproxy/Restaurant_${r.id}"
+						 data-restaurant-review-image="${ratings.value}"></span>
+				       </c:if>
+				  
+			     </c:forEach>
 				</c:forEach>
 				<div class="display-restaurants"></div>
 			</c:otherwise>
