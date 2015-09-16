@@ -18,6 +18,28 @@ function validateProfileForm() {
 		restaurantName.focus();
 		return false;
 	}
+	var stateElement = $("select[name=state]");
+	var state = stateElement.val();
+	if (state != null && state.length != 2) {
+		alert("State code should be 2 characters");
+		stateElement.focus();
+		return false;
+	}
+	var st1 = $("input[name=street1]").val();
+	var city = $("input[name=city]").val();
+	var zip = $("input[name=zip]").val();
+	var CurrentAddress = st1 + ", " + city + ", " + state + ", " + zip;
+	var LastAddressValidated = $("input[name=LastAddressValidated]").val();
+	// console.log("LastAddressValidated: " + LastAddressValidated);
+	// console.log("CurrentAddress: " + CurrentAddress);
+	if (LastAddressValidated != CurrentAddress) {
+		$("input[name=LastAddressValidated]").val(CurrentAddress);
+		var geocoder = new google.maps.Geocoder();
+		geocoder.geocode({
+			'address' : CurrentAddress
+		}, addressCallbackFunction);
+		return false;
+	}
 	return true;
 }
 

@@ -47,9 +47,10 @@ section.block.equal-height>div.row>div.col-md-2.col-sm-2>div.item {
 .top-close {
 	cursor: pointer;
 	position: absolute;
-	top: -103px;
+	top: 0;
+	z-index: 20;
 	right: 0px;
 	color: #FFF;
-	padding-left: 1px;
+	padding-left: 4px;
 	padding-top: 1px;
 }

@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
+import javax.annotation.PostConstruct;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -21,7 +23,6 @@ import com.cater.email.EmailHelper;
 import com.cater.model.Quote;
 import com.cater.model.Restaurant;
 import com.cater.twilio.sms.SMSHelper;
-
 @Component
 public class RestaurantService {
 	private static final Logger logger = Logger
@@ -36,6 +37,14 @@ public class RestaurantService {
 	private SMSHelper smsHelper;
 	@Value("${profile.pic.folder}")
 	private String profilePicFolder;
+
+	@PostConstruct
+	private void postConstruct() {
+		//If a system property is set, it will override
+		//the value set in the properties file
+		profilePicFolder = System.getProperty("profile.pic.folder",
+				profilePicFolder);
+	}
 
 	public List <Restaurant> fetchAllRestaurants() {
 		return restaurantDAO.fetchAllRestaurants();

@@ -62,6 +62,7 @@ CREATE TABLE cater4party.Event
 	,location_sk INT NOT NULL 
 	,date_time DATETIME NOT NULL 
 	,person_count INT NULL
+	,kids_count INT NULL
 	,pick_up BIT NOT NULL
 	,budget_total INT NULL 
 	,create_ts DATETIME NOT NULL 
@@ -88,7 +89,7 @@ CREATE TABLE cater4party.Quote
 	id INT NOT NULL IDENTITY
 	,menu_sk INT NOT NULL 
 	,restaurant_sk INT NOT NULL 
-	,price DECIMAL(6,2)  NULL 
+	,price DECIMAL(10,2)  NULL 
 	,status VARCHAR(30)  NULL 
 	,create_ts DATETIME NOT NULL 
 	,lupd_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP );

@@ -17,6 +17,7 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.cater.Helper;
@@ -39,6 +40,8 @@ import com.twilio.sdk.TwilioRestException;
 public class SMSHelper {
 	/** The Constant logger. */
 	private static final Logger logger = Logger.getLogger(SMSHelper.class);
+	@Value("${url}")
+	private String url;
 	/** The twilio sms. */
 	@Autowired
 	private TwilioSMS twilioSms;
@@ -109,20 +112,20 @@ public class SMSHelper {
 				//new StringBuilder(messages.get(
 				//role).get(QuoteStatus.valueOf(quote.getStatus())));
 				messageBuilder.append("Event name: ").append(event.getName())
-						.append(" ");
+						.append("; ");
 				if (role == Roles.RESTAURANT) {
 					messageBuilder.append("Customer name: ")
-							.append(customer.getName()).append(" ");
+							.append(customer.getName()).append("; ");
 				}
 				else if (role == Roles.CUSTOMER) {
 					messageBuilder.append("Restaurant name: ")
-							.append(restaurant.getName()).append(" ");
+							.append(restaurant.getName()).append("; ");
 				}
 				if (optionalMessage != null) {
 					messageBuilder.append(optionalMessage).append(" ");
 				}
-				messageBuilder
-						.append("--Please login to your account at http://www.caterrequest.com/login for more details.--");
+				messageBuilder.append("--Please login to your account at "
+						+ url + "/login for more details.--");
 				twilioSms.sendMessage(to, messageBuilder.toString());
 			}
 			else {
@@ -175,9 +178,12 @@ public class SMSHelper {
 						StringUtils.substring(login.getPassword(), 4, 9),
 						Locale.US);
 				String to = Helper.extractJust10digitNumber(phoneNumber);
-				String msg = "Thank you for registering with www.CaterRequest.com. "
+				String msg = "Thank you for registering with "
+						+ url
+						+ ". "
 						+ "Please check your registered email and click on the confirmation link to activate your account."
-						+ "Your verification code is: " + phoneVerificationCode;
+						+ "Your verification code is: " + phoneVerificationCode
+						+ " Enter this code under Settings >> Personal Info.";
 				twilioSms.sendMessage(to, msg);
 				return true;
 			}

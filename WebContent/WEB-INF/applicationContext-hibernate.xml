@@ -31,6 +31,11 @@
 				<prop key="hibernate.current_session_context_class">thread</prop>
 				<prop key="hibernate.show_sql">true</prop>
  				<prop key="hibernate.default_schema">cater4party</prop>
+<<<<<<< HEAD
+=======
+ 				<!-- <prop key="hibernate.default_schema">cater4party</prop> -->
+ 				<!-- <prop key="hibernate.default_schema">mycaterdb</prop> -->
+>>>>>>> master
 			</props>
 		</property>
 	</bean>

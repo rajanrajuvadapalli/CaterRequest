@@ -42,6 +42,8 @@ public class Event extends TimestampEntity implements Serializable {
 	private Date date_time;
 	@Column(name = "person_count", nullable = true)
 	private Integer personCount;
+	@Column(name = "kids_count", nullable = true)
+	private Integer kidsCount;
 	@Column(name = "pick_up", nullable = false, unique = false, updatable = true)
 	private boolean pickUp;
 	@Column(name = "budget_total", nullable = true)
@@ -105,6 +107,14 @@ public class Event extends TimestampEntity implements Serializable {
 		this.personCount = personCount;
 	}
 
+	public Integer getKidsCount() {
+		return kidsCount;
+	}
+
+	public void setKidsCount(Integer kidsCount) {
+		this.kidsCount = kidsCount;
+	}
+
 	public boolean isPickUp() {
 		return pickUp;
 	}
@@ -132,6 +142,8 @@ public class Event extends TimestampEntity implements Serializable {
 		result = prime * result
 				+ ((date_time == null) ? 0 : date_time.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result
+				+ ((kidsCount == null) ? 0 : kidsCount.hashCode());
 		result = prime * result
 				+ ((location == null) ? 0 : location.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -175,6 +187,12 @@ public class Event extends TimestampEntity implements Serializable {
 		}
 		else if (!id.equals(other.id))
 			return false;
+		if (kidsCount == null) {
+			if (other.kidsCount != null)
+				return false;
+		}
+		else if (!kidsCount.equals(other.kidsCount))
+			return false;
 		if (location == null) {
 			if (other.location != null)
 				return false;
@@ -203,8 +221,8 @@ public class Event extends TimestampEntity implements Serializable {
 			return false;
 		return true;
 	}
-	public static final String STATUS_ACTIVE="ACTIVE";
-	public static final String STATUS_CONFIRMED="CONFIRMED";
-	public static final String STATUS_COMPLETE="COMPLETE";
-	
+
+	public static final String STATUS_ACTIVE = "ACTIVE";
+	public static final String STATUS_CONFIRMED = "CONFIRMED";
+	public static final String STATUS_COMPLETE = "COMPLETE";
 }

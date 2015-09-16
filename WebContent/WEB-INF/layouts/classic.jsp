@@ -6,12 +6,13 @@
 
 <html lang="en-US">
 <head>
-	<meta charset="UTF-8"/>
-	<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0" />
-	<meta http-equiv="content-type" content="text/html" />
-	<title><t:getAsString name="title" /></title>
-	<c:import url="scripts_css.jsp"></c:import>
-	<c:import url="scripts_js.jsp"></c:import>
+<meta charset="UTF-8" />
+<meta name="viewport"
+	content="width=device-width, user-scalable=yes, initial-scale=1.0" />
+<meta http-equiv="content-type" content="text/html" />
+<title><t:getAsString name="title" /></title>
+<c:import url="scripts_css.jsp"></c:import>
+<c:import url="scripts_js.jsp"></c:import>
 </head>
 
 <body id="page-top">
@@ -19,8 +20,8 @@
 		<div id="inner-wrapper">
 			<t:insertAttribute name="header" />
 			<t:insertAttribute name="body" />
-			<t:insertAttribute name="footer" />
 		</div>
+		<t:insertAttribute name="footer" />
 	</div>
 </body>
 </html>

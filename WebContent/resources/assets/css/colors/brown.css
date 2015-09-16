@@ -1616,6 +1616,7 @@ ul.bullets li a:hover {
 }
 .hero-image .background {
   text-align: center;
+  background: url('../../img/restaurant-bg.jpg') no-repeat center top;
 }
 
 .invisible {
@@ -2972,7 +2973,7 @@ ul.bullets li a:hover {
 }
 #outer-wrapper #page-canvas {
   background-color: #f4f4f2;
-  height: 100%;
+  height: auto;
   width: 100%;
 }
 
@@ -3751,8 +3752,8 @@ ul.bullets li a:hover {
 }
 
 body {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-  opacity: 0;
+  /*filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;*/
 }
 
 .page-fade-out {
@@ -5506,113 +5507,7 @@ input[type="text"]:focus, input[type="text"]:active, input[type="date"]:focus, i
   top: 0;
 }
 
-#page-footer {
-  display: table-row;
-  background-color: #fff;
-  border-top: 2px solid #f4f4f2;
-  height: 1px;
-  margin-top: 30px;
-  padding-top: 50px;
-  position: relative;
-}
-#page-footer .inner {
-  padding-top: 60px;
-}
-#page-footer .inner address figure {
-  margin-top: 20px;
-}
-#page-footer .inner article {
-  margin-bottom: 30px;
-}
-#page-footer .inner p {
-  font-size: 12px;
-}
-#page-footer .inner .subscribe {
-  background-color: transparent;
-  padding: 0;
-}
-#page-footer .inner .subscribe input {
-  font-size: 14px;
-}
-#page-footer .inner .subscribe .input-group-btn button {
-  background-color: #e8e8e4;
-  font-size: 14px;
-}
-#page-footer .inner .subscribe .input-group-btn button i {
-  color: rgba(241,81,17,1);
-  margin-left: 0;
-}
-#page-footer .inner .footer-bottom {
-  border-bottom: 2px solid rgba(241,81,17,1);
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  margin-top: 20px;
-  padding: 30px;
-}
-#page-footer .inner .footer-bottom .left {
-  float: left;
-  line-height: 30px;
-}
-#page-footer .inner .footer-bottom .right {
-  float: right;
-}
-#page-footer .inner .footer-bottom .to-top {
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  border: 2px solid rgba(241,81,17,1);
-  display: block;
-  font-size: 18px;
-  height: 30px;
-  line-height: 22px;
-  position: relative;
-  text-align: center;
-  width: 30px;
-}
-#page-footer .inner .footer-bottom .to-top:hover {
-  cursor: pointer;
-}
-#page-footer .inner .footer-bottom .to-top i {
-  color: rgba(241,81,17,1);
-  left: 0px;
-  position: relative;
-}
-#page-footer .item-horizontal {
-  border: none;
-  margin-bottom: 40px;
-  padding: 0;
-}
-#page-footer .item-horizontal:last-child {
-  border-bottom: none;
-}
-#page-footer .review {
-  margin-bottom: 40px;
-}
-#page-footer .review:last-child {
-  border-bottom: none;
-}
-#page-footer .review p {
-  margin-top: 5px;
-}
-#page-footer .review .info {
-  margin-top: 5px;
-}
-#page-footer .review .info .rating {
-  float: left;
-}
-#page-footer .review .info .type {
-  margin: 3px;
-}
-#page-footer .social {
-  margin-bottom: 20px;
-}
-#page-footer .social a {
-  display: inline-block;
-  margin-bottom: 0;
-}
-#page-footer .social a i {
-  color: #474747;
-  margin-right: 5px;
-}
+
 
 #page-content {
   height: auto;
@@ -6278,6 +6173,10 @@ body.navigation-top-header .header .wrapper .toggle-navigation {
   color: #474747;
   margin-right: 5px;
 }
+.bg-container-1 {
+  background: url('../../img/about-us-bg.jpg') no-repeat center top;
+  background-size: auto 100% ;
+}
 
 @media (min-width: 992px) and (max-width: 1199px) {
   #outer-wrapper, #inner-wrapper {
@@ -6498,6 +6397,11 @@ body.navigation-top-header .header .wrapper .toggle-navigation {
     display: block;
     height: auto;
   }
+  #page-footer .inner .footer-bottom .menu li {
+    width: 100%;
+    clear: both;
+    margin-bottom: 14px;
+  }
 
   blockquote {
     display: block;
@@ -6590,7 +6494,7 @@ body.navigation-top-header .header .wrapper .toggle-navigation {
   }
 
   .header .wrapper .navigation-items .wrapper .user-area {
-    display: none;
+    /*display: none;*/
   }
 
   .map-canvas {
@@ -6660,6 +6564,9 @@ body.navigation-top-header .header .wrapper .toggle-navigation {
     bottom: 20px;
     top: inherit;
     right: 10px;
+  }
+  .header .wrapper {
+    padding: 10px 5px;
   }
 }
 .fade_in {

@@ -3,45 +3,45 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-<div class="col-sm-offset-2 page-header">
+<div class="col-sm-10 col-sm-offset-1 page-header">
 	<h1>Settings</h1>
 </div>
 
-<c:if test="${not empty errors}">
-	<div class="alert alert-danger">
-		<ul>
-			<c:forEach items="${errors}" var="e">
-				<li align="left">${e}</li>
-			</c:forEach>
-		</ul>
+<div class="col-sm-10 col-sm-offset-1">
+	<c:if test="${not empty errors}">
+		<div class="alert alert-danger">
+			<ul>
+				<c:forEach items="${errors}" var="e">
+					<li align="left">${e}</li>
+				</c:forEach>
+			</ul>
 
-	</div>
-</c:if>
+		</div>
+	</c:if>
 
-<c:if test="${not empty successMessages}">
-	<div class="alert alert-success">
-		<ul>
-			<c:forEach items="${successMessages}" var="sm">
-				<li align="left">${sm}</li>
-			</c:forEach>
-		</ul>
+	<c:if test="${not empty successMessages}">
+		<div class="alert alert-success">
+			<ul>
+				<c:forEach items="${successMessages}" var="sm">
+					<li align="left">${sm}</li>
+				</c:forEach>
+			</ul>
 
-	</div>
-</c:if>
+		</div>
+	</c:if>
 
-<c:if test="${not empty warnings}">
-	<div class="alert alert-warning">
-		<ul>
-			<c:forEach items="${warnings}" var="w">
-				<li align="left">${w}</li>
-			</c:forEach>
-		</ul>
-	</div>
-</c:if>
+	<c:if test="${not empty warnings}">
+		<div class="alert alert-warning">
+			<ul>
+				<c:forEach items="${warnings}" var="w">
+					<li align="left">${w}</li>
+				</c:forEach>
+			</ul>
+		</div>
+	</c:if>
+</div>
 
-
-<div class="col-sm-9 col-sm-offset-2">
+<div class="col-sm-10 col-sm-offset-1">
 	<div class="panel panel-info">
 		<div class="panel-heading">
 			<h3 class="panel-title">Change Password</h3>
@@ -50,8 +50,7 @@
 			<form class="form-horizontal" method="POST" id="accountSettingsForm"
 				action="${pageContext.request.contextPath}/settings/changePassword"
 				novalidate enctype="application/x-www-form-urlencoded"
-				autocomplete="off"
-				onsubmit="return validateAccountSettingsForm();">
+				autocomplete="off" onsubmit="return validateAccountSettingsForm();">
 				<div class="form-group">
 					<label for="currPwd" class="col-sm-3 control-label">Current
 						Password: </label>
@@ -82,8 +81,7 @@
 					<label class="col-sm-3 control-label"></label>
 
 					<div class="col-sm-6" align="left">
-						<button type="submit" class="btn btn-default">Update
-						</button>
+						<button type="submit" class="btn btn-default">Update</button>
 					</div>
 				</div>
 

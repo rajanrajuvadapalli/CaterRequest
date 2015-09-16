@@ -29,6 +29,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.cater.Helper;
 import com.cater.constants.EventStatus;
 import com.cater.constants.QuoteStatus;
+import com.cater.constants.Roles;
 import com.cater.model.Address;
 import com.cater.model.Customer;
 import com.cater.model.Event;
@@ -81,11 +82,18 @@ public class CustomerDashboardController {
 		if (user == null) {
 			return "t_home";
 		}
-		Customer customer = customerService.findCustomerWithLoginId(user
-				.getLoginID());
+		Customer customer = null;
+		if (user.isGuest()) {
+			customer = (Customer) session.getAttribute("customer");
+		}
+		else {
+			customer = customerService.findCustomerWithLoginId(user
+					.getLoginID());
+		}
 		modelMap.put("customer", customer);
 		List<Event> events = customer.getEvents();
 		modelMap.put("events", events);
+<<<<<<< HEAD
 		Map<Integer, List<String>> e2m = Maps.newHashMap();
 		Map<Integer, List<Integer>> e2mid = Maps.newHashMap();
 		Map<Integer, Map<String, List<Quote>>> e2q = Maps.newHashMap();
@@ -97,19 +105,44 @@ public class CustomerDashboardController {
 				for (Menu m : menus) {
 					selectedMenuCusines.add(m.getCuisineType());
 					selectedMenuCusineIds.add(m.getId());
+=======
+		Map <Integer, List <String>> e2m = Maps.newHashMap();
+		Map <Integer, List <Integer>> e2mid = Maps.newHashMap();
+		Map <Integer, Map <String, List <Quote>>> e2q = Maps.newHashMap();
+		if (!user.isGuest()) {
+			for (Event e : events) {
+				List <Menu> menus = customerService.findMenusWithEventId(e
+						.getId());
+				List <String> selectedMenuCusines = Lists.newLinkedList();
+				List <Integer> selectedMenuCusineIds = Lists.newLinkedList();
+				if (CollectionUtils.isNotEmpty(menus)) {
+					for (Menu m : menus) {
+						selectedMenuCusines.add(m.getCuisineType());
+						selectedMenuCusineIds.add(m.getId());
+					}
+>>>>>>> master
 				}
+				e2m.put(e.getId(), selectedMenuCusines);
+				e2mid.put(e.getId(), selectedMenuCusineIds);
+				List <Quote> quotes = restaurantService.findQuotesWithEventId(e
+						.getId());
+				Map <String, List <Quote>> groupedQuotes = groupQuotesPerCuisine(quotes);
+				e2q.put(e.getId(), groupedQuotes);
 			}
+<<<<<<< HEAD
 			e2m.put(e.getId(), selectedMenuCusines);
 			e2mid.put(e.getId(), selectedMenuCusineIds);
 			List<Quote> quotes = restaurantService.findQuotesWithEventId(e
 					.getId());
 			Map<String, List<Quote>> groupedQuotes = groupQuotesPerCuisine(quotes);
 			e2q.put(e.getId(), groupedQuotes);
+=======
+			((User) session.getAttribute("user")).setName(customer.getName());
+>>>>>>> master
 		}
 		modelMap.put("e2m", e2m);
 		modelMap.put("e2mid", e2mid);
 		modelMap.put("e2q", e2q);
-		((User) session.getAttribute("user")).setName(customer.getName());
 		return "customer/t_dashboard";
 	}
 
@@ -162,11 +195,21 @@ public class CustomerDashboardController {
 	public String createEvent(HttpSession httpSession, ModelMap modelMap,
 			HttpServletRequest request) {
 		User user = (User) httpSession.getAttribute("user");
+		Customer c = new Customer();
 		if (user == null) {
-			return "t_home";
+			//return "t_home";
+			//If the user is not in session, create a dummy user and continue.
+			//Do not save anything, until last step (which will be registration).
+			user = new User();
+			user.setGuest(true);
+			user.setRole(Roles.CUSTOMER);
+			user.setUsername("Guest");
+			httpSession.setAttribute("user", user);
 		}
-		Customer c = customerService.findCustomerWithLoginId(user.getLoginID());
-		logger.debug("Creating event for " + c.getName());
+		else if (!user.isGuest()) {
+			c = customerService.findCustomerWithLoginId(user.getLoginID());
+			logger.debug("Creating event for " + c.getName());
+		}
 		Event e = new Event();
 		e.setStatus(EventStatus.ACTIVE.toString());
 		e.setName(StringUtils.defaultString(request.getParameter("name")));
@@ -189,18 +232,36 @@ public class CustomerDashboardController {
 		} catch (ParseException e1) {
 			logger.error(e1);
 		}
-		e.setCustomer(c);
 		String personCountParameter = request.getParameter("person_count");
 		if (StringUtils.isNotBlank(personCountParameter)
 				&& NUMERIC.matcher(personCountParameter).matches()) {
 			e.setPersonCount(Integer.parseInt(personCountParameter));
+		}
+		String kidsCountParameter = request.getParameter("kids_count");
+		if (StringUtils.isNotBlank(kidsCountParameter)
+				&& NUMERIC.matcher(kidsCountParameter).matches()) {
+			e.setKidsCount(Integer.parseInt(kidsCountParameter));
 		}
 		String budgetTotalParameter = request.getParameter("budget_total");
 		if (StringUtils.isNotBlank(budgetTotalParameter)
 				&& NUMERIC.matcher(budgetTotalParameter).matches()) {
 			e.setBudgetTotal(Integer.parseInt(budgetTotalParameter));
 		}
-		customerService.saveOrUpdateEvent(e);
+		if (user.isGuest()) {
+			//For guest user, save data in session
+			e.setId(1);
+			a.setId(1);
+			c.setId(1);
+			List <Event> events = Lists.newArrayList();
+			events.add(e);
+			c.setEvents(events);
+			httpSession.setAttribute("event", e);
+			httpSession.setAttribute("customer", c);
+		}
+		else {
+			e.setCustomer(c);
+			customerService.saveOrUpdateEvent(e);
+		}
 		return "redirect:/customer/dashboard";
 	}
 
@@ -225,8 +286,14 @@ public class CustomerDashboardController {
 		if (user == null) {
 			return "t_home";
 		}
-		Event event = customerService.findEventWithId(eventId);
-		modelMap.put("event", event);
+		if (user.isGuest()) {
+			Event event = (Event) httpSession.getAttribute("event");
+			modelMap.put("event", event);
+		}
+		else {
+			Event event = customerService.findEventWithId(eventId);
+			modelMap.put("event", event);
+		}
 		return "customer/t_editEvent";
 	}
 
@@ -254,7 +321,13 @@ public class CustomerDashboardController {
 		if (user == null) {
 			return "t_home";
 		}
-		Event e = customerService.findEventWithId(eventId);
+		Event e = null;
+		if (user.isGuest()) {
+			e = (Event) httpSession.getAttribute("event");
+		}
+		else {
+			e = customerService.findEventWithId(eventId);
+		}
 		if (e != null) {
 			e.setName(StringUtils.defaultString(request.getParameter("name")));
 			e.setPickUp(StringUtils.equals("1", StringUtils
@@ -271,19 +344,26 @@ public class CustomerDashboardController {
 			StringBuilder message = new StringBuilder();
 			boolean isDateChanged = false;
 			boolean isPersonCountChanged = false;
+			boolean isKidsCountChanged = false;
 			Date dateTime;
 			try {
 				synchronized (this) {
 					dateTime = SDF.parse(StringUtils.defaultString(request
 							.getParameter("datetimepicker")));
+<<<<<<< HEAD
 					// If customer changes date, send notification
 					if (!e.getDate_time().equals(dateTime)) {
+=======
+					String oldDateTime = SDF_1.format(e.getDate_time());
+					String newDateTime = SDF_1.format(dateTime);
+					//If customer changes date, send notification
+					if (!StringUtils.equalsIgnoreCase(oldDateTime, newDateTime)) {
+>>>>>>> master
 						isDateChanged = true;
-						message.append("Old date/time: ")
-								.append(SDF_1.format(e.getDate_time()))
+						message.append("Old date/time: ").append(oldDateTime)
 								.append("\n");
-						message.append("New date/time: ")
-								.append(SDF_1.format(dateTime)).append("\n");
+						message.append("New date/time: ").append(newDateTime)
+								.append("\n");
 					}
 					e.setDate_time(dateTime);
 				}
@@ -294,26 +374,45 @@ public class CustomerDashboardController {
 			int newPersonCount = stringToInt(personCountParameter);
 			if (e.getPersonCount() != newPersonCount) {
 				isPersonCountChanged = true;
-				message.append("Old person count: ").append(e.getPersonCount())
+				message.append("Old adult count: ").append(e.getPersonCount())
 						.append("\n");
-				message.append("New person count: ").append(newPersonCount)
+				message.append("New adult count: ").append(newPersonCount)
 						.append("\n");
 				e.setPersonCount(Integer.parseInt(personCountParameter));
 			}
+<<<<<<< HEAD
 			customerService.saveOrUpdateEvent(e);
 			List<String> successMessages = Lists.newArrayList();
+=======
+			String kidsCountParameter = request.getParameter("kids_count");
+			int newKidsCount = stringToInt(kidsCountParameter);
+			if (e.getKidsCount() != newKidsCount) {
+				isKidsCountChanged = true;
+				message.append("Old kids count: ").append(e.getKidsCount())
+						.append("\n");
+				message.append("New kids count: ").append(newKidsCount)
+						.append("\n");
+				e.setKidsCount(Integer.parseInt(kidsCountParameter));
+			}
+			if (!user.isGuest()) {
+				customerService.saveOrUpdateEvent(e);
+				updateQuoteStatusAndSendNotifications(e, message,
+						isDateChanged, isPersonCountChanged
+								|| isKidsCountChanged);
+			}
+			List <String> successMessages = Lists.newArrayList();
+>>>>>>> master
 			successMessages.add("Successfully updated event: '" + e.getName()
 					+ "'.");
 			redirectAttributes.addFlashAttribute("successMessages",
 					successMessages);
-			updateQuoteStatusAndSendNotifications(e, message, isDateChanged,
-					isPersonCountChanged);
 		}
 		return "redirect:/customer/dashboard";
 	}
 
 	/**
 	 * Update quote status and send notifications.
+<<<<<<< HEAD
 	 * 
 	 * @param e
 	 *            the e
@@ -323,18 +422,30 @@ public class CustomerDashboardController {
 	 *            the is date changed
 	 * @param isPersonCountChanged
 	 *            the is person count changed
+=======
+	 *
+	 * @param e the e
+	 * @param message the message
+	 * @param isDateChanged the is date changed
+	 * @param isCountChanged the is count changed
+>>>>>>> master
 	 */
 	private void updateQuoteStatusAndSendNotifications(Event e,
-			StringBuilder message, boolean isDateChanged,
-			boolean isPersonCountChanged) {
-		if (!isDateChanged && !isPersonCountChanged) {
+			StringBuilder message, boolean isDateChanged, boolean isCountChanged) {
+		if (!isDateChanged && !isCountChanged) {
 			return;
 		}
 		StringBuilder message2 = new StringBuilder(
 				"Customer has updated the following event details:\n");
 		message2.append(message);
+<<<<<<< HEAD
 		List<Quote> quotes = restaurantService.findQuotesWithEventId(e.getId());
 		QuoteStatus status = isPersonCountChanged ? CUSTOMER_UPDATED_COUNT
+=======
+		List <Quote> quotes = restaurantService
+				.findQuotesWithEventId(e.getId());
+		QuoteStatus status = isCountChanged ? CUSTOMER_UPDATED_COUNT
+>>>>>>> master
 				: CUSTOMER_UPDATED_DATE;
 		if (CollectionUtils.isNotEmpty(quotes)) {
 			for (Quote q : quotes) {
@@ -383,6 +494,7 @@ public class CustomerDashboardController {
 		if (user == null) {
 			return "t_home";
 		}
+<<<<<<< HEAD
 		Event event = customerService.findEventWithId(eventId);
 		if (event != null) {
 			String eventName = event.getName();
@@ -400,9 +512,44 @@ public class CustomerDashboardController {
 			customerService.deleteAddress(eventAddress);
 			List<String> successMessages = Lists.newArrayList();
 			successMessages.add("Successfully deleted event: '" + eventName
+=======
+		if (user.isGuest()) {
+			Event e = (Event) httpSession.getAttribute("event");
+			httpSession.removeAttribute("event");
+			Customer customer = (Customer) httpSession.getAttribute("customer");
+			List <Event> events = Lists.newArrayList();
+			customer.setEvents(events);
+			//httpSession.removeAttribute("user");
+			List <String> successMessages = Lists.newArrayList();
+			successMessages.add("Successfully deleted event: '" + e.getName()
+>>>>>>> master
 					+ "'.");
 			redirectAttributes.addFlashAttribute("successMessages",
 					successMessages);
+		}
+		else {
+			Event event = customerService.findEventWithId(eventId);
+			if (event != null) {
+				String eventName = event.getName();
+				Address eventAddress = event.getLocation();
+				List <Quote> quotes = restaurantService
+						.findQuotesWithEventId(eventId);
+				List <Menu> menus = customerService
+						.findMenusWithEventId(eventId);
+				for (Quote quote : quotes) {
+					customerService.deleteQuote(quote);
+				}
+				for (Menu menu : menus) {
+					customerService.deleteMenu(menu);
+				}
+				customerService.deleteEvent(event);
+				customerService.deleteAddress(eventAddress);
+				List <String> successMessages = Lists.newArrayList();
+				successMessages.add("Successfully deleted event: '" + eventName
+						+ "'.");
+				redirectAttributes.addFlashAttribute("successMessages",
+						successMessages);
+			}
 		}
 		return "redirect:/customer/dashboard";
 	}
@@ -464,9 +611,10 @@ public class CustomerDashboardController {
 				+ StringUtils.join(selectedRestaurantNames, ", "));
 		redirectAttributes
 				.addFlashAttribute("successMessages", successMessages);
-		httpSession.removeAttribute("eventId");
-		httpSession.removeAttribute("eventName");
-		httpSession.removeAttribute("menuId");
+		//Commented to support browser 'back' button.
+		//httpSession.removeAttribute("eventId");
+		//httpSession.removeAttribute("eventName");
+		//httpSession.removeAttribute("menuId");
 		return "redirect:/customer/dashboard";
 	}
 

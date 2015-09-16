@@ -1,6 +1,10 @@
 package com.cater.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,8 +21,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.cater.GuestHelper;
 import com.cater.constants.Roles;
 import com.cater.email.EmailHelper;
+import com.cater.menu.Menu;
+import com.cater.menu.MenuDeserializer;
 import com.cater.model.Login;
 import com.cater.model.Restaurant;
 import com.cater.service.CustomerService;
@@ -29,6 +36,7 @@ import com.cater.twilio.sms.SMSHelper;
 import com.cater.ui.data.RegistrationData;
 import com.cater.ui.data.User;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * The Class RegistrationController.
@@ -57,6 +65,8 @@ public class RegistrationController {
 	/** The sms helper. */
 	@Autowired
 	private SMSHelper smsHelper;
+	@Autowired
+	private GuestHelper guestHelper;
 	/** The customer care contact number. */
 	@Value("${customer.care.contact.number}")
 	private String customerCareContactNumber;
@@ -73,23 +83,35 @@ public class RegistrationController {
 	public String getRegisterForm(ModelMap modelMap,
 			HttpServletRequest request, HttpSession session) {
 		String registerAs = request.getParameter("as");
-		return StringUtils.equalsIgnoreCase(registerAs, "customer") ? "t_signUp_customer"
-				: "t_signUp_restaurant";
+		String cuisine = request.getParameter("cuisineType");
+		if (StringUtils.equalsIgnoreCase(registerAs, "customer")) {
+			return "t_signUp_customer";
+		}
+		else {
+			try {
+				logger.debug(cuisine);
+				File f = new File(RegistrationController.class.getResource(
+						"/menus/" + StringUtils.lowerCase(cuisine, Locale.US)
+								+ ".json").getFile());
+				Menu menu = new MenuDeserializer().readJSON(f);
+				modelMap.addAttribute("menu", menu);
+			}
+			catch (IOException ex) {
+				logger.error(ex);
+				List <String> menuerrors = Lists.newArrayList();
+				menuerrors
+						.add("Could not load the menu. Please contact customer support.");
+				modelMap.addAttribute("menuerrors", menuerrors);
+			}
+			return "t_signUp_restaurant";
+		}
 	}
 
-	/**
-	 * Register.
-	 *
-	 * @param modelMap the model map
-	 * @param request the request
-	 * @param session the session
-	 * @return the string
-	 */
 	@RequestMapping(value = { "register" }, method = RequestMethod.POST)
 	public String register(
 			ModelMap modelMap,
 			HttpServletRequest request,
-			HttpSession session,
+			HttpSession httpSession,
 			@RequestParam(value = "input-profile-pic", required = false) MultipartFile multipartFile) {
 		try {
 			//First check if the email (user name used to login) is in use.
@@ -134,12 +156,29 @@ public class RegistrationController {
 					.getParameter("aboutus")));
 			logger.debug("Form data: " + data.toString());
 			login = registerService.register(data);
+			//If a guest user created an account after creating an event, save the data first.
+			User user = (User) httpSession.getAttribute("user");
+			boolean guestLogin = false;
+			if (user != null && user.isGuest()) {
+				guestLogin = true;
+				//Customer c = 
+				guestHelper
+						.saveDataForGuest(modelMap, httpSession, login, user);
+			}
 			//When one signs up, logout the current user from session.
-			session.removeAttribute("user");
+			httpSession.removeAttribute("user");
 			String[] username_domain = StringUtils.split(login.getUsername(),
 					"@");
-			String confirmationToken = StringUtils.join(username_domain[0],
-					"@", login.getPassword(), "@", username_domain[1]);
+			List <Object> tokens = Lists.newLinkedList();//order matters here.
+			tokens.add(username_domain[0]);
+			tokens.add(login.getPassword());
+			tokens.add(username_domain[1]);
+			if (guestLogin) {
+				tokens.add("GUEST");
+				tokens.add(httpSession.getAttribute("cuisineType"));
+				tokens.add(httpSession.getAttribute("menuId"));
+			}
+			String confirmationToken = StringUtils.join(tokens, "@");
 			String confirmationToken_URLSafe = Base64
 					.encodeBase64URLSafeString(confirmationToken.getBytes());
 			logger.debug("Confirmation token for " + login.getUsername() + ": "
@@ -177,6 +216,7 @@ public class RegistrationController {
 			}
 		}
 		catch (Exception e) {
+			logger.error(e);
 			return "t_500";
 		}
 	}
@@ -192,13 +232,13 @@ public class RegistrationController {
 	 */
 	@RequestMapping(value = { "confirmation" })
 	public String registrationConfirmation(ModelMap modelMap,
-			HttpServletRequest request, HttpSession session,
+			HttpServletRequest request, HttpSession httpSession,
 			@RequestParam("confirmation_token") String confirmationToken_URLSafe) {
 		String confirmationToken = new String(
 				Base64.decodeBase64(confirmationToken_URLSafe));
 		logger.info("Received request for confirmation: " + confirmationToken);
 		String[] tokens = StringUtils.split(confirmationToken, "@");
-		if (tokens == null || tokens.length != 3) {
+		if (tokens == null || tokens.length < 3) {
 			List <String> errors = Lists.newArrayList();
 			errors.add("Invalid confirmation link used. Please register again.");
 			modelMap.addAttribute("errors", errors);
@@ -213,9 +253,35 @@ public class RegistrationController {
 			modelMap.addAttribute("errors", errors);
 			return "t_login";
 		}
+		boolean wasGuest = false;
+		if (tokens.length >= 4) {
+			wasGuest = "GUEST".equalsIgnoreCase(tokens[3]);
+		}
+		if (wasGuest) {
+			//If guest clicked the confirmation link, take them directly to the restaurant selection page.
+			String cuisine = tokens[4];
+			httpSession.setAttribute("cuisineType", cuisine);
+			modelMap.put("cuisineType", cuisine);
+			Integer menuId = Integer.parseInt(tokens[5]);
+			httpSession.setAttribute("menuId", menuId);
+			com.cater.model.Menu menu = customerService.findMenuWithId(menuId);
+			Set <Restaurant> restaurants = restaurantService
+					.fetchRestaurantsOfType(cuisine);
+			modelMap.put("restaurants", restaurants);
+			modelMap.put("eventLocation", menu.getEvent().getLocation());
+			Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
+			modelMap.put("prevR", previouslySelectedRestaurants);
+			User user = new User();
+			user.setLoginID(login.getId());
+			user.setUsername(username);
+			Roles role = Roles.get(login.getRole());
+			user.setRole(role);
+			httpSession.setAttribute("user", user);
+			return "menus/t__cateringRestaurants";
+		}
 		//If the account is already active, display warning message.
 		//Otherwise, make the account active and display confirmation message.
-		if (login.isActive()) {
+		else if (login.isActive()) {
 			List <String> warnings = Lists.newArrayList();
 			warnings.add("Your account has already been activated. Please login to continue.");
 			modelMap.addAttribute("warnings", warnings);

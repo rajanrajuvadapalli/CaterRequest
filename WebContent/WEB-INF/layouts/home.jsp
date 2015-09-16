@@ -3,6 +3,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/assets/css/colors/brown.css"
+	type="text/css">
 <!-- Page Canvas-->
 <div id="page-canvas">
 	<!--Off Canvas Navigation-->
@@ -19,117 +22,57 @@
 				<div class="container">
 					<h1>Order food for your party in just one click!</h1>
 				</div>
-				<form class="form-horizontal" method="GET" id="register-form"
-					action="${pageContext.request.contextPath}/register"
+				<form class="form-horizontal" method="GET"
+					id="customer-register-form"
+					action="${pageContext.request.contextPath}/customer/createEvent"
 					enctype="application/x-www-form-urlencoded" autocomplete="off">
-					<input type="hidden" name="as" value="customer">
+					<!-- <input type="hidden" name="as" value="customer"> -->
 					<button type="submit" class="btn btn-default">Lets get
 						started</button>
 				</form>
 			</div>
 			<div class="background">
-				<img
+				<!-- img
 					src="${pageContext.request.contextPath}/resources/assets/img/restaurant-bg.jpg"
-					alt="">
+					alt="" -->
 			</div>
 		</section>
 		<!--end Hero Image-->
 		<!--How CaterRequest works-->
-		<section id="how-it-works" class="block">
+		<section id="how-it-works" class="block center">
 			<div class="container">
 				<header>
 					<h2>How CaterRequest works?</h2>
 				</header>
 				<div class="row">
-					<div class=" col-sm-4">
-						<div class="feature-box">
-							<i class='fa fa-pencil fa-5x'></i>
-							<div class="description">
-								<h3>Register with Cater Request</h3>
-								<p>Register to Cater Request Website!</p>
-							</div>
-						</div>
-						<!--/.feature-box-->
+					<div class="videowrapper">
+						<iframe width="650" height="400"
+							src="https://www.youtube.com/embed/01JFErikHlE?rel=0;&autoplay=0"
+							allowfullscreen="" frameborder="0"></iframe>
 					</div>
-					<!--/.col-md-4-->
-					<div class=" col-sm-4">
-						<div class="feature-box">
-							<i class='fa fa-calendar fa-5x'></i>
-							<div class="description">
-								<h3>Create Event</h3>
-								<p>Create Event, time, location, number of people attending
-									the event.</p>
-							</div>
-						</div>
-						<!--/.feature-box-->
+					<div class="feature-box">
+						<img alt="how-it-works"
+							src="${pageContext.request.contextPath}/resources/images/home_how.png">
 					</div>
-					<!--/.col-md-4-->
-					<div class=" col-sm-4">
-						<div class="feature-box">
-							<i class='fa fa-cutlery fa-5x'></i>
-							<div class="description">
-								<h3>Menu selection</h3>
-								<p>Make a selection of the cuisine you are interested in and
-									select the menu.</p>
-							</div>
-						</div>
-						<!--/.feature-box-->
-					</div>
-					<div class=" col-sm-4">
-						<div class="feature-box">
-							<i class='fa fa-building fa-5x'></i>
-							<div class="description">
-								<h3>Restaurant selection</h3>
-								<p>Select the nearby restaurants you want to request the
-									price quote for the menu you selected.</p>
-							</div>
-						</div>
-						<!--/.feature-box-->
-					</div>
-					<!--/.col-md-4-->
-					<div class=" col-sm-4">
-						<div class="feature-box">
-							<i class='fa fa-building fa-5x'></i>
-							<div class="description">
-								<h3>Confirm restaurant</h3>
-								<p>Restaurants will send you the price quote for your
-									request within hours. Select and confirm the restaurant that's
-									right for you which suits your budget and your party.</p>
-							</div>
-						</div>
-						<!--/.feature-box-->
-					</div>
-					<!--/.col-md-4-->
-					<!--/.col-md-4-->
-					<div class=" col-sm-4">
-						<div class="feature-box">
-							<i class='fa fa-credit-card fa-5x'></i>
-							<div class="description">
-								<h3>Make Payment</h3>
-								<p>Once you have confirmed the restaurant you can either
-									make payment on CaterRequest or pay directly to the restaurant.
-									The restaurant will be notified immediately. Your food will be
-									delivered for you party.</p>
-							</div>
-						</div>
-						<!--/.feature-box-->
-					</div>
-					<!--/.col-md-4-->
 				</div>
 			</div>
 		</section>
 		<!--end How CaterRequest works-->
 		<!--Subscribe-->
-		<section id="main-search" class="block">
+		<%-- <section id="main-search" class="block">
 			<div class="container">
 				<header>
-					<h2>Search for restaurants nearby</h2>
+					<h2>
+						<span class="glyphicon glyphicon-search"></span> Search for
+						restaurants nearby
+					</h2>
 				</header>
 				<form class="form-inline"
 					action="${pageContext.request.contextPath}/search" method="GET"
 					role="form">
 					<div class="row">
 						<div class="col-sm-2">
+
 							<input type="text" id="main-search" size="5" maxlength="5"
 								name="zip_code" id="zip_code" required="required"
 								placeholder="Enter ZIP Code">
@@ -149,8 +92,48 @@
 				<!--/.subscribe-->
 			</div>
 			<!--/.container-->
-		</section>
+		</section> --%>
 		<!--end Subscribe-->
+
+		<section class="block">
+			<div class="container">
+				<header>
+					<h2>Our services are currently limited to indian restaurants
+						in the following cities</h2>
+				</header>
+
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="item">
+							<div class="image">
+								<div class="item-specific">
+									<span>Sacramento</span>
+								</div>
+								<img class="img-rounded"
+									src="${pageContext.request.contextPath}/resources/images/cities/tower-bridge-sacramento.jpg"
+									alt=""> </a>
+							</div>
+						</div>
+						<!-- /.item-->
+					</div>
+					<div class="col-sm-3">
+						<div class="item">
+							<div class="image">
+								<div class="item-specific">
+									<span>Seattle</span>
+								</div>
+								<img class="img-rounded"
+									src="${pageContext.request.contextPath}/resources/images/cities/seattle_kerry_park.jpg"
+									alt=""> </a>
+							</div>
+						</div>
+						<!-- /.item-->
+					</div>
+				</div>
+			</div>
+			<!--/.container-->
+		</section>
+
 		<!-- Why choose CaterRequest -->
 		<section id="featured" class="block equal-height">
 			<div class="container">
@@ -234,10 +217,58 @@
 			</div>
 		</section>
 		<!-- Why choose CaterRequest -->
-		<!-- Testimonials -->
-		<section class="block background-color-white" id="testimonials">
+		<!-- Carousel -->
+		<section id="featured" class="block equal-height">
 			<div class="container">
-				<div class="owl-carousel testimonials">
+				<header>
+					<h2>Testimonials</h2>
+				</header>
+				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+						<li data-target="#myCarousel" data-slide-to="1"></li>
+					</ol>
+					<div class="carousel-inner" role="listbox">
+						<div class="item active">
+							<blockquote>
+								<figure>
+									<img
+										src="${pageContext.request.contextPath}/resources/images/people/VijayBhupathi.jpg"
+										alt="">
+								</figure>
+								<div class="description">
+									<p>This is an awesome service. You make ordering food for
+										parties easy and simple. Saved me a lot of time. Did not have
+										to dial up each and every restaurant and find out the prices.
+										I am one happy customer.</p>
+									<footer>Vijay Bhupathi</footer>
+								</div>
+							</blockquote>
+						</div>
+						<div class="item">
+							<blockquote>
+								<figure></figure>
+								<div class="description">
+									<p>The experience was fantastic! Being a working women and
+										a mother of 3yr old, finding time to talk to restaurants and
+										finalize the order was the tough part. Glad to have
+										CaterRequest, which made the whole process smooth and simple.</p>
+									<footer>Sarvani Sarangam</footer>
+								</div>
+							</blockquote>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- /.carousel -->
+
+		<!-- Testimonials -->
+		<%-- <section class="block background-color-white" id="testimonials">
+			<div class="container">
+				<!-- <div class="owl-carousel testimonials"> -->
+				<div>
 					<blockquote>
 						<figure>
 							<img
@@ -264,15 +295,15 @@
 					</blockquote>
 				</div>
 			</div>
-		</section>
+		</section> --%>
 		<!--/.testimonials-->
-		<section id="image">
-			<div class="container">
+		<%-- <section id="image">
+			<div class="container bg-container-1">
 				<div class="col-sm-8 col-sm-offset-2">
 					<div class="text-banner">
 						<figure>
 							<img
-								src="${pageContext.request.contextPath}/resources/assets/img/marker2.png"
+								src="${pageContext.request.contextPath}/resources/assets/img/marker.png"
 								alt="">
 						</figure>
 						<div class="description">
@@ -289,13 +320,13 @@
 				</div>
 			</div>
 			<!--/.container-->
-			<div class="background">
+			<!-- div class="background">
 				<img
 					src="${pageContext.request.contextPath}/resources/assets/img/about-us-bg2.jpg"
 					alt="">
 			</div>
 			<!--/.bakcground-->
-		</section>
+		</section> --%>
 		<!-- End about 1 -->
 	</div>
 </div>

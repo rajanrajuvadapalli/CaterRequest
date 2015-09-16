@@ -73,7 +73,7 @@
 		<br /> <a class="popup-with-form" href="#forgot-pwd-form"
 			style="font-size: 16px;">Forgot Password?</a>
 
-		<form class="mfp-hide white-popup-block forgotPassword" method="POST"
+		<form class="mfp-hide white-popup-block forgotPasswordPopup" method="POST"
 			id="forgot-pwd-form"
 			action="${pageContext.request.contextPath}/forgotPassword"
 			enctype="application/x-www-form-urlencoded">

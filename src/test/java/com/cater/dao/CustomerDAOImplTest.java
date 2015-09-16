@@ -5,6 +5,11 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
 import org.hibernate.PropertyValueException;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +18,9 @@ import org.springframework.stereotype.Component;
 import com.cater.constants.Roles;
 import com.cater.model.Address;
 import com.cater.model.Customer;
+import com.cater.model.Event;
 import com.cater.model.Login;
+import com.google.common.collect.Lists;
 
 /**
  * Description: 
@@ -24,6 +31,8 @@ import com.cater.model.Login;
 public class CustomerDAOImplTest extends AbstractDAOImplTest {
 	@Autowired
 	private CustomerDAO fixture;
+	@Autowired
+	private EventDAO eventDAO;
 
 	private Customer createSampleCustomer() {
 		Customer customer = new Customer();
@@ -53,6 +62,16 @@ public class CustomerDAOImplTest extends AbstractDAOImplTest {
 		login.setRole(Roles.CUSTOMER.toString());
 		login.setActive(true);
 		return login;
+	}
+
+	private Event createSampleEvent() {
+		Event e = new Event();
+		e.setName("Test Event One");
+		Calendar calendar = Calendar.getInstance(Locale.US);
+		calendar.set(2015, 1, 1);
+		e.setDate_time(calendar.getTime());
+		e.setLocation(createSampleAddress());
+		return e;
 	}
 
 	@Test
@@ -108,5 +127,21 @@ public class CustomerDAOImplTest extends AbstractDAOImplTest {
 		assertEquals(persistedCustomer.getAddress().getCity(), "Sacramento");
 		assertEquals(persistedCustomer.getAddress().getState(), "CA");
 		assertEquals(persistedCustomer.getAddress().getZip(), "958300000");
+	}
+
+	@Test
+	public void testSparseDownloadMyEvents_1() {
+		Customer customer = createSampleCustomer();
+		assertTrue(fixture.saveOrUpdate(customer));
+		Event e1 = createSampleEvent();
+		e1.setCustomer(customer);
+		List <Event> events = Lists.newArrayList();
+		events.add(e1);
+		customer.setEvents(events);
+		eventDAO.saveOrUpdate(e1);
+		Map <Integer, String> result = fixture.sparseDownloadMyEvents(customer
+				.getId());
+		assertEquals(1, result.size());
+		assertEquals("Test Event One", result.values().iterator().next());
 	}
 }

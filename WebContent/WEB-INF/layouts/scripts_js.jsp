@@ -30,13 +30,13 @@
 <script src="${pageContext.request.contextPath}/resources/js/sorttable.js"></script>
 <!-- http://dimsemenov.com/plugins/magnific-popup/ -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery.magnific-popup.min.js"></script>
-<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/all-krajee.js"></script> --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/fileinput.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap-tabs-x.min.js"></script>
 
 <script>
     $(window).load(function(){
         var rtl = false; // Use RTL
-        initializeOwl(rtl);
+        //initializeOwl(rtl);
     });
 
     autoComplete();

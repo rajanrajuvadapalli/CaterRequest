@@ -1,7 +1,7 @@
 build
 .gradle
 bin
-
+.DS_Store
 
 
 

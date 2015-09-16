@@ -10,33 +10,62 @@ $('document').ready(function() {
 		removalDelay : 300,
 		mainClass : 'my-mfp-zoom-in'
 	});
+	$('.popup-with-form-modal').magnificPopup({
+		type : 'inline',
+		fixedContentPos : false,
+		fixedBgPos : true,
+		overflowY : 'auto',
+		//closeBtnInside : true,
+		//showCloseBtn: false,
+		//enableEscapeKey: false,
+		modal: true,
+		midClick : true,
+		preloader : false,
+		removalDelay : 300,
+		mainClass : 'my-mfp-zoom-in'
+	});
 });
 
 function populateCuisineTypes() {
 	$("span[id=cuisineType]")
 			.replaceWith(
 					"<select class=\"form-control inputs\" name=\"cuisineType\" id=\"cuisineType\" required=\"required\">"
-							+ "	<option value=\"\">		           </option>              "
-							+ "	<option value=\"AMERICAN\">		AMERICAN           </option>              "
-							+ "	<option value=\"CHINESE\"> 		CHINESE            </option>              "
-							+ "	<option value=\"CONTINENTAL\"> 	CONTINENTAL        </option>              "
-							+ "	<option value=\"CUBAN\"> 		CUBAN              </option>              "
-							+ "	<option value=\"FRENCH\"> 		FRENCH             </option>              "
-							+ "	<option value=\"GREEK\"> 		GREEK              </option>              "
+							// + " <option value=\"\"> </option> "
+							// + " <option value=\"AMERICAN\"> AMERICAN
+							// </option> "
+							// + " <option value=\"CHINESE\"> CHINESE </option>
+							// "
+							// + " <option value=\"CONTINENTAL\"> CONTINENTAL
+							// </option> "
+							// + " <option value=\"CUBAN\"> CUBAN </option> "
+							// + " <option value=\"FRENCH\"> FRENCH </option> "
+							// + " <option value=\"GREEK\"> GREEK </option> "
 							+ "	<option value=\"INDIAN_SOUTH\">	INDIAN (SOUTH)     </option>              "
-							+ "	<option value=\"INDONESIAN\"> 	INDONESIAN         </option>              "
-							+ "	<option value=\"ITALIAN\"> 		ITALIAN            </option>              "
-							+ "	<option value=\"JAPANESE\"> 	JAPANESE           </option>              "
-							+ "	<option value=\"KOREAN\"> 		KOREAN             </option>              "
-							+ "	<option value=\"LEBANESE\"> 	LEBANESE           </option>              "
-							+ "	<option value=\"MALAYSIAN\"> 	MALAYSIAN          </option>              "
-							+ "	<option value=\"MEXICAN\"> 		MEXICAN            </option>              "
-							+ "	<option value=\"RUSSIAN\"> 		RUSSIAN            </option>              "
-							+ "	<option value=\"SINGAPORE\"> 	SINGAPORE          </option>              "
-							+ "	<option value=\"SPANISH\">	 	SPANISH            </option>              "
-							+ "	<option value=\"THAI\"> 		THAI               </option>              "
-							+ "	<option value=\"TIBETAN\"> 		TIBETAN            </option>              "
-							+ "	<option value=\"VIETNAMESE\"> 	VIETNAMESE         </option>              "
+							+ "	<option value=\"INDIAN_NORTH\">	INDIAN (NORTH)     </option>              "
+							// + " <option value=\"INDONESIAN\"> INDONESIAN
+							// </option> "
+							// + " <option value=\"ITALIAN\"> ITALIAN </option>
+							// "
+							// + " <option value=\"JAPANESE\"> JAPANESE
+							// </option> "
+							// + " <option value=\"KOREAN\"> KOREAN </option> "
+							// + " <option value=\"LEBANESE\"> LEBANESE
+							// </option> "
+							// + " <option value=\"MALAYSIAN\"> MALAYSIAN
+							// </option> "
+							// + " <option value=\"MEXICAN\"> MEXICAN </option>
+							// "
+							// + " <option value=\"RUSSIAN\"> RUSSIAN </option>
+							// "
+							// + " <option value=\"SINGAPORE\"> SINGAPORE
+							// </option> "
+							// + " <option value=\"SPANISH\"> SPANISH </option>
+							// "
+							// + " <option value=\"THAI\"> THAI </option> "
+							// + " <option value=\"TIBETAN\"> TIBETAN </option>
+							// "
+							// + " <option value=\"VIETNAMESE\"> VIETNAMESE
+							// </option> "
 							+ "</select>                                                          ");
 }
 
@@ -91,16 +120,78 @@ function validateRegistrationFormOnSubmit() {
 		pwd2.focus();
 		return false;
 	}
-	var state = $("input[name=state]");
-	if (state.val() != null && state.val().length != 2) {
+	var stateElement = $("select[name=state]");
+	var state = stateElement.val();
+	if (state != null && state.length != 2) {
 		alert("State code should be 2 characters");
-		state.focus();
+		stateElement.focus();
+		return false;
+	}
+	var st1 = $("input[name=street1]").val();
+	var city = $("input[name=city]").val();
+	var zip = $("input[name=zip]").val();
+	var CurrentAddress = st1 + ", " + city + ", " + state + ", " + zip;
+	var LastAddressValidated = $("input[name=LastAddressValidated]").val();
+	// console.log("LastAddressValidated: " + LastAddressValidated);
+	// console.log("CurrentAddress: " + CurrentAddress);
+	if (LastAddressValidated != CurrentAddress) {
+		$("input[name=LastAddressValidated]").val(CurrentAddress);
+		var geocoder = new google.maps.Geocoder();
+		geocoder.geocode({
+			'address' : CurrentAddress
+		}, addressCallbackFunction);
 		return false;
 	}
 	var hash = md5($("#pwd1").val());
 	$("#pwd1").val(hash);
-	$("#pwd2").val("");
+	$("#pwd2").val(hash);
 	return true;
+}
+
+function addressCallbackFunction(results, status) {
+	$("div[id=addressnotok]").addClass('hidden');
+	if (status == google.maps.GeocoderStatus.OK) {
+		var address = results[0].formatted_address;
+		console.log("Validated address: " + address);
+		numCommas = address.match(/,/g).length;
+		if (numCommas >= 3) {
+			// Address is valid, Continue to submit form
+			var st1 = $("input[name=street1]").val();
+			var city = $("input[name=city]").val();
+			var state = $("select[name=state]").val();
+			var zip = $("input[name=zip]").val();
+			var CurrentAddress = st1 + ", " + city + ", " + state + ", " + zip;
+			var values = address.split(', ');
+			var validatedStreet = values[0];
+			var validatedCity = values[1];
+			var state_zip = values[2].split(' ');
+			var validatedState = state_zip[0];
+			var validatedZip = state_zip[1];
+			var LastAddressValidated = validatedStreet + ", " + validatedCity
+					+ ", " + validatedState + ", " + validatedZip;
+			$("input[name=LastAddressValidated]").val(LastAddressValidated);
+			$("input[name=street1]").val(validatedStreet);
+			$("input[name=city]").val(validatedCity);
+			$("input[name=state]").val(validatedState);
+			$("input[name=zip]").val(validatedZip);
+			if (LastAddressValidated != CurrentAddress) {
+				alert("\nAddress you entered: " + CurrentAddress
+						+ "\nWe updated it to: " + LastAddressValidated
+						+ "\nPlease verify and make changes if necessary.");
+			} else {
+				alert("Address is verified and accepted.");
+			}
+			/*
+			 * var customerName = $("input[name=name]").val(); if (customerName !=
+			 * null) { $("form[id=customer-register-form]").submit(); } else {
+			 * $("form[id=restaurant-register-form]").submit(); }
+			 */
+			return;
+		}
+	}
+	// Address is invalid
+	$("input[name=LastAddressValidated]").val("");
+	$("div[id=addressnotok]").removeClass('hidden');
 }
 
 function validateLoginForm() {
@@ -131,16 +222,32 @@ function validateEventForm() {
 		alert("Number of people should be 2 or more.");
 		return false;
 	}
-	var state = $("input[name=state]");
-	if (state.val() != null && state.val().length != 2) {
-		alert("State code should be 2 characters");
-		state.focus();
-		return false;
-	}
 	var deliveryOption = $('select[id=deliveryOption]');
 	if (deliveryOption.val() == '') {
 		alert("Please select the delivery option.");
 		deliveryOption.focus();
+		return false;
+	}
+	var stateElement = $("select[name=state]");
+	var state = stateElement.val();
+	if (state != null && state.length != 2) {
+		alert("State code should be 2 characters");
+		stateElement.focus();
+		return false;
+	}
+	var st1 = $("input[name=street1]").val();
+	var city = $("input[name=city]").val();
+	var zip = $("input[name=zip]").val();
+	var CurrentAddress = st1 + ", " + city + ", " + state + ", " + zip;
+	var LastAddressValidated = $("input[name=LastAddressValidated]").val();
+	//console.log("LastAddressValidated: " + LastAddressValidated);
+	//console.log("CurrentAddress: " + CurrentAddress);
+	if (LastAddressValidated != CurrentAddress) {
+		$("input[name=LastAddressValidated]").val(CurrentAddress);
+		var geocoder = new google.maps.Geocoder();
+		geocoder.geocode({
+			'address' : CurrentAddress
+		}, addressCallbackFunction);
 		return false;
 	}
 	return true;
@@ -148,7 +255,7 @@ function validateEventForm() {
 
 function validateCuisine(formId) {
 	var element = $('form[id=' + formId + '] select[id=cuisineType]');
-	if (element.val() != "INDIAN_SOUTH") {
+	if (element.val() != "INDIAN_SOUTH" && element.val() != "INDIAN_NORTH") {
 		alert("Sorry! " + element.val()
 				+ " restaurants are not registered with us at this moment.");
 		return false;
