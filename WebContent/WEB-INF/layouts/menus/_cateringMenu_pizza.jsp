@@ -139,7 +139,7 @@
 
 							<div id="options"
 								class="mfp-hide white-popup-block pizzaPopupOptions">
-								<form class="form-horizontal"
+								<form id="options" class="form-horizontal"
 									onsubmit="return populatePizzaSelectedItems();">
 
 									<div class="form-group">
@@ -168,7 +168,7 @@
 									<div class="form-group">
 										<label class="col-sm-4 control-label"></label>
 										<div class="col-sm-2">
-											<button type="submit" class="btn btn-default">Add
+											<button type="submit" class="btn btn-default popup-modal-dismiss">Add
 												this pizza</button>
 										</div>
 									</div>
