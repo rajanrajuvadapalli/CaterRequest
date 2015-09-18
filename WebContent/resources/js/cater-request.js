@@ -24,6 +24,10 @@ $('document').ready(function() {
 		removalDelay : 300,
 		mainClass : 'my-mfp-zoom-in'
 	});
+	$(document).on('click', '.popup-modal-dismiss', function (e) {
+		//e.preventDefault();
+		$.magnificPopup.close();
+	});
 });
 
 function populateCuisineTypes() {
@@ -295,5 +299,6 @@ function populatePizzaSelectedItems() {
 			'</div>';
 	$(html).appendTo('.slide');
 
-	return true;
+	$('form[id=options]').find("input[type=text], textarea").val("");
+	return false;
 }
