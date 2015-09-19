@@ -24,9 +24,14 @@ $('document').ready(function() {
 		removalDelay : 300,
 		mainClass : 'my-mfp-zoom-in'
 	});
-	$(document).on('click', '.popup-modal-dismiss', function (e) {
-		//e.preventDefault();
+	$(document).on('click', '.popup-modal-dismiss', function() {
 		$.magnificPopup.close();
+	});
+	$("a[id=put-pizza-title]").click(function() {
+		var pizzaTitle = $(this).find("span[class=name]").text();
+		console.log("Pizza title: " + pizzaTitle);
+		$("span[id=pizza-popup-title]").replaceWith("<h2>" + pizzaTitle + " PIZZA </h2>");
+		$("input[id=pizzaName]").val(pizzaTitle);
 	});
 });
 
@@ -285,18 +290,29 @@ function validateSelectRestaurantForm() {
 }
 
 function populatePizzaSelectedItems() {
+	var id = Math.floor((Math.random() * 100) + 1);
+	var div_id = "p_" + id;
+	var pizzaName = $("input[id=pizzaName]").val();
+	console.log($("input[id=pizzaName]"));
+	console.log("pizzaName="+pizzaName);
 	var pizzaSize = $('input[name=psize]:checked').val();
-	console.log("pizzaSize=" + pizzaSize);
+	//console.log("pizzaSize=" + pizzaSize);
 	var nPizzas = $('input[name=pcount]').val();
-	console.log("nPizzas=" + nPizzas);
-	var html = '<div class="list-item">' + '<div class="left">' + '<h4>' + pizzaSize
-			+ '</h4>' + '<figure>' + nPizzas + '</figure>' + '</div>' +
-			// '<span class="right remove-item down_remove-item_'+i+'
-			// remove-item_'+i+'" onclick="remove_item(\'remove-item_' + i +
-			// '\',\'' + this_item + '\',\'' + name+ '\',\'' + itemCode +
-			// '\',\'down\'' + ',\'' + categoryCode+ '\');">X</span><div
-			// class="right ">'+'</div>'+
-			'</div>';
+	//console.log("nPizzas=" + nPizzas);
+	var html = '<div class="list-item" id="'
+			+ div_id
+			+ '">'
+			+ '<div class="left">'
+			+ '<h4>'
+			+ pizzaName
+			+ '</h4>'
+			+ '<figure>'
+			+ nPizzas
+			+ '</figure>'
+			+ '</div>'
+			+ '<span class="pizza-item-close remove-item" onclick="remove_pizza_item(\''
+			+ div_id + '\');">X</span><div class="right "></div></div>';
+	console.log(html);
 	$(html).appendTo('.slide');
 
 	$('form[id=options]').find("input[type=text], textarea").val("");
