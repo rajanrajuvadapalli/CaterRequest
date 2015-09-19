@@ -4,45 +4,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script>
-	/*function remove_item(ths, itm, name, itemCode, pos, categoryCode) {
-		if (pos == 'up') {
-			$('.up_' + ths).remove();
-			$('.down_' + ths).parent().remove();
-		} else {
-			$('.up_' + ths).remove();
-			$('.down_' + ths).parent().remove();
-		}
-		$('.' + itm).parent().prev().removeAttr('style');
-		$('.' + itm).children().children().children().removeAttr('style');
-		$('.' + itm).parent().prev().children().removeAttr('style');
-		$('.' + itm).removeAttr('style');
-		$('.' + itm).removeClass('seleted');
-
-		menu_items.deleteElem = function(val) {
-			for (var i = 0; i < this.length; i++) {
-				if (this[i] === val) {
-					this.splice(i, 1);
-					return i;
-				}
-			}
-		};
-		menu_item_codes.deleteElem = function(val) {
-			for (var i = 0; i < this.length; i++) {
-				if (this[i] === val) {
-					this.splice(i, 1);
-					return i;
-				}
-			}
-		};
-		var idx = menu_items.deleteElem(name);
-		var idx2 = menu_item_codes.deleteElem(itemCode);
-		//$('.butnote').css('margin-top','-=45');	
-		//If all the items are removed, remove the parent element.
-		if($('.slide #' + categoryCode).children().length == 2 ) {
-			$('.slide #' + categoryCode).addClass('hidden');
-		}
+	function remove_pizza_item(div_id) {
+		$("div[id=" + div_id + "]").remove();
 	}
-	function menu_submit() {
+	/*function menu_submit() {
 		if (menu_items.length == 0) {
 			alert("Please select at least 1 item to proceed.");
 			return false;
@@ -101,58 +66,47 @@
 					<!--Listing Grid-->
 					<section class="block equal-height col-md-6 col-xs-12">
 						<div class="row">
-							<div class="col-md-4 col-sm-3 col-xs-6">
-								<div class="item" id="C1">
-									<div class="image">
-										<a class="popup-with-form" href="#options">
-											<div class="item-specific">
-												<span class="name">Garlic and Oil</span>
-											</div>
-											<div>
-												<span hidden="hidden">C1_1</span>
-											</div> <img
-											src="https://s3-us-west-2.amazonaws.com/rajrv-caterrequest-s3bucket/images_menu/PIZZA/C1_1.jpg"
-											alt="">
-										</a>
-									</div>
-								</div>
-								<!-- /.item-->
-							</div>
 
-							<div class="col-md-4 col-sm-3 col-xs-6">
-								<div class="item" id="C2">
-									<div class="image">
-										<a class="popup-with-form" href="#options">
-											<div class="item-specific">
-												<span class="name">Pepperoni</span>
+							<c:forEach items="${menu.categories}" var="category"
+								varStatus="loop">
+								<c:forEach items="${category.items}" var="item">
+
+									<div class="col-md-4 col-sm-3 col-xs-6">
+										<div class="item" id="C${loop.index}">
+											<div class="image">
+												<a class="popup-with-form" id="put-pizza-title"
+													href="#options">
+													<div class="item-specific">
+														<span class="name">${item.name}</span>
+													</div>
+													<div>
+														<span hidden="hidden">${item.code}</span>
+													</div> <img
+													src="https://s3-us-west-2.amazonaws.com/rajrv-caterrequest-s3bucket/images_menu/PIZZA/${item.code}.jpg"
+													alt="">
+												</a>
 											</div>
-											<div>
-												<span hidden="hidden">C1_2</span>
-											</div> <img
-											src="https://s3-us-west-2.amazonaws.com/rajrv-caterrequest-s3bucket/images_menu/PIZZA/C1_2.jpg"
-											alt="">
-										</a>
+										</div>
+										<!-- /.item-->
 									</div>
-								</div>
-								<!-- /.item-->
-							</div>
+								</c:forEach>
+							</c:forEach>
 
 							<div id="options"
 								class="mfp-hide white-popup-block pizzaPopupOptions">
 								<form id="options" class="form-horizontal"
 									onsubmit="return populatePizzaSelectedItems();">
-
+									<span id="pizza-popup-title"> </span>
+									<input type="hidden" id="pizzaName" val="">
 									<div class="form-group">
 										<label for="" class="col-sm-4 control-label">Pizza
 											size<span style="color: red">*</span>:
 										</label>
 										<div class="col-sm-6">
 											<input type="radio" name="psize" required="required"
-												value="Big"> Big &nbsp;&nbsp;
-											<input type="radio"
+												value="Big"> Big &nbsp;&nbsp; <input type="radio"
 												name="psize" required="required" value="Average">
-											Average &nbsp;&nbsp; 
-											<input type="radio" name="psize"
+											Average &nbsp;&nbsp; <input type="radio" name="psize"
 												required="required" value="Small"> Small
 										</div>
 									</div>
@@ -166,9 +120,157 @@
 										</div>
 									</div>
 									<div class="form-group">
+										<label for="" class="col-sm-4 control-label">Stuffed
+											Edge<span style="color: red">*</span>:
+										</label>
+										<div class="row">
+											<div class="col-sm-4">
+												<input type="radio" name="pse" required="required"
+													value="BF"> Borderless Filled &nbsp;&nbsp; <br />
+												<input type="radio" name="psize" required="required"
+													value="CC"> Cottage Cheese &nbsp;&nbsp; <br /> <input
+													type="radio" name="pse" required="required" value="CH">
+												Cheddar &nbsp;&nbsp;<br /> <input type="radio" name="pse"
+													required="required" value="PE"> Pepperoni
+												&nbsp;&nbsp;
+											</div>
+											<div class="col-sm-3">
+												<input type="radio" name="pse" required="required"
+													value="CK"> Chicken &nbsp;&nbsp;<br /> <input
+													type="radio" name="pse" required="required" value="MO">
+												Mozarella &nbsp;&nbsp; <br /> <input type="radio"
+													name="pse" required="required" value="PA"> Palmetto
+												&nbsp;&nbsp;
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="" class="col-sm-4 control-label">Ingredients:</label>
+										<!-- Column #1 START-->
+										<div class="col-xs-4">
+											<div>
+												&nbsp;&nbsp;&nbsp;<img alt="L"
+													src="${pageContext.request.contextPath}/resources/images/menus/pizza_left.jpg">
+												&nbsp;&nbsp;&nbsp;<img alt="R"
+													src="${pageContext.request.contextPath}/resources/images/menus/pizza_right.jpg">
+												&nbsp;&nbsp;&nbsp;<img alt="A"
+													src="${pageContext.request.contextPath}/resources/images/menus/pizza_all.jpg">
+											</div>
+											<br />
+											<!-- Ingredient START -->
+											<div>
+												<div class="col-xs-1">
+													<input type="checkbox" name="pai-Garlic-L" value="L">
+												</div>
+												<div class="col-xs-1">
+													<input type="checkbox" name="pai-Garlic-R" value="R">
+												</div>
+												<div class="col-xs-1">
+													<input type="checkbox" name="pai-Garlic-A" value="A">
+												</div>
+												<div class="col-xs-1">Garlic</div>
+												<br />
+											</div>
+											<!-- Ingredient END -->
+											<!-- Ingredient START -->
+											<div>
+												<div class="col-xs-1">
+													<input type="checkbox" name="pai-Bacon-L" value="L">
+												</div>
+												<div class="col-xs-1">
+													<input type="checkbox" name="pai-Bacon-R" value="R">
+												</div>
+												<div class="col-xs-1">
+													<input type="checkbox" name="pai-Bacon-A" value="A">
+												</div>
+												<div class="col-xs-1">Bacon</div>
+												<br />
+											</div>
+											<!-- Ingredient END -->
+											<!-- Ingredient START -->
+											<div>
+												<div class="col-xs-1">
+													<input type="checkbox" name="pai-Broccoli-L" value="L">
+												</div>
+												<div class="col-xs-1">
+													<input type="checkbox" name="pai-Broccoli-R" value="R">
+												</div>
+												<div class="col-xs-1">
+													<input type="checkbox" name="pai-Broccoli-A" value="A">
+												</div>
+												<div class="col-xs-1">Broccoli</div>
+												<br />
+											</div>
+											<!-- Ingredient END -->
+										</div>
+										<!-- Column #2 START-->
+										<div class="col-xs-4">
+											<div>
+												&nbsp;&nbsp;&nbsp;<img alt="L"
+													src="${pageContext.request.contextPath}/resources/images/menus/pizza_left.jpg">
+												&nbsp;&nbsp;&nbsp;<img alt="R"
+													src="${pageContext.request.contextPath}/resources/images/menus/pizza_right.jpg">
+												&nbsp;&nbsp;&nbsp;<img alt="A"
+													src="${pageContext.request.contextPath}/resources/images/menus/pizza_all.jpg">
+
+											</div>
+											<br />
+											<!-- Ingredient START -->
+											<div>
+												<div class="col-xs-1">
+													<input type="checkbox" name="pai-Anchovies-L" value="L">
+												</div>
+												<div class="col-xs-1">
+													<input type="checkbox" name="pai-Anchovies-R" value="R">
+												</div>
+												<div class="col-xs-1">
+													<input type="checkbox" name="pai-Anchovies-A" value="A">
+												</div>
+												<div class="col-xs-1">Anchovies</div>
+												<br />
+											</div>
+											<!-- Ingredient END -->
+											<!-- Ingredient START -->
+											<div>
+												<div class="col-xs-1">
+													<input type="checkbox" name="pai-Pepperoni-L" value="L">
+												</div>
+												<div class="col-xs-1">
+													<input type="checkbox" name="pai-Pepperoni-R" value="R">
+												</div>
+												<div class="col-xs-1">
+													<input type="checkbox" name="pai-Pepperoni-A" value="A">
+												</div>
+												<div class="col-xs-1">Pepperoni</div>
+												<br />
+											</div>
+											<!-- Ingredient END -->
+											<!-- Ingredient START -->
+											<div>
+												<div class="col-xs-1">
+													<input type="checkbox" name="pai-Onion-L" value="L">
+												</div>
+												<div class="col-xs-1">
+													<input type="checkbox" name="pai-Onion-R" value="R">
+												</div>
+												<div class="col-xs-1">
+													<input type="checkbox" name="pai-Onion-A" value="A">
+												</div>
+												<div class="col-xs-1">Onion</div>
+												<br />
+											</div>
+											<!-- Ingredient END -->
+										</div>
+
+
+									</div>
+									<!-- Ingredients Form group END -->
+
+									<div class="form-group">
 										<label class="col-sm-4 control-label"></label>
 										<div class="col-sm-2">
-											<button type="submit" class="btn btn-default popup-modal-dismiss">Add
+											<button type="submit"
+												class="btn btn-default popup-modal-dismiss">Add
 												this pizza</button>
 										</div>
 									</div>

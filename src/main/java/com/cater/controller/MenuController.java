@@ -85,9 +85,6 @@ public class MenuController {
 		if (user == null) {
 			return "t_home";
 		}
-		if ("PIZZA".equalsIgnoreCase(cuisine)) {
-			return "menus/t__cateringMenu_pizza";
-		}
 		String eventId = request.getParameter("eventId");
 		httpSession.setAttribute("eventId", eventId);
 		Event e = null;
@@ -157,6 +154,9 @@ public class MenuController {
 		}
 		catch (IOException ex) {
 			logger.error("Failed to read menu.", ex);
+		}
+		if ("PIZZA".equalsIgnoreCase(cuisine)) {
+			return "menus/t__cateringMenu_pizza";
 		}
 		return "menus/t__cateringMenu";
 	}
