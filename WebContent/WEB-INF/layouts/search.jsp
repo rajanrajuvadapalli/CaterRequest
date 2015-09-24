@@ -24,13 +24,24 @@
 				</c:when>
 			<c:otherwise>
 				<c:forEach items="${restaurants}" var="r">
-					<span class="restaurants" style="display: none;"
-						data-restaurant-id="${r.id}"
-						data-restaurant-address="${r.address.street1} ${r.address.street2}, ${r.address.city}, ${r.address.state} ${r.address.zip}"
-						data-restaurant-name="${r.name}"
-						data-restaurant-image="${pageContext.request.contextPath}/imagesproxy/Restaurant_${r.id}"></span>
+			        <div class="col-sm-3"> 
+							   <div class="panel panel-warning"> 
+							   <div class="panel-heading"> 
+							   <h3 class="panel-title"> 
+							  ${r.restaurant.name}     -  
+							  ${r.distance}   </h3> 
+							   </div>     <div class="panel-body"> 
+							   <img width="120px" src=" ${pageContext.request.contextPath}/imagesproxy/Restaurant_${r.restaurant.id}" alt=""> 
+							    <br/> ${r.restaurant.address.street1}${r.restaurant.address.street2},${r.restaurant.address.city},${r.restaurant.address.state},${r.restaurant.address.zip}<br/>
+                   <img src="${r.reviewImage}" width="100" height="20">- ${r.numberOfReviews} <c:out value="reviews"/>
+							   </div>    
+							    </div> 
+							    </div>
+				
+				
+					
 				</c:forEach>
-				<div class="display-restaurants"></div>
+				
 			</c:otherwise>
 		</c:choose>
 	</div>

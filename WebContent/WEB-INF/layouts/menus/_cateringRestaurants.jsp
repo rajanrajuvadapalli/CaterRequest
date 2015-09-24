@@ -26,13 +26,38 @@
 						onsubmit="return validateSelectRestaurantForm()"
 						enctype="application/x-www-form-urlencoded" autocomplete="off">
 						<c:forEach items="${restaurants}" var="r">
-							<span class="restaurants" style="display: none;"
-								data-restaurant-id="${r.id}"
-								data-restaurant-address="${r.address.street1} ${r.address.street2}, ${r.address.city}, ${r.address.state} ${r.address.zip}"
-								data-restaurant-name="${r.name}"
-								data-restaurant-image="${pageContext.request.contextPath}/imagesproxy/Restaurant_${r.id}"
-								data-restaurant-isselected="${prevR.contains(r.id)?'checked':''}"
-								data-isguest="${sessionScope.user.isGuest()}"></span>
+							<div class="row"> 
+                              <div class="col-sm-2"> 
+                                <img width="120px" src="${pageContext.request.contextPath}/imagesproxy/Restaurant_${r.restaurant.id} alt=""> 
+                              </div> 
+                            <div class="col-sm-4"> 
+                              <br/> 
+                               <input type="checkbox" (${sessionScope.user.isGuest()}? 'disabled':'')
+                                    ${prevR.contains(r.restaurant.id)?'checked':''}
+                                     name="restaurantId" value="${r.restaurant.id}"  /> 
+                                <b> ${r.restaurant.name } - ${r.distance}
+                              </b> <br>   
+                              ${r.restaurant.address.street1}${r.restaurant.address.street2},${r.restaurant.address.city},${r.restaurant.address.state},${r.restaurant.address.zip}
+                              <br>
+                             <c:choose>
+                             <c:when test= "${r.reviewImage ne null }">
+                                <a href="${r.websiteUrl}"> <img src="${r.reviewImage}"   width="100" height="20"/></a> - ${r.numberOfReviews} <c:out value="reviews"/>
+                           
+                             </c:when>
+                             <c:otherwise>
+                             <c:out value="No Yelp Reviews"></c:out>
+                             </c:otherwise>
+                             
+                             
+                             
+                             </c:choose> 
+                             
+                              <c:if test="${r.reviewImage eq null }">
+                              
+                              </c:if>
+                       
+       </div>    
+</div> 
 							<br />
 						</c:forEach>
 						<div class="display-restaurants" data-page='catering'></div>

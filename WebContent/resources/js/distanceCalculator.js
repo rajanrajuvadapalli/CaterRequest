@@ -1,4 +1,4 @@
-$(function() {
+/*$(function() {
 	var getAddressesHash = function() {
 		var eventAddress = $('#event-address').val();
 		var restaurantAddresses = $('.restaurants').map(
@@ -121,7 +121,7 @@ $(function() {
 							+ ' <br/>' + restaurantsAndDistances[i].address
 							+ '</div>' + '</div>');
 
-				/*
+				
 				 * $restaurantsContainer .append('<div
 				 * class="restaurant-details row" style="border: 1px dotted
 				 * black;">' + '<div class="col-sm-2">' + '<img width="120px"
@@ -130,7 +130,7 @@ $(function() {
 				 * restaurantsAndDistances[i].name + ' - ' +
 				 * restaurantsAndDistances[i].distance + ' </b> <br/> ' +
 				 * restaurantsAndDistances[i].address + '</div>' + '</div>');
-				 */
+				 
 			}
 
 			$('.restaurants').remove();
@@ -140,3 +140,4 @@ $(function() {
 
 	getDistances(displayDistances);
 });
+*/
