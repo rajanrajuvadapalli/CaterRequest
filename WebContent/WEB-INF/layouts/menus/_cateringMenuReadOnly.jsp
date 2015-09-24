@@ -17,7 +17,8 @@
 					<c:if test="${event.status == 'ACTIVE' && user.role == 'CUSTOMER'}">
 						<a
 							href="${pageContext.request.contextPath}/menu/selectMenu?eventId=${event.id}&cuisineType=${menu.cuisine}"
-							role="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Edit Menu</a>
+							role="button" class="btn btn-default"><span
+							class="glyphicon glyphicon-edit"></span> Edit Menu</a>
 					</c:if>
 				</div>
 				<c:forEach items="${menu.categories}" var="category">
@@ -34,6 +35,15 @@
 						</div>
 					</c:if>
 				</c:forEach>
+				<c:if test="${menu.cuisine == 'PIZZA'}">
+					<c:forEach items="${pizza_items}" var="pi">
+						<div class="col-sm-12">
+							<ul>
+								<li><b>${pi.key}</b> &nbsp;&nbsp; ${pi.value}</li>
+							</ul>
+						</div>
+					</c:forEach>
+				</c:if>
 				<c:if test="${not empty menu.comments}">
 					<c:choose>
 						<c:when test="${user.role == 'RESTAURANT'}">
@@ -64,11 +74,11 @@
 				<br /> <b>Number of Adults:</b> <span style="color: red;">${event.personCount}</span><br />
 				<b>Number of Kids:</b> <span style="color: red;">${event.kidsCount}</span><br />
 				<b>Delivery Option:</b> <span style="color: red;">${event.isPickUp()?'Pick Up':'Delivered'}</span><br />
-				<b>Customer name:</b> ${event.customer.name}<br /> 
+				<b>Customer name:</b> ${event.customer.name}<br />
 				<c:if test="${q.status.toString() == 'CUSTOMER_ORDER_CONFIRMED'}">
-				<b>Customer contact number:</b>
-				<c:out
-					value="(${fn:substring(event.customer.contactNumber, 0, 3)}) ${fn:substring(event.customer.contactNumber, 3, 6)}-${fn:substring(event.customer.contactNumber, 6, 10)}" />
+					<b>Customer contact number:</b>
+					<c:out
+						value="(${fn:substring(event.customer.contactNumber, 0, 3)}) ${fn:substring(event.customer.contactNumber, 3, 6)}-${fn:substring(event.customer.contactNumber, 6, 10)}" />
 				</c:if>
 				<br />
 			</div>
@@ -148,5 +158,9 @@
 </div>
 <div class="col-sm-1 col-sm-offset-2">
 	<button type="button" class="btn btn-default"
-		onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">Back</button><br/><br/><br/><br/>
+		onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">Back</button>
+	<br />
+	<br />
+	<br />
+	<br />
 </div>
