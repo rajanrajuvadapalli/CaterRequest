@@ -1,4 +1,4 @@
-$(function() {
+/*$(function() {
 	var getAddressesHash = function() {
 		var eventAddress = $('#event-address').val();
 		var restaurantAddresses = $('.restaurants').map(
@@ -55,15 +55,10 @@ $(function() {
 				currentRestaurantId = $currentRestaurant.data('restaurant-id');
 				currentRestaurantImage = $currentRestaurant
 						.data('restaurant-image');
-<<<<<<< HEAD
-				curentRestaurantReview = $currentRestaurant
-				.data('restaurant-review-image');
-=======
 				currentRestaurantIsSelected = $currentRestaurant
 						.data('restaurant-isselected');
 				isguest = $currentRestaurant
 						.data('isguest');
->>>>>>> master
 				// Adding restaurant name, address and distance to array object
 				// Adds only restaurants which are less than 50 miles radius
 				if (distances[i].value <= 80467) {
@@ -74,12 +69,8 @@ $(function() {
 						distance : distances[i].text,
 						distanceValue : distances[i].value,
 						image : currentRestaurantImage,
-<<<<<<< HEAD
-						review : curentRestaurantReview
-=======
 						isselected : currentRestaurantIsSelected,
 						isguest: isguest
->>>>>>> master
 					});
 				}
 			}
@@ -118,29 +109,6 @@ $(function() {
 									+ '</div>' + '</div>');
 			} else {
 				for (var i = 0; i < restaurantsAndDistances.length; i++)
-<<<<<<< HEAD
-					$restaurantsContainer
-							.append('<div class="restaurant-details row" style="border: 1px dotted black;">'
-									+ '<div class="col-sm-2">'
-									+ '<img width="120px" src="'
-									+ restaurantsAndDistances[i].image
-									+ '" alt="">'
-									+ '</div>'
-									+ '<div class="col-sm-4">'
-									+ ' <br/> <b>'
-									+ restaurantsAndDistances[i].name
-									+ ' - '
-									+ restaurantsAndDistances[i].distance
-									+ ' </b> <br/> '
-									+ restaurantsAndDistances[i].address
-									+ '<br/> '
-									+ '<a>Yelp Review: </a><img  src="'
-									+ restaurantsAndDistances[i].review
-									+ '">'
-									+ '</div>' 
-									+ '</div>'
-							);
-=======
 					$restaurantsContainer.append('<div class="col-sm-3">'
 							+ '<div class="panel panel-warning">'
 							+ '<div class="panel-heading">'
@@ -153,7 +121,7 @@ $(function() {
 							+ ' <br/>' + restaurantsAndDistances[i].address
 							+ '</div>' + '</div>');
 
-				/*
+				
 				 * $restaurantsContainer .append('<div
 				 * class="restaurant-details row" style="border: 1px dotted
 				 * black;">' + '<div class="col-sm-2">' + '<img width="120px"
@@ -162,8 +130,7 @@ $(function() {
 				 * restaurantsAndDistances[i].name + ' - ' +
 				 * restaurantsAndDistances[i].distance + ' </b> <br/> ' +
 				 * restaurantsAndDistances[i].address + '</div>' + '</div>');
-				 */
->>>>>>> master
+				 
 			}
 
 			$('.restaurants').remove();
@@ -173,3 +140,4 @@ $(function() {
 
 	getDistances(displayDistances);
 });
+*/
