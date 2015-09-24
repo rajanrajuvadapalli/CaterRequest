@@ -151,16 +151,22 @@ public class MenuController {
 								customerCreatedMenuData, MENU_DELIMITER));
 				if ("PIZZA".equalsIgnoreCase(menu.getCuisine())) {
 					Map <String, String> pizza_items = Maps.newLinkedHashMap();
+					Map <String, Integer> pizzaTypes = Maps.newHashMap();
 					modelMap.put("pizza_items", pizza_items);
 					for (String item : previouslySelectedMenuItemCodes) {
 						if (StringUtils.isNotBlank(item)) {
-							/*String pizzaName = StringUtils.substringBefore(
-									item, "+");
-							if(pizza_items.containsKey(pizzaName)) {pizzaName += "#"} ??*/
 							String description = StringUtils.replace(
 									StringUtils.substringAfter(item, "+"), "+",
 									" ");
-							//pizza_items.put(pizzaName, description);
+							String pizzaName = StringUtils.substringBefore(
+									item, "+");
+							int count = 0;
+							if (pizzaTypes.containsKey(pizzaName)) {
+								count = pizzaTypes.get(pizzaName);
+								pizzaName = pizzaName + " #" + (count + 1);
+							}
+							pizzaTypes.put(pizzaName, count + 1);
+							pizza_items.put(pizzaName, description);
 						}
 					}
 				}
@@ -392,14 +398,21 @@ public class MenuController {
 								MENU_DELIMITER));
 				if ("PIZZA".equalsIgnoreCase(menu.getCuisine())) {
 					Map <String, String> pizza_items = Maps.newLinkedHashMap();
+					Map <String, Integer> pizzaTypes = Maps.newHashMap();
 					modelMap.put("pizza_items", pizza_items);
 					for (String item : previouslySelectedMenuItemCodes) {
 						if (StringUtils.isNotBlank(item)) {
-							String pizzaName = StringUtils.substringBefore(
-									item, "+");
 							String description = StringUtils.replace(
 									StringUtils.substringAfter(item, "+"), "+",
 									" ");
+							String pizzaName = StringUtils.substringBefore(
+									item, "+");
+							int count = 0;
+							if (pizzaTypes.containsKey(pizzaName)) {
+								count = pizzaTypes.get(pizzaName);
+								pizzaName = pizzaName + " #" + (count + 1);
+							}
+							pizzaTypes.put(pizzaName, count + 1);
 							pizza_items.put(pizzaName, description);
 						}
 					}
