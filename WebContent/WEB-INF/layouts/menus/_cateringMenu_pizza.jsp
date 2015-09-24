@@ -7,17 +7,16 @@
 	function remove_pizza_item(div_id) {
 		$("div[id=" + div_id + "]").remove();
 	}
-	/*function menu_submit() {
-		if (menu_items.length == 0) {
-			alert("Please select at least 1 item to proceed.");
+	function pizza_menu_submit() {
+		if (pizza_menu_items.length == 0) {
+			alert("Please select at least 1 pizza to proceed.");
 			return false;
 		}
-		console.log(menu_items);
-		console.log(menu_item_codes); //This list is populated in custom.js script.
-		$('#menu-items').html(JSON.stringify(menu_items));
-		$('#menu-item-codes').val(JSON.stringify(menu_item_codes));
-		$("#target").submit();
-	}*/
+		console.log(pizza_menu_items);
+		//console.log(JSON.stringify(pizza_menu_items));
+		$("#pizza-menu-items").val(JSON.stringify(pizza_menu_items));
+		$("#pizzatarget").submit();
+	}
 </script>
 
 <!-- Page Canvas-->
@@ -127,7 +126,7 @@
 											<div class="col-sm-4">
 												<input type="radio" name="pse" required="required"
 													value="BF"> Borderless Filled &nbsp;&nbsp; <br />
-												<input type="radio" name="psize" required="required"
+												<input type="radio" name="pse" required="required"
 													value="CC"> Cottage Cheese &nbsp;&nbsp; <br /> <input
 													type="radio" name="pse" required="required" value="CH">
 												Cheddar &nbsp;&nbsp;<br /> <input type="radio" name="pse"
@@ -297,6 +296,15 @@
 													<i class="fa fa-calendar"></i>Selected Items
 												</h3>
 											</header>
+											<c:forEach items="${pizza_items}" var="pi" varStatus="loop">
+												<div class="list-item" id="p_${loop.index}">
+													<div class="left">
+														<h4>${pi.key}</h4>
+														<figure>${pi.value}</figure>
+													</div>
+													<span class="pizza-item-close remove-item" onclick="remove_pizza_item('p_${loop.index}');">X</span><div class="right "></div>
+												</div>
+											</c:forEach>			
 										</div>
 									</div>
 									<!-- /.list-slider -->
@@ -315,16 +323,15 @@
 								</div>
 								<div class="form-group clearfix" style="text-align: center;">
 									<form action="${pageContext.request.contextPath}/menu/saveMenu"
-										id="target" method="post">
-										<input type="hidden" name="menu_items" id="menu-items">
-										<input type="hidden" name="menu_item_codes"
-											id="menu-item-codes"> <input type="hidden"
+										id="pizzatarget" method="post">
+										<input type="hidden" name="pizza_menu_items" id="pizza-menu-items">
+										<input type="hidden"
 											name="cuisineType" value="${menu.cuisine}">
 										<textarea rows="4" cols="50" name="comments"
 											placeholder="Enter you comments to restaurant here"
 											class="form-control">${menu.comments}</textarea>
 										<br />
-										<button type="button" onclick="menu_submit();"
+										<button type="button" onclick="pizza_menu_submit();"
 											class="btn btn-default">Select Restaurants</button>
 									</form>
 								</div>
@@ -363,6 +370,14 @@
 	});
 
 	$('document').ready(function() {
+		$('.slide .list-item .left').each(function() {
+			var pizzaName = $(this).children().prev().text();
+			var desc = $(this).children().next().text();
+			//console.log("Title: "+ pizzaName);
+			//console.log("Desc: "+ desc);
+			pizza_menu_items.push(pizzaName + "+" + desc); //pizza_menu_items is in cater-request.js
+		});
+		
 		//For the items that were selected in previous transaction,
 		//send click event on the div with 'overlay' class (to simulate 'select' action).
 		/*$(".turn-me-on").each(function() {

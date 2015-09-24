@@ -42,6 +42,7 @@ import com.cater.yelp.YelpAPIHelper;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
@@ -145,13 +146,33 @@ public class MenuController {
 			else {
 				logger.debug("Customer already created menu for event "
 						+ e.getName() + " of type " + cuisine);
-				for (String previouslySelectedItemCode : StringUtils.split(
-						customerCreatedMenuData, MENU_DELIMITER)) {
-					for (MenuCategory cat : menu.getCategories()) {
-						for (MenuItem menuItem : cat.getItems()) {
-							if (StringUtils.equals(previouslySelectedItemCode,
-									menuItem.getCode())) {
-								menuItem.setSelected(true);
+				List <String> previouslySelectedMenuItemCodes = Lists
+						.newArrayList(StringUtils.split(
+								customerCreatedMenuData, MENU_DELIMITER));
+				if ("PIZZA".equalsIgnoreCase(menu.getCuisine())) {
+					Map <String, String> pizza_items = Maps.newLinkedHashMap();
+					modelMap.put("pizza_items", pizza_items);
+					for (String item : previouslySelectedMenuItemCodes) {
+						if (StringUtils.isNotBlank(item)) {
+							/*String pizzaName = StringUtils.substringBefore(
+									item, "+");
+							if(pizza_items.containsKey(pizzaName)) {pizzaName += "#"} ??*/
+							String description = StringUtils.replace(
+									StringUtils.substringAfter(item, "+"), "+",
+									" ");
+							//pizza_items.put(pizzaName, description);
+						}
+					}
+				}
+				else {
+					for (String previouslySelectedItemCode : previouslySelectedMenuItemCodes) {
+						for (MenuCategory cat : menu.getCategories()) {
+							for (MenuItem menuItem : cat.getItems()) {
+								if (StringUtils.equals(
+										previouslySelectedItemCode,
+										menuItem.getCode())) {
+									menuItem.setSelected(true);
+								}
 							}
 						}
 					}
@@ -198,7 +219,8 @@ public class MenuController {
 			HttpSession httpSession,
 			ModelMap modelMap,
 			HttpServletRequest request,
-			@RequestParam(value = "menu_item_codes", required = true) String itemCodesJson,
+			@RequestParam(value = "menu_item_codes", required = false) String itemCodesJson,
+			@RequestParam(value = "pizza_menu_items", required = false) String pizzaItemsJson,
 			@RequestParam(value = "cuisineType", required = true) String cuisine,
 			@RequestParam(value = "comments") String comments) {
 		User user = (User) httpSession.getAttribute("user");
@@ -208,12 +230,24 @@ public class MenuController {
 		String eventId = (String) httpSession.getAttribute("eventId");
 		modelMap.put("cuisineType", cuisine);
 		try {
-			List <String> itemCodes = new ObjectMapper().readValue(
-					itemCodesJson, new TypeReference <List <String>>() {
-					});
 			StringBuilder stringBuilder = new StringBuilder();
-			for (String selectedItemCode : itemCodes) {
-				stringBuilder.append(selectedItemCode).append(MENU_DELIMITER);
+			if (itemCodesJson != null) {
+				List <String> itemCodes = new ObjectMapper().readValue(
+						itemCodesJson, new TypeReference <List <String>>() {
+						});
+				for (String selectedItemCode : itemCodes) {
+					stringBuilder.append(selectedItemCode).append(
+							MENU_DELIMITER);
+				}
+			}
+			else if (pizzaItemsJson != null) {
+				List <String> pizzaItems = new ObjectMapper().readValue(
+						pizzaItemsJson, new TypeReference <List <String>>() {
+						});
+				for (String selectedItemCode : pizzaItems) {
+					stringBuilder.append(selectedItemCode).append(
+							MENU_DELIMITER);
+				}
 			}
 			String newData = stringBuilder.toString();
 			Event e = null;
@@ -356,23 +390,39 @@ public class MenuController {
 				List <String> previouslySelectedMenuItemCodes = Lists
 						.newArrayList(StringUtils.split(menuModel.getData(),
 								MENU_DELIMITER));
-				List <MenuCategory> categories = Lists.newArrayList();
-				for (MenuCategory mc : menu.getCategories()) {
-					List <MenuItem> items = Lists.newArrayList();
-					for (MenuItem menuItem : mc.getItems()) {
-						if (previouslySelectedMenuItemCodes.contains(menuItem
-								.getCode())) {
-							items.add(menuItem);
+				if ("PIZZA".equalsIgnoreCase(menu.getCuisine())) {
+					Map <String, String> pizza_items = Maps.newLinkedHashMap();
+					modelMap.put("pizza_items", pizza_items);
+					for (String item : previouslySelectedMenuItemCodes) {
+						if (StringUtils.isNotBlank(item)) {
+							String pizzaName = StringUtils.substringBefore(
+									item, "+");
+							String description = StringUtils.replace(
+									StringUtils.substringAfter(item, "+"), "+",
+									" ");
+							pizza_items.put(pizzaName, description);
 						}
 					}
-					if (CollectionUtils.isNotEmpty(items)) {
-						MenuCategory newMenuCategory = new MenuCategory();
-						newMenuCategory.setItems(items);
-						newMenuCategory.setName(mc.getName());
-						categories.add(newMenuCategory);
-					}
 				}
-				newMenu.setCategories(categories);
+				else {
+					List <MenuCategory> categories = Lists.newArrayList();
+					for (MenuCategory mc : menu.getCategories()) {
+						List <MenuItem> items = Lists.newArrayList();
+						for (MenuItem menuItem : mc.getItems()) {
+							if (previouslySelectedMenuItemCodes
+									.contains(menuItem.getCode())) {
+								items.add(menuItem);
+							}
+						}
+						if (CollectionUtils.isNotEmpty(items)) {
+							MenuCategory newMenuCategory = new MenuCategory();
+							newMenuCategory.setItems(items);
+							newMenuCategory.setName(mc.getName());
+							categories.add(newMenuCategory);
+						}
+					}
+					newMenu.setCategories(categories);
+				}
 				newMenu.setComments(menuModel.getComments());
 				modelMap.put("menu", newMenu);
 				Restaurant restaurant = restaurantService

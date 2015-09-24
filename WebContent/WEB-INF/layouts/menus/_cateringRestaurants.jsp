@@ -16,8 +16,8 @@
 		</div>
 		<div class="panel-body" align="left">
 			<c:choose>
-				<c:when test="${empty restaurants}">Sorry! No <c:out
-						value="${cuisine}"></c:out> restaurants registered with us.
+				<c:when test="${empty restaurants}">Sorry! No restaurants (of cuisine type <c:out
+						value="${cuisineType}"></c:out>) are registered with us.
 				</c:when>
 				<c:otherwise>
 					<form class="form-horizontal" method="POST"
@@ -65,8 +65,8 @@
 						<div class="col-sm-2">
 							<c:choose>
 								<c:when test="${sessionScope.user.isGuest()}">
-									<button class="popup-with-form-modal btn btn-default" name="nologin"
-										href="#nologin-form">Next</button>
+									<button class="popup-with-form-modal btn btn-default"
+										name="nologin" href="#nologin-form">Next</button>
 								</c:when>
 								<c:otherwise>
 									<button type="submit" class="btn btn-default">Next</button>
