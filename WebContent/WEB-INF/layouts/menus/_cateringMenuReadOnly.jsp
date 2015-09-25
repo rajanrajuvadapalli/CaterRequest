@@ -38,9 +38,21 @@
 				<c:if test="${menu.cuisine == 'PIZZA'}">
 					<c:forEach items="${pizza_items}" var="pi">
 						<div class="col-sm-12">
-							<ul>
-								<li><b>${pi.key}</b> &nbsp;&nbsp; ${pi.value}</li>
-							</ul>
+							<c:choose>
+								<c:when test="${pi.key.contains('#')}">
+									<ul>
+										<li><b>${fn:substringBefore(pi.key, ' #')}</b>
+											&nbsp;&nbsp; ${pi.value}</li>
+									</ul>
+								</c:when>
+								<c:otherwise>
+									<ul>
+										<li><b>${pi.key}</b> &nbsp;&nbsp; ${pi.value}</li>
+									</ul>
+								</c:otherwise>
+							</c:choose>
+
+
 						</div>
 					</c:forEach>
 				</c:if>
@@ -159,8 +171,5 @@
 <div class="col-sm-1 col-sm-offset-2">
 	<button type="button" class="btn btn-default"
 		onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">Back</button>
-	<br />
-	<br />
-	<br />
-	<br />
+	<br /> <br /> <br /> <br />
 </div>

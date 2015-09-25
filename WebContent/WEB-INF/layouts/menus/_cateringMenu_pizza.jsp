@@ -5,8 +5,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script>
 	function remove_pizza_item(div_id) {
-		$("div[id=" + div_id + "]").remove();
+		var divToRemove = $("div[id=" + div_id + "]");
+		var pizzaName = divToRemove.children().children().prev().text();
+		var desc = divToRemove.children().children().next().text();
+		var data = pizzaName + "+" + desc;
+		console.log("Removing " + data);
+		pizza_menu_items.splice( $.inArray(data, pizza_menu_items), 1 );
+		divToRemove.remove();
 	}
+	
 	function pizza_menu_submit() {
 		if (pizza_menu_items.length == 0) {
 			alert("Please select at least 1 pizza to proceed.");
@@ -95,8 +102,8 @@
 								class="mfp-hide white-popup-block pizzaPopupOptions">
 								<form id="options" class="form-horizontal"
 									onsubmit="return populatePizzaSelectedItems();">
-									<span id="pizza-popup-title"> </span>
-									<input type="hidden" id="pizzaName" val="">
+									<span id="pizza-popup-title"> </span> <input type="hidden"
+										id="pizzaName" val="">
 									<div class="form-group">
 										<label for="" class="col-sm-4 control-label">Pizza
 											size<span style="color: red">*</span>:
@@ -299,12 +306,21 @@
 											<c:forEach items="${pizza_items}" var="pi" varStatus="loop">
 												<div class="list-item" id="p_${loop.index}">
 													<div class="left">
-														<h4>${pi.key}</h4>
+														<c:choose>
+															<c:when test="${pi.key.contains('#')}">
+																<h4>${fn:substringBefore(pi.key, ' #')}</h4>
+															</c:when>
+															<c:otherwise>
+																<h4>${pi.key}</h4>
+															</c:otherwise>
+														</c:choose>
 														<figure>${pi.value}</figure>
 													</div>
-													<span class="pizza-item-close remove-item" onclick="remove_pizza_item('p_${loop.index}');">X</span><div class="right "></div>
+													<span class="pizza-item-close remove-item"
+														onclick="remove_pizza_item('p_${loop.index}');">X</span>
+													<div class="right "></div>
 												</div>
-											</c:forEach>			
+											</c:forEach>
 										</div>
 									</div>
 									<!-- /.list-slider -->
@@ -324,8 +340,8 @@
 								<div class="form-group clearfix" style="text-align: center;">
 									<form action="${pageContext.request.contextPath}/menu/saveMenu"
 										id="pizzatarget" method="post">
-										<input type="hidden" name="pizza_menu_items" id="pizza-menu-items">
-										<input type="hidden"
+										<input type="hidden" name="pizza_menu_items"
+											id="pizza-menu-items"> <input type="hidden"
 											name="cuisineType" value="${menu.cuisine}">
 										<textarea rows="4" cols="50" name="comments"
 											placeholder="Enter you comments to restaurant here"
@@ -377,7 +393,7 @@
 			//console.log("Desc: "+ desc);
 			pizza_menu_items.push(pizzaName + "+" + desc); //pizza_menu_items is in cater-request.js
 		});
-		
+
 		//For the items that were selected in previous transaction,
 		//send click event on the div with 'overlay' class (to simulate 'select' action).
 		/*$(".turn-me-on").each(function() {

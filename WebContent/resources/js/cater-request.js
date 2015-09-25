@@ -328,7 +328,7 @@ function populatePizzaSelectedItems() {
 	var pizzaDesc = "Size: " + pizzaSize + ", Count: " + nPizzas + ", Edge: "
 			+ stuffedEdge;
 	var data = pizzaName + "+" + desc;
-	// console.log(data);
+	console.log(data);
 	pizza_menu_items.push(data);
 	// console.log(pizza_menu_items);
 	return false;
