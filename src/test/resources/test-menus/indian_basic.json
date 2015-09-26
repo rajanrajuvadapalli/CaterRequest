@@ -5,13 +5,11 @@
             "name": "APPETIZERS",
             "items": [
                 {
-                    "objectType": "MenuItem",
                     "name": "Aloo Bonda",
                     "description": "Lentil fritters with Potato and Peas stuffed",
                     "isSelected": false
                 },
                 {
-                    "objectType": "MenuItem",
                     "name": "Baby Corn 555",
                     "description": "Baby corn tossed in Special sauce",
                     "isSelected": false
@@ -22,13 +20,11 @@
             "name": "SOUPS",
             "items": [
                 {
-                    "objectType": "MenuItem",
                     "name": "Hot and Sour Veg Soup",
                     "description": "Spicy vegetable Sweet corn soup with vegetables",
                     "isSelected": false
                 },
                 {
-                    "objectType": "MenuItem",
                     "name": "Hot and Sour Chicken Soup",
                     "description": "Spicy corn soup with shredded chicken",
                     "isSelected": false
