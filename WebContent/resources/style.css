@@ -24,8 +24,9 @@
 }
 
 .pizzaPopupOptions {
-	left: 20%;
-	width: 650px;
+	left: 50%;
+	margin-left: -325px;
+	max-width: 650px;
 	position: fixed;
 	top: 20px;
 	background: white;
