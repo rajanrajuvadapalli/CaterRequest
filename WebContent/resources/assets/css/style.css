@@ -6609,7 +6609,8 @@ body.navigation-top-header .header .wrapper .toggle-navigation {
   }
 
   .header .wrapper .navigation-items .wrapper .user-area {
-    display: none;
+    /* Hari - To fix header issue (not being displayed on mobile) */
+    /*display: none;*/
   }
 
   .map-canvas {
