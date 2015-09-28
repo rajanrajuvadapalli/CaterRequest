@@ -33,7 +33,7 @@ $('document').ready(
 						var pizzaTitle = $(this).find("span[class=name]")
 								.text();
 						$("span[id=pizza-popup-title]").replaceWith(
-								"<h2>" + pizzaTitle + "</h2>");
+								"<span id=\"pizza-popup-title\"><h2>" + pizzaTitle + "</h2></span>");
 						$("input[id=pizzaName]").val(pizzaTitle);
 					});
 		});
