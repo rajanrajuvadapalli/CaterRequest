@@ -305,9 +305,12 @@ function populatePizzaSelectedItems() {
 	// console.log("pizzaSize=" + pizzaSize);
 	var nPizzas = $('input[name=pcount]').val();
 	// console.log("nPizzas=" + nPizzas);
-	var stuffedEdge = $('input[name=pse]:checked').val();
-	var desc = "Size: " + pizzaSize + ", Count: " + nPizzas + ", Edge: "
-			+ stuffedEdge;
+	var sause = $('input[name=psause]:checked').val();
+	var cheese = $('input[name=pcheese]:checked').val();
+	var desc = "Size: " + pizzaSize + ", Count: " + nPizzas + ", Sause: "+ sause + ", Cheese: "
+			+ cheese;
+	var toppingsDiv = $('div[id=toppings]');
+	console.log(toppingsDiv);
 	var html = '<div class="list-item" id="'
 			+ div_id
 			+ '">'
@@ -320,13 +323,17 @@ function populatePizzaSelectedItems() {
 			+ '</figure>'
 			+ '</div>'
 			+ '<span class="pizza-item-close remove-item" onclick="remove_pizza_item(\''
-			+ div_id + '\');">X</span><div class="right "></div></div>';
+			+ div_id + '\');">X</span><div class="right "></div>'
+			+ '<div class="hidden">'
+			+ toppingsDiv
+			+ '</div>'
+			+ '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
 	$('form[id=options]').find("input[type=text], textarea").val("");
-	var pizzaDesc = "Size: " + pizzaSize + ", Count: " + nPizzas + ", Edge: "
-			+ stuffedEdge;
+	var pizzaDesc = "Size: " + pizzaSize + ", Count: " + nPizzas + ", Sause: "
+			+ sause + ", Cheese: "+ cheese;
 	var data = pizzaName + "+" + desc;
 	console.log(data);
 	pizza_menu_items.push(data);
