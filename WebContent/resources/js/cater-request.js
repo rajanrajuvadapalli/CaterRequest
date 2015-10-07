@@ -33,7 +33,8 @@ $('document').ready(
 						var pizzaTitle = $(this).find("span[class=name]")
 								.text();
 						$("span[id=pizza-popup-title]").replaceWith(
-								"<span id=\"pizza-popup-title\"><h2>" + pizzaTitle + "</h2></span>");
+								"<span id=\"pizza-popup-title\"><h2>"
+										+ pizzaTitle + "</h2></span>");
 						$("input[id=pizzaName]").val(pizzaTitle);
 					});
 		});
@@ -307,10 +308,12 @@ function populatePizzaSelectedItems() {
 	// console.log("nPizzas=" + nPizzas);
 	var sause = $('input[name=psause]:checked').val();
 	var cheese = $('input[name=pcheese]:checked').val();
-	var desc = "Size: " + pizzaSize + ", Count: " + nPizzas + ", Sause: "+ sause + ", Cheese: "
-			+ cheese;
-	var toppingsDiv = $('div[id=toppings]');
-	console.log(toppingsDiv);
+	var toppings = "";
+	$('.toppings:checked').each(function() {
+		toppings = toppings + " " + $(this).val();
+	});
+	var desc = "Size: " + pizzaSize + ", Count: " + nPizzas + ", Sause: "
+			+ sause + ", Cheese: " + cheese + ", Toppings: " + toppings;
 	var html = '<div class="list-item" id="'
 			+ div_id
 			+ '">'
@@ -323,17 +326,13 @@ function populatePizzaSelectedItems() {
 			+ '</figure>'
 			+ '</div>'
 			+ '<span class="pizza-item-close remove-item" onclick="remove_pizza_item(\''
-			+ div_id + '\');">X</span><div class="right "></div>'
-			+ '<div class="hidden">'
-			+ toppingsDiv
-			+ '</div>'
-			+ '</div>';
+			+ div_id + '\');">X</span><div class="right "></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
 	$('form[id=options]').find("input[type=text], textarea").val("");
 	var pizzaDesc = "Size: " + pizzaSize + ", Count: " + nPizzas + ", Sause: "
-			+ sause + ", Cheese: "+ cheese;
+			+ sause + ", Cheese: " + cheese + ", Toppings: " + toppings;
 	var data = pizzaName + "+" + desc;
 	console.log(data);
 	pizza_menu_items.push(data);
