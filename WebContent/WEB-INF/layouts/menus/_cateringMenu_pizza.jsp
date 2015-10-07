@@ -102,8 +102,16 @@
 								class="mfp-hide white-popup-block pizzaPopupOptions">
 								<form id="options" class="form-horizontal"
 									onsubmit="return populatePizzaSelectedItems();">
-									<span id="pizza-popup-title"> </span> <input type="hidden"
-										id="pizzaName" val="">
+									<!-- <span id="pizza-popup-title"> </span> <input type="hidden"
+										id="pizzaName" val=""> -->
+									<div class="form-group">
+										<label for="" class="col-sm-3 control-label">Pizza name<span style="color: red">*</span>:
+										</label>
+										<div class="col-sm-6">
+											<input type="text" size="20" name="pname" maxlength="20"
+												required="required" class="form-control" style="text-transform:uppercase;">
+										</div>
+									</div>
 									<div class="form-group">
 										<label for="" class="col-sm-3 control-label">Pizza
 											size<span style="color: red">*</span>:

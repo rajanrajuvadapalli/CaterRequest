@@ -28,7 +28,7 @@ $('document').ready(
 			$(document).on('click', '.popup-modal-dismiss', function() {
 				$.magnificPopup.close();
 			});
-			$("a[id=put-pizza-title]").click(
+			/*$("a[id=put-pizza-title]").click(
 					function() {
 						var pizzaTitle = $(this).find("span[class=name]")
 								.text();
@@ -36,7 +36,7 @@ $('document').ready(
 								"<span id=\"pizza-popup-title\"><h2>"
 										+ pizzaTitle + "</h2></span>");
 						$("input[id=pizzaName]").val(pizzaTitle);
-					});
+					});*/
 		});
 
 function populateCuisineTypes() {
@@ -300,7 +300,7 @@ function populatePizzaSelectedItems() {
 	var id = $('.slide').children().length;
 	console.log("Number of existing pizza items: " + id);
 	var div_id = "p_" + id;
-	var pizzaName = $("input[id=pizzaName]").val();
+	var pizzaName = $("input[name=pname]").val().toUpperCase();
 	// console.log("pizzaName="+pizzaName);
 	var pizzaSize = $('input[name=psize]:checked').val();
 	// console.log("pizzaSize=" + pizzaSize);
