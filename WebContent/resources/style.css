@@ -34,7 +34,7 @@
 	text-align: left;
 }
 
-@media (max-width: 690px) {
+@media screen and (max-width: 690px) {
     .pizzaPopupOptions {
        width:100%;
        margin:0;
