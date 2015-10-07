@@ -69,10 +69,10 @@
 			<div class="">
 				<!--Content-->
 				<div class="">
+				<h3>Click on the image below to build your own pizza.</h3>
 					<!--Listing Grid-->
 					<section class="block equal-height col-md-6 col-xs-12">
 						<div class="row">
-
 							<c:forEach items="${menu.categories}" var="category"
 								varStatus="loop">
 								<c:forEach items="${category.items}" var="item">
