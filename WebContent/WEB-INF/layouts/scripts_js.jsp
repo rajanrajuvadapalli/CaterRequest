@@ -20,7 +20,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/md5.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/cater-request.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/settings.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/distanceCalculator.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/js/distanceCalculator.js"></script> --%>
 <!--<script src="${pageContext.request.contextPath}/resources/js/bootstrap-formhelpers.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery.validate.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/additional-methods.min.js"></script> -->
