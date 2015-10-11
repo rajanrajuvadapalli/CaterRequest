@@ -68,6 +68,7 @@
 				Remember me
 			</label>
 		</div> -->
+		<br/>
 			<button class="btn btn-default" type="submit">Sign in</button>
 		</form>
 		<br /> <a class="popup-with-form" href="#forgot-pwd-form"
