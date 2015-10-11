@@ -1,0 +1,23 @@
+{
+    "cuisine": "PIZZA",
+    "categories": [
+        {
+            "code": "C1",
+            "name": "PIZZA",
+            "items": [
+                {
+                    "code": "C1_1",
+                    "name": "GARLIC AND OIL",
+                    "description": "",
+                    "isSelected": false
+                },
+                {
+                    "code": "C1_2",
+                    "name": "PEPPERONI",
+                    "description": "",
+                    "isSelected": false
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+{
+    "cuisine": "PIZZA",
+    "categories": [
+        {
+            "code": "C1",
+            "name": "PIZZA",
+            "items": [
+                {
+                    "code": "C1_1",
+                    "name": "PIZZA",
+                    "description": "",
+                    "isSelected": false
+                }
+            ]
+        }
+    ]
+}

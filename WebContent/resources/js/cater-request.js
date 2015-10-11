@@ -1,30 +1,43 @@
-$('document').ready(function() {
-	$('.popup-with-form').magnificPopup({
-		type : 'inline',
-		fixedContentPos : false,
-		fixedBgPos : true,
-		overflowY : 'auto',
-		closeBtnInside : true,
-		midClick : true,
-		preloader : false,
-		removalDelay : 300,
-		mainClass : 'my-mfp-zoom-in'
-	});
-	$('.popup-with-form-modal').magnificPopup({
-		type : 'inline',
-		fixedContentPos : false,
-		fixedBgPos : true,
-		overflowY : 'auto',
-		//closeBtnInside : true,
-		//showCloseBtn: false,
-		//enableEscapeKey: false,
-		modal: true,
-		midClick : true,
-		preloader : false,
-		removalDelay : 300,
-		mainClass : 'my-mfp-zoom-in'
-	});
-});
+$('document').ready(
+		function() {
+			$('.popup-with-form').magnificPopup({
+				type : 'inline',
+				fixedContentPos : false,
+				fixedBgPos : true,
+				overflowY : 'auto',
+				closeBtnInside : true,
+				midClick : true,
+				preloader : false,
+				removalDelay : 300,
+				mainClass : 'my-mfp-zoom-in'
+			});
+			$('.popup-with-form-modal').magnificPopup({
+				type : 'inline',
+				fixedContentPos : false,
+				fixedBgPos : true,
+				overflowY : 'auto',
+				// closeBtnInside : true,
+				// showCloseBtn: false,
+				// enableEscapeKey: false,
+				modal : true,
+				midClick : true,
+				preloader : false,
+				removalDelay : 300,
+				mainClass : 'my-mfp-zoom-in'
+			});
+			$(document).on('click', '.popup-modal-dismiss', function() {
+				$.magnificPopup.close();
+			});
+			/*$("a[id=put-pizza-title]").click(
+					function() {
+						var pizzaTitle = $(this).find("span[class=name]")
+								.text();
+						$("span[id=pizza-popup-title]").replaceWith(
+								"<span id=\"pizza-popup-title\"><h2>"
+										+ pizzaTitle + "</h2></span>");
+						$("input[id=pizzaName]").val(pizzaTitle);
+					});*/
+		});
 
 function populateCuisineTypes() {
 	$("span[id=cuisineType]")
@@ -42,6 +55,7 @@ function populateCuisineTypes() {
 							// + " <option value=\"GREEK\"> GREEK </option> "
 							+ "	<option value=\"INDIAN_SOUTH\">	INDIAN (SOUTH)     </option>              "
 							+ "	<option value=\"INDIAN_NORTH\">	INDIAN (NORTH)     </option>              "
+							+ "	<option value=\"PIZZA\"> PIZZA </option>              "
 							// + " <option value=\"INDONESIAN\"> INDONESIAN
 							// </option> "
 							// + " <option value=\"ITALIAN\"> ITALIAN </option>
@@ -240,8 +254,8 @@ function validateEventForm() {
 	var zip = $("input[name=zip]").val();
 	var CurrentAddress = st1 + ", " + city + ", " + state + ", " + zip;
 	var LastAddressValidated = $("input[name=LastAddressValidated]").val();
-	//console.log("LastAddressValidated: " + LastAddressValidated);
-	//console.log("CurrentAddress: " + CurrentAddress);
+	// console.log("LastAddressValidated: " + LastAddressValidated);
+	// console.log("CurrentAddress: " + CurrentAddress);
 	if (LastAddressValidated != CurrentAddress) {
 		$("input[name=LastAddressValidated]").val(CurrentAddress);
 		var geocoder = new google.maps.Geocoder();
@@ -255,7 +269,8 @@ function validateEventForm() {
 
 function validateCuisine(formId) {
 	var element = $('form[id=' + formId + '] select[id=cuisineType]');
-	if (element.val() != "INDIAN_SOUTH" && element.val() != "INDIAN_NORTH") {
+	if (element.val() != "INDIAN_SOUTH" && element.val() != "INDIAN_NORTH"
+			&& element.val() != "PIZZA") {
 		alert("Sorry! " + element.val()
 				+ " restaurants are not registered with us at this moment.");
 		return false;
@@ -276,4 +291,51 @@ function validateSelectRestaurantForm() {
 		alert("Please select at least 1 restaurant.");
 		return false;
 	}
+}
+
+var $ = jQuery.noConflict();
+var pizza_menu_items = [];
+function populatePizzaSelectedItems() {
+	// var id = Math.floor((Math.random() * 100) + 1);
+	var id = $('.slide').children().length;
+	console.log("Number of existing pizza items: " + id);
+	var div_id = "p_" + id;
+	var pizzaName = $("input[name=pname]").val().toUpperCase();
+	// console.log("pizzaName="+pizzaName);
+	var pizzaSize = $('input[name=psize]:checked').val();
+	// console.log("pizzaSize=" + pizzaSize);
+	var nPizzas = $('input[name=pcount]').val();
+	// console.log("nPizzas=" + nPizzas);
+	var sause = $('input[name=psause]:checked').val();
+	var cheese = $('input[name=pcheese]:checked').val();
+	var toppings = "";
+	$('.toppings:checked').each(function() {
+		toppings = toppings + " " + $(this).val();
+	});
+	var desc = "Size: " + pizzaSize + ", Count: " + nPizzas + ", Sause: "
+			+ sause + ", Cheese: " + cheese + ", Toppings: " + toppings;
+	var html = '<div class="list-item" id="'
+			+ div_id
+			+ '">'
+			+ '<div class="left">'
+			+ '<h4>'
+			+ pizzaName
+			+ '</h4>'
+			+ '<figure>'
+			+ desc
+			+ '</figure>'
+			+ '</div>'
+			+ '<span class="pizza-item-close remove-item" onclick="remove_pizza_item(\''
+			+ div_id + '\');">X</span><div class="right "></div>' + '</div>';
+	// console.log(html);
+	$(html).appendTo('.slide');
+
+	$('form[id=options]').find("input[type=text], textarea").val("");
+	var pizzaDesc = "Size: " + pizzaSize + ", Count: " + nPizzas + ", Sause: "
+			+ sause + ", Cheese: " + cheese + ", Toppings: " + toppings;
+	var data = pizzaName + "+" + desc;
+	console.log(data);
+	pizza_menu_items.push(data);
+	// console.log(pizza_menu_items);
+	return false;
 }

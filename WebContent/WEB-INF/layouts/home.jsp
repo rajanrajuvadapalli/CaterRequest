@@ -47,7 +47,7 @@
 				<div class="row">
 					<div class="videowrapper">
 						<iframe width="650" height="400"
-							src="https://www.youtube.com/embed/01JFErikHlE?rel=0;&autoplay=0"
+							src="https://www.youtube.com/embed/dU3nZSqaI3k?rel=0;&autoplay=0"
 							allowfullscreen="" frameborder="0"></iframe>
 					</div>
 					<div class="feature-box">
@@ -248,7 +248,9 @@
 						</div>
 						<div class="item">
 							<blockquote>
-								<figure></figure>
+								<figure><img
+										src="${pageContext.request.contextPath}/resources/images/people/user.png"
+										alt=""></figure>
 								<div class="description">
 									<p>The experience was fantastic! Being a working women and
 										a mother of 3yr old, finding time to talk to restaurants and

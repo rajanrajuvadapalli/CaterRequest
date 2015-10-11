@@ -23,6 +23,25 @@
 	text-align: left;
 }
 
+.pizzaPopupOptions {
+	left: 50%;
+	margin-left: -325px;
+	/*max-width: 750px;*/
+	/*position: static;*/
+	top: 20px;
+	background: white;
+	padding: 20px 30px;
+	/*text-align: left;*/
+}
+
+@media screen and (max-width: 690px) {
+    .pizzaPopupOptions {
+       width:100%;
+       margin:0;
+       position:static;
+     }
+}
+
 .selectCuisinePopupOptions {
 	left: 35%;
 	width: 300px;
@@ -126,4 +145,15 @@
 /* animate out */
 .my-mfp-zoom-in.mfp-removing.mfp-bg {
 	opacity: 0;
+}
+
+.pizza-item-close {
+	cursor: pointer;
+	/*position: absolute;
+	top: 0;
+	z-index: 20;
+	right: 0px;
+	color: #FFF;*/
+	padding-left: 4px;
+	padding-top: 1px;
 }

@@ -28,7 +28,7 @@ public class MenuDeserializerTest {
 	}
 
 	@Test
-	public void testReadJSON() throws IOException {
+	public void testReadIndianMenu() throws IOException {
 		File f = new File(MenuDeserializerTest.class.getResource(
 				"/test-menus/indian_basic.json").getFile());
 		System.out.println(FileUtils.readFileToString(f));
@@ -43,7 +43,7 @@ public class MenuDeserializerTest {
 		assertEquals("APPETIZERS", menuCategory0.getName());
 		assertNotNull(menuCategory0.getItems());
 		assertEquals(2, menuCategory0.getItems().size());
-		item = menuCategory0.getItems().get(0);
+		item = (MenuItem) menuCategory0.getItems().get(0);
 		assertEquals("Aloo Bonda", item.getName());
 		assertEquals("Lentil fritters with Potato and Peas stuffed",
 				item.getDescription());
