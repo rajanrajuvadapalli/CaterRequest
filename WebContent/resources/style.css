@@ -26,12 +26,12 @@
 .pizzaPopupOptions {
 	left: 50%;
 	margin-left: -325px;
-	max-width: 650px;
-	position: fixed;
+	/*max-width: 750px;*/
+	/*position: static;*/
 	top: 20px;
 	background: white;
 	padding: 20px 30px;
-	text-align: left;
+	/*text-align: left;*/
 }
 
 @media screen and (max-width: 690px) {

@@ -2435,7 +2435,7 @@ ul.bullets li a:hover {
   float: right;
 }
 .list-slider .slide .list-item .right.remove-item {
-  display: none;
+  /*display: none;*/
 }
 .list-slider .owl-controls {
   margin: inherit;
@@ -5402,7 +5402,7 @@ input[type="text"], input[type="date"], input[type="email"], input[type="search"
   box-shadow: inset 0px 1px 0.5px rgba(0, 0, 0, 0.15);
   -webkit-appearance: none;
   background-color: #fff;
-  border: none;
+  /*border: none;*/
   font-size: 14px;
   outline: none !important;
   padding: 10px 9px 9px;
