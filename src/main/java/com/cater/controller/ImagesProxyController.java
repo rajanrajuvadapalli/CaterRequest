@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(value = { "imagesproxy" })
 public class ImagesProxyController {
-	@Value("${images.location}")
-	private String imagesBaseLocation;
+	//@Value("${images.location}")
+	//private String imagesBaseLocation;
 	@Value("${profile.pic.folder}")
 	private String profilePicFolder;
 
@@ -28,13 +28,13 @@ public class ImagesProxyController {
 	private void postConstruct() {
 		//If a system property is set for images base location, it will override
 		//the value set in the properties file
-		imagesBaseLocation = System.getProperty("images.location",
-				imagesBaseLocation);
+		//imagesBaseLocation = System.getProperty("images.location",
+		//imagesBaseLocation);
 		profilePicFolder = System.getProperty("profile.pic.folder",
 				profilePicFolder);
 	}
 
-	@ResponseBody
+	/*@ResponseBody
 	@RequestMapping(value = { "{cuisine}/{code}" }, method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
 	public byte[] get(@PathVariable String cuisine, @PathVariable String code)
 			throws IOException {
@@ -44,7 +44,7 @@ public class ImagesProxyController {
 		File f = new File(imageUrl);
 		InputStream in = FileUtils.openInputStream(f);
 		return IOUtils.toByteArray(in);
-	}
+	}*/
 
 	@ResponseBody
 	@RequestMapping(value = { "Restaurant_{id}" }, method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
