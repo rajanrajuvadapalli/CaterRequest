@@ -1,0 +1,47 @@
+{
+    "cuisine": "MEXICAN",
+    "categories": [
+        {
+            "code": "C1",
+            "name": "MEXICAN",
+            "items": [
+                {
+                    "code": "C1_1",
+                    "name": "Taco Bar",
+                    "description": "Taco",
+                    "isSelected": false
+                },
+                {
+                    "code": "C1_2",
+                    "name": "Burrito",
+                    "description": "Burrito",
+                    "isSelected": false
+                },
+                {
+                    "code": "C1_3",
+                    "name": "Enchilada Bar",
+                    "description": "Enchilada",
+                    "isSelected": false
+                },
+                {
+                    "code": "C1_4",
+                    "name": "Fajitha Bar",
+                    "description": "Fajitha",
+                    "isSelected": false
+                },
+                {
+                    "code": "C1_5",
+                    "name": "Salad Bar",
+                    "description": "Salad",
+                    "isSelected": false
+                },
+                {
+                    "code": "C1_6",
+                    "name": "Chips & Salsa",
+                    "description": "Chips & Salsa",
+                    "isSelected": false
+                }
+            ]
+        }
+    ]
+}
