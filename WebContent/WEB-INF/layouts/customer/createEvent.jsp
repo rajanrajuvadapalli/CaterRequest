@@ -198,12 +198,12 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-1">
+			<div class="col-sm-1 col-xs-6">
 				<button type="button" class="btn btn-default"
 					onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">
 					Cancel</button>
 			</div>
-			<div class="col-sm-1 col-sm-offset-9">
+			<div class="col-sm-1 col-sm-offset-9 col-xs-6">
 				<button type="submit" class="btn btn-default">Create Event</button><br/><br/><br/>
 			</div>
 	</form>
