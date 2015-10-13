@@ -53,9 +53,10 @@ function populateCuisineTypes() {
 							// + " <option value=\"CUBAN\"> CUBAN </option> "
 							// + " <option value=\"FRENCH\"> FRENCH </option> "
 							// + " <option value=\"GREEK\"> GREEK </option> "
-							+ "	<option value=\"INDIAN_SOUTH\">	INDIAN (SOUTH)     </option>              "
-							+ "	<option value=\"INDIAN_NORTH\">	INDIAN (NORTH)     </option>              "
-							+ "	<option value=\"PIZZA\"> PIZZA </option>              "
+							+ "	<option value=\"INDIAN_SOUTH\">	INDIAN (SOUTH) </option>"
+							+ "	<option value=\"INDIAN_NORTH\">	INDIAN (NORTH) </option>"
+							+ "	<option value=\"PIZZA\"> PIZZA </option>"
+							+ " <option value=\"MEXICAN\"> MEXICAN </option>"
 							// + " <option value=\"INDONESIAN\"> INDONESIAN
 							// </option> "
 							// + " <option value=\"ITALIAN\"> ITALIAN </option>
@@ -67,8 +68,7 @@ function populateCuisineTypes() {
 							// </option> "
 							// + " <option value=\"MALAYSIAN\"> MALAYSIAN
 							// </option> "
-							// + " <option value=\"MEXICAN\"> MEXICAN </option>
-							// "
+							 
 							// + " <option value=\"RUSSIAN\"> RUSSIAN </option>
 							// "
 							// + " <option value=\"SINGAPORE\"> SINGAPORE
@@ -270,7 +270,7 @@ function validateEventForm() {
 function validateCuisine(formId) {
 	var element = $('form[id=' + formId + '] select[id=cuisineType]');
 	if (element.val() != "INDIAN_SOUTH" && element.val() != "INDIAN_NORTH"
-			&& element.val() != "PIZZA") {
+			&& element.val() != "PIZZA" && element.val() != "MEXICAN") {
 		alert("Sorry! " + element.val()
 				+ " restaurants are not registered with us at this moment.");
 		return false;
