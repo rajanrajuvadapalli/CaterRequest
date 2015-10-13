@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.cater.GuestHelper;
 import com.cater.constants.Roles;
 import com.cater.email.EmailHelper;
+import com.cater.maps.RestaurantDTO;
 import com.cater.menu.Menu;
 import com.cater.menu.MenuDeserializer;
 import com.cater.model.Login;
@@ -267,7 +269,13 @@ public class RegistrationController {
 			com.cater.model.Menu menu = customerService.findMenuWithId(menuId);
 			Set <Restaurant> restaurants = restaurantService
 					.fetchRestaurantsOfType(cuisine);
-			modelMap.put("restaurants", restaurants);
+			//modelMap.put("restaurants", restaurants);
+			List <RestaurantDTO> nearByRestaurants = restaurantService
+					.getNearbyYelpReviews(menu.getEvent().getLocation(),
+							restaurants);
+			if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
+				modelMap.put("restaurants", nearByRestaurants);
+			}
 			modelMap.put("eventLocation", menu.getEvent().getLocation());
 			Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
 			modelMap.put("prevR", previouslySelectedRestaurants);

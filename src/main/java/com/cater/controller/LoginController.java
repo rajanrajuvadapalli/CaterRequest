@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,11 @@ import com.cater.GuestHelper;
 import com.cater.Helper;
 import com.cater.constants.Roles;
 import com.cater.email.EmailHelper;
+import com.cater.maps.RestaurantDTO;
 import com.cater.model.Customer;
+import com.cater.model.Event;
 import com.cater.model.Login;
+import com.cater.model.Restaurant;
 import com.cater.service.CustomerService;
 import com.cater.service.LoginService;
 import com.cater.service.RestaurantService;
@@ -126,6 +130,16 @@ public class LoginController {
 				Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
 				modelMap.put("prevR", previouslySelectedRestaurants);
 				user.setName(c.getName());
+				String cuisine = (String) httpSession
+						.getAttribute("cuisineType");
+				Set <Restaurant> restaurants = restaurantService
+						.fetchRestaurantsOfType(cuisine);
+				Event e = (Event) httpSession.getAttribute("event");
+				List <RestaurantDTO> nearByRestaurants = restaurantService
+						.getNearbyYelpReviews(e.getLocation(), restaurants);
+				if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
+					modelMap.put("restaurants", nearByRestaurants);
+				}
 			}
 			else {
 				user = new User();
