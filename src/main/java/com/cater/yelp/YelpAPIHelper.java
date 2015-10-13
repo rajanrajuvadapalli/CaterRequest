@@ -2,8 +2,6 @@ package com.cater.yelp;
 
 import java.util.Map;
 
-import org.apache.commons.collections.map.HashedMap;
-import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -16,14 +14,12 @@ import org.scribe.model.Verb;
 import org.scribe.oauth.OAuthService;
 import org.springframework.stereotype.Component;
 
-import com.beust.jcommander.JCommander;
-import com.beust.jcommander.Parameter;
-import com.cater.email.EmailHelper;
+import com.beust.jcommander.internal.Maps;
 
 @Component
 public class YelpAPIHelper {
 	/** The Constant logger. */
-	private static final Logger logger = Logger.getLogger(YelpAPIHelper.class);
+	//private static final Logger logger = Logger.getLogger(YelpAPIHelper.class);
 
 	private static final String API_HOST = "api.yelp.com";
 	// private static final String DEFAULT_TERM = "dinner";
@@ -142,7 +138,8 @@ public class YelpAPIHelper {
 	 * @param yelpApiCli
 	 *            <tt>YelpAPICLI</tt> command line arguments
 	 */
-	private Map queryAPI(YelpAPIHelper yelpApi, String name, String zip) {
+	private Map <Object, Object> queryAPI(YelpAPIHelper yelpApi, String name,
+			String zip) {
 		String searchResponseJSON = yelpApi.searchForBusinessesByLocation(name,
 				zip);
 
@@ -158,8 +155,8 @@ public class YelpAPIHelper {
 		}
 
 		JSONArray businesses = (JSONArray) response.get("businesses");
-		Map map = new HashedMap();
-		String firstBusinessID = "";
+		Map <Object, Object> map = Maps.newHashMap();
+		//String firstBusinessID = "";
 		if (businesses != null && businesses.size() > 0) {
 			JSONObject firstBusiness = (JSONObject) businesses.get(0);
 			// firstBusinessID = firstBusiness.get("rating_img_url").toString();
@@ -195,7 +192,7 @@ public class YelpAPIHelper {
 	 * 
 	 * @return
 	 */
-	public Map getRatings(String restaurantName, String zipCode) {
+	public Map <Object, Object> getRatings(String restaurantName, String zipCode) {
 		/*
 		 * YelpAPICLI yelpApiCli = new YelpAPICLI(); new JCommander(yelpApiCli,
 		 * args);
@@ -205,7 +202,8 @@ public class YelpAPIHelper {
 				CONSUMER_SECRET, TOKEN, TOKEN_SECRET);
 		// queryAPI(yelpApi, yelpApiCli);
 
-		Map reviews = queryAPI(yelpApi, restaurantName, zipCode);
+		Map <Object, Object> reviews = queryAPI(yelpApi, restaurantName,
+				zipCode);
 		return reviews;
 	}
 }

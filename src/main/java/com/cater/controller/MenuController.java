@@ -2,7 +2,6 @@ package com.cater.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -25,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.cater.Helper;
 import com.cater.constants.QuoteStatus;
 import com.cater.dao.MenuDAO;
-import com.cater.maps.MapsHelper;
 import com.cater.maps.RestaurantDTO;
 import com.cater.menu.Menu;
 import com.cater.menu.MenuCategory;
@@ -38,7 +36,6 @@ import com.cater.model.Restaurant;
 import com.cater.service.CustomerService;
 import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
-import com.cater.yelp.YelpAPIHelper;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
@@ -69,8 +66,7 @@ public class MenuController {
 	/** The menu dao. */
 	@Autowired
 	private MenuDAO menuDAO;
-	@Autowired
-	private YelpAPIHelper yelpHelper;
+
 
 	/**
 	 * Select menu form.
@@ -284,44 +280,17 @@ public class MenuController {
 			menuModel.setData(newData);
 			menuModel.setCuisineType(cuisine);
 			menuModel.setComments(comments);
+			com.cater.model.Address eventLocation = e.getLocation();
+			modelMap.put("eventLocation", eventLocation);
 			Set <Restaurant> restaurants = restaurantService
 					.fetchRestaurantsOfType(cuisine);
 			//modelMap.put("restaurants", restaurants);
-			modelMap.put("eventLocation", e.getLocation());
-			MapsHelper mapsHelper = new MapsHelper();
-			//YelpAPIHelper yelpHelper = new YelpAPIHelper();
-			try {
-				List nearByRestaurants = mapsHelper.getDistance(e.getLocation().toString(), restaurants);
-				
-				if (nearByRestaurants != null && !nearByRestaurants.isEmpty()) {
-					for (Iterator iterator = nearByRestaurants.iterator(); iterator
-							.hasNext();) {
-						RestaurantDTO restaurantDTO = (RestaurantDTO) iterator
-								.next();
-						String eventAddress =e.getLocation().getStreet1() +" "+e.getLocation().getStreet2()+" "+e.getLocation().getState()+" "+e.getLocation().getZip(); 
-						
-						Map yelpReviews = yelpHelper.getRatings(restaurantDTO
-								.getRestaurant().getName(), eventAddress);
-						if (!yelpReviews.isEmpty()) 
-						{
-							
-							restaurantDTO.setNumberOfReviews(Integer
-									.parseInt(yelpReviews.get("noOfReviews")
-											.toString()));
-							restaurantDTO.setReviewImage(yelpReviews.get("ratings"));
-							restaurantDTO.setWebsiteUrl(yelpReviews.get("websiteUrl"));
-
-						}
-
-					}
-					modelMap.put("restaurants", nearByRestaurants);
-				}
-
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			List <RestaurantDTO> nearByRestaurants = restaurantService
+					.getNearbyYelpReviews(
+					eventLocation, restaurants);
+			if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
+				modelMap.put("restaurants", nearByRestaurants);
 			}
-			
 			Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
 			if (user.isGuest()) {
 				httpSession.setAttribute("menuId", 1);

@@ -3,10 +3,13 @@ package com.cater.service;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.MapUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -20,9 +23,12 @@ import com.cater.constants.Roles;
 import com.cater.dao.QuoteDAO;
 import com.cater.dao.RestaurantDAO;
 import com.cater.email.EmailHelper;
+import com.cater.maps.MapsHelper;
+import com.cater.maps.RestaurantDTO;
 import com.cater.model.Quote;
 import com.cater.model.Restaurant;
 import com.cater.twilio.sms.SMSHelper;
+import com.cater.yelp.YelpAPIHelper;
 @Component
 public class RestaurantService {
 	private static final Logger logger = Logger
@@ -35,6 +41,8 @@ public class RestaurantService {
 	private EmailHelper emailHelper;
 	@Autowired
 	private SMSHelper smsHelper;
+	@Autowired
+	private YelpAPIHelper yelpHelper;
 	@Value("${profile.pic.folder}")
 	private String profilePicFolder;
 
@@ -138,5 +146,38 @@ public class RestaurantService {
 					"Successfully saved %s's profile pic to %s",
 					restaurantName, f.getAbsolutePath()));
 		}
+	}
+
+	public List <RestaurantDTO> getNearbyYelpReviews(
+			com.cater.model.Address eventLocation, Set <Restaurant> restaurants) {
+		List <RestaurantDTO> nearByRestaurants = null;
+		try {
+			nearByRestaurants = new MapsHelper().getDistance(
+					eventLocation.toString(), restaurants);
+			if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
+				for (RestaurantDTO restaurantDTO : nearByRestaurants) {
+					String eventAddress = eventLocation.getStreet1() + " "
+							+ eventLocation.getStreet2() + " "
+							+ eventLocation.getState() + " "
+							+ eventLocation.getZip();
+					Map <Object, Object> yelpReviews = yelpHelper.getRatings(
+							restaurantDTO.getRestaurant().getName(),
+							eventAddress);
+					if (MapUtils.isNotEmpty(yelpReviews)) {
+						restaurantDTO.setNumberOfReviews(Integer
+								.parseInt(yelpReviews.get("noOfReviews")
+										.toString()));
+						restaurantDTO
+								.setReviewImage(yelpReviews.get("ratings"));
+						restaurantDTO.setWebsiteUrl(yelpReviews
+								.get("websiteUrl"));
+					}
+				}
+			}
+		}
+		catch (Exception e1) {
+			logger.error("Exception occurred while getting yelp reviews.", e1);
+		}
+		return nearByRestaurants;
 	}
 }
