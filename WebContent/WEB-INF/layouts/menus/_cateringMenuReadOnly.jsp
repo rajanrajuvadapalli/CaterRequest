@@ -56,6 +56,15 @@
 						</div>
 					</c:forEach>
 				</c:if>
+				<c:if test="${menu.cuisine == 'MEXICAN'}">
+					<c:forEach items="${mexican_items}" var="m">
+						<div class="col-sm-12">
+							<ul>
+								<li><b>${m.key}</b> &nbsp;&nbsp; ${m.value}</li>
+							</ul>
+						</div>
+					</c:forEach>
+				</c:if>
 				<c:if test="${not empty menu.comments}">
 					<c:choose>
 						<c:when test="${user.role == 'RESTAURANT'}">

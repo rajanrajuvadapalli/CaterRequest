@@ -20,7 +20,7 @@
 			return false;
 		}
 		console.log(mexican_menu_items);
-		//console.log(JSON.stringify(pizza_menu_items));
+		//console.log(JSON.stringify(mexican_menu_items));
 		$("#mexican-menu-items").val(JSON.stringify(mexican_menu_items));
 		$("#mexicantarget").submit();
 	}
@@ -80,8 +80,7 @@
 									<div class="col-md-4 col-sm-3 col-xs-6">
 										<div class="item" id="C${loop.index}">
 											<div class="image">
-												<a class="popup-with-form" id="put-pizza-title"
-													href="#options_${loop.index}">
+												<a class="popup-with-form" href="#popup_${loop.index}">
 													<div class="item-specific">
 														<span class="name">${item.name}</span>
 													</div>
@@ -98,13 +97,14 @@
 								</c:forEach>
 							</c:forEach>
 
-							<div id="options_0"
+							<div id="popup_0"
 								class="mfp-hide white-popup-block mexicanPopupOptions col-xs-6 col-sm-4 col-md-6">
-								<form id="options" class="form-horizontal"
+								<form id="popup_0" class="form-horizontal"
 									onsubmit="return populateMexicanTacoBarSelectedItems();">
 									<span id="mexican-popup-title"><h2>Taco Bar</h2></span>
 									<div class="form-group">
-										<label for="" class="col-sm-4 control-label">Tortillas Count<span style="color: red">*</span>:
+										<label for="" class="col-sm-4 control-label">Tortillas
+											Count<span style="color: red">*</span>:
 										</label>
 										<div class="col-sm-6">
 											<input type="text" size="20" name="tcount" maxlength="20"
@@ -112,8 +112,8 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="" class="col-sm-4 control-label">Tortilla Type<span
-											style="color: red">*</span>:
+										<label for="" class="col-sm-4 control-label">Tortilla
+											Type<span style="color: red">*</span>:
 										</label>
 										<div class="row">
 											<div class="col-sm-6 col-md-6">
@@ -127,14 +127,15 @@
 												</div>
 												<div class="input-group">
 													<input type="radio" name="ttype" required="required"
-														value="Half Corn & Half Flour"> Half Corn & Half Flour
+														value="Half Corn & Half Flour"> Half Corn & Half
+													Flour
 												</div>
 											</div>
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="" class="col-sm-4 control-label">Choose servings<span
-											style="color: red">*</span>:
+										<label for="" class="col-sm-4 control-label">Choose
+											servings<span style="color: red">*</span>:
 										</label>
 										<div class="row">
 											<div class="col-sm-6">
@@ -166,8 +167,8 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="" class="col-sm-4 control-label">Choose sides<span
-											style="color: red">*</span>:
+										<label for="" class="col-sm-4 control-label">Choose
+											sides<span style="color: red">*</span>:
 										</label>
 										<div class="row">
 											<div class="col-sm-6">
@@ -191,8 +192,8 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="" class="col-sm-4 control-label">Choose salsa<span
-											style="color: red">*</span>:
+										<label for="" class="col-sm-4 control-label">Choose
+											salsa<span style="color: red">*</span>:
 										</label>
 										<div class="row">
 											<div class="col-sm-6">
@@ -208,8 +209,8 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="" class="col-sm-4 control-label">Choose Cheese<span
-											style="color: red">*</span>:
+										<label for="" class="col-sm-4 control-label">Choose
+											Cheese<span style="color: red">*</span>:
 										</label>
 										<div class="row">
 											<div class="col-sm-6">
@@ -280,21 +281,14 @@
 													<i class="fa fa-calendar"></i>Selected Items
 												</h3>
 											</header>
-											<c:forEach items="${pizza_items}" var="pi" varStatus="loop">
-												<div class="list-item" id="p_${loop.index}">
+											<c:forEach items="${mexican_items}" var="m" varStatus="loop">
+												<div class="list-item" id="m_${loop.index}">
 													<div class="left">
-														<c:choose>
-															<c:when test="${pi.key.contains('#')}">
-																<h4>${fn:substringBefore(pi.key, ' #')}</h4>
-															</c:when>
-															<c:otherwise>
-																<h4>${pi.key}</h4>
-															</c:otherwise>
-														</c:choose>
-														<figure>${pi.value}</figure>
+														<h4>${m.key}</h4>
+														<figure>${m.value}</figure>
 													</div>
-													<span class="pizza-item-close remove-item"
-														onclick="remove_pizza_item('p_${loop.index}');">X</span>
+													<span class="mexican-item-close remove-item"
+														onclick="remove_mexican_item('m_${loop.index}');">X</span>
 													<div class="right "></div>
 												</div>
 											</c:forEach>
@@ -316,15 +310,15 @@
 								</div>
 								<div class="form-group clearfix" style="text-align: center;">
 									<form action="${pageContext.request.contextPath}/menu/saveMenu"
-										id="pizzatarget" method="post">
-										<input type="hidden" name="pizza_menu_items"
-											id="pizza-menu-items"> <input type="hidden"
+										id="mexicantarget" method="post">
+										<input type="hidden" name="mexican_menu_items"
+											id="mexican-menu-items"> <input type="hidden"
 											name="cuisineType" value="${menu.cuisine}">
 										<textarea rows="4" cols="50" name="comments"
 											placeholder="Enter you comments to restaurant here"
 											class="form-control">${menu.comments}</textarea>
 										<br />
-										<button type="button" onclick="pizza_menu_submit();"
+										<button type="button" onclick="mexican_menu_submit();"
 											class="btn btn-default">Select Restaurants</button>
 									</form>
 								</div>
@@ -364,11 +358,11 @@
 
 	$('document').ready(function() {
 		$('.slide .list-item .left').each(function() {
-			var pizzaName = $(this).children().prev().text();
+			var mexicanName = $(this).children().prev().text();
 			var desc = $(this).children().next().text();
-			//console.log("Title: "+ pizzaName);
-			//console.log("Desc: "+ desc);
-			pizza_menu_items.push(pizzaName + "+" + desc); //pizza_menu_items is in cater-request.js
+			console.log("Title: " + mexicanName);
+			console.log("Desc: " + desc);
+			mexican_menu_items.push(mexicanName + "+" + desc); //mexican_menu_items is in cater-mexican.js
 		});
 
 		//For the items that were selected in previous transaction,
