@@ -188,6 +188,9 @@ public class MenuController {
 		if ("PIZZA".equalsIgnoreCase(cuisine)) {
 			return "menus/t__cateringMenu_pizza";
 		}
+		if ("MEXICAN".equalsIgnoreCase(cuisine)) {
+			return "menus/t__cateringMenu_mexican";
+		}
 		return "menus/t__cateringMenu";
 	}
 
