@@ -67,7 +67,6 @@ public class MenuController {
 	@Autowired
 	private MenuDAO menuDAO;
 
-
 	/**
 	 * Select menu form.
 	 *
@@ -166,6 +165,21 @@ public class MenuController {
 						}
 					}
 				}
+				else if ("MEXICAN".equalsIgnoreCase(menu.getCuisine())) {
+					Map <String, String> mexican_items = Maps
+							.newLinkedHashMap();
+					modelMap.put("mexican_items", mexican_items);
+					for (String item : previouslySelectedMenuItemCodes) {
+						if (StringUtils.isNotBlank(item)) {
+							String description = StringUtils.replace(
+									StringUtils.substringAfter(item, "+"), "+",
+									" ");
+							String mexicanName = StringUtils.substringBefore(
+									item, "+");
+							mexican_items.put(mexicanName, description);
+						}
+					}
+				}
 				else {
 					for (String previouslySelectedItemCode : previouslySelectedMenuItemCodes) {
 						for (MenuCategory cat : menu.getCategories()) {
@@ -187,6 +201,9 @@ public class MenuController {
 		}
 		if ("PIZZA".equalsIgnoreCase(cuisine)) {
 			return "menus/t__cateringMenu_pizza";
+		}
+		if ("MEXICAN".equalsIgnoreCase(cuisine)) {
+			return "menus/t__cateringMenu_mexican";
 		}
 		return "menus/t__cateringMenu";
 	}
@@ -223,6 +240,7 @@ public class MenuController {
 			HttpServletRequest request,
 			@RequestParam(value = "menu_item_codes", required = false) String itemCodesJson,
 			@RequestParam(value = "pizza_menu_items", required = false) String pizzaItemsJson,
+			@RequestParam(value = "mexican_menu_items", required = false) String mexicanItemsJson,
 			@RequestParam(value = "cuisineType", required = true) String cuisine,
 			@RequestParam(value = "comments") String comments) {
 		User user = (User) httpSession.getAttribute("user");
@@ -247,6 +265,15 @@ public class MenuController {
 						pizzaItemsJson, new TypeReference <List <String>>() {
 						});
 				for (String selectedItemCode : pizzaItems) {
+					stringBuilder.append(selectedItemCode).append(
+							MENU_DELIMITER);
+				}
+			}
+			else if (mexicanItemsJson != null) {
+				List <String> mexicanItems = new ObjectMapper().readValue(
+						mexicanItemsJson, new TypeReference <List <String>>() {
+						});
+				for (String selectedItemCode : mexicanItems) {
 					stringBuilder.append(selectedItemCode).append(
 							MENU_DELIMITER);
 				}
@@ -286,8 +313,7 @@ public class MenuController {
 					.fetchRestaurantsOfType(cuisine);
 			//modelMap.put("restaurants", restaurants);
 			List <RestaurantDTO> nearByRestaurants = restaurantService
-					.getNearbyYelpReviews(
-					eventLocation, restaurants);
+					.getNearbyYelpReviews(eventLocation, restaurants);
 			if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
 				modelMap.put("restaurants", nearByRestaurants);
 			}
@@ -383,6 +409,21 @@ public class MenuController {
 							}
 							pizzaTypes.put(pizzaName, count + 1);
 							pizza_items.put(pizzaName, description);
+						}
+					}
+				}
+				else if ("MEXICAN".equalsIgnoreCase(menu.getCuisine())) {
+					Map <String, String> mexican_items = Maps
+							.newLinkedHashMap();
+					modelMap.put("mexican_items", mexican_items);
+					for (String item : previouslySelectedMenuItemCodes) {
+						if (StringUtils.isNotBlank(item)) {
+							String description = StringUtils.replace(
+									StringUtils.substringAfter(item, "+"), "+",
+									" ");
+							String mexicanName = StringUtils.substringBefore(
+									item, "+");
+							mexican_items.put(mexicanName, description);
 						}
 					}
 				}

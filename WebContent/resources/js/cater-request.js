@@ -1,43 +1,40 @@
-$('document').ready(
-		function() {
-			$('.popup-with-form').magnificPopup({
-				type : 'inline',
-				fixedContentPos : false,
-				fixedBgPos : true,
-				overflowY : 'auto',
-				closeBtnInside : true,
-				midClick : true,
-				preloader : false,
-				removalDelay : 300,
-				mainClass : 'my-mfp-zoom-in'
-			});
-			$('.popup-with-form-modal').magnificPopup({
-				type : 'inline',
-				fixedContentPos : false,
-				fixedBgPos : true,
-				overflowY : 'auto',
-				// closeBtnInside : true,
-				// showCloseBtn: false,
-				// enableEscapeKey: false,
-				modal : true,
-				midClick : true,
-				preloader : false,
-				removalDelay : 300,
-				mainClass : 'my-mfp-zoom-in'
-			});
-			$(document).on('click', '.popup-modal-dismiss', function() {
-				$.magnificPopup.close();
-			});
-			/*$("a[id=put-pizza-title]").click(
-					function() {
-						var pizzaTitle = $(this).find("span[class=name]")
-								.text();
-						$("span[id=pizza-popup-title]").replaceWith(
-								"<span id=\"pizza-popup-title\"><h2>"
-										+ pizzaTitle + "</h2></span>");
-						$("input[id=pizzaName]").val(pizzaTitle);
-					});*/
-		});
+$('document').ready(function() {
+	$('.popup-with-form').magnificPopup({
+		type : 'inline',
+		fixedContentPos : false,
+		fixedBgPos : true,
+		overflowY : 'auto',
+		closeBtnInside : true,
+		midClick : true,
+		preloader : false,
+		removalDelay : 300,
+		mainClass : 'my-mfp-zoom-in'
+	});
+	$('.popup-with-form-modal').magnificPopup({
+		type : 'inline',
+		fixedContentPos : false,
+		fixedBgPos : true,
+		overflowY : 'auto',
+		// closeBtnInside : true,
+		// showCloseBtn: false,
+		// enableEscapeKey: false,
+		modal : true,
+		midClick : true,
+		preloader : false,
+		removalDelay : 300,
+		mainClass : 'my-mfp-zoom-in'
+	});
+	$(document).on('click', '.popup-modal-dismiss', function() {
+		$.magnificPopup.close();
+	});
+	/*
+	 * $("a[id=put-pizza-title]").click( function() { var pizzaTitle =
+	 * $(this).find("span[class=name]") .text();
+	 * $("span[id=pizza-popup-title]").replaceWith( "<span
+	 * id=\"pizza-popup-title\"><h2>" + pizzaTitle + "</h2></span>");
+	 * $("input[id=pizzaName]").val(pizzaTitle); });
+	 */
+});
 
 function populateCuisineTypes() {
 	$("span[id=cuisineType]")
@@ -53,9 +50,10 @@ function populateCuisineTypes() {
 							// + " <option value=\"CUBAN\"> CUBAN </option> "
 							// + " <option value=\"FRENCH\"> FRENCH </option> "
 							// + " <option value=\"GREEK\"> GREEK </option> "
-							+ "	<option value=\"INDIAN_SOUTH\">	INDIAN (SOUTH)     </option>              "
-							+ "	<option value=\"INDIAN_NORTH\">	INDIAN (NORTH)     </option>              "
-							+ "	<option value=\"PIZZA\"> PIZZA </option>              "
+							+ "	<option value=\"INDIAN_SOUTH\">	INDIAN (SOUTH) </option>"
+							+ "	<option value=\"INDIAN_NORTH\">	INDIAN (NORTH) </option>"
+							+ "	<option value=\"PIZZA\"> PIZZA </option>"
+							+ " <option value=\"MEXICAN\"> MEXICAN </option>"
 							// + " <option value=\"INDONESIAN\"> INDONESIAN
 							// </option> "
 							// + " <option value=\"ITALIAN\"> ITALIAN </option>
@@ -67,8 +65,7 @@ function populateCuisineTypes() {
 							// </option> "
 							// + " <option value=\"MALAYSIAN\"> MALAYSIAN
 							// </option> "
-							// + " <option value=\"MEXICAN\"> MEXICAN </option>
-							// "
+
 							// + " <option value=\"RUSSIAN\"> RUSSIAN </option>
 							// "
 							// + " <option value=\"SINGAPORE\"> SINGAPORE
@@ -270,7 +267,7 @@ function validateEventForm() {
 function validateCuisine(formId) {
 	var element = $('form[id=' + formId + '] select[id=cuisineType]');
 	if (element.val() != "INDIAN_SOUTH" && element.val() != "INDIAN_NORTH"
-			&& element.val() != "PIZZA") {
+			&& element.val() != "PIZZA" && element.val() != "MEXICAN") {
 		alert("Sorry! " + element.val()
 				+ " restaurants are not registered with us at this moment.");
 		return false;
@@ -326,16 +323,19 @@ function populatePizzaSelectedItems() {
 			+ '</figure>'
 			+ '</div>'
 			+ '<span class="pizza-item-close remove-item" onclick="remove_pizza_item(\''
-			+ div_id + '\');">X</span><div class="right "></div>' + '</div>';
+			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
 	$('form[id=options]').find("input[type=text], textarea").val("");
-	var pizzaDesc = "Size: " + pizzaSize + ", Count: " + nPizzas + ", Sause: "
-			+ sause + ", Cheese: " + cheese + ", Toppings: " + toppings;
+	/*
+	 * var pizzaDesc = "Size: " + pizzaSize + ", Count: " + nPizzas + ", Sause: " +
+	 * sause + ", Cheese: " + cheese + ", Toppings: " + toppings;
+	 */
 	var data = pizzaName + "+" + desc;
 	console.log(data);
 	pizza_menu_items.push(data);
 	// console.log(pizza_menu_items);
 	return false;
 }
+
