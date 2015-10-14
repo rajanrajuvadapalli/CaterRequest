@@ -1,43 +1,40 @@
-$('document').ready(
-		function() {
-			$('.popup-with-form').magnificPopup({
-				type : 'inline',
-				fixedContentPos : false,
-				fixedBgPos : true,
-				overflowY : 'auto',
-				closeBtnInside : true,
-				midClick : true,
-				preloader : false,
-				removalDelay : 300,
-				mainClass : 'my-mfp-zoom-in'
-			});
-			$('.popup-with-form-modal').magnificPopup({
-				type : 'inline',
-				fixedContentPos : false,
-				fixedBgPos : true,
-				overflowY : 'auto',
-				// closeBtnInside : true,
-				// showCloseBtn: false,
-				// enableEscapeKey: false,
-				modal : true,
-				midClick : true,
-				preloader : false,
-				removalDelay : 300,
-				mainClass : 'my-mfp-zoom-in'
-			});
-			$(document).on('click', '.popup-modal-dismiss', function() {
-				$.magnificPopup.close();
-			});
-			/*$("a[id=put-pizza-title]").click(
-					function() {
-						var pizzaTitle = $(this).find("span[class=name]")
-								.text();
-						$("span[id=pizza-popup-title]").replaceWith(
-								"<span id=\"pizza-popup-title\"><h2>"
-										+ pizzaTitle + "</h2></span>");
-						$("input[id=pizzaName]").val(pizzaTitle);
-					});*/
-		});
+$('document').ready(function() {
+	$('.popup-with-form').magnificPopup({
+		type : 'inline',
+		fixedContentPos : false,
+		fixedBgPos : true,
+		overflowY : 'auto',
+		closeBtnInside : true,
+		midClick : true,
+		preloader : false,
+		removalDelay : 300,
+		mainClass : 'my-mfp-zoom-in'
+	});
+	$('.popup-with-form-modal').magnificPopup({
+		type : 'inline',
+		fixedContentPos : false,
+		fixedBgPos : true,
+		overflowY : 'auto',
+		// closeBtnInside : true,
+		// showCloseBtn: false,
+		// enableEscapeKey: false,
+		modal : true,
+		midClick : true,
+		preloader : false,
+		removalDelay : 300,
+		mainClass : 'my-mfp-zoom-in'
+	});
+	$(document).on('click', '.popup-modal-dismiss', function() {
+		$.magnificPopup.close();
+	});
+	/*
+	 * $("a[id=put-pizza-title]").click( function() { var pizzaTitle =
+	 * $(this).find("span[class=name]") .text();
+	 * $("span[id=pizza-popup-title]").replaceWith( "<span
+	 * id=\"pizza-popup-title\"><h2>" + pizzaTitle + "</h2></span>");
+	 * $("input[id=pizzaName]").val(pizzaTitle); });
+	 */
+});
 
 function populateCuisineTypes() {
 	$("span[id=cuisineType]")
@@ -68,7 +65,7 @@ function populateCuisineTypes() {
 							// </option> "
 							// + " <option value=\"MALAYSIAN\"> MALAYSIAN
 							// </option> "
-							 
+
 							// + " <option value=\"RUSSIAN\"> RUSSIAN </option>
 							// "
 							// + " <option value=\"SINGAPORE\"> SINGAPORE
@@ -326,16 +323,63 @@ function populatePizzaSelectedItems() {
 			+ '</figure>'
 			+ '</div>'
 			+ '<span class="pizza-item-close remove-item" onclick="remove_pizza_item(\''
-			+ div_id + '\');">X</span><div class="right "></div>' + '</div>';
+			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
 	$('form[id=options]').find("input[type=text], textarea").val("");
-	var pizzaDesc = "Size: " + pizzaSize + ", Count: " + nPizzas + ", Sause: "
-			+ sause + ", Cheese: " + cheese + ", Toppings: " + toppings;
+	/*
+	 * var pizzaDesc = "Size: " + pizzaSize + ", Count: " + nPizzas + ", Sause: " +
+	 * sause + ", Cheese: " + cheese + ", Toppings: " + toppings;
+	 */
 	var data = pizzaName + "+" + desc;
 	console.log(data);
 	pizza_menu_items.push(data);
 	// console.log(pizza_menu_items);
+	return false;
+}
+
+var mexican_menu_items = [];
+function populateMexicanTacoBarSelectedItems() {
+	var name = "TACO BAR";
+	//If an item is previously selected, remove if before adding the new one.
+	$('.slide').children().each (
+		function(){
+			if($(this).html().indexOf(name) >= 0) {
+				$(this).remove();
+			}
+		}
+	);
+	var id = $('.slide').children().length;
+	var div_id = "m_" + id;
+	var nTacos = $('input[name=tcount]').val();
+	var type = $('input[name=ttype]').val();
+	var servings = $('input[name=tmeat]').val();
+	var sides = $('input[name=tsides]').val();
+	var salsa = $('input[name=tsalsa]').val();
+	var cheese = $('input[name=tcheese]').val();
+	var toppings = $('input[name=ttop]').val();
+	var desc = "Number of tacos: " + nTacos + ", Tortilla type: " + type
+			+ ", Servings: " + servings + ", Sides: " + sides + ", Salsa: "
+			+ salsa + ", Cheese: " + cheese + ", Toppings: " + toppings;
+	var html = '<div class="list-item" id="'
+			+ div_id
+			+ '">'
+			+ '<div class="left">'
+			+ '<h4>'
+			+ name
+			+ '</h4>'
+			+ '<figure>'
+			+ desc
+			+ '</figure>'
+			+ '</div>'
+			+ '<span class="pizza-item-close remove-item" onclick="remove_mexican_item(\''
+			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
+	// console.log(html);
+	$(html).appendTo('.slide');
+
+	var data = name + "+" + desc;
+	mexican_menu_items.push(data);
+	console.log(data);
 	return false;
 }
