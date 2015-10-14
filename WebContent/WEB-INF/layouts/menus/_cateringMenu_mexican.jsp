@@ -96,170 +96,6 @@
 									</div>
 								</c:forEach>
 							</c:forEach>
-
-							<div id="popup_0"
-								class="mfp-hide white-popup-block mexicanPopupOptions col-xs-6 col-sm-4 col-md-6">
-								<form id="popup_0" class="form-horizontal"
-									onsubmit="return populateMexicanTacoBarSelectedItems();">
-									<span id="mexican-popup-title"><h2>Taco Bar</h2></span>
-									<div class="form-group">
-										<label for="" class="col-sm-4 control-label">Tortillas
-											Count<span style="color: red">*</span>:
-										</label>
-										<div class="col-sm-6">
-											<input type="text" size="20" name="tcount" maxlength="20"
-												required="required" pattern="^\d+$" class="form-control">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="" class="col-sm-4 control-label">Tortilla
-											Type<span style="color: red">*</span>:
-										</label>
-										<div class="row">
-											<div class="col-sm-6 col-md-6">
-												<div class="input-group">
-													<input type="radio" name="ttype" required="required"
-														value="Corn"> Corn
-												</div>
-												<div class="input-group">
-													<input type="radio" name="ttype" required="required"
-														value="Flour"> Flour
-												</div>
-												<div class="input-group">
-													<input type="radio" name="ttype" required="required"
-														value="Half Corn & Half Flour"> Half Corn & Half
-													Flour
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="" class="col-sm-4 control-label">Choose
-											servings<span style="color: red">*</span>:
-										</label>
-										<div class="row">
-											<div class="col-sm-6">
-												<div class="input-group">
-													<input type="radio" name="tmeat" required="required"
-														value="Chicken"> Chicken
-												</div>
-												<div class="input-group">
-													<input type="radio" name="tmeat" required="required"
-														value="Steak"> Steak
-												</div>
-												<div class="input-group">
-													<input type="radio" name="tmeat" required="required"
-														value="Grilled Shrimp"> Grilled Shrimp
-												</div>
-												<div class="input-group">
-													<input type="radio" name="tmeat" required="required"
-														value="Grilled Mahi Mahi"> Grilled Mahi Mahi
-												</div>
-												<div class="input-group">
-													<input type="radio" name="tmeat" required="required"
-														value="Grilled Salmon"> Grilled Salmon
-												</div>
-												<div class="input-group">
-													<input type="radio" name="tmeat" required="required"
-														value="Grilled Tilapia"> Grilled Tilapia
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="" class="col-sm-4 control-label">Choose
-											sides<span style="color: red">*</span>:
-										</label>
-										<div class="row">
-											<div class="col-sm-6">
-												<div class="input-group">
-													<input type="radio" name="tsides" required="required"
-														value="Black Beans"> Black Beans
-												</div>
-												<div class="input-group">
-													<input type="radio" name="tsides" required="required"
-														value="Citrus rice"> Citrus rice
-												</div>
-												<div class="input-group">
-													<input type="radio" name="tsides" required="required"
-														value="Mexican rice"> Mexican rice
-												</div>
-												<div class="input-group">
-													<input type="radio" name="tsides" required="required"
-														value="Pinto Beans"> Pinto Beans
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="" class="col-sm-4 control-label">Choose
-											salsa<span style="color: red">*</span>:
-										</label>
-										<div class="row">
-											<div class="col-sm-6">
-												<div class="input-group">
-													<input type="radio" name="tsalsa" required="required"
-														value="Mild salsa"> Mild salsa
-												</div>
-												<div class="input-group">
-													<input type="radio" name="tsalsa" required="required"
-														value="Chipotle Salsa"> Chipotle Salsa
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="" class="col-sm-4 control-label">Choose
-											Cheese<span style="color: red">*</span>:
-										</label>
-										<div class="row">
-											<div class="col-sm-6">
-												<div class="input-group">
-													<input type="radio" name="tcheese" required="required"
-														value="Light"> Light
-												</div>
-												<div class="input-group">
-													<input type="radio" name="tcheese" required="required"
-														value="Regular"> Regular
-												</div>
-												<div class="input-group">
-													<input type="radio" name="tcheese" required="required"
-														value="No cheese"> No cheese
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="" class="col-sm-4 control-label">Toppings<span
-											style="color: red">*</span>:
-										</label>
-										<div class="row">
-											<div class="col-sm-6">
-												<div class="input-group">
-													<input type="radio" name="ttop" required="required"
-														value="Lettuce"> Lettuce
-												</div>
-												<div class="input-group">
-													<input type="radio" name="ttop" required="required"
-														value="Sour Cream"> Sour Cream
-												</div>
-												<div class="input-group">
-													<input type="radio" name="ttop" required="required"
-														value="Guacamole"> Guacamole
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label class="col-sm-4 control-label"></label>
-										<div class="col-sm-2">
-											<button type="submit"
-												class="btn btn-default popup-modal-dismiss">Add</button>
-										</div>
-									</div>
-								</form>
-							</div>
 						</div>
 						<!--/.row-->
 					</section>
@@ -334,6 +170,168 @@
 	<!-- end Page Content-->
 </div>
 <!-- end Page Canvas-->
+
+<div id="popup_0"
+	class="mfp-hide white-popup-block mexicanPopupOptions col-xs-6 col-sm-4 col-md-6">
+	<form id="popup_0" class="form-horizontal"
+		onsubmit="return populateMexicanTacoBarSelectedItems();">
+		<span id="mexican-popup-title"><h2>Taco Bar</h2></span>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Tortillas Count<span
+				style="color: red">*</span>:
+			</label>
+			<div class="col-sm-6">
+				<input type="text" size="20" name="tcount" maxlength="20"
+					required="required" pattern="^\d+$" class="form-control">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Tortilla Type<span
+				style="color: red">*</span>:
+			</label>
+			<div class="row">
+				<div class="col-sm-6 col-md-6">
+					<div class="input-group">
+						<input type="radio" name="ttype" required="required" value="Corn">
+						Corn
+					</div>
+					<div class="input-group">
+						<input type="radio" name="ttype" required="required" value="Flour">
+						Flour
+					</div>
+					<div class="input-group">
+						<input type="radio" name="ttype" required="required"
+							value="Half Corn & Half Flour"> Half Corn & Half Flour
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Choose servings<span
+				style="color: red">*</span>:
+			</label>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="input-group">
+						<input type="radio" name="tmeat" required="required"
+							value="Chicken"> Chicken
+					</div>
+					<div class="input-group">
+						<input type="radio" name="tmeat" required="required" value="Steak">
+						Steak
+					</div>
+					<div class="input-group">
+						<input type="radio" name="tmeat" required="required"
+							value="Grilled Shrimp"> Grilled Shrimp
+					</div>
+					<div class="input-group">
+						<input type="radio" name="tmeat" required="required"
+							value="Grilled Mahi Mahi"> Grilled Mahi Mahi
+					</div>
+					<div class="input-group">
+						<input type="radio" name="tmeat" required="required"
+							value="Grilled Salmon"> Grilled Salmon
+					</div>
+					<div class="input-group">
+						<input type="radio" name="tmeat" required="required"
+							value="Grilled Tilapia"> Grilled Tilapia
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Choose sides<span
+				style="color: red">*</span>:
+			</label>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="input-group">
+						<input type="radio" name="tsides" required="required"
+							value="Black Beans"> Black Beans
+					</div>
+					<div class="input-group">
+						<input type="radio" name="tsides" required="required"
+							value="Citrus rice"> Citrus rice
+					</div>
+					<div class="input-group">
+						<input type="radio" name="tsides" required="required"
+							value="Mexican rice"> Mexican rice
+					</div>
+					<div class="input-group">
+						<input type="radio" name="tsides" required="required"
+							value="Pinto Beans"> Pinto Beans
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Choose salsa<span
+				style="color: red">*</span>:
+			</label>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="input-group">
+						<input type="radio" name="tsalsa" required="required"
+							value="Mild salsa"> Mild salsa
+					</div>
+					<div class="input-group">
+						<input type="radio" name="tsalsa" required="required"
+							value="Chipotle Salsa"> Chipotle Salsa
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Choose Cheese<span
+				style="color: red">*</span>:
+			</label>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="input-group">
+						<input type="radio" name="tcheese" required="required"
+							value="Light"> Light
+					</div>
+					<div class="input-group">
+						<input type="radio" name="tcheese" required="required"
+							value="Regular"> Regular
+					</div>
+					<div class="input-group">
+						<input type="radio" name="tcheese" required="required"
+							value="No cheese"> No cheese
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Toppings<span
+				style="color: red">*</span>:
+			</label>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="input-group">
+						<input type="radio" name="ttop" required="required"
+							value="Lettuce"> Lettuce
+					</div>
+					<div class="input-group">
+						<input type="radio" name="ttop" required="required"
+							value="Sour Cream"> Sour Cream
+					</div>
+					<div class="input-group">
+						<input type="radio" name="ttop" required="required"
+							value="Guacamole"> Guacamole
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-4 control-label"></label>
+			<div class="col-sm-2">
+				<button type="submit" class="btn btn-default popup-modal-dismiss">Add</button>
+			</div>
+		</div>
+	</form>
+</div>
 
 <script>
 	$(window).load(function() {
