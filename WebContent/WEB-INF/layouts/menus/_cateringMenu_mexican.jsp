@@ -4,25 +4,25 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script>
-	function remove_pizza_item(div_id) {
+	function remove_mexican_item(div_id) {
 		var divToRemove = $("div[id=" + div_id + "]");
-		var pizzaName = divToRemove.children().children().prev().text();
+		var name = divToRemove.children().children().prev().text();
 		var desc = divToRemove.children().children().next().text();
-		var data = pizzaName + "+" + desc;
+		var data = name + "+" + desc;
 		console.log("Removing " + data);
-		pizza_menu_items.splice($.inArray(data, pizza_menu_items), 1);
+		mexican_menu_items.splice($.inArray(data, mexican_menu_items), 1);
 		divToRemove.remove();
 	}
 
-	function pizza_menu_submit() {
-		if (pizza_menu_items.length == 0) {
-			alert("Please select at least 1 pizza to proceed.");
+	function mexican_menu_submit() {
+		if (mexican_menu_items.length == 0) {
+			alert("Please select at least 1 item to proceed.");
 			return false;
 		}
-		console.log(pizza_menu_items);
+		console.log(mexican_menu_items);
 		//console.log(JSON.stringify(pizza_menu_items));
-		$("#pizza-menu-items").val(JSON.stringify(pizza_menu_items));
-		$("#pizzatarget").submit();
+		$("#mexican-menu-items").val(JSON.stringify(mexican_menu_items));
+		$("#mexicantarget").submit();
 	}
 </script>
 
@@ -101,7 +101,7 @@
 							<div id="options_0"
 								class="mfp-hide white-popup-block mexicanPopupOptions col-xs-6 col-sm-4 col-md-6">
 								<form id="options" class="form-horizontal"
-									onsubmit="return populateMexicanSelectedItems();">
+									onsubmit="return populateMexicanTacoBarSelectedItems();">
 									<span id="mexican-popup-title"><h2>Taco Bar</h2></span>
 									<div class="form-group">
 										<label for="" class="col-sm-4 control-label">Tortillas Count<span style="color: red">*</span>:
@@ -197,12 +197,12 @@
 										<div class="row">
 											<div class="col-sm-6">
 												<div class="input-group">
-													<input type="radio" name="pcheese" required="required"
-														value="No"> Mild salsa
+													<input type="radio" name="tsalsa" required="required"
+														value="Mild salsa"> Mild salsa
 												</div>
 												<div class="input-group">
-													<input type="radio" name="pcheese" required="required"
-														value="Regular"> Chipotle Salsa
+													<input type="radio" name="tsalsa" required="required"
+														value="Chipotle Salsa"> Chipotle Salsa
 												</div>
 											</div>
 										</div>
@@ -214,16 +214,16 @@
 										<div class="row">
 											<div class="col-sm-6">
 												<div class="input-group">
-													<input type="radio" name="pcheese" required="required"
-														value="No"> Light
+													<input type="radio" name="tcheese" required="required"
+														value="Light"> Light
 												</div>
 												<div class="input-group">
-													<input type="radio" name="pcheese" required="required"
+													<input type="radio" name="tcheese" required="required"
 														value="Regular"> Regular
 												</div>
 												<div class="input-group">
-													<input type="radio" name="pcheese" required="required"
-														value="Extra cheese"> No cheese
+													<input type="radio" name="tcheese" required="required"
+														value="No cheese"> No cheese
 												</div>
 											</div>
 										</div>
@@ -235,16 +235,16 @@
 										<div class="row">
 											<div class="col-sm-6">
 												<div class="input-group">
-													<input type="radio" name="pcheese" required="required"
-														value="No"> Lettuce
+													<input type="radio" name="ttop" required="required"
+														value="Lettuce"> Lettuce
 												</div>
 												<div class="input-group">
-													<input type="radio" name="pcheese" required="required"
-														value="Regular"> Sour Cream
+													<input type="radio" name="ttop" required="required"
+														value="Sour Cream"> Sour Cream
 												</div>
 												<div class="input-group">
-													<input type="radio" name="pcheese" required="required"
-														value="Extra cheese"> Guacamole
+													<input type="radio" name="ttop" required="required"
+														value="Guacamole"> Guacamole
 												</div>
 											</div>
 										</div>
