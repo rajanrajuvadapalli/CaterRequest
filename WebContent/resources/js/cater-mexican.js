@@ -13,12 +13,12 @@ function populateMexicanTacoBarSelectedItems() {
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=tcount]').val();
-	var type = $('input[name=ttype]').val();
-	var servings = $('input[name=tmeat]').val();
-	var sides = $('input[name=tsides]').val();
-	var salsa = $('input[name=tsalsa]').val();
-	var cheese = $('input[name=tcheese]').val();
-	var toppings = $('input[name=ttop]').val();
+	var type = $('input[name=ttype]:checked').val();
+	var servings = $('input[name=tmeat]:checked').val();
+	var sides = $('input[name=tsides]:checked').val();
+	var salsa = $('input[name=tsalsa]:checked').val();
+	var cheese = $('input[name=tcheese]:checked').val();
+	var toppings = $('input[name=ttop]:checked').val();
 	var desc = "Number of tacos: " + n + ", Tortilla type: " + type
 			+ ", Servings: " + servings + ", Sides: " + sides + ", Salsa: "
 			+ salsa + ", Cheese: " + cheese + ", Toppings: " + toppings;
@@ -57,12 +57,12 @@ function populateMexicanBurritoBarSelectedItems() {
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=bcount]').val();
-	var type = $('input[name=btype]').val();
-	var servings = $('input[name=bmeat]').val();
-	var sides = $('input[name=bsides]').val();
-	var salsa = $('input[name=bsalsa]').val();
-	var cheese = $('input[name=bcheese]').val();
-	var toppings = $('input[name=btop]').val();
+	var type = $('input[name=btype]:checked').val();
+	var servings = $('input[name=bmeat]:checked').val();
+	var sides = $('input[name=bsides]:checked').val();
+	var salsa = $('input[name=bsalsa]:checked').val();
+	var cheese = $('input[name=bcheese]:checked').val();
+	var toppings = $('input[name=btop]:checked').val();
 	var desc = "Number of burritos: " + n + ", Tortilla type: " + type
 			+ ", Servings: " + servings + ", Sides: " + sides + ", Salsa: "
 			+ salsa + ", Cheese: " + cheese + ", Toppings: " + toppings;
@@ -101,11 +101,11 @@ function populateMexicanEnchiladaBarSelectedItems() {
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=ecount]').val();
-	var servings = $('input[name=emeat]').val();
-	var sides = $('input[name=esides]').val();
-	var salsa = $('input[name=esalsa]').val();
-	var cheese = $('input[name=echeese]').val();
-	var toppings = $('input[name=etop]').val();
+	var servings = $('input[name=emeat]:checked').val();
+	var sides = $('input[name=esides]:checked').val();
+	var salsa = $('input[name=esalsa]:checked').val();
+	var cheese = $('input[name=echeese]:checked').val();
+	var toppings = $('input[name=etop]:checked').val();
 	var desc = "Number of enchiladas: " + n 
 			+ ", Servings: " + servings + ", Sides: " + sides + ", Salsa: "
 			+ salsa + ", Cheese: " + cheese + ", Toppings: " + toppings;
@@ -144,11 +144,11 @@ function populateMexicanFajithaBarSelectedItems() {
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=fcount]').val();
-	var servings = $('input[name=fmeat]').val();
-	var sides = $('input[name=fsides]').val();
-	var salsa = $('input[name=fsalsa]').val();
-	var cheese = $('input[name=fcheese]').val();
-	var toppings = $('input[name=ftop]').val();
+	var servings = $('input[name=fmeat]:checked').val();
+	var sides = $('input[name=fsides]:checked').val();
+	var salsa = $('input[name=fsalsa]:checked').val();
+	var cheese = $('input[name=fcheese]:checked').val();
+	var toppings = $('input[name=ftop]:checked').val();
 	var desc = "Number of fajitas: " + n 
 			+ ", Servings: " + servings + ", Sides: " + sides + ", Salsa: "
 			+ salsa + ", Cheese: " + cheese + ", Toppings: " + toppings;
@@ -187,13 +187,13 @@ function populateMexicanSaladBarSelectedItems() {
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=scount]').val();
-	var mainserving = $('input[name=smain]').val();
-	var servings = $('input[name=smeat]').val();
-	var sides = $('input[name=ssides]').val();
-	var salsa = $('input[name=ssalsa]').val();
-	var cheese = $('input[name=scheese]').val();
-	var toppings = $('input[name=stop]').val();
-	var dressing = $('input[name=sdress]').val();
+	var mainserving = $('input[name=smain]:checked').val();
+	var servings = $('input[name=smeat]:checked').val();
+	var sides = $('input[name=ssides]:checked').val();
+	var salsa = $('input[name=ssalsa]:checked').val();
+	var cheese = $('input[name=scheese]:checked').val();
+	var toppings = $('input[name=stop]:checked').val();
+	var dressing = $('input[name=sdress]:checked').val();
 	var desc = "Serving count: " + n + ", Main serving: " + mainserving
 			+ ", Servings: " + servings + ", Sides: " + sides + ", Salsa: "
 			+ salsa + ", Cheese: " + cheese + ", Toppings: " + toppings+ ", Dressing: " + dressing;
@@ -232,7 +232,7 @@ function populateMexicanChipsSelectedItems() {
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=ccount]').val();
-	var salsa = $('input[name=csalsa]').val();
+	var salsa = $('input[name=csalsa]:checked').val();
 	var desc = "Serving Count: " + n + ", Salsa: "
 			+ salsa;
 	var html = '<div class="list-item" id="'
