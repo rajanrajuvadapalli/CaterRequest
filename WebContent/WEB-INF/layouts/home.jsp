@@ -98,8 +98,7 @@
 		<section class="block">
 			<div class="container">
 				<header>
-					<h2>Our services are currently limited to indian restaurants
-						in the following cities</h2>
+					<h2>Our services are currently limited to the following cities</h2>
 				</header>
 
 				<div class="row">
