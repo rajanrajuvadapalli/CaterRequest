@@ -1,5 +1,6 @@
 package com.cater.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +16,7 @@ import com.cater.dao.QuoteDAO;
 import com.cater.email.EmailHelper;
 import com.cater.model.Address;
 import com.cater.model.Customer;
+import com.cater.model.CustomerSearch;
 import com.cater.model.Event;
 import com.cater.model.Menu;
 import com.cater.model.Quote;
@@ -36,6 +38,7 @@ public class CustomerService {
 	private EmailHelper emailHelper;
 	@Autowired
 	private SMSHelper smsHelper;
+	
 
 	public List <Customer> fetchAllCustomers() {
 		return customerDAO.fetchAllCustomers();
@@ -105,4 +108,11 @@ public class CustomerService {
 	public Map <Integer, String> sparseDownloadMyEvents(Integer customerID) {
 		return customerDAO.sparseDownloadMyEvents(customerID);
 	}
-}
+
+	public List<CustomerSearch> searchCustomerByName(String customerName){
+	   return customerDAO.getCustomerInfo(customerName);	
+	}
+	public List<CustomerSearch> searchCustomerByDateRange( Date fromDate, Date toDate){
+		   return customerDAO.getCustomerInfoByDateRange(fromDate, toDate );	
+		}
+	}
