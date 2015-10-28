@@ -1247,7 +1247,6 @@
 						<input type="radio" name="ycmeat" required="required"
 							value="No Egg"> No Egg
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -1281,7 +1280,7 @@
 		</div>
 	</form>
 </div>
-</div>
+
 <script>
 	$(window).load(function() {
 		var rtl = false; // Use RTL
