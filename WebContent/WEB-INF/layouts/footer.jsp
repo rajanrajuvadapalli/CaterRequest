@@ -36,9 +36,10 @@
 					<ul class="menu">
 						<li><a href="${pageContext.request.contextPath}/contactUs">Contact
 								Us</a></li>
-						<li><a href="#">Privacy</a></li>
-						<li><a href="#">Terms of Service</a></li>
-						<li><a href="#">FAQs</a></li>
+						<li><a href="${pageContext.request.contextPath}/privacy">Privacy</a></li>
+						<li><a href="${pageContext.request.contextPath}/tos">Terms
+								of Service</a></li>
+						<li><a href="${pageContext.request.contextPath}/faq">FAQs</a></li>
 					</ul>
 				</div>
 				<!-- <div class="menu-container center">
