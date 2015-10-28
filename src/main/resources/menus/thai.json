@@ -1,0 +1,125 @@
+{
+    "cuisine": "THAI",
+    "categories": [
+        {
+            "code": "C1",
+            "name": "APPETIZERS",
+            "items": [
+                {
+                    "code": "C1_1",
+                    "name": "Vegetable Spring Roll",
+                    "description": "Stuffed with cabbage, carrots, celery, and grass noodles; served with plum sauce.",
+                    "isSelected": false
+                },
+                {
+                    "code": "C1_2",
+                    "name": "Chicken Satay",
+                    "description": "chicken breast marinated with Thai herbs and spices on sticks; served with peanut sauce and cucumber salad.",
+                    "isSelected": false
+                },
+                {
+                    "code": "C1_3",
+                    "name": "Fried Calamari",
+                    "description": "Sliced fresh calamari dipped in batter sweet garlic plum sauce.",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "code": "C2",
+            "name": "SOUP & SALAD",
+            "items": [
+                {
+                    "code": "C2_1",
+                    "name": "Tom Yum Soup",
+                    "description": "Spicy and sour soup with choice of meat, mushrooms, fresh lime juice, lemon grass, kaffir lime leaves, cilantro and chili paste.",
+                    "isSelected": false
+                },
+                {
+                    "code": "C2_2",
+                    "name": "Tom Kha Soup",
+                    "description": "Coconut milk soup with choice of meat, mushrooms, fresh lime juice, lemon grass, kaffir lime leaves, cilantro and chili paste.",
+                    "isSelected": false
+                },
+                {
+                    "code": "C2_3",
+                    "name": "Green Pappaya Salad",
+                    "description": "Spicy salad made from shredded unripe papayae, choice of meat and other veggies.",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "code": "C3",
+            "name": "NOODLES",
+            "items": [
+                {
+                    "code": "C3_1",
+                    "name": "Pad Thai",
+                    "description": "Popular noodle dish; pan stir fried noodles with bean sprouts, onion and ground peanuts.",
+                    "isSelected": false
+                },
+                {
+                    "code": "C3_2",
+                    "name": "Drunken Noodles",
+                    "description": "Wide rice noodles with choices of meat; wok fried garlic, chili cabbage, tomatoes, carrots and basil leaves.",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "code": "C4",
+            "name": "FRIED RICE",
+            "items": [
+                {
+                    "code": "C4_1",
+                    "name": "Thai Fried Rice",
+                    "description": "Fried rice with choice of meat, garlic, chili bamboo shoots, bell pepper.",
+                    "isSelected": false
+                },
+                {
+                    "code": "C4_2",
+                    "name": "Pineapple Fried Rice",
+                    "description": "Exotic fried rice with choice of meat, egg, tomatoes, onion, cashew nuts and pineapple.",
+                    "isSelected": false
+                },
+                {
+                    "code": "C4_3",
+                    "name": "Basil Fried Rice",
+                    "description": "Fried rice with choice of meat, garlic, chili bamboo shoots, bell pepper and Thai basil.",
+                    "isSelected": false
+                }
+            ]
+        },
+        {
+            "code": "C5",
+            "name": "CURRY",
+            "items": [
+                {
+                    "code": "C5_1",
+                    "name": "Red Curry",
+                    "description": "Choice of meat simmered in red curry paste, coconut milk, bamboo shoots, bell pepper and Thai basil leaves.",
+                    "isSelected": false
+                },
+                {
+                    "code": "C5_2",
+                    "name": "Green Curry",
+                    "description": "Choice of meat, simmered in green chili curry paste, coconut milk, bell pepper and basil.",
+                    "isSelected": false
+                },
+                {
+                    "code": "C5_3",
+                    "name": "Yellow Curry",
+                    "description": "Choice of meat, simmered in yellow curry paste, coconut milk, potatoes and carrots.",
+                    "isSelected": false
+                },
+                {
+                    "code": "C5_4",
+                    "name": "Panang",
+                    "description": "Choice of meat simmered in thick red curry paste, coconut milk, bell pepper and lime leaves.",
+                    "isSelected": false
+                }
+            ]
+        }
+    ]
+}
