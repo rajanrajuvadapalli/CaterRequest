@@ -17,10 +17,13 @@
 	<!--Page Content-->
 	<div id="page-content">
 		<!--Hero Image-->
-		<section class="hero-image search-filter-middle height-500">
+		<section class="hero-image search-filter-middle height-750">
 			<div class="inner">
 				<div class="container">
-					<h1>Order food for your party in just one click!</h1>
+					<h1>Smart way to order food for your event!</h1>
+				</div>
+				<div class="container">
+					<h1>Request, Compare and Confirm Quote.</h1>
 				</div>
 				<form class="form-horizontal" method="GET"
 					id="customer-register-form"
