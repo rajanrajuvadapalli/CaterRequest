@@ -2,6 +2,7 @@ package com.cater.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -105,6 +106,15 @@ public class RestaurantService {
 			MultipartFile multipartFile) {
 		saveRestaurantProfilePic(restaurant.getId(), restaurant.getName(),
 				multipartFile);
+	}
+	
+	public List searchForRestaurantsByName(String name){
+		
+		return restaurantDAO.searchRestaurantsByName(name);
+	}
+   public List searchForRestaurantsByDateRange(Date fromDate, Date toDate){
+		
+		return restaurantDAO.searchRestaurantsByDateRange(fromDate, toDate);
 	}
 
 	public void saveRestaurantProfilePic(Integer restaurantID,
