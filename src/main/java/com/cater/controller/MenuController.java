@@ -180,6 +180,20 @@ public class MenuController {
 						}
 					}
 				}
+				else if ("THAI".equalsIgnoreCase(menu.getCuisine())) {
+					Map <String, String> thai_items = Maps.newLinkedHashMap();
+					modelMap.put("thai_items", thai_items);
+					for (String item : previouslySelectedMenuItemCodes) {
+						if (StringUtils.isNotBlank(item)) {
+							String description = StringUtils.replace(
+									StringUtils.substringAfter(item, "+"), "+",
+									" ");
+							String thaiName = StringUtils.substringBefore(item,
+									"+");
+							thai_items.put(thaiName, description);
+						}
+					}
+				}
 				else {
 					for (String previouslySelectedItemCode : previouslySelectedMenuItemCodes) {
 						for (MenuCategory cat : menu.getCategories()) {
@@ -204,6 +218,9 @@ public class MenuController {
 		}
 		if ("MEXICAN".equalsIgnoreCase(cuisine)) {
 			return "menus/t__cateringMenu_mexican";
+		}
+		if ("THAI".equalsIgnoreCase(cuisine)) {
+			return "menus/t__cateringMenu_thai";
 		}
 		return "menus/t__cateringMenu";
 	}
@@ -241,6 +258,7 @@ public class MenuController {
 			@RequestParam(value = "menu_item_codes", required = false) String itemCodesJson,
 			@RequestParam(value = "pizza_menu_items", required = false) String pizzaItemsJson,
 			@RequestParam(value = "mexican_menu_items", required = false) String mexicanItemsJson,
+			@RequestParam(value = "thai_menu_items", required = false) String thaiItemsJson,
 			@RequestParam(value = "cuisineType", required = true) String cuisine,
 			@RequestParam(value = "comments") String comments) {
 		User user = (User) httpSession.getAttribute("user");
@@ -274,6 +292,15 @@ public class MenuController {
 						mexicanItemsJson, new TypeReference <List <String>>() {
 						});
 				for (String selectedItemCode : mexicanItems) {
+					stringBuilder.append(selectedItemCode).append(
+							MENU_DELIMITER);
+				}
+			}
+			else if (thaiItemsJson != null) {
+				List <String> thaiItems = new ObjectMapper().readValue(
+						thaiItemsJson, new TypeReference <List <String>>() {
+						});
+				for (String selectedItemCode : thaiItems) {
 					stringBuilder.append(selectedItemCode).append(
 							MENU_DELIMITER);
 				}
@@ -424,6 +451,20 @@ public class MenuController {
 							String mexicanName = StringUtils.substringBefore(
 									item, "+");
 							mexican_items.put(mexicanName, description);
+						}
+					}
+				}
+				else if ("THAI".equalsIgnoreCase(menu.getCuisine())) {
+					Map <String, String> thai_items = Maps.newLinkedHashMap();
+					modelMap.put("thai_items", thai_items);
+					for (String item : previouslySelectedMenuItemCodes) {
+						if (StringUtils.isNotBlank(item)) {
+							String description = StringUtils.replace(
+									StringUtils.substringAfter(item, "+"), "+",
+									" ");
+							String thaiName = StringUtils.substringBefore(item,
+									"+");
+							thai_items.put(thaiName, description);
 						}
 					}
 				}
