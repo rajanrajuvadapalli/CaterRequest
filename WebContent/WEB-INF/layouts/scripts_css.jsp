@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/cummon.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/user.style.css" type="text/css">
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/assets/img/logo.ico">
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/assets/img/favicon.ico">
 	
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/style.css" type="text/css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/jquery.datetimepicker.css" type="text/css" />
