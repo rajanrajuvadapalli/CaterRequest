@@ -54,6 +54,30 @@
 </div>
 
 <div class="container container-fluid">
+	<div>
+		<h2>Are you a Restaurant Owner?</h2>
+		<p>Improve your business in Catering space with minimal to zero
+			efforts. Cater Request handles the tiresome process of finding the
+			customers and gathering all the information required from customer
+			for their catering order. All you have to do is login into Cater
+			Request and give price quote for the customer's request.</p>
+
+		<h2>How it works:</h2>
+		<ol>
+			<li>Customer requests for price quote.</li>
+			<li>Restaurant responds to customer's request.</li>
+			<li>Customer review the request and makes payment to confirm the
+				order.</li>
+		</ol>
+
+		<h2>Why choose Cater Request:</h2>
+		<ol>
+			<li>Saves Time We provide more exposure to your business.</li>
+			<li>No more confusion over the order.</li>
+		</ol>
+	</div>
+	<br />
+	<br />
 	<form class="form-horizontal" method="POST"
 		id="restaurant-register-form"
 		action="${pageContext.request.contextPath}/register"
@@ -256,18 +280,17 @@
 					<c:forEach items="${menu.categories}" var="category">
 						<c:if test="${not empty category.items}">
 							<div class="col-sm-12">
-									<b>${category.name}</b>
-									<ol>
-										<c:forEach items="${category.items}" var="item">
-											<li>${item.name}</li>
-										</c:forEach>
-									</ol>
+								<b>${category.name}</b>
+								<ol>
+									<c:forEach items="${category.items}" var="item">
+										<li>${item.name}</li>
+									</c:forEach>
+								</ol>
 							</div>
 						</c:if>
 					</c:forEach>
 					<div class="col-sm-6">
-						<br />
-						<br /> <input required type="checkbox" name="menuconsent"
+						<br /> <br /> <input required type="checkbox" name="menuconsent"
 							value="yes"> I accept the menu. <br /> <br />
 						<button type="submit" class="btn btn-default"
 							name="register-button">Register</button>
