@@ -4,70 +4,101 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<div class="col-sm-offset-2 page-header">
+<div class="col-sm-10 col-sm-offset-1 page-header">
 	<h1>Admin Dashboard</h1>
-	
-	
 </div>
 
+<div class="row">
+	<div class="col-sm-5 col-sm-offset-1">
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h3 class="panel-title">Customer Search</h3>
+			</div>
+			<div class="panel-body" align="left">
+				<form class="form-horizontal" id="start-new-search-form"
+					action="${pageContext.request.contextPath}/admin/customerSearch"
+					method="GET">
+					<div class="form-group">
+						<label for="name" class="col-sm-3 control-label">Username
+							:</label>
+						<div class="col-sm-4" align="left">
+							<input type="text" name="id" id="id" class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-4 col-sm-offset-3">- OR -</div>
+					</div>
+					<div class="form-group">
+						<label for="name" class="col-sm-3 control-label">From Date
+							:</label>
+						<div class="col-sm-4" align="left">
+							<input type="text" name="fromDate" id="fromDate"
+								class="form-control">
+						</div>
+					</div>
 
-
-	 <div class="col-md-10 col-sm-10 col-sm-offset-1">
-         <form class="Panel"id="start-new-search-form"
-	       action="${pageContext.request.contextPath}/admin/customerSearch" method="GET">
-	       <div class="col-md-10 col-sm-10 col-sm-offset-1">
-           <div class="panel panel-success">
-	           <div class="panel-heading">
-		         	<h3 class="panel-title">Customer Search</h3>
-	           </div>
-	          <div class="col-md-10 col-sm-10 col-sm-offset-1">
-	           <label for="name" class="col-sm-2 control-label">username &nbsp;:</label>
-	             <input type="text" name="id" id="id" class="form-control"> 
-	           <label for="name" class="col-sm-2 control-label">From Date &nbsp;:</label>
-	            <input type="text"	name="fromDate" id="fromDate"  class="form-control">
-	           <label for="name" class="col-sm-2 control-label">To Date &nbsp;:</label>
-	             <input type="text" name="toDate" id="toDate" class="form-control"> 
-	         <br /> <span class="input-group-btn">
-		        <button type="submit" class="btn btn-default">
-			Search 
-		</button>
-	</span>
+					<div class="form-group">
+						<label for="name" class="col-sm-3 control-label">To Date :</label>
+						<div class="col-sm-4" align="left">
+							<input type="text" name="toDate" id="toDate" class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-4 col-sm-offset-3" align="left">
+							<button type="submit" class="btn btn-default">Search</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
-	</div>
-	</div>
-       </form>
 </div>
 
-<br>
-
-	 <div class="col-md-10 col-sm-10 col-sm-offset-1">
-         <form class="Panel"id="start-new-search-form"
-	       action="${pageContext.request.contextPath}/admin/restaurantSearch" method="GET">
-	       <div class="col-md-10 col-sm-10 col-sm-offset-1">
-             <div class="panel panel-info">
-	           <div class="panel-heading">
-		         	<h3 class="panel-title">Restaurant Search</h3>
-	           </div>
-	          <div class="col-md-10 col-sm-10 col-sm-offset-1">
-	           <label for="name" class="col-sm-2 control-label">restaurant id &nbsp;:</label>
-	             <input type="text" name="id" id="id" class="form-control"> 
-	           <label for="name" class="col-sm-2 control-label">From Date &nbsp;:</label>
-	            <input type="text"	name="fromDate" id="fromDate"  class="form-control">
-	           <label for="name" class="col-sm-2 control-label">To Date &nbsp;:</label>
-	             <input type="text" name="toDate" id="toDate" class="form-control"> 
-	         <br /> <span class="input-group-btn">
-		        <button type="submit" class="btn btn-default">
-			Search 
-		</button>
-	</span>
+<div class="row">
+	<div class="col-sm-5 col-sm-offset-1">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h3 class="panel-title">Restaurant Search</h3>
+			</div>
+			<div class="panel-body" align="left">
+				<form class="form-horizontal" id="start-new-search-form"
+					action="${pageContext.request.contextPath}/admin/restaurantSearch"
+					method="GET">
+					<div class="form-group">
+						<label for="name" class="col-sm-3 control-label">Restaurant
+							id :</label>
+						<div class="col-sm-4" align="left">
+							<input type="text" name="id" id="id" class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-4 col-sm-offset-3">- OR -</div>
+					</div>
+					<div class="form-group">
+						<label for="name" class="col-sm-3 control-label">From Date
+							:</label>
+						<div class="col-sm-4" align="left">
+							<input type="text" name="fromDate" id="fromDate"
+								class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="name" class="col-sm-3 control-label">To Date :</label>
+						<div class="col-sm-4" align="left">
+							<input type="text" name="toDate" id="toDate" class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-4 col-sm-offset-3" align="left">
+							<button type="submit" class="btn btn-default">Search</button>
+						</div>
+					</div>
+					</span>
+				</form>
+			</div>
+		</div>
 	</div>
-	</div>
-	</div>
-       </form>
 </div>
-
-
-
 
 <script>
 	$('document').ready(function() {
