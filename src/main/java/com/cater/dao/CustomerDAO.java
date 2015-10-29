@@ -1,6 +1,5 @@
 package com.cater.dao;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -21,9 +20,7 @@ import org.springframework.stereotype.Component;
 import com.cater.model.Customer;
 import com.cater.model.CustomerSearch;
 import com.cater.model.Event;
-import com.cater.model.Menu;
 import com.cater.model.Quote;
-import com.cater.model.Restaurant;
 import com.google.common.collect.Maps;
 
 /**
@@ -135,8 +132,6 @@ public class CustomerDAO extends DataAccessObject {
 			return 0;
 		}
 	}
-	
-	
 
 	@SuppressWarnings("unchecked")
 	public Map <Integer, String> sparseDownloadMyEvents(Integer customerID) {
@@ -185,104 +180,117 @@ public class CustomerDAO extends DataAccessObject {
 		private Integer id;
 		private String name;
 	}
-/*	public static class CustomerSearch {
-		private Integer userId;
-		public Integer getUserId() {
-			return userId;
-		}
-		public void setUserId(Integer userId) {
-			this.userId = userId;
-		}
-		private String  customerName;
-		private String  contactNumber;
-		private boolean smsIndicator;
-		private String eventName;
-		
-		
-	}*/
-	
+
+	/*	public static class CustomerSearch {
+			private Integer userId;
+			public Integer getUserId() {
+				return userId;
+			}
+			public void setUserId(Integer userId) {
+				this.userId = userId;
+			}
+			private String  customerName;
+			private String  contactNumber;
+			private boolean smsIndicator;
+			private String eventName;
+			
+			
+		}*/
 	/* for customer search*/
 	@SuppressWarnings("unchecked")
-	public List getCustomerInfo(String customerName){
-		
-	
-		logger.debug("Finding number of customers.");
-		
+	public List <CustomerSearch> getCustomerInfo(String customerName) {
+		logger.debug("Getting customer info by name.");
 		Session session = getSessionFactory().getCurrentSession();
-	
-		Criteria c = session.createCriteria(Quote.class,"q")
+		Criteria c = session
+				.createCriteria(Quote.class, "q")
 				.createAlias("q.restaurant", "r")
-				.createAlias("q.menu","m")
-				.createAlias("m.event","e")
+				.createAlias("q.menu", "m")
+				.createAlias("m.event", "e")
 				.createAlias("e.location", "l")
-				.createAlias("e.customer","c")
+				.createAlias("e.customer", "c")
 				.createAlias("c.login", "login")
-				.add(Restrictions.eq("login.username",customerName))
+				.add(Restrictions.eq("login.username", customerName))
 				.setProjection(
 						Projections
 								.projectionList()
 								.add(Projections.property("c.id"), "userId")
-								.add(Projections.property("c.name"), "customerName")
-								.add(Projections.property("c.contactNumber"), "contactNumber")
-								.add(Projections.property("c.smsOk"), "smsIndicator")
-								.add(Projections.property("c.contactEmail"), "customerEmail")
-								.add(Projections.property("e.name"), "eventName")
-								.add(Projections.property("r.name"), "restaurantName")
-								.add(Projections.property("l.street1"), "eventStreet1")
-								.add(Projections.property("l.street2"), "eventStreet2")
-								.add(Projections.property("l.city"), "eventCity")
-								.add(Projections.property("l.state"), "eventState")
+								.add(Projections.property("c.name"),
+										"customerName")
+								.add(Projections.property("c.contactNumber"),
+										"contactNumber")
+								.add(Projections.property("c.smsOk"),
+										"smsIndicator")
+								.add(Projections.property("c.contactEmail"),
+										"customerEmail")
+								.add(Projections.property("e.name"),
+										"eventName")
+								.add(Projections.property("r.name"),
+										"restaurantName")
+								.add(Projections.property("l.street1"),
+										"eventStreet1")
+								.add(Projections.property("l.street2"),
+										"eventStreet2")
+								.add(Projections.property("l.city"),
+										"eventCity")
+								.add(Projections.property("l.state"),
+										"eventState")
 								.add(Projections.property("l.zip"), "eventZip")
 								.add(Projections.property("q.price"), "price")
-					       	.add(Projections.property("e.date_time"), "date_time")).
-					       	setResultTransformer(
+								.add(Projections.property("e.date_time"),
+										"date_time"))
+				.setResultTransformer(
 						Transformers.aliasToBean(CustomerSearch.class));
-		List<CustomerSearch>  customerList =c.list();
-	
-			
-			return customerList;
-		
+		List <CustomerSearch> customerList = c.list();
+		return customerList;
 		//return customerList;
 	}
+
 	/* for customer search*/
 	@SuppressWarnings("unchecked")
-	public List getCustomerInfoByDateRange(Date fromDate, Date toDate){
-		
-	
-		logger.debug("Finding number of customers.");
-		
+	public List <CustomerSearch> getCustomerInfoByDateRange(Date fromDate,
+			Date toDate) {
+		logger.debug("Getting customer info by date range.");
 		Session session = getSessionFactory().getCurrentSession();
-	
-		Criteria c = session.createCriteria(Quote.class,"q")
+		Criteria c = session
+				.createCriteria(Quote.class, "q")
 				.createAlias("q.restaurant", "r")
-				.createAlias("q.menu","m")
-				.createAlias("m.event","e")
+				.createAlias("q.menu", "m")
+				.createAlias("m.event", "e")
 				.createAlias("e.location", "l")
-				.createAlias("e.customer","c")
+				.createAlias("e.customer", "c")
 				.createAlias("c.login", "login")
-				.add(Restrictions.between("e.date_time",fromDate, toDate))
+				.add(Restrictions.between("e.date_time", fromDate, toDate))
 				.setProjection(
 						Projections
 								.projectionList()
 								.add(Projections.property("c.id"), "userId")
-								.add(Projections.property("c.name"), "customerName")
-								.add(Projections.property("c.contactNumber"), "contactNumber")
-								.add(Projections.property("c.smsOk"), "smsIndicator")
-								.add(Projections.property("c.contactEmail"), "customerEmail")
-								.add(Projections.property("e.name"), "eventName")
-								.add(Projections.property("r.name"), "restaurantName")
-								.add(Projections.property("l.street1"), "eventStreet1")
-								.add(Projections.property("l.street2"), "eventStreet2")
-								.add(Projections.property("l.city"), "eventCity")
-								.add(Projections.property("l.state"), "eventState")
+								.add(Projections.property("c.name"),
+										"customerName")
+								.add(Projections.property("c.contactNumber"),
+										"contactNumber")
+								.add(Projections.property("c.smsOk"),
+										"smsIndicator")
+								.add(Projections.property("c.contactEmail"),
+										"customerEmail")
+								.add(Projections.property("e.name"),
+										"eventName")
+								.add(Projections.property("r.name"),
+										"restaurantName")
+								.add(Projections.property("l.street1"),
+										"eventStreet1")
+								.add(Projections.property("l.street2"),
+										"eventStreet2")
+								.add(Projections.property("l.city"),
+										"eventCity")
+								.add(Projections.property("l.state"),
+										"eventState")
 								.add(Projections.property("l.zip"), "eventZip")
 								.add(Projections.property("q.price"), "price")
-					       	.add(Projections.property("e.date_time"), "date_time")).
-					       	setResultTransformer(
+								.add(Projections.property("e.date_time"),
+										"date_time"))
+				.setResultTransformer(
 						Transformers.aliasToBean(CustomerSearch.class));
-		List<CustomerSearch>  customerList =c.list();
-	 
+		List <CustomerSearch> customerList = c.list();
 		return customerList;
-		
 	}
 }
