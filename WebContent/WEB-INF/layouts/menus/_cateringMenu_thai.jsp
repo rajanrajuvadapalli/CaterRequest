@@ -348,6 +348,12 @@
 				</div>
 			</div>
 		</div>
+		<div class="form-group">
+			<label class="col-sm-4 control-label"></label>
+			<div class="col-sm-2">
+				<button type="submit" class="btn btn-default popup-modal-dismiss">Add</button>
+			</div>
+		</div>
 	</form>
 </div>
 
