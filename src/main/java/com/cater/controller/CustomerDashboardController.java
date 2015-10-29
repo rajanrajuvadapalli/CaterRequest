@@ -576,7 +576,7 @@ public class CustomerDashboardController {
 				restaurantService.sendNotification(quote, null);
 				customerService.sendNotification(quote);
 				successMessages
-						.add("Congratulations, your Order has been placed!");
+						.add("Congratulations, your order has been placed! Please pay to the restaurant on delivery.");
 			}
 		}
 		return "redirect:/customer/dashboard";
