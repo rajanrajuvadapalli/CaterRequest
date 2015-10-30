@@ -206,34 +206,32 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose servings<span
-				style="color: red">*</span>:
+			<label for="" class="col-sm-4 control-label">Choose servings:
 			</label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="tmeat" required="required"
-							value="Chicken"> Chicken
+						<input type="checkbox" name="tmeat" value="Chicken">
+						Chicken
 					</div>
 					<div class="input-group">
-						<input type="radio" name="tmeat" required="required" value="Steak">
-						Steak
+						<input type="checkbox" name="tmeat" value="Steak"> Steak
 					</div>
 					<div class="input-group">
-						<input type="radio" name="tmeat" required="required"
-							value="Grilled Shrimp"> Grilled Shrimp
+						<input type="checkbox" name="tmeat" value="Grilled Shrimp">
+						Grilled Shrimp
 					</div>
 					<div class="input-group">
-						<input type="radio" name="tmeat" required="required"
-							value="Grilled Mahi Mahi"> Grilled Mahi Mahi
+						<input type="checkbox" name="tmeat" value="Grilled Mahi Mahi">
+						Grilled Mahi Mahi
 					</div>
 					<div class="input-group">
-						<input type="radio" name="tmeat" required="required"
-							value="Grilled Salmon"> Grilled Salmon
+						<input type="checkbox" name="tmeat" value="Grilled Salmon">
+						Grilled Salmon
 					</div>
 					<div class="input-group">
-						<input type="radio" name="tmeat" required="required"
-							value="Grilled Tilapia"> Grilled Tilapia
+						<input type="checkbox" name="tmeat" value="Grilled Tilapia">
+						Grilled Tilapia
 					</div>
 				</div>
 			</div>
@@ -250,15 +248,24 @@
 					</div>
 					<div class="input-group">
 						<input type="radio" name="tsides" required="required"
+							value="Pinto Beans"> Pinto Beans
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Choose rice<span
+				style="color: red">*</span>:
+			</label>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="input-group">
+						<input type="radio" name="trice" required="required"
 							value="Citrus rice"> Citrus rice
 					</div>
 					<div class="input-group">
-						<input type="radio" name="tsides" required="required"
+						<input type="radio" name="trice" required="required"
 							value="Mexican rice"> Mexican rice
-					</div>
-					<div class="input-group">
-						<input type="radio" name="tsides" required="required"
-							value="Pinto Beans"> Pinto Beans
 					</div>
 				</div>
 			</div>
@@ -302,22 +309,20 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Toppings<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Toppings: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="ttop" required="required"
-							value="Lettuce"> Lettuce
+						<input type="checkbox" name="ttop" value="Lettuce">
+						Lettuce
 					</div>
 					<div class="input-group">
-						<input type="radio" name="ttop" required="required"
-							value="Sour Cream"> Sour Cream
+						<input type="checkbox" name="ttop" value="Sour Cream">
+						Sour Cream
 					</div>
 					<div class="input-group">
-						<input type="radio" name="ttop" required="required"
-							value="Guacamole"> Guacamole
+						<input type="checkbox" name="ttop" value="Guacamole">
+						Guacamole
 					</div>
 				</div>
 			</div>
@@ -368,34 +373,32 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose servings<span
-				style="color: red">*</span>:
+			<label for="" class="col-sm-4 control-label">Choose servings:
 			</label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="bmeat" required="required"
-							value="Chicken"> Chicken
+						<input type="checkbox" name="bmeat" value="Chicken">
+						Chicken
 					</div>
 					<div class="input-group">
-						<input type="radio" name="bmeat" required="required" value="Steak">
-						Steak
+						<input type="checkbox" name="bmeat" value="Steak"> Steak
 					</div>
 					<div class="input-group">
-						<input type="radio" name="bmeat" required="required"
-							value="Grilled Shrimp"> Grilled Shrimp
+						<input type="checkbox" name="bmeat" value="Grilled Shrimp">
+						Grilled Shrimp
 					</div>
 					<div class="input-group">
-						<input type="radio" name="bmeat" required="required"
-							value="Grilled Mahi Mahi"> Grilled Mahi Mahi
+						<input type="checkbox" name="bmeat" value="Grilled Mahi Mahi">
+						Grilled Mahi Mahi
 					</div>
 					<div class="input-group">
-						<input type="radio" name="bmeat" required="required"
-							value="Grilled Salmon"> Grilled Salmon
+						<input type="checkbox" name="bmeat" value="Grilled Salmon">
+						Grilled Salmon
 					</div>
 					<div class="input-group">
-						<input type="radio" name="bmeat" required="required"
-							value="Grilled Tilapia"> Grilled Tilapia
+						<input type="checkbox" name="bmeat" value="Grilled Tilapia">
+						Grilled Tilapia
 					</div>
 				</div>
 			</div>
@@ -412,15 +415,24 @@
 					</div>
 					<div class="input-group">
 						<input type="radio" name="bsides" required="required"
+							value="Pinto Beans"> Pinto Beans
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Choose rice<span
+				style="color: red">*</span>:
+			</label>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="input-group">
+						<input type="radio" name="brice" required="required"
 							value="Citrus rice"> Citrus rice
 					</div>
 					<div class="input-group">
-						<input type="radio" name="bsides" required="required"
+						<input type="radio" name="brice" required="required"
 							value="Mexican rice"> Mexican rice
-					</div>
-					<div class="input-group">
-						<input type="radio" name="bsides" required="required"
-							value="Pinto Beans"> Pinto Beans
 					</div>
 				</div>
 			</div>
@@ -464,22 +476,20 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Toppings<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Toppings: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="btop" required="required"
-							value="Lettuce"> Lettuce
+						<input type="checkbox" name="btop" value="Lettuce">
+						Lettuce
 					</div>
 					<div class="input-group">
-						<input type="radio" name="btop" required="required"
-							value="Sour Cream"> Sour Cream
+						<input type="checkbox" name="btop" value="Sour Cream">
+						Sour Cream
 					</div>
 					<div class="input-group">
-						<input type="radio" name="btop" required="required"
-							value="Guacamole"> Guacamole
+						<input type="checkbox" name="btop" value="Guacamole">
+						Guacamole
 					</div>
 				</div>
 			</div>
@@ -509,34 +519,32 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose servings<span
-				style="color: red">*</span>:
+			<label for="" class="col-sm-4 control-label">Choose servings:
 			</label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="emeat" required="required"
-							value="Chicken"> Chicken
+						<input type="checkbox" name="emeat" value="Chicken">
+						Chicken
 					</div>
 					<div class="input-group">
-						<input type="radio" name="emeat" required="required" value="Steak">
-						Steak
+						<input type="checkbox" name="emeat" value="Steak"> Steak
 					</div>
 					<div class="input-group">
-						<input type="radio" name="emeat" required="required"
-							value="Grilled Shrimp"> Grilled Shrimp
+						<input type="checkbox" name="emeat" value="Grilled Shrimp">
+						Grilled Shrimp
 					</div>
 					<div class="input-group">
-						<input type="radio" name="emeat" required="required"
-							value="Grilled Mahi Mahi"> Grilled Mahi Mahi
+						<input type="checkbox" name="emeat" value="Grilled Mahi Mahi">
+						Grilled Mahi Mahi
 					</div>
 					<div class="input-group">
-						<input type="radio" name="emeat" required="required"
-							value="Grilled Salmon"> Grilled Salmon
+						<input type="checkbox" name="emeat" value="Grilled Salmon">
+						Grilled Salmon
 					</div>
 					<div class="input-group">
-						<input type="radio" name="emeat" required="required"
-							value="Grilled Tilapia"> Grilled Tilapia
+						<input type="checkbox" name="emeat" value="Grilled Tilapia">
+						Grilled Tilapia
 					</div>
 				</div>
 			</div>
@@ -553,15 +561,24 @@
 					</div>
 					<div class="input-group">
 						<input type="radio" name="esides" required="required"
+							value="Pinto Beans"> Pinto Beans
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Choose rice<span
+				style="color: red">*</span>:
+			</label>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="input-group">
+						<input type="radio" name="erice" required="required"
 							value="Citrus rice"> Citrus rice
 					</div>
 					<div class="input-group">
-						<input type="radio" name="esides" required="required"
+						<input type="radio" name="erice" required="required"
 							value="Mexican rice"> Mexican rice
-					</div>
-					<div class="input-group">
-						<input type="radio" name="esides" required="required"
-							value="Pinto Beans"> Pinto Beans
 					</div>
 				</div>
 			</div>
@@ -605,22 +622,20 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Toppings<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Toppings: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="etop" required="required"
-							value="Lettuce"> Lettuce
+						<input type="checkbox" name="etop" value="Lettuce">
+						Lettuce
 					</div>
 					<div class="input-group">
-						<input type="radio" name="etop" required="required"
-							value="Sour Cream"> Sour Cream
+						<input type="checkbox" name="etop" value="Sour Cream">
+						Sour Cream
 					</div>
 					<div class="input-group">
-						<input type="radio" name="etop" required="required"
-							value="Guacamole"> Guacamole
+						<input type="checkbox" name="etop" value="Guacamole">
+						Guacamole
 					</div>
 				</div>
 			</div>
@@ -650,34 +665,32 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose servings<span
-				style="color: red">*</span>:
+			<label for="" class="col-sm-4 control-label">Choose servings:
 			</label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="fmeat" required="required"
-							value="Chicken"> Chicken
+						<input type="checkbox" name="fmeat" value="Chicken">
+						Chicken
 					</div>
 					<div class="input-group">
-						<input type="radio" name="fmeat" required="required" value="Steak">
-						Steak
+						<input type="checkbox" name="fmeat" value="Steak"> Steak
 					</div>
 					<div class="input-group">
-						<input type="radio" name="fmeat" required="required"
-							value="Grilled Shrimp"> Grilled Shrimp
+						<input type="checkbox" name="fmeat" value="Grilled Shrimp">
+						Grilled Shrimp
 					</div>
 					<div class="input-group">
-						<input type="radio" name="fmeat" required="required"
-							value="Grilled Mahi Mahi"> Grilled Mahi Mahi
+						<input type="checkbox" name="fmeat" value="Grilled Mahi Mahi">
+						Grilled Mahi Mahi
 					</div>
 					<div class="input-group">
-						<input type="radio" name="fmeat" required="required"
-							value="Grilled Salmon"> Grilled Salmon
+						<input type="checkbox" name="fmeat" value="Grilled Salmon">
+						Grilled Salmon
 					</div>
 					<div class="input-group">
-						<input type="radio" name="fmeat" required="required"
-							value="Grilled Tilapia"> Grilled Tilapia
+						<input type="checkbox" name="fmeat" value="Grilled Tilapia">
+						Grilled Tilapia
 					</div>
 				</div>
 			</div>
@@ -694,15 +707,24 @@
 					</div>
 					<div class="input-group">
 						<input type="radio" name="fsides" required="required"
+							value="Pinto Beans"> Pinto Beans
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Choose rice<span
+				style="color: red">*</span>:
+			</label>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="input-group">
+						<input type="radio" name="frice" required="required"
 							value="Citrus rice"> Citrus rice
 					</div>
 					<div class="input-group">
-						<input type="radio" name="fsides" required="required"
+						<input type="radio" name="frice" required="required"
 							value="Mexican rice"> Mexican rice
-					</div>
-					<div class="input-group">
-						<input type="radio" name="fsides" required="required"
-							value="Pinto Beans"> Pinto Beans
 					</div>
 				</div>
 			</div>
@@ -746,22 +768,20 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Toppings<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Toppings: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="ftop" required="required"
-							value="Lettuce"> Lettuce
+						<input type="checkbox" name="ftop" value="Lettuce">
+						Lettuce
 					</div>
 					<div class="input-group">
-						<input type="radio" name="ftop" required="required"
-							value="Sour Cream"> Sour Cream
+						<input type="checkbox" name="ftop" value="Sour Cream">
+						Sour Cream
 					</div>
 					<div class="input-group">
-						<input type="radio" name="ftop" required="required"
-							value="Guacamole"> Guacamole
+						<input type="checkbox" name="ftop" value="Guacamole">
+						Guacamole
 					</div>
 				</div>
 			</div>
@@ -797,45 +817,43 @@
 			<div class="row">
 				<div class="col-sm-6 col-md-6">
 					<div class="input-group">
-						<input type="radio" name="smain" required="required" value="Romaine Lettuce">
-						Romaine Lettuce
+						<input type="radio" name="smain" required="required"
+							value="Romaine Lettuce"> Romaine Lettuce
 					</div>
 					<div class="input-group">
-						<input type="radio" name="smain" required="required" value="Spring mix">
-						Spring mix
+						<input type="radio" name="smain" required="required"
+							value="Spring mix"> Spring mix
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose servings<span
-				style="color: red">*</span>:
+			<label for="" class="col-sm-4 control-label">Choose servings:
 			</label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="smeat" required="required"
-							value="Chicken"> Chicken
+						<input type="checkbox" name="smeat" value="Chicken">
+						Chicken
 					</div>
 					<div class="input-group">
-						<input type="radio" name="smeat" required="required" value="Steak">
-						Steak
+						<input type="checkbox" name="smeat" value="Steak"> Steak
 					</div>
 					<div class="input-group">
-						<input type="radio" name="smeat" required="required"
-							value="Grilled Shrimp"> Grilled Shrimp
+						<input type="checkbox" name="smeat" value="Grilled Shrimp">
+						Grilled Shrimp
 					</div>
 					<div class="input-group">
-						<input type="radio" name="smeat" required="required"
-							value="Grilled Mahi Mahi"> Grilled Mahi Mahi
+						<input type="checkbox" name="smeat" value="Grilled Mahi Mahi">
+						Grilled Mahi Mahi
 					</div>
 					<div class="input-group">
-						<input type="radio" name="smeat" required="required"
-							value="Grilled Salmon"> Grilled Salmon
+						<input type="checkbox" name="smeat" value="Grilled Salmon">
+						Grilled Salmon
 					</div>
 					<div class="input-group">
-						<input type="radio" name="smeat" required="required"
-							value="Grilled Tilapia"> Grilled Tilapia
+						<input type="checkbox" name="smeat" value="Grilled Tilapia">
+						Grilled Tilapia
 					</div>
 				</div>
 			</div>
@@ -852,15 +870,24 @@
 					</div>
 					<div class="input-group">
 						<input type="radio" name="ssides" required="required"
+							value="Pinto Beans"> Pinto Beans
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Choose rice<span
+				style="color: red">*</span>:
+			</label>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="input-group">
+						<input type="radio" name="srice" required="required"
 							value="Citrus rice"> Citrus rice
 					</div>
 					<div class="input-group">
-						<input type="radio" name="ssides" required="required"
+						<input type="radio" name="srice" required="required"
 							value="Mexican rice"> Mexican rice
-					</div>
-					<div class="input-group">
-						<input type="radio" name="ssides" required="required"
-							value="Pinto Beans"> Pinto Beans
 					</div>
 				</div>
 			</div>
@@ -904,22 +931,20 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Toppings<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Toppings: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="stop" required="required"
-							value="Lettuce"> Lettuce
+						<input type="checkbox" name="stop" value="Lettuce">
+						Lettuce
 					</div>
 					<div class="input-group">
-						<input type="radio" name="stop" required="required"
-							value="Sour Cream"> Sour Cream
+						<input type="checkbox" name="stop" value="Sour Cream">
+						Sour Cream
 					</div>
 					<div class="input-group">
-						<input type="radio" name="stop" required="required"
-							value="Guacamole"> Guacamole
+						<input type="checkbox" name="stop" value="Guacamole">
+						Guacamole
 					</div>
 				</div>
 			</div>
@@ -980,17 +1005,21 @@
 						Mild
 					</div>
 					<div class="input-group">
-						<input type="radio" name="csalsa" required="required" value="Medium">
-						Medium
+						<input type="radio" name="csalsa" required="required"
+							value="Medium"> Medium
 					</div>
 					<div class="input-group">
-						<input type="radio" name="csalsa" required="required"
-							value="Hot"> Hot
+						<input type="radio" name="csalsa" required="required" value="Hot">
+						Hot
 					</div>
-					<div class="input-group">
-						<input type="radio" name="csalsa" required="required"
-							value="Guacamole"> Guacamole
-					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Guacamole: </label>
+			<div class="row">
+				<div class="col-sm-6 col-md-6">
+					<input type="checkbox" name="cguac" value="yes">
 				</div>
 			</div>
 		</div>
