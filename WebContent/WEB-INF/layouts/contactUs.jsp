@@ -47,7 +47,9 @@
 			<div class="panel-heading">
 				<h3 class="panel-title">Head Quarters</h3>
 			</div>
-			<div class="panel-body">Rancho Cordova, Sacramento, CA 95670</div>
+			<div class="panel-body">
+				3466 Data Dr. 1222, <br />Rancho Cordova, <br />CA 95670
+			</div>
 		</div>
 	</div>
 	<div class="col-sm-5">
@@ -56,8 +58,13 @@
 				<h3 class="panel-title">Customer Service</h3>
 			</div>
 			<div class="panel-body">
-				Call Center: 1-800-xxx-xxxx<br> Hours: Monday to Sunday - 9am
-				to 9pm PST
+				Hours: Monday to Sunday - 9am to 5pm PST <br /> <br /> <img
+					src="${pageContext.request.contextPath}/resources/images/phone-logo.jpg"
+					width="35px"> Phone : 1-916-693-4547 <br /> <img
+					src="${pageContext.request.contextPath}/resources/images/message-logo.jpg"
+					width="40px"> Message: 1-916-693-4547 <br /> <img
+					src="${pageContext.request.contextPath}/resources/images/whatsapp-logo.jpg"
+					width="40px"> Whatsapp : 1-916-693-4547
 			</div>
 		</div>
 	</div>
