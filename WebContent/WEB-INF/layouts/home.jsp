@@ -20,7 +20,7 @@
 		<section class="hero-image search-filter-middle height-750">
 			<div class="inner">
 				<div class="container">
-					<h1>Smart way to order food for your event!</h1>
+					<h1>The smart way to order food for your event!</h1>
 				</div>
 				<div class="container">
 					<h1>Request, Compare and Confirm Quote.</h1>
@@ -30,7 +30,7 @@
 					action="${pageContext.request.contextPath}/customer/createEvent"
 					enctype="application/x-www-form-urlencoded" autocomplete="off">
 					<!-- <input type="hidden" name="as" value="customer"> -->
-					<button type="submit" class="btn btn-default">Lets get
+					<button type="submit" class="btn btn-default">Let's get
 						started</button>
 				</form>
 			</div>
