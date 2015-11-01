@@ -187,7 +187,14 @@
 					required="required" pattern="^\d+$" class="form-control">
 			</div>
 		</div>
-
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="springRollSpl" maxlength="20"
+					class="form-control">
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-4 control-label"></label>
 			<div class="col-sm-2">
@@ -211,7 +218,14 @@
 					required="required" pattern="^\d+$" class="form-control">
 			</div>
 		</div>
-
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="chickenSataySpl" maxlength="20"
+					class="form-control">
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-4 control-label"></label>
 			<div class="col-sm-2">
@@ -252,7 +266,14 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="fspl" maxlength="20"
+					class="form-control">
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-4 control-label"></label>
 			<div class="col-sm-2">
@@ -346,6 +367,14 @@
 						Hot
 					</div>
 				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="tyspl" maxlength="20"
+					class="form-control">
 			</div>
 		</div>
 		<div class="form-group">
@@ -443,7 +472,14 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="tkspl" maxlength="20"
+					class="form-control">
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-4 control-label"></label>
 			<div class="col-sm-2">
@@ -499,13 +535,20 @@
 							value="Medium"> Medium
 					</div>
 					<div class="input-group">
-						<input type="radio" name="gpsspicy" required="required" value="Hot">
-						Hot
+						<input type="radio" name="gpsspicy" required="required"
+							value="Hot"> Hot
 					</div>
 				</div>
 			</div>
 		</div>
-
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="gpsspl" maxlength="20"
+					class="form-control">
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-4 control-label"></label>
 			<div class="col-sm-2">
@@ -601,7 +644,14 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="ptspl" maxlength="20"
+					class="form-control">
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-4 control-label"></label>
 			<div class="col-sm-2">
@@ -697,7 +747,14 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="dnspl" maxlength="20"
+					class="form-control">
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-4 control-label"></label>
 			<div class="col-sm-2">
@@ -794,7 +851,14 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="frspl" maxlength="20"
+					class="form-control">
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-4 control-label"></label>
 			<div class="col-sm-2">
@@ -890,7 +954,14 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="pfrspl" maxlength="20"
+					class="form-control">
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-4 control-label"></label>
 			<div class="col-sm-2">
@@ -988,7 +1059,14 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="bfrspl" maxlength="20"
+					class="form-control">
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-4 control-label"></label>
 			<div class="col-sm-2">
@@ -1084,7 +1162,14 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="rcspl" maxlength="20"
+					class="form-control">
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-4 control-label"></label>
 			<div class="col-sm-2">
@@ -1093,8 +1178,6 @@
 		</div>
 	</form>
 </div>
-
-
 
 <div id="popup_4_1"
 	class="mfp-hide white-popup-block thaiPopupOptions col-xs-6 col-sm-4 col-md-6">
@@ -1182,7 +1265,14 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="gcspl" maxlength="20"
+					class="form-control">
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-4 control-label"></label>
 			<div class="col-sm-2">
@@ -1277,7 +1367,14 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="ycspl" maxlength="20"
+					class="form-control">
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-4 control-label"></label>
 			<div class="col-sm-2">
