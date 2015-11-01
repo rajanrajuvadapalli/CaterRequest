@@ -17,6 +17,8 @@ function populatePizzaSelectedItems() {
 	$('.toppings:checked').each(function() {
 		toppings = toppings + " " + $(this).val();
 	});
+	if (toppings == "")
+		toppings = "none";
 	var spl = $('input[name=spl]').val();
 	var desc = "Size: " + pizzaSize + ", Count: " + nPizzas + ", Sause: "
 			+ sause + ", Cheese: " + cheese + ", Toppings: " + toppings;
