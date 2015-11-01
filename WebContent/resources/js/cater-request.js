@@ -55,6 +55,7 @@ function populateCuisineTypes() {
 							+ "	<option value=\"PIZZA\"> PIZZA </option>"
 							+ " <option value=\"MEXICAN\"> MEXICAN </option>"
 							+ " <option value=\"THAI\"> THAI </option> "
+							+ " <option value=\"SANDWICH\"> SANDWICH </option> "
 							// + " <option value=\"INDONESIAN\"> INDONESIAN
 							// </option> "
 							// + " <option value=\"ITALIAN\"> ITALIAN </option>
@@ -264,7 +265,7 @@ function validateEventForm() {
 	return true;
 }
 
-function validateCuisine(formId) {
+/*function validateCuisine(formId) {
 	var element = $('form[id=' + formId + '] select[id=cuisineType]');
 	if (element.val() != "INDIAN_SOUTH" && element.val() != "INDIAN_NORTH"
 			&& element.val() != "PIZZA" && element.val() != "MEXICAN"
@@ -274,7 +275,7 @@ function validateCuisine(formId) {
 		return false;
 	}
 	return true;
-}
+}*/
 
 function validateSelectRestaurantForm() {
 	var atLeast1Selected = false;
