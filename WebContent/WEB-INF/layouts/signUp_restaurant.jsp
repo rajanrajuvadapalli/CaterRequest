@@ -175,7 +175,7 @@
 							you hear about us?<span style="color: red">*</span>
 						</label>
 						<div class="col-sm-6">
-							<select class="form-control inputs" name="hearAboutUs"
+							<select class="form-control" name="hearAboutUs"
 								id="hearAboutUs" required="required">
 								<option value="" selected="selected">Choose one...</option>
 								<option value="friend_referral">Friend/referral</option>
