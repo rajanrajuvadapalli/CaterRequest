@@ -478,6 +478,14 @@
 									<!-- Ingredients Form group END -->
 
 									<div class="form-group">
+										<label for="" class="col-sm-4 control-label">Special
+											Instructions: </label>
+										<div class="col-sm-6">
+											<input type="text" size="60" name="spl" maxlength="20"
+												class="form-control">
+										</div>
+									</div>
+									<div class="form-group">
 										<label class="col-sm-4 control-label"></label>
 										<div class="col-sm-2">
 											<button type="submit"
