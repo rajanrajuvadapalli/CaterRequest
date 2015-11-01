@@ -40,18 +40,13 @@
 							<li><a
 								href="${pageContext.request.contextPath}/register?as=customer"><strong>Register</strong></a></li>
 							<li>
-							<button class="popup-with-form btn btn-default"
-								    href="#selectcuisine-form">List Your Restaurant</button>
-										
-								<form class="mfp-hide white-popup-block selectCuisinePopupOptions" method="GET"
-									id="selectcuisine-form"
+								<form class="form-horizontal" method="GET"
+									id="restaurant-register-form"
 									action="${pageContext.request.contextPath}/register"
 									enctype="application/x-www-form-urlencoded" autocomplete="off">
-									<br/>
 									<input type="hidden" name="as" value="restaurant">
-									<span id="cuisineType"></span>
-									<br/>
-									<button type="submit" class="btn btn-default">Next</button>
+									<button type="submit" class="btn btn-default">List
+										Your Restaurant</button>
 								</form>
 							</li>
 						</c:when>
