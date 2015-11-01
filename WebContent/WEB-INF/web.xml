@@ -35,7 +35,7 @@
 	
 	<context-param>
 		<param-name>resteasy.resources</param-name>
-		<param-value>com.cater.service.rest.PhoneService</param-value>
+		<param-value>com.cater.service.rest.PhoneService, com.cater.service.rest.MenuService</param-value>
 	</context-param>
 
 	<servlet>

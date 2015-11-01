@@ -1,9 +1,6 @@
 package com.cater.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
-import java.util.Locale;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,8 +23,6 @@ import com.cater.GuestHelper;
 import com.cater.constants.Roles;
 import com.cater.email.EmailHelper;
 import com.cater.maps.RestaurantDTO;
-import com.cater.menu.Menu;
-import com.cater.menu.MenuDeserializer;
 import com.cater.model.Login;
 import com.cater.model.Restaurant;
 import com.cater.service.CustomerService;
@@ -85,12 +80,13 @@ public class RegistrationController {
 	public String getRegisterForm(ModelMap modelMap,
 			HttpServletRequest request, HttpSession session) {
 		String registerAs = request.getParameter("as");
-		String cuisine = request.getParameter("cuisineType");
+		//String cuisine = request.getParameter("cuisineType");
 		if (StringUtils.equalsIgnoreCase(registerAs, "customer")) {
 			return "t_signUp_customer";
 		}
 		else {
-			try {
+			//Moved to MenuService REST service
+			/*try {
 				logger.debug(cuisine);
 				File f = new File(RegistrationController.class.getResource(
 						"/menus/" + StringUtils.lowerCase(cuisine, Locale.US)
@@ -104,7 +100,7 @@ public class RegistrationController {
 				menuerrors
 						.add("Could not load the menu. Please contact customer support.");
 				modelMap.addAttribute("menuerrors", menuerrors);
-			}
+			}*/
 			return "t_signUp_restaurant";
 		}
 	}
