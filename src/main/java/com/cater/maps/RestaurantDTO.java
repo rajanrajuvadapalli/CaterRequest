@@ -1,12 +1,14 @@
 package com.cater.maps;
 
-import java.util.Comparator;
-
 import com.cater.model.Restaurant;
 
 public class RestaurantDTO {
-
 	private Restaurant restaurant;
+	private Object reviewImage;
+	private String distance;
+	private int numberOfReviews;
+	private Long distanceInMeters;
+	private Object websiteUrl;
 
 	public Restaurant getRestaurant() {
 		return restaurant;
@@ -55,12 +57,4 @@ public class RestaurantDTO {
 	public void setWebsiteUrl(Object websiteUrl) {
 		this.websiteUrl = websiteUrl;
 	}
-
-	private Object reviewImage;
-	private String distance;
-	private int numberOfReviews;
-	private Long distanceInMeters;
-	private Object websiteUrl;
-
-
 }
