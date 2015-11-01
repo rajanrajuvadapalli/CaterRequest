@@ -19,6 +19,7 @@
 <!-- <script src = "http://www.myersdaily.org/joseph/javascript/md5.js"></script> -->
 <script src="${pageContext.request.contextPath}/resources/js/md5.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/cater-request.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/cater-pizza.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/cater-mexican.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/cater-thai.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/cater-sandwich.js"></script>

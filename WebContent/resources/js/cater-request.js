@@ -265,17 +265,14 @@ function validateEventForm() {
 	return true;
 }
 
-/*function validateCuisine(formId) {
-	var element = $('form[id=' + formId + '] select[id=cuisineType]');
-	if (element.val() != "INDIAN_SOUTH" && element.val() != "INDIAN_NORTH"
-			&& element.val() != "PIZZA" && element.val() != "MEXICAN"
-				&& element.val() != "THAI") {
-		alert("Sorry! " + element.val()
-				+ " restaurants are not registered with us at this moment.");
-		return false;
-	}
-	return true;
-}*/
+/*
+ * function validateCuisine(formId) { var element = $('form[id=' + formId + ']
+ * select[id=cuisineType]'); if (element.val() != "INDIAN_SOUTH" &&
+ * element.val() != "INDIAN_NORTH" && element.val() != "PIZZA" && element.val() !=
+ * "MEXICAN" && element.val() != "THAI") { alert("Sorry! " + element.val() + "
+ * restaurants are not registered with us at this moment."); return false; }
+ * return true; }
+ */
 
 function validateSelectRestaurantForm() {
 	var atLeast1Selected = false;
@@ -291,53 +288,3 @@ function validateSelectRestaurantForm() {
 		return false;
 	}
 }
-
-var $ = jQuery.noConflict();
-var pizza_menu_items = [];
-function populatePizzaSelectedItems() {
-	// var id = Math.floor((Math.random() * 100) + 1);
-	var id = $('.slide').children().length;
-	console.log("Number of existing pizza items: " + id);
-	var div_id = "p_" + id;
-	var pizzaName = $("input[name=pname]").val().toUpperCase();
-	// console.log("pizzaName="+pizzaName);
-	var pizzaSize = $('input[name=psize]:checked').val();
-	// console.log("pizzaSize=" + pizzaSize);
-	var nPizzas = $('input[name=pcount]').val();
-	// console.log("nPizzas=" + nPizzas);
-	var sause = $('input[name=psause]:checked').val();
-	var cheese = $('input[name=pcheese]:checked').val();
-	var toppings = "";
-	$('.toppings:checked').each(function() {
-		toppings = toppings + " " + $(this).val();
-	});
-	var desc = "Size: " + pizzaSize + ", Count: " + nPizzas + ", Sause: "
-			+ sause + ", Cheese: " + cheese + ", Toppings: " + toppings;
-	var html = '<div class="list-item" id="'
-			+ div_id
-			+ '">'
-			+ '<div class="left">'
-			+ '<h4>'
-			+ pizzaName
-			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_pizza_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
-	// console.log(html);
-	$(html).appendTo('.slide');
-
-	$('form[id=options]').find("input[type=text], textarea").val("");
-	/*
-	 * var pizzaDesc = "Size: " + pizzaSize + ", Count: " + nPizzas + ", Sause: " +
-	 * sause + ", Cheese: " + cheese + ", Toppings: " + toppings;
-	 */
-	var data = pizzaName + "+" + desc;
-	console.log(data);
-	pizza_menu_items.push(data);
-	// console.log(pizza_menu_items);
-	return false;
-}
-
