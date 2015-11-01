@@ -121,15 +121,7 @@
 							you hear about us&nbsp;?<span style="color: red">*</span>
 						</label>
 						<div class="col-sm-6">
-							<select class="inputs" name="hearAboutUs" id="hearAboutUs"
-								required="required">
-								<option value="" selected="selected">Choose one...</option>
-								<option value="friend_referral">Friend/referral</option>
-								<option value="google">Google Search</option>
-								<option value="online_ad">Online advertisement</option>
-								<option value="social_media">Social Media</option>
-								<option value="restaurant">Restaurant</option>
-							</select>
+							<span id="hearAboutUs"></span>
 						</div>
 					</div>
 				</div>
@@ -214,5 +206,6 @@
 <script>
 	$('document').ready(function() {
 		populateStateDropDown();
+		populateHearAboutUs();
 	});
 </script>

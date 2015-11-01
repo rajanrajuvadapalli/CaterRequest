@@ -76,8 +76,7 @@
 			<li>No more confusion over the order.</li>
 		</ol>
 	</div>
-	<br />
-	<br />
+	<br /> <br />
 	<form class="form-horizontal" method="POST"
 		id="restaurant-register-form"
 		action="${pageContext.request.contextPath}/register"
@@ -175,15 +174,9 @@
 							you hear about us?<span style="color: red">*</span>
 						</label>
 						<div class="col-sm-6">
-							<select class="form-control" name="hearAboutUs"
-								id="hearAboutUs" required="required">
-								<option value="" selected="selected">Choose one...</option>
-								<option value="friend_referral">Friend/referral</option>
-								<option value="google">Google Search</option>
-								<option value="online_ad">Online advertisement</option>
-								<option value="social_media">Social Media</option>
-								<option value="restaurant">Restaurant</option>
-							</select>
+							<input type="text" hidden="true"
+								value="${pageContext.request.contextPath}" id="contextpath">
+							<span id="hearAboutUs"></span>
 						</div>
 					</div>
 					<div class="form-group">
@@ -268,16 +261,8 @@
 					<h3 class="panel-title">Menu</h3>
 				</div>
 				<div class="panel-body">
-					<c:if test="${not empty menuerrors}">
-						<div class="alert alert-danger">
-							<ul>
-								<c:forEach items="${menuerrors}" var="e">
-									<li align="left">${e}</li>
-								</c:forEach>
-							</ul>
-						</div>
-					</c:if>
-					<c:forEach items="${menu.categories}" var="category">
+					<div id="consent-menu"></div>
+					<%-- <c:forEach items="${menu.categories}" var="category">
 						<c:if test="${not empty category.items}">
 							<div class="col-sm-12">
 								<b>${category.name}</b>
@@ -288,7 +273,7 @@
 								</ol>
 							</div>
 						</c:if>
-					</c:forEach>
+					</c:forEach> --%>
 					<div class="col-sm-6">
 						<br /> <br /> <input required type="checkbox" name="menuconsent"
 							value="yes"> I accept the menu. <br /> <br />
@@ -304,6 +289,7 @@
 <script>
 	$('document').ready(function() {
 		populateCuisineTypes();
+		populateHearAboutUs();
 		populateStateDropDown();
 		$("button[name=register-button]").prop('disabled', true);
 		$("input[name=menuconsent]").change(function() {
@@ -316,5 +302,7 @@
 				element.prop('disabled', true);
 			}
 		});
+		$("select[name=cuisineType]").change(populateMenuForRestaurantConsent);
+
 	});
 </script>
