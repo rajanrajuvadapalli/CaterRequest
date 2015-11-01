@@ -23,7 +23,7 @@
 	text-align: left;
 }
 
-.pizzaPopupOptions, .mexicanPopupOptions, .thaiPopupOptions {
+.pizzaPopupOptions, .mexicanPopupOptions, .thaiPopupOptions, .sandwichPopupOptions {
 	left: 50%;
 	margin-left: -325px;
 	/*max-width: 750px;*/
@@ -35,7 +35,7 @@
 }
 
 @media screen and (max-width: 690px) {
-	.pizzaPopupOptions, .mexicanPopupOptions, .thaiPopupOptions, .popupOptions, .selectCuisinePopupOptions,
+	.pizzaPopupOptions, .mexicanPopupOptions, .thaiPopupOptions, .sandwichPopupOptions, .popupOptions, .selectCuisinePopupOptions,
 		.forgotPasswordPopup, .searchRestaurantPopup, .nologinPopup {
 		width: 100%;
 		margin: 0;
