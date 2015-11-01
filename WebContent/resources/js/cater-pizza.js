@@ -44,8 +44,9 @@ function populatePizzaSelectedItems() {
 	 * sause + ", Cheese: " + cheese + ", Toppings: " + toppings;
 	 */
 	var data = pizzaName + "+" + desc;
-	console.log(data);
+	//console.log(data);
 	pizza_menu_items.push(data);
 	// console.log(pizza_menu_items);
+	$.magnificPopup.close();
 	return false;
 }

@@ -45,7 +45,8 @@ function populateChickenSandwichSelectedItems() {
 
 	var data = name + "+" + desc;
 	sandwich_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -94,7 +95,8 @@ function populateTurkeySandwichSelectedItems() {
 
 	var data = name + "+" + desc;
 	sandwich_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -143,7 +145,8 @@ function populateRoastBeefSandwichSelectedItems() {
 
 	var data = name + "+" + desc;
 	sandwich_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -192,7 +195,8 @@ function populateSalamiSandwichSelectedItems() {
 
 	var data = name + "+" + desc;
 	sandwich_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -241,7 +245,8 @@ function populateBaconSandwichSelectedItems() {
 
 	var data = name + "+" + desc;
 	sandwich_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -290,7 +295,8 @@ function populatePastramiSandwichSelectedItems() {
 
 	var data = name + "+" + desc;
 	sandwich_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -339,7 +345,8 @@ function populateHamSandwichSelectedItems() {
 
 	var data = name + "+" + desc;
 	sandwich_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -388,7 +395,8 @@ function populateTunaSandwichSelectedItems() {
 
 	var data = name + "+" + desc;
 	sandwich_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -433,6 +441,7 @@ function populateVeggieSandwichSelectedItems() {
 
 	var data = name + "+" + desc;
 	sandwich_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }

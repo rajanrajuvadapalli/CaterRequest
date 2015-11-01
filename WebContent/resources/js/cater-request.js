@@ -24,9 +24,10 @@ $('document').ready(function() {
 		removalDelay : 300,
 		mainClass : 'my-mfp-zoom-in'
 	});
-	$(document).on('click', '.popup-modal-dismiss', function() {
-		$.magnificPopup.close();
-	});
+	/*
+	 * $(document).on('click', '.popup-modal-dismiss', function() {
+	 * $.magnificPopup.close(); });
+	 */
 	/*
 	 * $("a[id=put-pizza-title]").click( function() { var pizzaTitle =
 	 * $(this).find("span[class=name]") .text();
