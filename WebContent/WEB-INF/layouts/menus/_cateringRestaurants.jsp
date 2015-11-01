@@ -28,7 +28,7 @@
 							<div class="row">
 								<div class="col-sm-2">
 									<img width="120px"
-										src="${pageContext.request.contextPath}/imagesproxy/Restaurant_${r.restaurant.id}"
+										src="https://s3-us-west-2.amazonaws.com/rajrv-caterrequest-profile-pics/Restaurant_${r.restaurant.id}"
 										alt="">
 								</div>
 								<div class="col-sm-4">

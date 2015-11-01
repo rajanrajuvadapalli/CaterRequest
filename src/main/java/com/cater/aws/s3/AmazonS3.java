@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.transfer.TransferManager;
 import com.amazonaws.services.s3.transfer.Upload;
 
@@ -44,6 +46,8 @@ public class AmazonS3 {
 			// Or you can block and wait for the upload to finish
 			upload.waitForCompletion();
 			logger.debug("Upload complete.");
+			new AmazonS3Client().setObjectAcl(existingBucketName, keyName,
+					CannedAccessControlList.PublicRead);
 		}
 		catch (AmazonClientException amazonClientException) {
 			logger.error("Unable to upload file, upload was aborted.");
