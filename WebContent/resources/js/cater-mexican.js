@@ -24,6 +24,7 @@ function populateMexicanTacoBarSelectedItems() {
 	var toppings = $("input[name=ttop]:checked").map(function() {
 		return this.value;
 	}).get().join(",");
+	var spl = $('input[name=tspl]').val();
 	var desc = "Number of tacos: " + n + ", Tortilla type: " + type
 			+ ", Sides: " + sides + ", Rice: " + rice + ", Salsa: " + salsa
 			+ ", Cheese: " + cheese;
@@ -31,6 +32,8 @@ function populateMexicanTacoBarSelectedItems() {
 		desc += ", Servings: " + servings;
 	if (toppings != "")
 		desc += ", Toppings: " + toppings;
+	if (spl != "")
+		desc += ", Special Instructions: " + spl;
 	var html = '<div class="list-item" id="'
 			+ div_id
 			+ '">'
@@ -77,6 +80,7 @@ function populateMexicanBurritoBarSelectedItems() {
 	var toppings = $("input[name=btop]:checked").map(function() {
 		return this.value;
 	}).get().join(",");
+	var spl = $('input[name=bspl]').val();
 	var desc = "Number of burritos: " + n + ", Tortilla type: " + type
 			+ ", Sides: " + sides + ", Rice: " + rice + ", Salsa: " + salsa
 			+ ", Cheese: " + cheese;
@@ -84,6 +88,8 @@ function populateMexicanBurritoBarSelectedItems() {
 		desc += ", Servings: " + servings;
 	if (toppings != "")
 		desc += ", Toppings: " + toppings;
+	if (spl != "")
+		desc += ", Special Instructions: " + spl;
 	var html = '<div class="list-item" id="'
 			+ div_id
 			+ '">'
@@ -129,12 +135,15 @@ function populateMexicanEnchiladaBarSelectedItems() {
 	var toppings = $("input[name=etop]:checked").map(function() {
 		return this.value;
 	}).get().join(",");
+	var spl = $('input[name=espl]').val();
 	var desc = "Number of enchiladas: " + n + ", Sides: " + sides + ", Rice: "
 			+ rice + ", Salsa: " + salsa + ", Cheese: " + cheese;
 	if (servings != "")
 		desc += ", Servings: " + servings;
 	if (toppings != "")
 		desc += ", Toppings: " + toppings;
+	if (spl != "")
+		desc += ", Special Instructions: " + spl;
 	var html = '<div class="list-item" id="'
 			+ div_id
 			+ '">'
@@ -180,12 +189,15 @@ function populateMexicanFajithaBarSelectedItems() {
 	var toppings = $("input[name=ftop]:checked").map(function() {
 		return this.value;
 	}).get().join(",");
+	var spl = $('input[name=fspl]').val();
 	var desc = "Number of fajitas: " + n + ", Sides: " + sides + ", Rice: "
 			+ rice + ", Salsa: " + salsa + ", Cheese: " + cheese;
 	if (servings != "")
 		desc += ", Servings: " + servings;
 	if (toppings != "")
 		desc += ", Toppings: " + toppings;
+	if (spl != "")
+		desc += ", Special Instructions: " + spl;
 	var html = '<div class="list-item" id="'
 			+ div_id
 			+ '">'
@@ -233,6 +245,7 @@ function populateMexicanSaladBarSelectedItems() {
 		return this.value;
 	}).get().join(",");
 	var dressing = $('input[name=sdress]:checked').val();
+	var spl = $('input[name=sspl]').val();
 	var desc = "Serving count: " + n + ", Main serving: " + mainserving
 			+ ", Sides: " + sides + ", Rice: " + rice + ", Salsa: " + salsa
 			+ ", Cheese: " + cheese + ", Dressing: " + dressing;
@@ -240,6 +253,8 @@ function populateMexicanSaladBarSelectedItems() {
 		desc += ", Servings: " + servings;
 	if (toppings != "")
 		desc += ", Toppings: " + toppings;
+	if (spl != "")
+		desc += ", Special Instructions: " + spl;
 	var html = '<div class="list-item" id="'
 			+ div_id
 			+ '">'
@@ -277,9 +292,12 @@ function populateMexicanChipsSelectedItems() {
 	var guacamole = $("input[name=cguac]:checked").map(function() {
 		return this.value;
 	}).get().join(",");
+	var spl = $('input[name=cspl]').val();
 	var desc = "Serving Count: " + n + ", Salsa: " + salsa;
 	if (guacamole != "")
 		desc += ", Guacamole: " + guacamole;
+	if (spl != "")
+		desc += ", Special Instructions: " + spl;
 	var html = '<div class="list-item" id="'
 			+ div_id
 			+ '">'

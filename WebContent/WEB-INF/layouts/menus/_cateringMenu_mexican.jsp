@@ -327,7 +327,14 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="tspl" maxlength="20"
+					 class="form-control">
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-4 control-label"></label>
 			<div class="col-sm-2">
@@ -494,7 +501,14 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="bspl" maxlength="20"
+					 class="form-control">
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-4 control-label"></label>
 			<div class="col-sm-2">
@@ -640,7 +654,14 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="espl" maxlength="20"
+					 class="form-control">
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-4 control-label"></label>
 			<div class="col-sm-2">
@@ -786,7 +807,14 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="fspl" maxlength="20"
+					 class="form-control">
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-4 control-label"></label>
 			<div class="col-sm-2">
@@ -970,7 +998,14 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="sspl" maxlength="20"
+					 class="form-control">
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-4 control-label"></label>
 			<div class="col-sm-2">
@@ -1023,7 +1058,14 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="cspl" maxlength="20"
+					 class="form-control">
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-4 control-label"></label>
 			<div class="col-sm-2">
