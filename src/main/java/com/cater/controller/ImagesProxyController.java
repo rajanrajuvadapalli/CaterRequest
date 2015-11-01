@@ -1,28 +1,17 @@
 package com.cater.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-
 import javax.annotation.PostConstruct;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value = { "imagesproxy" })
 public class ImagesProxyController {
 	//@Value("${images.location}")
 	//private String imagesBaseLocation;
-	@Value("${profile.pic.folder}")
-	private String profilePicFolder;
+	/*@Value("${profile.pic.folder}")
+	private String profilePicFolder;*/
 
 	@PostConstruct
 	private void postConstruct() {
@@ -30,8 +19,8 @@ public class ImagesProxyController {
 		//the value set in the properties file
 		//imagesBaseLocation = System.getProperty("images.location",
 		//imagesBaseLocation);
-		profilePicFolder = System.getProperty("profile.pic.folder",
-				profilePicFolder);
+		/*profilePicFolder = System.getProperty("profile.pic.folder",
+				profilePicFolder);*/
 	}
 
 	/*@ResponseBody
@@ -46,7 +35,7 @@ public class ImagesProxyController {
 		return IOUtils.toByteArray(in);
 	}*/
 
-	@ResponseBody
+	/*@ResponseBody
 	@RequestMapping(value = { "Restaurant_{id}" }, method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
 	public byte[] getRestaurantPic(@PathVariable String id) throws IOException {
 		String imageUrl = profilePicFolder + File.separator + "Restaurant_"
@@ -70,5 +59,5 @@ public class ImagesProxyController {
 		}
 		InputStream in = FileUtils.openInputStream(f);
 		return IOUtils.toByteArray(in);
-	}
+	}*/
 }

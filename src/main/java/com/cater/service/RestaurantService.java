@@ -1,7 +1,6 @@
 package com.cater.service;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -16,10 +15,10 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.cater.aws.s3.AmazonS3;
 import com.cater.constants.Roles;
 import com.cater.dao.QuoteDAO;
 import com.cater.dao.RestaurantDAO;
@@ -30,6 +29,7 @@ import com.cater.model.Quote;
 import com.cater.model.Restaurant;
 import com.cater.twilio.sms.SMSHelper;
 import com.cater.yelp.YelpAPIHelper;
+
 @Component
 public class RestaurantService {
 	private static final Logger logger = Logger
@@ -44,15 +44,18 @@ public class RestaurantService {
 	private SMSHelper smsHelper;
 	@Autowired
 	private YelpAPIHelper yelpHelper;
-	@Value("${profile.pic.folder}")
-	private String profilePicFolder;
+	@Autowired
+	private AmazonS3 amazons3;
 
+	/*	@Value("${profile.pic.folder}")
+		private String profilePicFolder;
+	*/
 	@PostConstruct
 	private void postConstruct() {
 		//If a system property is set, it will override
 		//the value set in the properties file
-		profilePicFolder = System.getProperty("profile.pic.folder",
-				profilePicFolder);
+		/*profilePicFolder = System.getProperty("profile.pic.folder",
+				profilePicFolder);*/
 	}
 
 	public List <Restaurant> fetchAllRestaurants() {
@@ -107,13 +110,12 @@ public class RestaurantService {
 		saveRestaurantProfilePic(restaurant.getId(), restaurant.getName(),
 				multipartFile);
 	}
-	
-	public List searchForRestaurantsByName(String name){
-		
+
+	public List searchForRestaurantsByName(String name) {
 		return restaurantDAO.searchRestaurantsByName(name);
 	}
-   public List searchForRestaurantsByDateRange(Date fromDate, Date toDate){
-		
+
+	public List searchForRestaurantsByDateRange(Date fromDate, Date toDate) {
 		return restaurantDAO.searchRestaurantsByDateRange(fromDate, toDate);
 	}
 
@@ -128,7 +130,7 @@ public class RestaurantService {
 				fileType = StringUtils.substring(originalFileName,
 						StringUtils.lastIndexOf(originalFileName, "."));
 			}
-			String imageUrl = profilePicFolder + "/Restaurant_" + restaurantID;
+			String imageUrl = "Restaurant_" + restaurantID;
 			File f = null;
 			try {
 				//First delete if exists
@@ -147,14 +149,16 @@ public class RestaurantService {
 				f = new File(imageUrl + fileType);
 				IOUtils.copy(multipartFile.getInputStream(),
 						FileUtils.openOutputStream(f, false));
+				amazons3.upload(f);
+				FileUtils.deleteQuietly(f);
 			}
-			catch (IOException e) {
+			catch (Exception e) {
 				logger.error("Failed to save the profile image for restaurant "
 						+ restaurantName + " with ID: " + restaurantID);
 			}
-			logger.debug(String.format(
+			/*logger.debug(String.format(
 					"Successfully saved %s's profile pic to %s",
-					restaurantName, f.getAbsolutePath()));
+					restaurantName, f.getAbsolutePath()));*/
 		}
 	}
 
