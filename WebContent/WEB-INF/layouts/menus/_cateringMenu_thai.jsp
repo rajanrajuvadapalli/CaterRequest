@@ -665,7 +665,7 @@
 	class="mfp-hide white-popup-block thaiPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_2_1" class="form-horizontal"
 		onsubmit="return populateDrunkenNoodlesSelectedItems();">
-		<span id="thai-popup-title"><h2>DrunkenNoodles</h2></span>
+		<span id="thai-popup-title"><h2>Drunken Noodles</h2></span>
 		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Count<span
 				style="color: red">*</span>:
