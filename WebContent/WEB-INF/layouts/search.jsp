@@ -24,24 +24,24 @@
 				</c:when>
 			<c:otherwise>
 				<c:forEach items="${restaurants}" var="r">
-			        <div class="col-sm-3"> 
-							   <div class="panel panel-warning"> 
-							   <div class="panel-heading"> 
-							   <h3 class="panel-title"> 
-							  ${r.restaurant.name}     -  
-							  ${r.distance}   </h3> 
-							   </div>     <div class="panel-body"> 
-							   <img width="120px" src=" ${pageContext.request.contextPath}/imagesproxy/Restaurant_${r.restaurant.id}" alt=""> 
-							    <br/> ${r.restaurant.address.street1}${r.restaurant.address.street2},${r.restaurant.address.city},${r.restaurant.address.state},${r.restaurant.address.zip}<br/>
-                   <img src="${r.reviewImage}" width="100" height="20">- ${r.numberOfReviews} <c:out value="reviews"/>
-							   </div>    
-							    </div> 
-							    </div>
-				
-				
-					
+					<div class="col-sm-3">
+						<div class="panel panel-warning">
+							<div class="panel-heading">
+								<h3 class="panel-title">${r.restaurant.name} -
+									${r.distance}</h3>
+							</div>
+							<div class="panel-body">
+								<img width="120px"
+									src="https://s3-us-west-2.amazonaws.com/rajrv-caterrequest-profile-pics/Restaurant_${r.restaurant.id}"
+									alt=""> <br />
+								${r.restaurant.address.street1}${r.restaurant.address.street2},${r.restaurant.address.city},${r.restaurant.address.state},${r.restaurant.address.zip}<br />
+								<img src="${r.reviewImage}" width="100" height="20">-
+								${r.numberOfReviews}
+								<c:out value="reviews" />
+							</div>
+						</div>
+					</div>
 				</c:forEach>
-				
 			</c:otherwise>
 		</c:choose>
 	</div>
