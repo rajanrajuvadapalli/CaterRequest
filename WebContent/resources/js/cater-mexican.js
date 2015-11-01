@@ -52,7 +52,8 @@ function populateMexicanTacoBarSelectedItems() {
 
 	var data = name + "+" + desc;
 	mexican_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -108,7 +109,8 @@ function populateMexicanBurritoBarSelectedItems() {
 
 	var data = name + "+" + desc;
 	mexican_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -162,7 +164,8 @@ function populateMexicanEnchiladaBarSelectedItems() {
 
 	var data = name + "+" + desc;
 	mexican_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -216,7 +219,8 @@ function populateMexicanFajithaBarSelectedItems() {
 
 	var data = name + "+" + desc;
 	mexican_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -273,7 +277,8 @@ function populateMexicanSaladBarSelectedItems() {
 
 	var data = name + "+" + desc;
 	mexican_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -316,6 +321,7 @@ function populateMexicanChipsSelectedItems() {
 
 	var data = name + "+" + desc;
 	mexican_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }

@@ -386,7 +386,7 @@
 				Instructions: </label>
 			<div class="col-sm-6">
 				<input type="text" size="60" name="csspl" maxlength="20"
-					 class="form-control">
+					class="form-control">
 			</div>
 		</div>
 		<div class="form-group">
@@ -615,7 +615,7 @@
 				Instructions: </label>
 			<div class="col-sm-6">
 				<input type="text" size="60" name="tsspl" maxlength="20"
-					 class="form-control">
+					class="form-control">
 			</div>
 		</div>
 		<div class="form-group">
@@ -844,7 +844,7 @@
 				Instructions: </label>
 			<div class="col-sm-6">
 				<input type="text" size="60" name="rbsspl" maxlength="20"
-					 class="form-control">
+					class="form-control">
 			</div>
 		</div>
 		<div class="form-group">
@@ -1071,7 +1071,7 @@
 				Instructions: </label>
 			<div class="col-sm-6">
 				<input type="text" size="60" name="ssspl" maxlength="20"
-					 class="form-control">
+					class="form-control">
 			</div>
 		</div>
 		<div class="form-group">
@@ -1300,7 +1300,7 @@
 				Instructions: </label>
 			<div class="col-sm-6">
 				<input type="text" size="60" name="bsspl" maxlength="20"
-					 class="form-control">
+					class="form-control">
 			</div>
 		</div>
 		<div class="form-group">
@@ -1527,7 +1527,7 @@
 				Instructions: </label>
 			<div class="col-sm-6">
 				<input type="text" size="60" name="psspl" maxlength="20"
-					 class="form-control">
+					class="form-control">
 			</div>
 		</div>
 		<div class="form-group">
@@ -1755,7 +1755,7 @@
 				Instructions: </label>
 			<div class="col-sm-6">
 				<input type="text" size="60" name="hsspl" maxlength="20"
-					 class="form-control">
+					class="form-control">
 			</div>
 		</div>
 		<div class="form-group">
@@ -1983,7 +1983,7 @@
 				Instructions: </label>
 			<div class="col-sm-6">
 				<input type="text" size="60" name="tusspl" maxlength="20"
-					 class="form-control">
+					class="form-control">
 			</div>
 		</div>
 		<div class="form-group">
@@ -2168,7 +2168,7 @@
 				Instructions: </label>
 			<div class="col-sm-6">
 				<input type="text" size="60" name="vsspl" maxlength="20"
-					 class="form-control">
+					class="form-control">
 			</div>
 		</div>
 		<div class="form-group">

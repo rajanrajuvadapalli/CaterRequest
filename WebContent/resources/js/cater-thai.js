@@ -33,7 +33,8 @@ function populateVegeterianSpringRollSelectedItems() {
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -70,7 +71,8 @@ function populateChickenSataySelectedItems() {
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -108,7 +110,8 @@ function populateFriedCalamariSelectedItems() {
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -149,7 +152,8 @@ function populateTomYumSoupSelectedItems() {
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -190,7 +194,8 @@ function populateTomKhaSoupSelectedItems() {
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -231,7 +236,8 @@ function populateGreenPapayaSaladSelectedItems() {
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -272,7 +278,8 @@ function populateThaiPadThaiSelectedItems() {
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -313,7 +320,8 @@ function populateDrunkenNoodlesSelectedItems() {
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -354,7 +362,8 @@ function populateThaiFriedRiceSelectedItems() {
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -395,7 +404,8 @@ function populatePineappleFriedRiceSelectedItems() {
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 function populateBasilFriedRiceSelectedItems() {
@@ -435,7 +445,8 @@ function populateBasilFriedRiceSelectedItems() {
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -476,7 +487,8 @@ function populateRedCurrySelectedItems() {
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 function populateGreenCurrySelectedItems() {
@@ -516,7 +528,8 @@ function populateGreenCurrySelectedItems() {
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
 
@@ -557,6 +570,7 @@ function populateYellowCurrySelectedItems() {
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	console.log(data);
+	//console.log(data);
+	$.magnificPopup.close();
 	return false;
 }
