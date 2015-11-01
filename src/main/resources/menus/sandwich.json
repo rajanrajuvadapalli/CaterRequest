@@ -1,0 +1,68 @@
+{
+    "cuisine": "SANDWICH",
+    "categories": [
+        {
+            "code": "C1",
+            "name": "SANDWICH",
+            "items": [
+                {
+                    "code": "C1_1",
+                    "name": "Chicken Sandwich",
+                    "description": "Chicken Sandwich",
+                    "isSelected": false
+                },
+                {
+                    "code": "C1_2",
+                    "name": "Turkey Sandwich",
+                    "description": "Turkey Sandwich",
+                    "isSelected": false
+                },
+                {
+                    "code": "C1_3",
+                    "name": "Roast Beef",
+                    "description": "Roast Beef",
+                    "isSelected": false
+                },
+                {
+                    "code": "C1_4",
+                    "name": "Salami Sandwich",
+                    "description": "Salami Sandwich",
+                    "isSelected": false
+                },
+                {
+                    "code": "C1_5",
+                    "name": "Bacon Sandwich",
+                    "description": "Salad",
+                    "isSelected": false
+                },
+                {
+                    "code": "C1_6",
+                    "name": "Pastrami Sandwich",
+                    "description": "Pastrami Sandwich",
+                    "isSelected": false
+                }
+                ,
+				{
+		            "code": "C1_7",
+		            "name": "Ham Sandwich",
+		            "description": "Ham Sandwich",
+		            "isSelected": false
+                }
+                ,
+		       {
+		            "code": "C1_8",
+		            "name": "Tuna Sandwich",
+		            "description": "Tuna Sandwich",
+		            "isSelected": false
+                }
+                ,
+		       {
+		            "code": "C1_9",
+		            "name": "Veggie Sandwich",
+		            "description": "Veggie Sandwich",
+		            "isSelected": false
+                }
+            ]
+        }
+    ]
+}

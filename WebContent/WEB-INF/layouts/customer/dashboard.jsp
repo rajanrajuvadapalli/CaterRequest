@@ -177,7 +177,7 @@
 									<form class=" mfp-hide white-popup-block popupOptions"
 										method="GET" id="${e.id}"
 										action="${pageContext.request.contextPath}/menu/selectMenu"
-										onsubmit="return validateCuisine(${e.id});"
+										<%-- onsubmit="return validateCuisine(${e.id});" --%>
 										enctype="application/x-www-form-urlencoded">
 										<br /> <input type="text" hidden="true" name="eventId"
 											value="${e.id}"> <span id="cuisineType"></span><br />
