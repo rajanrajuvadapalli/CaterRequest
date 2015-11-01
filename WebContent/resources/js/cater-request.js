@@ -41,7 +41,7 @@ function populateCuisineTypes() {
 	$("span[id=cuisineType]")
 			.replaceWith(
 					"<select class=\"form-control inputs\" name=\"cuisineType\" id=\"cuisineType\" required=\"required\">"
-							// + " <option value=\"\"> </option> "
+							+ " <option value=\"\"> </option> "
 							// + " <option value=\"AMERICAN\"> AMERICAN
 							// </option> "
 							// + " <option value=\"CHINESE\"> CHINESE </option>
@@ -80,6 +80,20 @@ function populateCuisineTypes() {
 							// + " <option value=\"VIETNAMESE\"> VIETNAMESE
 							// </option> "
 							+ "</select>                                                          ");
+}
+
+function populateHearAboutUs() {
+	$("span[id=hearAboutUs]")
+			.replaceWith(
+					"<select class=\"form-control inputs\" name=\"hearAboutUs\""
+							+ "id=\"hearAboutUs\" required=\"required\">"
+							+ "<option value=\"\" selected=\"selected\">Choose one...</option>"
+							+ "<option value=\"friend_referral\">Friend/referral</option>"
+							+ "<option value=\"google\">Google Search</option>"
+							+ "<option value=\"online_ad\">Online advertisement</option>"
+							+ "<option value=\"social_media\">Social Media</option>"
+							+ "<option value=\"restaurant\">Restaurant</option>"
+							+ "</select>");
 }
 
 function populateStateDropDown() {
