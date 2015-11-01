@@ -58,6 +58,18 @@ public final class Helper {
 	}
 
 	/**
+	 * String to native int.
+	 * 
+	 * @param aString
+	 *            the a string
+	 * @return the integer
+	 */
+	public static int stringToInt(String aString) {
+		Integer aInteger = stringToInteger(aString);
+		return aInteger == null ? 0 : aInteger;
+	}
+
+	/**
 	 * Extract just10digit number.
 	 * 
 	 * @param phone

@@ -27,6 +27,7 @@ import com.cater.maps.MapsHelper;
 import com.cater.maps.RestaurantDTO;
 import com.cater.model.Quote;
 import com.cater.model.Restaurant;
+import com.cater.model.RestaurantSearch;
 import com.cater.twilio.sms.SMSHelper;
 import com.cater.yelp.YelpAPIHelper;
 
@@ -111,11 +112,12 @@ public class RestaurantService {
 				multipartFile);
 	}
 
-	public List searchForRestaurantsByName(String name) {
+	public List <RestaurantSearch> searchForRestaurantsByName(String name) {
 		return restaurantDAO.searchRestaurantsByName(name);
 	}
 
-	public List searchForRestaurantsByDateRange(Date fromDate, Date toDate) {
+	public List <RestaurantSearch> searchForRestaurantsByDateRange(
+			Date fromDate, Date toDate) {
 		return restaurantDAO.searchRestaurantsByDateRange(fromDate, toDate);
 	}
 

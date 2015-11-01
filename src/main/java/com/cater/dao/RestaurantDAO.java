@@ -104,104 +104,116 @@ public class RestaurantDAO extends DataAccessObject {
 			throw he;
 		}
 	}
-	
 
-
-	 /**
-	 * @param restaurantId
-	 * @return
-	 * 
-	 * User Id, Restaurant name, Phone Number, Location, Event Name, Location, Date & time, Menu,
-	 *  Restaurant Quote (Sort by Alphabet), Confirmed Restaurant, total payment.
-	 * 
-	 */
-	public List<RestaurantSearch> searchRestaurantsByName(String name){
-		 
-logger.debug("Finding restaurant stats.");
-		
+	/**
+	* @param restaurantId
+	* @return
+	* 
+	* User Id, Restaurant name, Phone Number, Location, Event Name, Location, Date & time, Menu,
+	*  Restaurant Quote (Sort by Alphabet), Confirmed Restaurant, total payment.
+	* 
+	*/
+	@SuppressWarnings("unchecked")
+	public List <RestaurantSearch> searchRestaurantsByName(String name) {
+		logger.debug("Searching restaurants by name.");
 		Session session = getSessionFactory().getCurrentSession();
-	
-		Criteria c = session.createCriteria(Quote.class,"q")
+		Criteria c = session
+				.createCriteria(Quote.class, "q")
 				.createAlias("q.restaurant", "r")
 				.createAlias("r.address", "rl")
-				.createAlias("q.menu","m")
-				.createAlias("m.event","e")
+				.createAlias("q.menu", "m")
+				.createAlias("m.event", "e")
 				.createAlias("e.location", "el")
 				.createAlias("r.login", "login")
-				.add(Restrictions.eq("login.username",name))
+				.add(Restrictions.eq("login.username", name))
 				.setProjection(
 						Projections
 								.projectionList()
-								.add(Projections.property("login.username"), "emailId")
-								.add(Projections.property("r.name"), "restaurantName")
-								.add(Projections.property("r.contactNumber"), "restaurantNumber")
-								.add(Projections.property("rl.street1"), "rStreet1")
-								.add(Projections.property("rl.street2"), "rStreet2")
+								.add(Projections.property("login.username"),
+										"emailId")
+								.add(Projections.property("r.name"),
+										"restaurantName")
+								.add(Projections.property("r.contactNumber"),
+										"restaurantNumber")
+								.add(Projections.property("rl.street1"),
+										"rStreet1")
+								.add(Projections.property("rl.street2"),
+										"rStreet2")
 								.add(Projections.property("rl.city"), "rCity")
 								.add(Projections.property("rl.state"), "rState")
 								.add(Projections.property("rl.zip"), "rZip")
-								.add(Projections.property("e.name"), "eventName")
-								.add(Projections.property("el.street1"), "eventStreet1")
-								.add(Projections.property("el.street2"), "eventStreet2")
-								.add(Projections.property("el.city"), "eventCity")
-								.add(Projections.property("el.state"), "eventState")
+								.add(Projections.property("e.name"),
+										"eventName")
+								.add(Projections.property("el.street1"),
+										"eventStreet1")
+								.add(Projections.property("el.street2"),
+										"eventStreet2")
+								.add(Projections.property("el.city"),
+										"eventCity")
+								.add(Projections.property("el.state"),
+										"eventState")
 								.add(Projections.property("el.zip"), "eventZip")
 								.add(Projections.property("q.price"), "price")
 								.add(Projections.property("e.status"), "status")
-					       	    .add(Projections.property("e.date_time"), "date_time")).
-					       	setResultTransformer(
+								.add(Projections.property("e.date_time"),
+										"date_time"))
+				.setResultTransformer(
 						Transformers.aliasToBean(RestaurantSearch.class));
-		List<RestaurantSearch>  restaurants =c.list();
-	
-		
-		 return restaurants;
-		 
-	 }
-	
-	public List<RestaurantSearch> searchRestaurantsByDateRange(Date fromDate, Date toDate){
-		 
-		logger.debug("Finding restaurant stats.");
-				
-				Session session = getSessionFactory().getCurrentSession();
-			
-				Criteria c = session.createCriteria(Quote.class,"q")
-						.createAlias("q.restaurant", "r")
-						.createAlias("r.address", "rl")
-						.createAlias("q.menu","m")
-						.createAlias("m.event","e")
-						.createAlias("e.location", "el")
-						.createAlias("r.login", "login")
-						.add(Restrictions.between("e.date_time", fromDate, toDate))
-						.setProjection(
-								Projections
-										.projectionList()
-										.add(Projections.property("login.username"), "emailId")
-							        	.add(Projections.property("r.name"), "restaurantName")
-							        	.add(Projections.property("r.contactNumber"), "restaurantNumber")
-										.add(Projections.property("rl.street1"), "rStreet1")
-										.add(Projections.property("rl.street2"), "rStreet2")
-										.add(Projections.property("rl.city"), "rCity")
-										.add(Projections.property("rl.state"), "rState")
-										.add(Projections.property("rl.zip"), "rZip")
-										.add(Projections.property("e.name"), "eventName")
-										.add(Projections.property("el.street1"), "eventStreet1")
-										.add(Projections.property("el.street2"), "eventStreet2")
-										.add(Projections.property("el.city"), "eventCity")
-										.add(Projections.property("el.state"), "eventState")
-										.add(Projections.property("el.zip"), "eventZip")
-										.add(Projections.property("q.price"), "price")
-										.add(Projections.property("e.status"), "status")
-										.add(Projections.property("e.date_time"), "date_time")).
-							       	setResultTransformer(
-								Transformers.aliasToBean(RestaurantSearch.class));
-				List<RestaurantSearch>  restaurants =c.list();
-			
-				
-				 return restaurants;
-				 
-			 }
-	//searchForRestaurantsByDateRange
-	
+		List <RestaurantSearch> restaurants = c.list();
+		return restaurants;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List <RestaurantSearch> searchRestaurantsByDateRange(Date fromDate,
+			Date toDate) {
+		logger.debug("Searching restaurants by date range.");
+		Session session = getSessionFactory().getCurrentSession();
+		Criteria c = session
+				.createCriteria(Quote.class, "q")
+				.createAlias("q.restaurant", "r")
+				.createAlias("r.address", "rl")
+				.createAlias("q.menu", "m")
+				.createAlias("m.event", "e")
+				.createAlias("e.location", "el")
+				.createAlias("r.login", "login")
+				.add(Restrictions.between("e.date_time", fromDate, toDate))
+				.setProjection(
+						Projections
+								.projectionList()
+								.add(Projections.property("login.username"),
+										"emailId")
+								.add(Projections.property("r.name"),
+										"restaurantName")
+								.add(Projections.property("r.contactNumber"),
+										"restaurantNumber")
+								.add(Projections.property("rl.street1"),
+										"rStreet1")
+								.add(Projections.property("rl.street2"),
+										"rStreet2")
+								.add(Projections.property("rl.city"), "rCity")
+								.add(Projections.property("rl.state"), "rState")
+								.add(Projections.property("rl.zip"), "rZip")
+								.add(Projections.property("e.name"),
+										"eventName")
+								.add(Projections.property("el.street1"),
+										"eventStreet1")
+								.add(Projections.property("el.street2"),
+										"eventStreet2")
+								.add(Projections.property("el.city"),
+										"eventCity")
+								.add(Projections.property("el.state"),
+										"eventState")
+								.add(Projections.property("el.zip"), "eventZip")
+								.add(Projections.property("q.price"), "price")
+								.add(Projections.property("e.status"), "status")
+								.add(Projections.property("e.date_time"),
+										"date_time"))
+				.setResultTransformer(
+						Transformers.aliasToBean(RestaurantSearch.class));
+		List <RestaurantSearch> restaurants = c.list();
+		return restaurants;
+	}
+
 	/**
 	 * Fetch all restaurants.
 	 *
