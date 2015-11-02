@@ -13,7 +13,7 @@
 
 	<div class="col-sm-6">
 		<img
-			src="https://s3-us-west-2.amazonaws.com/rajrv-caterrequest-profile-pics/Restaurant_${r.id}"
+			src="https://s3-us-west-2.amazonaws.com/caterrequest-restaurant-profile-pics/Restaurant_${r.id}"
 			width="180px"> <br /> <b>Address: </b>${r.address.street1}
 		${r.address.street2}, ${r.address.city}, ${r.address.state}
 		${r.address.zip}

@@ -77,7 +77,7 @@
 				</c:if>
 				<c:if test="${sessionScope.user.role.value == 'RESTAURANT'}">
 					<img
-						src="https://s3-us-west-2.amazonaws.com/rajrv-caterrequest-profile-pics/Restaurant_${sessionScope.user.restaurantID}"
+						src="https://s3-us-west-2.amazonaws.com/caterrequest-restaurant-profile-pics/Restaurant_${sessionScope.user.restaurantID}"
 						alt="${sessionScope.user.data.restaurantName}" width="150">
 					<div class="form-group" id="restaurant">
 						<label for="profilePic" class="col-sm-3 control-label">Change
