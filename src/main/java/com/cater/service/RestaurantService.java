@@ -170,15 +170,36 @@ public class RestaurantService {
 		try {
 			nearByRestaurants = new MapsHelper().getDistance(
 					eventLocation.toString(), restaurants);
+			String cuisine = null;
 			if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
 				for (RestaurantDTO restaurantDTO : nearByRestaurants) {
 					String eventAddress = eventLocation.getStreet1() + " "
 							+ eventLocation.getStreet2() + " "
 							+ eventLocation.getState() + " "
 							+ eventLocation.getZip();
+					String restaurantCuisine =restaurantDTO.getRestaurant().getCuisineType();
+					if(restaurantCuisine.equals("INDIAN_SOUTH") || restaurantCuisine.equals("INDIAN_NORTH"))
+					{
+						 cuisine = "indpak";
+					}
+					else if  (restaurantCuisine.equals("MEXICAN")){
+						cuisine = "mexican";
+					}
+					else if  (restaurantCuisine.equals("SANDWICH")){
+						cuisine = "sandwiches";
+					}
+					else if  (restaurantCuisine.equals("THAI")){
+						cuisine = "thai";
+					}
+					else if  (restaurantCuisine.equals("PIZZA")){
+						cuisine = "pizza";
+					}
+					else{
+						cuisine = restaurantCuisine;
+					}
 					Map <Object, Object> yelpReviews = yelpHelper.getRatings(
 							restaurantDTO.getRestaurant().getName(),
-							eventAddress);
+							eventAddress, cuisine);
 					if (MapUtils.isNotEmpty(yelpReviews)) {
 						restaurantDTO.setNumberOfReviews(Integer
 								.parseInt(yelpReviews.get("noOfReviews")
