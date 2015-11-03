@@ -57,7 +57,7 @@ public class ContactUsController {
 	 * @param modelMap the model map
 	 * @return the string
 	 */
-	@RequestMapping(value = { "email" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "" }, method = RequestMethod.POST)
 	public String sendEmail(HttpServletRequest request, ModelMap modelMap) {
 		String name = StringUtils.defaultString(request.getParameter("name"));
 		String requesterEmail = StringUtils.defaultString(request

@@ -78,7 +78,7 @@
 			</div>
 			<div class="panel-body" style="font-size: 18px;">
 				<form class="form-horizontal" method="POST" id="contactUsForm"
-					action="${pageContext.request.contextPath}/contactUs/email"
+					action="${pageContext.request.contextPath}/contactUs"
 					enctype="application/x-www-form-urlencoded" autocomplete="off">
 					<div class="form-group">
 						<label for="name" class="col-sm-2 control-label">Name: </label>
