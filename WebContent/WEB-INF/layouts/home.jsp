@@ -42,7 +42,7 @@
 		</section>
 		<!--end Hero Image-->
 		<!--How CaterRequest works-->
-		<section id="how-it-works" class="block center">
+		<section id="how-it-works-video" class="block center">
 			<div class="container">
 				<header>
 					<h2>How CaterRequest works?</h2>
@@ -53,9 +53,33 @@
 							src="https://www.youtube.com/embed/dU3nZSqaI3k?rel=0;&autoplay=0"
 							allowfullscreen="" frameborder="0"></iframe>
 					</div>
-					<div class="feature-box">
+					<%-- <div class="feature-box">
 						<img alt="how-it-works"
 							src="${pageContext.request.contextPath}/resources/images/home_how.png">
+					</div> --%>
+				</div>
+			</div>
+		</section>
+		<section id="how-it-works-steps" class="block equal-height">
+			<div class="container">
+				<header>
+					<h2>Three Simple Steps</h2>
+				</header>
+				<div class="row">
+					<div class=" col-sm-4">
+						<img
+							src="${pageContext.request.contextPath}/resources/images/home/1.png"
+							alt=""> </a>
+					</div>
+					<div class=" col-sm-4">
+						<img
+							src="${pageContext.request.contextPath}/resources/images/home/2.png"
+							alt=""> </a>
+					</div>
+					<div class=" col-sm-4">
+						<img
+							src="${pageContext.request.contextPath}/resources/images/home/3.png"
+							alt=""> </a>
 					</div>
 				</div>
 			</div>
@@ -250,9 +274,11 @@
 						</div>
 						<div class="item">
 							<blockquote>
-								<figure><img
+								<figure>
+									<img
 										src="${pageContext.request.contextPath}/resources/images/people/user.png"
-										alt=""></figure>
+										alt="">
+								</figure>
 								<div class="description">
 									<p>The experience was fantastic! Being a working women and
 										a mother of 3yr old, finding time to talk to restaurants and
