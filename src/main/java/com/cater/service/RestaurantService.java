@@ -198,7 +198,7 @@ public class RestaurantService {
 						cuisine = restaurantCuisine;
 					}
 					Map <Object, Object> yelpReviews = yelpHelper.getRatings(
-							restaurantDTO.getRestaurant().getName(),
+							restaurantDTO,
 							eventAddress, cuisine);
 					if (MapUtils.isNotEmpty(yelpReviews)) {
 						restaurantDTO.setNumberOfReviews(Integer
