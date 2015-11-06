@@ -69,10 +69,10 @@
 							<c:choose>
 								<c:when test="${sessionScope.user.isGuest()}">
 									<button class="popup-with-form-modal btn btn-default"
-										name="nologin" href="#nologin-form">Next</button>
+										name="nologin" href="#nologin-form">Request Price</button>
 								</c:when>
 								<c:otherwise>
-									<button type="submit" class="btn btn-default">Next</button>
+									<button type="submit" class="btn btn-default">Request Price</button>
 								</c:otherwise>
 							</c:choose>
 						</div>
