@@ -42,7 +42,6 @@ import com.cater.ui.data.User;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class CustomerDashboardController.
  */
