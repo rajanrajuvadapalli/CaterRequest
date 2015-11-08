@@ -261,7 +261,9 @@
 					<h3 class="panel-title">Menu</h3>
 				</div>
 				<div class="panel-body">
-					<div id="consent-menu"></div>
+					<div id="consent-menu">
+						<p>Please select the cuisine type above to continue.</p>
+					</div>
 					<%-- <c:forEach items="${menu.categories}" var="category">
 						<c:if test="${not empty category.items}">
 							<div class="col-sm-12">
@@ -275,10 +277,8 @@
 						</c:if>
 					</c:forEach> --%>
 					<div class="col-sm-6">
-						<br /> <br /> <input required type="checkbox" name="menuconsent"
-							value="yes"> I accept the menu. <br /> <br />
 						<button type="submit" class="btn btn-default"
-							name="register-button">Register</button>
+							name="register-button" disabled="true">Register</button>
 					</div>
 				</div>
 			</div>
@@ -291,18 +291,14 @@
 		populateCuisineTypes();
 		populateHearAboutUs();
 		populateStateDropDown();
-		$("button[name=register-button]").prop('disabled', true);
-		$("input[name=menuconsent]").change(function() {
+		$("select[name=cuisineType]").change(populateMenuForRestaurantConsent);
+		$("input[name=menuconsent]").live('change', function() {
 			var element = $("button[name=register-button]");
 			if (this.checked) {
-				//element.addClass("btn-default");
 				element.prop('disabled', false);
 			} else {
-				//element.removeClass("btn-default");
 				element.prop('disabled', true);
 			}
 		});
-		$("select[name=cuisineType]").change(populateMenuForRestaurantConsent);
-
 	});
 </script>
