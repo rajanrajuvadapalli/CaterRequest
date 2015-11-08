@@ -39,16 +39,20 @@ public class SearchController {
 	 * @author sandeep appikonda
 	 */
 	@RequestMapping(value = { "search" }, method = RequestMethod.GET)
-	public String searchRestaurants(ModelMap modelMap, HttpServletRequest request, HttpSession session)
-			throws Exception {
-		String zipCode = StringUtils.defaultString(request.getParameter("zip_code"));
-		String cuisineType = StringUtils.defaultString(request.getParameter("cuisineType"));
+	public String searchRestaurants(ModelMap modelMap,
+			HttpServletRequest request, HttpSession session) throws Exception {
+		String zipCode = StringUtils.defaultString(request
+				.getParameter("zip_code"));
+		String cuisineType = StringUtils.defaultString(request
+				.getParameter("cuisineType"));
 		Set <Restaurant> allRestaurants = null;
 		if (StringUtils.isBlank(cuisineType)) {
-			allRestaurants = Sets.newHashSet(restaurantService.fetchAllRestaurants());
+			allRestaurants = Sets.newHashSet(restaurantService
+					.fetchAllRestaurants());
 		}
 		else {
-			allRestaurants = restaurantService.fetchRestaurantsOfType(cuisineType);
+			allRestaurants = restaurantService
+					.fetchRestaurantsOfType(cuisineType);
 			modelMap.put("cuisine", cuisineType);
 		}
 		if (CollectionUtils.isNotEmpty(allRestaurants)) {

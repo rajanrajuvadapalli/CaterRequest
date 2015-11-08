@@ -54,6 +54,7 @@ public class CustomerDashboardController {
 	/** The Constant SDF. */
 	private static final SimpleDateFormat SDF = new SimpleDateFormat(
 			"yyyy/MM/dd HH:mm", Locale.US);
+	/** The Constant SDF_1. */
 	private static final SimpleDateFormat SDF_1 = new SimpleDateFormat(
 			"EEE, d MMM yyyy hh:mm aaa z", Locale.US);
 	/** The Constant NUMERIC. */
@@ -64,6 +65,7 @@ public class CustomerDashboardController {
 	/** The restaurant service. */
 	@Autowired
 	private RestaurantService restaurantService;
+
 
 	/**
 	 * Gets the dashboard.
@@ -121,8 +123,9 @@ public class CustomerDashboardController {
 
 	/**
 	 * Group quotes per cuisine.
-	 *
-	 * @param quotes the quotes
+	 * 
+	 * @param quotes
+	 *            the quotes
 	 * @return the map
 	 */
 	private Map <String, List <Quote>> groupQuotesPerCuisine(List <Quote> quotes) {
@@ -240,11 +243,15 @@ public class CustomerDashboardController {
 
 	/**
 	 * Edits the event.
-	 *
-	 * @param httpSession the http session
-	 * @param modelMap the model map
-	 * @param request the request
-	 * @param eventId the event id
+	 * 
+	 * @param httpSession
+	 *            the http session
+	 * @param modelMap
+	 *            the model map
+	 * @param request
+	 *            the request
+	 * @param eventId
+	 *            the event id
 	 * @return the string
 	 */
 	@RequestMapping(value = { "event/edit/{eventId}" }, method = RequestMethod.GET)
@@ -268,12 +275,17 @@ public class CustomerDashboardController {
 
 	/**
 	 * Update event.
-	 *
-	 * @param httpSession the http session
-	 * @param modelMap the model map
-	 * @param request the request
-	 * @param eventId the event id
-	 * @param redirectAttributes the redirect attributes
+	 * 
+	 * @param httpSession
+	 *            the http session
+	 * @param modelMap
+	 *            the model map
+	 * @param request
+	 *            the request
+	 * @param eventId
+	 *            the event id
+	 * @param redirectAttributes
+	 *            the redirect attributes
 	 * @return the string
 	 */
 	@RequestMapping(value = { "event/update/{eventId}" }, method = RequestMethod.POST)
@@ -368,9 +380,9 @@ public class CustomerDashboardController {
 	/**
 	 * Update quote status and send notifications.
 	 *
-	 * @param e the e
-	 * @param message the message
-	 * @param isDateChanged the is date changed
+	 * @param e            the e
+	 * @param message            the message
+	 * @param isDateChanged            the is date changed
 	 * @param isCountChanged the is count changed
 	 */
 	private void updateQuoteStatusAndSendNotifications(Event e,
@@ -395,8 +407,9 @@ public class CustomerDashboardController {
 
 	/**
 	 * String to int.
-	 *
-	 * @param aString the a string
+	 * 
+	 * @param aString
+	 *            the a string
 	 * @return the int
 	 */
 	private int stringToInt(String aString) {
@@ -409,12 +422,17 @@ public class CustomerDashboardController {
 
 	/**
 	 * Delete event.
-	 *
-	 * @param httpSession the http session
-	 * @param modelMap the model map
-	 * @param request the request
-	 * @param eventId the event id
-	 * @param redirectAttributes the redirect attributes
+	 * 
+	 * @param httpSession
+	 *            the http session
+	 * @param modelMap
+	 *            the model map
+	 * @param request
+	 *            the request
+	 * @param eventId
+	 *            the event id
+	 * @param redirectAttributes
+	 *            the redirect attributes
 	 * @return the string
 	 */
 	@RequestMapping(value = { "event/delete/{eventId}" }, method = RequestMethod.POST)
@@ -468,12 +486,17 @@ public class CustomerDashboardController {
 
 	/**
 	 * Request quote.
-	 *
-	 * @param httpSession the http session
-	 * @param modelMap the model map
-	 * @param request the request
-	 * @param restaurantIds the restaurant ids
-	 * @param redirectAttributes the redirect attributes
+	 * 
+	 * @param httpSession
+	 *            the http session
+	 * @param modelMap
+	 *            the model map
+	 * @param request
+	 *            the request
+	 * @param restaurantIds
+	 *            the restaurant ids
+	 * @param redirectAttributes
+	 *            the redirect attributes
 	 * @return the string
 	 */
 	@RequestMapping(value = { "event/requestQuote" }, method = RequestMethod.POST)
@@ -528,12 +551,13 @@ public class CustomerDashboardController {
 	/**
 	 * Confirm order.
 	 *
-	 * @param httpSession the http session
-	 * @param modelMap the model map
-	 * @param request the request
-	 * @param restaurantId the restaurant id
-	 * @param eventId the event id
-	 * @param quoteId the quote id
+	 * @param httpSession            the http session
+	 * @param modelMap            the model map
+	 * @param request            the request
+	 * @param redirectAttributes the redirect attributes
+	 * @param restaurantId            the restaurant id
+	 * @param eventId            the event id
+	 * @param quoteId            the quote id
 	 * @return the string
 	 */
 	@RequestMapping(value = { "orderConfirmation" }, method = RequestMethod.POST)
@@ -545,6 +569,7 @@ public class CustomerDashboardController {
 			@RequestParam(value = "restaurantName", required = true) Integer restaurantId,
 			@RequestParam(value = "xeventId", required = true) Integer eventId,
 			@RequestParam(value = "xquoteId", required = true) Integer quoteId) {
+		String forward = "redirect:/customer/dashboard";
 		User user = (User) httpSession.getAttribute("user");
 		if (user == null) {
 			return "t_home";
@@ -559,13 +584,89 @@ public class CustomerDashboardController {
 		}
 		else {
 			Quote quote = restaurantService.findQuoteWithId(quoteId);
+			Event event = customerService.findEventWithId(eventId);
+			if (quote == null || quote.getPrice() == null
+					|| quote.getPrice() == 0) {
+				errors.add("Cannot confirm order with no quotes.");
+			}
+			else {
+				modelMap.put("quote", quote);
+				modelMap.put("restuarant", quote.getRestaurant());
+				modelMap.put("event", event);
+				System.out.println(quote.getId());
+				forward = "t_payment";
+				System.out.println("" + quote.getRestaurant().getName());
+			}
+		}
+		return forward;
+	}
+
+	/**
+	 * Make payment.
+	 *
+	 * @param httpSession the http session
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param redirectAttributes the redirect attributes
+	 * @param quoteId the quote id
+	 * @return the string
+	 */
+	@RequestMapping(value = { "makePayment" }, method = RequestMethod.POST)
+	public String makePayment(HttpSession httpSession, ModelMap modelMap,
+			HttpServletRequest request, RedirectAttributes redirectAttributes,
+			@RequestParam(value = "xquoteId", required = true) Integer quoteId) {
+		/*
+		 * Address address = new Address();
+		 * address.setStreet1(StringUtils.defaultString
+		 * (request.getParameter("street")));
+		 * address.setCity(StringUtils.defaultString
+		 * (request.getParameter("city")));
+		 * address.setState(StringUtils.defaultString
+		 * (request.getParameter("state")));
+		 * address.setZip(StringUtils.defaultString
+		 * (request.getParameter("zip")));
+		 * 
+		 * CreditCard creditCard = new CreditCard();
+		 * creditCard.setNumber(StringUtils
+		 * .defaultString(request.getParameter("creditNumber")));
+		 * creditCard.setType
+		 * (StringUtils.defaultString(request.getParameter("cardType"))); int
+		 * month
+		 * =Integer.parseInt(StringUtils.defaultString(request.getParameter
+		 * ("month"))); int year
+		 * =Integer.parseInt(StringUtils.defaultString(request
+		 * .getParameter("year"))); creditCard.setExpireMonth(month);
+		 * creditCard.setExpireYear(year);
+		 * creditCard.setFirstName(StringUtils.defaultString
+		 * (request.getParameter("firstName")));
+		 * creditCard.setLastName(StringUtils
+		 * .defaultString(request.getParameter("lastName")));
+		 * 
+		 * 
+		 * ModelMap billingInfo = new ModelMap(); billingInfo.put("address",
+		 * address);
+		 * 
+		 * PaymentHelper ph = new PaymentHelper(); try {
+		 * ph.makePayment(billingInfo); } catch (PayPalRESTException e) { //
+		 * }
+		 */
+		List <String> errors = Lists.newArrayList();
+		redirectAttributes.addFlashAttribute("errors", errors);
+		List <String> successMessages = Lists.newArrayList();
+		redirectAttributes
+				.addFlashAttribute("successMessages", successMessages);
+		if (quoteId == null) {
+			errors.add("Please choose a quote.");
+		}
+		else {
+			Quote quote = restaurantService.findQuoteWithId(quoteId);
 			if (quote == null || quote.getPrice() == null
 					|| quote.getPrice() == 0) {
 				errors.add("Cannot confirm order with no quotes.");
 			}
 			else {
 				quote.setStatus(QuoteStatus.APPROVED.toString());
-				//Reject all other quotes
+				// Reject all other quotes
 				for (Quote q : quote.getMenu().getQuotes()) {
 					if (!q.getId().equals(quote.getId())) {
 						q.setStatus(QuoteStatus.DENIED.toString());
@@ -576,7 +677,7 @@ public class CustomerDashboardController {
 				restaurantService.sendNotification(quote, null);
 				customerService.sendNotification(quote);
 				successMessages
-						.add("Congratulations, your order has been placed! Please pay to the restaurant on delivery.");
+						.add("Congratulations, your order has been placed!");
 			}
 		}
 		return "redirect:/customer/dashboard";
