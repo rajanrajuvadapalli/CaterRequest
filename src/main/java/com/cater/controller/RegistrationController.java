@@ -135,6 +135,7 @@ public class RegistrationController {
 			data.setCuisineType(StringUtils.defaultString(request
 					.getParameter("cuisineType")));
 			data.setUrl(StringUtils.defaultString(request.getParameter("url")));
+			data.setDeliverMiles(request.getParameter("deliver-miles"));
 			data.setEmail(StringUtils.defaultString(username));
 			data.setPassword(StringUtils.defaultString(request
 					.getParameter("pwd1")));

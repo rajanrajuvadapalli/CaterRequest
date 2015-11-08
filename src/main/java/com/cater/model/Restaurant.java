@@ -42,11 +42,13 @@ public class Restaurant extends TimestampEntity implements Serializable {
 	private String cuisineType;
 	@Column(name = "website_url", length = 50, nullable = true)
 	private String websiteUrl;
+	@Column(name = "deliver_miles", nullable = true)
+	private Integer deliverMiles;
 	@Column(name = "about_us", length = 5000, nullable = true)
 	private String aboutUs;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "restaurant_sk")
-	public List<Quote> quotes;
+	public List <Quote> quotes;
 
 	public Integer getId() {
 		return id;
@@ -120,6 +122,14 @@ public class Restaurant extends TimestampEntity implements Serializable {
 		this.websiteUrl = websiteUrl;
 	}
 
+	public Integer getDeliverMiles() {
+		return deliverMiles;
+	}
+
+	public void setDeliverMiles(Integer deliverMiles) {
+		this.deliverMiles = deliverMiles;
+	}
+
 	public String getAboutUs() {
 		return aboutUs;
 	}
@@ -128,11 +138,11 @@ public class Restaurant extends TimestampEntity implements Serializable {
 		this.aboutUs = aboutUs;
 	}
 
-	public List<Quote> getQuotes() {
+	public List <Quote> getQuotes() {
 		return quotes;
 	}
 
-	public void setQuotes(List<Quote> quotes) {
+	public void setQuotes(List <Quote> quotes) {
 		this.quotes = quotes;
 	}
 
@@ -148,6 +158,8 @@ public class Restaurant extends TimestampEntity implements Serializable {
 				+ ((contactNumber == null) ? 0 : contactNumber.hashCode());
 		result = prime * result
 				+ ((cuisineType == null) ? 0 : cuisineType.hashCode());
+		result = prime * result
+				+ ((deliverMiles == null) ? 0 : deliverMiles.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + (isNumberVerified ? 1231 : 1237);
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
@@ -195,6 +207,12 @@ public class Restaurant extends TimestampEntity implements Serializable {
 				return false;
 		}
 		else if (!cuisineType.equals(other.cuisineType))
+			return false;
+		if (deliverMiles == null) {
+			if (other.deliverMiles != null)
+				return false;
+		}
+		else if (!deliverMiles.equals(other.deliverMiles))
 			return false;
 		if (id == null) {
 			if (other.id != null)

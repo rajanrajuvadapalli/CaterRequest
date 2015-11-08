@@ -140,6 +140,8 @@ public class SettingsController {
 			populateAddress(data, address);
 			user.setRestaurantID(restaurant.getId());
 			data.setAboutUs(restaurant.getAboutUs());
+			data.setDeliverMiles(restaurant.getDeliverMiles() == null ? ""
+					: restaurant.getDeliverMiles() + "");
 		}
 		user.setData(data);
 		session.setAttribute("user", user);
@@ -190,6 +192,7 @@ public class SettingsController {
 			data.setCuisineType(StringUtils.defaultString(request
 					.getParameter("cuisineType")));
 			data.setUrl(StringUtils.defaultString(request.getParameter("url")));
+			data.setDeliverMiles(request.getParameter("deliver-miles"));
 			//data.setEmail(StringUtils.defaultString(request.getParameter("email")));
 			//data.setPassword(StringUtils.defaultString(request.getParameter("pwd1")));
 			data.setPhone(StringUtils.defaultString(request

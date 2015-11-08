@@ -6,6 +6,7 @@ public class RegistrationData {
 	private String restaurantName;
 	private String cuisineType;
 	private String url;
+	private String deliverMiles;
 	private String email;
 	private String password;
 	private String phone;
@@ -49,6 +50,14 @@ public class RegistrationData {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public String getDeliverMiles() {
+		return deliverMiles;
+	}
+
+	public void setDeliverMiles(String deliverMiles) {
+		this.deliverMiles = deliverMiles;
 	}
 
 	public String getEmail() {

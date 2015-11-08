@@ -125,8 +125,10 @@ public class RestaurantService {
 			String restaurantName, MultipartFile multipartFile) {
 		//Save the profile picture for restaurant
 		String fileType = "";
-		if (multipartFile != null) {
-			String originalFileName = multipartFile.getOriginalFilename();
+		String originalFileName = "";
+		if (multipartFile != null
+				&& StringUtils.isNotBlank(originalFileName = multipartFile
+						.getOriginalFilename())) {
 			logger.debug("Saving profile picture " + originalFileName);
 			if (StringUtils.contains(originalFileName, ".")) {
 				fileType = StringUtils.substring(originalFileName,

@@ -29,6 +29,8 @@ public class Quote extends TimestampEntity implements Serializable {
 	private Restaurant restaurant;
 	@Column(name = "price")
 	private Double price;
+	@Column(name = "deliver", nullable = false, unique = false, updatable = true)
+	private boolean canDeliver;
 	@Column(name = "status", length = 20, nullable = true)
 	private String status;
 
@@ -64,6 +66,14 @@ public class Quote extends TimestampEntity implements Serializable {
 		this.price = price;
 	}
 
+	public boolean canDeliver() {
+		return canDeliver;
+	}
+
+	public void setCanDeliver(boolean canDeliver) {
+		this.canDeliver = canDeliver;
+	}
+
 	public String getStatus() {
 		return status;
 	}
@@ -76,6 +86,7 @@ public class Quote extends TimestampEntity implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
+		result = prime * result + (canDeliver ? 1231 : 1237);
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((menu == null) ? 0 : menu.hashCode());
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
@@ -94,6 +105,8 @@ public class Quote extends TimestampEntity implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Quote other = (Quote) obj;
+		if (canDeliver != other.canDeliver)
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;

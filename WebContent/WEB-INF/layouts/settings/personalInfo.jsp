@@ -76,11 +76,18 @@
 					</div>
 				</c:if>
 				<c:if test="${sessionScope.user.role.value == 'RESTAURANT'}">
-					<img
-						src="https://s3-us-west-2.amazonaws.com/caterrequest-restaurant-profile-pics/Restaurant_${sessionScope.user.restaurantID}"
-						alt="${sessionScope.user.data.restaurantName}" width="150">
-					<div class="form-group" id="restaurant">
-						<label for="profilePic" class="col-sm-3 control-label">Change
+					<div class="form-group">
+						<label for="" class="col-sm-3 control-label"> </label>
+						<div class="col-sm-6">
+							<img
+								src="https://s3-us-west-2.amazonaws.com/rajrv-caterrequest-profile-pics/Restaurant_${sessionScope.user.restaurantID}"
+								alt="${sessionScope.user.data.restaurantName}" width="150">
+							<input type="button" name="changeProfilePicButton"
+								value="Change Pic" class="btn btn-default btn-sm">
+						</div>
+					</div>
+					<div class="form-group hidden" id="restaurant-pic">
+						<label for="profilePic" class="col-sm-3 control-label">
 							Picture&nbsp;:</label>
 						<div class="col-sm-6">
 							<!-- Show only image files for selection & preview. Control button labels, styles, 
@@ -88,8 +95,9 @@
 							<input id="input-profile-pic" name="input-profile-pic"
 								type="file"
 								accept="image/x-png, image/gif, image/jpeg, image/jpg"
-								class="file" data-show-upload="false" data-show-caption="true"
-								placeholder="Upload png, jpg, jpeg or gif image">
+								class="file" data-show-upload="false" data-show-caption="true">
+							<i>Accepted formats are PNG, JPG, JPEG and GIF. Image file
+								size limit is 4MB.</i>
 						</div>
 					</div>
 					<div class="form-group">
@@ -120,6 +128,17 @@
 							<input type="text" size="30" maxlength="50" name="url"
 								required="required" class="form-control"
 								value="${sessionScope.user.data.url}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="deliver-miles" class="col-sm-3 control-label">Number
+							of miles you can deliver<br />(optional):
+						</label>
+						<div class="col-sm-6" align="left">
+							<input type="text" size="5" name="deliver-miles" pattern="\d+"
+								class="form-control"
+								placeholder="leave this field blank if you do not deliver"
+								value="${sessionScope.user.data.deliverMiles}">
 						</div>
 					</div>
 					<div class="form-group">
@@ -275,5 +294,8 @@
 		$('select[name=state]').val(existingState);
 		var existingCuisine = $('input[name=cuisineType]').val();
 		$('select[name=cuisineType]').val(existingCuisine);
+		$("input[name=changeProfilePicButton]").click(function() {
+			$("div[id=restaurant-pic]").removeClass("hidden");
+		});
 	});
 </script>

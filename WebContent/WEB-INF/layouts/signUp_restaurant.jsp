@@ -100,8 +100,8 @@
 								type="file"
 								accept="image/x-png, image/gif, image/jpeg, image/jpg"
 								class="file" required="required" data-show-upload="false"
-								data-show-caption="true"
-								placeholder="Upload png, jpg, jpeg or gif image">
+								data-show-caption="true"> <i>Accepted formats are
+								PNG, JPG, JPEG and GIF. Image file size limit is 4MB.</i>
 						</div>
 					</div>
 					<div class="form-group" id="restaurant">
@@ -167,6 +167,16 @@
 							<input type="text" size="30" name="phone" required="required"
 								placeholder="Ex.: xxxxxxxxxx" pattern="\d{10}"
 								class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="deliver-miles" class="col-sm-4 control-label">Number
+							of miles you can deliver<br />(optional):
+						</label>
+						<div class="col-sm-6" align="left">
+							<input type="text" size="5" name="deliver-miles" pattern="\d+"
+								class="form-control"
+								placeholder="leave this field blank if you do not deliver">
 						</div>
 					</div>
 					<div class="form-group">

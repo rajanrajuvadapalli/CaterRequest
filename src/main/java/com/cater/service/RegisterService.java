@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.cater.Helper;
 import com.cater.constants.Roles;
 import com.cater.dao.AddressDAO;
 import com.cater.dao.CustomerDAO;
@@ -90,6 +91,8 @@ public class RegisterService {
 			restaurant.setContactEmail(data.getEmail());
 			restaurant.setCuisineType(data.getCuisineType());
 			restaurant.setWebsiteUrl(data.getUrl());
+			restaurant.setDeliverMiles(Helper.stringToInteger(data
+					.getDeliverMiles()));
 			restaurant.setAboutUs(data.getAboutUs());
 			restaurantDAO.saveOrUpdate(restaurant);
 		}

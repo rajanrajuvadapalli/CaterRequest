@@ -38,6 +38,7 @@ public class RestaurantDAOImplTest extends AbstractDAOImplTest {
 		restaurant.setContactEmail("manager@gmail.com");
 		restaurant.setCuisineType(Cuisines.MEXICAN.toString());
 		restaurant.setWebsiteUrl("http://chipotle.com");
+		restaurant.setDeliverMiles(100);
 		return restaurant;
 	}
 
@@ -100,6 +101,7 @@ public class RestaurantDAOImplTest extends AbstractDAOImplTest {
 		assertEquals(persistedRestaurant.getContactEmail(), "manager@gmail.com");
 		assertEquals(persistedRestaurant.getCuisineType(), "MEXICAN");
 		assertEquals(persistedRestaurant.getWebsiteUrl(), "http://chipotle.com");
+		assertEquals(persistedRestaurant.getDeliverMiles(), new Integer(100));
 		assertNotNull(persistedRestaurant.getLogin());
 		assertEquals(persistedRestaurant.getLogin().getUsername(), "rest a");
 		assertEquals(persistedRestaurant.getLogin().getPassword(), "rest p");
