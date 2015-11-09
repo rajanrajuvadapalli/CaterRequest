@@ -25,7 +25,7 @@ import com.google.common.collect.Maps;
 
 /**
  * Description:.
- *
+ * 
  * @since Nov 22, 2014
  * 
  */
@@ -42,21 +42,20 @@ public class CustomerDAO extends DataAccessObject {
 
 	/**
 	 * Save or update.
-	 *
-	 * @param customer the customer
+	 * 
+	 * @param customer
+	 *            the customer
 	 * @return true, if successful
 	 */
 	public boolean saveOrUpdate(Customer customer) {
 		if (customer == null) {
 			logger.error("Cannot save null value for Customer.");
-		}
-		else {
+		} else {
 			loginDAO.saveOrUpdate(customer.getLogin());
 			addressDAO.saveOrUpdate(customer.getAddress());
 			if (customer.getId() == null) {
 				return super.save(Customer.class, customer);
-			}
-			else {
+			} else {
 				return super.update(Customer.class, customer);
 			}
 		}
@@ -65,8 +64,9 @@ public class CustomerDAO extends DataAccessObject {
 
 	/**
 	 * Find by id.
-	 *
-	 * @param id the id
+	 * 
+	 * @param id
+	 *            the id
 	 * @return the customer
 	 */
 	public Customer findById(Integer id) {
@@ -75,8 +75,9 @@ public class CustomerDAO extends DataAccessObject {
 
 	/**
 	 * Find by login id.
-	 *
-	 * @param loginID the login id
+	 * 
+	 * @param loginID
+	 *            the login id
 	 * @return the customer
 	 */
 	public Customer findByLoginID(Integer loginID) {
@@ -87,7 +88,7 @@ public class CustomerDAO extends DataAccessObject {
 		logger.debug("Finding Customer with login ID: " + loginID);
 		try {
 			Session session = getSessionFactory().getCurrentSession();
-			List <?> list = session
+			List<?> list = session
 					.createCriteria(Customer.class, "cus")
 					.createAlias("cus.login", "login", JoinType.LEFT_OUTER_JOIN)
 					.add(Restrictions.eq("login.id", loginID)).list();
@@ -96,8 +97,7 @@ public class CustomerDAO extends DataAccessObject {
 				logger.debug("Found Customer with login ID: " + loginID);
 			}
 			return customer;
-		}
-		catch (HibernateException he) {
+		} catch (HibernateException he) {
 			logger.error(
 					"Exception occurred while Finding Customer with login ID: "
 							+ loginID, he);
@@ -105,18 +105,42 @@ public class CustomerDAO extends DataAccessObject {
 		}
 	}
 
+	public Customer findByCustomerByContactEmail(String customerEmail) {
+		Customer customer = null;
+		if (customerEmail == null || customerEmail.isEmpty()) {
+			return null;
+		}
+		try {
+			Session session = getSessionFactory().getCurrentSession();
+			List<?> list = session.createCriteria(Customer.class, "cus")
+
+			.add(Restrictions.eq("cus.contactEmail", customerEmail)).list();
+			if (CollectionUtils.isNotEmpty(list)) {
+				customer = (Customer) list.iterator().next();
+				logger.debug("Found Customer with email Id: " + customerEmail);
+			}
+			return customer;
+		} catch (HibernateException he) {
+			logger.error(
+					"Exception occurred while Finding Customer with email Id: "
+							+ customerEmail, he);
+			throw he;
+		}
+
+	}
+
 	/**
 	 * Fetch all customers.
-	 *
+	 * 
 	 * @return the list
 	 */
-	public List <Customer> fetchAllCustomers() {
+	public List<Customer> fetchAllCustomers() {
 		return super.fetchAll(Customer.class);
 	}
 
 	/**
 	 * Gets the number of customers.
-	 *
+	 * 
 	 * @return the number of customers
 	 */
 	public int getNumberOfCustomers() {
@@ -125,8 +149,7 @@ public class CustomerDAO extends DataAccessObject {
 			Session session = getSessionFactory().getCurrentSession();
 			Query q = session.createQuery("select count(*) from Customer");
 			return ((Long) q.uniqueResult()).intValue();
-		}
-		catch (HibernateException he) {
+		} catch (HibernateException he) {
 			logger.error(
 					"Exception occurred while Finding number of customers.", he);
 			return 0;
@@ -134,13 +157,13 @@ public class CustomerDAO extends DataAccessObject {
 	}
 
 	@SuppressWarnings("unchecked")
-	public Map <Integer, String> sparseDownloadMyEvents(Integer customerID) {
+	public Map<Integer, String> sparseDownloadMyEvents(Integer customerID) {
 		logger.debug("Downloading sparse event details for customer with ID "
 				+ customerID);
-		Map <Integer, String> result = Maps.newHashMap();
+		Map<Integer, String> result = Maps.newHashMap();
 		try {
 			Session session = getSessionFactory().getCurrentSession();
-			List <SparseEvent> list = session
+			List<SparseEvent> list = session
 					.createCriteria(Event.class, "e")
 					.createAlias("e.customer", "c", JoinType.RIGHT_OUTER_JOIN)
 					.add(Restrictions.eq("c.id", customerID))
@@ -154,21 +177,16 @@ public class CustomerDAO extends DataAccessObject {
 			for (SparseEvent se : list) {
 				result.put(se.id, se.name);
 			}
-			//Following code also works.
-			/*List <Object[]> list = session
-					.createCriteria(Event.class, "e")
-					.createAlias("e.customer", "c", JoinType.RIGHT_OUTER_JOIN)
-					.add(Restrictions.eq("c.id", customerID))
-					.setProjection(
-							Projections.projectionList()
-									.add(Projections.property("e.id"))
-									.add(Projections.property("e.name")))
-					.list();
-			for (Object[] o : list) {
-				result.put((Integer) o[0], (String) o[1]);
-			}*/
-		}
-		catch (HibernateException he) {
+			// Following code also works.
+			/*
+			 * List <Object[]> list = session .createCriteria(Event.class, "e")
+			 * .createAlias("e.customer", "c", JoinType.RIGHT_OUTER_JOIN)
+			 * .add(Restrictions.eq("c.id", customerID)) .setProjection(
+			 * Projections.projectionList() .add(Projections.property("e.id"))
+			 * .add(Projections.property("e.name"))) .list(); for (Object[] o :
+			 * list) { result.put((Integer) o[0], (String) o[1]); }
+			 */
+		} catch (HibernateException he) {
 			logger.error(
 					"Exception occurred while downloading sparse event details for customer.",
 					he);
@@ -181,24 +199,19 @@ public class CustomerDAO extends DataAccessObject {
 		private String name;
 	}
 
-	/*	public static class CustomerSearch {
-			private Integer userId;
-			public Integer getUserId() {
-				return userId;
-			}
-			public void setUserId(Integer userId) {
-				this.userId = userId;
-			}
-			private String  customerName;
-			private String  contactNumber;
-			private boolean smsIndicator;
-			private String eventName;
-			
-			
-		}*/
-	/* for customer search*/
+	/*
+	 * public static class CustomerSearch { private Integer userId; public
+	 * Integer getUserId() { return userId; } public void setUserId(Integer
+	 * userId) { this.userId = userId; } private String customerName; private
+	 * String contactNumber; private boolean smsIndicator; private String
+	 * eventName;
+	 * 
+	 * 
+	 * }
+	 */
+	/* for customer search */
 	@SuppressWarnings("unchecked")
-	public List <CustomerSearch> getCustomerInfo(String customerName) {
+	public List<CustomerSearch> getCustomerInfo(String customerName) {
 		logger.debug("Getting customer info by name.");
 		Session session = getSessionFactory().getCurrentSession();
 		Criteria c = session
@@ -224,8 +237,7 @@ public class CustomerDAO extends DataAccessObject {
 										"customerEmail")
 								.add(Projections.property("e.name"),
 										"eventName")
-								.add(Projections.property("r.name"),
-										"restaurantName")
+								.add(Projections.property("e.id"), "eventId")
 								.add(Projections.property("l.street1"),
 										"eventStreet1")
 								.add(Projections.property("l.street2"),
@@ -240,14 +252,14 @@ public class CustomerDAO extends DataAccessObject {
 										"date_time"))
 				.setResultTransformer(
 						Transformers.aliasToBean(CustomerSearch.class));
-		List <CustomerSearch> customerList = c.list();
+		List<CustomerSearch> customerList = c.list();
 		return customerList;
-		//return customerList;
+		// return customerList;
 	}
 
-	/* for customer search*/
+	/* for customer search */
 	@SuppressWarnings("unchecked")
-	public List <CustomerSearch> getCustomerInfoByDateRange(Date fromDate,
+	public List<CustomerSearch> getCustomerInfoByDateRange(Date fromDate,
 			Date toDate) {
 		logger.debug("Getting customer info by date range.");
 		Session session = getSessionFactory().getCurrentSession();
@@ -290,7 +302,7 @@ public class CustomerDAO extends DataAccessObject {
 										"date_time"))
 				.setResultTransformer(
 						Transformers.aliasToBean(CustomerSearch.class));
-		List <CustomerSearch> customerList = c.list();
+		List<CustomerSearch> customerList = c.list();
 		return customerList;
 	}
 }
