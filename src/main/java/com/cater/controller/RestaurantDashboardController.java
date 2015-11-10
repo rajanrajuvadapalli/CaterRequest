@@ -143,12 +143,15 @@ public class RestaurantDashboardController {
 		User user = (User) httpSession.getAttribute("user");
 		if (user != null) {
 			String price = request.getParameter("price");
+			String deliver = request.getParameter("deliver");
 			String quoteIdString = request.getParameter("quoteId");
 			Quote quote = restaurantService.findQuoteWithId(Helper
 					.stringToInteger(quoteIdString));
 			Double existingPrice = quote.getPrice();
 			if (quote != null) {
 				Double newPrice = Double.parseDouble(price);
+				quote.setCanDeliver(StringUtils
+						.equalsIgnoreCase("yes", deliver) ? true : false);
 				quote.setPrice(newPrice);
 				if (existingPrice == null || existingPrice == 0) {
 					quote.setStatus(QuoteStatus.RESTAURANT_SUBMITTED_PRICE

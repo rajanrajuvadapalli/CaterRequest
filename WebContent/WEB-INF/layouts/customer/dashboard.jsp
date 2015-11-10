@@ -122,7 +122,13 @@
 																					<label><input type="radio"
 																						value="${q.restaurant.id}" required="required"
 																						data-quote-id="${q.id}" name="restaurantName">
-																						${q.restaurant.name} </label>
+																						${q.restaurant.name} <c:if
+																							test="${q.canDeliver()}">
+																							<a href="#" data-toggle="tooltip"
+																								title="Restaurant will deliver the food."><span
+																								class="glyphicon glyphicon-road"
+																								aria-hidden="true"></span></a>
+																						</c:if></label>
 																				</div>
 																				<c:choose>
 																					<c:when test="${empty q.price}">Not responded</c:when>
@@ -189,14 +195,20 @@
 					</c:forEach>
 				</table>
 			</div>
+			Legend:
+			<br />
+			<span class="glyphicon glyphicon-road" aria-hidden="true"></span> The restaurant has agreed to deliver the food.
+			<br />
+			<br />
 		</c:otherwise>
 	</c:choose>
 </div>
 
 <script>
-$('document').ready(function() {
-	populateCuisineTypes();
-});
+	$('document').ready(function() {
+		populateCuisineTypes();
+		$('[data-toggle="tooltip"]').tooltip();
+	});
 	// Bind the 'onClick' event for the 'restaurantName' input field
 	$('input[name=restaurantName]').on('click', function(e) {
 		var $restaurantNameInputField = $(this);
