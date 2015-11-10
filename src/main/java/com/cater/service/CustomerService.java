@@ -47,7 +47,7 @@ public class CustomerService {
 		return customerDAO.findByLoginID(loginID);
 	}
 
-	public Customer findCustomerWithEmailID(String customerEmail) {
+	public Customer findByCustomerByContactEmail(String customerEmail) {
 		return customerDAO.findByCustomerByContactEmail(customerEmail);
 	}
 

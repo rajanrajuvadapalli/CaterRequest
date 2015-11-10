@@ -10,7 +10,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,14 +27,14 @@ import com.cater.ui.data.User;
 import com.google.common.collect.Maps;
 
 /**
- * Description:.
- * 
+ * The Class AdminDashboardController.
+ *
  * @since Jan 27, 2015
- * 
  */
 @Controller
 @RequestMapping(value = { "admin" })
 public class AdminDashboardController {
+	/** The Constant logger. */
 	private static final Logger logger = Logger
 			.getLogger(AdminDashboardController.class);
 	/** The customer service. */
@@ -43,6 +43,7 @@ public class AdminDashboardController {
 	/** The restaurant service. */
 	@Autowired
 	private RestaurantService restaurantService;
+	/** The Constant SDF. */
 	private static final SimpleDateFormat SDF = new SimpleDateFormat(
 			"yyyy/MM/dd HH:mm", Locale.US);
 
@@ -66,105 +67,97 @@ public class AdminDashboardController {
 
 	/**
 	 * List customers.
-	 * 
-	 * @param modelMap
-	 *            the model map
-	 * @param session
-	 *            the session
+	 *
+	 * @param modelMap            the model map
+	 * @param request the request
+	 * @param session            the session
 	 * @return the string
-	 * @throws ParseException
+	 * @throws ParseException the parse exception
 	 */
 	@RequestMapping(value = { "customerSearch" }, method = RequestMethod.GET)
 	public String listCustomers(ModelMap modelMap, HttpServletRequest request,
 			HttpSession session) throws ParseException {
-		String customerName = StringUtils.defaultString(request
-				.getParameter("id"));
-
+		String customerEmail = StringUtils.defaultString(request
+				.getParameter("customer_email"));
 		Customer customer = null;
-
-		if (!customerName.isEmpty()) {
-			customer = customerService.findCustomerWithEmailID(customerName);
+		if (StringUtils.isNotBlank(customerEmail)) {
+			customer = customerService
+					.findByCustomerByContactEmail(customerEmail);
 			if (customer != null) {
-
-				List<Event> events = customer.getEvents();
-
+				List <Event> events = customer.getEvents();
 				modelMap.put("events", events);
-				Map<Integer, List<Quote>> e2q = Maps.newHashMap();
-
+				Map <Integer, List <Quote>> e2q = Maps.newHashMap();
 				for (Event e : events) {
-
-					List<Quote> quotes = restaurantService
+					List <Quote> quotes = restaurantService
 							.findQuotesWithEventId(e.getId());
 					e2q.put(e.getId(), quotes);
-
 				}
 				modelMap.put("e2q", e2q);
-
 			}
-
-		} else {
+		}
+		else {
 			java.util.Date today = new java.util.Date();
 			Date toDate = new java.sql.Timestamp(today.getTime());
-			if (StringUtils.isNotEmpty(request.getParameter("toDate"))) {
-
+			if (StringUtils.isNotBlank(request.getParameter("toDate"))) {
 				toDate = SDF.parse(StringUtils.defaultString(request
 						.getParameter("toDate")));
 			}
-
 			Date fromDate = SDF.parse("2001/01/01 12:00");
-
-			if (StringUtils.isNotEmpty(request.getParameter("fromDate"))) {
+			if (StringUtils.isNotBlank(request.getParameter("fromDate"))) {
 				fromDate = SDF.parse(StringUtils.defaultString(request
 						.getParameter("fromDate")));
 			}
-
-			System.out.println(" to date:" + toDate + " from date " + fromDate);
-
-			List<Event> events = customerService.findEventsByDateRange(
+			logger.debug("Searching customer from " + fromDate + " to "
+					+ toDate);
+			List <Event> events = customerService.findEventsByDateRange(
 					fromDate, toDate);
 			modelMap.put("events", events);
-
-			Map<Integer, List<Quote>> e2q = Maps.newHashMap();
+			Map <Integer, List <Quote>> e2q = Maps.newHashMap();
 			for (Event e : events) {
-
-				List<Quote> quotes = restaurantService.findQuotesWithEventId(e
+				List <Quote> quotes = restaurantService.findQuotesWithEventId(e
 						.getId());
 				e2q.put(e.getId(), quotes);
 			}
 			modelMap.put("e2q", e2q);
-
 		}
-
 		return "admin/t_customerSearch";
 	}
 
+	/**
+	 * List restaurants.
+	 *
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param session the session
+	 * @return the string
+	 * @throws ParseException the parse exception
+	 */
 	@RequestMapping(value = { "restaurantSearch" }, method = RequestMethod.GET)
 	public String listRestaurants(ModelMap modelMap,
 			HttpServletRequest request, HttpSession session)
 			throws ParseException {
-		String restaurantName = StringUtils.defaultString(request
-				.getParameter("id"));
-		if (!restaurantName.isEmpty()) {
+		String restaurantEmail = StringUtils.defaultString(request
+				.getParameter("rest_email"));
+		if (StringUtils.isNotBlank(restaurantEmail)) {
 			modelMap.put("restaurants", restaurantService
-					.searchForRestaurantsByName(restaurantName));
-		} else {
+					.searchForRestaurantsByUserName(restaurantEmail));
+		}
+		else {
 			java.util.Date today = new java.util.Date();
 			Date toDate = new java.sql.Timestamp(today.getTime());
-			if (StringUtils.isNotEmpty(request.getParameter("toDate"))) {
-
+			if (StringUtils.isNotBlank(request.getParameter("toDate"))) {
 				toDate = SDF.parse(StringUtils.defaultString(request
 						.getParameter("toDate")));
 			}
-
 			Date fromDate = SDF.parse("2001/01/01 12:00");
-
-			if (StringUtils.isNotEmpty(request.getParameter("fromDate"))) {
+			if (StringUtils.isNotBlank(request.getParameter("fromDate"))) {
 				fromDate = SDF.parse(StringUtils.defaultString(request
 						.getParameter("fromDate")));
 			}
 			modelMap.put("restaurants", restaurantService
 					.searchForRestaurantsByDateRange(fromDate, toDate));
-			System.out.println(" to date:" + toDate + " from date " + fromDate);
+			logger.debug("Searching restaurants from " + fromDate + " to "
+					+ toDate);
 		}
 		refreshCounts(session);
 		return "admin/t_restaurantSearch";
@@ -231,5 +224,4 @@ public class AdminDashboardController {
 				restaurantService.getNumberOfRestaurants());
 		session.setAttribute("nEvents", customerService.getNumberOfEvents());
 	}
-
 }

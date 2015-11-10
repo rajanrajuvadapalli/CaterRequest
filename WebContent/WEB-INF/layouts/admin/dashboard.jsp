@@ -19,10 +19,10 @@
 					action="${pageContext.request.contextPath}/admin/customerSearch"
 					method="GET">
 					<div class="form-group">
-						<label for="name" class="col-sm-3 control-label">Username
-							:</label>
+						<label for="name" class="col-sm-3 control-label">Customer
+							Email :</label>
 						<div class="col-sm-4" align="left">
-							<input type="text" name="id" id="id" class="form-control">
+							<input type="text" name="customer_email" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
@@ -66,9 +66,9 @@
 					method="GET">
 					<div class="form-group">
 						<label for="name" class="col-sm-3 control-label">Restaurant
-							id :</label>
+							Email :</label>
 						<div class="col-sm-4" align="left">
-							<input type="text" name="id" id="id" class="form-control">
+							<input type="text" name="rest_email" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
@@ -107,9 +107,6 @@
 			dayOfWeekStart : 1,
 			lang : 'en'
 		});
-	});
-	$('document').ready(function() {
-		populateStateDropDown();
 		$("input[id=toDate]").datetimepicker({
 			dayOfWeekStart : 1,
 			lang : 'en'

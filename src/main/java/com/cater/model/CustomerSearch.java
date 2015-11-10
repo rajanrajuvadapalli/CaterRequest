@@ -4,8 +4,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import com.google.common.collect.Maps;
-
 public class CustomerSearch {
 	private Integer userId;
 	private String customerName;

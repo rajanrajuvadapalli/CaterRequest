@@ -12,6 +12,7 @@ import org.hibernate.sql.JoinType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.beust.jcommander.internal.Lists;
 import com.cater.model.Event;
 
 /**
@@ -35,13 +36,16 @@ public class EventDAO extends DataAccessObject {
 	public boolean saveOrUpdate(Event event) {
 		if (event == null) {
 			logger.error("Cannot save null value for Event.");
-		} else if (event.getLocation() == null) {
+		}
+		else if (event.getLocation() == null) {
 			logger.error("Location address cannot be empty for Event.");
-		} else {
+		}
+		else {
 			addressDAO.saveOrUpdate(event.getLocation());
 			if (event.getId() == null) {
 				return super.save(Event.class, event);
-			} else {
+			}
+			else {
 				return super.update(Event.class, event);
 			}
 		}
@@ -67,50 +71,53 @@ public class EventDAO extends DataAccessObject {
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Event> findByCustomerID(Integer customerID) {
+	public List <Event> findByCustomerID(Integer customerID) {
 		if (customerID == null) {
 			return null;
 		}
 		logger.debug("Finding Event with customer ID: " + customerID);
 		try {
 			Session session = getSessionFactory().getCurrentSession();
-			List<Event> list = (List<Event>) session
+			List <Event> list = (List <Event>) session
 					.createCriteria(Event.class, "event")
 					.createAlias("event.customer", "customer",
 							JoinType.LEFT_OUTER_JOIN)
 					.add(Restrictions
 							.eq("customer.id", new Integer(customerID))).list();
 			return list;
-		} catch (HibernateException he) {
+		}
+		catch (HibernateException he) {
 			logger.error(
 					"Exception occurred while Finding Event with customer ID: "
 							+ customerID, he);
 			throw he;
 		}
 	}
-	
+
 	/**
 	 * Find events by date range.
-	 * 
-	 * @param from date
-	 * @param to date
-	 *            
+	 *
+	 * @param fromDate the from date
+	 * @param toDate the to date
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Event> findEventsByDateRange(Date fromDate, Date toDate) {
-
-		try {
-			Session session = getSessionFactory().getCurrentSession();
-			List<Event> list = (List<Event>) session
-					.createCriteria(Event.class, "event")
-					.add(Restrictions.between("event.date_time", fromDate,
-							toDate)).list();
-			return list;
-		} catch (HibernateException he) {
-			logger.error(he);
-			throw he;
+	public List <Event> findEventsByDateRange(Date fromDate, Date toDate) {
+		List <Event> events = null;
+		if (fromDate != null && toDate != null) {
+			try {
+				Session session = getSessionFactory().getCurrentSession();
+				events = (List <Event>) session
+						.createCriteria(Event.class, "event")
+						.add(Restrictions.between("event.date_time", fromDate,
+								toDate)).list();
+			}
+			catch (HibernateException he) {
+				logger.error(he);
+				throw he;
+			}
 		}
+		return events == null ? Lists.newArrayList() : events;
 	}
 
 	/**
@@ -118,7 +125,7 @@ public class EventDAO extends DataAccessObject {
 	 * 
 	 * @return the list
 	 */
-	public List<Event> fetchAllEvents() {
+	public List <Event> fetchAllEvents() {
 		return super.fetchAll(Event.class);
 	}
 
@@ -133,7 +140,8 @@ public class EventDAO extends DataAccessObject {
 			Session session = getSessionFactory().getCurrentSession();
 			Query q = session.createQuery("select count(*) from Event");
 			return ((Long) q.uniqueResult()).intValue();
-		} catch (HibernateException he) {
+		}
+		catch (HibernateException he) {
 			logger.error("Exception occurred while Finding number of events.",
 					he);
 			return 0;
@@ -142,9 +150,8 @@ public class EventDAO extends DataAccessObject {
 
 	/**
 	 * Delete event.
-	 * 
-	 * @param eventId
-	 *            the event id
+	 *
+	 * @param event the event
 	 */
 	public void deleteEvent(Event event) {
 		logger.debug("Deleting event with id: " + event.getId());

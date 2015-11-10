@@ -106,16 +106,15 @@ public class RestaurantDAO extends DataAccessObject {
 	}
 
 	/**
-	* @param restaurantId
-	* @return
-	* 
-	* User Id, Restaurant name, Phone Number, Location, Event Name, Location, Date & time, Menu,
-	*  Restaurant Quote (Sort by Alphabet), Confirmed Restaurant, total payment.
-	* 
-	*/
+	 * Search restaurants by user name.
+	 *
+	 * @param userName the user name
+	 * @return User Id, Restaurant name, Phone Number, Location, Event Name, Location, Date & time, Menu,
+	 *  Restaurant Quote (Sort by Alphabet), Confirmed Restaurant, total payment.
+	 */
 	@SuppressWarnings("unchecked")
-	public List <RestaurantSearch> searchRestaurantsByName(String name) {
-		logger.debug("Searching restaurants by name.");
+	public List <RestaurantSearch> searchRestaurantsByUserName(String userName) {
+		logger.debug("Searching restaurants with user name " + userName);
 		Session session = getSessionFactory().getCurrentSession();
 		Criteria c = session
 				.createCriteria(Quote.class, "q")
@@ -125,7 +124,7 @@ public class RestaurantDAO extends DataAccessObject {
 				.createAlias("m.event", "e")
 				.createAlias("e.location", "el")
 				.createAlias("r.login", "login")
-				.add(Restrictions.eq("login.username", name))
+				.add(Restrictions.eq("login.username", userName))
 				.setProjection(
 						Projections
 								.projectionList()

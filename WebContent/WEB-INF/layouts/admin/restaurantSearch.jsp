@@ -20,9 +20,9 @@
 					method="GET">
 					<div class="form-group">
 						<label for="name" class="col-sm-3 control-label">Restaurant
-							id :</label>
+							Email :</label>
 						<div class="col-sm-4" align="left">
-							<input type="text" name="id" id="id" class="form-control">
+							<input type="text" name="rest_email" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">

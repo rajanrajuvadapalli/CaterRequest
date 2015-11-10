@@ -190,14 +190,15 @@ public class RestaurantService {
 				multipartFile);
 	}
 
+
 	/**
-	 * Search for restaurants by name.
+	 * Search for restaurants by user name.
 	 *
 	 * @param name the name
 	 * @return the list
 	 */
-	public List <RestaurantSearch> searchForRestaurantsByName(String name) {
-		return restaurantDAO.searchRestaurantsByName(name);
+	public List <RestaurantSearch> searchForRestaurantsByUserName(String name) {
+		return restaurantDAO.searchRestaurantsByUserName(name);
 	}
 
 	/**
