@@ -27,7 +27,8 @@ import com.google.common.collect.Sets;
 
 @Controller
 public class SearchController {
-	private static final Logger logger = Logger.getLogger(SearchController.class);
+	private static final Logger logger = Logger
+			.getLogger(SearchController.class);
 	@Autowired
 	private RestaurantService restaurantService;
 	@Autowired
@@ -45,33 +46,43 @@ public class SearchController {
 				.getParameter("zip_code"));
 		String cuisineType = StringUtils.defaultString(request
 				.getParameter("cuisineType"));
-		Set <Restaurant> allRestaurants = null;
-		if (StringUtils.isBlank(cuisineType)) {
-			allRestaurants = Sets.newHashSet(restaurantService
-					.fetchAllRestaurants());
-		}
-		else {
-			allRestaurants = restaurantService
-					.fetchRestaurantsOfType(cuisineType);
-			modelMap.put("cuisine", cuisineType);
-		}
-		if (CollectionUtils.isNotEmpty(allRestaurants)) {
-			MapsHelper mapsHelper = new MapsHelper();
-			List <RestaurantDTO> nearByRestaurants = mapsHelper.getDistance(zipCode, allRestaurants);
-			if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
-				for (RestaurantDTO restaurantDTO : nearByRestaurants) {
-					Map <?, ?> yelpReviews = yelpHelper.getRatings(restaurantDTO.getRestaurant().getName(), zipCode);
-					if (MapUtils.isNotEmpty(yelpReviews)) {
-						restaurantDTO.setNumberOfReviews(Helper.stringToInt(yelpReviews.get("noOfReviews").toString()));
-						restaurantDTO.setReviewImage(yelpReviews.get("ratings"));
-						logger.debug(String.format("Restaurant %s has %s yelp ratings.",
-								restaurantDTO.getRestaurant().getName(), yelpReviews.get("ratings")));
-					}
-				}
-				modelMap.put("restaurants", nearByRestaurants);
+		if (StringUtils.isNotBlank(zipCode)
+				&& StringUtils.isNotBlank(cuisineType)) {
+			Set <Restaurant> allRestaurants = null;
+			if (StringUtils.isBlank(cuisineType)) {
+				allRestaurants = Sets.newHashSet(restaurantService
+						.fetchAllRestaurants());
 			}
+			else {
+				allRestaurants = restaurantService
+						.fetchRestaurantsOfType(cuisineType);
+				modelMap.put("cuisine", cuisineType);
+			}
+			if (CollectionUtils.isNotEmpty(allRestaurants)) {
+				MapsHelper mapsHelper = new MapsHelper();
+				List <RestaurantDTO> nearByRestaurants = mapsHelper
+						.getDistance(zipCode, allRestaurants);
+				if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
+					for (RestaurantDTO restaurantDTO : nearByRestaurants) {
+						Map <?, ?> yelpReviews = yelpHelper.getRatings(
+								restaurantDTO, zipCode);
+						if (MapUtils.isNotEmpty(yelpReviews)) {
+							restaurantDTO.setNumberOfReviews(Helper
+									.stringToInt(yelpReviews.get("noOfReviews")
+											.toString()));
+							restaurantDTO.setReviewImage(yelpReviews
+									.get("ratings"));
+							logger.debug(String.format(
+									"Restaurant %s has %s yelp ratings.",
+									restaurantDTO.getRestaurant().getName(),
+									yelpReviews.get("ratings")));
+						}
+					}
+					modelMap.put("restaurants", nearByRestaurants);
+				}
+			}
+			modelMap.put("eventLocation", zipCode);
 		}
-		modelMap.put("eventLocation", zipCode);
 		return "t_search";
 	}
 }

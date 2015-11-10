@@ -16,8 +16,9 @@
 	<div class="col-sm-2 right">
 		<button class="popup-with-form btn btn-default"
 			href="#start-new-search-form">Start new search</button>
+		<br />
 	</div>
-	<div>
+	<div class="col-sm-12">
 		<c:choose>
 			<c:when test="${empty restaurants}">Sorry! No <c:out
 					value="${cuisine}"></c:out> restaurants registered with us.
@@ -27,8 +28,7 @@
 					<div class="col-sm-3">
 						<div class="panel panel-warning">
 							<div class="panel-heading">
-								<h3 class="panel-title">${r.restaurant.name} -
-									${r.distance}</h3>
+								<h3 class="panel-title">${r.restaurant.name}- ${r.distance}</h3>
 							</div>
 							<div class="panel-body">
 								<img width="120px"

@@ -31,23 +31,36 @@ import com.cater.model.RestaurantSearch;
 import com.cater.twilio.sms.SMSHelper;
 import com.cater.yelp.YelpAPIHelper;
 
+/**
+ * The Class RestaurantService.
+ */
 @Component
 public class RestaurantService {
+	/** The Constant logger. */
 	private static final Logger logger = Logger
 			.getLogger(RestaurantService.class);
+	/** The restaurant dao. */
 	@Autowired
 	private RestaurantDAO restaurantDAO;
+	/** The quote dao. */
 	@Autowired
 	private QuoteDAO quoteDAO;
+	/** The email helper. */
 	@Autowired
 	private EmailHelper emailHelper;
+	/** The sms helper. */
 	@Autowired
 	private SMSHelper smsHelper;
+	/** The yelp helper. */
 	@Autowired
 	private YelpAPIHelper yelpHelper;
+	/** The amazons3. */
 	@Autowired
 	private AmazonS3 amazons3;
 
+	/**
+	 * Post construct.
+	 */
 	/*	@Value("${profile.pic.folder}")
 		private String profilePicFolder;
 	*/
@@ -59,26 +72,61 @@ public class RestaurantService {
 				profilePicFolder);*/
 	}
 
+	/**
+	 * Fetch all restaurants.
+	 *
+	 * @return the list
+	 */
 	public List <Restaurant> fetchAllRestaurants() {
 		return restaurantDAO.fetchAllRestaurants();
 	}
 
+	/**
+	 * Fetch restaurants of type.
+	 *
+	 * @param cuisine the cuisine
+	 * @return the sets the
+	 */
 	public Set <Restaurant> fetchRestaurantsOfType(String cuisine) {
 		return restaurantDAO.fetchRestaurantsOfType(cuisine);
 	}
 
+	/**
+	 * Find restaurant with id.
+	 *
+	 * @param restaurantId the restaurant id
+	 * @return the restaurant
+	 */
 	public Restaurant findRestaurantWithId(Integer restaurantId) {
 		return restaurantDAO.findById(restaurantId);
 	}
 
+	/**
+	 * Find restaurant with login id.
+	 *
+	 * @param loginID the login id
+	 * @return the restaurant
+	 */
 	public Restaurant findRestaurantWithLoginId(Integer loginID) {
 		return restaurantDAO.findByLoginID(loginID);
 	}
 
+	/**
+	 * Find quote with id.
+	 *
+	 * @param quoteId the quote id
+	 * @return the quote
+	 */
 	public Quote findQuoteWithId(Integer quoteId) {
 		return quoteDAO.findById(quoteId);
 	}
 
+	/**
+	 * Find quotes with event id.
+	 *
+	 * @param eventId the event id
+	 * @return the list
+	 */
 	/*public List<Quote> findQuotesWithMenuId(Integer menuId) {
 		return quoteDAO.findByMenuId(menuId);
 	}*/
@@ -86,19 +134,43 @@ public class RestaurantService {
 		return quoteDAO.findByEventId(eventId);
 	}
 
+	/**
+	 * Find quote with restaurant id and menu id.
+	 *
+	 * @param restaurantId the restaurant id
+	 * @param menuId the menu id
+	 * @return the quote
+	 */
 	public Quote findQuoteWithRestaurantIdAndMenuId(Integer restaurantId,
 			Integer menuId) {
 		return quoteDAO.findByRestaurantIdAndMenuId(restaurantId, menuId);
 	}
 
+	/**
+	 * Save or update quote.
+	 *
+	 * @param q the q
+	 * @return true, if successful
+	 */
 	public boolean saveOrUpdateQuote(Quote q) {
 		return quoteDAO.saveOrUpdate(q);
 	}
 
+	/**
+	 * Gets the number of restaurants.
+	 *
+	 * @return the number of restaurants
+	 */
 	public int getNumberOfRestaurants() {
 		return restaurantDAO.getNumberOfRestaurants();
 	}
 
+	/**
+	 * Send notification.
+	 *
+	 * @param quote the quote
+	 * @param optionalMessage the optional message
+	 */
 	public void sendNotification(Quote quote, StringBuilder optionalMessage) {
 		emailHelper.sendNotificationEmailTo(Roles.RESTAURANT, quote,
 				optionalMessage);
@@ -106,21 +178,47 @@ public class RestaurantService {
 				optionalMessage);
 	}
 
+	/**
+	 * Save restaurant profile pic.
+	 *
+	 * @param restaurant the restaurant
+	 * @param multipartFile the multipart file
+	 */
 	public void saveRestaurantProfilePic(Restaurant restaurant,
 			MultipartFile multipartFile) {
 		saveRestaurantProfilePic(restaurant.getId(), restaurant.getName(),
 				multipartFile);
 	}
 
+	/**
+	 * Search for restaurants by name.
+	 *
+	 * @param name the name
+	 * @return the list
+	 */
 	public List <RestaurantSearch> searchForRestaurantsByName(String name) {
 		return restaurantDAO.searchRestaurantsByName(name);
 	}
 
+	/**
+	 * Search for restaurants by date range.
+	 *
+	 * @param fromDate the from date
+	 * @param toDate the to date
+	 * @return the list
+	 */
 	public List <RestaurantSearch> searchForRestaurantsByDateRange(
 			Date fromDate, Date toDate) {
 		return restaurantDAO.searchRestaurantsByDateRange(fromDate, toDate);
 	}
 
+	/**
+	 * Save restaurant profile pic.
+	 *
+	 * @param restaurantID the restaurant id
+	 * @param restaurantName the restaurant name
+	 * @param multipartFile the multipart file
+	 */
 	public void saveRestaurantProfilePic(Integer restaurantID,
 			String restaurantName, MultipartFile multipartFile) {
 		//Save the profile picture for restaurant
@@ -166,42 +264,27 @@ public class RestaurantService {
 		}
 	}
 
+	/**
+	 * Gets the nearby yelp reviews.
+	 *
+	 * @param eventLocation the event location
+	 * @param restaurants the restaurants
+	 * @return the nearby yelp reviews
+	 */
 	public List <RestaurantDTO> getNearbyYelpReviews(
 			com.cater.model.Address eventLocation, Set <Restaurant> restaurants) {
 		List <RestaurantDTO> nearByRestaurants = null;
 		try {
 			nearByRestaurants = new MapsHelper().getDistance(
 					eventLocation.toString(), restaurants);
-			String cuisine = null;
 			if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
 				for (RestaurantDTO restaurantDTO : nearByRestaurants) {
 					String eventAddress = eventLocation.getStreet1() + " "
 							+ eventLocation.getStreet2() + " "
 							+ eventLocation.getState() + " "
 							+ eventLocation.getZip();
-					String restaurantCuisine =restaurantDTO.getRestaurant().getCuisineType();
-					if(restaurantCuisine.equals("INDIAN_SOUTH") || restaurantCuisine.equals("INDIAN_NORTH"))
-					{
-						 cuisine = "indpak";
-					}
-					else if  (restaurantCuisine.equals("MEXICAN")){
-						cuisine = "mexican";
-					}
-					else if  (restaurantCuisine.equals("SANDWICH")){
-						cuisine = "sandwiches";
-					}
-					else if  (restaurantCuisine.equals("THAI")){
-						cuisine = "thai";
-					}
-					else if  (restaurantCuisine.equals("PIZZA")){
-						cuisine = "pizza";
-					}
-					else{
-						cuisine = restaurantCuisine;
-					}
 					Map <Object, Object> yelpReviews = yelpHelper.getRatings(
-							restaurantDTO,
-							eventAddress, cuisine);
+							restaurantDTO, eventAddress);
 					if (MapUtils.isNotEmpty(yelpReviews)) {
 						restaurantDTO.setNumberOfReviews(Integer
 								.parseInt(yelpReviews.get("noOfReviews")
