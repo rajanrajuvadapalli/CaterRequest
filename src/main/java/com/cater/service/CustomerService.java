@@ -38,14 +38,17 @@ public class CustomerService {
 	private EmailHelper emailHelper;
 	@Autowired
 	private SMSHelper smsHelper;
-	
 
-	public List <Customer> fetchAllCustomers() {
+	public List<Customer> fetchAllCustomers() {
 		return customerDAO.fetchAllCustomers();
 	}
 
 	public Customer findCustomerWithLoginId(Integer loginID) {
 		return customerDAO.findByLoginID(loginID);
+	}
+
+	public Customer findCustomerWithEmailID(String customerEmail) {
+		return customerDAO.findByCustomerByContactEmail(customerEmail);
 	}
 
 	public Customer findCustomerWithId(Integer customerID) {
@@ -56,7 +59,7 @@ public class CustomerService {
 		return eventDAO.saveOrUpdate(e);
 	}
 
-	public List <Event> fetchAllEvents() {
+	public List<Event> fetchAllEvents() {
 		return eventDAO.fetchAllEvents();
 	}
 
@@ -88,7 +91,7 @@ public class CustomerService {
 		return menuDAO.saveOrUpdate(m);
 	}
 
-	public List <Menu> findMenusWithEventId(Integer eventId) {
+	public List<Menu> findMenusWithEventId(Integer eventId) {
 		return menuDAO.findMenusWithEventId(eventId);
 	}
 
@@ -105,14 +108,21 @@ public class CustomerService {
 		smsHelper.sendNotificationSMSto(Roles.CUSTOMER, quote, null);
 	}
 
-	public Map <Integer, String> sparseDownloadMyEvents(Integer customerID) {
+	public Map<Integer, String> sparseDownloadMyEvents(Integer customerID) {
 		return customerDAO.sparseDownloadMyEvents(customerID);
 	}
 
-	public List<CustomerSearch> searchCustomerByName(String customerName){
-	   return customerDAO.getCustomerInfo(customerName);	
+	public List<Event> findEventsByDateRange(Date fromDate, Date toDate) {
+		return eventDAO.findEventsByDateRange(fromDate, toDate);
+
 	}
-	public List<CustomerSearch> searchCustomerByDateRange( Date fromDate, Date toDate){
-		   return customerDAO.getCustomerInfoByDateRange(fromDate, toDate );	
-		}
+
+	public List<CustomerSearch> searchCustomerByName(String customerName) {
+		return customerDAO.getCustomerInfo(customerName);
 	}
+
+	public List<CustomerSearch> searchCustomerByDateRange(Date fromDate,
+			Date toDate) {
+		return customerDAO.getCustomerInfoByDateRange(fromDate, toDate);
+	}
+}
