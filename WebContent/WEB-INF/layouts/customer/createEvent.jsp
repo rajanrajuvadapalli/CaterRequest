@@ -198,13 +198,25 @@
 					</div>
 				</div>
 			</div>
+			<div class="panel panel-warning">
+				<div class="panel-heading">
+					<h3 class="panel-title">Menu selection (optional)</h3>
+				</div>
+				<div class="panel-body">
+					<label class="col-sm-3 control-label">Select menu type : </label>
+					<div class="col-sm-6">
+						<span id="cuisineType"></span>
+					</div>
+				</div>
+			</div>
 			<div class="col-sm-1 col-xs-6">
 				<button type="button" class="btn btn-default"
 					onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">
 					Cancel</button>
 			</div>
 			<div class="col-sm-1 col-sm-offset-9 col-xs-6">
-				<button type="submit" class="btn btn-default">Create Event</button><br/><br/><br/>
+				<button type="submit" class="btn btn-default">Create Event</button>
+				<br /> <br /> <br />
 			</div>
 	</form>
 </div>
@@ -212,6 +224,9 @@
 <script>
 	$('document').ready(function() {
 		populateStateDropDown();
+		populateCuisineTypes();
+		//Cuisine type is not required here
+		$("select[name=cuisineType]").removeAttr('required');
 		$("input[id=datetimepicker]").datetimepicker({
 			dayOfWeekStart : 1,
 			lang : 'en'

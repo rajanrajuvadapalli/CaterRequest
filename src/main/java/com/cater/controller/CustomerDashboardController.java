@@ -66,7 +66,6 @@ public class CustomerDashboardController {
 	@Autowired
 	private RestaurantService restaurantService;
 
-
 	/**
 	 * Gets the dashboard.
 	 *
@@ -168,7 +167,7 @@ public class CustomerDashboardController {
 	 */
 	@RequestMapping(value = { "createEvent" }, method = RequestMethod.POST)
 	public String createEvent(HttpSession httpSession, ModelMap modelMap,
-			HttpServletRequest request) {
+			HttpServletRequest request, RedirectAttributes redirectAttributes) {
 		User user = (User) httpSession.getAttribute("user");
 		Customer c = new Customer();
 		if (user == null) {
@@ -237,6 +236,14 @@ public class CustomerDashboardController {
 		else {
 			e.setCustomer(c);
 			customerService.saveOrUpdateEvent(e);
+		}
+		String cuisineType = request.getParameter("cuisineType");
+		if (StringUtils.isNotBlank(cuisineType)) {
+			logger.debug("Customer selected cuisine " + cuisineType
+					+ ". Redirecting to the menu page...");
+			redirectAttributes.addAttribute("cuisineType", cuisineType);
+			redirectAttributes.addAttribute("eventId", e.getId());
+			return "redirect:/menu/selectMenu";
 		}
 		return "redirect:/customer/dashboard";
 	}
