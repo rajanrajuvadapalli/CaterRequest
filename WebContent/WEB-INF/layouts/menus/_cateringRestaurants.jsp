@@ -38,11 +38,11 @@
                                      name="restaurantId"
 										value="${r.restaurant.id}" /> <b> ${r.restaurant.name } -
 										${r.distance} </b> <br>
-									${r.restaurant.address.street1}${r.restaurant.address.street2},${r.restaurant.address.city},${r.restaurant.address.state},${r.restaurant.address.zip}
+									${r.restaurant.address.street1} ${r.restaurant.address.street2}, ${r.restaurant.address.city}, ${r.restaurant.address.state}, ${r.restaurant.address.zip}
 									<br>
 									<c:choose>
 										<c:when test="${r.reviewImage ne null }">
-											<a href="${r.websiteUrl}"> <img src="${r.reviewImage}"
+											<a href="${r.websiteUrl}" target="_blank"> <img src="${r.reviewImage}"
 												width="100" height="20" /></a> - ${r.numberOfReviews} <c:out
 												value="reviews" />
 

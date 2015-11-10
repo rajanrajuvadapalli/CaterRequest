@@ -13,18 +13,22 @@ import org.scribe.model.Token;
 import org.scribe.model.Verb;
 import org.scribe.oauth.OAuthService;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import com.beust.jcommander.internal.Maps;
+import com.cater.maps.RestaurantDTO;
 
 @Component
 public class YelpAPIHelper {
 	/** The Constant logger. */
-	//private static final Logger logger = Logger.getLogger(YelpAPIHelper.class);
+	// private static final Logger logger =
+	// Logger.getLogger(YelpAPIHelper.class);
 
 	private static final String API_HOST = "api.yelp.com";
 	// private static final String DEFAULT_TERM = "dinner";
 	// private static final String DEFAULT_LOCATION = "San Francisco, CA";
 	private static final int SEARCH_LIMIT = 3;
+	private static final int RADIUS_LIMIT = 40000;
 	private static final String SEARCH_PATH = "/v2/search";
 	private static final String BUSINESS_PATH = "/v2/business";
 
@@ -76,11 +80,16 @@ public class YelpAPIHelper {
 	 *            <tt>String</tt> of the location
 	 * @return <tt>String</tt> JSON Response
 	 */
-	public String searchForBusinessesByLocation(String term, String location) {
+	public String searchForBusinessesByLocation(String term, String location,
+			String cuisine) {
 		OAuthRequest request = createOAuthRequest(SEARCH_PATH);
 		request.addQuerystringParameter("term", term);
 		request.addQuerystringParameter("location", location);
 		request.addQuerystringParameter("limit", String.valueOf(SEARCH_LIMIT));
+		if (cuisine != null || !cuisine.equals("")) {
+			request.addQuerystringParameter("category_filter", cuisine);
+		}
+
 		return sendRequestAndGetResponse(request);
 	}
 
@@ -138,10 +147,11 @@ public class YelpAPIHelper {
 	 * @param yelpApiCli
 	 *            <tt>YelpAPICLI</tt> command line arguments
 	 */
-	private Map <Object, Object> queryAPI(YelpAPIHelper yelpApi, String name,
-			String zip) {
-		String searchResponseJSON = yelpApi.searchForBusinessesByLocation(name,
-				zip);
+	private Map<Object, Object> queryAPI(YelpAPIHelper yelpApi,
+			RestaurantDTO restaurantDTO, String zip, String cuisine) {
+		String restaurantName = restaurantDTO.getRestaurant().getName();
+		String searchResponseJSON = yelpApi.searchForBusinessesByLocation(
+				restaurantName, zip, cuisine);
 
 		JSONParser parser = new JSONParser();
 		JSONObject response = null;
@@ -155,19 +165,50 @@ public class YelpAPIHelper {
 		}
 
 		JSONArray businesses = (JSONArray) response.get("businesses");
-		Map <Object, Object> map = Maps.newHashMap();
-		//String firstBusinessID = "";
-		if (businesses != null && businesses.size() > 0) {
-			JSONObject firstBusiness = (JSONObject) businesses.get(0);
-			// firstBusinessID = firstBusiness.get("rating_img_url").toString();
-			map.put("ratings", firstBusiness.get("rating_img_url_large")
-					.toString());
-			map.put("noOfReviews", Integer.parseInt(firstBusiness.get(
-					"review_count").toString()));
-			map.put("websiteUrl", firstBusiness.get("url"));
+		Map<Object, Object> yelpRatings = Maps.newHashMap();
+
+		for (int i = 0; i < businesses.size(); i++) {
+			JSONObject firstBusiness = (JSONObject) businesses.get(i);
+			JSONObject businessLocation = (JSONObject) firstBusiness
+					.get("location");
+			String postalCode = businessLocation.get("postal_code").toString();
+			if (firstBusiness.get("name").equals(restaurantName)
+					&& postalCode.equals(restaurantDTO.getRestaurant()
+							.getAddress().getZip())) {
+				if (firstBusiness.get("id") != null
+						|| StringUtils.isEmpty(firstBusiness.get("id"))) {
+					String firstBusinessID = firstBusiness.get("id").toString();
+					
+					// Select the first business and display business details
+					String businessResponseJSON = yelpApi
+							.searchByBusinessId(firstBusinessID.toString());
+					
+					JSONParser parser1 = new JSONParser();
+					JSONObject businessResponse = null;
+					try {
+						businessResponse = (JSONObject) parser1
+								.parse(businessResponseJSON);
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+					yelpRatings.put("ratings",
+							businessResponse.get("rating_img_url_large")
+									.toString());
+					yelpRatings.put(
+							"noOfReviews",
+							Integer.parseInt(businessResponse.get(
+									"review_count").toString()));
+					yelpRatings.put("websiteUrl", businessResponse.get("url"));
+
+				}
+
+			}
+
 		}
 
-		return map;
+		return yelpRatings;
 	}
 
 	/*  */
@@ -192,18 +233,14 @@ public class YelpAPIHelper {
 	 * 
 	 * @return
 	 */
-	public Map <Object, Object> getRatings(String restaurantName, String zipCode) {
-		/*
-		 * YelpAPICLI yelpApiCli = new YelpAPICLI(); new JCommander(yelpApiCli,
-		 * args);
-		 */
-
+	public Map<Object, Object> getRatings(RestaurantDTO restaurantDTO,
+			String zipCode, String cuisine) {
 		YelpAPIHelper yelpApi = new YelpAPIHelper(CONSUMER_KEY,
 				CONSUMER_SECRET, TOKEN, TOKEN_SECRET);
 		// queryAPI(yelpApi, yelpApiCli);
 
-		Map <Object, Object> reviews = queryAPI(yelpApi, restaurantName,
-				zipCode);
+		Map<Object, Object> reviews = queryAPI(yelpApi, restaurantDTO, zipCode,
+				cuisine);
 		return reviews;
 	}
 }
