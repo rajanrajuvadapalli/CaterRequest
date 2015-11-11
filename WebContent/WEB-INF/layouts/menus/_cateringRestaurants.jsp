@@ -37,13 +37,21 @@
                                     ${prevR.contains(r.restaurant.id)?'checked':''}
                                      name="restaurantId"
 										value="${r.restaurant.id}" /> <b> ${r.restaurant.name } -
-										${r.distance} </b> <br>
-									${r.restaurant.address.street1} ${r.restaurant.address.street2}, ${r.restaurant.address.city}, ${r.restaurant.address.state}, ${r.restaurant.address.zip}
-									<br>
+										${r.distance} </b> <br /> ${r.restaurant.address.street1}
+									${r.restaurant.address.street2}, ${r.restaurant.address.city},
+									${r.restaurant.address.state}, ${r.restaurant.address.zip} <br />
+									<c:choose>
+										<c:when
+											test="${(not empty r.restaurant.deliverMiles) and (r.restaurant.deliverMiles != 0) }">
+									FREE delivery within ${r.restaurant.deliverMiles} miles
+									</c:when>
+										<c:otherwise>NO delivery</c:otherwise>
+									</c:choose>
+									<br />
 									<c:choose>
 										<c:when test="${r.reviewImage ne null }">
-											<a href="${r.websiteUrl}" target="_blank"> <img src="${r.reviewImage}"
-												width="100" height="20" /></a> - ${r.numberOfReviews} <c:out
+											<a href="${r.websiteUrl}" target="_blank"> <img
+												src="${r.reviewImage}" width="100" height="20" /></a> - ${r.numberOfReviews} <c:out
 												value="reviews" />
 
 										</c:when>
@@ -72,7 +80,8 @@
 										name="nologin" href="#nologin-form">Request Price</button>
 								</c:when>
 								<c:otherwise>
-									<button type="submit" class="btn btn-default">Request Price</button>
+									<button type="submit" class="btn btn-default">Request
+										Price</button>
 								</c:otherwise>
 							</c:choose>
 						</div>
