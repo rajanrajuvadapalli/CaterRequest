@@ -123,11 +123,21 @@
 																						value="${q.restaurant.id}" required="required"
 																						data-quote-id="${q.id}" name="restaurantName">
 																						${q.restaurant.name} <c:if
-																							test="${q.canDeliver()}">
-																							<a href="#" data-toggle="tooltip"
-																								title="Restaurant will deliver the food."><span
-																								class="glyphicon glyphicon-road"
-																								aria-hidden="true"></span></a>
+																							test="${not empty q.price}">
+																							<c:choose>
+																								<c:when test="${q.canDeliver()}">
+																									<a href="#" data-toggle="tooltip"
+																										title="FREE delivery"><span
+																										class="glyphicon glyphicon-road"
+																										style="color: green" aria-hidden="true"></span></a>
+																								</c:when>
+																								<c:otherwise>
+																									<a href="#" data-toggle="tooltip"
+																										title="NO delivery"><span
+																										class="glyphicon glyphicon-road"
+																										style="color: red" aria-hidden="true"></span></a>
+																								</c:otherwise>
+																							</c:choose>
 																						</c:if></label>
 																				</div>
 																				<c:choose>
@@ -197,7 +207,9 @@
 			</div>
 			Legend:
 			<br />
-			<span class="glyphicon glyphicon-road" aria-hidden="true"></span> The restaurant has agreed to deliver the food.
+			<span class="glyphicon glyphicon-road" style="color: green" aria-hidden="true"></span> The restaurant has agreed to deliver the food.
+			<br />
+			<span class="glyphicon glyphicon-road" style="color: red" aria-hidden="true"></span> The restaurant does not deliver the food.
 			<br />
 			<br />
 		</c:otherwise>
