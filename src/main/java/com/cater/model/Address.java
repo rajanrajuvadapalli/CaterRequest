@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * The Class Address.
  * 
@@ -164,6 +166,23 @@ public class Address extends TimestampEntity implements Serializable {
 		builder.append("city: ").append(city).append(NEW_LINE);
 		builder.append("state: ").append(state).append(NEW_LINE);
 		builder.append("zip: ").append(zip).append("]");
+		return builder.toString();
+	}
+
+	/**
+	 * Gets the address string.
+	 *
+	 * @return the address string
+	 */
+	public String getAddressString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(street1).append(",");
+		if (StringUtils.isNotBlank(street2)) {
+			builder.append(street2).append(",");
+		}
+		builder.append(city).append(",");
+		builder.append(state).append(",");
+		builder.append(zip);
 		return builder.toString();
 	}
 }

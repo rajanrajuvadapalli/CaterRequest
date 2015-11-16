@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.cater.Helper;
 import com.cater.maps.MapsHelper;
 import com.cater.maps.RestaurantDTO;
+import com.cater.model.Address;
 import com.cater.model.Restaurant;
 import com.cater.service.RestaurantService;
 import com.cater.yelp.YelpAPIHelper;
@@ -60,8 +61,10 @@ public class SearchController {
 			}
 			if (CollectionUtils.isNotEmpty(allRestaurants)) {
 				MapsHelper mapsHelper = new MapsHelper();
+				Address address = new Address();
+				address.setZip(zipCode);
 				List <RestaurantDTO> nearByRestaurants = mapsHelper
-						.getDistance(zipCode, allRestaurants);
+						.getDistance(address, allRestaurants);
 				if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
 					for (RestaurantDTO restaurantDTO : nearByRestaurants) {
 						Map <?, ?> yelpReviews = yelpHelper.getRatings(

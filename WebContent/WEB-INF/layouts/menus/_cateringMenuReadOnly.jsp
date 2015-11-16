@@ -139,10 +139,16 @@
 								<input type="text" hidden="true" value="${quote.id}"
 									name="quoteId">
 								<div class="form-group">
+									<label class="col-sm-4 control-label">Event location:</label>
+									<div class="col-sm-3">
+										${event.location.getAddressString()} <br />(<b>${eventDistance}</b>)
+									</div>
+								</div>
+								<div class="form-group">
 									<label class="col-sm-4 control-label">Can you deliver
 										for this order?</label>
 									<div class="col-sm-3">
-										<select name="deliver" class="form-control inputs"
+										<select name="deliver" class="form-control"
 											required="required">
 											<option value="yes" ${quote.canDeliver()?'selected':''}>Yes</option>
 											<option value="no" ${quote.canDeliver()?'':'selected'}>No</option>

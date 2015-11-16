@@ -190,7 +190,6 @@ public class RestaurantService {
 				multipartFile);
 	}
 
-
 	/**
 	 * Search for restaurants by user name.
 	 *
@@ -276,8 +275,8 @@ public class RestaurantService {
 			com.cater.model.Address eventLocation, Set <Restaurant> restaurants) {
 		List <RestaurantDTO> nearByRestaurants = null;
 		try {
-			nearByRestaurants = new MapsHelper().getDistance(
-					eventLocation.toString(), restaurants);
+			nearByRestaurants = new MapsHelper().getDistance(eventLocation,
+					restaurants);
 			if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
 				for (RestaurantDTO restaurantDTO : nearByRestaurants) {
 					String eventAddress = eventLocation.getStreet1() + " "

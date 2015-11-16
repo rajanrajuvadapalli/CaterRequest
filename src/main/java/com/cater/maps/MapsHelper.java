@@ -3,22 +3,42 @@ package com.cater.maps;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.collections.CollectionUtils;
+import org.springframework.stereotype.Component;
+
 import com.beust.jcommander.internal.Lists;
+import com.cater.model.Address;
 import com.cater.model.Restaurant;
+import com.google.common.collect.Sets;
 import com.google.maps.DistanceMatrixApi;
 import com.google.maps.GeoApiContext;
 import com.google.maps.model.DistanceMatrix;
 import com.google.maps.model.Unit;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MapsHelper.
+ */
+@Component
 public class MapsHelper {
-	public List <RestaurantDTO> getDistance(String eventAddress, Set <Restaurant> restaurants) {
-		GeoApiContext context = new GeoApiContext().setApiKey("AIzaSyAlobAYE25Q2m62_DX3wc1AMimO2Xr-WHc");
-		String[] origin = { eventAddress };
+	/**
+	 * Gets the distance.
+	 *
+	 * @param address the address
+	 * @param restaurants the restaurants
+	 * @return the distance
+	 */
+	public List <RestaurantDTO> getDistance(Address address,
+			Set <Restaurant> restaurants) {
+		GeoApiContext context = new GeoApiContext()
+				.setApiKey("AIzaSyAlobAYE25Q2m62_DX3wc1AMimO2Xr-WHc");
+		String[] origin = { address.getAddressString() };
 		List <RestaurantDTO> nearByRestaurants = Lists.newArrayList();
 		for (Restaurant rest : restaurants) {
-			String[] destination = { rest.getAddress().toString() };
+			String[] destination = { rest.getAddress().getAddressString() };
 			try {
-				DistanceMatrix dm = DistanceMatrixApi.getDistanceMatrix(context, origin, destination)
+				DistanceMatrix dm = DistanceMatrixApi
+						.getDistanceMatrix(context, origin, destination)
 						.units(Unit.IMPERIAL).await();
 				if (dm.rows.length > 0 && dm.rows[0].elements.length > 0) {
 					com.google.maps.model.Distance distance = dm.rows[0].elements[0].distance;
@@ -48,9 +68,29 @@ public class MapsHelper {
 			}
 		} // end of iter
 			// WRITE sorting
-			/*
-			 * if(!nearByRestaurants.isEmpty() && nearByRestaurants!= null){ ÷ }
-			 */
+		/*
+		 * if(!nearByRestaurants.isEmpty() && nearByRestaurants!= null){ ÷ }
+		 */
 		return nearByRestaurants;
+	}
+
+	/**
+	 * Gets the distance.
+	 *
+	 * @param address the address
+	 * @param restaurant the restaurant
+	 * @return the distance
+	 */
+	public RestaurantDTO getDistance(Address address, Restaurant restaurant) {
+		Set <Restaurant> restaurants = Sets.newHashSet(restaurant);
+		List <RestaurantDTO> restaurantDTOs = getDistance(address, restaurants);
+		if (CollectionUtils.isNotEmpty(restaurantDTOs)) {
+			return restaurantDTOs.iterator().next();
+		}
+		RestaurantDTO restaurantDTO = new RestaurantDTO();
+		restaurantDTO.setDistance("0");
+		restaurantDTO.setDistanceInMeters(new Long(0));
+		restaurantDTO.setRestaurant(restaurant);
+		return restaurantDTO;
 	}
 }
