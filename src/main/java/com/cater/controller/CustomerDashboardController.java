@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,6 +42,7 @@ import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 
 /**
  * The Class CustomerDashboardController.
@@ -90,14 +92,13 @@ public class CustomerDashboardController {
 		modelMap.put("customer", customer);
 		List <Event> events = customer.getEvents();
 		modelMap.put("events", events);
-		Map <Integer, List <String>> e2m = Maps.newHashMap();
-		Map <Integer, List <Integer>> e2mid = Maps.newHashMap();
+		Map <Integer, Set <String>> e2m = Maps.newHashMap();
 		Map <Integer, Map <String, List <Quote>>> e2q = Maps.newHashMap();
 		if (!user.isGuest()) {
 			for (Event e : events) {
 				List <Menu> menus = customerService.findMenusWithEventId(e
 						.getId());
-				List <String> selectedMenuCusines = Lists.newLinkedList();
+				Set <String> selectedMenuCusines = Sets.newTreeSet();
 				List <Integer> selectedMenuCusineIds = Lists.newLinkedList();
 				if (CollectionUtils.isNotEmpty(menus)) {
 					for (Menu m : menus) {
@@ -106,7 +107,6 @@ public class CustomerDashboardController {
 					}
 				}
 				e2m.put(e.getId(), selectedMenuCusines);
-				e2mid.put(e.getId(), selectedMenuCusineIds);
 				List <Quote> quotes = restaurantService.findQuotesWithEventId(e
 						.getId());
 				Map <String, List <Quote>> groupedQuotes = groupQuotesPerCuisine(quotes);
@@ -115,7 +115,6 @@ public class CustomerDashboardController {
 			((User) session.getAttribute("user")).setName(customer.getName());
 		}
 		modelMap.put("e2m", e2m);
-		modelMap.put("e2mid", e2mid);
 		modelMap.put("e2q", e2q);
 		return "customer/t_dashboard";
 	}
@@ -128,7 +127,7 @@ public class CustomerDashboardController {
 	 * @return the map
 	 */
 	private Map <String, List <Quote>> groupQuotesPerCuisine(List <Quote> quotes) {
-		Map <String, List <Quote>> groupedQuotes = Maps.newHashMap();
+		Map <String, List <Quote>> groupedQuotes = Maps.newTreeMap();
 		for (Quote q : quotes) {
 			Restaurant r = q.getRestaurant();
 			if (r != null) {

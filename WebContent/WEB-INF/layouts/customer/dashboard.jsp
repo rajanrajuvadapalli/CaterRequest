@@ -176,7 +176,7 @@
 										<c:forEach items="${e2m.get(e.id)}" var="cuisine"
 											varStatus="loop">
 											<a
-												href="${pageContext.request.contextPath}/menu/view/${e2mid.get(e.id).get(loop.index)}">${cuisine}</a>
+												href="${pageContext.request.contextPath}/menu/view/all?eventId=${e.id}">${cuisine}</a>
 											<br />
 										</c:forEach>
 										<hr>

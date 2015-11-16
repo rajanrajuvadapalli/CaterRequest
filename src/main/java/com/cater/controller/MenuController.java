@@ -51,6 +51,7 @@ import com.google.common.collect.Sets;
 public class MenuController {
 	/** The Constant logger. */
 	private static final Logger logger = Logger.getLogger(MenuController.class);
+	/** The Constant MENU_DELIMITER. */
 	private static final String MENU_DELIMITER = "|";
 	/** The customer service. */
 	@Autowired
@@ -67,6 +68,7 @@ public class MenuController {
 	/** The menu dao. */
 	@Autowired
 	private MenuDAO menuDAO;
+	/** The maps helper. */
 	@Autowired
 	private MapsHelper mapsHelper;
 
@@ -250,6 +252,12 @@ public class MenuController {
 		return "menus/t__cateringMenu";
 	}
 
+	/**
+	 * Gets the categories list.
+	 *
+	 * @param menu the menu
+	 * @return the categories list
+	 */
 	private List <String> getCategoriesList(Menu menu) {
 		List <String> categoryNames = Lists.newArrayList();
 		if (menu != null) {
@@ -263,16 +271,16 @@ public class MenuController {
 	/**
 	 * Save menu.
 	 *
-	 * @param httpSession
-	 *            the http session
-	 * @param modelMap
-	 *            the model map
-	 * @param request
-	 *            the request
-	 * @param itemNames
-	 *            the item names
-	 * @param cuisine
-	 *            the cuisine
+	 * @param httpSession            the http session
+	 * @param modelMap            the model map
+	 * @param request            the request
+	 * @param itemCodesJson the item codes json
+	 * @param pizzaItemsJson the pizza items json
+	 * @param mexicanItemsJson the mexican items json
+	 * @param thaiItemsJson the thai items json
+	 * @param sandwichItemsJson the sandwich items json
+	 * @param cuisine            the cuisine
+	 * @param comments the comments
 	 * @return the string
 	 */
 	@RequestMapping(value = { "saveMenu" }, method = RequestMethod.POST)
@@ -438,106 +446,13 @@ public class MenuController {
 		}
 		try {
 			com.cater.model.Menu menuModel = menuDAO.findById(menuId);
-			//String menuDataJsonFromDb = new String(
-			//		Base64.decodeBase64(menuModel.getData()));
-			//logger.debug(menuDataJsonFromDb);
-			//Menu menu = new MenuDeserializer().readJSON(menuDataJsonFromDb);
 			File f = new File(MenuController.class.getResource(
 					"/menus/"
 							+ StringUtils.lowerCase(menuModel.getCuisineType(),
 									Locale.US) + ".json").getFile());
-			Menu menu = new MenuDeserializer().readJSON(f);
-			Menu newMenu = new Menu();
-			newMenu.setCuisine(menu.getCuisine());
-			if (menuModel != null && menu != null) {
-				List <String> previouslySelectedMenuItemCodes = Lists
-						.newArrayList(StringUtils.split(menuModel.getData(),
-								MENU_DELIMITER));
-				if ("PIZZA".equalsIgnoreCase(menu.getCuisine())) {
-					Map <String, String> pizza_items = Maps.newLinkedHashMap();
-					Map <String, Integer> pizzaTypes = Maps.newHashMap();
-					modelMap.put("pizza_items", pizza_items);
-					for (String item : previouslySelectedMenuItemCodes) {
-						if (StringUtils.isNotBlank(item)) {
-							String description = StringUtils.replace(
-									StringUtils.substringAfter(item, "+"), "+",
-									" ");
-							String pizzaName = StringUtils.substringBefore(
-									item, "+");
-							int count = 0;
-							if (pizzaTypes.containsKey(pizzaName)) {
-								count = pizzaTypes.get(pizzaName);
-								pizzaName = pizzaName + " #" + (count + 1);
-							}
-							pizzaTypes.put(pizzaName, count + 1);
-							pizza_items.put(pizzaName, description);
-						}
-					}
-				}
-				else if ("MEXICAN".equalsIgnoreCase(menu.getCuisine())) {
-					Map <String, String> mexican_items = Maps
-							.newLinkedHashMap();
-					modelMap.put("mexican_items", mexican_items);
-					for (String item : previouslySelectedMenuItemCodes) {
-						if (StringUtils.isNotBlank(item)) {
-							String description = StringUtils.replace(
-									StringUtils.substringAfter(item, "+"), "+",
-									" ");
-							String mexicanName = StringUtils.substringBefore(
-									item, "+");
-							mexican_items.put(mexicanName, description);
-						}
-					}
-				}
-				else if ("THAI".equalsIgnoreCase(menu.getCuisine())) {
-					Map <String, String> thai_items = Maps.newLinkedHashMap();
-					modelMap.put("thai_items", thai_items);
-					for (String item : previouslySelectedMenuItemCodes) {
-						if (StringUtils.isNotBlank(item)) {
-							String description = StringUtils.replace(
-									StringUtils.substringAfter(item, "+"), "+",
-									" ");
-							String thaiName = StringUtils.substringBefore(item,
-									"+");
-							thai_items.put(thaiName, description);
-						}
-					}
-				}
-				else if ("SANDWICH".equalsIgnoreCase(menu.getCuisine())) {
-					Map <String, String> sandwich_items = Maps
-							.newLinkedHashMap();
-					modelMap.put("sandwich_items", sandwich_items);
-					for (String item : previouslySelectedMenuItemCodes) {
-						if (StringUtils.isNotBlank(item)) {
-							String description = StringUtils.replace(
-									StringUtils.substringAfter(item, "+"), "+",
-									" ");
-							String sandwichName = StringUtils.substringBefore(
-									item, "+");
-							sandwich_items.put(sandwichName, description);
-						}
-					}
-				}
-				else {
-					List <MenuCategory> categories = Lists.newArrayList();
-					for (MenuCategory mc : menu.getCategories()) {
-						List <MenuItem> items = Lists.newArrayList();
-						for (MenuItem menuItem : mc.getItems()) {
-							if (previouslySelectedMenuItemCodes
-									.contains(menuItem.getCode())) {
-								items.add(menuItem);
-							}
-						}
-						if (CollectionUtils.isNotEmpty(items)) {
-							MenuCategory newMenuCategory = new MenuCategory();
-							newMenuCategory.setItems(items);
-							newMenuCategory.setName(mc.getName());
-							categories.add(newMenuCategory);
-						}
-					}
-					newMenu.setCategories(categories);
-				}
-				newMenu.setComments(menuModel.getComments());
+			Menu baseMenu = new MenuDeserializer().readJSON(f);
+			if (menuModel != null && baseMenu != null) {
+				Menu newMenu = convertModelToMenu(menuModel, baseMenu, modelMap);
 				modelMap.put("menu", newMenu);
 				Restaurant restaurant = restaurantService
 						.findRestaurantWithLoginId(user.getLoginID());
@@ -561,5 +476,141 @@ public class MenuController {
 			logger.error(ex);
 		}
 		return "menus/t__cateringMenuReadOnly";
+	}
+
+	/**
+	 * View all menus.
+	 *
+	 * @param httpSession the http session
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param eventId the event id
+	 * @return the string
+	 */
+	@RequestMapping(value = { "view/all" }, method = RequestMethod.GET)
+	public String viewAllMenus(HttpSession httpSession, ModelMap modelMap,
+			HttpServletRequest request,
+			@RequestParam(value = "eventId", required = true) Integer eventId) {
+		User user = (User) httpSession.getAttribute("user");
+		if (user == null) {
+			return "t_home";
+		}
+		try {
+			modelMap.put("event", customerService.findEventWithId(eventId));
+			List <com.cater.model.Menu> menuModels = customerService
+					.findMenusWithEventId(eventId);
+			Map <String, Menu> menus = Maps.newTreeMap();
+			if (CollectionUtils.isNotEmpty(menuModels)) {
+				for (com.cater.model.Menu mm : menuModels) {
+					File f = new File(MenuController.class.getResource(
+							"/menus/"
+									+ StringUtils.lowerCase(
+											mm.getCuisineType(), Locale.US)
+									+ ".json").getFile());
+					Menu baseMenu = new MenuDeserializer().readJSON(f);
+					Menu newMenu = convertModelToMenu(mm, baseMenu, modelMap);
+					menus.put(mm.getCuisineType(), newMenu);
+				}
+			}
+			modelMap.addAttribute("menus", menus.values());
+		}
+		catch (Exception ex) {
+			logger.error(ex);
+		}
+		return "menus/t_eventMenusReadOnly";
+	}
+
+	/**
+	 * Convert model to menu.
+	 *
+	 * @param menuModel the menu model
+	 * @param baseMenu the base menu
+	 * @param modelMap the model map
+	 * @return the menu
+	 */
+	private Menu convertModelToMenu(com.cater.model.Menu menuModel,
+			Menu baseMenu, ModelMap modelMap) {
+		Menu newMenu = new Menu();
+		newMenu.setCuisine(baseMenu.getCuisine());
+		List <String> previouslySelectedMenuItemCodes = Lists
+				.newArrayList(StringUtils.split(menuModel.getData(),
+						MENU_DELIMITER));
+		if ("PIZZA".equalsIgnoreCase(baseMenu.getCuisine())) {
+			Map <String, String> pizza_items = Maps.newLinkedHashMap();
+			Map <String, Integer> pizzaTypes = Maps.newHashMap();
+			modelMap.put("pizza_items", pizza_items);
+			for (String item : previouslySelectedMenuItemCodes) {
+				if (StringUtils.isNotBlank(item)) {
+					String description = StringUtils.replace(
+							StringUtils.substringAfter(item, "+"), "+", " ");
+					String pizzaName = StringUtils.substringBefore(item, "+");
+					int count = 0;
+					if (pizzaTypes.containsKey(pizzaName)) {
+						count = pizzaTypes.get(pizzaName);
+						pizzaName = pizzaName + " #" + (count + 1);
+					}
+					pizzaTypes.put(pizzaName, count + 1);
+					pizza_items.put(pizzaName, description);
+				}
+			}
+		}
+		else if ("MEXICAN".equalsIgnoreCase(baseMenu.getCuisine())) {
+			Map <String, String> mexican_items = Maps.newLinkedHashMap();
+			modelMap.put("mexican_items", mexican_items);
+			for (String item : previouslySelectedMenuItemCodes) {
+				if (StringUtils.isNotBlank(item)) {
+					String description = StringUtils.replace(
+							StringUtils.substringAfter(item, "+"), "+", " ");
+					String mexicanName = StringUtils.substringBefore(item, "+");
+					mexican_items.put(mexicanName, description);
+				}
+			}
+		}
+		else if ("THAI".equalsIgnoreCase(baseMenu.getCuisine())) {
+			Map <String, String> thai_items = Maps.newLinkedHashMap();
+			modelMap.put("thai_items", thai_items);
+			for (String item : previouslySelectedMenuItemCodes) {
+				if (StringUtils.isNotBlank(item)) {
+					String description = StringUtils.replace(
+							StringUtils.substringAfter(item, "+"), "+", " ");
+					String thaiName = StringUtils.substringBefore(item, "+");
+					thai_items.put(thaiName, description);
+				}
+			}
+		}
+		else if ("SANDWICH".equalsIgnoreCase(baseMenu.getCuisine())) {
+			Map <String, String> sandwich_items = Maps.newLinkedHashMap();
+			modelMap.put("sandwich_items", sandwich_items);
+			for (String item : previouslySelectedMenuItemCodes) {
+				if (StringUtils.isNotBlank(item)) {
+					String description = StringUtils.replace(
+							StringUtils.substringAfter(item, "+"), "+", " ");
+					String sandwichName = StringUtils
+							.substringBefore(item, "+");
+					sandwich_items.put(sandwichName, description);
+				}
+			}
+		}
+		else {
+			List <MenuCategory> categories = Lists.newArrayList();
+			for (MenuCategory mc : baseMenu.getCategories()) {
+				List <MenuItem> items = Lists.newArrayList();
+				for (MenuItem menuItem : mc.getItems()) {
+					if (previouslySelectedMenuItemCodes.contains(menuItem
+							.getCode())) {
+						items.add(menuItem);
+					}
+				}
+				if (CollectionUtils.isNotEmpty(items)) {
+					MenuCategory newMenuCategory = new MenuCategory();
+					newMenuCategory.setItems(items);
+					newMenuCategory.setName(mc.getName());
+					categories.add(newMenuCategory);
+				}
+			}
+			newMenu.setCategories(categories);
+		}
+		newMenu.setComments(menuModel.getComments());
+		return newMenu;
 	}
 }
