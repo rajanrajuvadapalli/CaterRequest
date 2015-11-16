@@ -142,7 +142,7 @@
 						</div>
 						<!-- /.item-->
 					</div>
-					<div class="col-sm-3">
+					<%-- <div class="col-sm-3">
 						<div class="item">
 							<div class="image">
 								<div class="item-specific">
@@ -154,7 +154,7 @@
 							</div>
 						</div>
 						<!-- /.item-->
-					</div>
+					</div> --%>
 				</div>
 			</div>
 			<!--/.container-->
