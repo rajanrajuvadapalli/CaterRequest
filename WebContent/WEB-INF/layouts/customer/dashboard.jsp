@@ -124,20 +124,6 @@
 																						data-quote-id="${q.id}" name="restaurantName">
 																						${q.restaurant.name} <c:if
 																							test="${not empty q.price}">
-																							<c:choose>
-																								<c:when test="${q.canDeliver()}">
-																									<a href="#" data-toggle="tooltip"
-																										title="FREE delivery"><span
-																										class="glyphicon glyphicon-road"
-																										style="color: green" aria-hidden="true"></span></a>
-																								</c:when>
-																								<c:otherwise>
-																									<a href="#" data-toggle="tooltip"
-																										title="NO delivery"><span
-																										class="glyphicon glyphicon-road"
-																										style="color: red" aria-hidden="true"></span></a>
-																								</c:otherwise>
-																							</c:choose>
 																						</c:if></label>
 																				</div>
 																				<c:choose>
@@ -146,6 +132,14 @@
 																						<fmt:setLocale value="en_US" />
 																						<b><fmt:formatNumber value="${q.price}"
 																								type="currency" /></b>
+																						<c:choose>
+																							<c:when test="${q.canDeliver()}">
+																								<span style="color: green">FREE delivery</span>
+																							</c:when>
+																							<c:otherwise>
+																								<span style="color: red">NO delivery</span>
+																							</c:otherwise>
+																						</c:choose>
 																					</c:otherwise>
 																				</c:choose>
 																				<br>
@@ -205,13 +199,6 @@
 					</c:forEach>
 				</table>
 			</div>
-			Legend:
-			<br />
-			<span class="glyphicon glyphicon-road" style="color: green" aria-hidden="true"></span> The restaurant has agreed to deliver the food.
-			<br />
-			<span class="glyphicon glyphicon-road" style="color: red" aria-hidden="true"></span> The restaurant does not deliver the food.
-			<br />
-			<br />
 		</c:otherwise>
 	</c:choose>
 </div>
