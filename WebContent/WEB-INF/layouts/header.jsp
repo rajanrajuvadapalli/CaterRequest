@@ -51,63 +51,61 @@
 							</li>
 						</c:when>
 						<c:otherwise>
+							<span style="padding-right: 15px;"><span
+								class="glyphicon glyphicon-user"></span> Hi, ${sessionUserName}!</span>
 							<c:if test="${!sessionScope.user.isGuest()}">
-								<li class="dropdown"><a href="#" class="dropdown-toggle"
-									data-toggle="dropdown" role="button" aria-expanded="false">
-										<span class="glyphicon glyphicon-cog"></span> Settings <span
-										class="caret"></span>
-								</a>
-									<ul class="dropdown-menu" role="menu">
-										<li><a
-											href="${pageContext.request.contextPath}/settings/personalInfo">Personal
-												Info</a></li>
-										<li><a
-											href="${pageContext.request.contextPath}/settings/changePassword">Change
-												Password</a></li>
-										<li><a
-											href="${pageContext.request.contextPath}/settings/paymentInfo">Payment
-												Info</a></li>
-										<!-- <li class="divider"></li>
+								<span style="padding-right: 15px;"><li class="dropdown"><a
+										href="#" class="dropdown-toggle" data-toggle="dropdown"
+										role="button" aria-expanded="false"> <span
+											class="glyphicon glyphicon-cog"></span> Settings <span
+											class="caret"></span>
+									</a>
+										<ul class="dropdown-menu" role="menu">
+											<li><a
+												href="${pageContext.request.contextPath}/settings/personalInfo">Personal
+													Info</a></li>
+											<li><a
+												href="${pageContext.request.contextPath}/settings/changePassword">Change
+													Password</a></li>
+											<li><a
+												href="${pageContext.request.contextPath}/settings/paymentInfo">Payment
+													Info</a></li>
+											<!-- <li class="divider"></li>
 							<li class="dropdown-header">Nav header</li>
 							<li><a href="#">Separated link</a></li>
 							<li><a href="#">One more separated link</a></li> -->
-									</ul></li>
+										</ul></li></span>
 							</c:if>
 
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown" role="button" aria-expanded="false">
-									<span class="glyphicon glyphicon-user"></span>
-									${sessionUserName} <span class="caret"></span>
-							</a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="${pageContext.request.contextPath}/dashboard">
-											<span class="glyphicon glyphicon-home"></span> My Dashboard
-									</a></li>
+							<c:if test="${sessionScope.user.role == 'ADMIN'}">
+								<span style="padding-right: 15px;"><li class="dropdown"><a
+										href="#" class="dropdown-toggle" data-toggle="dropdown"
+										role="button" aria-expanded="false">Counts <span
+											class="caret"></span></a>
+										<ul class="dropdown-menu" role="menu">
+											<li><a
+												href="${pageContext.request.contextPath}/admin/listCustomers">
+													List Customers <span class="badge">${nCustomers}</span>
+											</a></li>
+											<li><a
+												href="${pageContext.request.contextPath}/admin/listEvents">
+													List Events <span class="badge">${nEvents}</span>
+											</a></li>
+											<li><a
+												href="${pageContext.request.contextPath}/admin/listRestaurants">
+													List Restaurants <span class="badge">${nRestaurants}</span>
+											</a></li>
+										</ul></li></span>
+							</c:if>
 
-									<c:if test="${sessionScope.user.role == 'ADMIN'}">
-										<li class="divider"></li>
-										<li><a
-											href="${pageContext.request.contextPath}/admin/listCustomers">
-												List Customers <span class="badge">${nCustomers}</span>
-										</a></li>
-										<li><a
-											href="${pageContext.request.contextPath}/admin/listEvents">
-												List Events <span class="badge">${nEvents}</span>
-										</a></li>
-										<li><a
-											href="${pageContext.request.contextPath}/admin/listRestaurants">
-												List Restaurants <span class="badge">${nRestaurants}</span>
-										</a></li>
-									</c:if>
-									<li class="divider"></li>
-									<li><a href="${pageContext.request.contextPath}/logout">
-											<span class="glyphicon glyphicon-off"></span> Logout
-									</a></li>
-								</ul></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
+							<span style="padding-right: 15px;"><a
+								href="${pageContext.request.contextPath}/dashboard"> <span
+									class="glyphicon glyphicon-home"></span> My Dashboard
+							</a></span>
+							<span style="padding-right: 15px;"> <a
+								href="${pageContext.request.contextPath}/logout"> <span
+									class="glyphicon glyphicon-off"></span> Logout
+							</a></span>
 						</c:otherwise>
 					</c:choose>
 				</ul>
