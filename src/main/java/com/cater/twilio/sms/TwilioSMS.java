@@ -45,8 +45,16 @@ public class TwilioSMS {
 	 * @throws TwilioRestException the twilio rest exception
 	 */
 	public void sendMessage(String to, String body) throws TwilioRestException {
-		if (!twilioCredentials.isSmsEnabled() || StringUtils.isBlank(to)
-				|| StringUtils.isBlank(body)) {
+		if (!twilioCredentials.isSmsEnabled()) {
+			logger.debug("SMS is not enabled.");
+			return;
+		}
+		if (StringUtils.isBlank(to)) {
+			logger.debug("The 'to' address is blank. Cannot send SMS.");
+			return;
+		}
+		if (StringUtils.isBlank(body)) {
+			logger.debug("The 'body' is blank. Cannot send SMS.");
 			return;
 		}
 		logger.debug("Sending SMS to " + to + " with body: " + body);

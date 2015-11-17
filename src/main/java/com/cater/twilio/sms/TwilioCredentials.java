@@ -8,19 +8,23 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 
+import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
 import com.google.common.collect.Maps;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class TwilioCredentials.
  */
 public class TwilioCredentials {
+	/** The Constant logger. */
 	private static final Logger logger = Logger
 			.getLogger(TwilioCredentials.class);
 	/** The Constant DEFAULT_CREDENTIAL_PROFILES_FILENAME. */
 	private static final String DEFAULT_CREDENTIAL_PROFILES_FILENAME = "credentials";
+	/** The Constant TWILIO_FILE_PATH. */
 	private static final String TWILIO_FILE_PATH = "TWILIO_FILE_PATH";
 	/** The properties. */
 	private Map <String, String> properties = Maps.newHashMap();
@@ -61,16 +65,18 @@ public class TwilioCredentials {
 		//If there is a system variable set for the path, use it
 		if (StringUtils.isNotBlank(filePathOverride)) {
 			credentialsFile = new File(filePathOverride);
-			logger.debug("filePathOverride: "
+			logger.debug("Twilio filePathOverride: "
 					+ credentialsFile.getAbsolutePath());
 		}
 		else {
 			// read ~/.twilio/credentials file
-			String userHome = System.getProperty("user.home");
+			String userHome = StringUtils.defaultString(System
+					.getProperty("user.home"));
 			if (userHome == null) {
-				throw new TwilioClientException(
+				logger.debug("User home property is not found.");
+				/*throw new TwilioClientException(
 						"Unable to load Twilio profiles: "
-								+ "'user.home' System property is not set.");
+								+ "'user.home' System property is not set.");*/
 			}
 			File twilioDirectory = new File(userHome, ".twilio");
 			logger.debug("twilioDirectory: " + twilioDirectory);
@@ -79,27 +85,58 @@ public class TwilioCredentials {
 		}
 		boolean foundCredentialProfiles = credentialsFile != null
 				&& credentialsFile.exists() && credentialsFile.isFile();
-		if (!foundCredentialProfiles) {
+		/*if (!foundCredentialProfiles) {
 			throw new TwilioClientException(
 					"Could not locate twilio credentials file.");
+		}*/
+		if (foundCredentialProfiles) {
+			FileInputStream fis = null;
+			try {
+				fis = new FileInputStream(credentialsFile);
+				readCredentails(new Scanner(fis));
+			}
+			catch (IOException ioe) {
+				throw new TwilioClientException(
+						"Unable to load Twilio credentials file at: "
+								+ credentialsFile.getAbsolutePath(), ioe);
+			}
+			finally {
+				if (fis != null)
+					try {
+						fis.close();
+					}
+					catch (IOException ioe) {
+					}
+			}
 		}
-		FileInputStream fis = null;
-		try {
-			fis = new FileInputStream(credentialsFile);
-			readCredentails(new Scanner(fis));
+		//If twilio system properties are set, they take precedence.
+		String sid = StringUtils.defaultIfBlank(
+				System.getProperty("TWILIO_SID"), getSid());
+		properties.put(PropertyNames.SID.value, sid);
+		String authToken = StringUtils.defaultIfBlank(
+				System.getProperty("TWILIO_AUTH_TOKEN"), getAuthToken());
+		properties.put(PropertyNames.AUTH_TOKEN.value, authToken);
+		String fromNumber = StringUtils.defaultIfBlank(
+				System.getProperty("TWILIO_FROM_NUMBER"), getFromNumber());
+		properties.put(PropertyNames.FROM_NUMBER.value, fromNumber);
+		String enabled = StringUtils.defaultIfBlank(
+				System.getProperty("TWILIO_ENABLED"),
+				properties.get(PropertyNames.IS_SMS_ENABLED.value));
+		properties.put(PropertyNames.IS_SMS_ENABLED.value, enabled);
+		dumpProperties();
+	}
+
+	/**
+	 * Dump properties.
+	 */
+	private void dumpProperties() {
+		if (MapUtils.isNotEmpty(properties)) {
+			for (Map.Entry <String, String> entry : properties.entrySet()) {
+				logger.debug(entry.getKey() + ": " + entry.getValue());
+			}
 		}
-		catch (IOException ioe) {
-			throw new TwilioClientException(
-					"Unable to load Twilio credentials file at: "
-							+ credentialsFile.getAbsolutePath(), ioe);
-		}
-		finally {
-			if (fis != null)
-				try {
-					fis.close();
-				}
-				catch (IOException ioe) {
-				}
+		else {
+			logger.debug("Properties are not loaded.");
 		}
 	}
 
