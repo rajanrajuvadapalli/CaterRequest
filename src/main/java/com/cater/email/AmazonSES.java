@@ -6,9 +6,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.amazonaws.AmazonClientException;
-import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClient;
@@ -34,16 +31,16 @@ public class AmazonSES {
 	 * Instantiates a new amazon ses.
 	 */
 	public AmazonSES() {
-		AWSCredentials credentials;
+		/*AWSCredentials credentials;
 		try {
-			/*
+			
 			 * The ProfileCredentialsProvider will return your [default]
 			 * credential profile by reading from the credentials file located at
 			 * (~/.aws/credentials).
 			 *
 			 * TransferManager manages a pool of threads, so we create a
 			 * single instance and share it throughout our application.
-			 */
+			 
 			credentials = new ProfileCredentialsProvider().getCredentials();
 		}
 		catch (Exception e) {
@@ -54,7 +51,13 @@ public class AmazonSES {
 					e);
 		}
 		// Instantiate an Amazon SES client, which will make the service call with the supplied AWS credentials.
-		client = new AmazonSimpleEmailServiceClient(credentials);
+		client = new AmazonSimpleEmailServiceClient(credentials);*/
+		// Instantiate an Amazon SES client, which will make the service call. The service call requires your AWS credentials. 
+		// Because we're not providing an argument when instantiating the client, the SDK will attempt to find your AWS credentials 
+		// using the default credential provider chain. The first place the chain looks for the credentials is in environment variables 
+		// AWS_ACCESS_KEY_ID and AWS_SECRET_KEY. 
+		// For more information, see http://docs.aws.amazon.com/AWSSdkDocsJava/latest/DeveloperGuide/credentials.html
+		client = new AmazonSimpleEmailServiceClient();
 		// Choose the AWS region of the Amazon SES endpoint you want to connect to. Note that your production
 		// access status, sending limits, and Amazon SES identity-related settings are specific to a given
 		// AWS region, so be sure to select an AWS region in which you set up Amazon SES. Here, we are using
