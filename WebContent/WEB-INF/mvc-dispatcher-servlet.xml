@@ -33,6 +33,7 @@
 				<value>classpath:email.properties</value>
 			</list>
 		</property>
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
 	</bean>
 
 	<bean id="multipartResolver"
