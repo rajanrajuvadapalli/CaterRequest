@@ -144,6 +144,7 @@ public class RestaurantDashboardController {
 		if (user != null) {
 			String price = request.getParameter("price");
 			String deliver = request.getParameter("deliver");
+			String notes = request.getParameter("notes");
 			String quoteIdString = request.getParameter("quoteId");
 			Quote quote = restaurantService.findQuoteWithId(Helper
 					.stringToInteger(quoteIdString));
@@ -161,6 +162,7 @@ public class RestaurantDashboardController {
 					quote.setStatus(QuoteStatus.RESTAURANT_UPDATED_PRICE
 							.toString());
 				}
+				quote.setNotes(notes);
 				restaurantService.saveOrUpdateQuote(quote);
 				customerService.sendNotification(quote);
 				List <String> successMessages = Lists.newArrayList();

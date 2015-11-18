@@ -98,6 +98,7 @@ CREATE TABLE mycaterdb.Quote
 	,`price` DECIMAL(10,2)  NULL 
 	,`deliver` BIT NOT NULL
 	,`status` VARCHAR(30)  NULL 
+	,`notes` VARCHAR(1000) NULL
 	,`create_ts` DATETIME NOT NULL 
 	,`lupd_ts` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
 -- Create Foreign Key: Quote.menu_sk -> Menu.id
@@ -107,8 +108,12 @@ ALTER TABLE mycaterdb.Quote ADD FOREIGN KEY (restaurant_sk) REFERENCES mycaterdb
 
 alter table cater4party.Restaurant
 add `deliver_miles` INT NULL
-after `website_url`
+after `website_url`;
 
 alter table cater4party.Quote
 add `deliver` BIT NOT NULL
-after `price`
+after `price`;
+
+alter table cater4party.Quote
+add `notes` VARCHAR(1000) NULL
+after `status`;

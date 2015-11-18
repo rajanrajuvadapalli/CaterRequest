@@ -155,6 +155,12 @@
 										</select>
 									</div>
 								</div>
+								<div class="form-group">
+									<label for="notes" class="col-sm-4 control-label">Notes:</label>
+									<div class="col-sm-6">
+										<textarea rows="4" name="notes" class="form-control">${quote.notes}</textarea>
+									</div>
+								</div>
 								<c:choose>
 									<c:when test="${quote.price != null}">
 										<div class="form-group">
@@ -171,15 +177,15 @@
 												Price:</label>
 											<div class="col-sm-3">
 												<input type="text" size="30" maxlength="50" name="price"
-													required="required" pattern="[0-9]+(\.[0-9]{2})?"
+													required="required" pattern="[0-9]+(\.[0-9]*)?"
 													title="Example: 250.60" placeholder="0.00"
-													class="form-control inputs">
+													class="form-control inputs" value="${quote.price}">
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-sm-4 control-label"></label>
 											<div class="col-sm-2" align="left">
-												<button type="submit" class="btn btn-default">Udpate</button>
+												<button type="submit" class="btn btn-default">Update</button>
 											</div>
 										</div>
 									</c:when>
