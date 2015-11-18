@@ -170,6 +170,16 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="sales" class="col-sm-4 control-label">Sales Tax<span style="color: red">*</span>:
+						</label>
+						<div class="col-sm-6" align="left">
+							<input type="text" size="30" name="sales" required="required"
+								placeholder="Ex: x.xx"  pattern="[0-9]+([\.|,][0-9]+)?"
+								class="form-control">
+								
+						</div>
+					</div>
+					<div class="form-group">
 						<label for="deliver-miles" class="col-sm-4 control-label">Number
 							of miles you can deliver<br />(optional):
 						</label>

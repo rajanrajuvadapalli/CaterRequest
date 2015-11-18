@@ -48,6 +48,7 @@ CREATE TABLE mycaterdb.Restaurant (
 	,`cuisine_type` VARCHAR(20) NOT NULL 
 	,`website_url` VARCHAR(50)  NULL
 	,`deliver_miles` INT NOT NULL
+	,`sales_tax` DECIMAL(4,2) NOT NULL
 	,`about_us` VARCHAR(5000) NULL
 	,`create_ts` DATETIME NOT NULL 
 	,`lupd_ts` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);

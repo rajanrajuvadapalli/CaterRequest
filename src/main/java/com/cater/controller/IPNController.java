@@ -53,10 +53,13 @@ public class IPNController {
 
 	/**
 	 * Ipn listener.
-	 *
-	 * @param request the request
-	 * @param session the session
-	 * @param redirectAttributes the redirect attributes
+	 * 
+	 * @param request
+	 *            the request
+	 * @param session
+	 *            the session
+	 * @param redirectAttributes
+	 *            the redirect attributes
 	 * @return the string
 	 */
 	@RequestMapping(value = { "notify" }, method = RequestMethod.GET)
@@ -65,7 +68,7 @@ public class IPNController {
 		try {
 			// 2. Prepare 'notify-validate' command with exactly the same
 			// parameters
-			Enumeration <String> en = request.getParameterNames();
+			Enumeration<String> en = request.getParameterNames();
 			StringBuilder cmd = new StringBuilder(PARAM_VAL_CMD);
 			String token = TOKEN_CMD;
 			String txValue = "";
@@ -105,17 +108,18 @@ public class IPNController {
 			String status = map.get("payment_status");
 			Integer quoteId = Integer.parseInt(request
 					.getParameter("item_number"));
-			List <String> errors = Lists.newArrayList();
+			List<String> errors = Lists.newArrayList();
 			redirectAttributes.addFlashAttribute("errors", errors);
-			List <String> successMessages = Lists.newArrayList();
+			List<String> successMessages = Lists.newArrayList();
 			redirectAttributes.addFlashAttribute("successMessages",
 					successMessages);
 			// 6. Validate captured Paypal IPN Information
-			if (StringUtils.equalsIgnoreCase("SUCCESS", response)) {
+			if (StringUtils.equalsIgnoreCase("SUCCESS", response)
+					|| StringUtils.equalsIgnoreCase("VERIFIED", response)) {
 				Quote quote = restaurantService.findQuoteWithId(quoteId);
 				if (StringUtils.equalsIgnoreCase("COMPLETE", status)
 						|| StringUtils.equalsIgnoreCase("PENDING", status)) {
-					quote.setStatus(QuoteStatus.APPROVED.toString());
+					quote.setStatus(QuoteStatus.PAID.toString());
 					// Reject all other quotes
 					for (Quote q : quote.getMenu().getQuotes()) {
 						if (!q.getId().equals(quote.getId())) {
@@ -128,18 +132,15 @@ public class IPNController {
 					customerService.sendNotification(quote);
 					successMessages
 							.add("Congratulations, your order has been placed!");
-				}
-				else {
+				} else {
 					errors.add("Cannot confirm order with no quotes.");
 					status.trim();
 				}
-			}
-			else {
+			} else {
 				errors.add("Inavlid response {" + response
-						+ "} expecting {SUCCESS}");
+						+ "} expecting {VERIFIED}");
 			}
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "redirect:/customer/dashboard";
@@ -147,8 +148,9 @@ public class IPNController {
 
 	/**
 	 * Adds the to map.
-	 *
-	 * @param token the token
+	 * 
+	 * @param token
+	 *            the token
 	 */
 	private void addToMap(String token) {
 		String[] tokens = token.split("=");
@@ -160,5 +162,5 @@ public class IPNController {
 	}
 
 	/** The map. */
-	private static HashMap <String, String> map = new HashMap <String, String>();
+	private static HashMap<String, String> map = new HashMap<String, String>();
 }

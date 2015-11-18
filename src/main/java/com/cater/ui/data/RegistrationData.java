@@ -19,6 +19,16 @@ public class RegistrationData {
 	private String state;
 	private String zip;
 	private String aboutUs;
+	private float salesTax;
+	
+
+	public float getSalesTax() {
+		return salesTax;
+	}
+
+	public void setSalesTax(float salesTax) {
+		this.salesTax = salesTax;
+	}
 
 	public String getName() {
 		return name;

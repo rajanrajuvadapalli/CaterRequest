@@ -94,6 +94,7 @@ public class RegisterService {
 			restaurant.setDeliverMiles(Helper.stringToInteger(data
 					.getDeliverMiles()));
 			restaurant.setAboutUs(data.getAboutUs());
+			restaurant.setSalesTax(data.getSalesTax());
 			restaurantDAO.saveOrUpdate(restaurant);
 		}
 	}

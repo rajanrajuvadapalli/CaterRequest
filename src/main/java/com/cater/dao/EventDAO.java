@@ -117,7 +117,7 @@ public class EventDAO extends DataAccessObject {
 				throw he;
 			}
 		}
-		return events == null ? Lists.newArrayList() : events;
+		return (events == null ? Lists.newArrayList() : events);
 	}
 
 	/**

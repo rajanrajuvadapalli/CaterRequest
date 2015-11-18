@@ -164,12 +164,21 @@
 											<c:otherwise>
 												<c:forEach items="${e2q.get(e.id)}" var="q2c">
 													<c:forEach items="${q2c.value}" var="q">
-														<c:if test="${ q.status eq 'APPROVED'}">
+														<c:if test="${ (q.status eq 'APPROVED') || (q.status eq 'PAID') }">
 															<b>${q.restaurant.name}:</b> &nbsp;
 																<fmt:setLocale value="en_US" />
 															<a
 																href="${pageContext.request.contextPath}/menu/view/${q.menu.id}"><b><fmt:formatNumber
 																		value="${q.price}" type="currency" /></b></a>
+														   <c:choose>
+														     <c:when test = "${ q.status eq 'PAID'}">
+														     <label  style="color: green">Paid</label>
+														       
+														     </c:when>
+														     <c:otherwise>
+														     <label  style="color: green">Order confirmed, pay at restaurant!</label>
+														     </c:otherwise>
+														   </c:choose>
 														</c:if>
 													</c:forEach>
 												</c:forEach>

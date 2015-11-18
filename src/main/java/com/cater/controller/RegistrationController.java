@@ -153,6 +153,7 @@ public class RegistrationController {
 			data.setZip(StringUtils.defaultString(request.getParameter("zip")));
 			data.setAboutUs(StringUtils.defaultString(request
 					.getParameter("aboutus")));
+			data.setSalesTax(Float.parseFloat(request.getParameter("sales")));
 			logger.debug("Form data: " + data.toString());
 			login = registerService.register(data);
 			//If a guest user created an account after creating an event, save the data first.
