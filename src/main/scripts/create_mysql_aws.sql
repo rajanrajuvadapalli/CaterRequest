@@ -118,3 +118,7 @@ after `price`;
 alter table cater4party.Quote
 add `notes` VARCHAR(1000) NULL
 after `status`;
+
+alter table cater4party.Restaurant
+add sales_tax DECIMAL(4,2) NOT NULL
+after `deliver_miles`;

@@ -110,3 +110,6 @@ add deliver BIT NOT NULL;
 
 alter table cater4party.Quote
 add notes VARCHAR(1000) NULL;
+
+alter table cater4party.Restaurant
+add sales_tax DECIMAL(4,2) NOT NULL;
