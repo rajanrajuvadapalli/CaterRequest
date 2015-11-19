@@ -14,6 +14,7 @@
 <![endif]-->
 
 <!-- <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script> -->
+<script src="${pageContext.request.contextPath}/resources/js/cater-maps.js"></script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlobAYE25Q2m62_DX3wc1AMimO2Xr-WHc&signed_in=true&libraries=places&callback=initAutocomplete"
         async defer></script>
