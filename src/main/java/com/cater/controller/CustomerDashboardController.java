@@ -189,7 +189,8 @@ public class CustomerDashboardController {
 		e.setPickUp(StringUtils.equals("1", StringUtils.defaultString(request
 				.getParameter("deliveryOption"))));
 		Address a = new Address();
-		a.setStreet1(StringUtils.defaultString(request.getParameter("street1")));
+		String street1 = StringUtils.defaultString(request.getParameter("street_number")).concat(StringUtils.defaultString(request.getParameter("street_name")));
+		a.setStreet1(street1);
 		a.setStreet2(StringUtils.defaultString(request.getParameter("street2")));
 		a.setCity(StringUtils.defaultString(request.getParameter("city")));
 		a.setState(StringUtils.defaultString(request.getParameter("state")));
@@ -596,9 +597,13 @@ public class CustomerDashboardController {
 				errors.add("Cannot confirm order with no quotes.");
 			}
 			else {
+				double taxAmount = (quote.getPrice() * quote.getRestaurant().getSalesTax())/100 ;
+				double totalAmount = quote.getPrice() + taxAmount;
 				modelMap.put("quote", quote);
 				modelMap.put("restuarant", quote.getRestaurant());
 				modelMap.put("event", event);
+				modelMap.put("tax", taxAmount);
+				modelMap.put("amount", totalAmount);
 				System.out.println(quote.getId());
 				forward = "t_payment";
 				System.out.println("" + quote.getRestaurant().getName());

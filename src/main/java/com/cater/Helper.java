@@ -57,6 +57,15 @@ public final class Helper {
 		}
 	}
 
+	public static float stringToFloat(String aString) {
+		try {
+			return Float.parseFloat(aString);
+		}
+		catch (Exception ex) {
+			return new Float(0);
+		}
+	}
+
 	/**
 	 * String to native int.
 	 * 

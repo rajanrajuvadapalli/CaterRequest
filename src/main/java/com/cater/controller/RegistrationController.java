@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cater.GuestHelper;
+import com.cater.Helper;
 import com.cater.constants.Roles;
 import com.cater.email.EmailHelper;
 import com.cater.maps.RestaurantDTO;
@@ -153,6 +154,7 @@ public class RegistrationController {
 			data.setZip(StringUtils.defaultString(request.getParameter("zip")));
 			data.setAboutUs(StringUtils.defaultString(request
 					.getParameter("aboutus")));
+			data.setSalesTax(Helper.stringToFloat(request.getParameter("sales")));
 			logger.debug("Form data: " + data.toString());
 			login = registerService.register(data);
 			//If a guest user created an account after creating an event, save the data first.

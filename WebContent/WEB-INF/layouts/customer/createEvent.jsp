@@ -3,6 +3,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+
 <div class="col-sm-10 col-sm-offset-1 page-header">
 	<h1>Create Event</h1>
 </div>
@@ -135,40 +137,56 @@
 						the problem persists, please contact customer support.
 					</div>
 					<div class="form-group">
-						<label for="street1" class="col-sm-3 control-label">Street<span
+					<label for="street1"   class="col-sm-3 control-label">
+						</label>
+					 <div class="col-sm-6" id="locationField" >
+                     <input id="autocomplete" placeholder="Enter your address"
+                             onFocus="geolocate()" type="text" class="form-control">
+                      </div>
+                     </div> 
+					<div class="form-group">
+					
+						<label for="street1"   class="col-sm-3 control-label">Street <span
 							style="color: red">*</span> :
 						</label>
-						<div class="col-sm-6">
-							<input type="text" size="30" maxlength="50" name="street1"
-								required="required" placeholder="Street" class="form-control">
+						<div class="col-sm-2">
+							<input type="text" size="5" maxlength="10" name="street_number" id="street_number"
+								placeholder="Street" class="form-control">
+					    </div>
+					    <div class="col-sm-4">
+							<input type="text" size="30" maxlength="50" name="street_name"  id="route" 
+								required="required" placeholder="Street Name" class="form-control">
 						</div>
+						
 					</div>
 
-					<!-- <div class="form-group">
+					<div class="form-group">
 						<label for="street2" class="col-sm-3 control-label">Street
 							2 :</label>
 						<div class="col-sm-6">
-							<input type="text" size="30" maxlength="50" name="street2"
-								placeholder="Line 2" class="form-control">
+							<input type="text" size="30" maxlength="50" name="street2"  
+								placeholder="Apt/Door No" class="form-control">
 						</div>
-					</div> -->
+					</div> 
 
 					<div class="form-group">
-						<label for="city" class="col-sm-3 control-label">City<span
+						<label for="city"    class="col-sm-3 control-label">City<span
 							style="color: red">*</span> :
 						</label>
 						<div class="col-sm-6">
-							<input type="text" size="30" name="city" required="required"
+							<input type="text" size="30" name="city" required="required" id="locality"	
 								placeholder="City" class="form-control">
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="state" class="col-sm-3 control-label">State<span
+						<label for="state"   class="col-sm-3 control-label">State<span
 							style="color: red">*</span> :
 						</label>
 						<div class="col-sm-6">
-							<span id="stateArea"></span>
+						<input type="text" size="30" name="state" required="required"  id="administrative_area_level_1"	
+								placeholder="State" class="form-control">
+							
 						</div>
 					</div>
 
@@ -177,7 +195,7 @@
 							style="color: red">*</span> :
 						</label>
 						<div class="col-sm-6">
-							<input type="text" size="10" name="zip" maxlength="10"
+							<input type="text" size="10" name="zip" maxlength="10"  id="postal_code" 
 								required="required" placeholder="Ex.: xxxxx"
 								pattern="^\d{5}(\-\d{4})?$" class="form-control">
 						</div>
@@ -232,4 +250,75 @@
 			lang : 'en'
 		});
 	});
+	
+	
+	//Auto complete addresses script
+
+	var placeSearch, autocomplete;
+	var componentForm = {
+	  street_number: 'short_name',
+	  route: 'long_name',
+	  locality: 'long_name',
+	  administrative_area_level_1: 'short_name',
+	 
+	  postal_code: 'short_name'
+	};
+
+	function initAutocomplete() {
+	  // Create the autocomplete object, restricting the search to geographical
+	  // location types.
+	  autocomplete = new google.maps.places.Autocomplete(
+	      (document.getElementById('autocomplete')),
+	      {types: ['geocode']});
+
+	  // When the user selects an address from the dropdown, populate the address
+	  // fields in the form.
+	  autocomplete.addListener('place_changed', fillInAddress);
+	}
+
+	// [START region_fillform]
+	function fillInAddress() {
+	  // Get the place details from the autocomplete object.
+	  var place = autocomplete.getPlace();
+
+	  for (var component in componentForm) {
+	    document.getElementById(component).value = '';
+	    document.getElementById(component).disabled = false;
+	  }
+
+	  // Get each component of the address from the place details
+	  // and fill the corresponding field on the form.
+	  for (var i = 0; i < place.address_components.length; i++) {
+	    var addressType = place.address_components[i].types[0];
+	   
+	    if (componentForm[addressType]) {
+	      var val = place.address_components[i][componentForm[addressType]];
+	      document.getElementById(addressType).value = val;
+	    }
+	  }
+	}
+	// [END region_fillform]
+
+	// [START region_geolocation]
+	// Bias the autocomplete object to the user's geographical location,
+	// as supplied by the browser's 'navigator.geolocation' object.
+	function geolocate() {
+	  if (navigator.geolocation) {
+	    navigator.geolocation.getCurrentPosition(function(position) {
+	      var geolocation = {
+	        lat: position.coords.latitude,
+	        lng: position.coords.longitude
+	      };
+	      var circle = new google.maps.Circle({
+	        center: geolocation,
+	        radius: position.coords.accuracy
+	      });
+	      autocomplete.setBounds(circle.getBounds());
+	    });
+	  }
+	}
+	// [END region_geolocation]
+
+	
 </script>
+
