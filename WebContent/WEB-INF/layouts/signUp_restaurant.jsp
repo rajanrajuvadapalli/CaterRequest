@@ -217,7 +217,7 @@
 					<h3 class="panel-title">Address</h3>
 				</div>
 				<div class="panel-body">
-					<input type="hidden" name="LastAddressValidated" value="">
+					<!-- <input type="hidden" name="LastAddressValidated" value="">
 					<div class="alert alert-danger hidden" id="addressnotok">
 						<button type="button" class="close btn-lg" data-dismiss="alert"
 							aria-label="Close">
@@ -225,53 +225,65 @@
 						</button>
 						Address validation failed. Please check your address.<br /> If
 						the problem persists, please contact customer support.
-					</div>
-					<div class="form-group">
-						<label for="street1" class="col-sm-4 control-label">Street<span
-							style="color: red">*</span>:
-						</label>
-						<div class="col-sm-6">
-							<input type="text" size="30" maxlength="50" name="street1"
-								required="required" placeholder="Line 1" class="form-control">
-						</div>
-					</div>
-					<!-- <div class="form-group">
-						<label for="street2" class="col-sm-4 control-label">Street
-							2<span
-							style="color: red">*</span>&nbsp;:</label>
-						<div class="col-sm-6">
-							<input type="text" size="30" maxlength="50" name="street2"
-								placeholder="Line 2" class="form-control">
-						</div>
 					</div> -->
 					<div class="form-group">
+						<label for="addressText" class="col-sm-4 control-label"> </label>
+						<div class="col-sm-6" id="locationField">
+							<input id="autocomplete" placeholder="Enter your address"
+								onFocus="geolocate()" type="text" class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="street1" class="col-sm-4 control-label">Street
+							<span style="color: red">*</span> :
+						</label>
+						<div class="col-sm-2">
+							<input type="text" size="5" maxlength="10" name="street_number"
+								id="street_number" placeholder="Street #" class="form-control">
+						</div>
+						<div class="col-sm-4">
+							<input type="text" size="30" maxlength="50" name="street_name"
+								id="route" required="required" placeholder="Street Name"
+								class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="street2" class="col-sm-4 control-label">Apt/Ste
+							:</label>
+						<div class="col-sm-6">
+							<input type="text" size="30" maxlength="50" name="street2"
+								placeholder="" class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
 						<label for="city" class="col-sm-4 control-label">City<span
-							style="color: red">*</span>:
+							style="color: red">*</span> :
 						</label>
 						<div class="col-sm-6">
 							<input type="text" size="30" name="city" required="required"
-								placeholder="City" class="form-control">
+								id="locality" placeholder="City" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="state" class="col-sm-4 control-label">State<span
-							style="color: red">*</span>:
+							style="color: red">*</span> :
 						</label>
 						<div class="col-sm-6">
-							<span id="stateArea"></span>
+							<input type="text" size="30" name="state" required="required"
+								id="administrative_area_level_1" placeholder="State"
+								class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="zip" class="col-sm-4 control-label">Zip<span
-							style="color: red">*</span>:
+							style="color: red">*</span> :
 						</label>
 						<div class="col-sm-6">
 							<input type="text" size="10" name="zip" maxlength="10"
-								required="required" placeholder="Ex.: xxxxx"
+								id="postal_code" required="required" placeholder="Ex.: xxxxx"
 								pattern="^\d{5}(\-\d{4})?$" class="form-control">
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>

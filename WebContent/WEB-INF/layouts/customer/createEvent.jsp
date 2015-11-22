@@ -127,7 +127,7 @@
 					<h3 class="panel-title">Event Location</h3>
 				</div>
 				<div class="panel-body">
-					<input type="hidden" name="LastAddressValidated" value="">
+					<!-- <input type="hidden" name="LastAddressValidated" value="">
 					<div class="alert alert-danger hidden" id="addressnotok">
 						<button type="button" class="close btn-lg" data-dismiss="alert"
 							aria-label="Close">
@@ -135,7 +135,7 @@
 						</button>
 						Address validation failed. Please check your address.<br /> If
 						the problem persists, please contact customer support.
-					</div>
+					</div> -->
 					<div class="form-group">
 						<label for="addressText" class="col-sm-3 control-label"> </label>
 						<div class="col-sm-6" id="locationField">
@@ -144,7 +144,6 @@
 						</div>
 					</div>
 					<div class="form-group">
-
 						<label for="street1" class="col-sm-3 control-label">Street
 							<span style="color: red">*</span> :
 						</label>
@@ -157,9 +156,7 @@
 								id="route" required="required" placeholder="Street Name"
 								class="form-control">
 						</div>
-
 					</div>
-
 					<div class="form-group">
 						<label for="street2" class="col-sm-3 control-label">Apt/Ste
 							:</label>
@@ -168,7 +165,6 @@
 								placeholder="" class="form-control">
 						</div>
 					</div>
-
 					<div class="form-group">
 						<label for="city" class="col-sm-3 control-label">City<span
 							style="color: red">*</span> :
@@ -178,7 +174,6 @@
 								id="locality" placeholder="City" class="form-control">
 						</div>
 					</div>
-
 					<div class="form-group">
 						<label for="state" class="col-sm-3 control-label">State<span
 							style="color: red">*</span> :
@@ -187,10 +182,8 @@
 							<input type="text" size="30" name="state" required="required"
 								id="administrative_area_level_1" placeholder="State"
 								class="form-control">
-
 						</div>
 					</div>
-
 					<div class="form-group">
 						<label for="zip" class="col-sm-3 control-label">Zip<span
 							style="color: red">*</span> :
@@ -201,7 +194,6 @@
 								pattern="^\d{5}(\-\d{4})?$" class="form-control">
 						</div>
 					</div>
-
 					<div class="form-group">
 						<label for="deliveryOption" class="col-sm-3 control-label">Delivery
 							Option<span style="color: red">*</span> :

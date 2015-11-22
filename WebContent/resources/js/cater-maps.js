@@ -10,12 +10,12 @@ var componentForm = {
 
 // [START region_fillform]
 function fillInAddress() {
-	console.log("Inside fillInAddress");
+	//console.log("Inside fillInAddress");
 	// Get the place details from the autocomplete object.
 	var place = autocomplete.getPlace();
-	console.log(place);
+	//console.log(place);
 	for ( var component in componentForm) {
-		console.log(component);
+		//console.log(component);
 		document.getElementById(component).value = '';
 		document.getElementById(component).disabled = false;
 	}
@@ -60,9 +60,9 @@ function geolocate() {
 				center : geolocation,
 				radius : position.coords.accuracy
 			});
-			console.log("Coords: (" + position.coords.latitude + ", "
+			/*console.log("Coords: (" + position.coords.latitude + ", "
 					+ position.coords.longitude + "), Radius: "
-					+ position.coords.accuracy + " miles");
+					+ position.coords.accuracy + " miles");*/
 			autocomplete.setBounds(circle.getBounds());
 		});
 	}

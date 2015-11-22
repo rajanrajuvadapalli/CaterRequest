@@ -158,28 +158,29 @@ function validateRegistrationFormOnSubmit() {
 		stateElement.focus();
 		return false;
 	}
-	var st1 = $("input[name=street1]").val();
-	var city = $("input[name=city]").val();
-	var zip = $("input[name=zip]").val();
-	var CurrentAddress = st1 + ", " + city + ", " + state + ", " + zip;
-	var LastAddressValidated = $("input[name=LastAddressValidated]").val();
+	//2015-11-22: Address validation is not required, because we are populating the address from google.
+	//var st1 = $("input[name=street1]").val();
+	//var city = $("input[name=city]").val();
+	//var zip = $("input[name=zip]").val();
+	//var CurrentAddress = st1 + ", " + city + ", " + state + ", " + zip;
+	//var LastAddressValidated = $("input[name=LastAddressValidated]").val();
 	// console.log("LastAddressValidated: " + LastAddressValidated);
 	// console.log("CurrentAddress: " + CurrentAddress);
-	if (LastAddressValidated != CurrentAddress) {
+	/*if (LastAddressValidated != CurrentAddress) {
 		$("input[name=LastAddressValidated]").val(CurrentAddress);
 		var geocoder = new google.maps.Geocoder();
 		geocoder.geocode({
 			'address' : CurrentAddress
 		}, addressCallbackFunction);
 		return false;
-	}
+	}*/
 	var hash = md5($("#pwd1").val());
 	$("#pwd1").val(hash);
 	$("#pwd2").val(hash);
 	return true;
 }
 
-function addressCallbackFunction(results, status) {
+/*function addressCallbackFunction(results, status) {
 	$("div[id=addressnotok]").addClass('hidden');
 	if (status == google.maps.GeocoderStatus.OK) {
 		var address = results[0].formatted_address;
@@ -212,18 +213,18 @@ function addressCallbackFunction(results, status) {
 			} else {
 				alert("Address is verified and accepted.");
 			}
-			/*
+			
 			 * var customerName = $("input[name=name]").val(); if (customerName !=
 			 * null) { $("form[id=customer-register-form]").submit(); } else {
 			 * $("form[id=restaurant-register-form]").submit(); }
-			 */
+			 
 			return;
 		}
 	}
 	// Address is invalid
 	$("input[name=LastAddressValidated]").val("");
 	$("div[id=addressnotok]").removeClass('hidden');
-}
+}*/
 
 function validateLoginForm() {
 	var pwd = $("input[name=pwd]");
@@ -266,21 +267,22 @@ function validateEventForm() {
 		stateElement.focus();
 		return false;
 	}
-	var st1 = $("input[name=street1]").val();
-	var city = $("input[name=city]").val();
-	var zip = $("input[name=zip]").val();
-	var CurrentAddress = st1 + ", " + city + ", " + state + ", " + zip;
-	var LastAddressValidated = $("input[name=LastAddressValidated]").val();
+	//2015-11-22: Address validation is not required, because we are populating the address from google.
+	//var st1 = $("input[name=street1]").val();
+	//var city = $("input[name=city]").val();
+	//var zip = $("input[name=zip]").val();
+	//var CurrentAddress = st1 + ", " + city + ", " + state + ", " + zip;
+	//var LastAddressValidated = $("input[name=LastAddressValidated]").val();
 	// console.log("LastAddressValidated: " + LastAddressValidated);
 	// console.log("CurrentAddress: " + CurrentAddress);
-	if (LastAddressValidated != CurrentAddress) {
+	/*if (LastAddressValidated != CurrentAddress) {
 		$("input[name=LastAddressValidated]").val(CurrentAddress);
 		var geocoder = new google.maps.Geocoder();
 		geocoder.geocode({
 			'address' : CurrentAddress
 		}, addressCallbackFunction);
 		return false;
-	}
+	}*/
 	return true;
 }
 
