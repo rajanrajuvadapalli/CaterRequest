@@ -43,6 +43,14 @@ public class CustomerService {
 		return customerDAO.fetchAllCustomers();
 	}
 
+	public List <Event> fetchUpcomingEvents(Integer customerId) {
+		return customerDAO.fetchUpcomingEvents(customerId);
+	}
+
+	public List <Event> fetchPastEvents(Integer customerId) {
+		return customerDAO.fetchPastEvents(customerId);
+	}
+
 	public Customer findCustomerWithLoginId(Integer loginID) {
 		return customerDAO.findByLoginID(loginID);
 	}
@@ -125,4 +133,5 @@ public class CustomerService {
 			Date toDate) {
 		return customerDAO.getCustomerInfoByDateRange(fromDate, toDate);
 	}
+
 }

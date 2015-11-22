@@ -513,11 +513,38 @@ public class MenuController {
 				}
 			}
 			modelMap.addAttribute("menus", menus.values());
+			List <Quote> quotes = restaurantService
+					.findQuotesWithEventId(eventId);
+			Map <String, List <Quote>> groupedQuotes = groupQuotesPerCuisine(quotes);
+			modelMap.addAttribute("groupedQuotes", groupedQuotes);
 		}
 		catch (Exception ex) {
 			logger.error(ex);
 		}
-		return "menus/t_eventMenusReadOnly";
+		return "event/t_eventDetails";
+	}
+
+	/**
+	 * Group quotes per cuisine.
+	 *
+	 * @param quotes the quotes
+	 * @return the map
+	 */
+	private Map <String, List <Quote>> groupQuotesPerCuisine(List <Quote> quotes) {
+		Map <String, List <Quote>> groupedQuotes = Maps.newTreeMap();
+		for (Quote q : quotes) {
+			Restaurant r = q.getRestaurant();
+			if (r != null) {
+				String cuisine = r.getCuisineType();
+				List <Quote> q2 = groupedQuotes.get(cuisine);
+				if (q2 == null) {
+					q2 = Lists.newArrayList();
+					groupedQuotes.put(cuisine, q2);
+				}
+				q2.add(q);
+			}
+		}
+		return groupedQuotes;
 	}
 
 	/**

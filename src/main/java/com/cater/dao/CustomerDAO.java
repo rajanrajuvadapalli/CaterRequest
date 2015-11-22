@@ -11,6 +11,7 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
@@ -22,6 +23,7 @@ import com.cater.model.Customer;
 import com.cater.model.CustomerSearch;
 import com.cater.model.Event;
 import com.cater.model.Quote;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 /**
@@ -337,5 +339,59 @@ public class CustomerDAO extends DataAccessObject {
 						Transformers.aliasToBean(CustomerSearch.class));
 		List <CustomerSearch> customerList = c.list();
 		return customerList;
+	}
+
+	/**
+	 * Fetch upcoming events.
+	 *
+	 * @param customerId the customer id
+	 * @return the list
+	 */
+	@SuppressWarnings("unchecked")
+	public List <Event> fetchUpcomingEvents(Integer customerId) {
+		logger.debug("Fetching upcoming events for customer with ID: "
+				+ customerId);
+		try {
+			Session session = getSessionFactory().getCurrentSession();
+			List <?> list = session
+					.createCriteria(Event.class, "e")
+					.createAlias("e.customer", "customer",
+							JoinType.LEFT_OUTER_JOIN)
+					.add(Restrictions.eq("customer.id", customerId))
+					.add(Restrictions.ge("e.date_time", new Date()))
+					.addOrder(Order.asc("e.date_time")).list();
+			logger.debug("Found " + list.size() + " number of upcoming events");
+			return (List <Event>) list;
+		}
+		catch (HibernateException he) {
+			logger.error(
+					"Exception occurred while Fetching upcoming events for customer with ID: "
+							+ customerId, he);
+		}
+		return Lists.newArrayList();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List <Event> fetchPastEvents(Integer customerId) {
+		logger.debug("Fetching upcoming events for customer with ID: "
+				+ customerId);
+		try {
+			Session session = getSessionFactory().getCurrentSession();
+			List <?> list = session
+					.createCriteria(Event.class, "e")
+					.createAlias("e.customer", "customer",
+							JoinType.LEFT_OUTER_JOIN)
+					.add(Restrictions.eq("customer.id", customerId))
+					.add(Restrictions.lt("e.date_time", new Date()))
+					.addOrder(Order.desc("e.date_time")).list();
+			logger.debug("Found " + list.size() + " number of upcoming events");
+			return (List <Event>) list;
+		}
+		catch (HibernateException he) {
+			logger.error(
+					"Exception occurred while Fetching upcoming events for customer with ID: "
+							+ customerId, he);
+		}
+		return Lists.newArrayList();
 	}
 }

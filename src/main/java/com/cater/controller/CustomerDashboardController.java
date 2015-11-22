@@ -90,12 +90,18 @@ public class CustomerDashboardController {
 					.getLoginID());
 		}
 		modelMap.put("customer", customer);
-		List <Event> events = customer.getEvents();
-		modelMap.put("events", events);
+		//List <Event> events = customer.getEvents();
+		//modelMap.put("events", events);
+		List <Event> upcomingEvents = customerService
+				.fetchUpcomingEvents(customer.getId());
+		modelMap.put("upcomingEvents", upcomingEvents);
+		List <Event> pastEvents = customerService.fetchPastEvents(customer
+				.getId());
+		modelMap.put("pastEvents", pastEvents);
 		Map <Integer, Set <String>> e2m = Maps.newHashMap();
 		Map <Integer, Map <String, List <Quote>>> e2q = Maps.newHashMap();
 		if (!user.isGuest()) {
-			for (Event e : events) {
+			for (Event e : upcomingEvents) {
 				List <Menu> menus = customerService.findMenusWithEventId(e
 						.getId());
 				Set <String> selectedMenuCusines = Sets.newTreeSet();
@@ -189,7 +195,9 @@ public class CustomerDashboardController {
 		e.setPickUp(StringUtils.equals("1", StringUtils.defaultString(request
 				.getParameter("deliveryOption"))));
 		Address a = new Address();
-		String street1 = StringUtils.defaultString(request.getParameter("street_number")).concat(StringUtils.defaultString(request.getParameter("street_name")));
+		String street1 = StringUtils.defaultString(
+				request.getParameter("street_number")).concat(
+				StringUtils.defaultString(request.getParameter("street_name")));
 		a.setStreet1(street1);
 		a.setStreet2(StringUtils.defaultString(request.getParameter("street2")));
 		a.setCity(StringUtils.defaultString(request.getParameter("city")));
@@ -597,7 +605,8 @@ public class CustomerDashboardController {
 				errors.add("Cannot confirm order with no quotes.");
 			}
 			else {
-				double taxAmount = (quote.getPrice() * quote.getRestaurant().getSalesTax())/100 ;
+				double taxAmount = (quote.getPrice() * quote.getRestaurant()
+						.getSalesTax()) / 100;
 				double totalAmount = quote.getPrice() + taxAmount;
 				modelMap.put("quote", quote);
 				modelMap.put("restuarant", quote.getRestaurant());

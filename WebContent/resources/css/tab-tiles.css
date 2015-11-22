@@ -1,0 +1,32 @@
+.grid-item {
+	padding: 0.3em 0.3em 0 0;
+	width: 240px;
+	box-sizing: border-box;
+	margin: auto;
+	font-size:1.3em;
+}
+.grid-item p {
+	background: #e1e1e1; 
+	color: #545555;
+	padding: 0.5em 0.5em 0 0.5em;
+	margin: 0;
+	font-size: 0.8em;
+}
+
+.grid-item p .head {
+	display: inline-block;
+}
+
+.grid-item p .event-value {
+	display: inline-block;
+	padding-left: 0.2em;
+}
+
+.grid-item p .head:after {
+	content: ':';
+}
+
+.grid-item p .time, .grid-item p .date {
+	font-size: 0.7em;
+	padding-right: 0.2em;
+}

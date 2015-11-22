@@ -41,6 +41,12 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/fileinput.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap-tabs-x.min.js"></script>
 
+<!-- Scripts from Rakesh for the customer dashboard -->
+<script src="${pageContext.request.contextPath}/resources/js/tab_menu.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/resp_menu.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/masonry.pkgd.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/modernizr.custom.js"></script>
+
 <script>
     $(window).load(function(){
         var rtl = false; // Use RTL
