@@ -13,6 +13,13 @@
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
+		<property name="initialSize" value="5" />
+		<property name="maxActive" value="10" />
+		<property name="minIdle" value="5" />
+		<property name="maxIdle" value="10" />
+		<property name="maxWait" value="10000" />
+		<property name="validationQuery" value="SELECT 1" />
+		<property name="testOnBorrow" value="true" />
 	</bean>
 
 	<!-- Hibernate 4 SessionFactory Bean definition -->
