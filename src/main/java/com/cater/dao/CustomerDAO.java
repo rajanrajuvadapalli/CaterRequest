@@ -360,7 +360,7 @@ public class CustomerDAO extends DataAccessObject {
 					.add(Restrictions.eq("customer.id", customerId))
 					.add(Restrictions.ge("e.date_time", new Date()))
 					.addOrder(Order.asc("e.date_time")).list();
-			logger.debug("Found " + list.size() + " number of upcoming events");
+			logger.debug("Found " + list.size() + " upcoming events");
 			return (List <Event>) list;
 		}
 		catch (HibernateException he) {
@@ -373,7 +373,7 @@ public class CustomerDAO extends DataAccessObject {
 
 	@SuppressWarnings("unchecked")
 	public List <Event> fetchPastEvents(Integer customerId) {
-		logger.debug("Fetching upcoming events for customer with ID: "
+		logger.debug("Fetching past events for customer with ID: "
 				+ customerId);
 		try {
 			Session session = getSessionFactory().getCurrentSession();
@@ -384,12 +384,12 @@ public class CustomerDAO extends DataAccessObject {
 					.add(Restrictions.eq("customer.id", customerId))
 					.add(Restrictions.lt("e.date_time", new Date()))
 					.addOrder(Order.desc("e.date_time")).list();
-			logger.debug("Found " + list.size() + " number of upcoming events");
+			logger.debug("Found " + list.size() + " past events");
 			return (List <Event>) list;
 		}
 		catch (HibernateException he) {
 			logger.error(
-					"Exception occurred while Fetching upcoming events for customer with ID: "
+					"Exception occurred while Fetching past events for customer with ID: "
 							+ customerId, he);
 		}
 		return Lists.newArrayList();
