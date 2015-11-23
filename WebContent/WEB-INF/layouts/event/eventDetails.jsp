@@ -17,7 +17,7 @@
 				<h3 class="panel-title">Event details</h3>
 			</div>
 			<div class="panel-body" align="left">
-				<c:if test="${event.status eq 'ACTIVE'}">
+				<c:if test="${event.status eq 'ACTIVE' && event.date_time > now}">
 					<span class="pull-right"><a
 						href="${pageContext.request.contextPath}/customer/event/edit/${event.id}">
 							<span class="glyphicon glyphicon-edit"></span> Edit
@@ -37,7 +37,7 @@
 						value="(${fn:substring(event.customer.contactNumber, 0, 3)}) ${fn:substring(event.customer.contactNumber, 3, 6)}-${fn:substring(event.customer.contactNumber, 6, 10)}" />
 				</c:if>
 				<br />
-				<c:if test="${event.date_time > now }">
+				<c:if test="${event.date_time > now}">
 					<a class="popup-with-form" href="#${event.id}"><span
 						class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add
 						Menu</a>
