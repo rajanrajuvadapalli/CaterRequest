@@ -214,7 +214,7 @@
 						<!--/.feature-box-->
 					</div>
 					<!--/.col-md-4-->
-					<div class=" col-sm-4">
+					<!-- <div class=" col-sm-4">
 						<div class="feature-box">
 							<i class='fa fa-comments-o fa-5x'></i>
 							<div class="description">
@@ -223,8 +223,8 @@
 									restaurant.</p>
 							</div>
 						</div>
-						<!--/.feature-box-->
-					</div>
+						/.feature-box
+					</div> -->
 					<!--/.col-md-4-->
 					<!--/.col-md-4-->
 					<div class=" col-sm-4">
