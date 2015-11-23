@@ -201,12 +201,12 @@
 			</label>
 			<div class="col-sm-6">
 				<div class="input-group">
-					<input type="radio" name="psize" required="required" value="Big">
-					Big &nbsp;&nbsp;
+					<input type="radio" name="psize" required="required" value="Large">
+					Large &nbsp;&nbsp;
 				</div>
 				<div class="input-group">
 					<input type="radio" name="psize" required="required"
-						value="Average"> Average &nbsp;&nbsp;
+						value="Medium"> Medium &nbsp;&nbsp;
 				</div>
 				<div class="input-group">
 					<input type="radio" name="psize" required="required" value="Small">

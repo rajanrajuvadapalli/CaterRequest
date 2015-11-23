@@ -237,73 +237,65 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose sides<span
-				style="color: red">*</span>:
+			<label for="" class="col-sm-4 control-label">Choose sides:
 			</label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="tsides" required="required"
-							value="Black Beans"> Black Beans
+						<input type="checkbox" name="tsides" value="Black Beans">
+						Black Beans
 					</div>
 					<div class="input-group">
-						<input type="radio" name="tsides" required="required"
-							value="Pinto Beans"> Pinto Beans
+						<input type="checkbox" name="tsides" value="Pinto Beans">
+						Pinto Beans
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose rice<span
-				style="color: red">*</span>:
+			<label for="" class="col-sm-4 control-label">Choose rice:
 			</label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="trice" required="required"
-							value="Citrus rice"> Citrus rice
+						<input type="checkbox" name="trice" value="Citrus rice">
+						Citrus rice
 					</div>
 					<div class="input-group">
-						<input type="radio" name="trice" required="required"
-							value="Mexican rice"> Mexican rice
+						<input type="checkbox" name="trice" value="Mexican rice">
+						Mexican rice
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose salsa<span
-				style="color: red">*</span>:
+			<label for="" class="col-sm-4 control-label">Choose salsa:
 			</label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="tsalsa" required="required"
-							value="Mild salsa"> Mild salsa
+						<input type="checkbox" name="tsalsa" value="Mild salsa">
+						Mild salsa
 					</div>
 					<div class="input-group">
-						<input type="radio" name="tsalsa" required="required"
-							value="Chipotle Salsa"> Chipotle Salsa
+						<input type="checkbox" name="tsalsa" value="Chipotle Salsa">
+						Chipotle Salsa
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose Cheese<span
-				style="color: red">*</span>:
+			<label for="" class="col-sm-4 control-label">Choose Cheese:
 			</label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="tcheese" required="required"
+						<input type="checkbox" name="tcheese"
 							value="Light"> Light
 					</div>
 					<div class="input-group">
-						<input type="radio" name="tcheese" required="required"
+						<input type="checkbox" name="tcheese"
 							value="Regular"> Regular
-					</div>
-					<div class="input-group">
-						<input type="radio" name="tcheese" required="required"
-							value="No cheese"> No cheese
 					</div>
 				</div>
 			</div>
@@ -332,7 +324,7 @@
 				Instructions: </label>
 			<div class="col-sm-6">
 				<input type="text" size="60" name="tspl" maxlength="20"
-					 class="form-control">
+					class="form-control">
 			</div>
 		</div>
 		<div class="form-group">
@@ -506,7 +498,7 @@
 				Instructions: </label>
 			<div class="col-sm-6">
 				<input type="text" size="60" name="bspl" maxlength="20"
-					 class="form-control">
+					class="form-control">
 			</div>
 		</div>
 		<div class="form-group">
@@ -659,7 +651,7 @@
 				Instructions: </label>
 			<div class="col-sm-6">
 				<input type="text" size="60" name="espl" maxlength="20"
-					 class="form-control">
+					class="form-control">
 			</div>
 		</div>
 		<div class="form-group">
@@ -812,7 +804,7 @@
 				Instructions: </label>
 			<div class="col-sm-6">
 				<input type="text" size="60" name="fspl" maxlength="20"
-					 class="form-control">
+					class="form-control">
 			</div>
 		</div>
 		<div class="form-group">
@@ -1003,7 +995,7 @@
 				Instructions: </label>
 			<div class="col-sm-6">
 				<input type="text" size="60" name="sspl" maxlength="20"
-					 class="form-control">
+					class="form-control">
 			</div>
 		</div>
 		<div class="form-group">
@@ -1063,7 +1055,7 @@
 				Instructions: </label>
 			<div class="col-sm-6">
 				<input type="text" size="60" name="cspl" maxlength="20"
-					 class="form-control">
+					class="form-control">
 			</div>
 		</div>
 		<div class="form-group">

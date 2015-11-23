@@ -33,7 +33,7 @@ function populateVegeterianSpringRollSelectedItems() {
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	//console.log(data);
+	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
@@ -71,7 +71,7 @@ function populateChickenSataySelectedItems() {
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	//console.log(data);
+	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
@@ -103,14 +103,14 @@ function populateFriedCalamariSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_mexican_item(\''
+			+ '<span class="thai-item-close remove-item" onclick="remove_thai_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	//console.log(data);
+	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
@@ -145,14 +145,14 @@ function populateTomYumSoupSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_mexican_item(\''
+			+ '<span class="thai-item-close remove-item" onclick="remove_thai_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	//console.log(data);
+	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
@@ -187,14 +187,14 @@ function populateTomKhaSoupSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_mexican_item(\''
+			+ '<span class="thai-item-close remove-item" onclick="remove_thai_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	//console.log(data);
+	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
@@ -229,14 +229,14 @@ function populateGreenPapayaSaladSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_mexican_item(\''
+			+ '<span class="thai-item-close remove-item" onclick="remove_thai_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	//console.log(data);
+	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
@@ -271,14 +271,14 @@ function populateThaiPadThaiSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_mexican_item(\''
+			+ '<span class="thai-item-close remove-item" onclick="remove_thai_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	//console.log(data);
+	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
@@ -313,14 +313,14 @@ function populateDrunkenNoodlesSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_mexican_item(\''
+			+ '<span class="thai-item-close remove-item" onclick="remove_thai_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	//console.log(data);
+	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
@@ -355,14 +355,14 @@ function populateThaiFriedRiceSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_mexican_item(\''
+			+ '<span class="thai-item-close remove-item" onclick="remove_thai_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	//console.log(data);
+	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
@@ -397,14 +397,14 @@ function populatePineappleFriedRiceSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_mexican_item(\''
+			+ '<span class="thai-item-close remove-item" onclick="remove_thai_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	//console.log(data);
+	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
@@ -438,14 +438,14 @@ function populateBasilFriedRiceSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_mexican_item(\''
+			+ '<span class="thai-item-close remove-item" onclick="remove_thai_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	//console.log(data);
+	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
@@ -480,14 +480,14 @@ function populateRedCurrySelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_mexican_item(\''
+			+ '<span class="thai-item-close remove-item" onclick="remove_thai_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	//console.log(data);
+	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
@@ -521,14 +521,14 @@ function populateGreenCurrySelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_mexican_item(\''
+			+ '<span class="thai-item-close remove-item" onclick="remove_thai_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	//console.log(data);
+	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
@@ -563,14 +563,56 @@ function populateYellowCurrySelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_mexican_item(\''
+			+ '<span class="thai-item-close remove-item" onclick="remove_thai_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
 	thai_menu_items.push(data);
-	//console.log(data);
+	// console.log(data);
+	$.magnificPopup.close();
+	return false;
+}
+
+function populatePanangCurrySelectedItems() {
+	var name = "Panang Curry";
+	// If an item is previously selected, remove if before adding the new one.
+	$('.slide').children().each(function() {
+		if ($(this).html().indexOf(name) >= 0) {
+			$(this).remove();
+		}
+	});
+	var id = $('.slide').children().length;
+	var div_id = "m_" + id;
+	var n = $('input[name=pccount]').val();
+	var servingsize = $('input[name=pcservingsize]:checked').val();
+	var choiceofmeat = $('input[name=pcmeat]:checked').val();
+	var spicy = $('input[name=pcspicy]:checked').val();
+	var spl = $('input[name=pcspl]').val();
+	var desc = "Number of trays: " + n + ", Tray Size: " + servingsize
+			+ ", Choice of meat: " + choiceofmeat + ", Spicy: " + spicy;
+	if (spl != "")
+		desc += ", Special Instructions: " + spl;
+	var html = '<div class="list-item" id="'
+			+ div_id
+			+ '">'
+			+ '<div class="left">'
+			+ '<h4>'
+			+ name
+			+ '</h4>'
+			+ '<figure>'
+			+ desc
+			+ '</figure>'
+			+ '</div>'
+			+ '<span class="thai-item-close remove-item" onclick="remove_thai_item(\''
+			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
+	// console.log(html);
+	$(html).appendTo('.slide');
+
+	var data = name + "+" + desc;
+	thai_menu_items.push(data);
+	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }

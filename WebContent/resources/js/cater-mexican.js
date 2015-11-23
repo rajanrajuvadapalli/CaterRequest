@@ -18,9 +18,15 @@ function populateMexicanTacoBarSelectedItems() {
 	var sides = $("input[name=tsides]:checked").map(function() {
 		return this.value;
 	}).get().join(",");
-	var rice = $('input[name=trice]:checked').val();
-	var salsa = $('input[name=tsalsa]:checked').val();
-	var cheese = $('input[name=tcheese]:checked').val();
+	var rice = $("input[name=trice]:checked").map(function() {
+		return this.value;
+	}).get().join(",");
+	var salsa = $("input[name=tsalsa]:checked").map(function() {
+		return this.value;
+	}).get().join(",");
+	var cheese = $("input[name=tcheese]:checked").map(function() {
+		return this.value;
+	}).get().join(",");
 	var toppings = $("input[name=ttop]:checked").map(function() {
 		return this.value;
 	}).get().join(",");
@@ -45,14 +51,14 @@ function populateMexicanTacoBarSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_mexican_item(\''
+			+ '<span class="mexican-item-close remove-item" onclick="remove_mexican_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
 	mexican_menu_items.push(data);
-	//console.log(data);
+	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
@@ -102,14 +108,14 @@ function populateMexicanBurritoBarSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_mexican_item(\''
+			+ '<span class="mexican-item-close remove-item" onclick="remove_mexican_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
 	mexican_menu_items.push(data);
-	//console.log(data);
+	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
@@ -157,14 +163,14 @@ function populateMexicanEnchiladaBarSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_mexican_item(\''
+			+ '<span class="mexican-item-close remove-item" onclick="remove_mexican_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
 	mexican_menu_items.push(data);
-	//console.log(data);
+	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
@@ -212,14 +218,14 @@ function populateMexicanFajithaBarSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_mexican_item(\''
+			+ '<span class="mexican-item-close remove-item" onclick="remove_mexican_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
 	mexican_menu_items.push(data);
-	//console.log(data);
+	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
@@ -270,14 +276,14 @@ function populateMexicanSaladBarSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_mexican_item(\''
+			+ '<span class="mexican-item-close remove-item" onclick="remove_mexican_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
 	mexican_menu_items.push(data);
-	//console.log(data);
+	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
@@ -314,14 +320,14 @@ function populateMexicanChipsSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_mexican_item(\''
+			+ '<span class="mexican-item-close remove-item" onclick="remove_mexican_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
 	mexican_menu_items.push(data);
-	//console.log(data);
+	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }

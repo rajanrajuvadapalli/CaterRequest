@@ -11,15 +11,13 @@ function populateChickenSandwichSelectedItems() {
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=cscount]').val();
-	var meat = $("input[name=csmeat]:checked").map(function() {
-		return this.value;
-	}).get().join(",");
+	var meat = $("input[name=csmeat]:checked").map(function() {return this.value;}).get().join(",");
 	var bread = $('input[name=csbread]:checked').val();
 	var cheese = $('input[name=cscheese]:checked').val();
-	var veggies = $('input[name=csveggies]:checked').val();
-	var others = $('input[name=csothers]:checked').val();
-	var dressing = $('input[name=csdressing]:checked').val();
-	var extras = $('input[name=csextras]:checked').val();
+	var veggies = $("input[name=csveggies]:checked").map(function() {return this.value;}).get().join(",");
+	var others = $("input[name=csothers]:checked").map(function() {return this.value;}).get().join(",");
+	var dressing = $("input[name=csdressing]:checked").map(function() {return this.value;}).get().join(",");
+	var extras = $("input[name=csextra]:checked").map(function() {return this.value;}).get().join(",");
 	var spl = $('input[name=csspl]').val();
 	var desc = "Number of Sandwiches: " + n + ", Meat: " + meat + ", Bread: "
 			+ bread + ", Cheese: " + cheese + ", Veggies: " + veggies
@@ -38,7 +36,7 @@ function populateChickenSandwichSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_sandwich_item(\''
+			+ '<span class="sandwich-item-close remove-item" onclick="remove_sandwich_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
@@ -66,10 +64,10 @@ function populateTurkeySandwichSelectedItems() {
 	}).get().join(",");
 	var bread = $('input[name=tsbread]:checked').val();
 	var cheese = $('input[name=tscheese]:checked').val();
-	var veggies = $('input[name=tsveggies]:checked').val();
-	var others = $('input[name=tsothers]:checked').val();
-	var dressing = $('input[name=tsdressing]:checked').val();
-	var extras = $('input[name=tsextras]:checked').val();
+	var veggies = $("input[name=tsveggies]:checked").map(function() {return this.value;}).get().join(",");
+	var others = $("input[name=tsothers]:checked").map(function() {return this.value;}).get().join(",");
+	var dressing = $("input[name=tsdressing]:checked").map(function() {return this.value;}).get().join(",");
+	var extras = $("input[name=tsextra]:checked").map(function() {return this.value;}).get().join(",");
 	var spl = $('input[name=tsspl]').val();
 	var desc = "Number of Sandwiches: " + n + ", Meat: " + meat + ", Bread: "
 			+ bread + ", Cheese: " + cheese + ", Veggies: " + veggies
@@ -88,7 +86,7 @@ function populateTurkeySandwichSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_sandwich_item(\''
+			+ '<span class="sandwich-item-close remove-item" onclick="remove_sandwich_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
@@ -116,10 +114,10 @@ function populateRoastBeefSandwichSelectedItems() {
 	}).get().join(",");
 	var bread = $('input[name=rbsbread]:checked').val();
 	var cheese = $('input[name=rbscheese]:checked').val();
-	var veggies = $('input[name=rbsveggies]:checked').val();
-	var others = $('input[name=rbsothers]:checked').val();
-	var dressing = $('input[name=rbsdressing]:checked').val();
-	var extras = $('input[name=rbsextras]:checked').val();
+	var veggies = $("input[name=rbsveggies]:checked").map(function() {return this.value;}).get().join(",");
+	var others = $("input[name=rbsothers]:checked").map(function() {return this.value;}).get().join(",");
+	var dressing = $("input[name=rbsdressing]:checked").map(function() {return this.value;}).get().join(",");
+	var extras = $("input[name=rbsextra]:checked").map(function() {return this.value;}).get().join(",");
 	var spl = $('input[name=rbsspl]').val();
 	var desc = "Number of Sandwiches: " + n + ", Meat: " + meat + ", Bread: "
 			+ bread + ", Cheese: " + cheese + ", Veggies: " + veggies
@@ -138,7 +136,7 @@ function populateRoastBeefSandwichSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_sandwich_item(\''
+			+ '<span class="sandwich-item-close remove-item" onclick="remove_sandwich_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
@@ -166,10 +164,10 @@ function populateSalamiSandwichSelectedItems() {
 	}).get().join(",");
 	var bread = $('input[name=ssbread]:checked').val();
 	var cheese = $('input[name=sscheese]:checked').val();
-	var veggies = $('input[name=ssveggies]:checked').val();
-	var others = $('input[name=ssothers]:checked').val();
-	var dressing = $('input[name=ssdressing]:checked').val();
-	var extras = $('input[name=ssextras]:checked').val();
+	var veggies = $("input[name=ssveggies]:checked").map(function() {return this.value;}).get().join(",");
+	var others = $("input[name=ssothers]:checked").map(function() {return this.value;}).get().join(",");
+	var dressing = $("input[name=ssdressing]:checked").map(function() {return this.value;}).get().join(",");
+	var extras = $("input[name=ssextra]:checked").map(function() {return this.value;}).get().join(",");
 	var spl = $('input[name=ssspl]').val();
 	var desc = "Number of Sandwiches: " + n + ", Meat: " + meat + ", Bread: "
 			+ bread + ", Cheese: " + cheese + ", Veggies: " + veggies
@@ -188,7 +186,7 @@ function populateSalamiSandwichSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_sandwich_item(\''
+			+ '<span class="sandwich-item-close remove-item" onclick="remove_sandwich_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
@@ -216,10 +214,10 @@ function populateBaconSandwichSelectedItems() {
 	}).get().join(",");
 	var bread = $('input[name=bsbread]:checked').val();
 	var cheese = $('input[name=bscheese]:checked').val();
-	var veggies = $('input[name=bsveggies]:checked').val();
-	var others = $('input[name=bsothers]:checked').val();
-	var dressing = $('input[name=bsdressing]:checked').val();
-	var extras = $('input[name=bsextras]:checked').val();
+	var veggies = $("input[name=bsveggies]:checked").map(function() {return this.value;}).get().join(",");
+	var others = $("input[name=bsothers]:checked").map(function() {return this.value;}).get().join(",");
+	var dressing = $("input[name=bsdressing]:checked").map(function() {return this.value;}).get().join(",");
+	var extras = $("input[name=bsextra]:checked").map(function() {return this.value;}).get().join(",");
 	var spl = $('input[name=bsspl]').val();
 	var desc = "Number of Sandwiches: " + n + ", Meat: " + meat + ", Bread: "
 			+ bread + ", Cheese: " + cheese + ", Veggies: " + veggies
@@ -238,7 +236,7 @@ function populateBaconSandwichSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_sandwich_item(\''
+			+ '<span class="sandwich-item-close remove-item" onclick="remove_sandwich_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
@@ -266,10 +264,10 @@ function populatePastramiSandwichSelectedItems() {
 	}).get().join(",");
 	var bread = $('input[name=psbread]:checked').val();
 	var cheese = $('input[name=pscheese]:checked').val();
-	var veggies = $('input[name=psveggies]:checked').val();
-	var others = $('input[name=psothers]:checked').val();
-	var dressing = $('input[name=psdressing]:checked').val();
-	var extras = $('input[name=psextras]:checked').val();
+	var veggies = $("input[name=psveggies]:checked").map(function() {return this.value;}).get().join(",");
+	var others = $("input[name=psothers]:checked").map(function() {return this.value;}).get().join(",");
+	var dressing = $("input[name=psdressing]:checked").map(function() {return this.value;}).get().join(",");
+	var extras = $("input[name=psextra]:checked").map(function() {return this.value;}).get().join(",");
 	var spl = $('input[name=psspl]').val();
 	var desc = "Number of Sandwiches: " + n + ", Meat: " + meat + ", Bread: "
 			+ bread + ", Cheese: " + cheese + ", Veggies: " + veggies
@@ -288,7 +286,7 @@ function populatePastramiSandwichSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_sandwich_item(\''
+			+ '<span class="sandwich-item-close remove-item" onclick="remove_sandwich_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
@@ -316,10 +314,10 @@ function populateHamSandwichSelectedItems() {
 	}).get().join(",");
 	var bread = $('input[name=hsbread]:checked').val();
 	var cheese = $('input[name=hscheese]:checked').val();
-	var veggies = $('input[name=hsveggies]:checked').val();
-	var others = $('input[name=hsothers]:checked').val();
-	var dressing = $('input[name=hsdressing]:checked').val();
-	var extras = $('input[name=hsextras]:checked').val();
+	var veggies = $("input[name=hsveggies]:checked").map(function() {return this.value;}).get().join(",");
+	var others = $("input[name=hsothers]:checked").map(function() {return this.value;}).get().join(",");
+	var dressing = $("input[name=hsdressing]:checked").map(function() {return this.value;}).get().join(",");
+	var extras = $("input[name=hsextra]:checked").map(function() {return this.value;}).get().join(",");
 	var spl = $('input[name=hsspl]').val();
 	var desc = "Number of Sandwiches: " + n + ", Meat: " + meat + ", Bread: "
 			+ bread + ", Cheese: " + cheese + ", Veggies: " + veggies
@@ -338,7 +336,7 @@ function populateHamSandwichSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_sandwich_item(\''
+			+ '<span class="sandwich-item-close remove-item" onclick="remove_sandwich_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
@@ -366,10 +364,10 @@ function populateTunaSandwichSelectedItems() {
 	}).get().join(",");
 	var bread = $('input[name=tusbread]:checked').val();
 	var cheese = $('input[name=tuscheese]:checked').val();
-	var veggies = $('input[name=tusveggies]:checked').val();
-	var others = $('input[name=tusothers]:checked').val();
-	var dressing = $('input[name=tusdressing]:checked').val();
-	var extras = $('input[name=tusextras]:checked').val();
+	var veggies = $("input[name=tusveggies]:checked").map(function() {return this.value;}).get().join(",");
+	var others = $("input[name=tusothers]:checked").map(function() {return this.value;}).get().join(",");
+	var dressing = $("input[name=tusdressing]:checked").map(function() {return this.value;}).get().join(",");
+	var extras = $("input[name=tusextra]:checked").map(function() {return this.value;}).get().join(",");
 	var spl = $('input[name=tusspl]').val();
 	var desc = "Number of Sandwiches: " + n + ", Meat: " + meat + ", Bread: "
 			+ bread + ", Cheese: " + cheese + ", Veggies: " + veggies
@@ -388,7 +386,7 @@ function populateTunaSandwichSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_sandwich_item(\''
+			+ '<span class="sandwich-item-close remove-item" onclick="remove_sandwich_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
@@ -413,10 +411,10 @@ function populateVeggieSandwichSelectedItems() {
 	var n = $('input[name=vscount]').val();
 	var bread = $('input[name=vsbread]:checked').val();
 	var cheese = $('input[name=vscheese]:checked').val();
-	var veggies = $('input[name=vsveggies]:checked').val();
-	var others = $('input[name=vsothers]:checked').val();
-	var dressing = $('input[name=vsdressing]:checked').val();
-	var extras = $('input[name=vsextras]:checked').val();
+	var veggies = $("input[name=vsveggies]:checked").map(function() {return this.value;}).get().join(",");
+	var others = $("input[name=vsothers]:checked").map(function() {return this.value;}).get().join(",");
+	var dressing = $("input[name=vsdressing]:checked").map(function() {return this.value;}).get().join(",");
+	var extras = $("input[name=vsextra]:checked").map(function() {return this.value;}).get().join(",");
 	var spl = $('input[name=vsspl]').val();
 	var desc = "Number of Sandwiches: " + n + ", Bread: " + bread
 			+ ", Cheese: " + cheese + ", Veggies: " + veggies + ", Others: "
@@ -434,7 +432,7 @@ function populateVeggieSandwichSelectedItems() {
 			+ desc
 			+ '</figure>'
 			+ '</div>'
-			+ '<span class="pizza-item-close remove-item" onclick="remove_sandwich_item(\''
+			+ '<span class="sandwich-item-close remove-item" onclick="remove_sandwich_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
