@@ -1,17 +1,35 @@
 {
-    "cuisine": "PIZZA",
-    "categories": [
-        {
-            "code": "C1",
-            "name": "PIZZA",
-            "items": [
-                {
-                    "code": "C1_1",
-                    "name": "PIZZA",
-                    "description": "",
-                    "isSelected": false
-                }
-            ]
-        }
-    ]
+	"cuisine":"PIZZA",
+	"categories":[
+		{
+			"code":"C1",
+			"name":"PIZZA",
+			"items":[
+				{
+					"code":"C1_1",
+					"name":"CHICKEN PIZZA",
+					"description":"",
+					"isSelected":false
+				},
+				{
+					"code":"C1_2",
+					"name":"PEPPERONI PIZZA",
+					"description":"",
+					"isSelected":false
+				},
+				{
+					"code":"C1_3",
+					"name":"VEGGIE PIZZA",
+					"description":"",
+					"isSelected":false
+				},
+				{
+					"code":"C1_4",
+					"name":"BUILD YOUR OWN PIZZA",
+					"description":"",
+					"isSelected":false
+				}
+			]
+		}
+	]
 }

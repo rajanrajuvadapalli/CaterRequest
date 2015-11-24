@@ -69,19 +69,18 @@
 			<div class="">
 				<!--Content-->
 				<div class="">
-					<h3>Click on the image below to build your own pizza.</h3>
+					<h3>Click on the image below to customize your pizza.</h3>
 					<!--Listing Grid-->
 					<section class="block equal-height col-md-6 col-xs-12">
 						<div class="row">
-							<c:forEach items="${menu.categories}" var="category"
-								varStatus="loop">
-								<c:forEach items="${category.items}" var="item">
+							<c:forEach items="${menu.categories}" var="category">
+								<c:forEach items="${category.items}" var="item" varStatus="loop">
 
 									<div class="col-md-4 col-sm-3 col-xs-6">
 										<div class="item" id="C${loop.index}">
 											<div class="image">
 												<a class="popup-with-form" id="put-pizza-title"
-													href="#options">
+													href="#popup_${loop.index}">
 													<div class="item-specific">
 														<span class="name">${item.name}</span>
 													</div>
@@ -179,7 +178,1039 @@
 </div>
 <!-- end Page Canvas-->
 
-<div id="options"
+<div id="popup_0"
+	class="mfp-hide white-popup-block pizzaPopupOptions col-xs-6 col-sm-4 col-md-6">
+	<form id="cpoptions" class="form-horizontal"
+		onsubmit="return populateChickenPizzaSelectedItems();">
+		<span id="pizza-popup-title"><h2>Chicken Pizza</h2></span>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Pizza size<span
+				style="color: red">*</span>:
+			</label>
+			<div class="col-sm-6">
+				<div class="input-group">
+					<input type="radio" name="cpsize" required="required" value="Large">
+					Large &nbsp;&nbsp;
+				</div>
+				<div class="input-group">
+					<input type="radio" name="cpsize" required="required"
+						value="Medium"> Medium &nbsp;&nbsp;
+				</div>
+				<div class="input-group">
+					<input type="radio" name="cpsize" required="required" value="Small">
+					Small
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Number of pizzas<span
+				style="color: red">*</span>:
+			</label>
+			<div class="col-sm-2">
+				<input type="text" size="5" name="cpcount" maxlength="5"
+					required="required" pattern="^\d+$" class="form-control">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Sause<span
+				style="color: red">*</span>:
+			</label>
+			<div class="row">
+				<div class="col-sm-6 col-md-6">
+					<div class="input-group">
+						<input type="radio" name="cpsause" required="required"
+							value="Tomato"> Tomato sauce
+					</div>
+					<div class="input-group">
+						<input type="radio" name="cpsause" required="required"
+							value="Garlic parmesan white sause"> Garlic Parmesan
+						White Sauce
+					</div>
+					<div class="input-group">
+						<input type="radio" name="cpsause" required="required" value="BBQ">
+						BBQ Sauce
+					</div>
+					<div class="input-group">
+						<input type="radio" name="cpsause" required="required"
+							value="Buffalo"> Buffalo Sauce
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Cheese<span
+				style="color: red">*</span>:
+			</label>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="input-group">
+						<input type="radio" name="cpcheese" required="required" value="No">
+						No Cheese
+					</div>
+					<div class="input-group">
+						<input type="radio" name="cpcheese" required="required"
+							value="Regular"> Regular
+					</div>
+					<div class="input-group">
+						<input type="radio" name="cpcheese" required="required"
+							value="Extra cheese"> Extra cheese
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group" id="toppings">
+			<label for="" class="col-sm-4 control-label">Toppings:</label>
+			<!-- Column #1 START-->
+			<div class="col-xs-6 col-sm-4 col-md-6">
+				<div>
+					&nbsp;&nbsp;&nbsp;<u>Meat</u>
+				</div>
+				<div class="input-group">
+					&nbsp;&nbsp;&nbsp;<img alt="L"
+						src="${pageContext.request.contextPath}/resources/images/menus/pizza_left.jpg">
+					&nbsp;&nbsp;&nbsp;<img alt="R"
+						src="${pageContext.request.contextPath}/resources/images/menus/pizza_right.jpg">
+					&nbsp;&nbsp;&nbsp;<img alt="A"
+						src="${pageContext.request.contextPath}/resources/images/menus/pizza_all.jpg">
+				</div>
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Pepperoni-L" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Pepperoni-R" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Pepperoni-A" class="cptoppings">
+					</div>
+					<div class="col-xs-1">Pepporoni</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Bacon-L" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Bacon-R" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Bacon-A" class="cptoppings">
+					</div>
+					<div class="col-xs-1">Bacon</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="ItalianSausage-L" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="ItalianSausage-R" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="ItalianSausage-A" class="cptoppings">
+					</div>
+					<div class="col-xs-1">Italian&nbsp;Sausage</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Beef-L" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Beef-R" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Beef-A" class="cptoppings">
+					</div>
+					<div class="col-xs-1">Beef</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Chicken-L" class="cptoppings"
+							disabled="disabled">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Chicken-R" class="cptoppings"
+							disabled="disabled">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Chicken-A" class="cptoppings"
+							checked="checked" disabled="disabled">
+					</div>
+					<div class="col-xs-1">Chicken</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Salami-L" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Salami-R" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Salami-A" class="cptoppings">
+					</div>
+					<div class="col-xs-1">Salami</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<br />
+				<div>
+					&nbsp;&nbsp;&nbsp;<u>Veggies</u>
+				</div>
+				<div class="input-group">
+					&nbsp;&nbsp;&nbsp;<img alt="L"
+						src="${pageContext.request.contextPath}/resources/images/menus/pizza_left.jpg">
+					&nbsp;&nbsp;&nbsp;<img alt="R"
+						src="${pageContext.request.contextPath}/resources/images/menus/pizza_right.jpg">
+					&nbsp;&nbsp;&nbsp;<img alt="A"
+						src="${pageContext.request.contextPath}/resources/images/menus/pizza_all.jpg">
+
+				</div>
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Mushrooms-L" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Mushrooms-R" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Mushrooms-A" class="cptoppings">
+					</div>
+					<div class="col-xs-1">Mushrooms</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Onions-L" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Onions-R" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Onions-A" class="cptoppings">
+					</div>
+					<div class="col-xs-1">Onions</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="JalepenoPeppers-L"
+							class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="JalepenoPeppers-R"
+							class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="JalepenoPeppers-A"
+							class="cptoppings">
+					</div>
+					<div class="col-xs-1">Jalepeno&nbsp;Peppers</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="GreenPeppers-L" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="GreenPeppers-R" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="GreenPeppers-A" class="cptoppings">
+					</div>
+					<div class="col-xs-1">Green&nbsp;Peppers</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Pineapple-L" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Pineapple-R" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Pineapple-A" class="cptoppings">
+					</div>
+					<div class="col-xs-1">Pineapple</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Spinach-L" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Spinach-R" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Spinach-A" class="cptoppings">
+					</div>
+					<div class="col-xs-1">Spinach</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="DicedTomatoes-L" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="DicedTomatoes-R" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="DicedTomatoes-A" class="cptoppings">
+					</div>
+					<div class="col-xs-1">Diced&nbsp;Tomatoes</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Olives-L" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Olives-R" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Olives-A" class="cptoppings">
+					</div>
+					<div class="col-xs-1">Olives</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Garlic-L" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Garlic-R" class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Garlic-A" class="cptoppings">
+					</div>
+					<div class="col-xs-1">Garlic</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="ArtichokeHearts-L"
+							class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="ArtichokeHearts-R"
+							class="cptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="ArtichokeHearts-A"
+							class="cptoppings">
+					</div>
+					<div class="col-xs-1">Artichoke&nbsp;Hearts</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+			</div>
+
+		</div>
+		<!-- Ingredients Form group END -->
+
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="cpspl" maxlength="20"
+					class="form-control">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-4 control-label"></label>
+			<div class="col-sm-2">
+				<button type="submit" class="btn btn-default popup-modal-dismiss">Add
+					this pizza</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div id="popup_1"
+	class="mfp-hide white-popup-block pizzaPopupOptions col-xs-6 col-sm-4 col-md-6">
+	<form id="ppoptions" class="form-horizontal"
+		onsubmit="return populatePepperoniPizzaSelectedItems();">
+		<span id="pizza-popup-title"><h2>Pepperoni Pizza</h2></span>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Pizza size<span
+				style="color: red">*</span>:
+			</label>
+			<div class="col-sm-6">
+				<div class="input-group">
+					<input type="radio" name="ppsize" required="required" value="Large">
+					Large &nbsp;&nbsp;
+				</div>
+				<div class="input-group">
+					<input type="radio" name="ppsize" required="required"
+						value="Medium"> Medium &nbsp;&nbsp;
+				</div>
+				<div class="input-group">
+					<input type="radio" name="ppsize" required="required" value="Small">
+					Small
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Number of pizzas<span
+				style="color: red">*</span>:
+			</label>
+			<div class="col-sm-2">
+				<input type="text" size="5" name="ppcount" maxlength="5"
+					required="required" pattern="^\d+$" class="form-control">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Sause<span
+				style="color: red">*</span>:
+			</label>
+			<div class="row">
+				<div class="col-sm-6 col-md-6">
+					<div class="input-group">
+						<input type="radio" name="ppsause" required="required"
+							value="Tomato"> Tomato sauce
+					</div>
+					<div class="input-group">
+						<input type="radio" name="ppsause" required="required"
+							value="Garlic parmesan white sause"> Garlic Parmesan
+						White Sauce
+					</div>
+					<div class="input-group">
+						<input type="radio" name="ppsause" required="required" value="BBQ">
+						BBQ Sauce
+					</div>
+					<div class="input-group">
+						<input type="radio" name="ppsause" required="required"
+							value="Buffalo"> Buffalo Sauce
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Cheese<span
+				style="color: red">*</span>:
+			</label>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="input-group">
+						<input type="radio" name="ppcheese" required="required" value="No">
+						No Cheese
+					</div>
+					<div class="input-group">
+						<input type="radio" name="ppcheese" required="required"
+							value="Regular"> Regular
+					</div>
+					<div class="input-group">
+						<input type="radio" name="ppcheese" required="required"
+							value="Extra cheese"> Extra cheese
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group" id="toppings">
+			<label for="" class="col-sm-4 control-label">Toppings:</label>
+			<!-- Column #1 START-->
+			<div class="col-xs-6 col-sm-4 col-md-6">
+				<div>
+					&nbsp;&nbsp;&nbsp;<u>Meat</u>
+				</div>
+				<div class="input-group">
+					&nbsp;&nbsp;&nbsp;<img alt="L"
+						src="${pageContext.request.contextPath}/resources/images/menus/pizza_left.jpg">
+					&nbsp;&nbsp;&nbsp;<img alt="R"
+						src="${pageContext.request.contextPath}/resources/images/menus/pizza_right.jpg">
+					&nbsp;&nbsp;&nbsp;<img alt="A"
+						src="${pageContext.request.contextPath}/resources/images/menus/pizza_all.jpg">
+				</div>
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Pepperoni-L" class="pptoppings"
+							disabled="disabled">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Pepperoni-R" class="pptoppings"
+							disabled="disabled">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Pepperoni-A" class="pptoppings"
+							checked="checked" disabled="disabled">
+					</div>
+					<div class="col-xs-1">Pepporoni</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Bacon-L" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Bacon-R" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Bacon-A" class="pptoppings">
+					</div>
+					<div class="col-xs-1">Bacon</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="ItalianSausage-L" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="ItalianSausage-R" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="ItalianSausage-A" class="pptoppings">
+					</div>
+					<div class="col-xs-1">Italian&nbsp;Sausage</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Beef-L" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Beef-R" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Beef-A" class="pptoppings">
+					</div>
+					<div class="col-xs-1">Beef</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Chicken-L" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Chicken-R" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Chicken-A" class="pptoppings">
+					</div>
+					<div class="col-xs-1">Chicken</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Salami-L" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Salami-R" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Salami-A" class="pptoppings">
+					</div>
+					<div class="col-xs-1">Salami</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<br />
+				<div>
+					&nbsp;&nbsp;&nbsp;<u>Veggies</u>
+				</div>
+				<div class="input-group">
+					&nbsp;&nbsp;&nbsp;<img alt="L"
+						src="${pageContext.request.contextPath}/resources/images/menus/pizza_left.jpg">
+					&nbsp;&nbsp;&nbsp;<img alt="R"
+						src="${pageContext.request.contextPath}/resources/images/menus/pizza_right.jpg">
+					&nbsp;&nbsp;&nbsp;<img alt="A"
+						src="${pageContext.request.contextPath}/resources/images/menus/pizza_all.jpg">
+
+				</div>
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Mushrooms-L" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Mushrooms-R" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Mushrooms-A" class="pptoppings">
+					</div>
+					<div class="col-xs-1">Mushrooms</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Onions-L" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Onions-R" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Onions-A" class="pptoppings">
+					</div>
+					<div class="col-xs-1">Onions</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="JalepenoPeppers-L"
+							class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="JalepenoPeppers-R"
+							class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="JalepenoPeppers-A"
+							class="pptoppings">
+					</div>
+					<div class="col-xs-1">Jalepeno&nbsp;Peppers</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="GreenPeppers-L" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="GreenPeppers-R" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="GreenPeppers-A" class="pptoppings">
+					</div>
+					<div class="col-xs-1">Green&nbsp;Peppers</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Pineapple-L" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Pineapple-R" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Pineapple-A" class="pptoppings">
+					</div>
+					<div class="col-xs-1">Pineapple</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Spinach-L" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Spinach-R" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Spinach-A" class="pptoppings">
+					</div>
+					<div class="col-xs-1">Spinach</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="DicedTomatoes-L" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="DicedTomatoes-R" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="DicedTomatoes-A" class="pptoppings">
+					</div>
+					<div class="col-xs-1">Diced&nbsp;Tomatoes</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Olives-L" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Olives-R" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Olives-A" class="pptoppings">
+					</div>
+					<div class="col-xs-1">Olives</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Garlic-L" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Garlic-R" class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Garlic-A" class="pptoppings">
+					</div>
+					<div class="col-xs-1">Garlic</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="ArtichokeHearts-L"
+							class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="ArtichokeHearts-R"
+							class="pptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="ArtichokeHearts-A"
+							class="pptoppings">
+					</div>
+					<div class="col-xs-1">Artichoke&nbsp;Hearts</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+			</div>
+
+		</div>
+		<!-- Ingredients Form group END -->
+
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="ppspl" maxlength="20"
+					class="form-control">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-4 control-label"></label>
+			<div class="col-sm-2">
+				<button type="submit" class="btn btn-default popup-modal-dismiss">Add
+					this pizza</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div id="popup_2"
+	class="mfp-hide white-popup-block pizzaPopupOptions col-xs-6 col-sm-4 col-md-6">
+	<form id="vpoptions" class="form-horizontal"
+		onsubmit="return populateVeggiePizzaSelectedItems();">
+		<span id="pizza-popup-title"><h2>Veggie Pizza</h2></span>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Pizza size<span
+				style="color: red">*</span>:
+			</label>
+			<div class="col-sm-6">
+				<div class="input-group">
+					<input type="radio" name="vpsize" required="required" value="Large">
+					Large &nbsp;&nbsp;
+				</div>
+				<div class="input-group">
+					<input type="radio" name="vpsize" required="required"
+						value="Medium"> Medium &nbsp;&nbsp;
+				</div>
+				<div class="input-group">
+					<input type="radio" name="vpsize" required="required" value="Small">
+					Small
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Number of pizzas<span
+				style="color: red">*</span>:
+			</label>
+			<div class="col-sm-2">
+				<input type="text" size="5" name="vpcount" maxlength="5"
+					required="required" pattern="^\d+$" class="form-control">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Sause<span
+				style="color: red">*</span>:
+			</label>
+			<div class="row">
+				<div class="col-sm-6 col-md-6">
+					<div class="input-group">
+						<input type="radio" name="vpsause" required="required"
+							value="Tomato"> Tomato sauce
+					</div>
+					<div class="input-group">
+						<input type="radio" name="vpsause" required="required"
+							value="Garlic parmesan white sause"> Garlic Parmesan
+						White Sauce
+					</div>
+					<div class="input-group">
+						<input type="radio" name="vpsause" required="required" value="BBQ">
+						BBQ Sauce
+					</div>
+					<div class="input-group">
+						<input type="radio" name="vpsause" required="required"
+							value="Buffalo"> Buffalo Sauce
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Cheese<span
+				style="color: red">*</span>:
+			</label>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="input-group">
+						<input type="radio" name="vpcheese" required="required" value="No">
+						No Cheese
+					</div>
+					<div class="input-group">
+						<input type="radio" name="vpcheese" required="required"
+							value="Regular"> Regular
+					</div>
+					<div class="input-group">
+						<input type="radio" name="vpcheese" required="required"
+							value="Extra cheese"> Extra cheese
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group" id="toppings">
+			<label for="" class="col-sm-4 control-label">Toppings:</label>
+			<!-- Column #1 START-->
+			<div class="col-xs-6 col-sm-4 col-md-6">
+				<div class="input-group">
+					&nbsp;&nbsp;&nbsp;<img alt="L"
+						src="${pageContext.request.contextPath}/resources/images/menus/pizza_left.jpg">
+					&nbsp;&nbsp;&nbsp;<img alt="R"
+						src="${pageContext.request.contextPath}/resources/images/menus/pizza_right.jpg">
+					&nbsp;&nbsp;&nbsp;<img alt="A"
+						src="${pageContext.request.contextPath}/resources/images/menus/pizza_all.jpg">
+
+				</div>
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Mushrooms-L" class="vptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Mushrooms-R" class="vptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Mushrooms-A" class="vptoppings">
+					</div>
+					<div class="col-xs-1">Mushrooms</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Onions-L" class="vptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Onions-R" class="vptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Onions-A" class="vptoppings">
+					</div>
+					<div class="col-xs-1">Onions</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="JalepenoPeppers-L"
+							class="vptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="JalepenoPeppers-R"
+							class="vptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="JalepenoPeppers-A"
+							class="vptoppings">
+					</div>
+					<div class="col-xs-1">Jalepeno&nbsp;Peppers</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="GreenPeppers-L" class="vptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="GreenPeppers-R" class="vptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="GreenPeppers-A" class="vptoppings">
+					</div>
+					<div class="col-xs-1">Green&nbsp;Peppers</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Pineapple-L" class="vptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Pineapple-R" class="vptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Pineapple-A" class="vptoppings">
+					</div>
+					<div class="col-xs-1">Pineapple</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Spinach-L" class="vptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Spinach-R" class="vptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Spinach-A" class="vptoppings">
+					</div>
+					<div class="col-xs-1">Spinach</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="DicedTomatoes-L" class="vptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="DicedTomatoes-R" class="vptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="DicedTomatoes-A" class="vptoppings">
+					</div>
+					<div class="col-xs-1">Diced&nbsp;Tomatoes</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Olives-L" class="vptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Olives-R" class="vptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Olives-A" class="vptoppings">
+					</div>
+					<div class="col-xs-1">Olives</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="Garlic-L" class="vptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Garlic-R" class="vptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="Garlic-A" class="vptoppings">
+					</div>
+					<div class="col-xs-1">Garlic</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+				<!-- Ingredient START -->
+				<div class="input-group">
+					<div class="col-xs-1">
+						<input type="checkbox" value="ArtichokeHearts-L"
+							class="vptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="ArtichokeHearts-R"
+							class="vptoppings">
+					</div>
+					<div class="col-xs-1">
+						<input type="checkbox" value="ArtichokeHearts-A"
+							class="vptoppings">
+					</div>
+					<div class="col-xs-1">Artichoke&nbsp;Hearts</div>
+					<br />
+				</div>
+				<!-- Ingredient END -->
+			</div>
+
+		</div>
+		<!-- Ingredients Form group END -->
+
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Special
+				Instructions: </label>
+			<div class="col-sm-6">
+				<input type="text" size="60" name="ppspl" maxlength="20"
+					class="form-control">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-4 control-label"></label>
+			<div class="col-sm-2">
+				<button type="submit" class="btn btn-default popup-modal-dismiss">Add
+					this pizza</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div id="popup_3"
 	class="mfp-hide white-popup-block pizzaPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="options" class="form-horizontal"
 		onsubmit="return populatePizzaSelectedItems();">
@@ -205,8 +1236,8 @@
 					Large &nbsp;&nbsp;
 				</div>
 				<div class="input-group">
-					<input type="radio" name="psize" required="required"
-						value="Medium"> Medium &nbsp;&nbsp;
+					<input type="radio" name="psize" required="required" value="Medium">
+					Medium &nbsp;&nbsp;
 				</div>
 				<div class="input-group">
 					<input type="radio" name="psize" required="required" value="Small">
@@ -218,8 +1249,8 @@
 			<label for="" class="col-sm-4 control-label">Number of pizzas<span
 				style="color: red">*</span>:
 			</label>
-			<div class="col-sm-6">
-				<input type="text" size="5" name="pcount" maxlength="10"
+			<div class="col-sm-2">
+				<input type="text" size="5" name="pcount" maxlength="5"
 					required="required" pattern="^\d+$" class="form-control">
 			</div>
 		</div>
@@ -377,7 +1408,7 @@
 				<!-- Ingredient END -->
 				<br />
 				<div>
-					&nbsp;&nbsp;&nbsp;<u>Veg</u>
+					&nbsp;&nbsp;&nbsp;<u>Veggies</u>
 				</div>
 				<div class="input-group">
 					&nbsp;&nbsp;&nbsp;<img alt="L"
