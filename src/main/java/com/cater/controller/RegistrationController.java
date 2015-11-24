@@ -150,8 +150,13 @@ public class RegistrationController {
 					.concat(StringUtils.defaultString(request
 							.getParameter("street_name")));
 			data.setStreet1(street1);
-			data.setStreet2(StringUtils.defaultString(request
-					.getParameter("street2")));
+			String apt_classifier = StringUtils.defaultString(request
+					.getParameter("apt_classifier"));
+			String street2 = StringUtils.defaultString(request
+					.getParameter("street2"));
+			if (StringUtils.isNotBlank(street2)) {
+				data.setStreet2(apt_classifier + " " + street2);
+			}
 			data.setCity(StringUtils.defaultString(request.getParameter("city")));
 			data.setState(StringUtils.defaultString(request
 					.getParameter("state")));

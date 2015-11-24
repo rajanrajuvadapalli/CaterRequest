@@ -166,7 +166,10 @@
 					<div class="form-group">
 						<label for="street2" class="col-sm-4 control-label">Apt/Ste
 							:</label>
-						<div class="col-sm-6">
+						<div class="col-sm-3">
+							<span id="apt_classifier"></span>
+						</div>
+						<div class="col-sm-3">
 							<input type="text" size="30" maxlength="50" name="street2"
 								placeholder="" class="form-control">
 						</div>
@@ -218,7 +221,8 @@
 
 <script>
 	$('document').ready(function() {
-		populateStateDropDown();
+		//populateStateDropDown();
 		populateHearAboutUs();
+		populateAptSuite();
 	});
 </script>

@@ -100,6 +100,25 @@ function populateHearAboutUs() {
 							+ "</select>");
 }
 
+function populateAptSuite() {
+	$("span[id=apt_classifier]").replaceWith(
+			"<select class=\"form-control inputs\" name=\"apt_classifier\""
+					+ "id=\"apt_classifier\">"
+					+ "<option value=\"Apt\">Apartment</option>"
+					+ "<option value=\"Suite\">Suite</option>" + "</select>");
+}
+
+function populateDeliveryOption() {
+	$("span[id=deliveryOption]")
+			.replaceWith(
+					"<select class=\"form-control inputs\" name=\"deliveryOption\""
+							+ "id=\"deliveryOption\">"
+							+ "<option value=\"\" selected=\"selected\">Choose one...</option>"
+							+ "<option value=\"1\">Pick Up</option>"
+							+ "<option value=\"2\">Delivered</option>"
+							+ "</select>");
+}
+
 function populateStateDropDown() {
 	var json_states = '[{"name": "Alabama","abbreviation": "AL"},{"name": "Alaska","abbreviation": "AK"},{"name": "American Samoa","abbreviation": "AS"},{"name": "Arizona","abbreviation": "AZ"},{"name": "Arkansas","abbreviation": "AR"},{"name": "California","abbreviation": "CA"},{"name": "Colorado","abbreviation": "CO"},{"name": "Connecticut","abbreviation": "CT"},{"name": "Delaware","abbreviation": "DE"},{"name": "District Of Columbia","abbreviation": "DC"},{"name": "Federated States Of Micronesia","abbreviation": "FM"},{"name": "Florida","abbreviation": "FL"},{"name": "Georgia","abbreviation": "GA"},{"name": "Guam","abbreviation": "GU"},{"name": "Hawaii","abbreviation": "HI"},{"name": "Idaho","abbreviation": "ID"},{"name": "Illinois","abbreviation": "IL"},{"name": "Indiana","abbreviation": "IN"},{"name": "Iowa","abbreviation": "IA"},{"name": "Kansas","abbreviation": "KS"},{"name": "Kentucky","abbreviation": "KY"},{"name": "Louisiana","abbreviation": "LA"},{"name": "Maine","abbreviation": "ME"},{"name": "Marshall Islands","abbreviation": "MH"},{"name": "Maryland","abbreviation": "MD"},{"name": "Massachusetts","abbreviation": "MA"},{"name": "Michigan","abbreviation": "MI"},{"name": "Minnesota","abbreviation": "MN"},{"name": "Mississippi","abbreviation": "MS"},{"name": "Missouri","abbreviation": "MO"},{"name": "Montana","abbreviation": "MT"},{"name": "Nebraska","abbreviation": "NE"},{"name": "Nevada","abbreviation": "NV"},{"name": "New Hampshire","abbreviation": "NH"},{"name": "New Jersey","abbreviation": "NJ"},{"name": "New Mexico","abbreviation": "NM"},{"name": "New York","abbreviation": "NY"},{"name": "North Carolina","abbreviation": "NC"},{"name": "North Dakota","abbreviation": "ND"},{"name": "Northern Mariana Islands","abbreviation": "MP"},{"name": "Ohio","abbreviation": "OH"},{"name": "Oklahoma","abbreviation": "OK"},{"name": "Oregon","abbreviation": "OR"},{"name": "Palau","abbreviation": "PW"},{"name": "Pennsylvania","abbreviation": "PA"},{"name": "Puerto Rico","abbreviation": "PR"},{"name": "Rhode Island","abbreviation": "RI"},{"name": "South Carolina","abbreviation": "SC"},{"name": "South Dakota","abbreviation": "SD"},{"name": "Tennessee","abbreviation": "TN"},{"name": "Texas","abbreviation": "TX"},{"name": "Utah","abbreviation": "UT"},{"name": "Vermont","abbreviation": "VT"},{"name": "Virgin Islands","abbreviation": "VI"},{"name": "Virginia","abbreviation": "VA"},{"name": "Washington","abbreviation": "WA"},{"name": "West Virginia","abbreviation": "WV"},{"name": "Wisconsin","abbreviation": "WI"},{"name": "Wyoming","abbreviation": "WY"}]';
 	obj = $.parseJSON(json_states);
@@ -158,73 +177,58 @@ function validateRegistrationFormOnSubmit() {
 		stateElement.focus();
 		return false;
 	}
-	//2015-11-22: Address validation is not required, because we are populating the address from google.
-	//var st1 = $("input[name=street1]").val();
-	//var city = $("input[name=city]").val();
-	//var zip = $("input[name=zip]").val();
-	//var CurrentAddress = st1 + ", " + city + ", " + state + ", " + zip;
-	//var LastAddressValidated = $("input[name=LastAddressValidated]").val();
+	// 2015-11-22: Address validation is not required, because we are populating
+	// the address from google.
+	// var st1 = $("input[name=street1]").val();
+	// var city = $("input[name=city]").val();
+	// var zip = $("input[name=zip]").val();
+	// var CurrentAddress = st1 + ", " + city + ", " + state + ", " + zip;
+	// var LastAddressValidated = $("input[name=LastAddressValidated]").val();
 	// console.log("LastAddressValidated: " + LastAddressValidated);
 	// console.log("CurrentAddress: " + CurrentAddress);
-	/*if (LastAddressValidated != CurrentAddress) {
-		$("input[name=LastAddressValidated]").val(CurrentAddress);
-		var geocoder = new google.maps.Geocoder();
-		geocoder.geocode({
-			'address' : CurrentAddress
-		}, addressCallbackFunction);
-		return false;
-	}*/
+	/*
+	 * if (LastAddressValidated != CurrentAddress) {
+	 * $("input[name=LastAddressValidated]").val(CurrentAddress); var geocoder =
+	 * new google.maps.Geocoder(); geocoder.geocode({ 'address' : CurrentAddress },
+	 * addressCallbackFunction); return false; }
+	 */
 	var hash = md5($("#pwd1").val());
 	$("#pwd1").val(hash);
 	$("#pwd2").val(hash);
 	return true;
 }
 
-/*function addressCallbackFunction(results, status) {
-	$("div[id=addressnotok]").addClass('hidden');
-	if (status == google.maps.GeocoderStatus.OK) {
-		var address = results[0].formatted_address;
-		console.log("Validated address: " + address);
-		numCommas = address.match(/,/g).length;
-		if (numCommas >= 3) {
-			// Address is valid, Continue to submit form
-			var st1 = $("input[name=street1]").val();
-			var city = $("input[name=city]").val();
-			var state = $("select[name=state]").val();
-			var zip = $("input[name=zip]").val();
-			var CurrentAddress = st1 + ", " + city + ", " + state + ", " + zip;
-			var values = address.split(', ');
-			var validatedStreet = values[0];
-			var validatedCity = values[1];
-			var state_zip = values[2].split(' ');
-			var validatedState = state_zip[0];
-			var validatedZip = state_zip[1];
-			var LastAddressValidated = validatedStreet + ", " + validatedCity
-					+ ", " + validatedState + ", " + validatedZip;
-			$("input[name=LastAddressValidated]").val(LastAddressValidated);
-			$("input[name=street1]").val(validatedStreet);
-			$("input[name=city]").val(validatedCity);
-			$("input[name=state]").val(validatedState);
-			$("input[name=zip]").val(validatedZip);
-			if (LastAddressValidated != CurrentAddress) {
-				alert("\nAddress you entered: " + CurrentAddress
-						+ "\nWe updated it to: " + LastAddressValidated
-						+ "\nPlease verify and make changes if necessary.");
-			} else {
-				alert("Address is verified and accepted.");
-			}
-			
-			 * var customerName = $("input[name=name]").val(); if (customerName !=
-			 * null) { $("form[id=customer-register-form]").submit(); } else {
-			 * $("form[id=restaurant-register-form]").submit(); }
-			 
-			return;
-		}
-	}
-	// Address is invalid
-	$("input[name=LastAddressValidated]").val("");
-	$("div[id=addressnotok]").removeClass('hidden');
-}*/
+/*
+ * function addressCallbackFunction(results, status) {
+ * $("div[id=addressnotok]").addClass('hidden'); if (status ==
+ * google.maps.GeocoderStatus.OK) { var address = results[0].formatted_address;
+ * console.log("Validated address: " + address); numCommas =
+ * address.match(/,/g).length; if (numCommas >= 3) { // Address is valid,
+ * Continue to submit form var st1 = $("input[name=street1]").val(); var city =
+ * $("input[name=city]").val(); var state = $("select[name=state]").val(); var
+ * zip = $("input[name=zip]").val(); var CurrentAddress = st1 + ", " + city + ", " +
+ * state + ", " + zip; var values = address.split(', '); var validatedStreet =
+ * values[0]; var validatedCity = values[1]; var state_zip = values[2].split('
+ * '); var validatedState = state_zip[0]; var validatedZip = state_zip[1]; var
+ * LastAddressValidated = validatedStreet + ", " + validatedCity + ", " +
+ * validatedState + ", " + validatedZip;
+ * $("input[name=LastAddressValidated]").val(LastAddressValidated);
+ * $("input[name=street1]").val(validatedStreet);
+ * $("input[name=city]").val(validatedCity);
+ * $("input[name=state]").val(validatedState);
+ * $("input[name=zip]").val(validatedZip); if (LastAddressValidated !=
+ * CurrentAddress) { alert("\nAddress you entered: " + CurrentAddress + "\nWe
+ * updated it to: " + LastAddressValidated + "\nPlease verify and make changes
+ * if necessary."); } else { alert("Address is verified and accepted."); }
+ * 
+ * var customerName = $("input[name=name]").val(); if (customerName != null) {
+ * $("form[id=customer-register-form]").submit(); } else {
+ * $("form[id=restaurant-register-form]").submit(); }
+ * 
+ * return; } } // Address is invalid
+ * $("input[name=LastAddressValidated]").val("");
+ * $("div[id=addressnotok]").removeClass('hidden'); }
+ */
 
 function validateLoginForm() {
 	var pwd = $("input[name=pwd]");
@@ -267,22 +271,21 @@ function validateEventForm() {
 		stateElement.focus();
 		return false;
 	}
-	//2015-11-22: Address validation is not required, because we are populating the address from google.
-	//var st1 = $("input[name=street1]").val();
-	//var city = $("input[name=city]").val();
-	//var zip = $("input[name=zip]").val();
-	//var CurrentAddress = st1 + ", " + city + ", " + state + ", " + zip;
-	//var LastAddressValidated = $("input[name=LastAddressValidated]").val();
+	// 2015-11-22: Address validation is not required, because we are populating
+	// the address from google.
+	// var st1 = $("input[name=street1]").val();
+	// var city = $("input[name=city]").val();
+	// var zip = $("input[name=zip]").val();
+	// var CurrentAddress = st1 + ", " + city + ", " + state + ", " + zip;
+	// var LastAddressValidated = $("input[name=LastAddressValidated]").val();
 	// console.log("LastAddressValidated: " + LastAddressValidated);
 	// console.log("CurrentAddress: " + CurrentAddress);
-	/*if (LastAddressValidated != CurrentAddress) {
-		$("input[name=LastAddressValidated]").val(CurrentAddress);
-		var geocoder = new google.maps.Geocoder();
-		geocoder.geocode({
-			'address' : CurrentAddress
-		}, addressCallbackFunction);
-		return false;
-	}*/
+	/*
+	 * if (LastAddressValidated != CurrentAddress) {
+	 * $("input[name=LastAddressValidated]").val(CurrentAddress); var geocoder =
+	 * new google.maps.Geocoder(); geocoder.geocode({ 'address' : CurrentAddress },
+	 * addressCallbackFunction); return false; }
+	 */
 	return true;
 }
 

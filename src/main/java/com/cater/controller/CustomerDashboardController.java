@@ -201,7 +201,13 @@ public class CustomerDashboardController {
 				.concat(StringUtils.defaultString(request
 						.getParameter("street_name")));
 		a.setStreet1(street1);
-		a.setStreet2(StringUtils.defaultString(request.getParameter("street2")));
+		String apt_classifier = StringUtils.defaultString(request
+				.getParameter("apt_classifier"));
+		String street2 = StringUtils.defaultString(request
+				.getParameter("street2"));
+		if (StringUtils.isNotBlank(street2)) {
+			a.setStreet2(apt_classifier + " " + street2);
+		}
 		a.setCity(StringUtils.defaultString(request.getParameter("city")));
 		a.setState(StringUtils.defaultString(request.getParameter("state")));
 		a.setZip(StringUtils.defaultString(request.getParameter("zip")));

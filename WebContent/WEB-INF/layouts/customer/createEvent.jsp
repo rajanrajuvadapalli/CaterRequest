@@ -160,7 +160,10 @@
 					<div class="form-group">
 						<label for="street2" class="col-sm-3 control-label">Apt/Ste
 							:</label>
-						<div class="col-sm-6">
+						<div class="col-sm-3">
+							<span id="apt_classifier"></span>
+						</div>
+						<div class="col-sm-3">
 							<input type="text" size="30" maxlength="50" name="street2"
 								placeholder="" class="form-control">
 						</div>
@@ -199,12 +202,7 @@
 							Option<span style="color: red">*</span> :
 						</label>
 						<div class="col-sm-6">
-							<select class="form-control inputs" name="deliveryOption"
-								id="deliveryOption">
-								<option value="" selected="selected">Choose one...</option>
-								<option value="1">Pick Up</option>
-								<option value="2">Delivered</option>
-							</select>
+							<span id="deliveryOption"></span>
 						</div>
 					</div>
 				</div>
@@ -234,8 +232,10 @@
 
 <script>
 	$('document').ready(function() {
-		populateStateDropDown();
+		//populateStateDropDown();
 		populateCuisineTypes();
+		populateAptSuite();
+		populateDeliveryOption();
 		//Cuisine type is not required here
 		$("select[name=cuisineType]").removeAttr('required');
 		$("input[id=datetimepicker]").datetimepicker({

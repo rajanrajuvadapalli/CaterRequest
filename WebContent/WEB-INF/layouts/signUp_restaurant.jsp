@@ -170,13 +170,14 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="sales" class="col-sm-4 control-label">Sales Tax<span style="color: red">*</span>:
+						<label for="sales" class="col-sm-4 control-label">Sales
+							Tax<span style="color: red">*</span>:
 						</label>
 						<div class="col-sm-6" align="left">
 							<input type="text" size="30" name="sales" required="required"
-								placeholder="Ex: x.xx"  pattern="[0-9]+([\.|,][0-9]+)?"
+								placeholder="Ex: x.xx" pattern="[0-9]+([\.|,][0-9]+)?"
 								class="form-control">
-								
+
 						</div>
 					</div>
 					<div class="form-group">
@@ -250,7 +251,10 @@
 					<div class="form-group">
 						<label for="street2" class="col-sm-4 control-label">Apt/Ste
 							:</label>
-						<div class="col-sm-6">
+						<div class="col-sm-3">
+							<span id="apt_classifier"></span>
+						</div>
+						<div class="col-sm-3">
 							<input type="text" size="30" maxlength="50" name="street2"
 								placeholder="" class="form-control">
 						</div>
@@ -322,7 +326,8 @@
 	$('document').ready(function() {
 		populateCuisineTypes();
 		populateHearAboutUs();
-		populateStateDropDown();
+		//populateStateDropDown();
+		populateAptSuite();
 		$("select[name=cuisineType]").change(populateMenuForRestaurantConsent);
 		$("input[name=menuconsent]").live('change', function() {
 			var element = $("button[name=register-button]");
