@@ -273,13 +273,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Pepperoni-L" class="cptoppings">
+						<input type="checkbox" value="Pepperoni-Left-Half"
+							class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Pepperoni-R" class="cptoppings">
+						<input type="checkbox" value="Pepperoni-Right-Half"
+							class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Pepperoni-A" class="cptoppings">
+						<input type="checkbox" value="Pepperoni-Whole" class="cptoppings">
 					</div>
 					<div class="col-xs-1">Pepporoni</div>
 					<br />
@@ -288,13 +290,13 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Bacon-L" class="cptoppings">
+						<input type="checkbox" value="Bacon-Left-Half" class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Bacon-R" class="cptoppings">
+						<input type="checkbox" value="Bacon-Right-Half" class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Bacon-A" class="cptoppings">
+						<input type="checkbox" value="Bacon-Whole" class="cptoppings">
 					</div>
 					<div class="col-xs-1">Bacon</div>
 					<br />
@@ -303,13 +305,16 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="ItalianSausage-L" class="cptoppings">
+						<input type="checkbox" value="ItalianSausage-Left-Half"
+							class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="ItalianSausage-R" class="cptoppings">
+						<input type="checkbox" value="ItalianSausage-Right-Half"
+							class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="ItalianSausage-A" class="cptoppings">
+						<input type="checkbox" value="ItalianSausage-Whole"
+							class="cptoppings">
 					</div>
 					<div class="col-xs-1">Italian&nbsp;Sausage</div>
 					<br />
@@ -318,13 +323,13 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Beef-L" class="cptoppings">
+						<input type="checkbox" value="Beef-Left-Half" class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Beef-R" class="cptoppings">
+						<input type="checkbox" value="Beef-Right-Half" class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Beef-A" class="cptoppings">
+						<input type="checkbox" value="Beef-Whole" class="cptoppings">
 					</div>
 					<div class="col-xs-1">Beef</div>
 					<br />
@@ -333,15 +338,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Chicken-L" class="cptoppings"
-							disabled="disabled">
+						<input type="checkbox" value="Chicken-Left-Half"
+							class="cptoppings" disabled="disabled">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Chicken-R" class="cptoppings"
-							disabled="disabled">
+						<input type="checkbox" value="Chicken-Right-Half"
+							class="cptoppings" disabled="disabled">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Chicken-A" class="cptoppings"
+						<input type="checkbox" value="Chicken-Whole" class="cptoppings"
 							checked="checked" disabled="disabled">
 					</div>
 					<div class="col-xs-1">Chicken</div>
@@ -351,13 +356,14 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Salami-L" class="cptoppings">
+						<input type="checkbox" value="Salami-Left-Half" class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Salami-R" class="cptoppings">
+						<input type="checkbox" value="Salami-Right-Half"
+							class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Salami-A" class="cptoppings">
+						<input type="checkbox" value="Salami-Whole" class="cptoppings">
 					</div>
 					<div class="col-xs-1">Salami</div>
 					<br />
@@ -379,13 +385,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Mushrooms-L" class="cptoppings">
+						<input type="checkbox" value="Mushrooms-Left-Half"
+							class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Mushrooms-R" class="cptoppings">
+						<input type="checkbox" value="Mushrooms-Right-Half"
+							class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Mushrooms-A" class="cptoppings">
+						<input type="checkbox" value="Mushrooms-Whole" class="cptoppings">
 					</div>
 					<div class="col-xs-1">Mushrooms</div>
 					<br />
@@ -394,13 +402,14 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Onions-L" class="cptoppings">
+						<input type="checkbox" value="Onions-Left-Half" class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Onions-R" class="cptoppings">
+						<input type="checkbox" value="Onions-Right-Half"
+							class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Onions-A" class="cptoppings">
+						<input type="checkbox" value="Onions-Whole" class="cptoppings">
 					</div>
 					<div class="col-xs-1">Onions</div>
 					<br />
@@ -409,15 +418,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="JalepenoPeppers-L"
+						<input type="checkbox" value="JalepenoPeppers-Left-Half"
 							class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="JalepenoPeppers-R"
+						<input type="checkbox" value="JalepenoPeppers-Right-Half"
 							class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="JalepenoPeppers-A"
+						<input type="checkbox" value="JalepenoPeppers-Whole"
 							class="cptoppings">
 					</div>
 					<div class="col-xs-1">Jalepeno&nbsp;Peppers</div>
@@ -427,13 +436,16 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="GreenPeppers-L" class="cptoppings">
+						<input type="checkbox" value="GreenPeppers-Left-Half"
+							class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="GreenPeppers-R" class="cptoppings">
+						<input type="checkbox" value="GreenPeppers-Right-Half"
+							class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="GreenPeppers-A" class="cptoppings">
+						<input type="checkbox" value="GreenPeppers-Whole"
+							class="cptoppings">
 					</div>
 					<div class="col-xs-1">Green&nbsp;Peppers</div>
 					<br />
@@ -442,13 +454,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Pineapple-L" class="cptoppings">
+						<input type="checkbox" value="Pineapple-Left-Half"
+							class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Pineapple-R" class="cptoppings">
+						<input type="checkbox" value="Pineapple-Right-Half"
+							class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Pineapple-A" class="cptoppings">
+						<input type="checkbox" value="Pineapple-Whole" class="cptoppings">
 					</div>
 					<div class="col-xs-1">Pineapple</div>
 					<br />
@@ -457,13 +471,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Spinach-L" class="cptoppings">
+						<input type="checkbox" value="Spinach-Left-Half"
+							class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Spinach-R" class="cptoppings">
+						<input type="checkbox" value="Spinach-Right-Half"
+							class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Spinach-A" class="cptoppings">
+						<input type="checkbox" value="Spinach-Whole" class="cptoppings">
 					</div>
 					<div class="col-xs-1">Spinach</div>
 					<br />
@@ -472,13 +488,16 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="DicedTomatoes-L" class="cptoppings">
+						<input type="checkbox" value="DicedTomatoes-Left-Half"
+							class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="DicedTomatoes-R" class="cptoppings">
+						<input type="checkbox" value="DicedTomatoes-Right-Half"
+							class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="DicedTomatoes-A" class="cptoppings">
+						<input type="checkbox" value="DicedTomatoes-Whole"
+							class="cptoppings">
 					</div>
 					<div class="col-xs-1">Diced&nbsp;Tomatoes</div>
 					<br />
@@ -487,13 +506,14 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Olives-L" class="cptoppings">
+						<input type="checkbox" value="Olives-Left-Half" class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Olives-R" class="cptoppings">
+						<input type="checkbox" value="Olives-Right-Half"
+							class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Olives-A" class="cptoppings">
+						<input type="checkbox" value="Olives-Whole" class="cptoppings">
 					</div>
 					<div class="col-xs-1">Olives</div>
 					<br />
@@ -502,13 +522,14 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Garlic-L" class="cptoppings">
+						<input type="checkbox" value="Garlic-Left-Half" class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Garlic-R" class="cptoppings">
+						<input type="checkbox" value="Garlic-Right-Half"
+							class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Garlic-A" class="cptoppings">
+						<input type="checkbox" value="Garlic-Whole" class="cptoppings">
 					</div>
 					<div class="col-xs-1">Garlic</div>
 					<br />
@@ -517,15 +538,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="ArtichokeHearts-L"
+						<input type="checkbox" value="ArtichokeHearts-Left-Half"
 							class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="ArtichokeHearts-R"
+						<input type="checkbox" value="ArtichokeHearts-Right-Half"
 							class="cptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="ArtichokeHearts-A"
+						<input type="checkbox" value="ArtichokeHearts-Whole"
 							class="cptoppings">
 					</div>
 					<div class="col-xs-1">Artichoke&nbsp;Hearts</div>
@@ -653,15 +674,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Pepperoni-L" class="pptoppings"
-							disabled="disabled">
+						<input type="checkbox" value="Pepperoni-Left-Half"
+							class="pptoppings" disabled="disabled">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Pepperoni-R" class="pptoppings"
-							disabled="disabled">
+						<input type="checkbox" value="Pepperoni-Right-Half"
+							class="pptoppings" disabled="disabled">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Pepperoni-A" class="pptoppings"
+						<input type="checkbox" value="Pepperoni-Whole" class="pptoppings"
 							checked="checked" disabled="disabled">
 					</div>
 					<div class="col-xs-1">Pepporoni</div>
@@ -671,13 +692,13 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Bacon-L" class="pptoppings">
+						<input type="checkbox" value="Bacon-Left-Half" class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Bacon-R" class="pptoppings">
+						<input type="checkbox" value="Bacon-Right-Half" class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Bacon-A" class="pptoppings">
+						<input type="checkbox" value="Bacon-Whole" class="pptoppings">
 					</div>
 					<div class="col-xs-1">Bacon</div>
 					<br />
@@ -686,13 +707,16 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="ItalianSausage-L" class="pptoppings">
+						<input type="checkbox" value="ItalianSausage-Left-Half"
+							class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="ItalianSausage-R" class="pptoppings">
+						<input type="checkbox" value="ItalianSausage-Right-Half"
+							class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="ItalianSausage-A" class="pptoppings">
+						<input type="checkbox" value="ItalianSausage-Whole"
+							class="pptoppings">
 					</div>
 					<div class="col-xs-1">Italian&nbsp;Sausage</div>
 					<br />
@@ -701,13 +725,13 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Beef-L" class="pptoppings">
+						<input type="checkbox" value="Beef-Left-Half" class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Beef-R" class="pptoppings">
+						<input type="checkbox" value="Beef-Right-Half" class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Beef-A" class="pptoppings">
+						<input type="checkbox" value="Beef-Whole" class="pptoppings">
 					</div>
 					<div class="col-xs-1">Beef</div>
 					<br />
@@ -716,13 +740,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Chicken-L" class="pptoppings">
+						<input type="checkbox" value="Chicken-Left-Half"
+							class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Chicken-R" class="pptoppings">
+						<input type="checkbox" value="Chicken-Right-Half"
+							class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Chicken-A" class="pptoppings">
+						<input type="checkbox" value="Chicken-Whole" class="pptoppings">
 					</div>
 					<div class="col-xs-1">Chicken</div>
 					<br />
@@ -731,13 +757,14 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Salami-L" class="pptoppings">
+						<input type="checkbox" value="Salami-Left-Half" class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Salami-R" class="pptoppings">
+						<input type="checkbox" value="Salami-Right-Half"
+							class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Salami-A" class="pptoppings">
+						<input type="checkbox" value="Salami-Whole" class="pptoppings">
 					</div>
 					<div class="col-xs-1">Salami</div>
 					<br />
@@ -759,13 +786,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Mushrooms-L" class="pptoppings">
+						<input type="checkbox" value="Mushrooms-Left-Half"
+							class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Mushrooms-R" class="pptoppings">
+						<input type="checkbox" value="Mushrooms-Right-Half"
+							class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Mushrooms-A" class="pptoppings">
+						<input type="checkbox" value="Mushrooms-Whole" class="pptoppings">
 					</div>
 					<div class="col-xs-1">Mushrooms</div>
 					<br />
@@ -774,13 +803,14 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Onions-L" class="pptoppings">
+						<input type="checkbox" value="Onions-Left-Half" class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Onions-R" class="pptoppings">
+						<input type="checkbox" value="Onions-Right-Half"
+							class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Onions-A" class="pptoppings">
+						<input type="checkbox" value="Onions-Whole" class="pptoppings">
 					</div>
 					<div class="col-xs-1">Onions</div>
 					<br />
@@ -789,15 +819,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="JalepenoPeppers-L"
+						<input type="checkbox" value="JalepenoPeppers-Left-Half"
 							class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="JalepenoPeppers-R"
+						<input type="checkbox" value="JalepenoPeppers-Right-Half"
 							class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="JalepenoPeppers-A"
+						<input type="checkbox" value="JalepenoPeppers-Whole"
 							class="pptoppings">
 					</div>
 					<div class="col-xs-1">Jalepeno&nbsp;Peppers</div>
@@ -807,13 +837,16 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="GreenPeppers-L" class="pptoppings">
+						<input type="checkbox" value="GreenPeppers-Left-Half"
+							class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="GreenPeppers-R" class="pptoppings">
+						<input type="checkbox" value="GreenPeppers-Right-Half"
+							class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="GreenPeppers-A" class="pptoppings">
+						<input type="checkbox" value="GreenPeppers-Whole"
+							class="pptoppings">
 					</div>
 					<div class="col-xs-1">Green&nbsp;Peppers</div>
 					<br />
@@ -822,13 +855,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Pineapple-L" class="pptoppings">
+						<input type="checkbox" value="Pineapple-Left-Half"
+							class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Pineapple-R" class="pptoppings">
+						<input type="checkbox" value="Pineapple-Right-Half"
+							class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Pineapple-A" class="pptoppings">
+						<input type="checkbox" value="Pineapple-Whole" class="pptoppings">
 					</div>
 					<div class="col-xs-1">Pineapple</div>
 					<br />
@@ -837,13 +872,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Spinach-L" class="pptoppings">
+						<input type="checkbox" value="Spinach-Left-Half"
+							class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Spinach-R" class="pptoppings">
+						<input type="checkbox" value="Spinach-Right-Half"
+							class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Spinach-A" class="pptoppings">
+						<input type="checkbox" value="Spinach-Whole" class="pptoppings">
 					</div>
 					<div class="col-xs-1">Spinach</div>
 					<br />
@@ -852,13 +889,16 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="DicedTomatoes-L" class="pptoppings">
+						<input type="checkbox" value="DicedTomatoes-Left-Half"
+							class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="DicedTomatoes-R" class="pptoppings">
+						<input type="checkbox" value="DicedTomatoes-Right-Half"
+							class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="DicedTomatoes-A" class="pptoppings">
+						<input type="checkbox" value="DicedTomatoes-Whole"
+							class="pptoppings">
 					</div>
 					<div class="col-xs-1">Diced&nbsp;Tomatoes</div>
 					<br />
@@ -867,13 +907,14 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Olives-L" class="pptoppings">
+						<input type="checkbox" value="Olives-Left-Half" class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Olives-R" class="pptoppings">
+						<input type="checkbox" value="Olives-Right-Half"
+							class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Olives-A" class="pptoppings">
+						<input type="checkbox" value="Olives-Whole" class="pptoppings">
 					</div>
 					<div class="col-xs-1">Olives</div>
 					<br />
@@ -882,13 +923,14 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Garlic-L" class="pptoppings">
+						<input type="checkbox" value="Garlic-Left-Half" class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Garlic-R" class="pptoppings">
+						<input type="checkbox" value="Garlic-Right-Half"
+							class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Garlic-A" class="pptoppings">
+						<input type="checkbox" value="Garlic-Whole" class="pptoppings">
 					</div>
 					<div class="col-xs-1">Garlic</div>
 					<br />
@@ -897,15 +939,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="ArtichokeHearts-L"
+						<input type="checkbox" value="ArtichokeHearts-Left-Half"
 							class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="ArtichokeHearts-R"
+						<input type="checkbox" value="ArtichokeHearts-Right-Half"
 							class="pptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="ArtichokeHearts-A"
+						<input type="checkbox" value="ArtichokeHearts-Whole"
 							class="pptoppings">
 					</div>
 					<div class="col-xs-1">Artichoke&nbsp;Hearts</div>
@@ -1031,13 +1073,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Mushrooms-L" class="vptoppings">
+						<input type="checkbox" value="Mushrooms-Left-Half"
+							class="vptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Mushrooms-R" class="vptoppings">
+						<input type="checkbox" value="Mushrooms-Right-Half"
+							class="vptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Mushrooms-A" class="vptoppings">
+						<input type="checkbox" value="Mushrooms-Whole" class="vptoppings">
 					</div>
 					<div class="col-xs-1">Mushrooms</div>
 					<br />
@@ -1046,13 +1090,14 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Onions-L" class="vptoppings">
+						<input type="checkbox" value="Onions-Left-Half" class="vptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Onions-R" class="vptoppings">
+						<input type="checkbox" value="Onions-Right-Half"
+							class="vptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Onions-A" class="vptoppings">
+						<input type="checkbox" value="Onions-Whole" class="vptoppings">
 					</div>
 					<div class="col-xs-1">Onions</div>
 					<br />
@@ -1061,15 +1106,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="JalepenoPeppers-L"
+						<input type="checkbox" value="JalepenoPeppers-Left-Half"
 							class="vptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="JalepenoPeppers-R"
+						<input type="checkbox" value="JalepenoPeppers-Right-Half"
 							class="vptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="JalepenoPeppers-A"
+						<input type="checkbox" value="JalepenoPeppers-Whole"
 							class="vptoppings">
 					</div>
 					<div class="col-xs-1">Jalepeno&nbsp;Peppers</div>
@@ -1079,13 +1124,16 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="GreenPeppers-L" class="vptoppings">
+						<input type="checkbox" value="GreenPeppers-Left-Half"
+							class="vptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="GreenPeppers-R" class="vptoppings">
+						<input type="checkbox" value="GreenPeppers-Right-Half"
+							class="vptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="GreenPeppers-A" class="vptoppings">
+						<input type="checkbox" value="GreenPeppers-Whole"
+							class="vptoppings">
 					</div>
 					<div class="col-xs-1">Green&nbsp;Peppers</div>
 					<br />
@@ -1094,13 +1142,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Pineapple-L" class="vptoppings">
+						<input type="checkbox" value="Pineapple-Left-Half"
+							class="vptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Pineapple-R" class="vptoppings">
+						<input type="checkbox" value="Pineapple-Right-Half"
+							class="vptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Pineapple-A" class="vptoppings">
+						<input type="checkbox" value="Pineapple-Whole" class="vptoppings">
 					</div>
 					<div class="col-xs-1">Pineapple</div>
 					<br />
@@ -1109,13 +1159,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Spinach-L" class="vptoppings">
+						<input type="checkbox" value="Spinach-Left-Half"
+							class="vptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Spinach-R" class="vptoppings">
+						<input type="checkbox" value="Spinach-Right-Half"
+							class="vptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Spinach-A" class="vptoppings">
+						<input type="checkbox" value="Spinach-Whole" class="vptoppings">
 					</div>
 					<div class="col-xs-1">Spinach</div>
 					<br />
@@ -1124,13 +1176,16 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="DicedTomatoes-L" class="vptoppings">
+						<input type="checkbox" value="DicedTomatoes-Left-Half"
+							class="vptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="DicedTomatoes-R" class="vptoppings">
+						<input type="checkbox" value="DicedTomatoes-Right-Half"
+							class="vptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="DicedTomatoes-A" class="vptoppings">
+						<input type="checkbox" value="DicedTomatoes-Whole"
+							class="vptoppings">
 					</div>
 					<div class="col-xs-1">Diced&nbsp;Tomatoes</div>
 					<br />
@@ -1139,13 +1194,14 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Olives-L" class="vptoppings">
+						<input type="checkbox" value="Olives-Left-Half" class="vptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Olives-R" class="vptoppings">
+						<input type="checkbox" value="Olives-Right-Half"
+							class="vptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Olives-A" class="vptoppings">
+						<input type="checkbox" value="Olives-Whole" class="vptoppings">
 					</div>
 					<div class="col-xs-1">Olives</div>
 					<br />
@@ -1154,13 +1210,14 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Garlic-L" class="vptoppings">
+						<input type="checkbox" value="Garlic-Left-Half" class="vptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Garlic-R" class="vptoppings">
+						<input type="checkbox" value="Garlic-Right-Half"
+							class="vptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Garlic-A" class="vptoppings">
+						<input type="checkbox" value="Garlic-Whole" class="vptoppings">
 					</div>
 					<div class="col-xs-1">Garlic</div>
 					<br />
@@ -1169,15 +1226,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="ArtichokeHearts-L"
+						<input type="checkbox" value="ArtichokeHearts-Left-Half"
 							class="vptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="ArtichokeHearts-R"
+						<input type="checkbox" value="ArtichokeHearts-Right-Half"
 							class="vptoppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="ArtichokeHearts-A"
+						<input type="checkbox" value="ArtichokeHearts-Whole"
 							class="vptoppings">
 					</div>
 					<div class="col-xs-1">Artichoke&nbsp;Hearts</div>
@@ -1316,13 +1373,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Pepperoni-L" class="toppings">
+						<input type="checkbox" value="Pepperoni-Left-Half"
+							class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Pepperoni-R" class="toppings">
+						<input type="checkbox" value="Pepperoni-Right-Half"
+							class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Pepperoni-A" class="toppings">
+						<input type="checkbox" value="Pepperoni-Whole" class="toppings">
 					</div>
 					<div class="col-xs-1">Pepporoni</div>
 					<br />
@@ -1331,13 +1390,13 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Bacon-L" class="toppings">
+						<input type="checkbox" value="Bacon-Left-Half" class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Bacon-R" class="toppings">
+						<input type="checkbox" value="Bacon-Right-Half" class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Bacon-A" class="toppings">
+						<input type="checkbox" value="Bacon-Whole" class="toppings">
 					</div>
 					<div class="col-xs-1">Bacon</div>
 					<br />
@@ -1346,13 +1405,16 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="ItalianSausage-L" class="toppings">
+						<input type="checkbox" value="ItalianSausage-Left-Half"
+							class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="ItalianSausage-R" class="toppings">
+						<input type="checkbox" value="ItalianSausage-Right-Half"
+							class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="ItalianSausage-A" class="toppings">
+						<input type="checkbox" value="ItalianSausage-Whole"
+							class="toppings">
 					</div>
 					<div class="col-xs-1">Italian&nbsp;Sausage</div>
 					<br />
@@ -1361,13 +1423,13 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Beef-L" class="toppings">
+						<input type="checkbox" value="Beef-Left-Half" class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Beef-R" class="toppings">
+						<input type="checkbox" value="Beef-Right-Half" class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Beef-A" class="toppings">
+						<input type="checkbox" value="Beef-Whole" class="toppings">
 					</div>
 					<div class="col-xs-1">Beef</div>
 					<br />
@@ -1376,13 +1438,13 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Chicken-L" class="toppings">
+						<input type="checkbox" value="Chicken-Left-Half" class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Chicken-R" class="toppings">
+						<input type="checkbox" value="Chicken-Right-Half" class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Chicken-A" class="toppings">
+						<input type="checkbox" value="Chicken-Whole" class="toppings">
 					</div>
 					<div class="col-xs-1">Chicken</div>
 					<br />
@@ -1391,13 +1453,13 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Salami-L" class="toppings">
+						<input type="checkbox" value="Salami-Left-Half" class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Salami-R" class="toppings">
+						<input type="checkbox" value="Salami-Right-Half" class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Salami-A" class="toppings">
+						<input type="checkbox" value="Salami-Whole" class="toppings">
 					</div>
 					<div class="col-xs-1">Salami</div>
 					<br />
@@ -1419,13 +1481,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Mushrooms-L" class="toppings">
+						<input type="checkbox" value="Mushrooms-Left-Half"
+							class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Mushrooms-R" class="toppings">
+						<input type="checkbox" value="Mushrooms-Right-Half"
+							class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Mushrooms-A" class="toppings">
+						<input type="checkbox" value="Mushrooms-Whole" class="toppings">
 					</div>
 					<div class="col-xs-1">Mushrooms</div>
 					<br />
@@ -1434,13 +1498,13 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Onions-L" class="toppings">
+						<input type="checkbox" value="Onions-Left-Half" class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Onions-R" class="toppings">
+						<input type="checkbox" value="Onions-Right-Half" class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Onions-A" class="toppings">
+						<input type="checkbox" value="Onions-Whole" class="toppings">
 					</div>
 					<div class="col-xs-1">Onions</div>
 					<br />
@@ -1449,13 +1513,16 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="JalepenoPeppers-L" class="toppings">
+						<input type="checkbox" value="JalepenoPeppers-Left-Half"
+							class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="JalepenoPeppers-R" class="toppings">
+						<input type="checkbox" value="JalepenoPeppers-Right-Half"
+							class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="JalepenoPeppers-A" class="toppings">
+						<input type="checkbox" value="JalepenoPeppers-Whole"
+							class="toppings">
 					</div>
 					<div class="col-xs-1">Jalepeno&nbsp;Peppers</div>
 					<br />
@@ -1464,13 +1531,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="GreenPeppers-L" class="toppings">
+						<input type="checkbox" value="GreenPeppers-Left-Half"
+							class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="GreenPeppers-R" class="toppings">
+						<input type="checkbox" value="GreenPeppers-Right-Half"
+							class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="GreenPeppers-A" class="toppings">
+						<input type="checkbox" value="GreenPeppers-Whole" class="toppings">
 					</div>
 					<div class="col-xs-1">Green&nbsp;Peppers</div>
 					<br />
@@ -1479,13 +1548,15 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Pineapple-L" class="toppings">
+						<input type="checkbox" value="Pineapple-Left-Half"
+							class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Pineapple-R" class="toppings">
+						<input type="checkbox" value="Pineapple-Right-Half"
+							class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Pineapple-A" class="toppings">
+						<input type="checkbox" value="Pineapple-Whole" class="toppings">
 					</div>
 					<div class="col-xs-1">Pineapple</div>
 					<br />
@@ -1494,13 +1565,13 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Spinach-L" class="toppings">
+						<input type="checkbox" value="Spinach-Left-Half" class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Spinach-R" class="toppings">
+						<input type="checkbox" value="Spinach-Right-Half" class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Spinach-A" class="toppings">
+						<input type="checkbox" value="Spinach-Whole" class="toppings">
 					</div>
 					<div class="col-xs-1">Spinach</div>
 					<br />
@@ -1509,13 +1580,16 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="DicedTomatoes-L" class="toppings">
+						<input type="checkbox" value="DicedTomatoes-Left-Half"
+							class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="DicedTomatoes-R" class="toppings">
+						<input type="checkbox" value="DicedTomatoes-Right-Half"
+							class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="DicedTomatoes-A" class="toppings">
+						<input type="checkbox" value="DicedTomatoes-Whole"
+							class="toppings">
 					</div>
 					<div class="col-xs-1">Diced&nbsp;Tomatoes</div>
 					<br />
@@ -1524,13 +1598,13 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Olives-L" class="toppings">
+						<input type="checkbox" value="Olives-Left-Half" class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Olives-R" class="toppings">
+						<input type="checkbox" value="Olives-Right-Half" class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Olives-A" class="toppings">
+						<input type="checkbox" value="Olives-Whole" class="toppings">
 					</div>
 					<div class="col-xs-1">Olives</div>
 					<br />
@@ -1539,13 +1613,13 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="Garlic-L" class="toppings">
+						<input type="checkbox" value="Garlic-Left-Half" class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Garlic-R" class="toppings">
+						<input type="checkbox" value="Garlic-Right-Half" class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="Garlic-A" class="toppings">
+						<input type="checkbox" value="Garlic-Whole" class="toppings">
 					</div>
 					<div class="col-xs-1">Garlic</div>
 					<br />
@@ -1554,13 +1628,16 @@
 				<!-- Ingredient START -->
 				<div class="input-group">
 					<div class="col-xs-1">
-						<input type="checkbox" value="ArtichokeHearts-L" class="toppings">
+						<input type="checkbox" value="ArtichokeHearts-Left-Half"
+							class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="ArtichokeHearts-R" class="toppings">
+						<input type="checkbox" value="ArtichokeHearts-Right-Half"
+							class="toppings">
 					</div>
 					<div class="col-xs-1">
-						<input type="checkbox" value="ArtichokeHearts-A" class="toppings">
+						<input type="checkbox" value="ArtichokeHearts-Whole"
+							class="toppings">
 					</div>
 					<div class="col-xs-1">Artichoke&nbsp;Hearts</div>
 					<br />

@@ -15,10 +15,9 @@ function populateChickenPizzaSelectedItems() {
 	var nPizzas = $('input[name=cpcount]').val();
 	var sause = $('input[name=cpsause]:checked').val();
 	var cheese = $('input[name=cpcheese]:checked').val();
-	var toppings = "";
-	$('.cptoppings:checked').each(function() {
-		toppings = toppings + " " + $(this).val();
-	});
+	var toppings = "[" + $("input[class=cptoppings]:checked").map(function() {
+		return this.value;
+	}).get().join(", ") + "]";
 	if (toppings == "")
 		toppings = "none";
 	var spl = $('input[name=cpspl]').val();
@@ -61,10 +60,9 @@ function populatePepperoniPizzaSelectedItems() {
 	var nPizzas = $('input[name=ppcount]').val();
 	var sause = $('input[name=ppsause]:checked').val();
 	var cheese = $('input[name=ppcheese]:checked').val();
-	var toppings = "";
-	$('.pptoppings:checked').each(function() {
-		toppings = toppings + " " + $(this).val();
-	});
+	var toppings = "[" + $("input[class=pptoppings]:checked").map(function() {
+		return this.value;
+	}).get().join(", ") + "]";
 	if (toppings == "")
 		toppings = "none";
 	var spl = $('input[name=ppspl]').val();
@@ -107,10 +105,9 @@ function populateVeggiePizzaSelectedItems() {
 	var nPizzas = $('input[name=vpcount]').val();
 	var sause = $('input[name=vpsause]:checked').val();
 	var cheese = $('input[name=vpcheese]:checked').val();
-	var toppings = "";
-	$('.vptoppings:checked').each(function() {
-		toppings = toppings + " " + $(this).val();
-	});
+	var toppings = "[" + $("input[class=vptoppings]:checked").map(function() {
+		return this.value;
+	}).get().join(", ") + "]";
 	if (toppings == "")
 		toppings = "none";
 	var spl = $('input[name=vpspl]').val();
@@ -148,12 +145,11 @@ function populatePizzaSelectedItems() {
 	var nPizzas = $('input[name=pcount]').val();
 	var sause = $('input[name=psause]:checked').val();
 	var cheese = $('input[name=pcheese]:checked').val();
-	var toppings = "";
-	$('.toppings:checked').each(function() {
-		toppings = toppings + " " + $(this).val();
-	});
+	var toppings = "[" + $("input[class=toppings]:checked").map(function() {
+		return this.value;
+	}).get().join(", ") + "]";
 	if (toppings == "")
-		toppings = "none";
+		toppings = "[none]";
 	var spl = $('input[name=spl]').val();
 	var desc = "Size: " + pizzaSize + ", Count: " + nPizzas + ", Sause: "
 			+ sause + ", Cheese: " + cheese + ", Toppings: " + toppings;
