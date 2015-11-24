@@ -38,7 +38,7 @@
 		var idx2 = menu_item_codes.deleteElem(itemCode);
 		//$('.butnote').css('margin-top','-=45');	
 		//If all the items are removed, remove the parent element.
-		if($('.slide #' + categoryCode).children().length == 2 ) {
+		if ($('.slide #' + categoryCode).children().length == 2) {
 			$('.slide #' + categoryCode).addClass('hidden');
 		}
 	}
@@ -204,12 +204,6 @@
 						</div>
 						<div class="col-md-12 col-sm-12">
 							<section>
-								<div class="center">
-									<figure class="note butnote">ONCE THE DESIRED MENU IS
-										SELECTED, CLICK ON THE BUTTON BELOW TO SELECT THE RESTAURANTS
-										TO REQUEST QUOTE FROM
-									</figure>
-								</div>
 								<div class="form-group clearfix" style="text-align: center;">
 									<form action="${pageContext.request.contextPath}/menu/saveMenu"
 										id="target" method="post">
@@ -220,7 +214,10 @@
 										<textarea rows="4" cols="50" name="comments"
 											placeholder="Enter you comments to restaurant here"
 											class="form-control">${menu.comments}</textarea>
-										<br />
+										<figure class="note butnote">ONCE THE DESIRED MENU IS
+											SELECTED, CLICK ON THE BUTTON BELOW TO SELECT THE RESTAURANTS
+											TO REQUEST QUOTE FROM
+										</figure>
 										<button type="button" onclick="menu_submit();"
 											class="btn btn-default">Select Restaurants</button>
 									</form>

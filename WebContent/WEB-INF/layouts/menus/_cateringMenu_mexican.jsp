@@ -137,12 +137,6 @@
 						</div>
 						<div class="col-md-12 col-sm-12">
 							<section>
-								<div class="center">
-									<figure class="note butnote">ONCE THE DESIRED MENU IS
-										SELECTED, CLICK ON THE BUTTON BELOW TO SELECT THE RESTAURANTS
-										TO REQUEST QUOTE FROM
-									</figure>
-								</div>
 								<div class="form-group clearfix" style="text-align: center;">
 									<form action="${pageContext.request.contextPath}/menu/saveMenu"
 										id="mexicantarget" method="post">
@@ -152,7 +146,10 @@
 										<textarea rows="4" cols="50" name="comments"
 											placeholder="Enter you comments to restaurant here"
 											class="form-control">${menu.comments}</textarea>
-										<br />
+										<figure class="note butnote">ONCE THE DESIRED MENU IS
+											SELECTED, CLICK ON THE BUTTON BELOW TO SELECT THE RESTAURANTS
+											TO REQUEST QUOTE FROM
+										</figure>
 										<button type="button" onclick="mexican_menu_submit();"
 											class="btn btn-default">Select Restaurants</button>
 									</form>
@@ -237,8 +234,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose sides:
-			</label>
+			<label for="" class="col-sm-4 control-label">Choose sides: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
@@ -253,8 +249,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose rice:
-			</label>
+			<label for="" class="col-sm-4 control-label">Choose rice: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
@@ -269,8 +264,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose salsa:
-			</label>
+			<label for="" class="col-sm-4 control-label">Choose salsa: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
@@ -285,17 +279,15 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose Cheese:
-			</label>
+			<label for="" class="col-sm-4 control-label">Choose Cheese: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="tcheese"
-							value="Light"> Light
+						<input type="checkbox" name="tcheese" value="Light"> Light
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="tcheese"
-							value="Regular"> Regular
+						<input type="checkbox" name="tcheese" value="Regular">
+						Regular
 					</div>
 				</div>
 			</div>
