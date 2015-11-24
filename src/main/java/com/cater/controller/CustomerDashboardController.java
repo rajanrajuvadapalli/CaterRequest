@@ -195,9 +195,11 @@ public class CustomerDashboardController {
 		e.setPickUp(StringUtils.equals("1", StringUtils.defaultString(request
 				.getParameter("deliveryOption"))));
 		Address a = new Address();
-		String street1 = StringUtils.defaultString(
-				request.getParameter("street_number")).concat(
-				StringUtils.defaultString(request.getParameter("street_name")));
+		String street1 = StringUtils
+				.defaultString(request.getParameter("street_number"))
+				.concat(" ")
+				.concat(StringUtils.defaultString(request
+						.getParameter("street_name")));
 		a.setStreet1(street1);
 		a.setStreet2(StringUtils.defaultString(request.getParameter("street2")));
 		a.setCity(StringUtils.defaultString(request.getParameter("city")));

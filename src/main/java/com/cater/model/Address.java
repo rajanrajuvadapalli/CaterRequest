@@ -176,12 +176,12 @@ public class Address extends TimestampEntity implements Serializable {
 	 */
 	public String getAddressString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append(street1).append(",");
+		builder.append(street1).append(", ");
 		if (StringUtils.isNotBlank(street2)) {
-			builder.append(street2).append(",");
+			builder.append(street2).append(", ");
 		}
-		builder.append(city).append(",");
-		builder.append(state).append(",");
+		builder.append(city).append(", ");
+		builder.append(state).append(" ");
 		builder.append(zip);
 		return builder.toString();
 	}

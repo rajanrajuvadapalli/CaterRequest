@@ -144,8 +144,12 @@ public class RegistrationController {
 					.getParameter("phone")));
 			data.setSmsOk(StringUtils.equalsIgnoreCase("on",
 					request.getParameter("smsOk")));
-			data.setStreet1(StringUtils.defaultString(request
-					.getParameter("street1")));
+			String street1 = StringUtils
+					.defaultString(request.getParameter("street_number"))
+					.concat(" ")
+					.concat(StringUtils.defaultString(request
+							.getParameter("street_name")));
+			data.setStreet1(street1);
 			data.setStreet2(StringUtils.defaultString(request
 					.getParameter("street2")));
 			data.setCity(StringUtils.defaultString(request.getParameter("city")));
