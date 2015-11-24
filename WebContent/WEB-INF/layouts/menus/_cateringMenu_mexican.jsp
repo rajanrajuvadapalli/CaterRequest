@@ -395,73 +395,60 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose sides<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Choose Sides: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="bsides" required="required"
-							value="Black Beans"> Black Beans
+						<input type="checkbox" name="bsides" value="Black Beans">
+						Black Beans
 					</div>
 					<div class="input-group">
-						<input type="radio" name="bsides" required="required"
-							value="Pinto Beans"> Pinto Beans
+						<input type="checkbox" name="bsides" value="Pinto Beans">
+						Pinto Beans
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose rice<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Choose Rice: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="brice" required="required"
-							value="Citrus rice"> Citrus rice
+						<input type="checkbox" name="brice" value="Citrus rice">
+						Citrus rice
 					</div>
 					<div class="input-group">
-						<input type="radio" name="brice" required="required"
-							value="Mexican rice"> Mexican rice
+						<input type="checkbox" name="brice" value="Mexican rice">
+						Mexican rice
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose salsa<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Choose Salsa: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="bsalsa" required="required"
-							value="Mild salsa"> Mild salsa
+						<input type="checkbox" name="bsalsa" value="Mild salsa">
+						Mild salsa
 					</div>
 					<div class="input-group">
-						<input type="radio" name="bsalsa" required="required"
-							value="Chipotle Salsa"> Chipotle Salsa
+						<input type="checkbox" name="bsalsa" value="Chipotle Salsa">
+						Chipotle Salsa
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose Cheese<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Choose Cheese: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="bcheese" required="required"
-							value="Light"> Light
+						<input type="checkbox" name="bcheese" value="Light"> Light
 					</div>
 					<div class="input-group">
-						<input type="radio" name="bcheese" required="required"
-							value="Regular"> Regular
-					</div>
-					<div class="input-group">
-						<input type="radio" name="bcheese" required="required"
-							value="No cheese"> No cheese
+						<input type="checkbox" name="bcheese" value="Regular">
+						Regular
 					</div>
 				</div>
 			</div>
@@ -548,73 +535,60 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose sides<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Choose Sides: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="esides" required="required"
-							value="Black Beans"> Black Beans
+						<input type="checkbox" name="esides" value="Black Beans">
+						Black Beans
 					</div>
 					<div class="input-group">
-						<input type="radio" name="esides" required="required"
-							value="Pinto Beans"> Pinto Beans
+						<input type="checkbox" name="esides" value="Pinto Beans">
+						Pinto Beans
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose rice<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Choose Rice: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="erice" required="required"
-							value="Citrus rice"> Citrus rice
+						<input type="checkbox" name="erice" value="Citrus rice">
+						Citrus rice
 					</div>
 					<div class="input-group">
-						<input type="radio" name="erice" required="required"
-							value="Mexican rice"> Mexican rice
+						<input type="checkbox" name="erice" value="Mexican rice">
+						Mexican rice
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose salsa<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Choose Salsa: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="esalsa" required="required"
-							value="Mild salsa"> Mild salsa
+						<input type="checkbox" name="esalsa" value="Mild salsa">
+						Mild salsa
 					</div>
 					<div class="input-group">
-						<input type="radio" name="esalsa" required="required"
-							value="Chipotle Salsa"> Chipotle Salsa
+						<input type="checkbox" name="esalsa" value="Chipotle Salsa">
+						Chipotle Salsa
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose Cheese<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Choose Cheese: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="echeese" required="required"
-							value="Light"> Light
+						<input type="checkbox" name="echeese" value="Light"> Light
 					</div>
 					<div class="input-group">
-						<input type="radio" name="echeese" required="required"
-							value="Regular"> Regular
-					</div>
-					<div class="input-group">
-						<input type="radio" name="echeese" required="required"
-							value="No cheese"> No cheese
+						<input type="checkbox" name="echeese" value="Regular">
+						Regular
 					</div>
 				</div>
 			</div>
@@ -701,73 +675,60 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose sides<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Choose Sides: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="fsides" required="required"
-							value="Black Beans"> Black Beans
+						<input type="checkbox" name="fsides" value="Black Beans">
+						Black Beans
 					</div>
 					<div class="input-group">
-						<input type="radio" name="fsides" required="required"
-							value="Pinto Beans"> Pinto Beans
+						<input type="checkbox" name="fsides" value="Pinto Beans">
+						Pinto Beans
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose rice<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Choose Rice: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="frice" required="required"
-							value="Citrus rice"> Citrus rice
+						<input type="checkbox" name="frice" value="Citrus rice">
+						Citrus rice
 					</div>
 					<div class="input-group">
-						<input type="radio" name="frice" required="required"
-							value="Mexican rice"> Mexican rice
+						<input type="checkbox" name="frice" value="Mexican rice">
+						Mexican rice
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose salsa<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Choose Salsa: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="fsalsa" required="required"
-							value="Mild salsa"> Mild salsa
+						<input type="checkbox" name="fsalsa" value="Mild salsa">
+						Mild salsa
 					</div>
 					<div class="input-group">
-						<input type="radio" name="fsalsa" required="required"
-							value="Chipotle Salsa"> Chipotle Salsa
+						<input type="checkbox" name="fsalsa" value="Chipotle Salsa">
+						Chipotle Salsa
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose Cheese<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Choose Cheese: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="fcheese" required="required"
-							value="Light"> Light
+						<input type="checkbox" name="fcheese" value="Light"> Light
 					</div>
 					<div class="input-group">
-						<input type="radio" name="fcheese" required="required"
-							value="Regular"> Regular
-					</div>
-					<div class="input-group">
-						<input type="radio" name="fcheese" required="required"
-							value="No cheese"> No cheese
+						<input type="checkbox" name="fcheese" value="Regular">
+						Regular
 					</div>
 				</div>
 			</div>
@@ -871,73 +832,60 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose sides<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Choose Sides: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="ssides" required="required"
-							value="Black Beans"> Black Beans
+						<input type="checkbox" name="ssides" value="Black Beans">
+						Black Beans
 					</div>
 					<div class="input-group">
-						<input type="radio" name="ssides" required="required"
-							value="Pinto Beans"> Pinto Beans
+						<input type="checkbox" name="ssides" value="Pinto Beans">
+						Pinto Beans
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose rice<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Choose Rice: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="srice" required="required"
-							value="Citrus rice"> Citrus rice
+						<input type="checkbox" name="srice" value="Citrus rice">
+						Citrus rice
 					</div>
 					<div class="input-group">
-						<input type="radio" name="srice" required="required"
-							value="Mexican rice"> Mexican rice
+						<input type="checkbox" name="srice" value="Mexican rice">
+						Mexican rice
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose salsa<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Choose Salsa: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="ssalsa" required="required"
-							value="Mild salsa"> Mild salsa
+						<input type="checkbox" name="ssalsa" value="Mild salsa">
+						Mild salsa
 					</div>
 					<div class="input-group">
-						<input type="radio" name="ssalsa" required="required"
-							value="Chipotle Salsa"> Chipotle Salsa
+						<input type="checkbox" name="ssalsa" value="Chipotle Salsa">
+						Chipotle Salsa
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose Cheese<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Choose Cheese: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="scheese" required="required"
-							value="Light"> Light
+						<input type="checkbox" name="scheese" value="Light"> Light
 					</div>
 					<div class="input-group">
-						<input type="radio" name="scheese" required="required"
-							value="Regular"> Regular
-					</div>
-					<div class="input-group">
-						<input type="radio" name="scheese" required="required"
-							value="No cheese"> No cheese
+						<input type="checkbox" name="scheese" value="Regular">
+						Regular
 					</div>
 				</div>
 			</div>
@@ -962,22 +910,19 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Dressings<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Dressings: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="radio" name="sdress" required="required"
-							value="Chipotle Ranch"> Chipotle Ranch
+						<input type="checkbox" name="sdress" value="Chipotle Ranch">
+						Chipotle Ranch
 					</div>
 					<div class="input-group">
-						<input type="radio" name="sdress" required="required"
-							value="Ranch"> Ranch
+						<input type="checkbox" name="sdress" value="Ranch"> Ranch
 					</div>
 					<div class="input-group">
-						<input type="radio" name="sdress" required="required"
-							value="Mexican dressing"> Mexican dressing
+						<input type="checkbox" name="sdress" value="Mexican dressing">
+						Mexican dressing
 					</div>
 				</div>
 			</div>
@@ -1014,22 +959,18 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Salsa<span
-				style="color: red">*</span>:
-			</label>
+			<label for="" class="col-sm-4 control-label">Salsa: </label>
 			<div class="row">
 				<div class="col-sm-6 col-md-6">
 					<div class="input-group">
-						<input type="radio" name="csalsa" required="required" value="Mild">
-						Mild
+						<input type="checkbox" name="csalsa" value="Mild"> Mild
 					</div>
 					<div class="input-group">
-						<input type="radio" name="csalsa" required="required"
-							value="Medium"> Medium
+						<input type="checkbox" name="csalsa" value="Medium">
+						Medium
 					</div>
 					<div class="input-group">
-						<input type="radio" name="csalsa" required="required" value="Hot">
-						Hot
+						<input type="checkbox" name="csalsa" value="Hot"> Hot
 					</div>
 				</div>
 			</div>
