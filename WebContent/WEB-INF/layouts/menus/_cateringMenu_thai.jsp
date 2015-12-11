@@ -257,11 +257,11 @@
 				<div class="col-sm-6">
 					<div class="input-group">
 						<input type="radio" name="fservingSize" required="required"
-							value="Small"> Small Tray (Serves 10-12 People)
+							value="Small"> Half Size Tray (Serves 6-8 People)
 					</div>
 					<div class="input-group">
 						<input type="radio" name="fservingSize" required="required"
-							value="Large"> Large Tray (Serves 20-24 People)
+							value="Large"> Full Size Tray (Serves 12-15 People)
 					</div>
 				</div>
 			</div>
@@ -307,11 +307,11 @@
 				<div class="col-sm-6">
 					<div class="input-group">
 						<input type="radio" name="tyservingSize" required="required"
-							value="Small"> Small Tray (Serves 10-12 People)
+							value="Small"> Half Size Tray (Serves 6-8 People)
 					</div>
 					<div class="input-group">
 						<input type="radio" name="tyservingSize" required="required"
-							value="Large"> Large Tray (Serves 20-24 People)
+							value="Large"> Full Size Tray (Serves 12-15 People)
 					</div>
 				</div>
 			</div>
@@ -412,11 +412,11 @@
 				<div class="col-sm-6">
 					<div class="input-group">
 						<input type="radio" name="tkservingSize" required="required"
-							value="Small"> Small Tray (Serves 10-12 People)
+							value="Small"> Half Size Tray (Serves 6-8 People)
 					</div>
 					<div class="input-group">
 						<input type="radio" name="tkservingSize" required="required"
-							value="Large"> Large Tray (Serves 20-24 People)
+							value="Large"> Full Size Tray (Serves 12-15 People)
 					</div>
 				</div>
 			</div>
@@ -517,11 +517,11 @@
 				<div class="col-sm-6">
 					<div class="input-group">
 						<input type="radio" name="gpsservingSize" required="required"
-							value="Small"> Small Tray (Serves 10-12 People)
+							value="Small"> Half Size Tray (Serves 6-8 People)
 					</div>
 					<div class="input-group">
 						<input type="radio" name="gpsservingSize" required="required"
-							value="Large"> Large Tray (Serves 20-24 People)
+							value="Large"> Full Size Tray (Serves 12-15 People)
 					</div>
 				</div>
 			</div>
@@ -588,11 +588,11 @@
 				<div class="col-sm-6">
 					<div class="input-group">
 						<input type="radio" name="ptservingSize" required="required"
-							value="Small"> Small Tray (Serves 10-12 People)
+							value="Small"> Half Size Tray (Serves 6-8 People)
 					</div>
 					<div class="input-group">
 						<input type="radio" name="ptservingSize" required="required"
-							value="Large"> Large Tray (Serves 20-24 People)
+							value="Large"> Full Size Tray (Serves 12-15 People)
 					</div>
 				</div>
 			</div>
@@ -693,11 +693,11 @@
 				<div class="col-sm-6">
 					<div class="input-group">
 						<input type="radio" name="dnservingSize" required="required"
-							value="Small"> Small Tray (Serves 10-12 People)
+							value="Small"> Half Size Tray (Serves 6-8 People)
 					</div>
 					<div class="input-group">
 						<input type="radio" name="dnservingSize" required="required"
-							value="Large"> Large Tray (Serves 20-24 People)
+							value="Large"> Full Size Tray (Serves 12-15 People)
 					</div>
 				</div>
 			</div>
@@ -798,11 +798,11 @@
 				<div class="col-sm-6">
 					<div class="input-group">
 						<input type="radio" name="frservingSize" required="required"
-							value="Small"> Small Tray (Serves 10-12 People)
+							value="Small"> Half Size Tray (Serves 6-8 People)
 					</div>
 					<div class="input-group">
 						<input type="radio" name="frservingSize" required="required"
-							value="Large"> Large Tray (Serves 20-24 People)
+							value="Large"> Full Size Tray (Serves 12-15 People)
 					</div>
 				</div>
 			</div>
@@ -903,11 +903,11 @@
 				<div class="col-sm-6">
 					<div class="input-group">
 						<input type="radio" name="pfrservingSize" required="required"
-							value="Small"> Small Tray (Serves 10-12 People)
+							value="Small"> Half Size Tray (Serves 6-8 People)
 					</div>
 					<div class="input-group">
 						<input type="radio" name="pfrservingSize" required="required"
-							value="Large"> Large Tray (Serves 20-24 People)
+							value="Large"> Full Size Tray (Serves 12-15 People)
 					</div>
 				</div>
 			</div>
@@ -1010,11 +1010,11 @@
 				<div class="col-sm-6">
 					<div class="input-group">
 						<input type="radio" name="bfrservingSize" required="required"
-							value="Small"> Small Tray (Serves 10-12 People)
+							value="Small"> Half Size Tray (Serves 6-8 People)
 					</div>
 					<div class="input-group">
 						<input type="radio" name="bfrservingSize" required="required"
-							value="Large"> Large Tray (Serves 20-24 People)
+							value="Large"> Full Size Tray (Serves 12-15 People)
 					</div>
 				</div>
 			</div>
@@ -1115,11 +1115,11 @@
 				<div class="col-sm-6">
 					<div class="input-group">
 						<input type="radio" name="rcservingSize" required="required"
-							value="Small"> Small Tray (Serves 10-12 People)
+							value="Small"> Half Size Tray (Serves 6-8 People)
 					</div>
 					<div class="input-group">
 						<input type="radio" name="rcservingSize" required="required"
-							value="Large"> Large Tray (Serves 20-24 People)
+							value="Large"> Full Size Tray (Serves 12-15 People)
 					</div>
 				</div>
 			</div>
@@ -1220,11 +1220,11 @@
 				<div class="col-sm-6">
 					<div class="input-group">
 						<input type="radio" name="gcservingSize" required="required"
-							value="Small"> Small Tray (Serves 10-12 People)
+							value="Small"> Half Size Tray (Serves 6-8 People)
 					</div>
 					<div class="input-group">
 						<input type="radio" name="gcservingSize" required="required"
-							value="Large"> Large Tray (Serves 20-24 People)
+							value="Large"> Full Size Tray (Serves 12-15 People)
 					</div>
 				</div>
 			</div>
@@ -1325,11 +1325,11 @@
 				<div class="col-sm-6">
 					<div class="input-group">
 						<input type="radio" name="ycservingSize" required="required"
-							value="Small"> Small Tray (Serves 10-12 People)
+							value="Small"> Half Size Tray (Serves 6-8 People)
 					</div>
 					<div class="input-group">
 						<input type="radio" name="ycservingSize" required="required"
-							value="Large"> Large Tray (Serves 20-24 People)
+							value="Large"> Full Size Tray (Serves 12-15 People)
 					</div>
 				</div>
 			</div>
@@ -1429,11 +1429,11 @@
 				<div class="col-sm-6">
 					<div class="input-group">
 						<input type="radio" name="pcservingSize" required="required"
-							value="Small"> Small Tray (Serves 10-12 People)
+							value="Small"> Half Size Tray (Serves 6-8 People)
 					</div>
 					<div class="input-group">
 						<input type="radio" name="pcservingSize" required="required"
-							value="Large"> Large Tray (Serves 20-24 People)
+							value="Large"> Full Size Tray (Serves 12-15 People)
 					</div>
 				</div>
 			</div>
