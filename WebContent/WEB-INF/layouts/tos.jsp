@@ -4,12 +4,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div class="col-sm-10 col-sm-offset-1 page-header">
-	<h1>Terms of Service</h1>
+	<h1>TERMS OF USE AGREEMENT</h1>
 </div>
 
 <div class="col-sm-10 col-sm-offset-1 ">
-
-<h2>TERMS OF USE AGREEMENT</h2>
 
 <p>Welcome to CaterRequest.com (the “Site”) and the Cater Request, Inc. mobile application (the “Mobile Application”). The Site and Mobile Application are comprised of various web pages operated by Cater Request, Inc. (“Cater Request”, “we”, “us” or “our”). The Site and Mobile Application and all of their respective features and services (“Services”) are offered to you conditioned on your acceptance without modification of the terms, conditions, and notices contained herein (the “Terms”). Your use of the Site and the Services constitutes your agreement to all such Terms. Please read these Terms carefully, and keep a copy of them for your reference. If you do not agree with these Terms, you should not use the Site or any of its Services. </p>
 
