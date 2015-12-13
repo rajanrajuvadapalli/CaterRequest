@@ -173,6 +173,11 @@
 		onsubmit="return populateMexicanTacoBarSelectedItems();">
 		<span id="mexican-popup-title"><h2>Taco Bar</h2></span>
 		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Tortilla Size:
+			</label>
+			<div class="col-sm-6">5 inch</div>
+		</div>
+		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Tortillas Count<span
 				style="color: red">*</span>:
 			</label>
@@ -203,7 +208,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose servings:
+			<label for="" class="col-sm-4 control-label">Choose Servings:
 			</label>
 			<div class="row">
 				<div class="col-sm-6">
@@ -234,7 +239,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose sides: </label>
+			<label for="" class="col-sm-4 control-label">Choose Beans: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
@@ -245,11 +250,15 @@
 						<input type="checkbox" name="tsides" value="Pinto Beans">
 						Pinto Beans
 					</div>
+					<div class="input-group">
+						<input type="checkbox" name="ssides" value="Refried Beans">
+						Refried Beans
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose rice: </label>
+			<label for="" class="col-sm-4 control-label">Choose Rice: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
@@ -260,20 +269,44 @@
 						<input type="checkbox" name="trice" value="Mexican rice">
 						Mexican rice
 					</div>
+					<div class="input-group">
+						<input type="checkbox" name="frice" value="Cilantro rice">
+						Cilantro rice
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="frice" value="Lime rice">
+						Lime rice
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose salsa: </label>
+			<label for="" class="col-sm-4 control-label">Choose Salsa: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="tsalsa" value="Mild salsa">
-						Mild salsa
+						<input type="checkbox" name="esalsa" value="Hot Green">
+						Hot (Green)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="tsalsa" value="Chipotle Salsa">
-						Chipotle Salsa
+						<input type="checkbox" name="esalsa" value="Hot Red">
+						Hot (Red)
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="esalsa" value="Medium Green">
+						Medium (Green)
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="esalsa" value="Medium Red">
+						Medium (Red)
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="esalsa" value="Mild Green">
+						Mild (Green)
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="esalsa" value="Mild Red">
+						Mild (Red)
 					</div>
 				</div>
 			</div>
@@ -283,11 +316,15 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="tcheese" value="Light"> Light
+						<input type="checkbox" name="bcheese" value="Jack and Cheddar"> Jack and Cheddar
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="tcheese" value="Regular">
-						Regular
+						<input type="checkbox" name="bcheese" value="Monterey Jack">
+						Monterey Jack
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="bcheese" value="Mexican Cheese/Queso Fresco">
+						Mexican Cheese/Queso Fresco
 					</div>
 				</div>
 			</div>
@@ -307,6 +344,10 @@
 					<div class="input-group">
 						<input type="checkbox" name="ttop" value="Guacamole">
 						Guacamole
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="ttop" value="Cilantro">
+						Cilantro
 					</div>
 				</div>
 			</div>
@@ -333,6 +374,11 @@
 	<form id="popup_1" class="form-horizontal"
 		onsubmit="return populateMexicanBurritoBarSelectedItems();">
 		<span id="mexican-popup-title"><h2>Burrito Bar</h2></span>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Tortilla Size:
+			</label>
+			<div class="col-sm-6">12 inch</div>
+		</div>
 		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Burrito Count<span
 				style="color: red">*</span>:
@@ -364,7 +410,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose servings:
+			<label for="" class="col-sm-4 control-label">Choose Servings:
 			</label>
 			<div class="row">
 				<div class="col-sm-6">
@@ -395,7 +441,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose Sides: </label>
+			<label for="" class="col-sm-4 control-label">Choose Beans: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
@@ -405,6 +451,10 @@
 					<div class="input-group">
 						<input type="checkbox" name="bsides" value="Pinto Beans">
 						Pinto Beans
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="ssides" value="Refried Beans">
+						Refried Beans
 					</div>
 				</div>
 			</div>
@@ -421,6 +471,14 @@
 						<input type="checkbox" name="brice" value="Mexican rice">
 						Mexican rice
 					</div>
+					<div class="input-group">
+						<input type="checkbox" name="frice" value="Cilantro rice">
+						Cilantro rice
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="frice" value="Lime rice">
+						Lime rice
+					</div>
 				</div>
 			</div>
 		</div>
@@ -429,12 +487,28 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="bsalsa" value="Mild salsa">
-						Mild salsa
+						<input type="checkbox" name="esalsa" value="Hot Green">
+						Hot (Green)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="bsalsa" value="Chipotle Salsa">
-						Chipotle Salsa
+						<input type="checkbox" name="esalsa" value="Hot Red">
+						Hot (Red)
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="esalsa" value="Medium Green">
+						Medium (Green)
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="esalsa" value="Medium Red">
+						Medium (Red)
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="esalsa" value="Mild Green">
+						Mild (Green)
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="esalsa" value="Mild Red">
+						Mild (Red)
 					</div>
 				</div>
 			</div>
@@ -444,11 +518,15 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="bcheese" value="Light"> Light
+						<input type="checkbox" name="bcheese" value="Jack and Cheddar"> Jack and Cheddar
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="bcheese" value="Regular">
-						Regular
+						<input type="checkbox" name="bcheese" value="Monterey Jack">
+						Monterey Jack
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="bcheese" value="Mexican Cheese/Queso Fresco">
+						Mexican Cheese/Queso Fresco
 					</div>
 				</div>
 			</div>
@@ -468,6 +546,10 @@
 					<div class="input-group">
 						<input type="checkbox" name="btop" value="Guacamole">
 						Guacamole
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="ttop" value="Cilantro">
+						Cilantro
 					</div>
 				</div>
 			</div>
@@ -495,6 +577,11 @@
 		onsubmit="return populateMexicanEnchiladaBarSelectedItems();">
 		<span id="mexican-popup-title"><h2>Enchilada Bar</h2></span>
 		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Tortilla Size:
+			</label>
+			<div class="col-sm-6">5 inch</div>
+		</div>
+		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Enchilada Count<span
 				style="color: red">*</span>:
 			</label>
@@ -504,7 +591,20 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose servings:
+			<label for="" class="col-sm-4 control-label">Tortilla Type<span
+				style="color: red">*</span>:
+			</label>
+			<div class="row">
+				<div class="col-sm-6 col-md-6">
+					<div class="input-group">
+						<input type="radio" name="etype" required="required" disbaled value="Corn">
+						Corn
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Choose Servings:
 			</label>
 			<div class="row">
 				<div class="col-sm-6">
@@ -535,7 +635,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose Sides: </label>
+			<label for="" class="col-sm-4 control-label">Choose Beans: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
@@ -545,6 +645,10 @@
 					<div class="input-group">
 						<input type="checkbox" name="esides" value="Pinto Beans">
 						Pinto Beans
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="ssides" value="Refried Beans">
+						Refried Beans
 					</div>
 				</div>
 			</div>
@@ -561,6 +665,14 @@
 						<input type="checkbox" name="erice" value="Mexican rice">
 						Mexican rice
 					</div>
+					<div class="input-group">
+						<input type="checkbox" name="frice" value="Cilantro rice">
+						Cilantro rice
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="frice" value="Lime rice">
+						Lime rice
+					</div>
 				</div>
 			</div>
 		</div>
@@ -569,12 +681,28 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Mild salsa">
-						Mild salsa
+						<input type="checkbox" name="esalsa" value="Hot Green">
+						Hot (Green)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Chipotle Salsa">
-						Chipotle Salsa
+						<input type="checkbox" name="esalsa" value="Hot Red">
+						Hot (Red)
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="esalsa" value="Medium Green">
+						Medium (Green)
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="esalsa" value="Medium Red">
+						Medium (Red)
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="esalsa" value="Mild Green">
+						Mild (Green)
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="esalsa" value="Mild Red">
+						Mild (Red)
 					</div>
 				</div>
 			</div>
@@ -584,11 +712,15 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="echeese" value="Light"> Light
+						<input type="checkbox" name="bcheese" value="Jack and Cheddar"> Jack and Cheddar
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="echeese" value="Regular">
-						Regular
+						<input type="checkbox" name="bcheese" value="Monterey Jack">
+						Monterey Jack
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="bcheese" value="Mexican Cheese/Queso Fresco">
+						Mexican Cheese/Queso Fresco
 					</div>
 				</div>
 			</div>
@@ -608,6 +740,24 @@
 					<div class="input-group">
 						<input type="checkbox" name="etop" value="Guacamole">
 						Guacamole
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="ttop" value="Cilantro">
+						Cilantro
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Sauce Type: </label>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="input-group">
+						<input type="checkbox" name="bsausetype" value="Red Sauce"> Red Sauce
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="bsausetype" value="Green Sauce">
+						Green Sauce
 					</div>
 				</div>
 			</div>
@@ -635,6 +785,11 @@
 		onsubmit="return populateMexicanFajithaBarSelectedItems();">
 		<span id="mexican-popup-title"><h2>Fajitha Bar</h2></span>
 		<div class="form-group">
+			<label for="" class="col-sm-4 control-label">Tortilla Size:
+			</label>
+			<div class="col-sm-6">5 inch</div>
+		</div>
+		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Tortilla Count<span
 				style="color: red">*</span>:
 			</label>
@@ -644,7 +799,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose servings:
+			<label for="" class="col-sm-4 control-label">Choose Servings:
 			</label>
 			<div class="row">
 				<div class="col-sm-6">
@@ -675,7 +830,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose Sides: </label>
+			<label for="" class="col-sm-4 control-label">Choose Beans: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
@@ -685,6 +840,10 @@
 					<div class="input-group">
 						<input type="checkbox" name="fsides" value="Pinto Beans">
 						Pinto Beans
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="ssides" value="Refried Beans">
+						Refried Beans
 					</div>
 				</div>
 			</div>
@@ -701,6 +860,14 @@
 						<input type="checkbox" name="frice" value="Mexican rice">
 						Mexican rice
 					</div>
+					<div class="input-group">
+						<input type="checkbox" name="frice" value="Cilantro rice">
+						Cilantro rice
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="frice" value="Lime rice">
+						Lime rice
+					</div>
 				</div>
 			</div>
 		</div>
@@ -709,12 +876,28 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="fsalsa" value="Mild salsa">
-						Mild salsa
+						<input type="checkbox" name="esalsa" value="Hot Green">
+						Hot (Green)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="fsalsa" value="Chipotle Salsa">
-						Chipotle Salsa
+						<input type="checkbox" name="esalsa" value="Hot Red">
+						Hot (Red)
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="esalsa" value="Medium Green">
+						Medium (Green)
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="esalsa" value="Medium Red">
+						Medium (Red)
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="esalsa" value="Mild Green">
+						Mild (Green)
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="esalsa" value="Mild Red">
+						Mild (Red)
 					</div>
 				</div>
 			</div>
@@ -724,11 +907,15 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="fcheese" value="Light"> Light
+						<input type="checkbox" name="bcheese" value="Jack and Cheddar"> Jack and Cheddar
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="fcheese" value="Regular">
-						Regular
+						<input type="checkbox" name="bcheese" value="Monterey Jack">
+						Monterey Jack
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="bcheese" value="Mexican Cheese/Queso Fresco">
+						Mexican Cheese/Queso Fresco
 					</div>
 				</div>
 			</div>
@@ -748,6 +935,10 @@
 					<div class="input-group">
 						<input type="checkbox" name="ftop" value="Guacamole">
 						Guacamole
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="ttop" value="Cilantro">
+						Cilantro
 					</div>
 				</div>
 			</div>
@@ -801,7 +992,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose servings:
+			<label for="" class="col-sm-4 control-label">Choose Servings:
 			</label>
 			<div class="row">
 				<div class="col-sm-6">
@@ -832,7 +1023,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-4 control-label">Choose Sides: </label>
+			<label for="" class="col-sm-4 control-label">Choose Beans: </label>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
@@ -842,6 +1033,10 @@
 					<div class="input-group">
 						<input type="checkbox" name="ssides" value="Pinto Beans">
 						Pinto Beans
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="ssides" value="Refried Beans">
+						Refried Beans
 					</div>
 				</div>
 			</div>
@@ -858,6 +1053,14 @@
 						<input type="checkbox" name="srice" value="Mexican rice">
 						Mexican rice
 					</div>
+					<div class="input-group">
+						<input type="checkbox" name="frice" value="Cilantro rice">
+						Cilantro rice
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="frice" value="Lime rice">
+						Lime rice
+					</div>
 				</div>
 			</div>
 		</div>
@@ -866,12 +1069,28 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="ssalsa" value="Mild salsa">
-						Mild salsa
+						<input type="checkbox" name="esalsa" value="Hot Green">
+						Hot (Green)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="ssalsa" value="Chipotle Salsa">
-						Chipotle Salsa
+						<input type="checkbox" name="esalsa" value="Hot Red">
+						Hot (Red)
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="esalsa" value="Medium Green">
+						Medium (Green)
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="esalsa" value="Medium Red">
+						Medium (Red)
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="esalsa" value="Mild Green">
+						Mild (Green)
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="esalsa" value="Mild Red">
+						Mild (Red)
 					</div>
 				</div>
 			</div>
@@ -881,11 +1100,15 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="scheese" value="Light"> Light
+						<input type="checkbox" name="bcheese" value="Jack and Cheddar"> Jack and Cheddar
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="scheese" value="Regular">
-						Regular
+						<input type="checkbox" name="bcheese" value="Monterey Jack">
+						Monterey Jack
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="bcheese" value="Mexican Cheese/Queso Fresco">
+						Mexican Cheese/Queso Fresco
 					</div>
 				</div>
 			</div>
@@ -905,6 +1128,10 @@
 					<div class="input-group">
 						<input type="checkbox" name="stop" value="Guacamole">
 						Guacamole
+					</div>
+					<div class="input-group">
+						<input type="checkbox" name="ttop" value="Cilantro">
+						Cilantro
 					</div>
 				</div>
 			</div>
