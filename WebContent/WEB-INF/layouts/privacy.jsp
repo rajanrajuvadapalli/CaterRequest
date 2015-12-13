@@ -4,11 +4,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div class="col-sm-10 col-sm-offset-1 page-header">
-	<h1>Privacy</h1>
+	<h1>Privacy Policy</h1>
 </div>
 
 <div class="col-sm-10 col-sm-offset-1 ">
-	Privacy Policy<br />
 
 <p>Welcome to CaterRequest.com (the “Site”) and the Cater Request, Inc. mobile application (the “Mobile Application”). This Privacy Policy (“Policy”) describes how Cater Request, Inc. (“we”, “us” and “our”) collects, handles and uses personal information collected from users of the Site, the Mobile Application and their services (“Services).  By using the Site, the Mobile Application or Services, you agree to the terms and conditions of this Policy. </p> 
 
