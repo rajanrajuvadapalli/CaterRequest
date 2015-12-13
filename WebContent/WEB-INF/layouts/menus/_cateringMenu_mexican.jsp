@@ -175,7 +175,9 @@
 		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Tortilla Size:
 			</label>
-			<div class="col-sm-6">5 inch</div>
+			<div class="col-sm-6">
+				<input type="text" name="ttsize" class="form-control" value="5 inch" disabled>
+			</div>
 		</div>
 		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Tortillas Count<span
@@ -243,15 +245,15 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="tsides" value="Black Beans">
+						<input type="checkbox" name="tbeans" value="Black Beans">
 						Black Beans
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="tsides" value="Pinto Beans">
+						<input type="checkbox" name="tbeans" value="Pinto Beans">
 						Pinto Beans
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="ssides" value="Refried Beans">
+						<input type="checkbox" name="sbeans" value="Refried Beans">
 						Refried Beans
 					</div>
 				</div>
@@ -377,7 +379,9 @@
 		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Tortilla Size:
 			</label>
-			<div class="col-sm-6">12 inch</div>
+			<div class="col-sm-6">
+				<input type="text" name="btsize" class="form-control" value="12 inch" disabled>
+			</div>
 		</div>
 		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Burrito Count<span
@@ -445,15 +449,15 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="bsides" value="Black Beans">
+						<input type="checkbox" name="bbeans" value="Black Beans">
 						Black Beans
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="bsides" value="Pinto Beans">
+						<input type="checkbox" name="bbeans" value="Pinto Beans">
 						Pinto Beans
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="ssides" value="Refried Beans">
+						<input type="checkbox" name="sbeans" value="Refried Beans">
 						Refried Beans
 					</div>
 				</div>
@@ -579,7 +583,9 @@
 		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Tortilla Size:
 			</label>
-			<div class="col-sm-6">5 inch</div>
+			<div class="col-sm-6">
+				<input type="text" name="etsize" class="form-control" value="5 inch" disabled>
+			</div>
 		</div>
 		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Enchilada Count<span
@@ -639,15 +645,15 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="esides" value="Black Beans">
+						<input type="checkbox" name="ebeans" value="Black Beans">
 						Black Beans
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="esides" value="Pinto Beans">
+						<input type="checkbox" name="ebeans" value="Pinto Beans">
 						Pinto Beans
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="ssides" value="Refried Beans">
+						<input type="checkbox" name="sbeans" value="Refried Beans">
 						Refried Beans
 					</div>
 				</div>
@@ -753,10 +759,10 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="bsausetype" value="Red Sauce"> Red Sauce
+						<input type="checkbox" name="esausetype" value="Red Sauce"> Red Sauce
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="bsausetype" value="Green Sauce">
+						<input type="checkbox" name="esausetype" value="Green Sauce">
 						Green Sauce
 					</div>
 				</div>
@@ -787,7 +793,9 @@
 		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Tortilla Size:
 			</label>
-			<div class="col-sm-6">5 inch</div>
+			<div class="col-sm-6">
+				<input type="text" name="ftsize" class="form-control" value="5 inch" disabled>
+			</div>
 		</div>
 		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Tortilla Count<span
@@ -834,15 +842,15 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="fsides" value="Black Beans">
+						<input type="checkbox" name="fbeans" value="Black Beans">
 						Black Beans
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="fsides" value="Pinto Beans">
+						<input type="checkbox" name="fbeans" value="Pinto Beans">
 						Pinto Beans
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="ssides" value="Refried Beans">
+						<input type="checkbox" name="sbeans" value="Refried Beans">
 						Refried Beans
 					</div>
 				</div>
@@ -1027,15 +1035,15 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="ssides" value="Black Beans">
+						<input type="checkbox" name="sbeans" value="Black Beans">
 						Black Beans
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="ssides" value="Pinto Beans">
+						<input type="checkbox" name="sbeans" value="Pinto Beans">
 						Pinto Beans
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="ssides" value="Refried Beans">
+						<input type="checkbox" name="sbeans" value="Refried Beans">
 						Refried Beans
 					</div>
 				</div>
