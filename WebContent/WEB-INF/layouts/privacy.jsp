@@ -20,12 +20,12 @@
 
 <p>The submission of personal information is voluntary.  However, you may not be able to access certain services or features on the Site or the Mobile Application unless register and provide such personal information.  We may use the personal information we collect in the following ways relating to our business:</p>
 <ul>
-	<li> to develop, enhance, market sell or otherwise provide information, products or services;
-	<li> to process purchases or other transactions through the Site or the Mobile Application;
-	<li> to contact and  respond to any communications from users;
-	<li> to conduct or administer contests, sweepstakes or other promotions in which you have participated;
-	<li> to customize the user’s experience or homepage on the Site or the Mobile Application; and 
-	<li> to develop and manage our business and operations.
+	<li> to develop, enhance, market sell or otherwise provide information, products or services;</li>
+	<li> to process purchases or other transactions through the Site or the Mobile Application;</li>
+	<li> to contact and  respond to any communications from users;</li>
+	<li> to conduct or administer contests, sweepstakes or other promotions in which you have participated;</li>
+	<li> to customize the user’s experience or homepage on the Site or the Mobile Application; and</li> 
+	<li> to develop and manage our business and operations.</li>
 </ul>
 
 <p>We may also use such personal information to enforce the Terms and Condition for use of the Site or the Mobile Application or this Privacy Policy, to detect and protect us and other third parties against error, negligence, breach of contract, fraud, theft and other illegal activity, to comply with any legal or regulatory requirements or provisions; or for any other purpose to which a user might consent.</p>
@@ -41,11 +41,11 @@
 <p>In addition, we may disclose personal information we collect in the following situations:</p> 
 
 <ul>
-	<li> We may disclose personal information to third parties (e.g., data storage and processing facilities) that we use to assist us in providing our services, subject to similar obligations of confidentiality to those contained in this Policy;
-	<li> We may disclose personal information where you have specifically authorized us to do so in connection with registering at the Site or the Mobile Application or in some other written communication;
-	<li> We may disclose personal information if required by law, court and administrative agency order, subpoena or other legal action or by law enforcement; 
-	<li> We may disclose person information if it is found that your use of the Site or the Mobile Application violates our Terms and Conditions, policies, or other usage guidelines, or if it is deemed reasonably necessary by Cater Request to protect Cater Request’s legal rights and/or property or the rights and/or property of third parties; and
-	<li> Finally, we may disclose personal information upon a transfer or sale to another entity of all or substantially all of our stock or assets in the line of business that this Policy relates or upon any other corporate reorganization. 
+	<li> We may disclose personal information to third parties (e.g., data storage and processing facilities) that we use to assist us in providing our services, subject to similar obligations of confidentiality to those contained in this Policy;</li>
+	<li> We may disclose personal information where you have specifically authorized us to do so in connection with registering at the Site or the Mobile Application or in some other written communication;</li>
+	<li> We may disclose personal information if required by law, court and administrative agency order, subpoena or other legal action or by law enforcement; </li>
+	<li> We may disclose person information if it is found that your use of the Site or the Mobile Application violates our Terms and Conditions, policies, or other usage guidelines, or if it is deemed reasonably necessary by Cater Request to protect Cater Request’s legal rights and/or property or the rights and/or property of third parties; and</li>
+	<li> Finally, we may disclose personal information upon a transfer or sale to another entity of all or substantially all of our stock or assets in the line of business that this Policy relates or upon any other corporate reorganization. </li>
 </ul>
 
 <p>We may also share aggregate demographic, statistical and other information regarding use of the Site, the Mobile Application, and other products and services, with third parties for marketing and other purposes, but such aggregate information will not specifically identify any particular user. </p>
