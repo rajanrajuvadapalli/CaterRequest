@@ -9,23 +9,24 @@
 
 <div class="col-sm-10 col-sm-offset-1 ">
 
-<p>Welcome to CaterRequest.com (the “Site”) and the Cater Request, Inc. mobile application (the “Mobile Application”). This Privacy Policy (“Policy”) describes how Cater Request, Inc. (“we”, “us” and “our”) collects, handles and uses personal information collected from users of the Site, the Mobile Application and their services (“Services).  By using the Site, the Mobile Application or Services, you agree to the terms and conditions of this Policy. </p> 
+<p>Welcome to CaterRequest.com (the "Site") and the Cater Request, Inc. mobile application (the "Mobile Application"). This Privacy Policy ("Policy") describes how Cater Request, Inc. ("we", "us" and "our") collects, handles and uses personal information collected from users of the Site, the Mobile Application and their services ("Services).  By using the Site, the Mobile Application or Services, you agree to the terms and conditions of this Policy. </p> 
 
 <h2>What personal information do we collect?</h2> 
 
-<p>“Personal information” is information that identifies (whether directly or indirectly) a particular individual, such as the individual’s name, postal address, email address and telephone number.  We collect the following personal information from users that register to use the Services on the Site or the Mobile Application: first and last name, email address, postal or physical address, phone or other contact information and, if you transact business with us, financial information such as your payment method (valid credit card number, type, expiration date or other financial information).</p>
+<p>"Personal information" is information that identifies (whether directly or indirectly) a particular individual, such as the individual's name, postal address, email address and telephone number.  We collect the following personal information from users that register to use the Services on the Site or the Mobile Application: first and last name, email address, postal or physical address, phone or other contact information and, if you transact business with us, financial information such as your payment method (valid credit card number, type, expiration date or other financial information).</p>
 
 <p>We may also collect such personal information when users access certain documents or services on the Site or the Mobile Application, when users respond to surveys, when users participate in contests, sweepstakes and other marketing promotions and when users send an inquiry or other communication to us. </p>
 
-<p>The submission of personal information is voluntary.  However, you may not be able to access certain services or features on the Site or the Mobile Application unless register and provide such personal information.  We may use the personal information we collect in the following ways relating to our business:</p>
+<p>The submission of personal information is voluntary.  However, you may not be able to access certain services or features on the Site or the Mobile Application unless register and provide such personal information.  We may use the personal information we collect in the following ways relating to our business:
 <ul>
 	<li> to develop, enhance, market sell or otherwise provide information, products or services;</li>
 	<li> to process purchases or other transactions through the Site or the Mobile Application;</li>
 	<li> to contact and  respond to any communications from users;</li>
 	<li> to conduct or administer contests, sweepstakes or other promotions in which you have participated;</li>
-	<li> to customize the user’s experience or homepage on the Site or the Mobile Application; and</li> 
+	<li> to customize the user's experience or homepage on the Site or the Mobile Application; and</li> 
 	<li> to develop and manage our business and operations.</li>
 </ul>
+</p>
 
 <p>We may also use such personal information to enforce the Terms and Condition for use of the Site or the Mobile Application or this Privacy Policy, to detect and protect us and other third parties against error, negligence, breach of contract, fraud, theft and other illegal activity, to comply with any legal or regulatory requirements or provisions; or for any other purpose to which a user might consent.</p>
 
@@ -43,7 +44,7 @@
 	<li> We may disclose personal information to third parties (e.g., data storage and processing facilities) that we use to assist us in providing our services, subject to similar obligations of confidentiality to those contained in this Policy;</li>
 	<li> We may disclose personal information where you have specifically authorized us to do so in connection with registering at the Site or the Mobile Application or in some other written communication;</li>
 	<li> We may disclose personal information if required by law, court and administrative agency order, subpoena or other legal action or by law enforcement; </li>
-	<li> We may disclose person information if it is found that your use of the Site or the Mobile Application violates our Terms and Conditions, policies, or other usage guidelines, or if it is deemed reasonably necessary by Cater Request to protect Cater Request’s legal rights and/or property or the rights and/or property of third parties; and</li>
+	<li> We may disclose person information if it is found that your use of the Site or the Mobile Application violates our Terms and Conditions, policies, or other usage guidelines, or if it is deemed reasonably necessary by Cater Request to protect Cater Request's legal rights and/or property or the rights and/or property of third parties; and</li>
 	<li> Finally, we may disclose personal information upon a transfer or sale to another entity of all or substantially all of our stock or assets in the line of business that this Policy relates or upon any other corporate reorganization. </li>
 </ul>
 
@@ -55,7 +56,7 @@
 
 <h2>Linked Sites</h2>
 
-<p>The Site and the Mobile Application may, from time to time, provide links to other third party websites (“Linked Sites”) which are outside our control and not covered by this Policy and may have privacy policies that are different from this Policy.  Cater Request is not responsible for the acts or omissions of any Linked Site. You are encouraged to review the privacy policies posted on all Linked Sites before using them or providing them personal information.</p>
+<p>The Site and the Mobile Application may, from time to time, provide links to other third party websites ("Linked Sites") which are outside our control and not covered by this Policy and may have privacy policies that are different from this Policy.  Cater Request is not responsible for the acts or omissions of any Linked Site. You are encouraged to review the privacy policies posted on all Linked Sites before using them or providing them personal information.</p>
 
 <h2>Children</h2>
 
@@ -63,7 +64,7 @@
 
 <h2>Use of Suppliers</h2>
 
-<p>In some cases Cater Request uses suppliers to collect, use, analyze and otherwise process information on its behalf. It is Cater Request’s practice to require such suppliers to handle information in a manner consistent with Cater Request policies.</p>
+<p>In some cases Cater Request uses suppliers to collect, use, analyze and otherwise process information on its behalf. It is Cater Request's practice to require such suppliers to handle information in a manner consistent with Cater Request policies.</p>
 
 <h2>Cookies</h2>
 
@@ -83,12 +84,12 @@
 
 <h2>Privacy Questions and Access</h2>
 
-<p>If you have a question about this Policy, you can send an email to Cater Request at [info@caterrequest.com]. You can also contact us at this address if you have a question about Cater Request’s handling of your information.</p>
+<p>If you have a question about this Policy, you can send an email to Cater Request at [info@caterrequest.com]. You can also contact us at this address if you have a question about Cater Request's handling of your information.</p>
 
 <p>If you wish to obtain a copy of particular information you provided to Cater Request, or if you become aware the information is incorrect and you would like us to correct it contact us at [info@caterrequest.com].</p> 
 
 <h2>Your California Privacy Rights</h2>
 
-<p>Under California Civil Code sections 1798.83-1798.84, California residents are entitled to request information regarding the disclosure of your personal information to third parties for those third parties’ direct marketing purposes.  California residents can make such a request by writing to us at the following address: 3466 Date Drive, #1222, Rancho Cordova, CA  95670.</p>
+<p>Under California Civil Code sections 1798.83-1798.84, California residents are entitled to request information regarding the disclosure of your personal information to third parties for those third parties' direct marketing purposes.  California residents can make such a request by writing to us at the following address: 3466 Date Drive, #1222, Rancho Cordova, CA  95670.</p>
 
 </div>
