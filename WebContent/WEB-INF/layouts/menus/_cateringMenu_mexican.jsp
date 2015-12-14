@@ -253,7 +253,7 @@
 						Pinto Beans
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="sbeans" value="Refried Beans">
+						<input type="checkbox" name="tbeans" value="Refried Beans">
 						Refried Beans
 					</div>
 				</div>
@@ -272,11 +272,11 @@
 						Mexican rice
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="frice" value="Cilantro rice">
+						<input type="checkbox" name="trice" value="Cilantro rice">
 						Cilantro rice
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="frice" value="Lime rice">
+						<input type="checkbox" name="trice" value="Lime rice">
 						Lime rice
 					</div>
 				</div>
@@ -287,27 +287,27 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Hot Green">
+						<input type="checkbox" name="tsalsa" value="Hot Green">
 						Hot (Green)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Hot Red">
+						<input type="checkbox" name="tsalsa" value="Hot Red">
 						Hot (Red)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Medium Green">
+						<input type="checkbox" name="tsalsa" value="Medium Green">
 						Medium (Green)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Medium Red">
+						<input type="checkbox" name="tsalsa" value="Medium Red">
 						Medium (Red)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Mild Green">
+						<input type="checkbox" name="tsalsa" value="Mild Green">
 						Mild (Green)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Mild Red">
+						<input type="checkbox" name="tsalsa" value="Mild Red">
 						Mild (Red)
 					</div>
 				</div>
@@ -318,14 +318,14 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="bcheese" value="Jack and Cheddar"> Jack and Cheddar
+						<input type="checkbox" name="tcheese" value="Jack and Cheddar"> Jack and Cheddar
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="bcheese" value="Monterey Jack">
+						<input type="checkbox" name="tcheese" value="Monterey Jack">
 						Monterey Jack
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="bcheese" value="Mexican Cheese/Queso Fresco">
+						<input type="checkbox" name="tcheese" value="Mexican Cheese/Queso Fresco">
 						Mexican Cheese/Queso Fresco
 					</div>
 				</div>
@@ -457,7 +457,7 @@
 						Pinto Beans
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="sbeans" value="Refried Beans">
+						<input type="checkbox" name="bbeans" value="Refried Beans">
 						Refried Beans
 					</div>
 				</div>
@@ -476,11 +476,11 @@
 						Mexican rice
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="frice" value="Cilantro rice">
+						<input type="checkbox" name="brice" value="Cilantro rice">
 						Cilantro rice
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="frice" value="Lime rice">
+						<input type="checkbox" name="brice" value="Lime rice">
 						Lime rice
 					</div>
 				</div>
@@ -491,27 +491,27 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Hot Green">
+						<input type="checkbox" name="bsalsa" value="Hot Green">
 						Hot (Green)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Hot Red">
+						<input type="checkbox" name="bsalsa" value="Hot Red">
 						Hot (Red)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Medium Green">
+						<input type="checkbox" name="bsalsa" value="Medium Green">
 						Medium (Green)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Medium Red">
+						<input type="checkbox" name="bsalsa" value="Medium Red">
 						Medium (Red)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Mild Green">
+						<input type="checkbox" name="bsalsa" value="Mild Green">
 						Mild (Green)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Mild Red">
+						<input type="checkbox" name="bsalsa" value="Mild Red">
 						Mild (Red)
 					</div>
 				</div>
@@ -603,7 +603,7 @@
 			<div class="row">
 				<div class="col-sm-6 col-md-6">
 					<div class="input-group">
-						<input type="radio" name="etype" required="required" disbaled value="Corn">
+						<input type="radio" name="etype" required="required" checked="checked" value="Corn">
 						Corn
 					</div>
 				</div>
@@ -653,7 +653,7 @@
 						Pinto Beans
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="sbeans" value="Refried Beans">
+						<input type="checkbox" name="ebeans" value="Refried Beans">
 						Refried Beans
 					</div>
 				</div>
@@ -672,11 +672,11 @@
 						Mexican rice
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="frice" value="Cilantro rice">
+						<input type="checkbox" name="erice" value="Cilantro rice">
 						Cilantro rice
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="frice" value="Lime rice">
+						<input type="checkbox" name="erice" value="Lime rice">
 						Lime rice
 					</div>
 				</div>
@@ -718,14 +718,14 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="bcheese" value="Jack and Cheddar"> Jack and Cheddar
+						<input type="checkbox" name="echeese" value="Jack and Cheddar"> Jack and Cheddar
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="bcheese" value="Monterey Jack">
+						<input type="checkbox" name="echeese" value="Monterey Jack">
 						Monterey Jack
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="bcheese" value="Mexican Cheese/Queso Fresco">
+						<input type="checkbox" name="echeese" value="Mexican Cheese/Queso Fresco">
 						Mexican Cheese/Queso Fresco
 					</div>
 				</div>
@@ -748,7 +748,7 @@
 						Guacamole
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="ttop" value="Cilantro">
+						<input type="checkbox" name="etop" value="Cilantro">
 						Cilantro
 					</div>
 				</div>
@@ -850,7 +850,7 @@
 						Pinto Beans
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="sbeans" value="Refried Beans">
+						<input type="checkbox" name="fbeans" value="Refried Beans">
 						Refried Beans
 					</div>
 				</div>
@@ -884,27 +884,27 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Hot Green">
+						<input type="checkbox" name="fsalsa" value="Hot Green">
 						Hot (Green)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Hot Red">
+						<input type="checkbox" name="fsalsa" value="Hot Red">
 						Hot (Red)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Medium Green">
+						<input type="checkbox" name="fsalsa" value="Medium Green">
 						Medium (Green)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Medium Red">
+						<input type="checkbox" name="fsalsa" value="Medium Red">
 						Medium (Red)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Mild Green">
+						<input type="checkbox" name="fsalsa" value="Mild Green">
 						Mild (Green)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Mild Red">
+						<input type="checkbox" name="fsalsa" value="Mild Red">
 						Mild (Red)
 					</div>
 				</div>
@@ -915,14 +915,14 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="bcheese" value="Jack and Cheddar"> Jack and Cheddar
+						<input type="checkbox" name="fcheese" value="Jack and Cheddar"> Jack and Cheddar
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="bcheese" value="Monterey Jack">
+						<input type="checkbox" name="fcheese" value="Monterey Jack">
 						Monterey Jack
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="bcheese" value="Mexican Cheese/Queso Fresco">
+						<input type="checkbox" name="fcheese" value="Mexican Cheese/Queso Fresco">
 						Mexican Cheese/Queso Fresco
 					</div>
 				</div>
@@ -1062,11 +1062,11 @@
 						Mexican rice
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="frice" value="Cilantro rice">
+						<input type="checkbox" name="srice" value="Cilantro rice">
 						Cilantro rice
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="frice" value="Lime rice">
+						<input type="checkbox" name="srice" value="Lime rice">
 						Lime rice
 					</div>
 				</div>
@@ -1077,27 +1077,27 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Hot Green">
+						<input type="checkbox" name="ssalsa" value="Hot Green">
 						Hot (Green)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Hot Red">
+						<input type="checkbox" name="ssalsa" value="Hot Red">
 						Hot (Red)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Medium Green">
+						<input type="checkbox" name="ssalsa" value="Medium Green">
 						Medium (Green)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Medium Red">
+						<input type="checkbox" name="ssalsa" value="Medium Red">
 						Medium (Red)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Mild Green">
+						<input type="checkbox" name="ssalsa" value="Mild Green">
 						Mild (Green)
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="esalsa" value="Mild Red">
+						<input type="checkbox" name="ssalsa" value="Mild Red">
 						Mild (Red)
 					</div>
 				</div>
@@ -1108,14 +1108,14 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="checkbox" name="bcheese" value="Jack and Cheddar"> Jack and Cheddar
+						<input type="checkbox" name="scheese" value="Jack and Cheddar"> Jack and Cheddar
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="bcheese" value="Monterey Jack">
+						<input type="checkbox" name="scheese" value="Monterey Jack">
 						Monterey Jack
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="bcheese" value="Mexican Cheese/Queso Fresco">
+						<input type="checkbox" name="scheese" value="Mexican Cheese/Queso Fresco">
 						Mexican Cheese/Queso Fresco
 					</div>
 				</div>
@@ -1138,7 +1138,7 @@
 						Guacamole
 					</div>
 					<div class="input-group">
-						<input type="checkbox" name="ttop" value="Cilantro">
+						<input type="checkbox" name="stop" value="Cilantro">
 						Cilantro
 					</div>
 				</div>
