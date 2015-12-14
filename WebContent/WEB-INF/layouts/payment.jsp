@@ -94,7 +94,7 @@
 									data-amount="${quote.price}" data-currency="USD"
 									data-tax="${tax}" data-number="${quote.id}"
 									data-style="secondary"
-									data-callback="http://www.caterrequest.us/payment/notify"></script>
+									data-callback="http://www.getmesponsor.com/payment/notify"></script>
 							</div>
 							<div class="col-sm-2">
 								<button type="submit" class="btn btn-default">Pay at
