@@ -53,7 +53,7 @@
         //initializeOwl(rtl);
     });
 
-    autoComplete();
+    //autoComplete();
 </script>
 
 <script type="text/javascript">

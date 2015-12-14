@@ -408,7 +408,7 @@ function setInputsWidth(){
 
 // Autocomplete address ------------------------------------------------------------------------------------------------
 
-function autoComplete(){
+/*function autoComplete(){
     if( !$("script[src='assets/js/leaflet.js']").length ){
         var input = document.getElementById('location') ;
         var autocomplete = new google.maps.places.Autocomplete(input, {
@@ -430,7 +430,7 @@ function autoComplete(){
             }
         });
     }
-}
+}*/
 
 // Rating --------------------------------------------------------------------------------------------------------------
 
