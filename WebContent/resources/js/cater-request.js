@@ -104,7 +104,9 @@ function populateAptSuite() {
 	$("span[id=apt_classifier]").replaceWith(
 			"<select class=\"form-control inputs\" name=\"apt_classifier\""
 					+ "id=\"apt_classifier\">"
+					+ "<option value=\"\"></option>"
 					+ "<option value=\"Apt\">Apartment</option>"
+					+ "<option value=\"Building\">Building</option>" 
 					+ "<option value=\"Suite\">Suite</option>" + "</select>");
 }
 
