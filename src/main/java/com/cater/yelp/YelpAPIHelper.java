@@ -100,7 +100,7 @@ public class YelpAPIHelper {
 	 * @param cuisine the cuisine
 	 * @return <tt>String</tt> JSON Response
 	 */
-	public String searchForBusinessesByLocation(String term, String location,
+	private String searchForBusinessesByLocation(String term, String location,
 			String cuisine) {
 		OAuthRequest request = createOAuthRequest(SEARCH_PATH);
 		request.addQuerystringParameter("term", term);
@@ -123,7 +123,7 @@ public class YelpAPIHelper {
 	 *            <tt>String</tt> business ID of the requested business
 	 * @return <tt>String</tt> JSON Response
 	 */
-	public String searchByBusinessId(String businessID) {
+	private String searchByBusinessId(String businessID) {
 		OAuthRequest request = createOAuthRequest(BUSINESS_PATH + "/"
 				+ businessID);
 		return sendRequestAndGetResponse(request);
