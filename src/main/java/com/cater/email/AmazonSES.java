@@ -25,6 +25,8 @@ public class AmazonSES {
 	private static final Logger logger = Logger.getLogger(AmazonSES.class);
 	@Value("${admin.email}")
 	private String ADMIN_EMAIL;
+	@Value("${info.email}")
+	private String INFO_EMAIL_ADDRESS;
 	private final AmazonSimpleEmailServiceClient client;
 
 	/**
@@ -80,7 +82,7 @@ public class AmazonSES {
 			String... toAddresses) throws IOException {
 		// Construct an object to contain the recipient address.
 		Destination destination = new Destination()
-				.withToAddresses(toAddresses);
+				.withToAddresses(toAddresses).withCcAddresses(INFO_EMAIL_ADDRESS);
 		// Create the subject and body of the message.
 		Content subject = new Content().withData(emailSubject);
 		Content htmlBody = new Content().withData(emailBody);
@@ -92,7 +94,7 @@ public class AmazonSES {
 				.withSource(ADMIN_EMAIL).withDestination(destination)
 				.withMessage(message);
 		try {
-			logger.info("Attempting to send an email through Amazon SES by using the AWS SDK for Java...");
+			logger.info("Attempting to send an email through Amazon SES by using the AWS SDK for Java. " + destination.toString());
 			// Send the email.
 			client.sendEmail(request);
 			logger.info("Email sent!");
