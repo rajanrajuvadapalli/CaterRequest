@@ -58,8 +58,8 @@ public class YelpAPIHelper {
 		CUISINE_FILTER_LOOKUP.put("INDIAN_SOUTH", "indpak");
 		CUISINE_FILTER_LOOKUP.put("INDIAN_NORTH", "indpak");
 		CUISINE_FILTER_LOOKUP.put("MEXICAN", "mexican");
-		CUISINE_FILTER_LOOKUP.put("SANDWICH", "indpak");
-		CUISINE_FILTER_LOOKUP.put("THAI", "sandwiches");
+		CUISINE_FILTER_LOOKUP.put("SANDWICH", "sandwiches");
+		CUISINE_FILTER_LOOKUP.put("THAI", "thai");
 		CUISINE_FILTER_LOOKUP.put("PIZZA", "pizza");
 	}
 	/** The service. */
