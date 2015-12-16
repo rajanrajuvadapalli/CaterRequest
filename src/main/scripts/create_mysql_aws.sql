@@ -81,7 +81,7 @@ CREATE TABLE mycaterdb.Menu
 (
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
-	,`data` VARCHAR(50000)  NULL 
+	,`data` VARCHAR(10000)  NULL 
 	,`event_sk` INT NOT NULL 
 	,`cuisine_type` VARCHAR(20) NOT NULL
 	,`comments` VARCHAR(1000) NULL
@@ -106,19 +106,3 @@ CREATE TABLE mycaterdb.Quote
 ALTER TABLE mycaterdb.Quote ADD FOREIGN KEY (menu_sk) REFERENCES mycaterdb.Menu(id);
 -- Create Foreign Key: Quote.restaurant_sk -> Restaurant.id
 ALTER TABLE mycaterdb.Quote ADD FOREIGN KEY (restaurant_sk) REFERENCES mycaterdb.Restaurant(id);
-
-alter table cater4party.Restaurant
-add `deliver_miles` INT NULL
-after `website_url`;
-
-alter table cater4party.Quote
-add `deliver` BIT NOT NULL
-after `price`;
-
-alter table cater4party.Quote
-add `notes` VARCHAR(1000) NULL
-after `status`;
-
-alter table cater4party.Restaurant
-add sales_tax DECIMAL(4,2) NOT NULL
-after `deliver_miles`;
