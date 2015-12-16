@@ -78,11 +78,9 @@ public class AmazonSES {
 	 *      To avoid accidental leakage of your credentials, DO NOT keep
 	 *      the credentials file in your source directory.
 	 */
-	public void sendEmail(String emailSubject, String emailBody,
-			String... toAddresses) throws IOException {
+	public void sendEmail(String emailSubject, String emailBody, String... toAddresses) throws IOException {
 		// Construct an object to contain the recipient address.
-		Destination destination = new Destination()
-				.withToAddresses(toAddresses).withCcAddresses(INFO_EMAIL_ADDRESS);
+		Destination destination = new Destination().withToAddresses(toAddresses).withCcAddresses(INFO_EMAIL_ADDRESS);
 		// Create the subject and body of the message.
 		Content subject = new Content().withData(emailSubject);
 		Content htmlBody = new Content().withData(emailBody);
@@ -90,11 +88,11 @@ public class AmazonSES {
 		// Create a message with the specified subject and body.
 		Message message = new Message().withSubject(subject).withBody(body);
 		// Assemble the email.
-		SendEmailRequest request = new SendEmailRequest()
-				.withSource(ADMIN_EMAIL).withDestination(destination)
+		SendEmailRequest request = new SendEmailRequest().withSource(ADMIN_EMAIL).withDestination(destination)
 				.withMessage(message);
 		try {
-			logger.info("Attempting to send an email through Amazon SES by using the AWS SDK for Java. " + destination.toString());
+			logger.info("Attempting to send an email through Amazon SES by using the AWS SDK for Java. From: "
+					+ request.getSource() + destination.toString());
 			// Send the email.
 			client.sendEmail(request);
 			logger.info("Email sent!");
