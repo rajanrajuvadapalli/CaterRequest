@@ -88,7 +88,7 @@ function populateHearAboutUs() {
 					"<select class=\"form-control inputs\" name=\"hearAboutUs\""
 							+ "id=\"hearAboutUs\" required=\"required\">"
 							+ "<option value=\"\" selected=\"selected\">Choose one...</option>"
-							+ "<option value=\"family_friend\">Family or Friend/option>"
+							+ "<option value=\"family_friend\">Family or Friend</option>"
 							+ "<option value=\"google\">Google Search</option>"
 							+ "<option value=\"online_ad\">Online advertisement</option>"
 							+ "<option value=\"ad\">Advertisement</option>"
