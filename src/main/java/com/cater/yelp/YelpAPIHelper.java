@@ -167,7 +167,7 @@ public class YelpAPIHelper {
 	 * @return the map
 	 * @throws ParseException 
 	 */
-	private Map <Object, Object> queryAPI(YelpAPIHelper yelpApi,
+	private static Map <Object, Object> queryAPI(YelpAPIHelper yelpApi,
 			RestaurantDTO restaurantDTO, String zip) throws ParseException {
 		String restaurantName = restaurantDTO.getRestaurant().getName();
 		String cuisineType = StringUtils.upperCase(StringUtils
@@ -265,7 +265,7 @@ public class YelpAPIHelper {
 	 * @return
 	 * @throws ParseException 
 	 */
-	public Map <Object, Object> getRatings(RestaurantDTO restaurantDTO,
+	public static Map <Object, Object> getRatings(RestaurantDTO restaurantDTO,
 			String zipCode) throws ParseException {
 		YelpAPIHelper yelpApi = new YelpAPIHelper(CONSUMER_KEY,
 				CONSUMER_SECRET, TOKEN, TOKEN_SECRET);

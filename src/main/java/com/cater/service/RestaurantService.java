@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.cater.Environment;
 import com.cater.aws.s3.AmazonS3;
 import com.cater.constants.Roles;
 import com.cater.dao.QuoteDAO;
@@ -51,9 +52,6 @@ public class RestaurantService {
 	/** The sms helper. */
 	@Autowired
 	private SMSHelper smsHelper;
-	/** The yelp helper. */
-	@Autowired
-	private YelpAPIHelper yelpHelper;
 	/** The amazons3. */
 	@Autowired
 	private AmazonS3 amazons3;
@@ -251,7 +249,11 @@ public class RestaurantService {
 				f = new File(imageUrl + fileType);
 				IOUtils.copy(multipartFile.getInputStream(),
 						FileUtils.openOutputStream(f, false));
-				amazons3.upload(f);
+				if(Environment.isProd() || Environment.isUat()) {
+					amazons3.upload(f);
+				}else {
+					logger.debug("LOCAL ENVIRONMENT: Not saving profile pic to cloud.");
+				}
 				FileUtils.deleteQuietly(f);
 			}
 			catch (Exception e) {
@@ -283,7 +285,7 @@ public class RestaurantService {
 							+ eventLocation.getStreet2() + " "
 							+ eventLocation.getState() + " "
 							+ eventLocation.getZip();
-					Map <Object, Object> yelpReviews = yelpHelper.getRatings(
+					Map <Object, Object> yelpReviews = YelpAPIHelper.getRatings(
 							restaurantDTO, eventAddress);
 					if (MapUtils.isNotEmpty(yelpReviews)) {
 						restaurantDTO.setNumberOfReviews(Integer

@@ -17,6 +17,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.cater.Environment;
 import com.cater.GuestHelper;
 import com.cater.Helper;
 import com.cater.constants.Roles;
@@ -87,6 +88,7 @@ public class LoginController {
 	@RequestMapping(value = { "login" }, method = RequestMethod.GET)
 	public String getLoginPage(ModelMap modelMap, HttpServletRequest request,
 			HttpSession session) {
+		logger.debug("Environment: " + Environment.getInstance().toString());
 		return "t_login";
 	}
 

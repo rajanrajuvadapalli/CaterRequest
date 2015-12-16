@@ -32,8 +32,6 @@ public class SearchController {
 			.getLogger(SearchController.class);
 	@Autowired
 	private RestaurantService restaurantService;
-	@Autowired
-	private YelpAPIHelper yelpHelper;
 
 	/*
 	 * search for list of restaurants
@@ -67,7 +65,7 @@ public class SearchController {
 						.getDistance(address, allRestaurants);
 				if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
 					for (RestaurantDTO restaurantDTO : nearByRestaurants) {
-						Map <?, ?> yelpReviews = yelpHelper.getRatings(
+						Map <?, ?> yelpReviews = YelpAPIHelper.getRatings(
 								restaurantDTO, zipCode);
 						if (MapUtils.isNotEmpty(yelpReviews)) {
 							restaurantDTO.setNumberOfReviews(Helper
