@@ -188,7 +188,7 @@
 							style="color: red">*</span> :
 						</label>
 						<div class="col-sm-6">
-							<input type="text" size="30" name="state" required="required"
+							<input type="text" size="2" name="state" required="required"
 								id="administrative_area_level_1" placeholder="State"
 								class="form-control">
 						</div>
