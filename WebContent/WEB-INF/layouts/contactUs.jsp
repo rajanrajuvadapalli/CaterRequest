@@ -96,7 +96,7 @@
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">To: </label> <span
-							class="col-sm-8 text-muted" align="left">${adminEmail} </span>
+							class="col-sm-8 text-muted" align="left">${infoEmail} </span>
 					</div>
 					<div class="form-group">
 						<label for="subject" class="col-sm-2 control-label">Subject:

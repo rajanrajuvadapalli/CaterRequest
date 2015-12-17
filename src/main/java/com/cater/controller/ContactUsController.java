@@ -34,8 +34,8 @@ public class ContactUsController {
 	/** The customer care contact number. */
 	@Value("${customer.care.contact.number}")
 	private String customerCareContactNumber;
-	@Value("${admin.email}")
-	private String ADMIN_EMAIL;
+	@Value("${info.email}")
+	private String INFO_EMAIL;
 
 	/**
 	 * Contact us.
@@ -46,7 +46,7 @@ public class ContactUsController {
 	 */
 	@RequestMapping(value = { "" }, method = RequestMethod.GET)
 	public String contactUs(HttpServletRequest request, ModelMap modelMap) {
-		modelMap.addAttribute("adminEmail", ADMIN_EMAIL);
+		modelMap.addAttribute("infoEmail", INFO_EMAIL);
 		return "t_contactUs";
 	}
 
@@ -80,7 +80,7 @@ public class ContactUsController {
 					+ customerCareContactNumber);
 			modelMap.addAttribute("errors", errors);
 		}
-		modelMap.addAttribute("adminEmail", ADMIN_EMAIL);
+		modelMap.addAttribute("infoEmail", INFO_EMAIL);
 		return "t_contactUs";
 	}
 }
