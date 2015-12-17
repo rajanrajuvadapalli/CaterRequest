@@ -88,13 +88,24 @@
 								<!-- <img
 										src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png"
 										alt="PayPal" /> -->
-								<script async="async"
-									src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=PX5RV8W8STFCY"
-									data-button="paynow" data-name="${e.name}"
-									data-amount="${quote.price}" data-currency="USD"
-									data-tax="${tax}" data-number="${quote.id}"
-									data-style="secondary"
-									data-callback="http://www.getmesponsor.com/payment/notify"></script>
+								<c:if test="${sessionScope.env.isProd()}">
+									<script async="async"
+										src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=PX5RV8W8STFCY"
+										data-button="paynow" data-name="${e.name}"
+										data-amount="${quote.price}" data-currency="USD"
+										data-tax="${tax}" data-number="${quote.id}"
+										data-style="secondary"
+										data-callback="http://www.caterrequest.com/payment/notify"></script>
+								</c:if>
+								<c:if test="${sessionScope.env.isUat()}">
+									<script async="async"
+										src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=PX5RV8W8STFCY"
+										data-button="paynow" data-name="${e.name}"
+										data-amount="${quote.price}" data-currency="USD"
+										data-tax="${tax}" data-number="${quote.id}"
+										data-style="secondary"
+										data-callback="http://www.getmesponsor.com/payment/notify"></script>
+								</c:if>
 							</div>
 							<div class="col-sm-2">
 								<button type="submit" class="btn btn-default">Pay at
