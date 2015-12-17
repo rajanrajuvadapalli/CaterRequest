@@ -57,7 +57,7 @@
 
 					<div class="col-sm-6">
 						<input type="password" size="30" id="currPwd" name="currPwd"
-							class="form-control">
+							class="form-control" autocomplete="off">
 					</div>
 				</div>
 				<div class="form-group">
@@ -66,7 +66,7 @@
 
 					<div class="col-sm-6">
 						<input type="password" size="30" id="newPwd1" name="newPwd1"
-							class="form-control">
+							class="form-control" autocomplete="off">
 					</div>
 				</div>
 				<div class="form-group">
@@ -74,7 +74,7 @@
 						New Password: </label>
 					<div class="col-sm-6">
 						<input type="password" size="30" id="newPwd2" name="newPwd2"
-							class="form-control">
+							class="form-control" autocomplete="off">
 					</div>
 				</div>
 				<div class="form-group">
