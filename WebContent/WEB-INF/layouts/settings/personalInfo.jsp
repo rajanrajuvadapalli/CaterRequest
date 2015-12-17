@@ -79,9 +79,16 @@
 					<div class="form-group">
 						<label for="" class="col-sm-3 control-label"> </label>
 						<div class="col-sm-6">
-							<img
+							<c:if test="${sessionScope.env.isProd()}">
+								<img
+								src="https://s3-us-west-2.amazonaws.com/caterrequest-restaurant-profile-pics/Restaurant_${sessionScope.user.restaurantID}"
+								alt="${sessionScope.user.data.restaurantName}" width="150">
+							</c:if>
+							<c:if test="${sessionScope.env.isUat()}">
+								<img
 								src="https://s3-us-west-2.amazonaws.com/rajrv-caterrequest-profile-pics/Restaurant_${sessionScope.user.restaurantID}"
 								alt="${sessionScope.user.data.restaurantName}" width="150">
+							</c:if>
 							<input type="button" name="changeProfilePicButton"
 								value="Change Pic" class="btn btn-default btn-sm">
 						</div>

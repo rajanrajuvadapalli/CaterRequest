@@ -31,9 +31,17 @@
 								<h3 class="panel-title">${r.restaurant.name}- ${r.distance}</h3>
 							</div>
 							<div class="panel-body">
-								<img width="120px"
+								<c:if test="${sessionScope.env.isProd()}">
+									<img width="120px"
+									src="https://s3-us-west-2.amazonaws.com/caterrequest-restaurant-profile-pics/Restaurant_${r.restaurant.id}"
+									alt=""> 
+								</c:if>
+								<c:if test="${sessionScope.env.isUat()}">
+									<img width="120px"
 									src="https://s3-us-west-2.amazonaws.com/rajrv-caterrequest-profile-pics/Restaurant_${r.restaurant.id}"
-									alt=""> <br />
+									alt=""> 
+								</c:if>	
+								<br />
 								${r.restaurant.address.street1}${r.restaurant.address.street2},${r.restaurant.address.city},${r.restaurant.address.state},${r.restaurant.address.zip}<br />
 								<img src="${r.reviewImage}" width="100" height="20">-
 								${r.numberOfReviews}

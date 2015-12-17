@@ -27,7 +27,6 @@ import com.cater.model.Customer;
 import com.cater.model.Event;
 import com.cater.model.Login;
 import com.cater.model.Restaurant;
-import com.cater.service.CustomerService;
 import com.cater.service.LoginService;
 import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
@@ -49,9 +48,6 @@ public class LoginController {
 	private EmailHelper emailHelper;
 	@Autowired
 	private GuestHelper guestHelper;
-	/** The customer service. */
-	@Autowired
-	private CustomerService customerService;
 	@Autowired
 	private RestaurantService restaurantService;
 
@@ -70,6 +66,7 @@ public class LoginController {
 	public String logout(ModelMap modelMap, HttpServletRequest request,
 			HttpSession session) {
 		session.removeAttribute("user");
+		session.removeAttribute("env");
 		session.invalidate();
 		return "redirect:home";
 	}
@@ -88,6 +85,7 @@ public class LoginController {
 	@RequestMapping(value = { "login" }, method = RequestMethod.GET)
 	public String getLoginPage(ModelMap modelMap, HttpServletRequest request,
 			HttpSession session) {
+		session.setAttribute("env", Environment.getInstance());
 		logger.debug("Environment: " + Environment.getInstance().toString());
 		return "t_login";
 	}

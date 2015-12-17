@@ -27,9 +27,16 @@
 						<c:forEach items="${restaurants}" var="r">
 							<div class="row">
 								<div class="col-sm-2">
+								<c:if test="${sessionScope.env.isProd()}">
+									<img width="120px"
+										src="https://s3-us-west-2.amazonaws.com/caterrequest-restaurant-profile-pics/Restaurant_${r.restaurant.id}"
+										alt="">
+								</c:if>
+								<c:if test="${sessionScope.env.isUat()}">
 									<img width="120px"
 										src="https://s3-us-west-2.amazonaws.com/rajrv-caterrequest-profile-pics/Restaurant_${r.restaurant.id}"
 										alt="">
+								</c:if>
 								</div>
 								<div class="col-sm-4">
 									<br /> <input type="checkbox"
