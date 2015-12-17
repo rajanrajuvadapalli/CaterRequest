@@ -90,7 +90,7 @@
 						</label>
 						<div class="col-sm-6">
 							<input type="password" size="30" name="pwd1" id="pwd1"
-								required="required" placeholder="Password" class="form-control">
+								required="required" placeholder="Password" class="form-control" autocomplete="off">
 						</div>
 					</div>
 					<div class="form-group">
@@ -100,7 +100,7 @@
 						<div class="col-sm-6">
 							<input type="password" size="30" name="pwd2" id="pwd2"
 								required="required" placeholder="Re-enter Password"
-								class="form-control">
+								class="form-control" autocomplete="off">
 						</div>
 					</div>
 					<div class="form-group">
@@ -146,7 +146,7 @@
 						<label for="addressText" class="col-sm-4 control-label"> </label>
 						<div class="col-sm-6" id="locationField">
 							<input id="autocomplete" placeholder="Enter your address"
-								onFocus="geolocate()" type="text" class="form-control">
+								onFocus="geolocate()" type="text" class="form-control" autocomplete="off">
 						</div>
 					</div>
 					<div class="form-group">
