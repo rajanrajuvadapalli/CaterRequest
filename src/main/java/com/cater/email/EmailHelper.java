@@ -32,6 +32,8 @@ public class EmailHelper {
 	/** The admin email. */
 	@Value("${admin.email}")
 	private String ADMIN_EMAIL;
+	@Value("${url}")
+	private String url;
 	/** The amazon ses. */
 	@Autowired
 	private AmazonSES amazonSES;
@@ -59,12 +61,14 @@ public class EmailHelper {
 			File f = new File(EmailHelper.class.getResource(
 					"/email/registrationConfirmation.html").getFile());
 			String emailBody = FileUtils.readFileToString(f);
-			String[] searchList = new String[2];
-			String[] replacementList = new String[2];
+			String[] searchList = new String[3];
+			String[] replacementList = new String[3];
 			searchList[0] = "${USERNAME}";
 			replacementList[0] = username;
 			searchList[1] = "${TOKEN}";
 			replacementList[1] = confirmationToken;
+			searchList[2]="${URL}";
+			replacementList[2] = url;
 			emailBody = StringUtils.replaceEach(emailBody, searchList,
 					replacementList);
 			amazonSES.sendEmail(emailSubject_registrationConfirmation,
@@ -148,8 +152,8 @@ public class EmailHelper {
 			File f = new File(EmailHelper.class.getResource(
 					"/email/notification.html").getFile());
 			String emailBody = FileUtils.readFileToString(f);
-			String[] searchList = new String[8];
-			String[] replacementList = new String[8];
+			String[] searchList = new String[9];
+			String[] replacementList = new String[9];
 			searchList[0] = "${USERNAME}";
 			replacementList[0] = username;
 			searchList[1] = "${STATUS_MESSAGE}";
@@ -169,6 +173,8 @@ public class EmailHelper {
 			searchList[7] = "${COMMENTS}";
 			replacementList[7] = optionalMessage == null ? ""
 					: stringToHtml(optionalMessage.toString());
+			searchList[8]="${URL}";
+			replacementList[8] = url;
 			emailBody = StringUtils.replaceEach(emailBody, searchList,
 					replacementList);
 			String[] toAddresses = new String[] { to };
@@ -196,14 +202,16 @@ public class EmailHelper {
 			File f = new File(EmailHelper.class.getResource(
 					"/email/passwordReset.html").getFile());
 			String emailBody = FileUtils.readFileToString(f);
-			String[] searchList = new String[3];
-			String[] replacementList = new String[3];
+			String[] searchList = new String[4];
+			String[] replacementList = new String[4];
 			searchList[0] = "${USERNAME}";
 			replacementList[0] = toAddress;
 			searchList[1] = "${TEMP_PWD}";
 			replacementList[1] = newPwdRaw;
 			searchList[2] = "${TOKEN}";
 			replacementList[2] = resetToken_URLSafe;
+			searchList[3]="${URL}";
+			replacementList[3] = url;
 			emailBody = StringUtils.replaceEach(emailBody, searchList,
 					replacementList);
 			amazonSES.sendEmail(emailSubject_passwordReset, emailBody,
