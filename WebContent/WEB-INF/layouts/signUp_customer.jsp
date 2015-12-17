@@ -110,10 +110,10 @@
 						<div class="col-sm-6" align="left">
 							<input type="text" size="30" name="phone" required="required"
 								placeholder="Ex.: xxxxxxxxxx" pattern="\d{10}"
-								class="form-control"> &nbsp;<input type="checkbox"
+								class="form-control"><br/>&nbsp;<input type="checkbox"
 								name="smsOk" id="customer"
 								style="-webkit-transform: scale(1.5); -o-transform: scale(1.5); -ms-transform: scale(1.5); -moz-transform: scale(1.5); padding: 10px;">&nbsp;&nbsp;<span
-								id="customer">Send me text alerts <sup>*</sup></span>
+								id="customer">Send me text alerts <span class="glyphicon glyphicon-question-sign" style="color:#00b6e6" data-toggle="tooltip"  title="Carrier charges may apply."></span></span>
 						</div>
 					</div>
 					<div class="form-group" id="customer">
@@ -188,7 +188,7 @@
 							style="color: red">*</span> :
 						</label>
 						<div class="col-sm-6">
-							<input type="text" size="2" name="state" required="required"
+							<input type="text" size="2" maxlength="2" name="state" required="required"
 								id="administrative_area_level_1" placeholder="State"
 								class="form-control">
 						</div>
@@ -211,10 +211,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div align="left" id="customer">
-			<span style="color: gray; font-size: 14px;"><sup>*</sup>carrier
-				charges may apply</span>
 		</div>
 	</form>
 </div>
