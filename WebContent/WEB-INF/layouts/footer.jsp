@@ -21,7 +21,7 @@
 								<i class="icon-3x icon icon-circle icon-stack-base tw"></i> <i
 								class="icon-3x icon icon-twitter" style="color: #fff"></i>
 						</span>
-						</a> <a href="#" target="_blank"> <span class="icon-stack icon-3x">
+						</a> <!-- <a href="#" target="_blank"> <span class="icon-stack icon-3x">
 								<i class="icon-3x icon icon-circle icon-stack-base food"></i> <i
 								class="icon-3x icon icon-food" style="color: #fff"></i>
 						</span>
@@ -29,7 +29,7 @@
 								<i class="icon-3x icon icon-circle icon-stack-base inst"></i> <i
 								class="icon-3x icon icon-instagram" style="color: #fff"></i>
 						</span>
-						</a>
+						</a> -->
 					</section>
 				</div>
 				<div class="menu-container center">

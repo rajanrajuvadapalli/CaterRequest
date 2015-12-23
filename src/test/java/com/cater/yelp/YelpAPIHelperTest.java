@@ -15,6 +15,7 @@ import org.junit.Test;
 import com.cater.maps.RestaurantDTO;
 import com.cater.model.Address;
 import com.cater.model.Restaurant;
+import com.cater.model.RestaurantBranch;
 
 /**
  * Description: 
@@ -47,8 +48,10 @@ public class YelpAPIHelperTest {
 		restaurant.setCuisineType("INDIAN_SOUTH");
 		Address address = new Address();
 		address.setZip(zipCode);
-		restaurant.setAddress(address);
-		restaurantDTO.setRestaurant(restaurant);
+		RestaurantBranch branch = new RestaurantBranch();
+		branch.setAddress(address);
+		branch.setRestaurant(restaurant);
+		restaurantDTO.setBranch(branch);
 		Map <Object, Object> response = YelpAPIHelper.getRatings(restaurantDTO, zipCode);
 		assertNotNull(response);
 		assertEquals(

@@ -9,11 +9,12 @@ import com.cater.constants.Roles;
 import com.cater.dao.AddressDAO;
 import com.cater.dao.CustomerDAO;
 import com.cater.dao.LoginDAO;
-import com.cater.dao.RestaurantDAO;
+import com.cater.dao.RestaurantBranchDAO;
 import com.cater.model.Address;
 import com.cater.model.Customer;
 import com.cater.model.Login;
 import com.cater.model.Restaurant;
+import com.cater.model.RestaurantBranch;
 import com.cater.ui.data.RegistrationData;
 
 /**
@@ -23,15 +24,25 @@ import com.cater.ui.data.RegistrationData;
  */
 @Component
 public class RegisterService {
+	/** The login dao. */
 	@Autowired
 	private LoginDAO loginDAO;
+	/** The address dao. */
 	@Autowired
 	private AddressDAO addressDAO;
+	/** The customer dao. */
 	@Autowired
 	private CustomerDAO customerDAO;
+	/** The restaurant branch dao. */
 	@Autowired
-	private RestaurantDAO restaurantDAO;
+	private RestaurantBranchDAO restaurantBranchDAO;
 
+	/**
+	 * Determine user role.
+	 *
+	 * @param data the data
+	 * @return the roles
+	 */
 	private Roles determineUserRole(RegistrationData data) {
 		if (StringUtils.isNotBlank(data.getRestaurantName())) {
 			return Roles.RESTAURANT;
@@ -39,6 +50,12 @@ public class RegisterService {
 		return Roles.CUSTOMER;
 	}
 
+	/**
+	 * Register.
+	 *
+	 * @param data the data
+	 * @return the login
+	 */
 	public Login register(RegistrationData data) {
 		Roles role = determineUserRole(data);
 		Login login = saveLoginData(data, role);
@@ -47,6 +64,12 @@ public class RegisterService {
 		return login;
 	}
 
+	/**
+	 * Save address data.
+	 *
+	 * @param data the data
+	 * @return the address
+	 */
 	private Address saveAddressData(RegistrationData data) {
 		Address address = new Address();
 		address.setStreet1(data.getStreet1());
@@ -60,6 +83,13 @@ public class RegisterService {
 		return address;
 	}
 
+	/**
+	 * Save login data.
+	 *
+	 * @param data the data
+	 * @param role the role
+	 * @return the login
+	 */
 	public Login saveLoginData(RegistrationData data, Roles role) {
 		Login login = new Login();
 		login.setUsername(data.getEmail());
@@ -70,6 +100,14 @@ public class RegisterService {
 		return login;
 	}
 
+	/**
+	 * Save user data.
+	 *
+	 * @param data the data
+	 * @param role the role
+	 * @param login the login
+	 * @param address the address
+	 */
 	private void saveUserData(RegistrationData data, Roles role, Login login,
 			Address address) {
 		if (Roles.CUSTOMER == role) {
@@ -85,20 +123,47 @@ public class RegisterService {
 		else if (Roles.RESTAURANT == role) {
 			Restaurant restaurant = new Restaurant();
 			restaurant.setName(data.getRestaurantName());
-			restaurant.setAddress(address);
 			restaurant.setLogin(login);
-			restaurant.setContactNumber(data.getPhone());
-			restaurant.setContactEmail(data.getEmail());
 			restaurant.setCuisineType(data.getCuisineType());
 			restaurant.setWebsiteUrl(data.getUrl());
-			restaurant.setDeliverMiles(Helper.stringToInteger(data
-					.getDeliverMiles()));
 			restaurant.setAboutUs(data.getAboutUs());
-			restaurant.setSalesTax(data.getSalesTax());
-			restaurantDAO.saveOrUpdate(restaurant);
+			RestaurantBranch branch = new RestaurantBranch();
+			branch.setAddress(address);
+			branch.setContactNumber(data.getPhone());
+			branch.setContactEmail(data.getEmail());
+			branch.setDeliverMiles(Helper.stringToInteger(data
+					.getDeliverMiles()));
+			branch.setSalesTax(data.getSalesTax());
+			branch.setRestaurant(restaurant);
+			restaurantBranchDAO.saveOrUpdateBranch(branch);
 		}
 	}
 
+	/**
+	 * Save new restaurant branch.
+	 *
+	 * @param data the data
+	 * @param restaurant the restaurant
+	 * @return true, if successful
+	 */
+	public boolean saveNewRestaurantBranch(RegistrationData data,
+			Restaurant restaurant) {
+		Address address = saveAddressData(data);
+		RestaurantBranch branch = new RestaurantBranch();
+		branch.setAddress(address);
+		branch.setContactNumber(data.getPhone());
+		branch.setContactEmail(data.getEmail());
+		branch.setDeliverMiles(Helper.stringToInteger(data.getDeliverMiles()));
+		branch.setSalesTax(data.getSalesTax());
+		branch.setRestaurant(restaurant);
+		return restaurantBranchDAO.saveOrUpdateBranch(branch);
+	}
+
+	/**
+	 * Activate user.
+	 *
+	 * @param login the login
+	 */
 	public void activateUser(Login login) {
 		login.setActive(true);
 		loginDAO.update(Login.class, login);

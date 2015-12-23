@@ -165,14 +165,15 @@ public class YelpAPIHelper {
 	 * @param restaurantDTO the restaurant dto
 	 * @param zip the zip
 	 * @return the map
-	 * @throws ParseException 
+	 * @throws ParseException the parse exception
 	 */
 	private static Map <Object, Object> queryAPI(YelpAPIHelper yelpApi,
 			RestaurantDTO restaurantDTO, String zip) throws ParseException {
-		String restaurantName = restaurantDTO.getRestaurant().getName();
-		String cuisineType = StringUtils.upperCase(StringUtils
-				.defaultString(restaurantDTO.getRestaurant().getCuisineType()),
-				Locale.US);
+		String restaurantName = restaurantDTO.getBranch().getRestaurant()
+				.getName();
+		String cuisineType = StringUtils.upperCase(
+				StringUtils.defaultString(restaurantDTO.getBranch()
+						.getRestaurant().getCuisineType()), Locale.US);
 		String yelpCuisineFilter = cuisineType;
 		if (StringUtils.isNotBlank(cuisineType)
 				&& CUISINE_FILTER_LOOKUP.containsKey(cuisineType)) {
@@ -201,9 +202,9 @@ public class YelpAPIHelper {
 						.toString();
 				if (StringUtils.equalsIgnoreCase(restaurantName,
 						(String) firstBusiness.get("name"))
-						&& StringUtils.equalsIgnoreCase(postalCode,
-								restaurantDTO.getRestaurant().getAddress()
-										.getZip())) {
+						&& StringUtils
+								.equalsIgnoreCase(postalCode, restaurantDTO
+										.getBranch().getAddress().getZip())) {
 					if (firstBusiness.get("id") != null
 							|| org.springframework.util.StringUtils
 									.isEmpty(firstBusiness.get("id"))) {
@@ -246,6 +247,7 @@ public class YelpAPIHelper {
 	 * @param restaurantDTO the restaurant dto
 	 * @param zipCode the zip code
 	 * @return the ratings
+	 * @throws ParseException the parse exception
 	 */
 	/*
 	 * private static class YelpAPICLI {

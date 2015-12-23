@@ -28,6 +28,7 @@ import com.cater.model.Event;
 import com.cater.model.Login;
 import com.cater.model.Quote;
 import com.cater.model.Restaurant;
+import com.cater.model.RestaurantBranch;
 import com.google.common.collect.Maps;
 import com.twilio.sdk.TwilioRestException;
 
@@ -40,6 +41,7 @@ import com.twilio.sdk.TwilioRestException;
 public class SMSHelper {
 	/** The Constant logger. */
 	private static final Logger logger = Logger.getLogger(SMSHelper.class);
+	/** The url. */
 	@Value("${url}")
 	private String url;
 	/** The twilio sms. */
@@ -103,11 +105,11 @@ public class SMSHelper {
 		}
 		try {
 			Event event = quote.getMenu().getEvent();
-			Restaurant restaurant = quote.getRestaurant();
+			Restaurant restaurant = quote.getRestaurantBranch().getRestaurant();
 			Customer customer = event.getCustomer();
-			String to = role == Roles.RESTAURANT ? restaurant
+			String to = role == Roles.RESTAURANT ? quote.getRestaurantBranch()
 					.getContactNumber() : customer.getContactNumber();
-			if (canWeSendSms(role, restaurant, customer)) {
+			if (canWeSendSms(role, quote.getRestaurantBranch(), customer)) {
 				StringBuilder messageBuilder = new StringBuilder();
 				//new StringBuilder(messages.get(
 				//role).get(QuoteStatus.valueOf(quote.getStatus())));
@@ -143,16 +145,16 @@ public class SMSHelper {
 	 * Can we send sms.
 	 *
 	 * @param role the role
-	 * @param restaurant the restaurant
+	 * @param branch the branch
 	 * @param customer the customer
 	 * @return true, if successful
 	 */
-	private boolean canWeSendSms(Roles role, Restaurant restaurant,
+	private boolean canWeSendSms(Roles role, RestaurantBranch branch,
 			Customer customer) {
 		// If restaurant, check if the number is verified.
 		// If customer, check if they enrolled for getting notifications, then check if the number is verified.
 		if (role == Roles.RESTAURANT) {
-			return restaurant.isNumberVerified();
+			return branch.isNumberVerified();
 		}
 		else if (role == Roles.CUSTOMER && customer.isSmsOk()) {
 			return customer.isNumberVerified();

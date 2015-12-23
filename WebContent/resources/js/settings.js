@@ -1,21 +1,14 @@
 $('document').ready(function() {
-	$('button[id=pvc]').click(validatePhoneVerificationCode);
-	$('button[id=send-pvc]').click(sendPhoneVerificationCode);
+	// $('button[id=pvc]').click(validatePhoneVerificationCode);
+	// $('button[id=send-pvc]').click(sendPhoneVerificationCode);
 });
 
-function validateProfileForm() {
+function validateProfileFormCustomer() {
 	var customerName = $("input[name=name]");
 	if (customerName.val() != null && customerName.val().length > 0
 			&& customerName.val().length < 4) {
 		alert("Name must at least be 4 characters");
 		customerName.focus();
-		return false;
-	}
-	var restaurantName = $("input[name=restaurantName]");
-	if (restaurantName.val() != null && restaurantName.val().length > 0
-			&& restaurantName.val().length < 4) {
-		alert("Restaurant name must at least be 4 characters");
-		restaurantName.focus();
 		return false;
 	}
 	var stateElement = $("select[name=state]");
@@ -34,6 +27,51 @@ function validateProfileForm() {
 	// console.log("CurrentAddress: " + CurrentAddress);
 	if (LastAddressValidated != CurrentAddress) {
 		$("input[name=LastAddressValidated]").val(CurrentAddress);
+		var geocoder = new google.maps.Geocoder();
+		geocoder.geocode({
+			'address' : CurrentAddress
+		}, addressCallbackFunction);
+		return false;
+	}
+	return true;
+}
+
+function validateProfileFormRestaurant() {
+	var restaurantName = $("input[name=restaurantName]");
+	if (restaurantName.val() != null && restaurantName.val().length > 0
+			&& restaurantName.val().length < 4) {
+		alert("Restaurant name must at least be 4 characters");
+		restaurantName.focus();
+		return false;
+	}
+	return true;
+}
+
+function validateProfileFormBranch(branchFormId) {
+	var stateElement = $("#profileFormBranch" + branchFormId
+			+ " select[name=state]");
+	var state = stateElement.val();
+	if (state != null && state.length != 2) {
+		alert("State code should be 2 characters");
+		stateElement.focus();
+		return false;
+	}
+	var st1 = $("#profileFormBranch" + branchFormId + " input[name=street1]")
+			.val();
+	var city = $("#profileFormBranch" + branchFormId + " input[name=city]")
+			.val();
+	var zip = $("#profileFormBranch" + branchFormId + " input[name=zip]").val();
+	var CurrentAddress = st1 + ", " + city + ", " + state + ", " + zip;
+	var LastAddressValidated = $(
+			"#profileFormBranch" + branchFormId
+					+ " input[name=LastAddressValidated]").val();
+	// console.log("LastAddressValidated: " + LastAddressValidated);
+	// console.log("CurrentAddress: " + CurrentAddress);
+	if (LastAddressValidated != CurrentAddress) {
+		$(
+				"#profileFormBranch" + branchFormId
+						+ " input[name=LastAddressValidated]").val(
+				CurrentAddress);
 		var geocoder = new google.maps.Geocoder();
 		geocoder.geocode({
 			'address' : CurrentAddress
@@ -73,11 +111,14 @@ function validateAccountSettingsForm() {
 	return true;
 }
 
-function validatePhoneVerificationCode() {
+function validatePhoneVerificationCode(branchID) {
 	var loginID = $('input[id=pvc-loginID]').val();
 	var role = $('input[id=pvc-role]').val();
 	var contextPath = $('input[id=contextpath]').val();
 	var url = contextPath + "/rest/phone/verify/" + loginID + "/" + role;
+	if (branchID != "") {
+		url = url + "?restaurantBranchID=" + branchID;
+	}
 	var pvc = $('input[id=pvc]').val();
 	/*
 	 * console.log("login ID: " + loginID); console.log("Role: " + role);
@@ -110,12 +151,15 @@ function validatePhoneVerificationCode() {
 	return false;
 }
 
-function sendPhoneVerificationCode() {
+function sendPhoneVerificationCode(branchID) {
 	var loginID = $('input[id=pvc-loginID]').val();
 	var role = $('input[id=pvc-role]').val();
 	var contextPath = $('input[id=contextpath]').val();
 	var url = contextPath + "/rest/phone/verify/sendcode/" + loginID + "/"
 			+ role;
+	if (branchID != "") {
+		url = url + "?restaurantBranchID=" + branchID;
+	}
 	var phoneNumber = $('input[id=phone]').val();
 	/*
 	 * console.log("login ID: " + loginID); console.log("Role: " + role);

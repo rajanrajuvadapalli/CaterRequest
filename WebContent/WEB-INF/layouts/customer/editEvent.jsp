@@ -165,7 +165,7 @@
 					<div class="col-sm-6">
 						<input type="text" size="30" maxlength="50" name="street1"
 							required="required" placeholder="Street" class="form-control"
-							value="${event.location.street1}">
+							value="${event.location.street1} ${event.location.street2}">
 					</div>
 				</div>
 

@@ -22,13 +22,15 @@ import com.cater.Environment;
 import com.cater.aws.s3.AmazonS3;
 import com.cater.constants.Roles;
 import com.cater.dao.QuoteDAO;
+import com.cater.dao.RestaurantBranchDAO;
 import com.cater.dao.RestaurantDAO;
 import com.cater.email.EmailHelper;
 import com.cater.maps.MapsHelper;
 import com.cater.maps.RestaurantDTO;
 import com.cater.model.Quote;
 import com.cater.model.Restaurant;
-import com.cater.model.RestaurantSearch;
+import com.cater.model.RestaurantBranch;
+import com.cater.model.RestaurantBranchSearchDTO;
 import com.cater.twilio.sms.SMSHelper;
 import com.cater.yelp.YelpAPIHelper;
 
@@ -43,6 +45,9 @@ public class RestaurantService {
 	/** The restaurant dao. */
 	@Autowired
 	private RestaurantDAO restaurantDAO;
+	/** The restaurant branch dao. */
+	@Autowired
+	private RestaurantBranchDAO restaurantBranchDAO;
 	/** The quote dao. */
 	@Autowired
 	private QuoteDAO quoteDAO;
@@ -71,12 +76,24 @@ public class RestaurantService {
 	}
 
 	/**
+	 * Delete restaurant branch.
+	 *
+	 * @param branch the branch
+	 */
+	public void deleteRestaurantBranch(RestaurantBranch branch) {
+		restaurantBranchDAO.deleteRestaurantBranch(branch);
+	}
+
+	/**
 	 * Fetch all restaurants.
 	 *
 	 * @return the list
 	 */
-	public List <Restaurant> fetchAllRestaurants() {
+	/*public List <Restaurant> fetchAllRestaurants() {
 		return restaurantDAO.fetchAllRestaurants();
+	}*/
+	public List <RestaurantBranch> fetchAllRestaurantBranches() {
+		return restaurantBranchDAO.fetchAllRestaurantBranches();
 	}
 
 	/**
@@ -85,8 +102,11 @@ public class RestaurantService {
 	 * @param cuisine the cuisine
 	 * @return the sets the
 	 */
-	public Set <Restaurant> fetchRestaurantsOfType(String cuisine) {
+	/*public Set <Restaurant> fetchRestaurantsOfType(String cuisine) {
 		return restaurantDAO.fetchRestaurantsOfType(cuisine);
+	}*/
+	public Set <RestaurantBranch> fetchRestaurantBranchesOfType(String cuisine) {
+		return restaurantBranchDAO.fetchRestaurantBranchesOfType(cuisine);
 	}
 
 	/**
@@ -97,6 +117,17 @@ public class RestaurantService {
 	 */
 	public Restaurant findRestaurantWithId(Integer restaurantId) {
 		return restaurantDAO.findById(restaurantId);
+	}
+
+	/**
+	 * Find restaurant branch with id.
+	 *
+	 * @param restaurantBranchID the restaurant branch id
+	 * @return the restaurant branch
+	 */
+	public RestaurantBranch findRestaurantBranchWithId(
+			Integer restaurantBranchID) {
+		return restaurantBranchDAO.findById(restaurantBranchID);
 	}
 
 	/**
@@ -132,16 +163,21 @@ public class RestaurantService {
 		return quoteDAO.findByEventId(eventId);
 	}
 
+	/*public Quote findQuoteWithRestaurantIdAndMenuId(Integer restaurantId,
+			Integer menuId) {
+		return quoteDAO.findByRestaurantIdAndMenuId(restaurantId, menuId);
+	}*/
 	/**
-	 * Find quote with restaurant id and menu id.
+	 * Find quote with restaurant branch id and menu id.
 	 *
-	 * @param restaurantId the restaurant id
+	 * @param restaurantBranchID the restaurant branch id
 	 * @param menuId the menu id
 	 * @return the quote
 	 */
-	public Quote findQuoteWithRestaurantIdAndMenuId(Integer restaurantId,
-			Integer menuId) {
-		return quoteDAO.findByRestaurantIdAndMenuId(restaurantId, menuId);
+	public Quote findQuoteWithRestaurantBranchIdAndMenuId(
+			Integer restaurantBranchID, Integer menuId) {
+		return quoteDAO.findByRestaurantBranchIdAndMenuId(restaurantBranchID,
+				menuId);
 	}
 
 	/**
@@ -152,6 +188,16 @@ public class RestaurantService {
 	 */
 	public boolean saveOrUpdateQuote(Quote q) {
 		return quoteDAO.saveOrUpdate(q);
+	}
+
+	/**
+	 * Save or update restaurant branch.
+	 *
+	 * @param branch the branch
+	 * @return true, if successful
+	 */
+	public boolean saveOrUpdateRestaurantBranch(RestaurantBranch branch) {
+		return restaurantBranchDAO.saveOrUpdateBranch(branch);
 	}
 
 	/**
@@ -189,25 +235,27 @@ public class RestaurantService {
 	}
 
 	/**
-	 * Search for restaurants by user name.
+	 * Search for restaurant branches by user name.
 	 *
 	 * @param name the name
 	 * @return the list
 	 */
-	public List <RestaurantSearch> searchForRestaurantsByUserName(String name) {
-		return restaurantDAO.searchRestaurantsByUserName(name);
+	public List <RestaurantBranchSearchDTO> searchForRestaurantBranchesByUserName(
+			String name) {
+		return restaurantBranchDAO.searchRestaurantBranchesByUserName(name);
 	}
 
 	/**
-	 * Search for restaurants by date range.
+	 * Search for restaurant branches by date range.
 	 *
 	 * @param fromDate the from date
 	 * @param toDate the to date
 	 * @return the list
 	 */
-	public List <RestaurantSearch> searchForRestaurantsByDateRange(
+	public List <RestaurantBranchSearchDTO> searchForRestaurantBranchesByDateRange(
 			Date fromDate, Date toDate) {
-		return restaurantDAO.searchRestaurantsByDateRange(fromDate, toDate);
+		return restaurantBranchDAO.searchRestaurantBranchesByDateRange(
+				fromDate, toDate);
 	}
 
 	/**
@@ -249,9 +297,10 @@ public class RestaurantService {
 				f = new File(imageUrl + fileType);
 				IOUtils.copy(multipartFile.getInputStream(),
 						FileUtils.openOutputStream(f, false));
-				if(Environment.isProd() || Environment.isUat()) {
+				if (Environment.isProd() || Environment.isUat()) {
 					amazons3.upload(f);
-				}else {
+				}
+				else {
 					logger.debug("LOCAL ENVIRONMENT: Not saving profile pic to cloud.");
 				}
 				FileUtils.deleteQuietly(f);
@@ -270,23 +319,24 @@ public class RestaurantService {
 	 * Gets the nearby yelp reviews.
 	 *
 	 * @param eventLocation the event location
-	 * @param restaurants the restaurants
+	 * @param branches the branches
 	 * @return the nearby yelp reviews
 	 */
 	public List <RestaurantDTO> getNearbyYelpReviews(
-			com.cater.model.Address eventLocation, Set <Restaurant> restaurants) {
+			com.cater.model.Address eventLocation,
+			Set <RestaurantBranch> branches) {
 		List <RestaurantDTO> nearByRestaurants = null;
 		try {
 			nearByRestaurants = new MapsHelper().getDistance(eventLocation,
-					restaurants);
+					branches);
 			if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
 				for (RestaurantDTO restaurantDTO : nearByRestaurants) {
 					String eventAddress = eventLocation.getStreet1() + " "
 							+ eventLocation.getStreet2() + " "
 							+ eventLocation.getState() + " "
 							+ eventLocation.getZip();
-					Map <Object, Object> yelpReviews = YelpAPIHelper.getRatings(
-							restaurantDTO, eventAddress);
+					Map <Object, Object> yelpReviews = YelpAPIHelper
+							.getRatings(restaurantDTO, eventAddress);
 					if (MapUtils.isNotEmpty(yelpReviews)) {
 						restaurantDTO.setNumberOfReviews(Integer
 								.parseInt(yelpReviews.get("noOfReviews")
