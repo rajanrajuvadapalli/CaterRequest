@@ -30,6 +30,8 @@ import com.cater.model.RestaurantBranch;
 public class RestaurantDAOImplTest extends AbstractDAOImplTest {
 	@Autowired
 	private RestaurantDAO fixture;
+	@Autowired
+	private RestaurantBranchDAO restaurantBranchDAO;
 
 	private Restaurant createSampleRestaurant() {
 		Restaurant restaurant = new Restaurant();
@@ -39,6 +41,7 @@ public class RestaurantDAOImplTest extends AbstractDAOImplTest {
 		branch1.setContactNumber("9996663333");
 		branch1.setContactEmail("manager_branch1@gmail.com");
 		branch1.setDeliverMiles(100);
+		branch1.setRestaurant(restaurant);
 		restaurant.getBranches().add(branch1);
 		//second branch
 		RestaurantBranch branch2 = new RestaurantBranch();
@@ -46,6 +49,7 @@ public class RestaurantDAOImplTest extends AbstractDAOImplTest {
 		branch2.setContactNumber("1111111111");
 		branch2.setContactEmail("manager_branch2@gmail.com");
 		branch2.setDeliverMiles(100);
+		branch2.setRestaurant(restaurant);
 		restaurant.getBranches().add(branch2);
 		//
 		restaurant.setName("Chipotle");
@@ -130,7 +134,7 @@ public class RestaurantDAOImplTest extends AbstractDAOImplTest {
 		RestaurantBranch branch1 = persistedRestaurant.getBranches().get(0);
 		assertEquals(branch1.getContactNumber(), "9996663333");
 		assertFalse(branch1.isNumberVerified());
-		assertEquals(branch1.getContactEmail(), "manager@gmail.com");
+		assertEquals(branch1.getContactEmail(), "manager_branch1@gmail.com");
 		assertEquals(branch1.getDeliverMiles(), new Integer(100));
 		assertNotNull(branch1.getAddress());
 		assertEquals(branch1.getAddress().getStreet1(), "1 Main St");
@@ -139,10 +143,10 @@ public class RestaurantDAOImplTest extends AbstractDAOImplTest {
 		assertEquals(branch1.getAddress().getState(), "CA");
 		assertEquals(branch1.getAddress().getZip(), "958250000");
 		//branch 2
-		RestaurantBranch branch2 = persistedRestaurant.getBranches().get(0);
-		assertEquals(branch2.getContactNumber(), "9996663333");
+		RestaurantBranch branch2 = persistedRestaurant.getBranches().get(1);
+		assertEquals(branch2.getContactNumber(), "1111111111");
 		assertFalse(branch2.isNumberVerified());
-		assertEquals(branch2.getContactEmail(), "manager@gmail.com");
+		assertEquals(branch2.getContactEmail(), "manager_branch2@gmail.com");
 		assertEquals(branch2.getDeliverMiles(), new Integer(100));
 		assertNotNull(branch2.getAddress());
 		assertEquals(branch2.getAddress().getStreet1(), "2 Main St");
@@ -159,7 +163,9 @@ public class RestaurantDAOImplTest extends AbstractDAOImplTest {
 		List <RestaurantBranch> branches = restaurant.getBranches();
 		branches.get(0).setNumberVerified(false);
 		branches.get(1).setNumberVerified(false);
-		fixture.saveOrUpdate(restaurant);
+		restaurantBranchDAO.saveOrUpdateBranch(branches.get(0));
+		restaurantBranchDAO.saveOrUpdateBranch(branches.get(1));
+		//fixture.saveOrUpdate(restaurant);
 		String cuisine = "MEXICAN";
 		Set <Restaurant> restaurants = fixture.fetchRestaurantsOfType(cuisine);
 		//we should not get any, since the restaurant is not verified
