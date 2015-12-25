@@ -175,9 +175,11 @@
 								pattern="^\d{5}(\-\d{4})?$" class="form-control">
 						</div>
 					</div>
-					<div class="col-sm-6">
-						<button type="submit" class="btn btn-default"
+					<div class="col-sm-6 col-sm-offset-4">
+						<button type="submit" class="btn btn-default pull-left"
 							name="add-branch-button">Add</button>
+						<button type="button" class="btn btn-default pull-right"
+							onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">Cancel</button>
 					</div>
 				</div>
 			</div>
