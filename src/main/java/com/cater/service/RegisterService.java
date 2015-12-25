@@ -155,6 +155,7 @@ public class RegisterService {
 		branch.setContactEmail(data.getEmail());
 		branch.setDeliverMiles(Helper.stringToInteger(data.getDeliverMiles()));
 		branch.setSalesTax(data.getSalesTax());
+		branch.setNumberVerified(data.isNumberVerified());
 		branch.setRestaurant(restaurant);
 		return restaurantBranchDAO.saveOrUpdateBranch(branch);
 	}

@@ -9,6 +9,7 @@ import javax.annotation.Nullable;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -246,6 +247,21 @@ public class RestaurantDashboardController {
 		data.setState(StringUtils.defaultString(request.getParameter("state")));
 		data.setZip(StringUtils.defaultString(request.getParameter("zip")));
 		data.setSalesTax(Helper.stringToFloat(request.getParameter("sales")));
+		//If the restaurant uses the same phone number used on other branch and if it was verified,
+		//set the current branch verification flag to true.
+		boolean isPhoneAlreadyVerified = false;
+		if (CollectionUtils.isNotEmpty(restaurant.getBranches())) {
+			for (RestaurantBranch existingBranch : restaurant.getBranches()) {
+				if (existingBranch != null
+						&& StringUtils.equalsIgnoreCase(
+								existingBranch.getContactNumber(),
+								data.getPhone())) {
+					isPhoneAlreadyVerified = isPhoneAlreadyVerified
+							|| existingBranch.isNumberVerified();
+				}
+			}
+		}
+		data.setNumberVerified(isPhoneAlreadyVerified);
 		logger.debug("Add branch form data: " + data.toString());
 		registerService.saveNewRestaurantBranch(data, restaurant);
 		List <String> successMessages = Lists.newArrayList();

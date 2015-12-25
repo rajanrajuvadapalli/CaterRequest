@@ -178,6 +178,8 @@ public class RegistrationData {
 		builder.append("password: ").append(password).append(NEW_LINE);
 		builder.append("phone: ").append(phone).append(NEW_LINE);
 		builder.append("isSmsOk: ").append(smsOk).append(NEW_LINE);
+		builder.append("isNumberVerified: ").append(isNumberVerified())
+				.append(NEW_LINE);
 		builder.append("street1: ").append(street1).append(NEW_LINE);
 		builder.append("street2: ").append(street2).append(NEW_LINE);
 		builder.append("city: ").append(city).append(NEW_LINE);
