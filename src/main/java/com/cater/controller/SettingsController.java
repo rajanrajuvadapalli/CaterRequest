@@ -279,6 +279,7 @@ public class SettingsController {
 			Integer restaurantBranchID = Helper.stringToInteger(request
 					.getParameter("restaurantBranchID"));
 			RegistrationData data = new RegistrationData();
+			data.setSalesTax(Helper.stringToFloat(request.getParameter("sales")));
 			data.setPhone(StringUtils.defaultString(request
 					.getParameter("phone")));
 			data.setEmail(StringUtils.defaultString(request

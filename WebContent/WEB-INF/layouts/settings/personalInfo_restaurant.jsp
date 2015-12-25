@@ -53,6 +53,11 @@
 </div>
 
 <div class="col-sm-10 col-sm-offset-1">
+	<div align="right">
+		<a href="${pageContext.request.contextPath}/restaurant/addBranch"
+			role="button" class="btn btn-default">Add a branch</a>
+	</div>
+	<br />
 	<div class="panel panel-info">
 		<div class="panel-heading">
 			<h3 class="panel-title">Personal Info</h3>
@@ -206,6 +211,11 @@
 							href="#section-branch-${bLoop.index+1}" class="icon icon-home">Branch
 								${bLoop.index+1}</a></li>
 					</c:forEach>
+					<c:if test="${!empty sessionScope.user.restaurant.branches}">
+						<li class="pull-left"><a
+							href="${pageContext.request.contextPath}/restaurant/addBranch"><span
+								class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></li>
+					</c:if>
 				</ul>
 			</nav>
 			<hr class="style-1 no-gap">
@@ -221,6 +231,16 @@
 							<input type="text" hidden="hidden" name="restaurantBranchID"
 								value="${b.id}">
 
+							<div class="form-group">
+								<label for="sales" class="col-sm-3 control-label">Sales
+									Tax<span style="color: red">*</span>:
+								</label>
+								<div class="col-sm-6" align="left">
+									<input type="text" size="30" name="sales" required="required"
+										placeholder="Ex: x.xx" pattern="[0-9]+([\.|,][0-9]+)?"
+										class="form-control" value="${b.salesTax}">
+								</div>
+							</div>
 							<div class="form-group">
 								<label for="email" class="col-sm-3 control-label">Contact
 									Email<span style="color: red">*</span>:
@@ -350,18 +370,20 @@
 									<button type="submit" class="btn btn-default">Update</button>
 								</div>
 							</div>
-						</form>
-						<div class="form-group">
-							<label class="col-sm-3 control-label"></label>
-							<div class="col-sm-6" align="left">
-								<a class="popup-with-form" href="#branchDeleteConfirm-${bLoop.index+1}">
-									<button class="btn btn-default">
-										<span class="glyphicon glyphicon-trash"></span>&nbsp;Delete
-										Branch
-									</button>
-								</a>
+							<div class="form-group">
+								<label class="col-sm-3 control-label"></label>
+								<div class="col-sm-6" align="left">
+									<a class="popup-with-form"
+										href="#branchDeleteConfirm-${bLoop.index+1}">
+										<button class="btn btn-default">
+											<span class="glyphicon glyphicon-trash"></span>&nbsp;Delete
+											Branch
+										</button>
+									</a>
+								</div>
 							</div>
-						</div>
+						</form>
+
 						<div class="mfp-hide white-popup-block popupOptions"
 							id="branchDeleteConfirm-${bLoop.index+1}">
 							<form class="form-horizontal" method="POST" id="event-form"
