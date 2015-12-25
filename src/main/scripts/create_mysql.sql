@@ -1,4 +1,3 @@
-
 CREATE TABLE cater4party.Login (
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
@@ -41,22 +40,31 @@ CREATE TABLE cater4party.Restaurant (
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
 	,`name` VARCHAR(50) NOT NULL 
-	,`address_sk` INT NOT NULL 
 	,`login_sk` INT NOT NULL 
-	,`contact_number` VARCHAR(20) NOT NULL
-	,`number_verified` BIT NOT NULL
-	,`contact_email` VARCHAR(50) NOT NULL 
 	,`cuisine_type` VARCHAR(20) NOT NULL 
 	,`website_url` VARCHAR(50)  NULL
-	,`deliver_miles` INT NOT NULL
-	,`sales_tax` DECIMAL(4,2) NOT NULL
 	,`about_us` VARCHAR(5000) NULL
 	,`create_ts` DATETIME NOT NULL 
 	,`lupd_ts` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
--- Create Foreign Key: Restaurant.address_sk -> Address.id
-ALTER TABLE cater4party.Restaurant ADD FOREIGN KEY (address_sk) REFERENCES cater4party.Address(id);
 -- Create Foreign Key: Restaurant.login_sk -> Login.id
 ALTER TABLE cater4party.Restaurant ADD FOREIGN KEY (login_sk) REFERENCES cater4party.Login(id);
+
+CREATE TABLE cater4party.Restaurant_branch (
+	`id` INT NOT NULL AUTO_INCREMENT
+	,PRIMARY KEY (id)
+	,`restaurant_sk` INT NOT NULL
+	,`address_sk` INT NOT NULL
+	,`contact_number` VARCHAR(20) NOT NULL
+	,`number_verified` BIT NOT NULL
+	,`contact_email` VARCHAR(50) NOT NULL
+	,`deliver_miles` INT NOT NULL
+	,`sales_tax` DECIMAL(4,2) NOT NULL
+	,`create_ts` DATETIME NOT NULL
+	,`lupd_ts` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
+-- Create Foreign Key: Restaurant_branch.restaurant_sk -> Restaurant.id
+ALTER TABLE cater4party.Restaurant_branch ADD FOREIGN KEY (restaurant_sk) REFERENCES cater4party.Restaurant(id);
+-- Create Foreign Key: Restaurant_branch.address_sk -> Address.id
+ALTER TABLE cater4party.Restaurant_branch ADD FOREIGN KEY (address_sk) REFERENCES cater4party.Address(id);
 
 CREATE TABLE cater4party.Event
 (
@@ -96,7 +104,7 @@ CREATE TABLE cater4party.Quote
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
 	,`menu_sk` INT NOT NULL 
-	,`restaurant_sk` INT NOT NULL 
+	,`restaurant_branch_sk` INT NOT NULL 
 	,`price` DECIMAL(10,2)  NULL
 	,`deliver` BIT NOT NULL
 	,`status` VARCHAR(30)  NULL 
@@ -106,4 +114,5 @@ CREATE TABLE cater4party.Quote
 -- Create Foreign Key: Quote.menu_sk -> Menu.id
 ALTER TABLE cater4party.Quote ADD FOREIGN KEY (menu_sk) REFERENCES cater4party.Menu(id);
 -- Create Foreign Key: Quote.restaurant_sk -> Restaurant.id
-ALTER TABLE cater4party.Quote ADD FOREIGN KEY (restaurant_sk) REFERENCES cater4party.Restaurant(id);
+ALTER TABLE cater4party.Quote ADD FOREIGN KEY (restaurant_branch_sk) REFERENCES cater4party.Restaurant_branch(id);
+

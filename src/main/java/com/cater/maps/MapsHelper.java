@@ -8,34 +8,34 @@ import org.springframework.stereotype.Component;
 
 import com.beust.jcommander.internal.Lists;
 import com.cater.model.Address;
-import com.cater.model.Restaurant;
+import com.cater.model.RestaurantBranch;
 import com.google.common.collect.Sets;
 import com.google.maps.DistanceMatrixApi;
 import com.google.maps.GeoApiContext;
 import com.google.maps.model.DistanceMatrix;
 import com.google.maps.model.Unit;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class MapsHelper.
  */
 @Component
 public class MapsHelper {
+
 	/**
 	 * Gets the distance.
 	 *
 	 * @param address the address
-	 * @param restaurants the restaurants
+	 * @param branches the branches
 	 * @return the distance
 	 */
 	public List <RestaurantDTO> getDistance(Address address,
-			Set <Restaurant> restaurants) {
+			Set <RestaurantBranch> branches) {
 		GeoApiContext context = new GeoApiContext()
 				.setApiKey("AIzaSyAlobAYE25Q2m62_DX3wc1AMimO2Xr-WHc");
 		String[] origin = { address.getAddressString() };
 		List <RestaurantDTO> nearByRestaurants = Lists.newArrayList();
-		for (Restaurant rest : restaurants) {
-			String[] destination = { rest.getAddress().getAddressString() };
+		for (RestaurantBranch branch : branches) {
+			String[] destination = { branch.getAddress().getAddressString() };
 			try {
 				DistanceMatrix dm = DistanceMatrixApi
 						.getDistanceMatrix(context, origin, destination)
@@ -47,7 +47,7 @@ public class MapsHelper {
 						RestaurantDTO restaurantDTO = new RestaurantDTO();
 						restaurantDTO.setDistance(distance.toString());
 						restaurantDTO.setDistanceInMeters(distanceInMeters);
-						restaurantDTO.setRestaurant(rest);
+						restaurantDTO.setBranch(branch);
 						nearByRestaurants.add(restaurantDTO);
 					}
 				}
@@ -55,7 +55,6 @@ public class MapsHelper {
 					RestaurantDTO restaurantDTO = new RestaurantDTO();
 					restaurantDTO.setDistance("0");
 					restaurantDTO.setDistanceInMeters(new Long(0));
-					restaurantDTO.setRestaurant(rest);
 					nearByRestaurants.add(restaurantDTO);
 				}
 			}
@@ -63,7 +62,6 @@ public class MapsHelper {
 				RestaurantDTO restaurantDTO = new RestaurantDTO();
 				restaurantDTO.setDistance("0");
 				restaurantDTO.setDistanceInMeters(new Long(0));
-				restaurantDTO.setRestaurant(rest);
 				nearByRestaurants.add(restaurantDTO);
 			}
 		} // end of iter
@@ -78,19 +76,18 @@ public class MapsHelper {
 	 * Gets the distance.
 	 *
 	 * @param address the address
-	 * @param restaurant the restaurant
+	 * @param branch the branch
 	 * @return the distance
 	 */
-	public RestaurantDTO getDistance(Address address, Restaurant restaurant) {
-		Set <Restaurant> restaurants = Sets.newHashSet(restaurant);
-		List <RestaurantDTO> restaurantDTOs = getDistance(address, restaurants);
+	public RestaurantDTO getDistance(Address address, RestaurantBranch branch) {
+		Set <RestaurantBranch> branches = Sets.newHashSet(branch);
+		List <RestaurantDTO> restaurantDTOs = getDistance(address, branches);
 		if (CollectionUtils.isNotEmpty(restaurantDTOs)) {
 			return restaurantDTOs.iterator().next();
 		}
 		RestaurantDTO restaurantDTO = new RestaurantDTO();
 		restaurantDTO.setDistance("0");
 		restaurantDTO.setDistanceInMeters(new Long(0));
-		restaurantDTO.setRestaurant(restaurant);
 		return restaurantDTO;
 	}
 }

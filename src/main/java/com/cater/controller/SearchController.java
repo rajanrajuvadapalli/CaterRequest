@@ -21,18 +21,32 @@ import com.cater.Helper;
 import com.cater.maps.MapsHelper;
 import com.cater.maps.RestaurantDTO;
 import com.cater.model.Address;
-import com.cater.model.Restaurant;
+import com.cater.model.RestaurantBranch;
 import com.cater.service.RestaurantService;
 import com.cater.yelp.YelpAPIHelper;
 import com.google.common.collect.Sets;
 
+/**
+ * The Class SearchController.
+ */
 @Controller
 public class SearchController {
+	/** The Constant logger. */
 	private static final Logger logger = Logger
 			.getLogger(SearchController.class);
+	/** The restaurant service. */
 	@Autowired
 	private RestaurantService restaurantService;
 
+	/**
+	 * Search restaurants.
+	 *
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param session the session
+	 * @return the string
+	 * @throws Exception the exception
+	 */
 	/*
 	 * search for list of restaurants
 	 * 
@@ -47,24 +61,24 @@ public class SearchController {
 				.getParameter("cuisineType"));
 		if (StringUtils.isNotBlank(zipCode)
 				&& StringUtils.isNotBlank(cuisineType)) {
-			Set <Restaurant> allRestaurants = null;
+			Set <RestaurantBranch> allRestaurantBranches = null;
 			if (StringUtils.isBlank(cuisineType)) {
-				allRestaurants = Sets.newHashSet(restaurantService
-						.fetchAllRestaurants());
+				allRestaurantBranches = Sets.newHashSet(restaurantService
+						.fetchAllRestaurantBranches());
 			}
 			else {
-				allRestaurants = restaurantService
-						.fetchRestaurantsOfType(cuisineType);
+				allRestaurantBranches = restaurantService
+						.fetchRestaurantBranchesOfType(cuisineType);
 				modelMap.put("cuisine", cuisineType);
 			}
-			if (CollectionUtils.isNotEmpty(allRestaurants)) {
+			if (CollectionUtils.isNotEmpty(allRestaurantBranches)) {
 				MapsHelper mapsHelper = new MapsHelper();
 				Address address = new Address();
 				address.setZip(zipCode);
-				List <RestaurantDTO> nearByRestaurants = mapsHelper
-						.getDistance(address, allRestaurants);
-				if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
-					for (RestaurantDTO restaurantDTO : nearByRestaurants) {
+				List <RestaurantDTO> nearByRestaurantBranches = mapsHelper
+						.getDistance(address, allRestaurantBranches);
+				if (CollectionUtils.isNotEmpty(nearByRestaurantBranches)) {
+					for (RestaurantDTO restaurantDTO : nearByRestaurantBranches) {
 						Map <?, ?> yelpReviews = YelpAPIHelper.getRatings(
 								restaurantDTO, zipCode);
 						if (MapUtils.isNotEmpty(yelpReviews)) {
@@ -75,11 +89,12 @@ public class SearchController {
 									.get("ratings"));
 							logger.debug(String.format(
 									"Restaurant %s has %s yelp ratings.",
-									restaurantDTO.getRestaurant().getName(),
+									restaurantDTO.getBranch().getRestaurant()
+											.getName(),
 									yelpReviews.get("ratings")));
 						}
 					}
-					modelMap.put("restaurants", nearByRestaurants);
+					modelMap.put("restaurants", nearByRestaurantBranches);
 				}
 			}
 			modelMap.put("eventLocation", zipCode);

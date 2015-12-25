@@ -26,7 +26,7 @@ import com.cater.maps.RestaurantDTO;
 import com.cater.model.Customer;
 import com.cater.model.Event;
 import com.cater.model.Login;
-import com.cater.model.Restaurant;
+import com.cater.model.RestaurantBranch;
 import com.cater.service.LoginService;
 import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
@@ -132,13 +132,13 @@ public class LoginController {
 				user.setName(c.getName());
 				String cuisine = (String) httpSession
 						.getAttribute("cuisineType");
-				Set <Restaurant> restaurants = restaurantService
-						.fetchRestaurantsOfType(cuisine);
+				Set <RestaurantBranch> branches = restaurantService
+						.fetchRestaurantBranchesOfType(cuisine);
 				Event e = (Event) httpSession.getAttribute("event");
 				List <RestaurantDTO> nearByRestaurants = restaurantService
-						.getNearbyYelpReviews(e.getLocation(), restaurants);
+						.getNearbyYelpReviews(e.getLocation(), branches);
 				if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
-					modelMap.put("restaurants", nearByRestaurants);
+					modelMap.put("restaurantsDto", nearByRestaurants);
 				}
 			}
 			else {

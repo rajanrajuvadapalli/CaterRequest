@@ -26,6 +26,7 @@ import com.cater.email.EmailHelper;
 import com.cater.maps.RestaurantDTO;
 import com.cater.model.Login;
 import com.cater.model.Restaurant;
+import com.cater.model.RestaurantBranch;
 import com.cater.service.CustomerService;
 import com.cater.service.LoginService;
 import com.cater.service.RegisterService;
@@ -279,14 +280,14 @@ public class RegistrationController {
 			Integer menuId = Integer.parseInt(tokens[5]);
 			httpSession.setAttribute("menuId", menuId);
 			com.cater.model.Menu menu = customerService.findMenuWithId(menuId);
-			Set <Restaurant> restaurants = restaurantService
-					.fetchRestaurantsOfType(cuisine);
+			Set <RestaurantBranch> branches = restaurantService
+					.fetchRestaurantBranchesOfType(cuisine);
 			//modelMap.put("restaurants", restaurants);
 			List <RestaurantDTO> nearByRestaurants = restaurantService
 					.getNearbyYelpReviews(menu.getEvent().getLocation(),
-							restaurants);
+							branches);
 			if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
-				modelMap.put("restaurants", nearByRestaurants);
+				modelMap.put("restaurantsDto", nearByRestaurants);
 			}
 			modelMap.put("eventLocation", menu.getEvent().getLocation());
 			Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
