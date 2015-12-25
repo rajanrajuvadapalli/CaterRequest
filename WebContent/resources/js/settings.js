@@ -30,10 +30,57 @@ function validateProfileFormCustomer() {
 		var geocoder = new google.maps.Geocoder();
 		geocoder.geocode({
 			'address' : CurrentAddress
-		}, addressCallbackFunction);
+		}, addressCallbackFunctionForCustomer);
 		return false;
 	}
 	return true;
+}
+
+function addressCallbackFunctionForCustomer(results, status) {
+	$("div[id=addressnotok]").addClass('hidden');
+	if (status == google.maps.GeocoderStatus.OK) {
+		var address = results[0].formatted_address;
+		console.log("Validated address: " + address);
+		numCommas = address.match(/,/g).length;
+		if (numCommas >= 3) { // Address is valid, Continue to submit form
+			var st1 = $("input[name=street1]").val();
+			var city = $("input[name=city]").val();
+			var state = $("select[name=state]").val();
+			var zip = $("input[name=zip]").val();
+			var CurrentAddress = st1 + ", " + city + ", " + state + ", " + zip;
+			var values = address.split(', ');
+			var validatedStreet = values[0];
+			var validatedCity = values[1];
+			var state_zip = values[2].split('');
+			var validatedState = state_zip[0];
+			var validatedZip = state_zip[1];
+			var LastAddressValidated = validatedStreet + ", " + validatedCity
+					+ ", " + validatedState + ", " + validatedZip;
+			$("input[name=LastAddressValidated]").val(LastAddressValidated);
+			$("input[name=street1]").val(validatedStreet);
+			$("input[name=city]").val(validatedCity);
+			$("input[name=state]").val(validatedState);
+			$("input[name=zip]").val(validatedZip);
+			if (LastAddressValidated != CurrentAddress) {
+				alert("\nAddress you entered: " + CurrentAddress
+						+ "\nWe updated it to: " + LastAddressValidated
+						+ "\nPlease verify and make changes if necessary.");
+			} else {
+				alert("Address is verified and accepted.");
+			}
+
+			var customerName = $("input[name=name]").val();
+			if (customerName != null) {
+				$("form[id=customer-register-form]").submit();
+			} else {
+				$("form[id=restaurant-register-form]").submit();
+			}
+
+			return;
+		}
+	} // Address is invalid
+	$("input[name=LastAddressValidated]").val("");
+	$("div[id=addressnotok]").removeClass('hidden');
 }
 
 function validateProfileFormRestaurant() {
@@ -48,6 +95,11 @@ function validateProfileFormRestaurant() {
 }
 
 function validateProfileFormBranch(branchFormId) {
+	//Temporarily removed address validation for branch.
+	//Come up with a new strategy.
+}
+
+/*function validateProfileFormBranch(branchFormId) {
 	var stateElement = $("#profileFormBranch" + branchFormId
 			+ " select[name=state]");
 	var state = stateElement.val();
@@ -73,13 +125,117 @@ function validateProfileFormBranch(branchFormId) {
 						+ " input[name=LastAddressValidated]").val(
 				CurrentAddress);
 		var geocoder = new google.maps.Geocoder();
-		geocoder.geocode({
-			'address' : CurrentAddress
-		}, addressCallbackFunction);
+		geocoder
+				.geocode(
+						{
+							'address' : CurrentAddress
+						},
+						function(branchFormId) {
+							return (function(results, status) {
+								$(
+										"#profileFormBranch" + branchFormId
+												+ "div[id=addressnotok]")
+										.addClass('hidden');
+								if (status == google.maps.GeocoderStatus.OK) {
+									var address = results[0].formatted_address;
+									console
+											.log("Validated address: "
+													+ address);
+									numCommas = address.match(/,/g).length;
+									if (numCommas >= 3) { // Address is valid,
+															// Continue to
+															// submit form
+										var st1 = $(
+												"#profileFormBranch"
+														+ branchFormId
+														+ "input[name=street1]")
+												.val();
+										var city = $(
+												"#profileFormBranch"
+														+ branchFormId
+														+ "input[name=city]")
+												.val();
+										var state = $(
+												"#profileFormBranch"
+														+ branchFormId
+														+ "select[name=state]")
+												.val();
+										var zip = $(
+												"#profileFormBranch"
+														+ branchFormId
+														+ "input[name=zip]")
+												.val();
+										var CurrentAddress = st1 + ", " + city
+												+ ", " + state + ", " + zip;
+										var values = address.split(', ');
+										var validatedStreet = values[0];
+										var validatedCity = values[1];
+										var state_zip = values[2].split(' ');
+										var validatedState = state_zip[0];
+										var validatedZip = state_zip[1];
+										var LastAddressValidated = validatedStreet
+												+ ", "
+												+ validatedCity
+												+ ", "
+												+ validatedState
+												+ ", "
+												+ validatedZip;
+										$(
+												"#profileFormBranch"
+														+ branchFormId
+														+ "input[name=LastAddressValidated]")
+												.val(LastAddressValidated);
+										$(
+												"#profileFormBranch"
+														+ branchFormId
+														+ "input[name=street1]")
+												.val(validatedStreet);
+										$(
+												"#profileFormBranch"
+														+ branchFormId
+														+ "input[name=city]")
+												.val(validatedCity);
+										$(
+												"#profileFormBranch"
+														+ branchFormId
+														+ "input[name=state]")
+												.val(validatedState);
+										$(
+												"#profileFormBranch"
+														+ branchFormId
+														+ "input[name=zip]")
+												.val(validatedZip);
+										if (LastAddressValidated != CurrentAddress) {
+											alert("\nAddress you entered: "
+													+ CurrentAddress
+													+ "\nWe updated it to: "
+													+ LastAddressValidated
+													+ "\nPlease verify and make changes if necessary.");
+										} else {
+											alert("Address is verified and accepted.");
+										}
+
+										$("#profileFormBranch" + branchFormId)
+												.submit();
+
+										return;
+									}
+								} // Address is invalid
+								$(
+										"#profileFormBranch"
+												+ branchFormId
+												+ "input[name=LastAddressValidated]")
+										.val("");
+								$(
+										"#profileFormBranch" + branchFormId
+												+ "div[id=addressnotok]")
+										.removeClass('hidden');
+							});
+						}(branchFormId));
 		return false;
 	}
 	return true;
-}
+}*/
 
 function validateAccountSettingsForm() {
 	var currPwd = $("input[name=currPwd]");

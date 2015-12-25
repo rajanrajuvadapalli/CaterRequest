@@ -143,6 +143,7 @@ public class PersonalSettingsService {
 			if (restaurantBranchID != null
 					&& (branch = restaurantBranchDAO
 							.findById(restaurantBranchID)) != null) {
+				branch.setSalesTax(data.getSalesTax());
 				branch.setDeliverMiles(Helper.stringToInteger(data
 						.getDeliverMiles()));
 				//If the phone number is changed, the restaurant has to re-verify the number.
