@@ -83,7 +83,14 @@ public class QuoteDAO extends DataAccessObject {
 		}
 	}
 
-	/*@SuppressWarnings("unchecked")
+	/**
+	 * Find by restaurant id and menu id.
+	 *
+	 * @param restaurantId the restaurant id
+	 * @param menuId the menu id
+	 * @return the quote
+	 */
+	@SuppressWarnings("unchecked")
 	public Quote findByRestaurantIdAndMenuId(Integer restaurantId,
 			Integer menuId) {
 		if (restaurantId == null || menuId == null) {
@@ -107,43 +114,6 @@ public class QuoteDAO extends DataAccessObject {
 		catch (HibernateException he) {
 			logger.error(
 					"Exception occurred while Finding Quote with restaurnat and menu ID.",
-					he);
-			throw he;
-		}
-		return null;
-	}*/
-
-	/**
-	 * Find by restaurant branch id and menu id.
-	 *
-	 * @param restaurantBranchID the restaurant branch id
-	 * @param menuId the menu id
-	 * @return the quote
-	 */
-	@SuppressWarnings("unchecked")
-	public Quote findByRestaurantBranchIdAndMenuId(Integer restaurantBranchID,
-			Integer menuId) {
-		if (restaurantBranchID == null || menuId == null) {
-			return null;
-		}
-		logger.debug("Finding Quote with restaurant branch ID: "
-				+ restaurantBranchID + ", menu ID: " + menuId);
-		try {
-			Session session = getSessionFactory().getCurrentSession();
-			List <Quote> list = (List <Quote>) session
-					.createCriteria(Quote.class, "quote")
-					.createAlias("quote.restaurantBranch", "branch",
-							JoinType.LEFT_OUTER_JOIN)
-					.createAlias("quote.menu", "menu", JoinType.LEFT_OUTER_JOIN)
-					.add(Restrictions.eq("branch.id", restaurantBranchID))
-					.add(Restrictions.eq("menu.id", menuId)).list();
-			if (CollectionUtils.isNotEmpty(list)) {
-				return list.iterator().next();
-			}
-		}
-		catch (HibernateException he) {
-			logger.error(
-					"Exception occurred while Finding Quote with restaurant branch ID and menu ID.",
 					he);
 			throw he;
 		}

@@ -1,21 +1,21 @@
 package com.cater.maps;
 
-import com.cater.model.RestaurantBranch;
+import com.cater.model.Restaurant;
 
 public class RestaurantDTO {
-	private RestaurantBranch branch;
+	private Restaurant restaurant;
 	private Object reviewImage;
 	private String distance;
 	private int numberOfReviews;
 	private Long distanceInMeters;
 	private Object websiteUrl;
 
-	public RestaurantBranch getBranch() {
-		return branch;
+	public Restaurant getRestaurant() {
+		return restaurant;
 	}
 
-	public void setBranch(RestaurantBranch branch) {
-		this.branch = branch;
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
 	}
 
 	public Object getReviewImage() {

@@ -59,7 +59,7 @@ public class Address extends TimestampEntity implements Serializable {
 	}
 
 	public void setStreet1(String street1) {
-		this.street1 = StringUtils.trim(StringUtils.defaultString(street1));
+		this.street1 = street1;
 	}
 
 	public String getStreet2() {
@@ -67,7 +67,7 @@ public class Address extends TimestampEntity implements Serializable {
 	}
 
 	public void setStreet2(String street2) {
-		this.street2 = StringUtils.trim(StringUtils.defaultString(street2));
+		this.street2 = street2;
 	}
 
 	public String getCity() {
@@ -75,7 +75,7 @@ public class Address extends TimestampEntity implements Serializable {
 	}
 
 	public void setCity(String city) {
-		this.city = StringUtils.trim(StringUtils.defaultString(city));
+		this.city = city;
 	}
 
 	public String getState() {
@@ -83,7 +83,7 @@ public class Address extends TimestampEntity implements Serializable {
 	}
 
 	public void setState(String state) {
-		this.state = StringUtils.trim(StringUtils.defaultString(state));
+		this.state = state;
 	}
 
 	public String getZip() {
@@ -91,7 +91,7 @@ public class Address extends TimestampEntity implements Serializable {
 	}
 
 	public void setZip(String zip) {
-		this.zip = StringUtils.trim(StringUtils.defaultString(zip));
+		this.zip = zip;
 	}
 
 	@Override

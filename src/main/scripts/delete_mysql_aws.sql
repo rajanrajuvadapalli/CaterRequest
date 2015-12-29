@@ -3,7 +3,6 @@ DELETE FROM mycaterdb.Menu;
 DELETE FROM mycaterdb.Event;
 DELETE FROM mycaterdb.Customer;
 DELETE FROM mycaterdb.Restaurant;
-DELETE FROM mycaterdb.Restaurant_branch;
 DELETE FROM mycaterdb.Address;
 DELETE FROM mycaterdb.Login;
 
@@ -12,6 +11,5 @@ DROP TABLE mycaterdb.Menu;
 DROP TABLE mycaterdb.Event;
 DROP TABLE mycaterdb.Customer;
 DROP TABLE mycaterdb.Restaurant;
-DROP TABLE mycaterdb.Restaurant_branch;
 DROP TABLE mycaterdb.Address;
 DROP TABLE mycaterdb.Login;

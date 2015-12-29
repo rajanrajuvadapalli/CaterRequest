@@ -62,7 +62,7 @@
 			</div>
 			<div class="panel-body">
 				<c:choose>
-					<c:when test="${empty rbsDtos}">
+					<c:when test="${empty restaurants}">
 					There are no restaurants registered.
 				</c:when>
 					<c:otherwise>
@@ -79,19 +79,19 @@
 									<th>Price</th>
 									<th>Event Time</th>
 								</tr>
-								<c:forEach items="${rbsDtos}" var="rbsDto">
+								<c:forEach items="${restaurants}" var="r">
 									<tr>
-										<td>${rbsDto.emailId}</td>
-										<td>${rbsDto.restaurantName}</td>
-										<td>${rbsDto.restaurantNumber}</td>
-										<td>${rbsDto.rStreet1}${rbsDto.rStreet2},${rbsDto.rCity},${rbsDto.rState},
-											${rbsDto.rZip}</td>
-										<td>${rbsDto.eventName}</td>
-										<td>${rbsDto.eventStreet1}${rbsDto.eventStreet1},${rbsDto.eventCity},
-											${rbsDto.eventState}, ${rbsDto.eventZip}</td>
-										<td>${rbsDto.status}</td>
-										<td>${rbsDto.price}</td>
-										<td>${rbsDto.date_time}</td>
+										<td>${r.emailId}</td>
+										<td>${r.restaurantName}</td>
+										<td>${r.restaurantNumber}</td>
+										<td>${r.rStreet1}${r.rStreet2},${r.rCity},${r.rState},
+											${r.rZip}</td>
+										<td>${r.eventName}</td>
+										<td>${r.eventStreet1}${r.eventStreet1},${r.eventCity},
+											${r.eventState}, ${r.eventZip}</td>
+										<td>${r.status}</td>
+										<td>${r.price}</td>
+										<td>${r.date_time}</td>
 									</tr>
 								</c:forEach>
 							</table>

@@ -79,14 +79,9 @@
 															<c:forEach items="${q2c.value}" var="q">
 																<div>
 																	<label><input type="radio"
-																		value="${q.restaurantBranch.id}" required="required"
+																		value="${q.restaurant.id}" required="required"
 																		data-quote-id="${q.id}" name="restaurantName">
-																		${q.restaurantBranch.restaurant.name} <!-- If there are multiple branches for a restaurant, display the city -->
-																		<c:if
-																			test="${q.restaurantBranch.restaurant.branches.size() > 1}">
-																			(<span data-toggle="tooltip"
-																				title="${q.restaurantBranch.address.getAddressString()}">${q.restaurantBranch.address.city}</span>)
-																		</c:if> <c:if test="${not empty q.price}">
+																		${q.restaurant.name} <c:if test="${not empty q.price}">
 																		</c:if></label>
 																</div>
 																<c:choose>
@@ -123,7 +118,7 @@
 									<c:forEach items="${q2c.value}" var="q">
 										<c:if
 											test="${ (q.status eq 'APPROVED') || (q.status eq 'PAID') }">
-											<b>${q.restaurantBranch.restaurant.name}:</b> &nbsp;
+											<b>${q.restaurant.name}:</b> &nbsp;
 																<fmt:setLocale value="en_US" />
 											<a
 												href="${pageContext.request.contextPath}/menu/view/${q.menu.id}"><b><fmt:formatNumber

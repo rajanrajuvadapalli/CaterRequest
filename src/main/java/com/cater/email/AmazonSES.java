@@ -2,7 +2,6 @@ package com.cater.email;
 
 import java.io.IOException;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -81,11 +80,7 @@ public class AmazonSES {
 	 */
 	public void sendEmail(String emailSubject, String emailBody, String... toAddresses) throws IOException {
 		// Construct an object to contain the recipient address.
-		Destination destination = new Destination()
-				.withToAddresses(toAddresses);
-		if (StringUtils.isNotBlank(INFO_EMAIL_ADDRESS)) {
-			destination = destination.withCcAddresses(INFO_EMAIL_ADDRESS);
-		}
+		Destination destination = new Destination().withToAddresses(toAddresses).withCcAddresses(INFO_EMAIL_ADDRESS);
 		// Create the subject and body of the message.
 		Content subject = new Content().withData(emailSubject);
 		Content htmlBody = new Content().withData(emailBody);

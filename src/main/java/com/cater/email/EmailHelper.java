@@ -143,10 +143,9 @@ public class EmailHelper {
 		}
 		try {
 			Event event = quote.getMenu().getEvent();
-			Restaurant restaurant = quote.getRestaurantBranch().getRestaurant();
+			Restaurant restaurant = quote.getRestaurant();
 			Customer customer = event.getCustomer();
-			String to = role == Roles.RESTAURANT ? quote.getRestaurantBranch()
-					.getContactEmail()
+			String to = role == Roles.RESTAURANT ? restaurant.getContactEmail()
 					: customer.getContactEmail();
 			String username = role == Roles.RESTAURANT ? restaurant.getName()
 					: customer.getName();

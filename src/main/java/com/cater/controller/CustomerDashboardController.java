@@ -37,7 +37,6 @@ import com.cater.model.Event;
 import com.cater.model.Menu;
 import com.cater.model.Quote;
 import com.cater.model.Restaurant;
-import com.cater.model.RestaurantBranch;
 import com.cater.service.CustomerService;
 import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
@@ -136,16 +135,15 @@ public class CustomerDashboardController {
 	private Map <String, List <Quote>> groupQuotesPerCuisine(List <Quote> quotes) {
 		Map <String, List <Quote>> groupedQuotes = Maps.newTreeMap();
 		for (Quote q : quotes) {
-			Restaurant r = q.getRestaurantBranch().getRestaurant();
+			Restaurant r = q.getRestaurant();
 			if (r != null) {
 				String cuisine = r.getCuisineType();
-				List <Quote> groupedQuotesPerCuisine = groupedQuotes
-						.get(cuisine);
-				if (groupedQuotesPerCuisine == null) {
-					groupedQuotesPerCuisine = Lists.newArrayList();
-					groupedQuotes.put(cuisine, groupedQuotesPerCuisine);
+				List <Quote> q2 = groupedQuotes.get(cuisine);
+				if (q2 == null) {
+					q2 = Lists.newArrayList();
+					groupedQuotes.put(cuisine, q2);
 				}
-				groupedQuotesPerCuisine.add(q);
+				q2.add(q);
 			}
 		}
 		return groupedQuotes;
@@ -163,11 +161,13 @@ public class CustomerDashboardController {
 
 	/**
 	 * Creates the event.
-	 *
-	 * @param httpSession            the http session
-	 * @param modelMap            the model map
-	 * @param request            the request
-	 * @param redirectAttributes the redirect attributes
+	 * 
+	 * @param httpSession
+	 *            the http session
+	 * @param modelMap
+	 *            the model map
+	 * @param request
+	 *            the request
 	 * @return the string
 	 */
 	@RequestMapping(value = { "createEvent" }, method = RequestMethod.POST)
@@ -509,12 +509,17 @@ public class CustomerDashboardController {
 
 	/**
 	 * Request quote.
-	 *
-	 * @param httpSession the http session
-	 * @param modelMap the model map
-	 * @param request the request
-	 * @param restaurantBranchIDs the restaurant branch i ds
-	 * @param redirectAttributes the redirect attributes
+	 * 
+	 * @param httpSession
+	 *            the http session
+	 * @param modelMap
+	 *            the model map
+	 * @param request
+	 *            the request
+	 * @param restaurantIds
+	 *            the restaurant ids
+	 * @param redirectAttributes
+	 *            the redirect attributes
 	 * @return the string
 	 */
 	@RequestMapping(value = { "event/requestQuote" }, method = RequestMethod.POST)
@@ -522,7 +527,7 @@ public class CustomerDashboardController {
 			HttpSession httpSession,
 			ModelMap modelMap,
 			HttpServletRequest request,
-			@RequestParam(value = "restaurantBranchID", required = true) String[] restaurantBranchIDs,
+			@RequestParam(value = "restaurantId", required = true) String[] restaurantIds,
 			RedirectAttributes redirectAttributes) {
 		User user = (User) httpSession.getAttribute("user");
 		if (user == null) {
@@ -533,25 +538,19 @@ public class CustomerDashboardController {
 		if (menuId != null) {
 			menuModel = customerService.findMenuWithId(menuId);
 		}
-		List <String> selectedRestaurantBranchNames = Lists.newArrayList();
-		for (String restaurantBranchID : restaurantBranchIDs) {
+		List <String> selectedRestaurantNames = Lists.newArrayList();
+		for (String restaurantId : restaurantIds) {
 			// Find if a quote already exists.
-			Quote quote = restaurantService
-					.findQuoteWithRestaurantBranchIdAndMenuId(
-							Helper.stringToInteger(restaurantBranchID), menuId);
-			RestaurantBranch branch = restaurantService
-					.findRestaurantBranchWithId(Helper
-							.stringToInteger(restaurantBranchID));
-			String branchName = new StringBuilder(branch.getRestaurant()
-					.getName()).append(" [")
-					.append(branch.getAddress().getStreet1()).append("]")
-					.toString();
-			selectedRestaurantBranchNames.add(branchName);
+			Quote quote = restaurantService.findQuoteWithRestaurantIdAndMenuId(
+					Helper.stringToInteger(restaurantId), menuId);
+			Restaurant restaurant = restaurantService
+					.findRestaurantWithId(Helper.stringToInteger(restaurantId));
+			selectedRestaurantNames.add(restaurant.getName());
 			if (quote == null) {
 				quote = new Quote();
 				quote.setStatus(QuoteStatus.CREATED.toString());
 				quote.setMenu(menuModel);
-				quote.setRestaurantBranch(branch);
+				quote.setRestaurant(restaurant);
 				restaurantService.saveOrUpdateQuote(quote);
 				restaurantService.sendNotification(quote, null);
 			}
@@ -562,7 +561,7 @@ public class CustomerDashboardController {
 				.add("Your request for quotes is successfully submitted for '"
 						+ eventName + "'.");
 		successMessages.add("To restaurant(s): "
-				+ StringUtils.join(selectedRestaurantBranchNames, ", "));
+				+ StringUtils.join(selectedRestaurantNames, ", "));
 		redirectAttributes
 				.addFlashAttribute("successMessages", successMessages);
 		//Commented to support browser 'back' button.
@@ -579,7 +578,7 @@ public class CustomerDashboardController {
 	 * @param modelMap            the model map
 	 * @param request            the request
 	 * @param redirectAttributes the redirect attributes
-	 * @param restaurantBranchID the restaurant branch id
+	 * @param restaurantId            the restaurant id
 	 * @param eventId            the event id
 	 * @param quoteId            the quote id
 	 * @return the string
@@ -590,7 +589,7 @@ public class CustomerDashboardController {
 			ModelMap modelMap,
 			HttpServletRequest request,
 			RedirectAttributes redirectAttributes,
-			@RequestParam(value = "restaurantName", required = true) Integer restaurantBranchID,
+			@RequestParam(value = "restaurantName", required = true) Integer restaurantId,
 			@RequestParam(value = "xeventId", required = true) Integer eventId,
 			@RequestParam(value = "xquoteId", required = true) Integer quoteId) {
 		String forward = "redirect:/customer/dashboard";
@@ -598,7 +597,6 @@ public class CustomerDashboardController {
 		if (user == null) {
 			return "t_home";
 		}
-		logger.debug("Confirming the order for quote id " + quoteId);
 		List <String> errors = Lists.newArrayList();
 		redirectAttributes.addFlashAttribute("errors", errors);
 		List <String> successMessages = Lists.newArrayList();
@@ -615,22 +613,17 @@ public class CustomerDashboardController {
 				errors.add("Cannot confirm order with no quotes.");
 			}
 			else {
-				double taxAmount = (quote.getPrice() * quote
-						.getRestaurantBranch().getSalesTax()) / 100;
+				double taxAmount = (quote.getPrice() * quote.getRestaurant()
+						.getSalesTax()) / 100;
 				double totalAmount = quote.getPrice() + taxAmount;
 				modelMap.put("quote", quote);
-				modelMap.put("branch", quote.getRestaurantBranch());
+				modelMap.put("restuarant", quote.getRestaurant());
 				modelMap.put("event", event);
 				modelMap.put("tax", taxAmount);
 				modelMap.put("amount", totalAmount);
+				System.out.println(quote.getId());
 				forward = "t_payment";
-				String branchName = new StringBuilder(quote
-						.getRestaurantBranch().getRestaurant().getName())
-						.append(" [")
-						.append(quote.getRestaurantBranch().getAddress()
-								.getStreet1()).append("]").toString();
-				logger.debug("Confirmed quote submitted by " + branchName
-						+ " for event " + event.getName());
+				System.out.println("" + quote.getRestaurant().getName());
 			}
 		}
 		return forward;
@@ -715,13 +708,6 @@ public class CustomerDashboardController {
 						.add("Congratulations, your order has been placed!");
 			}
 		}
-		return "redirect:/customer/dashboard";
-	}
-
-	@RequestMapping(value = { "makePayment/stripe" }, method = RequestMethod.POST)
-	public String makePaymentStripe(HttpSession httpSession, ModelMap modelMap,
-			HttpServletRequest request, RedirectAttributes redirectAttributes) {
-		//TODO:
 		return "redirect:/customer/dashboard";
 	}
 }

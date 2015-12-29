@@ -9,9 +9,7 @@ import javax.annotation.Nullable;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -23,11 +21,8 @@ import com.cater.Helper;
 import com.cater.constants.QuoteStatus;
 import com.cater.model.Quote;
 import com.cater.model.Restaurant;
-import com.cater.model.RestaurantBranch;
 import com.cater.service.CustomerService;
-import com.cater.service.RegisterService;
 import com.cater.service.RestaurantService;
-import com.cater.ui.data.RegistrationData;
 import com.cater.ui.data.User;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
@@ -40,30 +35,24 @@ import com.google.common.collect.Maps;
 @Controller
 @RequestMapping(value = { "restaurant" })
 public class RestaurantDashboardController {
-	/** The Constant logger. */
-	private static final Logger logger = Logger
-			.getLogger(RestaurantDashboardController.class);
+	/*private static final Logger logger = Logger
+			.getLogger(RestaurantDashboardController.class);*/
 	/** The restaurant service. */
 	@Autowired
 	private RestaurantService restaurantService;
 	/** The customer service. */
 	@Autowired
 	private CustomerService customerService;
-	/** The register service. */
-	@Autowired
-	private RegisterService registerService;
 
 	/**
 	 * Gets the dashboard.
 	 *
 	 * @param modelMap the model map
-	 * @param request the request
 	 * @param session the session
 	 * @return the dashboard
 	 */
 	@RequestMapping(value = { "dashboard" })
-	public String getDashboard(ModelMap modelMap, HttpServletRequest request,
-			HttpSession session) {
+	public String getDashboard(ModelMap modelMap, HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		if (user == null) {
 			return "t_home";
@@ -72,21 +61,21 @@ public class RestaurantDashboardController {
 				.findRestaurantWithLoginId(user.getLoginID());
 		modelMap.put("restaurant", restaurant);
 		((User) session.getAttribute("user")).setName(restaurant.getName());
-		/*Map <Integer, Double> bargainMap = getBargainPercentages(restaurant);
-		modelMap.put("bargain", bargainMap);*/
+		Map <Integer, Double> bargainMap = getBargainPercentages(restaurant);
+		modelMap.put("bargain", bargainMap);
 		return "restaurant/t_dashboard";
 	}
 
 	/**
 	 * Gets the bargain percentages.
 	 *
-	 * @param branch the branch
+	 * @param restaurant the restaurant
 	 * @return the bargain percentages
 	 */
-	private Map <Integer, Double> getBargainPercentages(RestaurantBranch branch) {
+	private Map <Integer, Double> getBargainPercentages(Restaurant restaurant) {
 		Map <Integer, Double> bargain = Maps.newHashMap();
 		//For each quote, compare with other restaurant's quote and calculate %
-		for (Quote rQuote : branch.getQuotes()) {
+		for (Quote rQuote : restaurant.getQuotes()) {
 			Collection <Quote> allQuotesForThisEvent;
 			Collection <Quote> allQuotesForThisMenu;
 			if (rQuote != null
@@ -94,8 +83,8 @@ public class RestaurantDashboardController {
 					&& (allQuotesForThisEvent = rQuote.getMenu().getQuotes())
 							.size() > 1
 					&& (allQuotesForThisMenu = filterByCuisine(
-							allQuotesForThisEvent, branch.getRestaurant()
-									.getCuisineType())).size() > 1) {
+							allQuotesForThisEvent, restaurant.getCuisineType()))
+							.size() > 1) {
 				//Since the quotes are ORDERED by price in ASC order,
 				//the first element should be the best quote.
 				Iterator <Quote> iteratorForBestQuote = allQuotesForThisMenu
@@ -132,12 +121,9 @@ public class RestaurantDashboardController {
 					@Override
 					public boolean apply(@Nullable Quote input) {
 						return input != null
-								&& input.getRestaurantBranch() != null
-								&& input.getRestaurantBranch().getRestaurant() != null
+								&& input.getRestaurant() != null
 								&& StringUtils.equalsIgnoreCase(cuisineType,
-										input.getRestaurantBranch()
-												.getRestaurant()
-												.getCuisineType());
+										input.getRestaurant().getCuisineType());
 					}
 				});
 	}
@@ -185,90 +171,8 @@ public class RestaurantDashboardController {
 								+ quote.getMenu().getEvent().getName());
 				redirectAttributes.addFlashAttribute("successMessages",
 						successMessages);
-				modelMap.put("successMessages", successMessages);
 			}
 		}
-		return "redirect:/dashboard";
-	}
-
-	/**
-	 * Adds the branch form.
-	 *
-	 * @return the string
-	 */
-	@RequestMapping(value = { "addBranch" }, method = RequestMethod.GET)
-	public String addBranchForm() {
-		return "t_signUp_branch";
-	}
-
-	/**
-	 * Adds the branch.
-	 *
-	 * @param httpSession the http session
-	 * @param modelMap the model map
-	 * @param request the request
-	 * @param redirectAttributes the redirect attributes
-	 * @return the string
-	 */
-	@RequestMapping(value = { "addBranch" }, method = RequestMethod.POST)
-	public String addBranch(HttpSession httpSession, ModelMap modelMap,
-			HttpServletRequest request, RedirectAttributes redirectAttributes) {
-		User user = (User) httpSession.getAttribute("user");
-		if (user == null) {
-			return "t_home";
-		}
-		Restaurant restaurant = restaurantService
-				.findRestaurantWithLoginId(user.getLoginID());
-		RegistrationData data = new RegistrationData();
-		String deliverMiles = StringUtils.defaultString(request
-				.getParameter("deliver-miles"));
-		if (StringUtils.isBlank(deliverMiles)) {
-			deliverMiles = "0";
-		}
-		data.setDeliverMiles(deliverMiles);
-		data.setEmail(StringUtils.defaultString(request.getParameter("email")));
-		data.setPhone(StringUtils.defaultString(request.getParameter("phone")));
-		data.setSmsOk(StringUtils.equalsIgnoreCase("on",
-				request.getParameter("smsOk")));
-		String street1 = StringUtils
-				.defaultString(request.getParameter("street_number"))
-				.concat(" ")
-				.concat(StringUtils.defaultString(request
-						.getParameter("street_name")));
-		data.setStreet1(street1);
-		String apt_classifier = StringUtils.defaultString(request
-				.getParameter("apt_classifier"));
-		String street2 = StringUtils.defaultString(request
-				.getParameter("street2"));
-		if (StringUtils.isNotBlank(street2)) {
-			data.setStreet2(apt_classifier + " " + street2);
-		}
-		data.setCity(StringUtils.defaultString(request.getParameter("city")));
-		data.setState(StringUtils.defaultString(request.getParameter("state")));
-		data.setZip(StringUtils.defaultString(request.getParameter("zip")));
-		data.setSalesTax(Helper.stringToFloat(request.getParameter("sales")));
-		//If the restaurant uses the same phone number used on other branch and if it was verified,
-		//set the current branch verification flag to true.
-		boolean isPhoneAlreadyVerified = false;
-		if (CollectionUtils.isNotEmpty(restaurant.getBranches())) {
-			for (RestaurantBranch existingBranch : restaurant.getBranches()) {
-				if (existingBranch != null
-						&& StringUtils.equalsIgnoreCase(
-								existingBranch.getContactNumber(),
-								data.getPhone())) {
-					isPhoneAlreadyVerified = isPhoneAlreadyVerified
-							|| existingBranch.isNumberVerified();
-				}
-			}
-		}
-		data.setNumberVerified(isPhoneAlreadyVerified);
-		logger.debug("Add branch form data: " + data.toString());
-		registerService.saveNewRestaurantBranch(data, restaurant);
-		List <String> successMessages = Lists.newArrayList();
-		successMessages.add("Successfully added a branch.");
-		redirectAttributes
-				.addFlashAttribute("successMessages", successMessages);
-		modelMap.addAttribute("successMessages", successMessages);
 		return "redirect:/dashboard";
 	}
 }

@@ -25,8 +25,8 @@ public class Quote extends TimestampEntity implements Serializable {
 	@JoinColumn(name = "menu_sk", nullable = false)
 	private Menu menu;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = true)
-	@JoinColumn(name = "restaurant_branch_sk", nullable = false)
-	private RestaurantBranch restaurantBranch;
+	@JoinColumn(name = "restaurant_sk", nullable = false)
+	private Restaurant restaurant;
 	@Column(name = "price")
 	private Double price;
 	@Column(name = "deliver", nullable = false, unique = false, updatable = true)
@@ -52,12 +52,12 @@ public class Quote extends TimestampEntity implements Serializable {
 		this.menu = menu;
 	}
 
-	public RestaurantBranch getRestaurantBranch() {
-		return restaurantBranch;
+	public Restaurant getRestaurant() {
+		return restaurant;
 	}
 
-	public void setRestaurantBranch(RestaurantBranch restaurantBranch) {
-		this.restaurantBranch = restaurantBranch;
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
 	}
 
 	public Double getPrice() {
@@ -101,9 +101,8 @@ public class Quote extends TimestampEntity implements Serializable {
 		result = prime * result + ((menu == null) ? 0 : menu.hashCode());
 		result = prime * result + ((notes == null) ? 0 : notes.hashCode());
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
-		result = prime
-				* result
-				+ ((restaurantBranch == null) ? 0 : restaurantBranch.hashCode());
+		result = prime * result
+				+ ((restaurant == null) ? 0 : restaurant.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
@@ -143,11 +142,11 @@ public class Quote extends TimestampEntity implements Serializable {
 		}
 		else if (!price.equals(other.price))
 			return false;
-		if (restaurantBranch == null) {
-			if (other.restaurantBranch != null)
+		if (restaurant == null) {
+			if (other.restaurant != null)
 				return false;
 		}
-		else if (!restaurantBranch.equals(other.restaurantBranch))
+		else if (!restaurant.equals(other.restaurant))
 			return false;
 		if (status == null) {
 			if (other.status != null)

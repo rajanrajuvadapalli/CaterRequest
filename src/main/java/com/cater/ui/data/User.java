@@ -1,8 +1,6 @@
 package com.cater.ui.data;
 
 import com.cater.constants.Roles;
-import com.cater.model.Customer;
-import com.cater.model.Restaurant;
 
 /**
  * The Class User. I store session data for the current user.
@@ -15,8 +13,6 @@ public class User {
 	private String name;
 	private Roles role;
 	private RegistrationData data;
-	private Customer customer;
-	private Restaurant restaurant;
 	private boolean isGuest = false;
 
 	public int getLoginID() {
@@ -73,22 +69,6 @@ public class User {
 
 	public void setData(RegistrationData data) {
 		this.data = data;
-	}
-
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-	public Restaurant getRestaurant() {
-		return restaurant;
-	}
-
-	public void setRestaurant(Restaurant restaurant) {
-		this.restaurant = restaurant;
 	}
 
 	public boolean isGuest() {

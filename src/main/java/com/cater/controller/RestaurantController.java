@@ -28,5 +28,4 @@ public class RestaurantController {
 		modelMap.put("r", restaurant);
 		return "restaurant/info";
 	}
-
 }

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import org.hibernate.PropertyValueException;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -40,6 +41,13 @@ public class AddressDAOImplTest extends AbstractDAOImplTest {
 	public void testSave_nullObject() {
 		Address address = null;
 		assertFalse(fixture.saveOrUpdate(address));
+	}
+
+	@Test(expected = PropertyValueException.class)
+	public void testSave_nullProperty() {
+		Address address = createSampleAddress();
+		address.setStreet1(null);
+		fixture.saveOrUpdate(address);
 	}
 
 	@Test

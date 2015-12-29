@@ -8,7 +8,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
 import org.apache.commons.lang3.StringUtils;
@@ -19,10 +18,10 @@ import org.springframework.web.context.WebApplicationContext;
 import com.cater.Helper;
 import com.cater.dao.CustomerDAO;
 import com.cater.dao.LoginDAO;
-import com.cater.dao.RestaurantBranchDAO;
+import com.cater.dao.RestaurantDAO;
 import com.cater.model.Customer;
 import com.cater.model.Login;
-import com.cater.model.RestaurantBranch;
+import com.cater.model.Restaurant;
 import com.cater.twilio.sms.SMSHelper;
 
 /**
@@ -36,8 +35,8 @@ public class PhoneService {
 	private LoginDAO loginDAO;
 	/** The customer dao. */
 	private CustomerDAO customerDAO;
-	/** The restaurant branch dao. */
-	private RestaurantBranchDAO restaurantBranchDAO;
+	/** The restaurant dao. */
+	private RestaurantDAO restaurantDAO;
 	/** The sms helper. */
 	private SMSHelper smsHelper;
 
@@ -49,8 +48,7 @@ public class PhoneService {
 				.getCurrentWebApplicationContext();
 		loginDAO = webApplicationContext.getBean(LoginDAO.class);
 		customerDAO = webApplicationContext.getBean(CustomerDAO.class);
-		restaurantBranchDAO = webApplicationContext
-				.getBean(RestaurantBranchDAO.class);
+		restaurantDAO = webApplicationContext.getBean(RestaurantDAO.class);
 		smsHelper = webApplicationContext.getBean(SMSHelper.class);
 	}
 
@@ -60,7 +58,6 @@ public class PhoneService {
 	 * @param loginId the login id
 	 * @param role the role
 	 * @param payload the payload
-	 * @param restaurantBranchID the restaurant branch id
 	 * @return the response
 	 */
 	@POST
@@ -68,8 +65,7 @@ public class PhoneService {
 	@Consumes(TEXT_PLAIN)
 	@Produces(TEXT_PLAIN)
 	public Response verifyNumber(@PathParam("loginId") int loginId,
-			@PathParam("role") String role, String payload,
-			@QueryParam("restaurantBranchID") int restaurantBranchID) {
+			@PathParam("role") String role, String payload) {
 		String verificationCode = payload;
 		logger.debug("Verifying phone number for user with login ID: "
 				+ loginId + " with Verification Code: " + verificationCode);
@@ -103,21 +99,19 @@ public class PhoneService {
 					&& StringUtils.equalsIgnoreCase(expectedVerificationCode,
 							verificationCode)) {
 				// Update database
-				String successMessage = "Successfully validated phone number.";
 				if (StringUtils.equalsIgnoreCase("customer", role)) {
 					logger.debug("Updating consumer table.");
 					Customer customer = customerDAO.findByLoginID(loginId);
 					customer.setNumberVerified(true);
 				}
 				else if (StringUtils.equalsIgnoreCase("restaurant", role)) {
-					logger.debug("Updating restaurant branch table.");
-					RestaurantBranch branch = restaurantBranchDAO
-							.findById(restaurantBranchID);
-					branch.setNumberVerified(true);
-					successMessage = "Successfully validated phone number for your branch at "
-							+ branch.getAddress().getStreet1();
+					logger.debug("Updating restaurant table.");
+					Restaurant restaurant = restaurantDAO
+							.findByLoginID(loginId);
+					restaurant.setNumberVerified(true);
 				}
-				return Response.ok().entity(successMessage).build();
+				return Response.ok()
+						.entity("Successfully validated phone number.").build();
 			}
 			return Response
 					.ok()
@@ -136,7 +130,6 @@ public class PhoneService {
 	 * @param loginId the login id
 	 * @param role the role
 	 * @param payload the payload
-	 * @param restaurantBranchID the restaurant branch id
 	 * @return the response
 	 */
 	@POST
@@ -144,8 +137,7 @@ public class PhoneService {
 	@Consumes(TEXT_PLAIN)
 	@Produces(TEXT_PLAIN)
 	public Response sendVerificationCode(@PathParam("loginId") int loginId,
-			@PathParam("role") String role, String payload,
-			@QueryParam("restaurantBranchID") int restaurantBranchID) {
+			@PathParam("role") String role, String payload) {
 		String phoneNumber = Helper.extractJust10digitNumber(payload);
 		logger.debug("Sending phone verification code for user with login ID: "
 				+ loginId);
@@ -170,9 +162,8 @@ public class PhoneService {
 			}
 			else if (StringUtils.equalsIgnoreCase("restaurant", role)) {
 				logger.debug("Updating restaurant table.");
-				RestaurantBranch branch = restaurantBranchDAO
-						.findById(restaurantBranchID);
-				branch.setContactNumber(phoneNumber);
+				Restaurant restaurant = restaurantDAO.findByLoginID(loginId);
+				restaurant.setContactNumber(phoneNumber);
 			}
 			smsHelper.resendPhoneVerificationSMS(login, phoneNumber);
 			return Response

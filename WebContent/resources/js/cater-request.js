@@ -103,9 +103,10 @@ function populateHearAboutUs() {
 function populateAptSuite() {
 	$("span[id=apt_classifier]").replaceWith(
 			"<select class=\"form-control inputs\" name=\"apt_classifier\""
-					+ "id=\"apt_classifier\">" + "<option value=\"\"></option>"
+					+ "id=\"apt_classifier\">"
+					+ "<option value=\"\"></option>"
 					+ "<option value=\"Apt\">Apartment</option>"
-					+ "<option value=\"Building\">Building</option>"
+					+ "<option value=\"Building\">Building</option>" 
 					+ "<option value=\"Suite\">Suite</option>" + "</select>");
 }
 
@@ -199,7 +200,37 @@ function validateRegistrationFormOnSubmit() {
 	return true;
 }
 
-
+/*
+ * function addressCallbackFunction(results, status) {
+ * $("div[id=addressnotok]").addClass('hidden'); if (status ==
+ * google.maps.GeocoderStatus.OK) { var address = results[0].formatted_address;
+ * console.log("Validated address: " + address); numCommas =
+ * address.match(/,/g).length; if (numCommas >= 3) { // Address is valid,
+ * Continue to submit form var st1 = $("input[name=street1]").val(); var city =
+ * $("input[name=city]").val(); var state = $("select[name=state]").val(); var
+ * zip = $("input[name=zip]").val(); var CurrentAddress = st1 + ", " + city + ", " +
+ * state + ", " + zip; var values = address.split(', '); var validatedStreet =
+ * values[0]; var validatedCity = values[1]; var state_zip = values[2].split('
+ * '); var validatedState = state_zip[0]; var validatedZip = state_zip[1]; var
+ * LastAddressValidated = validatedStreet + ", " + validatedCity + ", " +
+ * validatedState + ", " + validatedZip;
+ * $("input[name=LastAddressValidated]").val(LastAddressValidated);
+ * $("input[name=street1]").val(validatedStreet);
+ * $("input[name=city]").val(validatedCity);
+ * $("input[name=state]").val(validatedState);
+ * $("input[name=zip]").val(validatedZip); if (LastAddressValidated !=
+ * CurrentAddress) { alert("\nAddress you entered: " + CurrentAddress + "\nWe
+ * updated it to: " + LastAddressValidated + "\nPlease verify and make changes
+ * if necessary."); } else { alert("Address is verified and accepted."); }
+ * 
+ * var customerName = $("input[name=name]").val(); if (customerName != null) {
+ * $("form[id=customer-register-form]").submit(); } else {
+ * $("form[id=restaurant-register-form]").submit(); }
+ * 
+ * return; } } // Address is invalid
+ * $("input[name=LastAddressValidated]").val("");
+ * $("div[id=addressnotok]").removeClass('hidden'); }
+ */
 
 function validateLoginForm() {
 	var pwd = $("input[name=pwd]");

@@ -34,7 +34,6 @@ import com.cater.menu.MenuSerializer;
 import com.cater.model.Event;
 import com.cater.model.Quote;
 import com.cater.model.Restaurant;
-import com.cater.model.RestaurantBranch;
 import com.cater.service.CustomerService;
 import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
@@ -380,13 +379,13 @@ public class MenuController {
 			menuModel.setComments(comments);
 			com.cater.model.Address eventLocation = e.getLocation();
 			modelMap.put("eventLocation", eventLocation);
-			Set <RestaurantBranch> branches = restaurantService
-					.fetchRestaurantBranchesOfType(cuisine);
+			Set <Restaurant> restaurants = restaurantService
+					.fetchRestaurantsOfType(cuisine);
 			//modelMap.put("restaurants", restaurants);
 			List <RestaurantDTO> nearByRestaurants = restaurantService
-					.getNearbyYelpReviews(eventLocation, branches);
+					.getNearbyYelpReviews(eventLocation, restaurants);
 			if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
-				modelMap.put("restaurantsDto", nearByRestaurants);
+				modelMap.put("restaurants", nearByRestaurants);
 			}
 			Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
 			if (user.isGuest()) {
@@ -397,13 +396,12 @@ public class MenuController {
 				customerService.saveOrUpdateMenu(menuModel);
 				menuId = menuModel.getId();
 				httpSession.setAttribute("menuId", menuId);
-				for (RestaurantBranch b : branches) {
+				for (Restaurant r : restaurants) {
 					Quote quote = restaurantService
-							.findQuoteWithRestaurantBranchIdAndMenuId(
-									b.getId(),
+							.findQuoteWithRestaurantIdAndMenuId(r.getId(),
 									menuId);
 					if (quote != null) {
-						previouslySelectedRestaurants.add(b.getId());
+						previouslySelectedRestaurants.add(r.getId());
 						if (isMenuChanged) {
 							quote.setStatus(QuoteStatus.CUSTOMER_UPDATED_MENU
 									.toString());
@@ -429,20 +427,19 @@ public class MenuController {
 	/**
 	 * View.
 	 *
-	 * @param httpSession the http session
-	 * @param modelMap the model map
-	 * @param request the request
-	 * @param menuId the menu id
-	 * @param restaurantBranchID the restaurant branch id
+	 * @param httpSession
+	 *            the http session
+	 * @param modelMap
+	 *            the model map
+	 * @param request
+	 *            the request
+	 * @param menuId
+	 *            the menu id
 	 * @return the string
 	 */
 	@RequestMapping(value = { "view/{menuId}" }, method = RequestMethod.GET)
-	public String view(
-			HttpSession httpSession,
-			ModelMap modelMap,
-			HttpServletRequest request,
-			@PathVariable Integer menuId,
-			@RequestParam(value = "rbid", required = false) Integer restaurantBranchID) {
+	public String view(HttpSession httpSession, ModelMap modelMap,
+			HttpServletRequest request, @PathVariable Integer menuId) {
 		User user = (User) httpSession.getAttribute("user");
 		if (user == null) {
 			return "t_home";
@@ -459,19 +456,17 @@ public class MenuController {
 				modelMap.put("menu", newMenu);
 				Restaurant restaurant = restaurantService
 						.findRestaurantWithLoginId(user.getLoginID());
-				if (restaurant != null && restaurantBranchID != null) {
+				if (restaurant != null) {
 					// If a restaurant is requesting to see the menu,
 					// it can also see the price it quoted before.
 					Quote quote = restaurantService
-							.findQuoteWithRestaurantBranchIdAndMenuId(
-									restaurantBranchID, menuId);
+							.findQuoteWithRestaurantIdAndMenuId(
+									restaurant.getId(), menuId);
 					modelMap.put("quote", quote);
 					//If a restaurant views a menu, we want to show the distance from the restaurant to the event location
 					//so that the restaurant can better estimate the delivery.
-					RestaurantBranch branch = restaurant
-							.getBranchWithId(restaurantBranchID);
 					RestaurantDTO restaurantDTO = mapsHelper.getDistance(
-							menuModel.getEvent().getLocation(), branch);
+							menuModel.getEvent().getLocation(), restaurant);
 					modelMap.put("eventDistance", restaurantDTO.getDistance());
 				}
 				modelMap.put("event", menuModel.getEvent());
@@ -538,7 +533,7 @@ public class MenuController {
 	private Map <String, List <Quote>> groupQuotesPerCuisine(List <Quote> quotes) {
 		Map <String, List <Quote>> groupedQuotes = Maps.newTreeMap();
 		for (Quote q : quotes) {
-			Restaurant r = q.getRestaurantBranch().getRestaurant();
+			Restaurant r = q.getRestaurant();
 			if (r != null) {
 				String cuisine = r.getCuisineType();
 				List <Quote> q2 = groupedQuotes.get(cuisine);
