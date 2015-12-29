@@ -48,6 +48,7 @@
 		</ul>
 	</div>
 </c:if>
+
 <div class="col-sm-10 col-sm-offset-1">
 	<form class="form-horizontal" method="POST" id="event-form"
 		action="${pageContext.request.contextPath}/customer/makePayment"
@@ -79,15 +80,41 @@
 				<!-- /.panel-heading -->
 				<div class="panel-body" align="left">
 					<div class="col-lg-10 sm-6">
-						<b>Restaurant Name: </b>${r.name} <br /> <b>Restaurant Phone
-							Number: </b>${r.contactNumber} <br /> <b>Quote Price: </b>$${quote.price}
-						<br /> <b>Sales Tax: </b>$${tax} <br /> <b>Total Amount:
-							$${amount}</b> <br /> <br />
+						<fmt:setLocale value="en_US" />
+						<table class="table table-striped">
+							<tbody>
+								<tr>
+									<td class="col-sm-1"><b>Restaurant Name: </b></td>
+									<td class="col-sm-1">${branch.restaurant.name}</td>
+								</tr>
+
+								<td><b>Restaurant Phone Number: </b></td>
+								<td>${branch.contactNumber}</td>
+								</tr>
+								<tr>
+
+									<td><b>Quote Price: </b></td>
+									<td><fmt:formatNumber value="${quote.price}"
+											type="currency" /></td>
+								</tr>
+								<tr>
+
+									<td><b>Sales Tax: </b></td>
+									<td><fmt:formatNumber value="${tax}" type="currency" /></td>
+								</tr>
+								<tr>
+
+									<td><b>Total Amount:</b></td>
+									<td><fmt:formatNumber value="${amount}" type="currency" /></td>
+								</tr>
+							</tbody>
+						</table>
+
 						<div class="row">
-							<div class="col-sm-2">
-								<!-- <img
+							<%-- <div class="col-sm-2">
+								<img
 										src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png"
-										alt="PayPal" /> -->
+										alt="PayPal" />
 								<c:if test="${sessionScope.env.isProd()}">
 									<script async="async"
 										src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=PX5RV8W8STFCY"
@@ -106,10 +133,18 @@
 										data-style="secondary"
 										data-callback="http://www.getmesponsor.com/payment/notify"></script>
 								</c:if>
-							</div>
+							</div> --%>
 							<div class="col-sm-2">
 								<button type="submit" class="btn btn-default">Pay at
 									Restaurant</button>
+							</div>
+						</div>
+						<br />
+						<div class="row">
+							<div class="col-sm-2">
+								<button type="button" class="btn btn-default"
+									onclick="window.location.href='${pageContext.request.contextPath}/menu/view/all?eventId=${e.id}'">
+									Cancel</button>
 							</div>
 						</div>
 					</div>
@@ -117,11 +152,6 @@
 				<!-- /.panel-body -->
 			</div>
 			<!-- /.panel -->
-		</div>
-		<div>
-			<button type="button" class="btn btn-default"
-				onclick="window.location.href='${pageContext.request.contextPath}/menu/view/all?eventId=${e.id}'">
-				Cancel</button>
 		</div>
 		<input type="hidden" name="xquoteId" value="${quote.id}"> <input
 			type="hidden" size="30" maxlength="10" name="eventName"
@@ -229,3 +259,90 @@
          -->
 	</form>
 </div>
+
+<!-- <div class="col-sm-10 col-sm-offset-1">
+	<form class="form-horizontal"
+		action="${pageContext.request.contextPath}/customer/makePayment/stripe"
+		method="POST" id="payment-form">
+		<span class="payment-errors"></span>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label"> <span>Card
+					Number: </span>
+			</label>
+			<div class="col-sm-3">
+				<input type="text" size="20" maxlength="16" data-stripe="number"
+					class="form-control"
+					onkeydown="return((event.keyCode>=48 && event.keyCode<=57) || event.keyCode==8 || event.keyCode==9 || event.keyCode==16 || event.keyCode==37 || event.keyCode==39)" />
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label"> <span>CVC: </span>
+			</label>
+			<div class="col-sm-1">
+				<input type="text" size="4" maxlength="3" data-stripe="cvc"
+					class="form-control"
+					onkeydown="return((event.keyCode>=48 && event.keyCode<=57) || event.keyCode==8 || event.keyCode==9 || event.keyCode==16 || event.keyCode==37 || event.keyCode==39)" />
+			</div>
+
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label"> <span>Expiration:
+			</span></label>
+			<div class="row">
+				<div class="col-sm-1">
+					<input type="text" size="2" maxlength="2" data-stripe="exp-month"
+						placeholder="MM" class="form-control"
+						onkeydown="return((event.keyCode>=48 && event.keyCode<=57) || event.keyCode==8 || event.keyCode==9 || event.keyCode==16 || event.keyCode==37 || event.keyCode==39)" />
+				</div>
+				<div class="col-sm-1">
+					<input type="text" size="4" maxlength="4" data-stripe="exp-year"
+						placeholder="YYYY" class="form-control"
+						onkeydown="return((event.keyCode>=48 && event.keyCode<=57) || event.keyCode==8 || event.keyCode==9 || event.keyCode==16 || event.keyCode==37 || event.keyCode==39)" />
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label"></label>
+			<div class="col-sm-2">
+				<button type="submit" class="btn btn-default">
+					Pay
+					<fmt:formatNumber value="${amount}" type="currency" />
+				</button>
+			</div>
+		</div>
+	</form>
+</div> -->
+
+<!-- <script type="text/javascript">
+	// This identifies your website in the createToken call below
+	Stripe.setPublishableKey('pk_test_7Ga5M1c99DAfmr7oR6wi1RHJ');
+	var stripeResponseHandler = function(status, response) {
+		var $form = $('#payment-form');
+		if (response.error) {
+			// Show the errors on the form
+			$form.find('.payment-errors').text(response.error.message);
+			$form.find('button').prop('disabled', false);
+		} else {
+			// token contains id, last4, and card type
+			var token = response.id;
+			// Insert the token into the form so it gets submitted to the server
+			$form.append($('<input type="hidden" name="stripeToken" />').val(
+					token));
+			// and re-submit
+			$form.get(0).submit();
+		}
+	};
+	jQuery(function($) {
+		$('#payment-form').submit(function(e) {
+			var $form = $(this);
+			// Disable the submit button to prevent repeated clicks
+			$form.find('button').prop('disabled', true);
+			Stripe.card.createToken($form, stripeResponseHandler);
+			// Prevent the form from submitting with the default action
+			return false;
+		});
+	});
+</script> -->

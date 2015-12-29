@@ -47,6 +47,8 @@
 <script src="${pageContext.request.contextPath}/resources/js/masonry.pkgd.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/modernizr.custom.js"></script>
 
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
 <script>
     $(window).load(function(){
         var rtl = false; // Use RTL

@@ -717,4 +717,11 @@ public class CustomerDashboardController {
 		}
 		return "redirect:/customer/dashboard";
 	}
+
+	@RequestMapping(value = { "makePayment/stripe" }, method = RequestMethod.POST)
+	public String makePaymentStripe(HttpSession httpSession, ModelMap modelMap,
+			HttpServletRequest request, RedirectAttributes redirectAttributes) {
+		//TODO:
+		return "redirect:/customer/dashboard";
+	}
 }
