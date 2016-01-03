@@ -1,3 +1,4 @@
+<%@ page import="java.util.Date"%>
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -6,6 +7,9 @@
 <div class="col-sm-10 col-sm-offset-1 page-header">
 	<h1>${event.name}</h1>
 </div>
+
+<c:set var="now" value="<%=new Date()%>" />
+
 <div class="row">
 	<div class="col-sm-10 col-sm-offset-1">
 		<div class="panel panel-warning">
@@ -110,6 +114,9 @@
 				<b>Event name:</b> ${event.name}<br /> <b>Time:</b>
 				<fmt:formatDate value="${event.date_time}"
 					pattern="EEE, d MMM yyyy hh:mm aaa" />
+					<c:if test="${event.date_time <= now}">
+						<span style="color:red">Past Event!</span>
+					</c:if>
 				<br /> <b>Number of Adults:</b> <span style="color: red;">${event.personCount}</span><br />
 				<b>Number of Kids:</b> <span style="color: red;">${event.kidsCount}</span><br />
 				<b>Delivery Option:</b> <span style="color: red;">${event.isPickUp()?'Pick Up':'Delivered'}</span><br />
@@ -221,7 +228,8 @@
 										<div class="form-group">
 											<label class="col-sm-4 control-label"></label>
 											<div class="col-sm-2" align="left">
-												<button type="submit" class="btn btn-default">Update</button>
+												<button type="submit" class="btn btn-default"
+													${(event.date_time <= now)?'disabled':''}>Update</button>
 											</div>
 										</div>
 									</c:when>
@@ -238,7 +246,8 @@
 										<div class="form-group">
 											<label class="col-sm-4 control-label"></label>
 											<div class="col-sm-2" align="left">
-												<button type="submit" class="btn btn-default">Submit</button>
+												<button type="submit" class="btn btn-default"
+													${(event.date_time <= now)?'disabled':''}>Submit</button>
 											</div>
 										</div>
 									</c:otherwise>

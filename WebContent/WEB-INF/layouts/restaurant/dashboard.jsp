@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div class="col-sm-10 col-sm-offset-1 page-header">
-	<h1>My Dashboard</h1>
+	<h1>${restaurant.name}'s Dashboard</h1>
 </div>
 <div class="col-sm-10 col-sm-offset-1">
 	<c:if test="${not empty errors}">
@@ -66,10 +66,10 @@
 			<hr class="style-1 no-gap">
 			<div class="content-wrap">
 				<section id="section-upcoming">
+					<c:if test="${empty upcomingQuotes}">You currently do not have any request for upcoming events.</c:if>
 					<!-- Column width : 240 and max width is 1200 to fit max 5 tiles in one row if space exists -->
 					<div class="grid js-masonry"
 						data-masonry-options='{ "itemSelector": ".grid-item", "columnWidth": 240 }'>
-						<c:if test="${empty upcomingQuotes}">You currently do not have any request for upcoming events.</c:if>
 						<c:forEach items="${upcomingQuotes}" var="q" varStatus="qloop">
 							<div class="grid-item" style="cursor: pointer">
 								<p>
@@ -95,10 +95,10 @@
 					</div>
 				</section>
 				<section id="section-past">
+					<c:if test="${empty pastQuotes}">You do not have any request for past events.</c:if>
 					<!-- Column width : 240 and max width is 1200 to fit max 5 tiles in one row if space exists -->
 					<div class="grid js-masonry"
 						data-masonry-options='{ "itemSelector": ".grid-item", "columnWidth": 240 }'>
-						<c:if test="${empty pastQuotes}">You do not have any request for past events.</c:if>
 						<c:forEach items="${pastQuotes}" var="q" varStatus="qloop">
 							<div class="grid-item" style="cursor: pointer">
 								<p>
@@ -124,10 +124,10 @@
 					</div>
 				</section>
 				<section id="section-confirmed">
+					<c:if test="${empty confirmedQuotes}">You currently do not have any confirmed events.</c:if>
 					<!-- Column width : 240 and max width is 1200 to fit max 5 tiles in one row if space exists -->
 					<div class="grid js-masonry"
 						data-masonry-options='{ "itemSelector": ".grid-item", "columnWidth": 240 }'>
-						<c:if test="${empty confirmedQuotes}">You currently do not have any confirmed events.</c:if>
 						<c:forEach items="${confirmedQuotes}" var="q" varStatus="qloop">
 							<div class="grid-item" style="cursor: pointer">
 								<p>
@@ -154,11 +154,11 @@
 				</section>
 			</div>
 			<!-- End content-wrap -->
-
 		</div>
 		<!-- End tabs -->
 	</div>
 	<!-- End main-content -->
+	<hr class="style-1">
 </div>
 <!-- End col-sm-10 -->
 

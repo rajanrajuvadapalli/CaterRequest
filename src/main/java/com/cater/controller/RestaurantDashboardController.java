@@ -11,19 +11,25 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cater.Helper;
 import com.cater.constants.QuoteStatus;
+import com.cater.model.Login;
 import com.cater.model.Quote;
 import com.cater.model.Restaurant;
 import com.cater.service.CustomerService;
+import com.cater.service.LoginService;
+import com.cater.service.RegisterService;
 import com.cater.service.RestaurantService;
+import com.cater.ui.data.RegistrationData;
 import com.cater.ui.data.User;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
@@ -36,14 +42,20 @@ import com.google.common.collect.Maps;
 @Controller
 @RequestMapping(value = { "restaurant" })
 public class RestaurantDashboardController {
-	/*private static final Logger logger = Logger
-			.getLogger(RestaurantDashboardController.class);*/
+	private static final Logger logger = Logger
+			.getLogger(RestaurantDashboardController.class);
 	/** The restaurant service. */
 	@Autowired
 	private RestaurantService restaurantService;
 	/** The customer service. */
 	@Autowired
 	private CustomerService customerService;
+	/** The login service. */
+	@Autowired
+	private LoginService loginService;
+	/** The register service. */
+	@Autowired
+	private RegisterService registerService;
 
 	/**
 	 * Gets the dashboard.
@@ -81,7 +93,11 @@ public class RestaurantDashboardController {
 				return "restaurant/t_dashboard";
 			}
 			else {
-				modelMap.put("restaurants", restaurants);
+				user.setRestaurants(restaurants);
+				//If there are multiple restaurants, clear the current restaurant
+				user.setRestaurant(null);
+				user.setRestaurantID(0);
+				//modelMap.put("restaurants", restaurants);
 				String username = "";
 				if (CollectionUtils.isNotEmpty(restaurants)) {
 					username = restaurants.get(0).getLogin().getUsername();
@@ -90,10 +106,130 @@ public class RestaurantDashboardController {
 						.defaultString(username));
 				//TODO: bargain map
 				//TODO: set restaurant ID in session user object after the user makes a selection.
-				return "restaurant/t_dashboard_main";
+				return "restaurant/t_dashboard_restaurants";
 			}
 		}
 		return "t_home";
+	}
+
+	/**
+	 * Gets the dashboard for id.
+	 *
+	 * @param modelMap the model map
+	 * @param session the session
+	 * @param restaurantID the restaurant id
+	 * @return the dashboard for id
+	 */
+	@RequestMapping(value = { "dashboard/{restaurantID}" }, method = RequestMethod.GET)
+	public String getDashboardForId(ModelMap modelMap, HttpSession session,
+			@PathVariable("restaurantID") int restaurantID) {
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return "t_home";
+		}
+		Restaurant restaurant = restaurantService
+				.findRestaurantWithId(restaurantID);
+		user.setRestaurant(restaurant);
+		user.setRestaurantID(restaurant.getId());
+		modelMap.put("restaurant", restaurant);
+		((User) session.getAttribute("user")).setName(restaurant.getName());
+		Map <Integer, Double> bargainMap = getBargainPercentages(restaurant);
+		modelMap.put("bargain", bargainMap);
+		List <Quote> upcomingQuotes = restaurantService
+				.fetchUpcomingQuotes(restaurant.getId());
+		modelMap.put("upcomingQuotes", upcomingQuotes);
+		List <Quote> pastQuotes = restaurantService.fetchPastQuotes(restaurant
+				.getId());
+		modelMap.put("pastQuotes", pastQuotes);
+		List <Quote> confirmedQuotes = restaurantService
+				.fetchConfirmedQuotes(restaurant.getId());
+		modelMap.put("confirmedQuotes", confirmedQuotes);
+		return "restaurant/t_dashboard";
+	}
+
+	/**
+	 * Adds the branch form.
+	 *
+	 * @return the string
+	 */
+	@RequestMapping(value = { "addBranch" }, method = RequestMethod.GET)
+	public String addBranchForm() {
+		return "t_signUp_branch";
+	}
+
+	/**
+	 * Adds the branch.
+	 *
+	 * @param httpSession the http session
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param redirectAttributes the redirect attributes
+	 * @return the string
+	 */
+	@RequestMapping(value = { "addBranch" }, method = RequestMethod.POST)
+	public String addBranch(HttpSession httpSession, ModelMap modelMap,
+			HttpServletRequest request, RedirectAttributes redirectAttributes) {
+		User user = (User) httpSession.getAttribute("user");
+		if (user == null) {
+			return "t_home";
+		}
+		Login login = loginService.findLoginWithId(user.getLoginID());
+		RegistrationData data = new RegistrationData();
+		data.setRestaurantName(StringUtils.defaultString(request
+				.getParameter("restaurantName")));
+		data.setCuisineType(StringUtils.defaultString(request
+				.getParameter("cuisineType")));
+		data.setUrl(StringUtils.defaultString(request.getParameter("url")));
+		String deliverMiles = StringUtils.defaultString(request
+				.getParameter("deliver-miles"));
+		if (StringUtils.isBlank(deliverMiles)) {
+			deliverMiles = "0";
+		}
+		data.setDeliverMiles(deliverMiles);
+		data.setEmail(StringUtils.defaultString(request.getParameter("email")));
+		data.setPhone(StringUtils.defaultString(request.getParameter("phone")));
+		data.setSmsOk(StringUtils.equalsIgnoreCase("on",
+				request.getParameter("smsOk")));
+		String street1 = StringUtils
+				.defaultString(request.getParameter("street_number"))
+				.concat(" ")
+				.concat(StringUtils.defaultString(request
+						.getParameter("street_name")));
+		data.setStreet1(street1);
+		String apt_classifier = StringUtils.defaultString(request
+				.getParameter("apt_classifier"));
+		String street2 = StringUtils.defaultString(request
+				.getParameter("street2"));
+		if (StringUtils.isNotBlank(street2)) {
+			data.setStreet2(apt_classifier + " " + street2);
+		}
+		data.setCity(StringUtils.defaultString(request.getParameter("city")));
+		data.setState(StringUtils.defaultString(request.getParameter("state")));
+		data.setZip(StringUtils.defaultString(request.getParameter("zip")));
+		data.setSalesTax(Helper.stringToFloat(request.getParameter("sales")));
+		//If the restaurant uses the same phone number used on other branch and if it was verified,
+		//set the current branch verification flag to true.
+		boolean isPhoneAlreadyVerified = false;
+		List <Restaurant> restaurants = login.getRestaurants();
+		if (CollectionUtils.isNotEmpty(restaurants)) {
+			for (Restaurant r : restaurants) {
+				if (r != null
+						&& StringUtils.equalsIgnoreCase(r.getContactNumber(),
+								data.getPhone())) {
+					isPhoneAlreadyVerified = isPhoneAlreadyVerified
+							|| r.isNumberVerified();
+				}
+			}
+		}
+		data.setNumberVerified(isPhoneAlreadyVerified);
+		logger.debug("Add branch form data: " + data.toString());
+		registerService.saveNewRestaurantBranch(data, login);
+		List <String> successMessages = Lists.newArrayList();
+		successMessages.add("Successfully added a branch.");
+		redirectAttributes
+				.addFlashAttribute("successMessages", successMessages);
+		modelMap.addAttribute("successMessages", successMessages);
+		return "redirect:/dashboard";
 	}
 
 	/**

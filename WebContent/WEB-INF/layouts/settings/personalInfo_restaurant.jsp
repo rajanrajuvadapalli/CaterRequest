@@ -55,7 +55,7 @@
 <div class="col-sm-10 col-sm-offset-1">
 	<div align="right">
 		<a href="${pageContext.request.contextPath}/restaurant/addBranch"
-			role="button" class="btn btn-default">Add a branch</a>
+			role="button" class="btn btn-default">Add a Restaurant / Branch</a>
 	</div>
 	<br />
 	<div class="panel panel-info">
@@ -140,7 +140,138 @@
 								required="required">${sessionScope.user.restaurant.aboutUs}</textarea>
 						</div>
 					</div>
+					<div class="form-group">
+						<label for="sales" class="col-sm-3 control-label">Sales
+							Tax<span style="color: red">*</span>:
+						</label>
+						<div class="col-sm-6" align="left">
+							<input type="number" size="30" name="sales" required="required"
+								placeholder="Ex: x.xx" pattern="[0-9]+([\.|,][0-9]+)?"
+								class="form-control" value="${sessionScope.user.restaurant.salesTax}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="email" class="col-sm-3 control-label">Contact
+							Email<span style="color: red">*</span>:
+						</label>
+						<div class="col-sm-6">
+							<input type="email" size="30" name="email" required="required"
+								class="form-control" value="${sessionScope.user.restaurant.contactEmail}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="phone" class="col-sm-3 control-label">Contact
+							Phone<span style="color: red">*</span>:
+						</label>
+						<div class="row">
+							<div class="col-sm-3">
+								<input type="text" size="20" maxlength="20" name="phone"
+									id="phone" class="form-control" required="required"
+									placeholder="Ex.: xxxxxxxxxx" pattern="\d{10}"
+									value="${sessionScope.user.restaurant.contactNumber}">
+							</div>
+							<c:choose>
+								<c:when test="${sessionScope.user.restaurant.numberVerified}">
+									<div class="col-xs-1" align="left">
+										<span class="glyphicon glyphicon-ok" style="color: green;"></span>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="col-sm-3" align="left">
+										<button formaction=""
+											onclick="sendPhoneVerificationCode(${sessionScope.user.restaurant.id})" id="send-pvc"
+											class="btn btn-default">Re-send verification code</button>
+									</div>
+								</c:otherwise>
+							</c:choose>
+						</div>
+					</div>
+					<c:if test="${!sessionScope.user.restaurant.numberVerified}">
+						<div class="form-group">
+							<label for="pvc" class="col-sm-3 control-label">Verification
+								Code: </label>
+							<div class="row">
+								<div class="col-sm-3">
+									<input type="text" size="10" maxlength="5" name="pvc" id="pvc"
+										class="form-control"
+										value="${sessionScope.user.data.phoneVerificationCode}"
+										style="text-transform: uppercase"> <input type="text"
+										hidden="true" value="${sessionScope.user.loginID}"
+										id="pvc-loginID"> <input type="text" hidden="true"
+										value="${sessionScope.user.role.value}" id="pvc-role">
 
+									<input type="text" hidden="true"
+										value="${pageContext.request.contextPath}" id="contextpath">
+
+								</div>
+								<div class="col-sm-1">
+									<button formaction=""
+										onclick="validatePhoneVerificationCode(${sessionScope.user.restaurant.id})" id="pvc"
+										class="btn btn-default">Verify</button>
+								</div>
+							</div>
+						</div>
+					</c:if>
+					<div class="form-group">
+						<label for="deliver-miles" class="col-sm-3 control-label">Number
+							of miles you can deliver<br />(optional):
+						</label>
+						<div class="col-sm-6" align="left">
+							<input type="text" size="5" name="deliver-miles" pattern="\d+"
+								class="form-control"
+								placeholder="leave this field blank if you do not deliver"
+								value="${sessionScope.user.restaurant.deliverMiles}">
+						</div>
+					</div>
+					<input type="hidden" name="LastAddressValidated" value="">
+					<div class="alert alert-danger hidden" id="addressnotok">
+						<button type="button" class="close btn-lg" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						Address validation failed. Please check your address.<br /> If
+						the problem persists, please contact customer support.
+					</div>
+					<div class="form-group">
+						<label for="street1" class="col-sm-3 control-label">Street<span
+							style="color: red">*</span>:
+						</label>
+
+						<div class="col-sm-6">
+							<input type="text" size="30" maxlength="50" name="street1"
+								class="form-control"
+								value="${sessionScope.user.restaurant.address.street1} ${sessionScope.user.restaurant.address.street2}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="city" class="col-sm-3 control-label">City<span
+							style="color: red">*</span>:
+						</label>
+						<div class="col-sm-6">
+							<input type="text" size="30" maxlength="50" name="city"
+								class="form-control" value="${sessionScope.user.restaurant.address.city}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="state" class="col-sm-3 control-label">State<span
+							style="color: red">*</span>:
+						</label>
+						<div class="col-sm-6">
+							<input type="hidden" name="stateExisting"
+								value="${sessionScope.user.restaurant.address.state}"> <span id="stateArea"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="zip" class="col-sm-3 control-label">Zip<span
+							style="color: red">*</span>:
+						</label>
+
+						<div class="col-sm-6">
+							<input type="text" size="10" name="zip" maxlength="10"
+								class="form-control" placeholder="Ex.: xxxxx"
+								pattern="^\d{5}(\-\d{4})?$" value="${sessionScope.user.restaurant.address.zip}">
+						</div>
+					</div>
 					<div class="form-group">
 						<label class="col-sm-3 control-label"></label>
 						<div class="col-sm-6" align="left">
@@ -200,216 +331,6 @@
 	</div>
 </div>
 
-<div class="col-sm-10 col-sm-offset-1">
-	<div id="main-content">
-		<div class="tabs tabs-topline">
-			<nav>
-				<ul>
-					<c:forEach items="${sessionScope.user.restaurant.branches}" var="b"
-						varStatus="bLoop">
-						<li class="pull-left"><a
-							href="#section-branch-${bLoop.index+1}" class="icon icon-home">Branch
-								${bLoop.index+1}</a></li>
-					</c:forEach>
-					<c:if test="${!empty sessionScope.user.restaurant.branches}">
-						<li class="pull-left"><a
-							href="${pageContext.request.contextPath}/restaurant/addBranch"><span
-								class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></li>
-					</c:if>
-				</ul>
-			</nav>
-			<hr class="style-1 no-gap">
-			<div class="content-wrap">
-				<c:forEach items="${sessionScope.user.restaurant.branches}" var="b"
-					varStatus="bLoop">
-					<section id="section-branch-${bLoop.index+1}">
-						<form class="form-horizontal" method="POST"
-							id="profileFormBranch${bLoop.index+1}"
-							action="${pageContext.request.contextPath}/settings/personalInfo/branch"
-							enctype="multipart/form-data" autocomplete="off"
-							onsubmit="return validateProfileFormBranch(${bLoop.index+1});">
-							<input type="text" hidden="hidden" name="restaurantBranchID"
-								value="${b.id}">
-
-							<div class="form-group">
-								<label for="sales" class="col-sm-3 control-label">Sales
-									Tax<span style="color: red">*</span>:
-								</label>
-								<div class="col-sm-6" align="left">
-									<input type="text" size="30" name="sales" required="required"
-										placeholder="Ex: x.xx" pattern="[0-9]+([\.|,][0-9]+)?"
-										class="form-control" value="${b.salesTax}">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="email" class="col-sm-3 control-label">Contact
-									Email<span style="color: red">*</span>:
-								</label>
-								<div class="col-sm-6">
-									<input type="email" size="30" name="email" required="required"
-										class="form-control" value="${b.contactEmail}">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="phone" class="col-sm-3 control-label">Contact
-									Phone<span style="color: red">*</span>:
-								</label>
-								<div class="row">
-									<div class="col-sm-3">
-										<input type="text" size="20" maxlength="20" name="phone"
-											id="phone" class="form-control" required="required"
-											placeholder="Ex.: xxxxxxxxxx" pattern="\d{10}"
-											value="${b.contactNumber}">
-									</div>
-									<c:choose>
-										<c:when test="${b.numberVerified}">
-											<div class="col-xs-1" align="left">
-												<span class="glyphicon glyphicon-ok" style="color: green;"></span>
-											</div>
-										</c:when>
-										<c:otherwise>
-											<div class="col-sm-3" align="left">
-												<button formaction=""
-													onclick="sendPhoneVerificationCode(${b.id})" id="send-pvc"
-													class="btn btn-default">Re-send verification code</button>
-											</div>
-										</c:otherwise>
-									</c:choose>
-								</div>
-							</div>
-							<c:if test="${!b.numberVerified}">
-								<div class="form-group">
-									<label for="pvc" class="col-sm-3 control-label">Verification
-										Code: </label>
-									<div class="row">
-										<div class="col-sm-3">
-											<input type="text" size="10" maxlength="5" name="pvc"
-												id="pvc" class="form-control"
-												value="${sessionScope.user.data.phoneVerificationCode}"
-												style="text-transform: uppercase"> <input
-												type="text" hidden="true"
-												value="${sessionScope.user.loginID}" id="pvc-loginID">
-											<input type="text" hidden="true"
-												value="${sessionScope.user.role.value}" id="pvc-role">
-
-											<input type="text" hidden="true"
-												value="${pageContext.request.contextPath}" id="contextpath">
-
-										</div>
-										<div class="col-sm-1">
-											<button formaction=""
-												onclick="validatePhoneVerificationCode(${b.id})" id="pvc"
-												class="btn btn-default">Verify</button>
-										</div>
-									</div>
-								</div>
-							</c:if>
-							<div class="form-group">
-								<label for="deliver-miles" class="col-sm-3 control-label">Number
-									of miles you can deliver<br />(optional):
-								</label>
-								<div class="col-sm-6" align="left">
-									<input type="text" size="5" name="deliver-miles" pattern="\d+"
-										class="form-control"
-										placeholder="leave this field blank if you do not deliver"
-										value="${b.deliverMiles}">
-								</div>
-							</div>
-							<input type="hidden" name="LastAddressValidated" value="">
-							<div class="alert alert-danger hidden" id="addressnotok">
-								<button type="button" class="close btn-lg" data-dismiss="alert"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-								Address validation failed. Please check your address.<br /> If
-								the problem persists, please contact customer support.
-							</div>
-							<div class="form-group">
-								<label for="street1" class="col-sm-3 control-label">Street<span
-									style="color: red">*</span>:
-								</label>
-
-								<div class="col-sm-6">
-									<input type="text" size="30" maxlength="50" name="street1"
-										class="form-control"
-										value="${b.address.street1} ${b.address.street2}">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="city" class="col-sm-3 control-label">City<span
-									style="color: red">*</span>:
-								</label>
-								<div class="col-sm-6">
-									<input type="text" size="30" maxlength="50" name="city"
-										class="form-control" value="${b.address.city}">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="state" class="col-sm-3 control-label">State<span
-									style="color: red">*</span>:
-								</label>
-								<div class="col-sm-6">
-									<input type="hidden" name="stateExisting"
-										value="${b.address.state}"> <span id="stateArea"></span>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="zip" class="col-sm-3 control-label">Zip<span
-									style="color: red">*</span>:
-								</label>
-
-								<div class="col-sm-6">
-									<input type="text" size="10" name="zip" maxlength="10"
-										class="form-control" placeholder="Ex.: xxxxx"
-										pattern="^\d{5}(\-\d{4})?$" value="${b.address.zip}">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-3 control-label"></label>
-								<div class="col-sm-6" align="left">
-									<button type="submit" class="btn btn-default">Update</button>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-3 control-label"></label>
-								<div class="col-sm-6" align="left">
-									<a class="popup-with-form"
-										href="#branchDeleteConfirm-${bLoop.index+1}">
-										<button class="btn btn-default">
-											<span class="glyphicon glyphicon-trash"></span>&nbsp;Delete
-											Branch
-										</button>
-									</a>
-								</div>
-							</div>
-						</form>
-
-						<div class="mfp-hide white-popup-block popupOptions"
-							id="branchDeleteConfirm-${bLoop.index+1}">
-							<form class="form-horizontal" method="POST" id="event-form"
-								action="${pageContext.request.contextPath}/settings/delete/restaurant/branch/${b.id}"
-								enctype="application/x-www-form-urlencoded" autocomplete="off">
-								<div align="center">Are you sure you want to delete this
-									branch?</div>
-								<br />
-								<div align="center">
-									<b>Location:&nbsp;</b>${b.address.getAddressString()}</div>
-								<br />
-								<div align="center">
-									<button type="submit" class="btn btn-default">
-										<span class="glyphicon glyphicon-trash"></span> Confirm Delete
-									</button>
-								</div>
-							</form>
-						</div>
-
-					</section>
-				</c:forEach>
-			</div>
-		</div>
-	</div>
-</div>
-
 <script>
 	$('document').ready(function() {
 		populateCuisineTypes();
@@ -420,9 +341,6 @@
 		$('select[name=cuisineType]').val(existingCuisine);
 		$("input[name=changeProfilePicButton]").click(function() {
 			$("div[id=restaurant-pic]").removeClass("hidden");
-		});
-		[].slice.call(document.querySelectorAll('.tabs')).forEach(function(el) {
-			new TabsMenu(el);
 		});
 	});
 </script>

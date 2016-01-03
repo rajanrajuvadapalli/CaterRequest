@@ -95,6 +95,7 @@ public class RegisterService {
 					.getDeliverMiles()));
 			restaurant.setAboutUs(data.getAboutUs());
 			restaurant.setSalesTax(data.getSalesTax());
+			restaurant.setNumberVerified(data.isNumberVerified());
 			restaurantDAO.saveOrUpdate(restaurant);
 		}
 	}
@@ -102,5 +103,10 @@ public class RegisterService {
 	public void activateUser(Login login) {
 		login.setActive(true);
 		loginDAO.update(Login.class, login);
+	}
+
+	public void saveNewRestaurantBranch(RegistrationData data, Login login) {
+		Address address = saveAddressData(data);
+		saveUserData(data, Roles.RESTAURANT, login, address);
 	}
 }

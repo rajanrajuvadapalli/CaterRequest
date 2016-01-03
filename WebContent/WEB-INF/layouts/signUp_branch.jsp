@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div class="col-sm-10 col-sm-offset-1 page-header">
-	<h1>Add a Branch</h1>
+	<h1>Add a Branch/Restaurant</h1>
 </div>
 
 <div class="col-sm-10 col-sm-offset-1">
@@ -65,43 +65,89 @@
 					<h3 class="panel-title">Personal Info</h3>
 				</div>
 				<div class="panel-body">
-					<div class="form-group">
-						<label for="email" class="col-sm-4 control-label">Contact
-							Email<span style="color: red">*</span>:
+					<div class="form-group" id="restaurant">
+						<label for="profilePic" class="col-sm-4 control-label">Upload
+							Picture<span style="color: red">*</span>:
 						</label>
 						<div class="col-sm-6">
-							<input type="email" size="30" name="email" required="required"
+							<!-- Show only image files for selection & preview. Control button labels, styles, 
+								 and icons for the browse, upload, and remove buttons. -->
+							<input id="input-profile-pic" name="input-profile-pic"
+								type="file"
+								accept="image/x-png, image/gif, image/jpeg, image/jpg"
+								class="file" required="required" data-show-upload="false"
+								data-show-caption="true"> <i>Accepted formats are
+								PNG, JPG, JPEG and GIF. Image file size limit is 4MB.</i>
+						</div>
+					</div>
+					<div class="form-group" id="restaurant">
+						<label for="restaurantName" class="col-sm-4 control-label">Restaurant&nbsp;Name<span
+							style="color: red">*</span>:
+						</label>
+						<div class="col-sm-6">
+							<input type="text" size="30" maxlength="50" name="restaurantName"
+								required="required" placeholder="Restaurant Name"
 								class="form-control">
 						</div>
 					</div>
-					<div class="form-group">
-						<label for="phone" class="col-sm-4 control-label">Contact
-							Phone<span style="color: red">*</span>:
+					<div class="form-group" id="restaurant">
+						<label for="cuisineType" class="col-sm-4 control-label">Cuisine
+							Type<span style="color: red">*</span>:
 						</label>
-						<div class="col-sm-6" align="left">
-							<input type="text" size="30" name="phone" required="required"
-								placeholder="Ex.: xxxxxxxxxx" pattern="\d{10}"
-								class="form-control">
+						<div class="col-sm-6">
+							<input type="text" hidden="true"
+								value="${pageContext.request.contextPath}" id="contextpath">
+							<span id="cuisineType"></span>
 						</div>
 					</div>
-					<div class="form-group">
-						<label for="sales" class="col-sm-4 control-label">Sales
-							Tax<span style="color: red">*</span>:
+					<div class="form-group" id="restaurant">
+						<label for="url" class="col-sm-4 control-label">Website
+							URL<span style="color: red">*</span>:
 						</label>
-						<div class="col-sm-6" align="left">
-							<input type="text" size="30" name="sales" required="required"
-								placeholder="Ex: x.xx" pattern="[0-9]+([\.|,][0-9]+)?"
-								class="form-control">
+						<div class="col-sm-6">
+							<input type="url" size="50" name="url"
+								placeholder="Ex.: http://www.example.com" class="form-control">
 						</div>
 					</div>
-					<div class="form-group">
-						<label for="deliver-miles" class="col-sm-4 control-label">Number
-							of miles you can deliver<br />(optional):
-						</label>
-						<div class="col-sm-6" align="left">
-							<input type="text" size="5" name="deliver-miles" pattern="\d+"
-								class="form-control"
-								placeholder="leave this field blank if you do not deliver">
+					<div class="panel-body">
+						<div class="form-group">
+							<label for="email" class="col-sm-4 control-label">Contact
+								Email<span style="color: red">*</span>:
+							</label>
+							<div class="col-sm-6">
+								<input type="email" size="30" name="email" required="required"
+									class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="phone" class="col-sm-4 control-label">Contact
+								Phone<span style="color: red">*</span>:
+							</label>
+							<div class="col-sm-6" align="left">
+								<input type="text" size="30" name="phone" required="required"
+									placeholder="Ex.: xxxxxxxxxx" pattern="\d{10}"
+									class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="sales" class="col-sm-4 control-label">Sales
+								Tax<span style="color: red">*</span>:
+							</label>
+							<div class="col-sm-6" align="left">
+								<input type="text" size="30" name="sales" required="required"
+									placeholder="Ex: x.xx" pattern="[0-9]+([\.|,][0-9]+)?"
+									class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="deliver-miles" class="col-sm-4 control-label">Number
+								of miles you can deliver<br />(optional):
+							</label>
+							<div class="col-sm-6" align="left">
+								<input type="text" size="5" name="deliver-miles" pattern="\d+"
+									class="form-control"
+									placeholder="leave this field blank if you do not deliver">
+							</div>
 						</div>
 					</div>
 				</div>
@@ -175,11 +221,21 @@
 								pattern="^\d{5}(\-\d{4})?$" class="form-control">
 						</div>
 					</div>
-					<div class="col-sm-6 col-sm-offset-4">
-						<button type="submit" class="btn btn-default pull-left"
-							name="add-branch-button">Add</button>
-						<button type="button" class="btn btn-default pull-right"
-							onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">Cancel</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12">
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h3 class="panel-title">Menu</h3>
+				</div>
+				<div class="panel-body">
+					<div id="consent-menu">
+						<p>Please select the cuisine type above to continue.</p>
+					</div>
+					<div class="col-sm-6">
+						<button type="submit" class="btn btn-default"
+							name="add-branch-button" disabled="true">Add Branch</button>
 					</div>
 				</div>
 			</div>
@@ -189,6 +245,16 @@
 
 <script>
 	$('document').ready(function() {
+		populateCuisineTypes();
 		populateAptSuite();
+		$("select[name=cuisineType]").change(populateMenuForRestaurantConsent);
+		$("input[name=menuconsent]").live('change', function() {
+			var element = $("button[name=add-branch-button]");
+			if (this.checked) {
+				element.prop('disabled', false);
+			} else {
+				element.prop('disabled', true);
+			}
+		});
 	});
 </script>
