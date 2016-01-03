@@ -98,7 +98,7 @@
 					<!-- Column width : 240 and max width is 1200 to fit max 5 tiles in one row if space exists -->
 					<div class="grid js-masonry"
 						data-masonry-options='{ "itemSelector": ".grid-item", "columnWidth": 240 }'>
-						<c:if test="${empty upcomingQuotes}">You do not have any request for past events.</c:if>
+						<c:if test="${empty pastQuotes}">You do not have any request for past events.</c:if>
 						<c:forEach items="${pastQuotes}" var="q" varStatus="qloop">
 							<div class="grid-item" style="cursor: pointer">
 								<p>
@@ -127,7 +127,7 @@
 					<!-- Column width : 240 and max width is 1200 to fit max 5 tiles in one row if space exists -->
 					<div class="grid js-masonry"
 						data-masonry-options='{ "itemSelector": ".grid-item", "columnWidth": 240 }'>
-						<c:if test="${empty upcomingQuotes}">You currently do not have any confirmed events.</c:if>
+						<c:if test="${empty confirmedQuotes}">You currently do not have any confirmed events.</c:if>
 						<c:forEach items="${confirmedQuotes}" var="q" varStatus="qloop">
 							<div class="grid-item" style="cursor: pointer">
 								<p>
