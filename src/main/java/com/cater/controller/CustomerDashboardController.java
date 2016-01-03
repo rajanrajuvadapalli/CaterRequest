@@ -88,6 +88,7 @@ public class CustomerDashboardController {
 		else {
 			customer = customerService.findCustomerWithLoginId(user
 					.getLoginID());
+			user.setCustomerID(customer.getId());
 		}
 		modelMap.put("customer", customer);
 		//List <Event> events = customer.getEvents();

@@ -47,81 +47,147 @@
 		</div>
 	</c:if>
 </div>
+
 <div class="col-sm-10 col-sm-offset-1">
-	<c:choose>
-		<c:when test="${empty restaurant.quotes}">
-				You currently do not have any request for quotes.
-				</c:when>
-		<c:otherwise>
-			<div class="table-responsive">
-				<table class="table table-striped table-bordered">
-					<tr>
-						<th class="col-sm-2">Customer</th>
-						<th class="col-sm-2">Event Name</th>
-						<th class="col-sm-2">Date/Time</th>
-						<th class="col-sm-1">Number of persons</th>
-						<th class="col-sm-2">Status</th>
-						<th class="col-sm-2">Your quote</th>
-					</tr>
-					<c:forEach items="${restaurant.quotes}" var="q">
-						<tr>
-							<td>${q.menu.event.customer.name}<br /> 
-							<c:if test="${q.status.toString() == 'CUSTOMER_ORDER_CONFIRMED'}">
-							<span
-										class="glyphicon glyphicon-phone-alt" aria-hidden="true"
-									></span>&nbsp;<c:out
-									value="(${fn:substring(q.menu.event.customer.contactNumber, 0, 3)}) ${fn:substring(q.menu.event.customer.contactNumber, 3, 6)}-${fn:substring(q.menu.event.customer.contactNumber, 6, 10)}" />
-							</c:if>
-							</td>
-							<td>${q.menu.event.name}<br> <a
-								href="${pageContext.request.contextPath}/menu/view/${q.menu.id}"
-								role="button" class="btn btn-sm btn-warning">See
-									Menu</a>
-							</td>
-							<td><fmt:formatDate value="${q.menu.event.date_time}"
-									pattern="EEE, d MMM yyyy hh:mm aaa" /></td>
-							<td>${q.menu.event.personCount} adults, ${q.menu.event.kidsCount} kids</td>
-							<td><c:choose>
-									<c:when test="${q.status.toString() == 'CREATED'}">New Event.</c:when>
-									<c:when
-										test="${q.status.toString() == 'CUSTOMER_UPDATED_MENU'}">
-												Customer has updated the menu. <span class="badge"
-											style="background-color: #FF3300;">&nbsp;&#134;&nbsp;</span>
-									</c:when>
-									<c:when
-										test="${q.status.toString() == 'CUSTOMER_UPDATED_COUNT'}">
-												Customer has updated the person count. <span class="badge"
-											style="background-color: #FF3300;">&nbsp;&#134;&nbsp;</span>
-									</c:when>
-									<c:when
-										test="${q.status.toString() == 'CUSTOMER_UPDATED_DATE'}">
-												Customer has updated the date and/or time of the event. <span
-											class="badge" style="background-color: #FF3300;">&nbsp;&#134;&nbsp;</span>
-									</c:when>
-									<c:when
-										test="${q.status.toString() == 'RESTAURANT_SUBMITTED_PRICE'}">Customer is reviewing your price quote.</c:when>
-									<c:when
-										test="${q.status.toString() == 'RESTAURANT_UPDATED_PRICE'}">Customer is reviewing your updated price quote.</c:when>
-									<c:when test="${q.status.toString() == 'APPROVED'}">Customer accepted your quote.
-											<span class="badge" style="background-color: #009933;">&nbsp;&#x2713;&nbsp;</span>
-									</c:when>
-									<c:when test="${q.status.toString() == 'DENIED'}">Customer denied your quote.</c:when>
-									<c:when test="${q.status.toString() == 'PAID'}">Customer has paid.</c:when>
-									<c:when
-										test="${q.status.toString() == 'CUSTOMER_ORDER_CONFIRMED'}">Customer has confirmed the order.</c:when>
-								</c:choose></td>
-							<td><fmt:setLocale value="en_US" /> <fmt:formatNumber
-									value="${q.price}" type="currency" /> <c:if
-									test="${not empty bargain && bargain.containsKey(q.id)}">
-									<span class="label label-warning"
-										title="Your quote is higher than the best quote received for this event.">
-										<fmt:formatNumber value="${bargain.get(q.id)}" type="percent" />
-									</span>
-								</c:if></td>
-						</tr>
-					</c:forEach>
-				</table>
+	<div id="main-content">
+		<div class="tabs tabs-topline">
+			<nav>
+				<ul>
+					<li class="pull-left"><a href="#section-upcoming"
+						class="icon icon-home">Upcoming Events
+							(${upcomingQuotes.size()})</a></li>
+					<li class="pull-left"><a href="#section-past"
+						class="icon icon-gift">Past Events (${pastQuotes.size()})</a></li>
+					<li class="pull-left"><a href="#section-confirmed"
+						class="icon icon-gift">Confirmed Events
+							(${confirmedQuotes.size()})</a></li>
+				</ul>
+			</nav>
+			<hr class="style-1 no-gap">
+			<div class="content-wrap">
+				<section id="section-upcoming">
+					<!-- Column width : 240 and max width is 1200 to fit max 5 tiles in one row if space exists -->
+					<div class="grid js-masonry"
+						data-masonry-options='{ "itemSelector": ".grid-item", "columnWidth": 240 }'>
+						<c:if test="${empty upcomingQuotes}">You currently do not have any request for upcoming events.</c:if>
+						<c:forEach items="${upcomingQuotes}" var="q" varStatus="qloop">
+							<div class="grid-item" style="cursor: pointer">
+								<p>
+									<span class="head">${qloop.index+1}</span><span id="quote"
+										class="quote-value"
+										data-quote-val="${pageContext.request.contextPath}/menu/view/${q.menu.id}">&nbsp;${q.menu.event.name}
+										(${q.menu.event.customer.name})</span><br /> <span id="date"
+										class="date"><fmt:formatDate
+											value="${q.menu.event.date_time}"
+											pattern="EEE, d MMM yyyy hh:mm aaa" /></span> <br /> Your
+									quote:&nbsp;
+									<fmt:setLocale value="en_US" />
+									<fmt:formatNumber value="${q.price}" type="currency" />
+									<c:if test="${not empty bargain && bargain.containsKey(q.id)}">
+										<span class="label label-warning"
+											title="Your quote is higher than the best quote received for this event.">
+											<fmt:formatNumber value="${bargain.get(q.id)}" type="percent" />
+										</span>
+									</c:if>
+								<p>
+							</div>
+						</c:forEach>
+					</div>
+				</section>
+				<section id="section-past">
+					<!-- Column width : 240 and max width is 1200 to fit max 5 tiles in one row if space exists -->
+					<div class="grid js-masonry"
+						data-masonry-options='{ "itemSelector": ".grid-item", "columnWidth": 240 }'>
+						<c:if test="${empty upcomingQuotes}">You do not have any request for past events.</c:if>
+						<c:forEach items="${pastQuotes}" var="q" varStatus="qloop">
+							<div class="grid-item" style="cursor: pointer">
+								<p>
+									<span class="head">${qloop.index+1}</span><span id="quote"
+										class="quote-value"
+										data-quote-val="${pageContext.request.contextPath}/menu/view/${q.menu.id}">&nbsp;${q.menu.event.name}
+										(${q.menu.event.customer.name})</span><br /> <span id="date"
+										class="date"><fmt:formatDate
+											value="${q.menu.event.date_time}"
+											pattern="EEE, d MMM yyyy hh:mm aaa" /></span> <br /> Your
+									quote:&nbsp;
+									<fmt:setLocale value="en_US" />
+									<fmt:formatNumber value="${q.price}" type="currency" />
+									<c:if test="${not empty bargain && bargain.containsKey(q.id)}">
+										<span class="label label-warning"
+											title="Your quote is higher than the best quote received for this event.">
+											<fmt:formatNumber value="${bargain.get(q.id)}" type="percent" />
+										</span>
+									</c:if>
+								<p>
+							</div>
+						</c:forEach>
+					</div>
+				</section>
+				<section id="section-confirmed">
+					<!-- Column width : 240 and max width is 1200 to fit max 5 tiles in one row if space exists -->
+					<div class="grid js-masonry"
+						data-masonry-options='{ "itemSelector": ".grid-item", "columnWidth": 240 }'>
+						<c:if test="${empty upcomingQuotes}">You currently do not have any confirmed events.</c:if>
+						<c:forEach items="${confirmedQuotes}" var="q" varStatus="qloop">
+							<div class="grid-item" style="cursor: pointer">
+								<p>
+									<span class="head">${qloop.index+1}</span><span id="quote"
+										class="quote-value"
+										data-quote-val="${pageContext.request.contextPath}/menu/view/${q.menu.id}">&nbsp;${q.menu.event.name}
+										(${q.menu.event.customer.name})</span><br /> <span id="date"
+										class="date"><fmt:formatDate
+											value="${q.menu.event.date_time}"
+											pattern="EEE, d MMM yyyy hh:mm aaa" /></span> <br /> Your
+									quote:&nbsp;
+									<fmt:setLocale value="en_US" />
+									<fmt:formatNumber value="${q.price}" type="currency" />
+									<c:if test="${not empty bargain && bargain.containsKey(q.id)}">
+										<span class="label label-warning"
+											title="Your quote is higher than the best quote received for this event.">
+											<fmt:formatNumber value="${bargain.get(q.id)}" type="percent" />
+										</span>
+									</c:if>
+								<p>
+							</div>
+						</c:forEach>
+					</div>
+				</section>
 			</div>
-		</c:otherwise>
-	</c:choose>
+			<!-- End content-wrap -->
+
+		</div>
+		<!-- End tabs -->
+	</div>
+	<!-- End main-content -->
 </div>
+<!-- End col-sm-10 -->
+
+<script>
+	(function() {
+		// Menu for smaller devices
+		//$('#menu').menu();
+		// Tabs navigation function
+		[].slice.call(document.querySelectorAll('.tabs')).forEach(function(el) {
+			new TabsMenu(el);
+		});
+		// auto re-ordering of tiles
+		$('.grid').masonry();
+		// Tiles on click function goes here
+		$('.grid-item').each(function() {
+			$(this).on('click', function() {
+				// examples to get data from the clicked tile //
+				// Store unique id in data-event-val to retrieve the data from db for ease of use //
+				// Just if you wanna do like this //
+				//var eventval = $(this).find('#event').text();
+				var dataQuoteVal = $(this).find('#quote').data('quote-val');
+				//console.log(dataQuoteVal);
+				if (dataQuoteVal != "") {
+					window.location.replace(dataQuoteVal);
+				}
+				// if you want to redirect page
+				// window.location.replace(url);
+				// window.location.href = url; // we can use any of the 2ways specified
+			})
+		});
+	})();
+</script>

@@ -53,34 +53,27 @@ public class PhoneService {
 	}
 
 	/**
-	 * Verify number.
-	 *
-	 * @param loginId the login id
-	 * @param role the role
-	 * @param payload the payload
-	 * @return the response
+	 * @param loginID
+	 * @param customerOrRestaurantID
+	 * @param payload
+	 * @return
 	 */
 	@POST
-	@Path("/verify/{loginId}/{role}")
+	@Path("/verify/{loginId}/{id}")
 	@Consumes(TEXT_PLAIN)
 	@Produces(TEXT_PLAIN)
-	public Response verifyNumber(@PathParam("loginId") int loginId,
-			@PathParam("role") String role, String payload) {
+	public Response verifyNumber(@PathParam("loginId") int loginID,
+			@PathParam("id") int customerOrRestaurantID, String payload) {
 		String verificationCode = payload;
 		logger.debug("Verifying phone number for user with login ID: "
-				+ loginId + " with Verification Code: " + verificationCode);
+				+ loginID + " with Verification Code: " + verificationCode);
 		if (StringUtils.isBlank(verificationCode)) {
 			logger.debug("Verification code cannot be blank.");
 			return Response.status(BAD_REQUEST)
 					.entity("Verification code cannot be blank.").build();
 		}
-		if (StringUtils.isBlank(role)) {
-			logger.debug("Role cannot be blank.");
-			return Response.status(BAD_REQUEST).entity("Role cannot be blank.")
-					.build();
-		}
 		// Retrieve the user from DB
-		Login login = loginDAO.findById(loginId);
+		Login login = loginDAO.findById(loginID);
 		if (login == null) {
 			logger.debug("Could not find user.");
 			return Response.status(BAD_REQUEST).entity("Could not find user.")
@@ -99,15 +92,25 @@ public class PhoneService {
 					&& StringUtils.equalsIgnoreCase(expectedVerificationCode,
 							verificationCode)) {
 				// Update database
-				if (StringUtils.equalsIgnoreCase("customer", role)) {
+				if (login.isCustomer()) {
 					logger.debug("Updating consumer table.");
-					Customer customer = customerDAO.findByLoginID(loginId);
+					Customer customer = customerDAO
+							.findById(customerOrRestaurantID);
+					if (customer.getLogin().getId() != loginID) {
+						return Response.status(BAD_REQUEST)
+								.entity("Could not find the customer.").build();
+					}
 					customer.setNumberVerified(true);
 				}
-				else if (StringUtils.equalsIgnoreCase("restaurant", role)) {
+				else if (login.isRestaurant()) {
 					logger.debug("Updating restaurant table.");
 					Restaurant restaurant = restaurantDAO
-							.findByLoginID(loginId);
+							.findById(customerOrRestaurantID);
+					if (restaurant.getLogin().getId() != loginID) {
+						return Response.status(BAD_REQUEST)
+								.entity("Could not find the restaurant.")
+								.build();
+					}
 					restaurant.setNumberVerified(true);
 				}
 				return Response.ok()
@@ -124,30 +127,26 @@ public class PhoneService {
 		}
 	}
 
+
 	/**
 	 * Send verification code.
 	 *
-	 * @param loginId the login id
-	 * @param role the role
+	 * @param loginID the login id
+	 * @param customerOrRestaurantID the customer or restaurant id
 	 * @param payload the payload
 	 * @return the response
 	 */
 	@POST
-	@Path("/verify/sendcode/{loginId}/{role}")
+	@Path("/verify/sendcode/{loginId}/{id}")
 	@Consumes(TEXT_PLAIN)
 	@Produces(TEXT_PLAIN)
-	public Response sendVerificationCode(@PathParam("loginId") int loginId,
-			@PathParam("role") String role, String payload) {
+	public Response sendVerificationCode(@PathParam("loginId") int loginID,
+			@PathParam("id") int customerOrRestaurantID, String payload) {
 		String phoneNumber = Helper.extractJust10digitNumber(payload);
 		logger.debug("Sending phone verification code for user with login ID: "
-				+ loginId);
-		if (StringUtils.isBlank(role)) {
-			logger.debug("Role cannot be blank.");
-			return Response.status(BAD_REQUEST).entity("Role cannot be blank.")
-					.build();
-		}
+				+ loginID);
 		// Retrieve the user from DB
-		Login login = loginDAO.findById(loginId);
+		Login login = loginDAO.findById(loginID);
 		if (login == null) {
 			logger.debug("Could not find user.");
 			return Response.status(BAD_REQUEST).entity("Could not find user.")
@@ -155,14 +154,24 @@ public class PhoneService {
 		}
 		try {
 			// Update database if number has changed
-			if (StringUtils.equalsIgnoreCase("customer", role)) {
+			if (login.isCustomer()) {
 				logger.debug("Updating consumer table.");
-				Customer customer = customerDAO.findByLoginID(loginId);
+				Customer customer = customerDAO
+						.findById(customerOrRestaurantID);
+				if (customer.getLogin().getId() != loginID) {
+					return Response.status(BAD_REQUEST)
+							.entity("Could not find the customer.").build();
+				}
 				customer.setContactNumber(phoneNumber);
 			}
-			else if (StringUtils.equalsIgnoreCase("restaurant", role)) {
+			else if (login.isRestaurant()) {
 				logger.debug("Updating restaurant table.");
-				Restaurant restaurant = restaurantDAO.findByLoginID(loginId);
+				Restaurant restaurant = restaurantDAO
+						.findById(customerOrRestaurantID);
+				if (restaurant.getLogin().getId() != loginID) {
+					return Response.status(BAD_REQUEST)
+							.entity("Could not find the restaurant.").build();
+				}
 				restaurant.setContactNumber(phoneNumber);
 			}
 			smsHelper.resendPhoneVerificationSMS(login, phoneNumber);

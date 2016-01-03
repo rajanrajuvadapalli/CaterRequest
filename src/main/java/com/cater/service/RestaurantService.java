@@ -89,6 +89,18 @@ public class RestaurantService {
 		return restaurantDAO.fetchRestaurantsOfType(cuisine);
 	}
 
+	public List <Quote> fetchUpcomingQuotes(Integer restaurantID) {
+		return restaurantDAO.fetchUpcomingQuotes(restaurantID);
+	}
+
+	public List <Quote> fetchPastQuotes(Integer restaurantID) {
+		return restaurantDAO.fetchPastQuotes(restaurantID);
+	}
+
+	public List <Quote> fetchConfirmedQuotes(Integer restaurantID) {
+		return restaurantDAO.fetchConfirmedQuotes(restaurantID);
+	}
+
 	/**
 	 * Find restaurant with id.
 	 *
@@ -99,13 +111,14 @@ public class RestaurantService {
 		return restaurantDAO.findById(restaurantId);
 	}
 
+
 	/**
-	 * Find restaurant with login id.
+	 * Find restaurants with login id.
 	 *
 	 * @param loginID the login id
-	 * @return the restaurant
+	 * @return the list
 	 */
-	public Restaurant findRestaurantWithLoginId(Integer loginID) {
+	public List <Restaurant> findRestaurantsWithLoginId(Integer loginID) {
 		return restaurantDAO.findByLoginID(loginID);
 	}
 
@@ -252,7 +265,7 @@ public class RestaurantService {
 				if(Environment.isProd() || Environment.isUat()) {
 					amazons3.upload(f);
 				}else {
-					logger.debug("LOCAL ENVIRONMENT: Not saving profile pic to cloud.");
+					logger.debug("*** LOCAL ENVIRONMENT *** Not saving profile pic to cloud.");
 				}
 				FileUtils.deleteQuietly(f);
 			}

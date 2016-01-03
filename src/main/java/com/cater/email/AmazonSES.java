@@ -14,6 +14,7 @@ import com.amazonaws.services.simpleemail.model.Content;
 import com.amazonaws.services.simpleemail.model.Destination;
 import com.amazonaws.services.simpleemail.model.Message;
 import com.amazonaws.services.simpleemail.model.SendEmailRequest;
+import com.cater.Environment;
 
 /**
  * The Class AmazonSES.
@@ -79,6 +80,11 @@ public class AmazonSES {
 	 *      the credentials file in your source directory.
 	 */
 	public void sendEmail(String emailSubject, String emailBody, String... toAddresses) throws IOException {
+		//In DEV,LOCAL, do not sent email
+		if (Environment.isLocal()) {
+			logger.debug("*** LOCAL ENVIRONMENT *** Not sending email.");
+			return;
+		}
 		// Construct an object to contain the recipient address.
 		Destination destination = new Destination().withToAddresses(toAddresses).withCcAddresses(INFO_EMAIL_ADDRESS);
 		// Create the subject and body of the message.

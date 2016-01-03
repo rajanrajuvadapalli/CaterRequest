@@ -9,6 +9,7 @@ import javax.annotation.Nullable;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -57,13 +58,42 @@ public class RestaurantDashboardController {
 		if (user == null) {
 			return "t_home";
 		}
-		Restaurant restaurant = restaurantService
-				.findRestaurantWithLoginId(user.getLoginID());
-		modelMap.put("restaurant", restaurant);
-		((User) session.getAttribute("user")).setName(restaurant.getName());
-		Map <Integer, Double> bargainMap = getBargainPercentages(restaurant);
-		modelMap.put("bargain", bargainMap);
-		return "restaurant/t_dashboard";
+		List <Restaurant> restaurants = restaurantService
+				.findRestaurantsWithLoginId(user.getLoginID());
+		if (CollectionUtils.isNotEmpty(restaurants)) {
+			if (restaurants.size() == 1) {
+				Restaurant restaurant = restaurants.get(0);
+				user.setRestaurantID(restaurant.getId());
+				modelMap.put("restaurant", restaurant);
+				((User) session.getAttribute("user")).setName(restaurant
+						.getName());
+				Map <Integer, Double> bargainMap = getBargainPercentages(restaurant);
+				modelMap.put("bargain", bargainMap);
+				List <Quote> upcomingQuotes = restaurantService
+						.fetchUpcomingQuotes(restaurant.getId());
+				modelMap.put("upcomingQuotes", upcomingQuotes);
+				List <Quote> pastQuotes = restaurantService
+						.fetchPastQuotes(restaurant.getId());
+				modelMap.put("pastQuotes", pastQuotes);
+				List <Quote> confirmedQuotes = restaurantService
+						.fetchConfirmedQuotes(restaurant.getId());
+				modelMap.put("confirmedQuotes", confirmedQuotes);
+				return "restaurant/t_dashboard";
+			}
+			else {
+				modelMap.put("restaurants", restaurants);
+				String username = "";
+				if (CollectionUtils.isNotEmpty(restaurants)) {
+					username = restaurants.get(0).getLogin().getUsername();
+				}
+				((User) session.getAttribute("user")).setName(StringUtils
+						.defaultString(username));
+				//TODO: bargain map
+				//TODO: set restaurant ID in session user object after the user makes a selection.
+				return "restaurant/t_dashboard_main";
+			}
+		}
+		return "t_home";
 	}
 
 	/**

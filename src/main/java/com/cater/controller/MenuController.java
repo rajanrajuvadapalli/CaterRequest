@@ -455,7 +455,7 @@ public class MenuController {
 				Menu newMenu = convertModelToMenu(menuModel, baseMenu, modelMap);
 				modelMap.put("menu", newMenu);
 				Restaurant restaurant = restaurantService
-						.findRestaurantWithLoginId(user.getLoginID());
+						.findRestaurantWithId(user.getRestaurantID());
 				if (restaurant != null) {
 					// If a restaurant is requesting to see the menu,
 					// it can also see the price it quoted before.

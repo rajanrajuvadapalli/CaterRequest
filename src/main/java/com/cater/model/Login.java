@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.cater.constants.Roles;
+
 /**
  * The Class Login.
  * 
@@ -74,6 +76,14 @@ public class Login extends TimestampEntity implements Serializable {
 
 	public boolean isActive() {
 		return active;
+	}
+
+	public boolean isCustomer() {
+		return Roles.CUSTOMER == Roles.get(getRole());
+	}
+
+	public boolean isRestaurant() {
+		return Roles.RESTAURANT == Roles.get(getRole());
 	}
 
 	public void setActive(boolean active) {

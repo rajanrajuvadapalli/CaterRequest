@@ -11,6 +11,7 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
@@ -18,9 +19,11 @@ import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.cater.constants.EventStatus;
 import com.cater.model.Quote;
 import com.cater.model.Restaurant;
 import com.cater.model.RestaurantSearch;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -77,13 +80,13 @@ public class RestaurantDAO extends DataAccessObject {
 	 * Find by login id.
 	 *
 	 * @param loginID the login id
-	 * @return the restaurant
+	 * @return the list
 	 */
-	public Restaurant findByLoginID(Integer loginID) {
+	@SuppressWarnings("unchecked")
+	public List <Restaurant> findByLoginID(Integer loginID) {
 		if (loginID == null) {
 			return null;
 		}
-		Restaurant restaurant = null;
 		logger.debug("Finding Restaurant with login ID: " + loginID);
 		try {
 			Session session = getSessionFactory().getCurrentSession();
@@ -92,10 +95,11 @@ public class RestaurantDAO extends DataAccessObject {
 					.createAlias("res.login", "login", JoinType.LEFT_OUTER_JOIN)
 					.add(Restrictions.eq("login.id", loginID)).list();
 			if (CollectionUtils.isNotEmpty(list)) {
-				restaurant = (Restaurant) list.iterator().next();
-				logger.debug("Found Restaurant with login ID: " + loginID);
+				logger.debug("Found " + list.size()
+						+ " Restaurant(s) with login ID: " + loginID);
+				return (List <Restaurant>) list;
 			}
-			return restaurant;
+			return null;
 		}
 		catch (HibernateException he) {
 			logger.error(
@@ -162,6 +166,13 @@ public class RestaurantDAO extends DataAccessObject {
 		return restaurants;
 	}
 
+	/**
+	 * Search restaurants by date range.
+	 *
+	 * @param fromDate the from date
+	 * @param toDate the to date
+	 * @return the list
+	 */
 	@SuppressWarnings("unchecked")
 	public List <RestaurantSearch> searchRestaurantsByDateRange(Date fromDate,
 			Date toDate) {
@@ -271,5 +282,97 @@ public class RestaurantDAO extends DataAccessObject {
 					he);
 			return 0;
 		}
+	}
+
+	/**
+	 * Fetch upcoming quotes.
+	 *
+	 * @param restaurantID the restaurant id
+	 * @return the list
+	 */
+	@SuppressWarnings("unchecked")
+	public List <Quote> fetchUpcomingQuotes(Integer restaurantID) {
+		logger.debug("Fetching upcoming quotes for restaurant with ID: "
+				+ restaurantID);
+		try {
+			Session session = getSessionFactory().getCurrentSession();
+			List <?> list = session.createCriteria(Quote.class, "q")
+					.createAlias("q.restaurant", "r", JoinType.LEFT_OUTER_JOIN)
+					.add(Restrictions.eq("r.id", restaurantID))
+					.createAlias("q.menu", "menu", JoinType.RIGHT_OUTER_JOIN)
+					.createAlias("menu.event", "e", JoinType.RIGHT_OUTER_JOIN)
+					.add(Restrictions.ge("e.date_time", new Date()))
+					.addOrder(Order.asc("e.date_time")).list();
+			logger.debug("Found " + list.size() + " upcoming quotes");
+			return (List <Quote>) list;
+		}
+		catch (HibernateException he) {
+			logger.error(
+					"Exception occurred while Fetching upcoming quotes for restaurant with ID: "
+							+ restaurantID, he);
+		}
+		return Lists.newArrayList();
+	}
+
+	/**
+	 * Fetch past quotes.
+	 *
+	 * @param restaurantID the restaurant id
+	 * @return the list
+	 */
+	@SuppressWarnings("unchecked")
+	public List <Quote> fetchPastQuotes(Integer restaurantID) {
+		logger.debug("Fetching past quotes for restaurant with ID: "
+				+ restaurantID);
+		try {
+			Session session = getSessionFactory().getCurrentSession();
+			List <?> list = session.createCriteria(Quote.class, "q")
+					.createAlias("q.restaurant", "r", JoinType.LEFT_OUTER_JOIN)
+					.add(Restrictions.eq("r.id", restaurantID))
+					.createAlias("q.menu", "menu", JoinType.RIGHT_OUTER_JOIN)
+					.createAlias("menu.event", "e", JoinType.RIGHT_OUTER_JOIN)
+					.add(Restrictions.lt("e.date_time", new Date()))
+					.addOrder(Order.asc("e.date_time")).list();
+			logger.debug("Found " + list.size() + " past quotes");
+			return (List <Quote>) list;
+		}
+		catch (HibernateException he) {
+			logger.error(
+					"Exception occurred while Fetching past quotes for restaurant with ID: "
+							+ restaurantID, he);
+		}
+		return Lists.newArrayList();
+	}
+
+	/**
+	 * Fetch confirmed quotes.
+	 *
+	 * @param restaurantID the restaurant id
+	 * @return the list
+	 */
+	@SuppressWarnings("unchecked")
+	public List <Quote> fetchConfirmedQuotes(Integer restaurantID) {
+		logger.debug("Fetching confirmed quotes for restaurant with ID: "
+				+ restaurantID);
+		try {
+			Session session = getSessionFactory().getCurrentSession();
+			List <?> list = session
+					.createCriteria(Quote.class, "q")
+					.createAlias("q.restaurant", "r", JoinType.LEFT_OUTER_JOIN)
+					.add(Restrictions.eq("r.id", restaurantID))
+					.createAlias("q.menu", "menu", JoinType.RIGHT_OUTER_JOIN)
+					.createAlias("menu.event", "e", JoinType.RIGHT_OUTER_JOIN)
+					.add(Restrictions.eq("e.status",
+							EventStatus.CONFIRMED.toString()))
+					.addOrder(Order.asc("e.date_time")).list();
+			logger.debug("Found " + list.size() + " confirmed quotes");
+			return (List <Quote>) list;
+		}
+		catch (HibernateException he) {
+			logger.error(
+					"Exception occurred while Fetching confirmed quotes for restaurant with ID: "
+							+ restaurantID, he);
+		}
+		return Lists.newArrayList();
 	}
 }

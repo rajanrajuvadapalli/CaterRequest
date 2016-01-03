@@ -198,15 +198,17 @@ public class RegistrationController {
 			logger.debug("Confirmation token for " + login.getUsername() + ": "
 					+ confirmationToken + "(" + confirmationToken_URLSafe + ")");
 			String customer_restaurant_name = "";
-			if (Roles.CUSTOMER == Roles.get(login.getRole())) {
+			if (login.isCustomer()) {
 				modelMap.put("name", data.getName());
 				customer_restaurant_name = customerService
 						.findCustomerWithLoginId(login.getId()).getName();
 			}
-			else if (Roles.RESTAURANT == Roles.get(login.getRole())) {
+			else if (login.isRestaurant()) {
 				modelMap.put("name", data.getRestaurantName());
-				Restaurant restaurant = restaurantService
-						.findRestaurantWithLoginId(login.getId());
+				List <Restaurant> restaurants = restaurantService
+						.findRestaurantsWithLoginId(login.getId());
+				//During registration, there should be only 1 restaurant saved for this login ID.
+				Restaurant restaurant = restaurants.get(0);
 				customer_restaurant_name = restaurant.getName();
 				restaurantService.saveRestaurantProfilePic(restaurant,
 						multipartFile);
