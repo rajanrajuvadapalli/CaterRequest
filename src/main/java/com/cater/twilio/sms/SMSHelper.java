@@ -116,6 +116,10 @@ public class SMSHelper {
 				if (role == Roles.RESTAURANT) {
 					messageBuilder.append("Customer name: ")
 							.append(customer.getName()).append("; ");
+					messageBuilder.append("Restaurant name: ")
+							.append(restaurant.getName()).append(" at ")
+							.append(restaurant.getAddress().getStreet1())
+							.append("; ");
 				}
 				else if (role == Roles.CUSTOMER) {
 					messageBuilder.append("Restaurant name: ")
