@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
-import com.amazonaws.auth.profile.ProfileCredentialsProvider;
+import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.transfer.TransferManager;
@@ -35,7 +35,7 @@ public class AmazonS3 {
 			keyName = StringUtils.split(keyName, ".")[0];
 		}
 		TransferManager tm = new TransferManager(
-				new ProfileCredentialsProvider());
+				new EnvironmentVariableCredentialsProvider());
 		logger.debug(String.format(
 				"Uploading the file to AmazonS3 [bucket: %s, file: %s]",
 				existingBucketName, keyName));
