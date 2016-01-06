@@ -87,7 +87,8 @@
 								value="Change Pic" class="btn btn-default btn-sm">
 						</div>
 					</div>
-					<div class="form-group hidden" id="restaurant-pic">
+					<div class="form-group hidden" id="restaurant-pic"  style="background-color: #e5e600;">
+					<br/>
 						<label for="profilePic" class="col-sm-3 control-label">
 							Picture&nbsp;:</label>
 						<div class="col-sm-6">
@@ -341,6 +342,7 @@
 		$('select[name=cuisineType]').val(existingCuisine);
 		$("input[name=changeProfilePicButton]").click(function() {
 			$("div[id=restaurant-pic]").removeClass("hidden");
+			$(this).attr("disabled", "disabled");
 		});
 	});
 </script>
