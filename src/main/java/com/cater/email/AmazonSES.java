@@ -2,7 +2,6 @@ package com.cater.email;
 
 import java.io.IOException;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -15,6 +14,7 @@ import com.amazonaws.services.simpleemail.model.Content;
 import com.amazonaws.services.simpleemail.model.Destination;
 import com.amazonaws.services.simpleemail.model.Message;
 import com.amazonaws.services.simpleemail.model.SendEmailRequest;
+import com.cater.Environment;
 
 /**
  * The Class AmazonSES.
@@ -80,12 +80,13 @@ public class AmazonSES {
 	 *      the credentials file in your source directory.
 	 */
 	public void sendEmail(String emailSubject, String emailBody, String... toAddresses) throws IOException {
-		// Construct an object to contain the recipient address.
-		Destination destination = new Destination()
-				.withToAddresses(toAddresses);
-		if (StringUtils.isNotBlank(INFO_EMAIL_ADDRESS)) {
-			destination = destination.withCcAddresses(INFO_EMAIL_ADDRESS);
+		//In DEV,LOCAL, do not sent email
+		if (Environment.isLocal()) {
+			logger.debug("*** LOCAL ENVIRONMENT *** Not sending email.");
+			return;
 		}
+		// Construct an object to contain the recipient address.
+		Destination destination = new Destination().withToAddresses(toAddresses).withCcAddresses(INFO_EMAIL_ADDRESS);
 		// Create the subject and body of the message.
 		Content subject = new Content().withData(emailSubject);
 		Content htmlBody = new Content().withData(emailBody);

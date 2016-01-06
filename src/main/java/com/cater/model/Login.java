@@ -1,13 +1,20 @@
 package com.cater.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.cater.constants.Roles;
 
 /**
  * The Class Login.
@@ -39,6 +46,9 @@ public class Login extends TimestampEntity implements Serializable {
 	private String role;
 	@Column(name = "active", nullable = false, unique = false, updatable = true)
 	private boolean active;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "login_sk")
+	private List <Restaurant> restaurants;
 
 	public Integer getId() {
 		return id;
@@ -76,8 +86,24 @@ public class Login extends TimestampEntity implements Serializable {
 		return active;
 	}
 
+	public boolean isCustomer() {
+		return Roles.CUSTOMER == Roles.get(getRole());
+	}
+
+	public boolean isRestaurant() {
+		return Roles.RESTAURANT == Roles.get(getRole());
+	}
+
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+
+	public List <Restaurant> getRestaurants() {
+		return restaurants;
+	}
+
+	public void setRestaurants(List <Restaurant> restaurants) {
+		this.restaurants = restaurants;
 	}
 
 	@Override

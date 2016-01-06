@@ -1,5 +1,7 @@
 package com.cater.ui.data;
 
+import java.util.List;
+
 import com.cater.constants.Roles;
 import com.cater.model.Customer;
 import com.cater.model.Restaurant;
@@ -17,6 +19,7 @@ public class User {
 	private RegistrationData data;
 	private Customer customer;
 	private Restaurant restaurant;
+	private List <Restaurant> restaurants;
 	private boolean isGuest = false;
 
 	public int getLoginID() {
@@ -89,6 +92,14 @@ public class User {
 
 	public void setRestaurant(Restaurant restaurant) {
 		this.restaurant = restaurant;
+	}
+
+	public List <Restaurant> getRestaurants() {
+		return restaurants;
+	}
+
+	public void setRestaurants(List <Restaurant> restaurants) {
+		this.restaurants = restaurants;
 	}
 
 	public boolean isGuest() {

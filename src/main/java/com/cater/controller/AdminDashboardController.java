@@ -139,8 +139,8 @@ public class AdminDashboardController {
 		String restaurantEmail = StringUtils.defaultString(request
 				.getParameter("rest_email"));
 		if (StringUtils.isNotBlank(restaurantEmail)) {
-			modelMap.put("rbsDtos", restaurantService
-					.searchForRestaurantBranchesByUserName(restaurantEmail));
+			modelMap.put("restaurants", restaurantService
+					.searchForRestaurantsByUserName(restaurantEmail));
 		}
 		else {
 			java.util.Date today = new java.util.Date();
@@ -154,8 +154,8 @@ public class AdminDashboardController {
 				fromDate = SDF.parse(StringUtils.defaultString(request
 						.getParameter("fromDate")));
 			}
-			modelMap.put("rbsDtos", restaurantService
-					.searchForRestaurantBranchesByDateRange(fromDate, toDate));
+			modelMap.put("restaurants", restaurantService
+					.searchForRestaurantsByDateRange(fromDate, toDate));
 			logger.debug("Searching restaurants from " + fromDate + " to "
 					+ toDate);
 		}
@@ -206,7 +206,7 @@ public class AdminDashboardController {
 	 */
 	@RequestMapping(value = { "listRestaurants" }, method = RequestMethod.GET)
 	public String listRestaurants(ModelMap modelMap, HttpSession session) {
-		modelMap.put("branches", restaurantService.fetchAllRestaurantBranches());
+		modelMap.put("restaurants", restaurantService.fetchAllRestaurants());
 		refreshCounts(session);
 		return "admin/t_listRestaurants";
 	}

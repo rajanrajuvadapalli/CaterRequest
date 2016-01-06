@@ -26,7 +26,6 @@ import com.cater.email.EmailHelper;
 import com.cater.maps.RestaurantDTO;
 import com.cater.model.Login;
 import com.cater.model.Restaurant;
-import com.cater.model.RestaurantBranch;
 import com.cater.service.CustomerService;
 import com.cater.service.LoginService;
 import com.cater.service.RegisterService;
@@ -199,15 +198,17 @@ public class RegistrationController {
 			logger.debug("Confirmation token for " + login.getUsername() + ": "
 					+ confirmationToken + "(" + confirmationToken_URLSafe + ")");
 			String customer_restaurant_name = "";
-			if (Roles.CUSTOMER == Roles.get(login.getRole())) {
+			if (login.isCustomer()) {
 				modelMap.put("name", data.getName());
 				customer_restaurant_name = customerService
 						.findCustomerWithLoginId(login.getId()).getName();
 			}
-			else if (Roles.RESTAURANT == Roles.get(login.getRole())) {
+			else if (login.isRestaurant()) {
 				modelMap.put("name", data.getRestaurantName());
-				Restaurant restaurant = restaurantService
-						.findRestaurantWithLoginId(login.getId());
+				List <Restaurant> restaurants = restaurantService
+						.findRestaurantsWithLoginId(login.getId());
+				//During registration, there should be only 1 restaurant saved for this login ID.
+				Restaurant restaurant = restaurants.get(0);
 				customer_restaurant_name = restaurant.getName();
 				restaurantService.saveRestaurantProfilePic(restaurant,
 						multipartFile);
@@ -280,14 +281,14 @@ public class RegistrationController {
 			Integer menuId = Integer.parseInt(tokens[5]);
 			httpSession.setAttribute("menuId", menuId);
 			com.cater.model.Menu menu = customerService.findMenuWithId(menuId);
-			Set <RestaurantBranch> branches = restaurantService
-					.fetchRestaurantBranchesOfType(cuisine);
+			Set <Restaurant> restaurants = restaurantService
+					.fetchRestaurantsOfType(cuisine);
 			//modelMap.put("restaurants", restaurants);
 			List <RestaurantDTO> nearByRestaurants = restaurantService
 					.getNearbyYelpReviews(menu.getEvent().getLocation(),
-							branches);
+							restaurants);
 			if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
-				modelMap.put("restaurantsDto", nearByRestaurants);
+				modelMap.put("restaurants", nearByRestaurants);
 			}
 			modelMap.put("eventLocation", menu.getEvent().getLocation());
 			Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();

@@ -43,12 +43,12 @@ public class CustomerService {
 		return customerDAO.fetchAllCustomers();
 	}
 
-	public List <Event> fetchUpcomingEvents(Integer customerId) {
-		return customerDAO.fetchUpcomingEvents(customerId);
+	public List <Event> fetchUpcomingEvents(Integer customerID) {
+		return customerDAO.fetchUpcomingEvents(customerID);
 	}
 
-	public List <Event> fetchPastEvents(Integer customerId) {
-		return customerDAO.fetchPastEvents(customerId);
+	public List <Event> fetchPastEvents(Integer customerID) {
+		return customerDAO.fetchPastEvents(customerID);
 	}
 
 	public Customer findCustomerWithLoginId(Integer loginID) {

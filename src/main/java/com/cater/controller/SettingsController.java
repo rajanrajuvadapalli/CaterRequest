@@ -5,7 +5,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,9 +20,7 @@ import com.cater.Helper;
 import com.cater.constants.Roles;
 import com.cater.model.Customer;
 import com.cater.model.Login;
-import com.cater.model.Quote;
 import com.cater.model.Restaurant;
-import com.cater.model.RestaurantBranch;
 import com.cater.service.CustomerService;
 import com.cater.service.LoginService;
 import com.cater.service.PersonalSettingsService;
@@ -76,7 +73,13 @@ public class SettingsController {
 			return "settings/t_personalInfo_customer";
 		}
 		else if (Roles.RESTAURANT == user.getRole()) {
-			return "settings/t_personalInfo_restaurant";
+			if (user.getRestaurants().size() > 1
+					&& user.getRestaurant() == null) {
+				return "settings/t_personalInfo_restaurants";
+			}
+			else {
+				return "settings/t_personalInfo_restaurant";
+			}
 		}
 		return "settings/t_personalInfo";
 	}
@@ -105,6 +108,7 @@ public class SettingsController {
 	 * @param session the session
 	 * @return true, if successful
 	 */
+	@SuppressWarnings("unchecked")
 	private boolean checkUserInSessionAndRetrieveData(HttpSession session) {
 		//If the user is not in session redirect to the home page.
 		User user = (User) session.getAttribute("user");
@@ -130,9 +134,12 @@ public class SettingsController {
 			user.setCustomerID(customer.getId());
 		}
 		else if (Roles.RESTAURANT == user.getRole()) {
-			Restaurant restaurant = (Restaurant) userFromDatabase;
-			user.setRestaurant(restaurant);
-			user.setRestaurantID(restaurant.getId());
+			List <Restaurant> restaurants = (List <Restaurant>) userFromDatabase;
+			user.setRestaurants(restaurants);
+			if (restaurants.size() == 1) {
+				user.setRestaurant(restaurants.get(0));
+				user.setRestaurantID(restaurants.get(0).getId());
+			}
 			/*data.setRestaurantName(restaurant.getName());
 			data.setCuisineType(restaurant.getCuisineType());
 			data.setUrl(restaurant.getWebsiteUrl());
@@ -188,8 +195,8 @@ public class SettingsController {
 			data.setZip(StringUtils.defaultString(request.getParameter("zip")));
 			data.setAboutUs(StringUtils.defaultString(request
 					.getParameter("aboutus")));
-			UpdateResult updateResult = personalSettingsService
-					.updateDataForCustomer(customerID, data);
+			UpdateResult updateResult = personalSettingsService.updateDataFor(
+					Roles.CUSTOMER, customerID, null, data);
 			if (updateResult.isUpdateSuccess()) {
 				List <String> successMessages = Lists.newArrayList();
 				successMessages
@@ -213,6 +220,32 @@ public class SettingsController {
 			}
 		}
 		return "settings/t_personalInfo_customer";
+	}
+
+	/**
+	 * Gets the personal info restaurant.
+	 *
+	 * @param restaurantID the restaurant id
+	 * @param session the session
+	 * @return the personal info restaurant
+	 */
+	@RequestMapping(value = { "personalInfo/restaurant/{restaurantID}" }, method = RequestMethod.GET)
+	public String getPersonalInfoRestaurant(
+			@PathVariable("restaurantID") int restaurantID, HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		if (user != null) {
+			for (Restaurant r : user.getRestaurants()) {
+				if (r != null && r.getId() == restaurantID) {
+					user.setRestaurant(r);
+					user.setRestaurantID(restaurantID);
+					((User) session.getAttribute("user")).setName(r.getName());
+					break;
+				}
+			}
+			
+			return "settings/t_personalInfo_restaurant";
+		}
+		return "settings/t_home";
 	}
 
 	/**
@@ -244,41 +277,6 @@ public class SettingsController {
 			data.setUrl(StringUtils.defaultString(request.getParameter("url")));
 			data.setAboutUs(StringUtils.defaultString(request
 					.getParameter("aboutus")));
-			UpdateResult updateResult = personalSettingsService
-					.updateDataForRestaurant(restaurantID, data);
-			if (updateResult.isUpdateSuccess()) {
-				List <String> successMessages = Lists.newArrayList();
-				successMessages
-						.add("Your account has been successfully updated.");
-				modelMap.addAttribute("successMessages", successMessages);
-				checkUserInSessionAndRetrieveData(session);
-			}
-			else {
-				List <String> errors = Lists.newArrayList();
-				errors.add("Failed to update profile information.");
-				modelMap.addAttribute("errors", errors);
-			}
-		}
-		return "settings/t_personalInfo_restaurant";
-	}
-
-	/**
-	 * Update personal info branch.
-	 *
-	 * @param modelMap the model map
-	 * @param request the request
-	 * @param session the session
-	 * @return the string
-	 */
-	@RequestMapping(value = { "personalInfo/branch" }, method = RequestMethod.POST)
-	public String updatePersonalInfoBranch(ModelMap modelMap,
-			HttpServletRequest request, HttpSession session) {
-		User user = (User) session.getAttribute("user");
-		if (user != null) {
-			//Integer restaurantID = user.getRestaurantID();
-			Integer restaurantBranchID = Helper.stringToInteger(request
-					.getParameter("restaurantBranchID"));
-			RegistrationData data = new RegistrationData();
 			data.setSalesTax(Helper.stringToFloat(request.getParameter("sales")));
 			data.setPhone(StringUtils.defaultString(request
 					.getParameter("phone")));
@@ -293,12 +291,13 @@ public class SettingsController {
 			data.setState(StringUtils.defaultString(request
 					.getParameter("state")));
 			data.setZip(StringUtils.defaultString(request.getParameter("zip")));
-			UpdateResult updateResult = personalSettingsService
-					.updateDataForRestaurantBranch(restaurantBranchID, data);
+			UpdateResult updateResult = personalSettingsService.updateDataFor(
+					Roles.RESTAURANT, null, restaurantID, data);
 			if (updateResult.isUpdateSuccess()) {
 				List <String> successMessages = Lists.newArrayList();
 				successMessages
 						.add("Your account has been successfully updated.");
+				modelMap.addAttribute("successMessages", successMessages);
 				if (updateResult.isPhoneNumberUpdated()) {
 					Login login = loginService.findLoginWithId(user
 							.getLoginID());
@@ -308,7 +307,6 @@ public class SettingsController {
 								.add("We sent an verification code to your new phone number. Please verify below.");
 					}
 				}
-				modelMap.addAttribute("successMessages", successMessages);
 				checkUserInSessionAndRetrieveData(session);
 			}
 			else {
@@ -367,7 +365,6 @@ public class SettingsController {
 		}
 		return "redirect:/settings/personalInfo";
 	}
-
 	/**
 	 * Delete restaurant branch.
 	 *
@@ -378,7 +375,7 @@ public class SettingsController {
 	 * @param redirectAttributes the redirect attributes
 	 * @return the string
 	 */
-	@RequestMapping(value = { "delete/restaurant/branch/{branchID}" }, method = RequestMethod.POST)
+	/*@RequestMapping(value = { "delete/restaurant/branch/{branchID}" }, method = RequestMethod.POST)
 	public String deleteRestaurantBranch(HttpSession httpSession,
 			ModelMap modelMap, HttpServletRequest request,
 			@PathVariable(value = "branchID") Integer branchID,
@@ -407,5 +404,5 @@ public class SettingsController {
 					successMessages);
 		}
 		return "redirect:/settings/personalInfo";
-	}
+	}*/
 }

@@ -28,7 +28,6 @@ import com.cater.model.Event;
 import com.cater.model.Login;
 import com.cater.model.Quote;
 import com.cater.model.Restaurant;
-import com.cater.model.RestaurantBranch;
 import com.google.common.collect.Maps;
 import com.twilio.sdk.TwilioRestException;
 
@@ -41,7 +40,6 @@ import com.twilio.sdk.TwilioRestException;
 public class SMSHelper {
 	/** The Constant logger. */
 	private static final Logger logger = Logger.getLogger(SMSHelper.class);
-	/** The url. */
 	@Value("${url}")
 	private String url;
 	/** The twilio sms. */
@@ -105,11 +103,11 @@ public class SMSHelper {
 		}
 		try {
 			Event event = quote.getMenu().getEvent();
-			Restaurant restaurant = quote.getRestaurantBranch().getRestaurant();
+			Restaurant restaurant = quote.getRestaurant();
 			Customer customer = event.getCustomer();
-			String to = role == Roles.RESTAURANT ? quote.getRestaurantBranch()
+			String to = role == Roles.RESTAURANT ? restaurant
 					.getContactNumber() : customer.getContactNumber();
-			if (canWeSendSms(role, quote.getRestaurantBranch(), customer)) {
+			if (canWeSendSms(role, restaurant, customer)) {
 				StringBuilder messageBuilder = new StringBuilder();
 				//new StringBuilder(messages.get(
 				//role).get(QuoteStatus.valueOf(quote.getStatus())));
@@ -118,6 +116,10 @@ public class SMSHelper {
 				if (role == Roles.RESTAURANT) {
 					messageBuilder.append("Customer name: ")
 							.append(customer.getName()).append("; ");
+					messageBuilder.append("Restaurant name: ")
+							.append(restaurant.getName()).append(" at ")
+							.append(restaurant.getAddress().getStreet1())
+							.append("; ");
 				}
 				else if (role == Roles.CUSTOMER) {
 					messageBuilder.append("Restaurant name: ")
@@ -145,16 +147,16 @@ public class SMSHelper {
 	 * Can we send sms.
 	 *
 	 * @param role the role
-	 * @param branch the branch
+	 * @param restaurant the restaurant
 	 * @param customer the customer
 	 * @return true, if successful
 	 */
-	private boolean canWeSendSms(Roles role, RestaurantBranch branch,
+	private boolean canWeSendSms(Roles role, Restaurant restaurant,
 			Customer customer) {
 		// If restaurant, check if the number is verified.
 		// If customer, check if they enrolled for getting notifications, then check if the number is verified.
 		if (role == Roles.RESTAURANT) {
-			return branch.isNumberVerified();
+			return restaurant.isNumberVerified();
 		}
 		else if (role == Roles.CUSTOMER && customer.isSmsOk()) {
 			return customer.isNumberVerified();

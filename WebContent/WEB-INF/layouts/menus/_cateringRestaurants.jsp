@@ -15,7 +15,7 @@
 		</div>
 		<div class="panel-body" align="left">
 			<c:choose>
-				<c:when test="${empty restaurantsDto}">Sorry! No restaurants (of cuisine type <c:out
+				<c:when test="${empty restaurants}">Sorry! No restaurants (of cuisine type <c:out
 						value="${cuisineType}"></c:out>) are registered with us.
 				</c:when>
 				<c:otherwise>
@@ -24,50 +24,56 @@
 						action="${pageContext.request.contextPath}/customer/event/requestQuote"
 						onsubmit="return validateSelectRestaurantForm()"
 						enctype="application/x-www-form-urlencoded" autocomplete="off">
-						<c:forEach items="${restaurantsDto}" var="rdto">
+						<c:forEach items="${restaurants}" var="r">
 							<div class="row">
 								<div class="col-sm-2">
-									<c:if test="${sessionScope.env.isProd()}">
-										<img width="120px"
-											src="https://s3-us-west-2.amazonaws.com/caterrequest-restaurant-profile-pics/Restaurant_${rdto.branch.restaurant.id}"
-											alt="">
-									</c:if>
-									<c:if test="${sessionScope.env.isUat()}">
-										<img width="120px"
-											src="https://s3-us-west-2.amazonaws.com/rajrv-caterrequest-profile-pics/Restaurant_${rdto.branch.restaurant.id}"
-											alt="">
-									</c:if>
+								<c:if test="${sessionScope.env.isProd()}">
+									<img width="120px"
+										src="https://s3-us-west-2.amazonaws.com/caterrequest-restaurant-profile-pics/Restaurant_${r.restaurant.id}"
+										alt="">
+								</c:if>
+								<c:if test="${sessionScope.env.isUat()}">
+									<img width="120px"
+										src="https://s3-us-west-2.amazonaws.com/rajrv-caterrequest-profile-pics/Restaurant_${r.restaurant.id}"
+										alt="">
+								</c:if>
 								</div>
 								<div class="col-sm-4">
 									<br /> <input type="checkbox"
 										(${sessionScope.user.isGuest()}? 'disabled':'')
-                                    ${prevR.contains(rdto.branch.id)?'checked':''}
-                                     name="restaurantBranchID"
-										value="${rdto.branch.id}" /> <b>
-										${rdto.branch.restaurant.name } - ${rdto.distance} </b> <br />
-									${rdto.branch.address.street1} ${rdto.branch.address.street2},
-									${rdto.branch.address.city}, ${rdto.branch.address.state},
-									${rdto.branch.address.zip} <br />
+                                    ${prevR.contains(r.restaurant.id)?'checked':''}
+                                     name="restaurantId"
+										value="${r.restaurant.id}" /> <b> ${r.restaurant.name } -
+										${r.distance} </b> <br /> ${r.restaurant.address.street1}
+									${r.restaurant.address.street2}, ${r.restaurant.address.city},
+									${r.restaurant.address.state}, ${r.restaurant.address.zip} <br />
 									<c:choose>
 										<c:when
-											test="${(not empty rdto.branch.deliverMiles) and (rdto.branch.deliverMiles != 0) }">
-									FREE delivery within ${rdto.branch.deliverMiles} miles
+											test="${(not empty r.restaurant.deliverMiles) and (r.restaurant.deliverMiles != 0) }">
+									FREE delivery within ${r.restaurant.deliverMiles} miles
 									</c:when>
 										<c:otherwise>NO delivery</c:otherwise>
 									</c:choose>
 									<br />
 									<c:choose>
-										<c:when test="${rdto.reviewImage ne null }">
-											<a href="${rdto.websiteUrl}" target="_blank"> <img
-												src="${rdto.reviewImage}" width="100" height="20" /></a> - ${rdto.numberOfReviews} <c:out
+										<c:when test="${r.reviewImage ne null }">
+											<a href="${r.websiteUrl}" target="_blank"> <img
+												src="${r.reviewImage}" width="100" height="20" /></a> - ${r.numberOfReviews} <c:out
 												value="reviews" />
+
 										</c:when>
 										<c:otherwise>
 											<c:out value="No Yelp Reviews"></c:out>
 										</c:otherwise>
+
+
+
 									</c:choose>
-									<c:if test="${rdto.reviewImage eq null }">
+
+									<c:if test="${r.reviewImage eq null }">
+
 									</c:if>
+
 								</div>
 							</div>
 							<br />

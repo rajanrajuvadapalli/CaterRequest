@@ -16,7 +16,7 @@
 			</div>
 			<div class="panel-body">
 				<c:choose>
-					<c:when test="${empty branches}">
+					<c:when test="${empty restaurants}">
 					There are no restaurants registered.
 				</c:when>
 					<c:otherwise>
@@ -29,13 +29,13 @@
 									<th>Contact Email</th>
 									<th>URL</th>
 								</tr>
-								<c:forEach items="${branches}" var="b">
+								<c:forEach items="${restaurants}" var="rest">
 									<tr>
-										<td>${b.restaurant.name}</td>
-										<td>${b.restaurant.cuisineType}</td>
-										<td>${b.contactNumber}</td>
-										<td>${b.contactEmail}</td>
-										<td>${b.restaurant.websiteUrl}</td>
+										<td>${rest.name}</td>
+										<td>${rest.cuisineType}</td>
+										<td>${rest.contactNumber}</td>
+										<td>${rest.contactEmail}</td>
+										<td>${rest.websiteUrl}</td>
 									</tr>
 								</c:forEach>
 							</table>
