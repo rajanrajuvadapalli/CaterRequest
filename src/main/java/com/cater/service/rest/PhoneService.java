@@ -8,6 +8,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
 import org.apache.commons.lang3.StringUtils;
@@ -35,7 +36,6 @@ public class PhoneService {
 	private LoginDAO loginDAO;
 	/** The customer dao. */
 	private CustomerDAO customerDAO;
-	/** The restaurant dao. */
 	private RestaurantDAO restaurantDAO;
 	/** The sms helper. */
 	private SMSHelper smsHelper;
@@ -53,27 +53,36 @@ public class PhoneService {
 	}
 
 	/**
-	 * @param loginID
-	 * @param customerOrRestaurantID
-	 * @param payload
-	 * @return
+	 * Verify number.
+	 *
+	 * @param loginId the login id
+	 * @param role the role
+	 * @param payload the payload
+	 * @param restaurantBranchID the restaurant branch id
+	 * @return the response
 	 */
 	@POST
-	@Path("/verify/{loginId}/{id}")
+	@Path("/verify/{loginId}/{role}")
 	@Consumes(TEXT_PLAIN)
 	@Produces(TEXT_PLAIN)
-	public Response verifyNumber(@PathParam("loginId") int loginID,
-			@PathParam("id") int customerOrRestaurantID, String payload) {
+	public Response verifyNumber(@PathParam("loginId") int loginId,
+			@PathParam("role") String role, String payload,
+			@QueryParam("restaurantID") int restaurantID) {
 		String verificationCode = payload;
 		logger.debug("Verifying phone number for user with login ID: "
-				+ loginID + " with Verification Code: " + verificationCode);
+				+ loginId + " with Verification Code: " + verificationCode);
 		if (StringUtils.isBlank(verificationCode)) {
 			logger.debug("Verification code cannot be blank.");
 			return Response.status(BAD_REQUEST)
 					.entity("Verification code cannot be blank.").build();
 		}
+		if (StringUtils.isBlank(role)) {
+			logger.debug("Role cannot be blank.");
+			return Response.status(BAD_REQUEST).entity("Role cannot be blank.")
+					.build();
+		}
 		// Retrieve the user from DB
-		Login login = loginDAO.findById(loginID);
+		Login login = loginDAO.findById(loginId);
 		if (login == null) {
 			logger.debug("Could not find user.");
 			return Response.status(BAD_REQUEST).entity("Could not find user.")
@@ -92,29 +101,20 @@ public class PhoneService {
 					&& StringUtils.equalsIgnoreCase(expectedVerificationCode,
 							verificationCode)) {
 				// Update database
-				if (login.isCustomer()) {
+				String successMessage = "Successfully validated phone number.";
+				if (StringUtils.equalsIgnoreCase("customer", role)) {
 					logger.debug("Updating consumer table.");
-					Customer customer = customerDAO
-							.findById(customerOrRestaurantID);
-					if (customer.getLogin().getId() != loginID) {
-						return Response.status(BAD_REQUEST)
-								.entity("Could not find the customer.").build();
-					}
+					Customer customer = customerDAO.findByLoginID(loginId);
 					customer.setNumberVerified(true);
 				}
-				else if (login.isRestaurant()) {
+				else if (StringUtils.equalsIgnoreCase("restaurant", role)) {
 					logger.debug("Updating restaurant table.");
-					Restaurant restaurant = restaurantDAO
-							.findById(customerOrRestaurantID);
-					if (restaurant.getLogin().getId() != loginID) {
-						return Response.status(BAD_REQUEST)
-								.entity("Could not find the restaurant.")
-								.build();
-					}
-					restaurant.setNumberVerified(true);
+					Restaurant branch = restaurantDAO.findById(restaurantID);
+					branch.setNumberVerified(true);
+					successMessage = "Successfully validated phone number for your branch at "
+							+ branch.getAddress().getStreet1();
 				}
-				return Response.ok()
-						.entity("Successfully validated phone number.").build();
+				return Response.ok().entity(successMessage).build();
 			}
 			return Response
 					.ok()
@@ -127,26 +127,32 @@ public class PhoneService {
 		}
 	}
 
-
 	/**
 	 * Send verification code.
 	 *
-	 * @param loginID the login id
-	 * @param customerOrRestaurantID the customer or restaurant id
+	 * @param loginId the login id
+	 * @param role the role
 	 * @param payload the payload
+	 * @param restaurantBranchID the restaurant branch id
 	 * @return the response
 	 */
 	@POST
-	@Path("/verify/sendcode/{loginId}/{id}")
+	@Path("/verify/sendcode/{loginId}/{role}")
 	@Consumes(TEXT_PLAIN)
 	@Produces(TEXT_PLAIN)
-	public Response sendVerificationCode(@PathParam("loginId") int loginID,
-			@PathParam("id") int customerOrRestaurantID, String payload) {
+	public Response sendVerificationCode(@PathParam("loginId") int loginId,
+			@PathParam("role") String role, String payload,
+			@QueryParam("restaurantID") int restaurantID) {
 		String phoneNumber = Helper.extractJust10digitNumber(payload);
 		logger.debug("Sending phone verification code for user with login ID: "
-				+ loginID);
+				+ loginId);
+		if (StringUtils.isBlank(role)) {
+			logger.debug("Role cannot be blank.");
+			return Response.status(BAD_REQUEST).entity("Role cannot be blank.")
+					.build();
+		}
 		// Retrieve the user from DB
-		Login login = loginDAO.findById(loginID);
+		Login login = loginDAO.findById(loginId);
 		if (login == null) {
 			logger.debug("Could not find user.");
 			return Response.status(BAD_REQUEST).entity("Could not find user.")
@@ -154,25 +160,15 @@ public class PhoneService {
 		}
 		try {
 			// Update database if number has changed
-			if (login.isCustomer()) {
+			if (StringUtils.equalsIgnoreCase("customer", role)) {
 				logger.debug("Updating consumer table.");
-				Customer customer = customerDAO
-						.findById(customerOrRestaurantID);
-				if (customer.getLogin().getId() != loginID) {
-					return Response.status(BAD_REQUEST)
-							.entity("Could not find the customer.").build();
-				}
+				Customer customer = customerDAO.findByLoginID(loginId);
 				customer.setContactNumber(phoneNumber);
 			}
-			else if (login.isRestaurant()) {
+			else if (StringUtils.equalsIgnoreCase("restaurant", role)) {
 				logger.debug("Updating restaurant table.");
-				Restaurant restaurant = restaurantDAO
-						.findById(customerOrRestaurantID);
-				if (restaurant.getLogin().getId() != loginID) {
-					return Response.status(BAD_REQUEST)
-							.entity("Could not find the restaurant.").build();
-				}
-				restaurant.setContactNumber(phoneNumber);
+				Restaurant branch = restaurantDAO.findById(restaurantID);
+				branch.setContactNumber(phoneNumber);
 			}
 			smsHelper.resendPhoneVerificationSMS(login, phoneNumber);
 			return Response
