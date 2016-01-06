@@ -87,9 +87,9 @@
 								value="Change Pic" class="btn btn-default btn-sm">
 						</div>
 					</div>
-					<div class="form-group hidden" id="restaurant-pic"  style="background-color: #e5e600;">
-					<br/>
-						<label for="profilePic" class="col-sm-3 control-label">
+					<div class="form-group hidden" id="restaurant-pic"
+						style="border: 2px solid #ff3300; border-radius: 25px;">
+						<br /> <label for="profilePic" class="col-sm-3 control-label">
 							Picture&nbsp;:</label>
 						<div class="col-sm-6">
 							<!-- Show only image files for selection & preview. Control button labels, styles, 
@@ -148,7 +148,8 @@
 						<div class="col-sm-6" align="left">
 							<input type="number" size="30" name="sales" required="required"
 								placeholder="Ex: x.xx" pattern="[0-9]+([\.|,][0-9]+)?"
-								class="form-control" value="${sessionScope.user.restaurant.salesTax}">
+								class="form-control"
+								value="${sessionScope.user.restaurant.salesTax}">
 						</div>
 					</div>
 					<div class="form-group">
@@ -157,7 +158,8 @@
 						</label>
 						<div class="col-sm-6">
 							<input type="email" size="30" name="email" required="required"
-								class="form-control" value="${sessionScope.user.restaurant.contactEmail}">
+								class="form-control"
+								value="${sessionScope.user.restaurant.contactEmail}">
 						</div>
 					</div>
 					<div class="form-group">
@@ -180,8 +182,9 @@
 								<c:otherwise>
 									<div class="col-sm-3" align="left">
 										<button formaction=""
-											onclick="sendPhoneVerificationCode(${sessionScope.user.restaurant.id})" id="send-pvc"
-											class="btn btn-default">Re-send verification code</button>
+											onclick="sendPhoneVerificationCode(${sessionScope.user.restaurant.id})"
+											id="send-pvc" class="btn btn-default">Re-send
+											verification code</button>
 									</div>
 								</c:otherwise>
 							</c:choose>
@@ -207,8 +210,8 @@
 								</div>
 								<div class="col-sm-1">
 									<button formaction=""
-										onclick="validatePhoneVerificationCode(${sessionScope.user.restaurant.id})" id="pvc"
-										class="btn btn-default">Verify</button>
+										onclick="validatePhoneVerificationCode(${sessionScope.user.restaurant.id})"
+										id="pvc" class="btn btn-default">Verify</button>
 								</div>
 							</div>
 						</div>
@@ -250,7 +253,8 @@
 						</label>
 						<div class="col-sm-6">
 							<input type="text" size="30" maxlength="50" name="city"
-								class="form-control" value="${sessionScope.user.restaurant.address.city}">
+								class="form-control"
+								value="${sessionScope.user.restaurant.address.city}">
 						</div>
 					</div>
 					<div class="form-group">
@@ -259,7 +263,8 @@
 						</label>
 						<div class="col-sm-6">
 							<input type="hidden" name="stateExisting"
-								value="${sessionScope.user.restaurant.address.state}"> <span id="stateArea"></span>
+								value="${sessionScope.user.restaurant.address.state}"> <span
+								id="stateArea"></span>
 						</div>
 					</div>
 					<div class="form-group">
@@ -270,7 +275,8 @@
 						<div class="col-sm-6">
 							<input type="text" size="10" name="zip" maxlength="10"
 								class="form-control" placeholder="Ex.: xxxxx"
-								pattern="^\d{5}(\-\d{4})?$" value="${sessionScope.user.restaurant.address.zip}">
+								pattern="^\d{5}(\-\d{4})?$"
+								value="${sessionScope.user.restaurant.address.zip}">
 						</div>
 					</div>
 					<div class="form-group">
