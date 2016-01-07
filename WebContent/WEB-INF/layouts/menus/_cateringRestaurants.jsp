@@ -41,7 +41,7 @@
 								<div class="col-sm-4">
 									<br /> <input type="checkbox"
 										(${sessionScope.user.isGuest()}? 'disabled':'')
-                                    ${prevR.contains(r.restaurant.id)?'checked':''}
+                                    ${prevR.contains(r.restaurant.id)?'checked disabled':''}
                                      name="restaurantId"
 										value="${r.restaurant.id}" /> <b> ${r.restaurant.name } -
 										${r.distance} </b> <br /> ${r.restaurant.address.street1}
