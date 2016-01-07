@@ -43,15 +43,15 @@ function addressCallbackFunctionForCustomer(results, status) {
 		console.log("Validated address: " + address);
 		numCommas = address.match(/,/g).length;
 		if (numCommas >= 3) { // Address is valid, Continue to submit form
-			var st1 = $("input[name=street1]").val();
-			var city = $("input[name=city]").val();
-			var state = $("select[name=state]").val();
-			var zip = $("input[name=zip]").val();
+			var st1 = $("input[name=street1]").val().trim();
+			var city = $("input[name=city]").val().trim();
+			var state = $("select[name=state]").val().trim();
+			var zip = $("input[name=zip]").val().trim();
 			var CurrentAddress = st1 + ", " + city + ", " + state + ", " + zip;
 			var values = address.split(', ');
 			var validatedStreet = values[0];
 			var validatedCity = values[1];
-			var state_zip = values[2].split('');
+			var state_zip = values[2].split(' ');
 			var validatedState = state_zip[0];
 			var validatedZip = state_zip[1];
 			var LastAddressValidated = validatedStreet + ", " + validatedCity
