@@ -555,6 +555,10 @@ public class CustomerDashboardController {
 				restaurantService.saveOrUpdateQuote(quote);
 				restaurantService.sendNotification(quote, null);
 			}
+			else if (Boolean.TRUE.equals((Boolean) httpSession
+					.getAttribute("isMenuChanged"))) {
+				restaurantService.sendNotification(quote, null);
+			}
 		}
 		String eventName = (String) httpSession.getAttribute("eventName");
 		List <String> successMessages = Lists.newArrayList();

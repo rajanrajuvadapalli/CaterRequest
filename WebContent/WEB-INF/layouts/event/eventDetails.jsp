@@ -11,7 +11,7 @@
 <c:set var="now" value="<%=new Date()%>" />
 
 <div class="row">
-	<div class="col-sm-4 col-sm-offset-1">
+	<div class="col-sm-5 col-sm-offset-1">
 		<div class="panel panel-success">
 			<div class="panel-heading">
 				<h3 class="panel-title">Event details</h3>
@@ -27,9 +27,9 @@
 				<fmt:formatDate value="${event.date_time}"
 					pattern="EEE, d MMM yyyy hh:mm aaa" />
 				<br /> <b>Location: </b> ${event.location.getAddressString()} <br />
-				<b>Number of Adults:</b> <span style="color: red;">${event.personCount}</span><br />
-				<b>Number of Kids:</b> <span style="color: red;">${event.kidsCount}</span><br />
-				<b>Delivery Option:</b> <span style="color: red;">${event.isPickUp()?'Pick Up':'Delivered'}</span><br />
+				<b>Number of Adults:</b> <span class="badge">${event.personCount}</span><br />
+				<b>Number of Kids:</b> <span class="badge">${event.kidsCount}</span><br />
+				<b>Delivery Option:</b> <span class="badge">${event.isPickUp()?'Pick Up':'Delivered'}</span><br />
 				<b>Customer name:</b> ${event.customer.name}<br />
 				<c:if test="${q.status.toString() == 'CUSTOMER_ORDER_CONFIRMED'}">
 					<b>Customer contact number:</b>
@@ -45,7 +45,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-4">
+	<div class="col-sm-5">
 		<div class="panel panel-success">
 			<div class="panel-heading">
 				<h3 class="panel-title">Available Quotes</h3>

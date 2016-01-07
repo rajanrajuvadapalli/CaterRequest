@@ -53,10 +53,11 @@
 </div>
 
 <div class="col-sm-10 col-sm-offset-1">
-	<div align="right">
+	<div align="left">
 		<a href="${pageContext.request.contextPath}/restaurant/addBranch"
 			role="button" class="btn btn-default">Add a Restaurant / Branch</a>
 	</div>
+	<br/>
 	<div class="grid js-masonry"
 		data-masonry-options='{ "itemSelector": ".grid-item", "columnWidth": 240 }'>
 		<c:forEach items="${sessionScope.user.restaurants}" var="r"

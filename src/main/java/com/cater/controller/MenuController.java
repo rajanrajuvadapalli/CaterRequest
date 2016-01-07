@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cater.Helper;
-import com.cater.constants.QuoteStatus;
 import com.cater.dao.MenuDAO;
 import com.cater.maps.MapsHelper;
 import com.cater.maps.RestaurantDTO;
@@ -403,10 +402,8 @@ public class MenuController {
 					if (quote != null) {
 						previouslySelectedRestaurants.add(r.getId());
 						if (isMenuChanged) {
-							quote.setStatus(QuoteStatus.CUSTOMER_UPDATED_MENU
-									.toString());
-							restaurantService.saveOrUpdateQuote(quote);
-							restaurantService.sendNotification(quote, null);
+							httpSession.setAttribute("isMenuChanged",
+									isMenuChanged);
 						}
 					}
 				}
