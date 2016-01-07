@@ -54,23 +54,23 @@
 			<nav>
 				<ul>
 					<li class="pull-left"><a href="#section-upcoming"
-						class="icon icon-home">Upcoming Events
-							(${upcomingQuotes.size()})</a></li>
+						class="icon icon-home">New Requests
+							(${newRequests.size()})</a></li>
 					<li class="pull-left"><a href="#section-past"
-						class="icon icon-gift">Past Events (${pastQuotes.size()})</a></li>
+						class="icon icon-gift">Past Requests (${pastQuotes.size()})</a></li>
 					<li class="pull-left"><a href="#section-confirmed"
-						class="icon icon-gift">Confirmed Events
+						class="icon icon-gift">Confirmed Orders
 							(${confirmedQuotes.size()})</a></li>
 				</ul>
 			</nav>
 			<hr class="style-1 no-gap">
 			<div class="content-wrap">
 				<section id="section-upcoming">
-					<c:if test="${empty upcomingQuotes}">You currently do not have any request for upcoming events.</c:if>
+					<c:if test="${empty newRequests}">You currently do not have any request for upcoming events.</c:if>
 					<!-- Column width : 240 and max width is 1200 to fit max 5 tiles in one row if space exists -->
 					<div class="grid js-masonry"
 						data-masonry-options='{ "itemSelector": ".grid-item", "columnWidth": 240 }'>
-						<c:forEach items="${upcomingQuotes}" var="q" varStatus="qloop">
+						<c:forEach items="${newRequests}" var="q" varStatus="qloop">
 							<div class="grid-item" style="cursor: pointer">
 								<p>
 									<span class="head">${qloop.index+1}</span><span id="quote"

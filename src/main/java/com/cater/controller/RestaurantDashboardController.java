@@ -81,9 +81,9 @@ public class RestaurantDashboardController {
 						.getName());
 				Map <Integer, Double> bargainMap = getBargainPercentages(restaurant);
 				modelMap.put("bargain", bargainMap);
-				List <Quote> upcomingQuotes = restaurantService
-						.fetchUpcomingQuotes(restaurant.getId());
-				modelMap.put("upcomingQuotes", upcomingQuotes);
+				List <Quote> newRequests = restaurantService
+						.fetchNewRequests(restaurant.getId());
+				modelMap.put("newRequests", newRequests);
 				List <Quote> pastQuotes = restaurantService
 						.fetchPastQuotes(restaurant.getId());
 				modelMap.put("pastQuotes", pastQuotes);
@@ -135,9 +135,9 @@ public class RestaurantDashboardController {
 		((User) session.getAttribute("user")).setName(restaurant.getName());
 		Map <Integer, Double> bargainMap = getBargainPercentages(restaurant);
 		modelMap.put("bargain", bargainMap);
-		List <Quote> upcomingQuotes = restaurantService
-				.fetchUpcomingQuotes(restaurant.getId());
-		modelMap.put("upcomingQuotes", upcomingQuotes);
+		List <Quote> newRequests = restaurantService
+				.fetchNewRequests(restaurant.getId());
+		modelMap.put("newRequests", newRequests);
 		List <Quote> pastQuotes = restaurantService.fetchPastQuotes(restaurant
 				.getId());
 		modelMap.put("pastQuotes", pastQuotes);

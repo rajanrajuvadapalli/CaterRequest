@@ -93,6 +93,10 @@ public class RestaurantService {
 		return restaurantDAO.fetchUpcomingQuotes(restaurantID);
 	}
 
+	public List <Quote> fetchNewRequests(Integer restaurantID) {
+		return restaurantDAO.fetchNewRequests(restaurantID);
+	}
+
 	public List <Quote> fetchPastQuotes(Integer restaurantID) {
 		return restaurantDAO.fetchPastQuotes(restaurantID);
 	}

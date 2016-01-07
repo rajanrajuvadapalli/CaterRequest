@@ -303,12 +303,39 @@ public class RestaurantDAO extends DataAccessObject {
 					.createAlias("menu.event", "e", JoinType.RIGHT_OUTER_JOIN)
 					.add(Restrictions.ge("e.date_time", new Date()))
 					.addOrder(Order.asc("e.date_time")).list();
-			logger.debug("Found " + list.size() + " upcoming quotes");
+			logger.debug("Found " + list.size() + " upcoming quotes.");
 			return (List <Quote>) list;
 		}
 		catch (HibernateException he) {
 			logger.error(
-					"Exception occurred while Fetching upcoming quotes for restaurant with ID: "
+					"Exception occurred while fetching upcoming quotes for restaurant with ID: "
+							+ restaurantID, he);
+		}
+		return Lists.newArrayList();
+	}
+
+	/**
+	 * Fetch new requests.
+	 *
+	 * @param restaurantID the restaurant id
+	 * @return the list
+	 */
+	@SuppressWarnings("unchecked")
+	public List <Quote> fetchNewRequests(Integer restaurantID) {
+		logger.debug("Fetching new requests for restaurant with ID: "
+				+ restaurantID);
+		try {
+			Session session = getSessionFactory().getCurrentSession();
+			List <?> list = session.createCriteria(Quote.class, "q")
+					.createAlias("q.restaurant", "r", JoinType.LEFT_OUTER_JOIN)
+					.add(Restrictions.eq("r.id", restaurantID))
+					.add(Restrictions.isNull("q.price")).list();
+			logger.debug("Found " + list.size() + " new requests.");
+			return (List <Quote>) list;
+		}
+		catch (HibernateException he) {
+			logger.error(
+					"Exception occurred while fetching new requests for restaurant with ID: "
 							+ restaurantID, he);
 		}
 		return Lists.newArrayList();
@@ -329,16 +356,13 @@ public class RestaurantDAO extends DataAccessObject {
 			List <?> list = session.createCriteria(Quote.class, "q")
 					.createAlias("q.restaurant", "r", JoinType.LEFT_OUTER_JOIN)
 					.add(Restrictions.eq("r.id", restaurantID))
-					.createAlias("q.menu", "menu", JoinType.RIGHT_OUTER_JOIN)
-					.createAlias("menu.event", "e", JoinType.RIGHT_OUTER_JOIN)
-					.add(Restrictions.lt("e.date_time", new Date()))
-					.addOrder(Order.asc("e.date_time")).list();
+					.add(Restrictions.isNotNull("q.price")).list();
 			logger.debug("Found " + list.size() + " past quotes");
 			return (List <Quote>) list;
 		}
 		catch (HibernateException he) {
 			logger.error(
-					"Exception occurred while Fetching past quotes for restaurant with ID: "
+					"Exception occurred while fetching past quotes for restaurant with ID: "
 							+ restaurantID, he);
 		}
 		return Lists.newArrayList();
@@ -359,6 +383,7 @@ public class RestaurantDAO extends DataAccessObject {
 			List <?> list = session
 					.createCriteria(Quote.class, "q")
 					.createAlias("q.restaurant", "r", JoinType.LEFT_OUTER_JOIN)
+					.add(Restrictions.isNotNull("q.price"))
 					.add(Restrictions.eq("r.id", restaurantID))
 					.createAlias("q.menu", "menu", JoinType.RIGHT_OUTER_JOIN)
 					.createAlias("menu.event", "e", JoinType.RIGHT_OUTER_JOIN)
