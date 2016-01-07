@@ -214,7 +214,7 @@
 												Quoted:</label>
 											<div class="col-sm-2" align="left">
 												<fmt:setLocale value="en_US" />
-												<span style="color: red;"><fmt:formatNumber
+												<span class="badge"><fmt:formatNumber
 														value="${quote.price}" type="currency" /></span>
 											</div>
 										</div>
@@ -267,7 +267,7 @@
 									Quoted:</label>
 								<div class="col-sm-2" align="left">
 									<fmt:setLocale value="en_US" />
-									<span style="color: red;"><fmt:formatNumber
+									<span class="badge"><fmt:formatNumber
 											value="${quote.price}" type="currency" /></span>
 								</div>
 							</c:otherwise>
