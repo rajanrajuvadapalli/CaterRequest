@@ -108,18 +108,20 @@
 	<div class="col-sm-4 col-sm-offset-1">
 		<div class="panel panel-success">
 			<div class="panel-heading">
-				<h3 class="panel-title">Event details</h3>
+				<h3 class="panel-title">
+					Event details
+					<c:if test="${event.date_time <= now}">
+						<span style="color: red">&nbsp;&nbsp;Past Event!</span>
+					</c:if>
+				</h3>
 			</div>
 			<div class="panel-body" align="left">
 				<b>Event name:</b> ${event.name}<br /> <b>Time:</b>
 				<fmt:formatDate value="${event.date_time}"
 					pattern="EEE, d MMM yyyy hh:mm aaa" />
-					<c:if test="${event.date_time <= now}">
-						<span style="color:red">Past Event!</span>
-					</c:if>
-				<br /> <b>Number of Adults:</b> <span style="color: red;">${event.personCount}</span><br />
-				<b>Number of Kids:</b> <span style="color: red;">${event.kidsCount}</span><br />
-				<b>Delivery Option:</b> <span style="color: red;">${event.isPickUp()?'Pick Up':'Delivered'}</span><br />
+				<br /> <b>Number of Adults:</b> <span class="badge">${event.personCount}</span><br />
+				<b>Number of Kids:</b> <span class="badge">${event.kidsCount}</span><br />
+				<b>Delivery Option:</b> <span class="badge">${event.isPickUp()?'Pick Up':'Delivered'}</span><br />
 				<b>Customer name:</b> ${event.customer.name}<br />
 				<c:if
 					test="${quote.status.toString() == 'CUSTOMER_ORDER_CONFIRMED'}">
@@ -192,7 +194,7 @@
 										for this order?</label>
 									<div class="col-sm-3">
 										<select name="deliver" class="form-control"
-											required="required">
+											required="required" ${(event.date_time <= now)?'disabled':''}>
 											<option value="yes" ${quote.canDeliver()?'selected':''}>Yes</option>
 											<option value="no" ${quote.canDeliver()?'':'selected'}>No</option>
 										</select>
@@ -201,7 +203,8 @@
 								<div class="form-group">
 									<label for="notes" class="col-sm-4 control-label">Notes:</label>
 									<div class="col-sm-6">
-										<textarea rows="4" name="notes" class="form-control">${quote.notes}</textarea>
+										<textarea rows="4" name="notes" class="form-control"
+											${(event.date_time <= now)?'disabled':''}>${quote.notes}</textarea>
 									</div>
 								</div>
 								<c:choose>
@@ -222,7 +225,8 @@
 												<input type="text" size="30" maxlength="50" name="price"
 													required="required" pattern="[0-9]+(\.[0-9]*)?"
 													title="Example: 250.60" placeholder="0.00"
-													class="form-control inputs" value="${quote.price}">
+													class="form-control inputs" value="${quote.price}"
+													${(event.date_time <= now)?'disabled':''}>
 											</div>
 										</div>
 										<div class="form-group">
@@ -240,7 +244,8 @@
 												<input type="text" size="30" maxlength="50" name="price"
 													required="required" pattern="[0-9]+(\.[0-9]{2})?"
 													title="Example: 250.60" placeholder="0.00"
-													class="form-control inputs">
+													class="form-control inputs"
+													${(event.date_time <= now)?'disabled':''}>
 											</div>
 										</div>
 										<div class="form-group">
@@ -252,7 +257,10 @@
 										</div>
 									</c:otherwise>
 								</c:choose>
-
+								<c:if test="${event.date_time <= now}">
+									<span style="color: red;">&#9888;&nbsp;<i>Cannot
+											update. The event has expired!</i></span>
+								</c:if>
 							</c:when>
 							<c:otherwise>
 								<label for="quotedPrice" class="col-sm-4 control-label">Price
@@ -271,7 +279,15 @@
 	</c:if>
 </div>
 <div class="col-sm-1 col-sm-offset-1">
-	<button type="button" class="btn btn-default"
-		onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">Back</button>
+	<c:choose>
+		<c:when test="${not empty sessionScope.user.restaurant}">
+			<button type="button" class="btn btn-default"
+				onclick="window.location.href='${pageContext.request.contextPath}/restaurant/dashboard/${sessionScope.user.restaurantID}'">Back</button>
+		</c:when>
+		<c:otherwise>
+			<button type="button" class="btn btn-default"
+				onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">Back</button>
+		</c:otherwise>
+	</c:choose>
 	<br /> <br /> <br /> <br />
 </div>
