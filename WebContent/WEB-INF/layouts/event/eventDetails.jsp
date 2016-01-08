@@ -1,4 +1,6 @@
 <%@ page import="java.util.Date"%>
+<%@ page import="java.util.Calendar"%>
+<%@ page import="java.util.Locale"%>
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -9,19 +11,41 @@
 </div>
 
 <c:set var="now" value="<%=new Date()%>" />
+<%
+	Calendar calendar = Calendar.getInstance(Locale.US);
+	calendar.add(Calendar.HOUR, 72);
+	Date d72 = calendar.getTime();
+%>
+<c:set var="seventy_two_hours_from_now" value="<%=d72%>" />
+
+<input type="text" hidden="hidden" name="event_date_time"
+	value="${event.date_time}" />
 
 <div class="row">
 	<div class="col-sm-5 col-sm-offset-1">
 		<div class="panel panel-success">
 			<div class="panel-heading">
-				<h3 class="panel-title">Event details</h3>
+				<h3 class="panel-title">
+					Event details
+					<c:if test="${event.date_time <= now}">
+						<span style="color: red">&nbsp;&nbsp;Past Event!</span>
+					</c:if>
+					<c:if test="${event.status eq 'ACTIVE' && event.date_time > now}">
+						<a
+							href="${pageContext.request.contextPath}/customer/event/edit/${event.id}"
+							class="pull-right"> <span class="glyphicon glyphicon-edit"></span>
+							Edit
+						</a>
+					</c:if>
+				</h3>
 			</div>
 			<div class="panel-body" align="left">
-				<c:if test="${event.status eq 'ACTIVE' && event.date_time > now}">
-					<span class="pull-right"><a
-						href="${pageContext.request.contextPath}/customer/event/edit/${event.id}">
-							<span class="glyphicon glyphicon-edit"></span> Edit
-					</a></span>
+				<c:if test="${event.date_time > now}">
+					<span class="pull-right">
+						<div id="countdowntimer">
+							<span id="future_date"><span>
+						</div>
+					</span>
 				</c:if>
 				<b>Event name:</b> ${event.name}<br /> <b>Time:</b>
 				<fmt:formatDate value="${event.date_time}"
@@ -37,7 +61,7 @@
 						value="(${fn:substring(event.customer.contactNumber, 0, 3)}) ${fn:substring(event.customer.contactNumber, 3, 6)}-${fn:substring(event.customer.contactNumber, 6, 10)}" />
 				</c:if>
 				<br />
-				<c:if test="${event.date_time > now}">
+				<c:if test="${event.date_time > seventy_two_hours_from_now}">
 					<a class="popup-with-form" href="#${event.id}"><span
 						class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add
 						Menu</a>
@@ -45,6 +69,7 @@
 			</div>
 		</div>
 	</div>
+
 	<div class="col-sm-5">
 		<div class="panel panel-success">
 			<div class="panel-heading">
@@ -167,8 +192,16 @@
 							test="${event.status == 'ACTIVE' && user.role == 'CUSTOMER' && (event.date_time > now)}">
 							<a
 								href="${pageContext.request.contextPath}/menu/selectMenu?eventId=${event.id}&cuisineType=${menu.cuisine}"
-								role="button" class="btn btn-default"><span
+								role="button"
+								class="btn btn-default ${event.date_time > seventy_two_hours_from_now?'':'disabled'}"><span
 								class="glyphicon glyphicon-edit"></span> Edit Menu</a>
+						</c:if>
+						<br />
+						<c:if test="${event.date_time <= seventy_two_hours_from_now}">
+							<i style="color: red;">Cannot make changes.<br />Only 72 hrs
+								left until the event.
+							</i>
+							<br />
 						</c:if>
 					</div>
 					<c:forEach items="${menu.categories}" var="category">
@@ -259,9 +292,21 @@
 </div>
 
 <script>
-	$('document').ready(function() {
-		populateCuisineTypes();
-	});
+	$('document')
+			.ready(
+					function() {
+						populateCuisineTypes();
+						var event_date_time = $('input[name=event_date_time]')
+								.val();
+						$("#future_date")
+								.countdowntimer(
+										{
+											dateAndTime : event_date_time,
+											size : "sm",
+											regexpMatchFormat : "([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2})",
+											regexpReplaceWith : "$1<sup>days</sup> / $2<sup>hours</sup> / $3<sup>minutes</sup> / $4<sup>seconds</sup>"
+										});
+					});
 	// Bind the 'onClick' event for the 'restaurantName' input field
 	$('input[name=restaurantName]').on('click', function(e) {
 		var $restaurantNameInputField = $(this);

@@ -103,10 +103,9 @@ function populateHearAboutUs() {
 function populateAptSuite() {
 	$("span[id=apt_classifier]").replaceWith(
 			"<select class=\"form-control inputs\" name=\"apt_classifier\""
-					+ "id=\"apt_classifier\">"
-					+ "<option value=\"\"></option>"
+					+ "id=\"apt_classifier\">" + "<option value=\"\"></option>"
 					+ "<option value=\"Apt\">Apartment</option>"
-					+ "<option value=\"Building\">Building</option>" 
+					+ "<option value=\"Building\">Building</option>"
 					+ "<option value=\"Suite\">Suite</option>" + "</select>");
 }
 
@@ -253,6 +252,14 @@ function validateEventForm() {
 	if (dateObject < now) {
 		alert("Please enter a date in the future." + "\nEntered date: "
 				+ dateObject);
+		return false;
+	}
+	var seventy_two_hours_from_now = moment().add(72, "hours").format("YYYY/MM/DD HH:mm");
+	//console.log("72 hours from now: " + seventy_two_hours_from_now);
+	//console.log("within 72 hr window? " + (dateObject < seventy_two_hours_from_now));
+	if(dateObject < seventy_two_hours_from_now){
+		alert("Event cannot be in the next 72 hours." + "\nEntered date: "
+				+ dateObject + "\nPlease enter date/time after " + seventy_two_hours_from_now);
 		return false;
 	}
 	var numberOfPeople = $('input[id=person_count]').val();
