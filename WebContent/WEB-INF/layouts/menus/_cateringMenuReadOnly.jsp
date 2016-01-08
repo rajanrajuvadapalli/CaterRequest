@@ -9,6 +9,8 @@
 </div>
 
 <c:set var="now" value="<%=new Date()%>" />
+<input type="text" hidden="hidden" name="event_date_time"
+	value="${event.date_time}" />
 
 <div class="row">
 	<div class="col-sm-10 col-sm-offset-1">
@@ -104,6 +106,7 @@
 		</div>
 	</div>
 </div>
+
 <div class="row">
 	<div class="col-sm-4 col-sm-offset-1">
 		<div class="panel panel-success">
@@ -116,6 +119,13 @@
 				</h3>
 			</div>
 			<div class="panel-body" align="left">
+				<c:if test="${event.date_time > now}">
+					<div id="countdowntimer">
+						<span id="future_date"><span>
+					</div>
+					<br />
+				</c:if>
+
 				<b>Event name:</b> ${event.name}<br /> <b>Time:</b>
 				<fmt:formatDate value="${event.date_time}"
 					pattern="EEE, d MMM yyyy hh:mm aaa" />
@@ -291,3 +301,21 @@
 	</c:choose>
 	<br /> <br /> <br /> <br />
 </div>
+
+<script>
+	function addCountDownTimer(future_date_time) {
+		$("#future_date")
+				.countdowntimer(
+						{
+							dateAndTime : future_date_time,
+							size : "sm",
+							regexpMatchFormat : "([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2})",
+							regexpReplaceWith : "$1<sup>days</sup> / $2<sup>hours</sup> / $3<sup>minutes</sup> / $4<sup>seconds</sup>"
+						});
+	};
+
+	$('document').ready(function() {
+		var event_date_time = $('input[name=event_date_time]').val();
+		addCountDownTimer(event_date_time);
+	});
+</script>

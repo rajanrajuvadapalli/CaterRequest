@@ -41,11 +41,10 @@
 			</div>
 			<div class="panel-body" align="left">
 				<c:if test="${event.date_time > now}">
-					<span class="pull-right">
-						<div id="countdowntimer">
-							<span id="future_date"><span>
-						</div>
-					</span>
+					<div id="countdowntimer">
+						<span id="future_date"><span>
+					</div>
+					<br />
 				</c:if>
 				<b>Event name:</b> ${event.name}<br /> <b>Time:</b>
 				<fmt:formatDate value="${event.date_time}"
@@ -197,9 +196,10 @@
 								class="glyphicon glyphicon-edit"></span> Edit Menu</a>
 						</c:if>
 						<br />
-						<c:if test="${event.date_time <= seventy_two_hours_from_now}">
-							<i style="color: red;">Cannot make changes.<br />Only 72 hrs
-								left until the event.
+						<c:if
+							test="${(event.date_time > now) && (event.date_time <= seventy_two_hours_from_now)}">
+							<i style="color: red;">Cannot make changes.<br />Less than
+								72 hrs left until the event.
 							</i>
 							<br />
 						</c:if>
@@ -292,21 +292,22 @@
 </div>
 
 <script>
-	$('document')
-			.ready(
-					function() {
-						populateCuisineTypes();
-						var event_date_time = $('input[name=event_date_time]')
-								.val();
-						$("#future_date")
-								.countdowntimer(
-										{
-											dateAndTime : event_date_time,
-											size : "sm",
-											regexpMatchFormat : "([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2})",
-											regexpReplaceWith : "$1<sup>days</sup> / $2<sup>hours</sup> / $3<sup>minutes</sup> / $4<sup>seconds</sup>"
-										});
-					});
+	function addCountDownTimer(future_date_time) {
+		$("#future_date")
+				.countdowntimer(
+						{
+							dateAndTime : future_date_time,
+							size : "sm",
+							regexpMatchFormat : "([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2})",
+							regexpReplaceWith : "$1<sup>days</sup> / $2<sup>hours</sup> / $3<sup>minutes</sup> / $4<sup>seconds</sup>"
+						});
+	};
+
+	$('document').ready(function() {
+		populateCuisineTypes();
+		var event_date_time = $('input[name=event_date_time]').val();
+		addCountDownTimer(event_date_time);
+	});
 	// Bind the 'onClick' event for the 'restaurantName' input field
 	$('input[name=restaurantName]').on('click', function(e) {
 		var $restaurantNameInputField = $(this);

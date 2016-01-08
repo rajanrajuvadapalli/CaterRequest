@@ -254,12 +254,15 @@ function validateEventForm() {
 				+ dateObject);
 		return false;
 	}
-	var seventy_two_hours_from_now = moment().add(72, "hours").format("YYYY/MM/DD HH:mm");
-	//console.log("72 hours from now: " + seventy_two_hours_from_now);
-	//console.log("within 72 hr window? " + (dateObject < seventy_two_hours_from_now));
-	if(dateObject < seventy_two_hours_from_now){
+	var seventy_two_hours_from_now = moment().add(72, "hours").format(
+			"YYYY/MM/DD HH:mm");
+	// console.log("72 hours from now: " + seventy_two_hours_from_now);
+	// console.log("within 72 hr window? " + (dateObject <
+	// seventy_two_hours_from_now));
+	if (dateObject < seventy_two_hours_from_now) {
 		alert("Event cannot be in the next 72 hours." + "\nEntered date: "
-				+ dateObject + "\nPlease enter date/time after " + seventy_two_hours_from_now);
+				+ dateObject + "\nPlease enter date/time after "
+				+ seventy_two_hours_from_now);
 		return false;
 	}
 	var numberOfPeople = $('input[id=person_count]').val();
@@ -321,3 +324,5 @@ function validateSelectRestaurantForm() {
 		return false;
 	}
 }
+
+
