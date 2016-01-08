@@ -65,8 +65,8 @@ public class SearchController {
 						.getDistance(address, allRestaurants);
 				if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
 					for (RestaurantDTO restaurantDTO : nearByRestaurants) {
-						Map <?, ?> yelpReviews = YelpAPIHelper.getRatings(
-								restaurantDTO, zipCode);
+						Map <?, ?> yelpReviews = YelpAPIHelper
+								.getRatings(restaurantDTO);
 						if (MapUtils.isNotEmpty(yelpReviews)) {
 							restaurantDTO.setNumberOfReviews(Helper
 									.stringToInt(yelpReviews.get("noOfReviews")

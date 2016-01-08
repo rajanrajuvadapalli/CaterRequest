@@ -100,13 +100,15 @@ public class YelpAPIHelper {
 	 * @param cuisine the cuisine
 	 * @return <tt>String</tt> JSON Response
 	 */
-	private String searchForBusinessesByLocation(String term, String location,
+	private String searchForBusinessesByLocation(String restaurantName,
+			String zip,
 			String cuisine) {
 		OAuthRequest request = createOAuthRequest(SEARCH_PATH);
-		request.addQuerystringParameter("term", term);
-		request.addQuerystringParameter("location", location);
+		request.addQuerystringParameter("term", restaurantName);
+		request.addQuerystringParameter("location", zip);
 		request.addQuerystringParameter("limit", String.valueOf(SEARCH_LIMIT));
 		if (StringUtils.isNotBlank(cuisine)) {
+			//https://www.yelp.com/developers/documentation/v2/all_category_list
 			request.addQuerystringParameter("category_filter", cuisine);
 		}
 		return sendRequestAndGetResponse(request);
@@ -151,7 +153,7 @@ public class YelpAPIHelper {
 	 * @return <tt>String</tt> body of API response
 	 */
 	private String sendRequestAndGetResponse(OAuthRequest request) {
-		logger.debug("Querying " + request.getCompleteUrl() + " ...");
+		logger.debug("Querying " + request.getCompleteUrl());
 		service.signRequest(accessToken, request);
 		Response response = request.send();
 		return response.getBody();
@@ -168,7 +170,7 @@ public class YelpAPIHelper {
 	 * @throws ParseException 
 	 */
 	private static Map <Object, Object> queryAPI(YelpAPIHelper yelpApi,
-			RestaurantDTO restaurantDTO, String zip) throws ParseException {
+			RestaurantDTO restaurantDTO) throws ParseException {
 		String restaurantName = restaurantDTO.getRestaurant().getName();
 		String cuisineType = StringUtils.upperCase(StringUtils
 				.defaultString(restaurantDTO.getRestaurant().getCuisineType()),
@@ -178,6 +180,7 @@ public class YelpAPIHelper {
 				&& CUISINE_FILTER_LOOKUP.containsKey(cuisineType)) {
 			yelpCuisineFilter = CUISINE_FILTER_LOOKUP.get(cuisineType);
 		}
+		String zip = restaurantDTO.getRestaurant().getAddress().getZip();
 		String searchResponseJSON = yelpApi.searchForBusinessesByLocation(
 				restaurantName, zip, yelpCuisineFilter);
 		JSONParser parser = new JSONParser();
@@ -203,36 +206,31 @@ public class YelpAPIHelper {
 						(String) firstBusiness.get("name"))
 						&& StringUtils.equalsIgnoreCase(postalCode,
 								restaurantDTO.getRestaurant().getAddress()
-										.getZip())) {
-					if (firstBusiness.get("id") != null
-							|| org.springframework.util.StringUtils
-									.isEmpty(firstBusiness.get("id"))) {
-						String firstBusinessID = firstBusiness.get("id")
-								.toString();
-						// Select the first business and display business details
-						String businessResponseJSON = yelpApi
-								.searchByBusinessId(firstBusinessID.toString());
-						JSONParser parser1 = new JSONParser();
-						JSONObject businessResponse = null;
-						try {
-							businessResponse = (JSONObject) parser1
-									.parse(businessResponseJSON);
-						}
-						catch (ParseException e) {
-							logger.error(
-									"Could not parse response from yelp API.",
-									e);
-						}
-						yelpRatings.put("ratings",
-								businessResponse.get("rating_img_url_large")
-										.toString());
-						yelpRatings.put(
-								"noOfReviews",
-								Integer.parseInt(businessResponse.get(
-										"review_count").toString()));
-						yelpRatings.put("websiteUrl",
-								businessResponse.get("url"));
+										.getZip())
+						&& StringUtils.isNotBlank((String) firstBusiness
+								.get("id"))) {
+					String firstBusinessID = firstBusiness.get("id").toString();
+					// Select the first business and display business details
+					String businessResponseJSON = yelpApi
+							.searchByBusinessId(firstBusinessID.toString());
+					JSONParser parser1 = new JSONParser();
+					JSONObject businessResponse = null;
+					try {
+						businessResponse = (JSONObject) parser1
+								.parse(businessResponseJSON);
 					}
+					catch (ParseException e) {
+						logger.error("Could not parse response from yelp API.",
+								e);
+					}
+					yelpRatings.put("ratings",
+							businessResponse.get("rating_img_url_large")
+									.toString());
+					yelpRatings.put(
+							"noOfReviews",
+							Integer.parseInt(businessResponse.get(
+									"review_count").toString()));
+					yelpRatings.put("websiteUrl", businessResponse.get("url"));
 				}
 			}
 		}
@@ -265,11 +263,10 @@ public class YelpAPIHelper {
 	 * @return
 	 * @throws ParseException 
 	 */
-	public static Map <Object, Object> getRatings(RestaurantDTO restaurantDTO,
-			String zipCode) throws ParseException {
+	public static Map <Object, Object> getRatings(RestaurantDTO restaurantDTO)
+			throws ParseException {
 		YelpAPIHelper yelpApi = new YelpAPIHelper(CONSUMER_KEY,
 				CONSUMER_SECRET, TOKEN, TOKEN_SECRET);
-		// queryAPI(yelpApi, yelpApiCli);
-		return queryAPI(yelpApi, restaurantDTO, zipCode);
+		return queryAPI(yelpApi, restaurantDTO);
 	}
 }

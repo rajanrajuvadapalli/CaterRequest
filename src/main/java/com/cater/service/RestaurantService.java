@@ -115,7 +115,6 @@ public class RestaurantService {
 		return restaurantDAO.findById(restaurantId);
 	}
 
-
 	/**
 	 * Find restaurants with login id.
 	 *
@@ -266,9 +265,10 @@ public class RestaurantService {
 				f = new File(imageUrl + fileType);
 				IOUtils.copy(multipartFile.getInputStream(),
 						FileUtils.openOutputStream(f, false));
-				if(Environment.isProd() || Environment.isUat()) {
+				if (Environment.isProd() || Environment.isUat()) {
 					amazons3.upload(f);
-				}else {
+				}
+				else {
 					logger.debug("*** LOCAL ENVIRONMENT *** Not saving profile pic to cloud.");
 				}
 				FileUtils.deleteQuietly(f);
@@ -298,12 +298,8 @@ public class RestaurantService {
 					restaurants);
 			if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
 				for (RestaurantDTO restaurantDTO : nearByRestaurants) {
-					String eventAddress = eventLocation.getStreet1() + " "
-							+ eventLocation.getStreet2() + " "
-							+ eventLocation.getState() + " "
-							+ eventLocation.getZip();
-					Map <Object, Object> yelpReviews = YelpAPIHelper.getRatings(
-							restaurantDTO, eventAddress);
+					Map <Object, Object> yelpReviews = YelpAPIHelper
+							.getRatings(restaurantDTO);
 					if (MapUtils.isNotEmpty(yelpReviews)) {
 						restaurantDTO.setNumberOfReviews(Integer
 								.parseInt(yelpReviews.get("noOfReviews")
