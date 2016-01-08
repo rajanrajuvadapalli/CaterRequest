@@ -567,6 +567,8 @@ public class CustomerDashboardController {
 						+ eventName + "'.");
 		successMessages.add("To restaurant(s): "
 				+ StringUtils.join(selectedRestaurantNames, ", "));
+		successMessages
+				.add("The above restaurants are going to reply with price quote in less than 24 hours.");
 		redirectAttributes
 				.addFlashAttribute("successMessages", successMessages);
 		//Commented to support browser 'back' button.
