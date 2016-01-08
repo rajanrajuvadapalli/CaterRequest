@@ -329,6 +329,9 @@ public class RestaurantDAO extends DataAccessObject {
 			List <?> list = session.createCriteria(Quote.class, "q")
 					.createAlias("q.restaurant", "r", JoinType.LEFT_OUTER_JOIN)
 					.add(Restrictions.eq("r.id", restaurantID))
+					.createAlias("q.menu", "menu", JoinType.RIGHT_OUTER_JOIN)
+					.createAlias("menu.event", "e", JoinType.RIGHT_OUTER_JOIN)
+					.add(Restrictions.ge("e.date_time", new Date()))
 					.add(Restrictions.isNull("q.price")).list();
 			logger.debug("Found " + list.size() + " new requests.");
 			return (List <Quote>) list;
