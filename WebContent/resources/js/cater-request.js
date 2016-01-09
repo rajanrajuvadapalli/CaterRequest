@@ -266,8 +266,21 @@ function validateEventForm() {
 		return false;
 	}
 	var numberOfPeople = $('input[id=person_count]').val();
+	if (!numberOfPeople.match(/[0-9]+/)) {
+		alert("Number of people should be only numeric.\n" + numberOfPeople + " is not a valid value.");
+		return false;
+	}
 	if (numberOfPeople <= 1) {
 		alert("Number of people should be 2 or more.");
+		return false;
+	}
+	var numberOfKids = $('input[id=kids_count]').val();
+	if (!numberOfKids.match(/[0-9]+/)) {
+		alert("Number of kids should be only numeric.\n" + numberOfKids + " is not a valid value.");
+		return false;
+	}
+	if (numberOfKids <= 1) {
+		alert("Number of kids should be 2 or more.");
 		return false;
 	}
 	var deliveryOption = $('select[id=deliveryOption]');
