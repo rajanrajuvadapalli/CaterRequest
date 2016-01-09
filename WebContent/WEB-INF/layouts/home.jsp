@@ -23,7 +23,10 @@
 					<h1>The smart way to order food for your event!</h1>
 				</div>
 				<div class="container">
-					<h1>Request, Compare and Confirm Quote.</h1>
+					<h1>Request, Compare and Confirm Quote</h1>
+				</div>
+				<div class="container">
+					<h1>Restaurants compete and bid to win your business</h1>
 				</div>
 				<form class="form-horizontal" method="GET"
 					id="customer-register-form"
