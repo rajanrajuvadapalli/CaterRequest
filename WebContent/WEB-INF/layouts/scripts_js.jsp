@@ -32,6 +32,7 @@
 <!--<script src="${pageContext.request.contextPath}/resources/js/bootstrap-formhelpers.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery.validate.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/additional-methods.min.js"></script> -->
+<!-- For documentation on datetimepicker, see http://xdsoft.net/jqplugins/datetimepicker/ -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery.datetimepicker.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/moment.min.js"></script>
 <!-- http://www.kryogenix.org/code/browser/sorttable/ -->
