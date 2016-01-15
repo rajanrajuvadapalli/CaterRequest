@@ -244,7 +244,7 @@
 							dayOfWeekStart : 0,
 							lazyInit : true,
 							lang : 'en',
-							closeOnDateSelect : true,
+							//closeOnDateSelect : true,
 							minDate : moment().add(72, "hours").format(
 									'YYYY/MM/DD'), //for today use 0 or -1970/01/01
 							startDate : moment().add(72, "hours").format(
