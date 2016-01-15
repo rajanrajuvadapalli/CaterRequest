@@ -248,7 +248,7 @@ function validateEventForm() {
 	var dateTimePickerElement = $('input[id=datetimepicker]');
 	var dateObject = dateTimePickerElement.val();
 	// console.log("User entered: " + dateObject);
-	if(dateObject.split(' ')[1] == '00:00') {
+	if (dateObject.split(' ')[1] == '00:00') {
 		alert('Please enter a valid time.');
 		dateTimePickerElement.focus();
 		return false;
@@ -270,42 +270,38 @@ function validateEventForm() {
 		alert("Event cannot be in the next 72 hours." + "\nEntered date: "
 				+ dateObject + "\nPlease enter date/time after "
 				+ seventy_two_hours_from_now);
-		dateTimePickerElement.addClass('invalid');
 		dateTimePickerElement.focus();
 		return false;
 	}
 	var numberOfPeopleElement = $('input[id=person_count]');
 	var numberOfPeople = numberOfPeopleElement.val();
 	if (!numberOfPeople.match(/[0-9]+/)) {
-		alert("Number of people should be only numeric.\n" + numberOfPeople + " is not a valid value.");
-		numberOfPeopleElement.addClass('invalid');
+		alert("Number of people should be only numeric.\n" + numberOfPeople
+				+ " is not a valid value.");
 		numberOfPeopleElement.focus();
 		return false;
 	}
 	if (numberOfPeople <= 1) {
 		alert("Number of people should be 2 or more.");
-		numberOfPeopleElement.addClass('invalid');
 		numberOfPeopleElement.focus();
 		return false;
 	}
 	var numberOfKidsElement = $('input[id=kids_count]');
 	var numberOfKids = numberOfKidsElement.val();
 	if (!numberOfKids.match(/[0-9]+/)) {
-		alert("Number of kids should be only numeric.\n" + numberOfKids + " is not a valid value.");
-		numberOfKidsElement.addClass('invalid');
+		alert("Number of kids should be only numeric.\n" + numberOfKids
+				+ " is not a valid value.");
 		numberOfKidsElement.focus();
 		return false;
 	}
 	if (numberOfKids <= 1) {
 		alert("Number of kids should be 2 or more.");
-		numberOfKidsElement.addClass('invalid');
 		numberOfKidsElement.focus();
 		return false;
 	}
 	var deliveryOption = $('select[id=deliveryOption]');
 	if (deliveryOption.val() == '') {
 		alert("Please select the delivery option.");
-		deliveryOption.addClass('invalid');
 		deliveryOption.focus();
 		return false;
 	}
@@ -357,5 +353,3 @@ function validateSelectRestaurantForm() {
 		return false;
 	}
 }
-
-
