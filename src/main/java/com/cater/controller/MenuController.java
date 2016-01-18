@@ -376,22 +376,22 @@ public class MenuController {
 			menuModel.setData(newData);
 			menuModel.setCuisineType(cuisine);
 			menuModel.setComments(comments);
-			com.cater.model.Address eventLocation = e.getLocation();
-			modelMap.put("eventLocation", eventLocation);
-			Set <Restaurant> restaurants = restaurantService
-					.fetchRestaurantsOfType(cuisine);
-			//modelMap.put("restaurants", restaurants);
-			List <RestaurantDTO> nearByRestaurants = restaurantService
-					.getNearbyYelpReviews(eventLocation, restaurants);
-			if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
-				modelMap.put("restaurants", nearByRestaurants);
-			}
 			Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
 			if (user.isGuest()) {
 				httpSession.setAttribute("menuId", 1);
 				menuModel.setId(1);
 			}
 			else {
+				com.cater.model.Address eventLocation = e.getLocation();
+				modelMap.put("eventLocation", eventLocation);
+				Set <Restaurant> restaurants = restaurantService
+						.fetchRestaurantsOfType(cuisine);
+				//modelMap.put("restaurants", restaurants);
+				List <RestaurantDTO> nearByRestaurants = restaurantService
+						.getNearbyYelpReviews(eventLocation, restaurants);
+				if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
+					modelMap.put("restaurants", nearByRestaurants);
+				}
 				customerService.saveOrUpdateMenu(menuModel);
 				menuId = menuModel.getId();
 				httpSession.setAttribute("menuId", menuId);
@@ -407,16 +407,20 @@ public class MenuController {
 						}
 					}
 				}
+				modelMap.put("prevR", previouslySelectedRestaurants);
 			}
 			httpSession.setAttribute("menu", menuModel);
 			httpSession.setAttribute("cuisineType", cuisine);
-			modelMap.put("prevR", previouslySelectedRestaurants);
 		}
 		catch (IOException e) {
 			logger.error(
 					"Exception occurred while reading menu and saving quote.",
 					e);
 			return "t_500";
+		}
+		if (user.isGuest()) {
+			//Send the user to create event page
+			return "customer/t_createEvent";
 		}
 		return "menus/t__cateringRestaurants";
 	}

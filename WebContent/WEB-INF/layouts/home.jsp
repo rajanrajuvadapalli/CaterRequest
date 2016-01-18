@@ -30,12 +30,30 @@
 				</div>
 				<form class="form-horizontal" method="GET"
 					id="customer-register-form"
+					action="${pageContext.request.contextPath}/customer/guestPage1"
+					enctype="application/x-www-form-urlencoded" autocomplete="off">
+					<div class="row"
+						style="background-color: rgba(0, 0, 0, 0.5); border-radius: 5px; margin-bottom: 40px; margin-top: 50px; padding: 10px;">
+						<div class="col-sm-4 col-sm-offset-2" id="locationField">
+							<input id="autocomplete" name="addressString"
+								placeholder="Enter event address" onFocus="geolocate()"
+								type="text" class="form-control" required="required">
+						</div>
+						<div class="col-sm-2">
+							<span id="cuisineType"></span>
+						</div>
+						<div class="col-sm-1">
+							<button type="submit" class="btn btn-default">Let's go!</button>
+						</div>
+					</div>
+				</form>
+				<%-- <form class="form-horizontal" method="GET"
+					id="customer-register-form"
 					action="${pageContext.request.contextPath}/customer/createEvent"
 					enctype="application/x-www-form-urlencoded" autocomplete="off">
-					<!-- <input type="hidden" name="as" value="customer"> -->
 					<button type="submit" class="btn btn-default">Let's get
 						started</button>
-				</form>
+				</form> --%>
 			</div>
 			<div class="background">
 				<!-- img

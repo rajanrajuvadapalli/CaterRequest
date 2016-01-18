@@ -31,6 +31,7 @@ import com.cater.Helper;
 import com.cater.constants.EventStatus;
 import com.cater.constants.QuoteStatus;
 import com.cater.constants.Roles;
+import com.cater.maps.RestaurantDTO;
 import com.cater.model.Address;
 import com.cater.model.Customer;
 import com.cater.model.Event;
@@ -255,7 +256,22 @@ public class CustomerDashboardController {
 			customerService.saveOrUpdateEvent(e);
 		}
 		String cuisineType = request.getParameter("cuisineType");
-		if (StringUtils.isNotBlank(cuisineType)) {
+		if (user.isGuest()) {
+			com.cater.model.Address eventLocation = e.getLocation();
+			modelMap.put("eventLocation", eventLocation);
+			Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
+			modelMap.put("prevR", previouslySelectedRestaurants);
+			Set <Restaurant> restaurants = restaurantService
+					.fetchRestaurantsOfType(cuisineType);
+			List <RestaurantDTO> nearByRestaurants = restaurantService
+					.getNearbyYelpReviews(eventLocation, restaurants);
+			if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
+				modelMap.put("restaurants", nearByRestaurants);
+			}
+			httpSession.setAttribute("eventName", e.getName());
+			return "menus/t__cateringRestaurants";
+		}
+		else if (StringUtils.isNotBlank(cuisineType)) {
 			logger.debug("Customer selected cuisine " + cuisineType
 					+ ". Redirecting to the menu page...");
 			redirectAttributes.addAttribute("cuisineType", cuisineType);
@@ -716,5 +732,55 @@ public class CustomerDashboardController {
 			}
 		}
 		return "redirect:/customer/dashboard";
+	}
+
+	@RequestMapping(value = { "guestPage1" }, method = RequestMethod.GET)
+	public String guestPage1(HttpSession httpSession, ModelMap modelMap,
+			HttpServletRequest request, RedirectAttributes redirectAttributes) {
+		User user = (User) httpSession.getAttribute("user");
+		Customer c = new Customer();
+		if (user == null) {
+			//return "t_home";
+			//If the user is not in session, create a dummy user and continue.
+			//Do not save anything, until last step (which will be registration).
+			user = new User();
+			user.setGuest(true);
+			user.setRole(Roles.CUSTOMER);
+			user.setUsername("Guest");
+			httpSession.setAttribute("user", user);
+		}
+		Event e = new Event();
+		e.setStatus(EventStatus.ACTIVE.toString());
+		Address a = new Address();
+		String addressString = request.getParameter("addressString");
+		httpSession.setAttribute("addressString", addressString);
+		logger.debug("Guest event address: " + addressString);
+		String[] addressComponents = StringUtils.split(addressString, ",");
+		String street1 = addressComponents[0];
+		String[] street1Components = StringUtils.split(street1, " ");
+		String street_number = (street1Components != null && street1Components.length > 0) ? street1Components[0]
+				: "";
+		String street_name = StringUtils.remove(street1, street_number).trim();
+		httpSession.setAttribute("street_number", street_number);
+		httpSession.setAttribute("street_name", street_name);
+		a.setStreet1(street1);
+		a.setCity(StringUtils.defaultString(addressComponents[1]));
+		a.setState(StringUtils.defaultString(addressComponents[2]));
+		a.setZip(StringUtils.defaultString(""));
+		e.setLocation(a);
+		//For guest user, save data in session
+		e.setId(1);
+		a.setId(1);
+		c.setId(1);
+		List <Event> events = Lists.newArrayList();
+		events.add(e);
+		c.setEvents(events);
+		httpSession.setAttribute("event", e);
+		httpSession.setAttribute("customer", c);
+		String cuisineType = request.getParameter("cuisineType");
+		logger.debug("Customer selected cuisine " + cuisineType
+				+ ". Redirecting to the menu page...");
+		redirectAttributes.addAttribute("cuisineType", cuisineType);
+		return "redirect:/menu/selectMenu";
 	}
 }

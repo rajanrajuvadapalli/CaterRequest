@@ -41,7 +41,7 @@ function populateCuisineTypes() {
 	$("span[id=cuisineType]")
 			.replaceWith(
 					"<select class=\"form-control inputs\" name=\"cuisineType\" id=\"cuisineType\" required=\"required\">"
-							+ " <option value=\"\"> </option> "
+							+ " <option value=\"\" disabled selected>Select Cuisine Type</option> "
 							// + " <option value=\"AMERICAN\"> AMERICAN
 							// </option> "
 							// + " <option value=\"CHINESE\"> CHINESE </option>
