@@ -756,16 +756,30 @@ public class CustomerDashboardController {
 		httpSession.setAttribute("addressString", addressString);
 		logger.debug("Guest event address: " + addressString);
 		String[] addressComponents = StringUtils.split(addressString, ",");
-		String street1 = addressComponents[0];
-		String[] street1Components = StringUtils.split(street1, " ");
-		String street_number = (street1Components != null && street1Components.length > 0) ? street1Components[0]
-				: "";
-		String street_name = StringUtils.remove(street1, street_number).trim();
-		httpSession.setAttribute("street_number", street_number);
-		httpSession.setAttribute("street_name", street_name);
-		a.setStreet1(street1);
-		a.setCity(StringUtils.defaultString(addressComponents[1]));
-		a.setState(StringUtils.defaultString(addressComponents[2]));
+		//Ex: 3466 Data Drive, Rancho Cordova, CA, United States
+		//Ex: Data Drive, Rancho Cordova, CA, United States
+		if (addressComponents != null && addressComponents.length >= 4) {
+			String street1 = addressComponents[0];
+			String[] street1Components = StringUtils.split(street1, " ");
+			String street_number = (street1Components != null && street1Components.length > 0) ? street1Components[0]
+					: "";
+			if (StringUtils.isBlank(street_number)
+					|| !NUMERIC.matcher(street_number).matches()) {
+				street_number = "";
+			}
+			String street_name = StringUtils.remove(street1, street_number)
+					.trim();
+			httpSession.setAttribute("street_number", street_number);
+			httpSession.setAttribute("street_name", street_name);
+			a.setStreet1(street1);
+			a.setCity(StringUtils.defaultString(addressComponents[1]));
+			a.setState(StringUtils.defaultString(addressComponents[2]));
+		}
+		//Ex: Davis, CA, United States
+		else if (addressComponents != null && addressComponents.length >= 3) {
+			a.setCity(StringUtils.defaultString(addressComponents[0]));
+			a.setState(StringUtils.defaultString(addressComponents[1]));
+		}
 		a.setZip(StringUtils.defaultString(""));
 		e.setLocation(a);
 		//For guest user, save data in session
