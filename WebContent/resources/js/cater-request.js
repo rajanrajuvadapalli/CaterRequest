@@ -286,7 +286,7 @@ function validateEventForm() {
 		numberOfPeopleElement.focus();
 		return false;
 	}
-	var numberOfKidsElement = $('input[id=kids_count]');
+	/*var numberOfKidsElement = $('input[id=kids_count]');
 	var numberOfKids = numberOfKidsElement.val();
 	if (!numberOfKids.match(/[0-9]+/)) {
 		alert("Number of kids should be only numeric.\n" + numberOfKids
@@ -298,7 +298,7 @@ function validateEventForm() {
 		alert("Number of kids should be 2 or more.");
 		numberOfKidsElement.focus();
 		return false;
-	}
+	}*/
 	var deliveryOption = $('select[id=deliveryOption]');
 	if (deliveryOption.val() == '') {
 		alert("Please select the delivery option.");
