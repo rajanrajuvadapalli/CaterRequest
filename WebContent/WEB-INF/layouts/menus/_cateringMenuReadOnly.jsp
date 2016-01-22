@@ -274,8 +274,9 @@
 								</c:if>
 								<c:if test="${lupdplus24 < now}">
 									<span style="color: red;">&#9888;&nbsp;<i>Cannot
-											update. Your 24 hour time window to respond has expired at <fmt:formatDate
-												value="${lupdplus24}" pattern="EEE, d MMM yyyy hh:mm aaa" />!
+											update. Your 24 hour time window to respond/update has
+											expired at <fmt:formatDate value="${lupdplus24}"
+												pattern="EEE, d MMM yyyy hh:mm aaa" />!
 									</i></span>
 								</c:if>
 							</c:when>

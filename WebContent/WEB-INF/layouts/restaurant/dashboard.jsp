@@ -102,7 +102,7 @@
 									<c:if test="${q.menu.getLupdPlus24() <= now}">
 										<br />
 										<span class="glyphicon glyphicon-warning-sign"
-											aria-hidden="true" style="color: red;"></span> Your 24 hour time window to respond has expired at: <fmt:formatDate
+											aria-hidden="true" style="color: red;"></span> Your 24 hour time window to respond/update has expired at: <fmt:formatDate
 											value="${q.menu.getLupdPlus24()}"
 											pattern="EEE, d MMM yyyy hh:mm aaa" />
 									</c:if>
@@ -145,7 +145,7 @@
 									<c:if test="${q.menu.getLupdPlus24() <= now}">
 										<br />
 										<span class="glyphicon glyphicon-warning-sign"
-											aria-hidden="true" style="color: red;"></span> Your 24 hour time window to respond has expired at: <fmt:formatDate
+											aria-hidden="true" style="color: red;"></span> Your 24 hour time window to respond/update has expired at: <fmt:formatDate
 											value="${q.menu.getLupdPlus24()}"
 											pattern="EEE, d MMM yyyy hh:mm aaa" />
 									</c:if>
