@@ -1258,7 +1258,7 @@
 			<label for="" class="col-sm-4 control-label">Special
 				Instructions: </label>
 			<div class="col-sm-6">
-				<input type="text" size="60" name="ppspl" maxlength="20"
+				<input type="text" size="60" name="vpspl" maxlength="20"
 					class="form-control">
 			</div>
 		</div>

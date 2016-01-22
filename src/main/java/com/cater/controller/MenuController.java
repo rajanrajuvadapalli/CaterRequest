@@ -1,5 +1,7 @@
 package com.cater.controller;
 
+import static com.cater.menu.MenuHelper.MENU_DELIMITER;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -50,8 +52,7 @@ import com.google.common.collect.Sets;
 public class MenuController {
 	/** The Constant logger. */
 	private static final Logger logger = Logger.getLogger(MenuController.class);
-	/** The Constant MENU_DELIMITER. */
-	private static final String MENU_DELIMITER = "|";
+
 	/** The customer service. */
 	@Autowired
 	private CustomerService customerService;

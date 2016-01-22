@@ -113,6 +113,12 @@ public class SMSHelper {
 				//role).get(QuoteStatus.valueOf(quote.getStatus())));
 				messageBuilder.append("Event name: ").append(event.getName())
 						.append("; ");
+				messageBuilder.append("Number of Adults: ")
+						.append(event.getPersonCount()).append("; ");
+				if (event.getKidsCount() != null && event.getKidsCount() > 0) {
+					messageBuilder.append("Number of Kids: ")
+							.append(event.getKidsCount()).append("; ");
+				}
 				if (role == Roles.RESTAURANT) {
 					messageBuilder.append("Customer name: ")
 							.append(customer.getName()).append("; ");
@@ -130,6 +136,7 @@ public class SMSHelper {
 				}
 				messageBuilder.append("--Please login to your account at "
 						+ url + "/login for more details.--");
+				logger.debug(messageBuilder.toString());
 				twilioSms.sendMessage(to, messageBuilder.toString());
 			}
 			else {

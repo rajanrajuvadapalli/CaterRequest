@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import com.cater.Helper;
 import com.cater.constants.Roles;
+import com.cater.menu.MenuHelper;
 import com.cater.model.Customer;
 import com.cater.model.Event;
 import com.cater.model.Quote;
@@ -34,6 +35,8 @@ public class EmailHelper {
 	private String ADMIN_EMAIL;
 	@Value("${url}")
 	private String url;
+	@Autowired
+	private MenuHelper menuHelper;
 	/** The amazon ses. */
 	@Autowired
 	private AmazonSES amazonSES;
@@ -67,7 +70,7 @@ public class EmailHelper {
 			replacementList[0] = username;
 			searchList[1] = "${TOKEN}";
 			replacementList[1] = confirmationToken;
-			searchList[2]="${URL}";
+			searchList[2] = "${URL}";
 			replacementList[2] = url;
 			emailBody = StringUtils.replaceEach(emailBody, searchList,
 					replacementList);
@@ -149,11 +152,13 @@ public class EmailHelper {
 					: customer.getContactEmail();
 			String username = role == Roles.RESTAURANT ? restaurant.getName()
 					: customer.getName();
+			StringBuilder customerSlectedMenu = menuHelper
+					.getMenuForEmail(quote.getMenu());
 			File f = new File(EmailHelper.class.getResource(
 					"/email/notification.html").getFile());
 			String emailBody = FileUtils.readFileToString(f);
-			String[] searchList = new String[9];
-			String[] replacementList = new String[9];
+			String[] searchList = new String[12];
+			String[] replacementList = new String[12];
 			searchList[0] = "${USERNAME}";
 			replacementList[0] = username;
 			searchList[1] = "${STATUS_MESSAGE}";
@@ -173,8 +178,14 @@ public class EmailHelper {
 			searchList[7] = "${COMMENTS}";
 			replacementList[7] = optionalMessage == null ? ""
 					: stringToHtml(optionalMessage.toString());
-			searchList[8]="${URL}";
+			searchList[8] = "${URL}";
 			replacementList[8] = url;
+			searchList[9] = "${N_ADULTS}";
+			replacementList[9] = event.getPersonCount() + "";
+			searchList[10] = "${N_KIDS}";
+			replacementList[10] = event.getKidsCount() + "";
+			searchList[11] = "${MENU}";
+			replacementList[11] = customerSlectedMenu.toString();
 			emailBody = StringUtils.replaceEach(emailBody, searchList,
 					replacementList);
 			String[] toAddresses = new String[] { to };
@@ -210,7 +221,7 @@ public class EmailHelper {
 			replacementList[1] = newPwdRaw;
 			searchList[2] = "${TOKEN}";
 			replacementList[2] = resetToken_URLSafe;
-			searchList[3]="${URL}";
+			searchList[3] = "${URL}";
 			replacementList[3] = url;
 			emailBody = StringUtils.replaceEach(emailBody, searchList,
 					replacementList);
