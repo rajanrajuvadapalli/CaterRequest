@@ -1,7 +1,10 @@
 package com.cater.model;
 
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -84,6 +87,13 @@ public class Menu extends TimestampEntity implements Serializable {
 
 	public void setQuotes(List <Quote> quotes) {
 		this.quotes = quotes;
+	}
+
+	public Date getLupdPlus24() {
+		Calendar calendar = Calendar.getInstance(Locale.US);
+		calendar.setTime(getUpdated());
+		calendar.add(Calendar.HOUR, 24);
+		return calendar.getTime();
 	}
 
 	@Override

@@ -4,6 +4,8 @@ import static com.cater.menu.MenuHelper.MENU_DELIMITER;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -472,6 +474,13 @@ public class MenuController {
 					modelMap.put("eventDistance", restaurantDTO.getDistance());
 				}
 				modelMap.put("event", menuModel.getEvent());
+				//Set the deadline = menu's last updated time + 24 hrs
+				Date lupd = menuModel.getUpdated();
+				Calendar calendar = Calendar.getInstance(Locale.US);
+				calendar.setTime(lupd);
+				calendar.add(Calendar.HOUR, 24);
+				logger.debug("LUPD+24=" + calendar.getTime());
+				modelMap.put("lupdplus24", calendar.getTime());
 			}
 		}
 		catch (Exception ex) {

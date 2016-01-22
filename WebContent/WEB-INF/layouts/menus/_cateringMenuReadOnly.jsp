@@ -121,7 +121,7 @@
 			<div class="panel-body" align="left">
 				<c:if test="${event.date_time > now}">
 					<div id="countdowntimer">
-						<span id="future_date"><span>
+						<span id="future_date"></span>
 					</div>
 					<br />
 				</c:if>
@@ -204,7 +204,8 @@
 										for this order?</label>
 									<div class="col-sm-3">
 										<select name="deliver" class="form-control"
-											required="required" ${(event.date_time <= now)?'disabled':''}>
+											required="required"
+											${(event.date_time <= now || lupdplus24 < now)?'disabled':''}>
 											<option value="yes" ${quote.canDeliver()?'selected':''}>Yes</option>
 											<option value="no" ${quote.canDeliver()?'':'selected'}>No</option>
 										</select>
@@ -214,7 +215,7 @@
 									<label for="notes" class="col-sm-4 control-label">Notes:</label>
 									<div class="col-sm-6">
 										<textarea rows="4" name="notes" class="form-control"
-											${(event.date_time <= now)?'disabled':''}>${quote.notes}</textarea>
+											${(event.date_time <= now || lupdplus24 < now)?'disabled':''}>${quote.notes}</textarea>
 									</div>
 								</div>
 								<c:choose>
@@ -236,14 +237,14 @@
 													required="required" pattern="[0-9]+(\.[0-9]*)?"
 													title="Example: 250.60" placeholder="0.00"
 													class="form-control inputs" value="${quote.price}"
-													${(event.date_time <= now)?'disabled':''}>
+													${(event.date_time <= now || lupdplus24 < now)?'disabled':''}>
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-sm-4 control-label"></label>
 											<div class="col-sm-2" align="left">
 												<button type="submit" class="btn btn-default"
-													${(event.date_time <= now)?'disabled':''}>Update</button>
+													${(event.date_time <= now || lupdplus24 < now)?'disabled':''}>Update</button>
 											</div>
 										</div>
 									</c:when>
@@ -255,14 +256,14 @@
 													required="required" pattern="[0-9]+(\.[0-9]{2})?"
 													title="Example: 250.60" placeholder="0.00"
 													class="form-control inputs"
-													${(event.date_time <= now)?'disabled':''}>
+													${(event.date_time <= now || lupdplus24 < now)?'disabled':''}>
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-sm-4 control-label"></label>
 											<div class="col-sm-2" align="left">
 												<button type="submit" class="btn btn-default"
-													${(event.date_time <= now)?'disabled':''}>Submit</button>
+													${(event.date_time <= now || lupdplus24 < now)?'disabled':''}>Submit</button>
 											</div>
 										</div>
 									</c:otherwise>
@@ -270,6 +271,12 @@
 								<c:if test="${event.date_time <= now}">
 									<span style="color: red;">&#9888;&nbsp;<i>Cannot
 											update. The event has expired!</i></span>
+								</c:if>
+								<c:if test="${lupdplus24 < now}">
+									<span style="color: red;">&#9888;&nbsp;<i>Cannot
+											update. Your 24 hour time window to respond has expired at <fmt:formatDate
+												value="${lupdplus24}" pattern="EEE, d MMM yyyy hh:mm aaa" />!
+									</i></span>
 								</c:if>
 							</c:when>
 							<c:otherwise>

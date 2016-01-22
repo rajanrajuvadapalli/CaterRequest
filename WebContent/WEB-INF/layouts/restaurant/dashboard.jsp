@@ -1,11 +1,15 @@
+<%@ page import="java.util.Date"%>
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div class="col-sm-10 col-sm-offset-1 page-header">
-	<h1>${restaurant.name}'s Dashboard</h1>
+	<h1>${restaurant.name}'s&nbsp;Dashboard</h1>
 </div>
+
+<c:set var="now" value="<%=new Date()%>" />
+
 <div class="col-sm-10 col-sm-offset-1">
 	<c:if test="${not empty errors}">
 		<div class="alert alert-danger">
@@ -54,8 +58,7 @@
 			<nav>
 				<ul>
 					<li class="pull-left"><a href="#section-upcoming"
-						class="icon icon-home">New Requests
-							(${newRequests.size()})</a></li>
+						class="icon icon-home">New Requests (${newRequests.size()})</a></li>
 					<li class="pull-left"><a href="#section-past"
 						class="icon icon-gift">Past Requests (${pastQuotes.size()})</a></li>
 					<li class="pull-left"><a href="#section-confirmed"
@@ -89,6 +92,20 @@
 											<fmt:formatNumber value="${bargain.get(q.id)}" type="percent" />
 										</span>
 									</c:if>
+									<c:if test="${q.menu.getLupdPlus24() > now}">
+										<br />
+										<span class="glyphicon glyphicon-warning-sign"
+											aria-hidden="true" style="color: red;"></span> Respond before: <fmt:formatDate
+											value="${q.menu.getLupdPlus24()}"
+											pattern="EEE, d MMM yyyy hh:mm aaa" />
+									</c:if>
+									<c:if test="${q.menu.getLupdPlus24() <= now}">
+										<br />
+										<span class="glyphicon glyphicon-warning-sign"
+											aria-hidden="true" style="color: red;"></span> Your 24 hour time window to respond has expired at: <fmt:formatDate
+											value="${q.menu.getLupdPlus24()}"
+											pattern="EEE, d MMM yyyy hh:mm aaa" />
+									</c:if>
 								<p>
 							</div>
 						</c:forEach>
@@ -117,6 +134,20 @@
 											title="Your quote is higher than the best quote received for this event.">
 											<fmt:formatNumber value="${bargain.get(q.id)}" type="percent" />
 										</span>
+									</c:if>
+									<c:if test="${q.menu.getLupdPlus24() > now}">
+										<br />
+										<span class="glyphicon glyphicon-warning-sign"
+											aria-hidden="true" style="color: red;"></span> Respond before: <fmt:formatDate
+											value="${q.menu.getLupdPlus24()}"
+											pattern="EEE, d MMM yyyy hh:mm aaa" />
+									</c:if>
+									<c:if test="${q.menu.getLupdPlus24() <= now}">
+										<br />
+										<span class="glyphicon glyphicon-warning-sign"
+											aria-hidden="true" style="color: red;"></span> Your 24 hour time window to respond has expired at: <fmt:formatDate
+											value="${q.menu.getLupdPlus24()}"
+											pattern="EEE, d MMM yyyy hh:mm aaa" />
 									</c:if>
 								<p>
 							</div>
