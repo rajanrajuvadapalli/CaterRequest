@@ -180,7 +180,7 @@
 	class="mfp-hide white-popup-block thaiPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_0_0" class="form-horizontal"
 		onsubmit="return populateVegeterianSpringRollSelectedItems();">
-		<span id="thai-popup-title"><h2>Vegeterian Spring Rolls</h2></span> <b>Description:</b>&nbsp;
+		<h2>Vegeterian Spring Rolls</h2> <b>Description:</b>&nbsp;
 		Stuffed with cabbage, carrots, celery, and grass noodles. Served with
 		plum sauce.
 		<div class="form-group">
@@ -213,7 +213,7 @@
 	class="mfp-hide white-popup-block thaiPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_0_1" class="form-horizontal"
 		onsubmit="return populateChickenSataySelectedItems();">
-		<span id="thai-popup-title"><h2>Chicken Satay</h2></span> <b>Description:</b>&nbsp;
+		<h2>Chicken Satay</h2> <b>Description:</b>&nbsp;
 		Chicken breast marinated with Thai herbs and spices on sticks. Served
 		with peanut sauce and cucumber salad.
 		<div class="form-group">
@@ -246,7 +246,7 @@
 	class="mfp-hide white-popup-block thaiPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_0_2" class="form-horizontal"
 		onsubmit="return populateFriedCalamariSelectedItems();">
-		<span id="thai-popup-title"><h2>Fried Calamari</h2></span> <b>Description:</b>&nbsp;Sliced
+		<h2>Fried Calamari</h2> <b>Description:</b>&nbsp;Sliced
 		fresh calamari dipped in batter sweet garlic plum sauce.
 		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Count<span
@@ -295,7 +295,7 @@
 	class="mfp-hide white-popup-block thaiPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_1_0" class="form-horizontal"
 		onsubmit="return populateTomYumSoupSelectedItems();">
-		<span id="thai-popup-title"><h2>Tom Yum Soup</h2></span> <b>Description:</b>&nbsp;Spicy
+		<h2>Tom Yum Soup</h2> <b>Description:</b>&nbsp;Spicy
 		and sour soup with choice of meat, mushrooms, fresh lime juice, lemon
 		grass, kaffir lime leaves, cilantro and chili paste.
 		<div class="form-group">
@@ -400,7 +400,7 @@
 	class="mfp-hide white-popup-block thaiPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_1_1" class="form-horizontal"
 		onsubmit="return populateTomKhaSoupSelectedItems();">
-		<span id="thai-popup-title"><h2>Tom Kha Soup</h2></span> <b>Description:</b>&nbsp;Coconut
+		<h2>Tom Kha Soup</h2> <b>Description:</b>&nbsp;Coconut
 		milk soup with choice of meat, mushrooms, fresh lime juice, lemon
 		grass, kaffir lime leaves, cilantro and chili paste.
 		<div class="form-group">
@@ -505,7 +505,7 @@
 	class="mfp-hide white-popup-block thaiPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_1_2" class="form-horizontal"
 		onsubmit="return populateGreenPapayaSaladSelectedItems();">
-		<span id="thai-popup-title"><h2>Green Papaya Salad</h2></span> <b>Description:</b>&nbsp;Spicy
+		<h2>Green Papaya Salad</h2> <b>Description:</b>&nbsp;Spicy
 		salad made from shredded unripe papayae, choice of meat and other
 		veggies.
 		<div class="form-group">
@@ -576,7 +576,7 @@
 	class="mfp-hide white-popup-block thaiPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_2_0" class="form-horizontal"
 		onsubmit="return populateThaiPadThaiSelectedItems();">
-		<span id="thai-popup-title"><h2>Pad Thai</h2></span> <b>Description:</b>&nbsp;Popular
+		<h2>Pad Thai</h2> <b>Description:</b>&nbsp;Popular
 		noodle dish; pan stir fried noodles with bean sprouts, onion and
 		ground peanuts.
 		<div class="form-group">
@@ -681,7 +681,7 @@
 	class="mfp-hide white-popup-block thaiPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_2_1" class="form-horizontal"
 		onsubmit="return populateDrunkenNoodlesSelectedItems();">
-		<span id="thai-popup-title"><h2>Drunken Noodles</h2></span> <b>Description:</b>&nbsp;Wide
+		<h2>Drunken Noodles</h2> <b>Description:</b>&nbsp;Wide
 		rice noodles with choices of meat; wok fried garlic, chili cabbage,
 		tomatoes, carrots and basil leaves.
 		<div class="form-group">
@@ -787,7 +787,7 @@
 	class="mfp-hide white-popup-block thaiPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_3_0" class="form-horizontal"
 		onsubmit="return populateThaiFriedRiceSelectedItems();">
-		<span id="thai-popup-title"><h2>Thai Fried Rice</h2></span> <b>Description:</b>&nbsp;Fried
+		<h2>Thai Fried Rice</h2> <b>Description:</b>&nbsp;Fried
 		rice with choice of meat, garlic, chili bamboo shoots, bell pepper.
 		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Count<span
@@ -891,7 +891,7 @@
 	class="mfp-hide white-popup-block thaiPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_3_1" class="form-horizontal"
 		onsubmit="return populatePineappleFriedRiceSelectedItems();">
-		<span id="thai-popup-title"><h2>Pineapple Fried Rice</h2></span> <b>Description:</b>&nbsp;Exotic
+		<h2>Pineapple Fried Rice</h2> <b>Description:</b>&nbsp;Exotic
 		fried rice with choice of meat, egg, tomatoes, onion, cashew nuts and
 		pineapple.
 		<div class="form-group">
@@ -998,7 +998,7 @@
 	class="mfp-hide white-popup-block thaiPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_3_2" class="form-horizontal"
 		onsubmit="return populateBasilFriedRiceSelectedItems();">
-		<span id="thai-popup-title"><h2>Basil Fried Rice</h2></span> <b>Description:</b>&nbsp;Fried
+		<h2>Basil Fried Rice</h2> <b>Description:</b>&nbsp;Fried
 		rice with choice of meat, garlic, chili bamboo shoots, bell pepper and
 		Thai basil.
 		<div class="form-group">
@@ -1103,7 +1103,7 @@
 	class="mfp-hide white-popup-block thaiPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_4_0" class="form-horizontal"
 		onsubmit="return populateRedCurrySelectedItems();">
-		<span id="thai-popup-title"><h2>Red Curry</h2></span> <b>Description:</b>&nbsp;Choice
+		<h2>Red Curry</h2> <b>Description:</b>&nbsp;Choice
 		of meat simmered in red curry paste, coconut milk, bamboo shoots, bell
 		pepper and Thai basil leaves.
 		<div class="form-group">
@@ -1208,7 +1208,7 @@
 	class="mfp-hide white-popup-block thaiPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_4_1" class="form-horizontal"
 		onsubmit="return populateGreenCurrySelectedItems();">
-		<span id="thai-popup-title"><h2>Green Curry</h2></span> <b>Description:</b>&nbsp;Choice
+		<h2>Green Curry</h2> <b>Description:</b>&nbsp;Choice
 		of meat, simmered in green chili curry paste, coconut milk, bell
 		pepper and basil.
 		<div class="form-group">
@@ -1313,7 +1313,7 @@
 	class="mfp-hide white-popup-block thaiPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_4_2" class="form-horizontal"
 		onsubmit="return populateYellowCurrySelectedItems();">
-		<span id="thai-popup-title"><h2>Yellow Curry</h2></span> <b>Description:</b>&nbsp;Choice
+		<h2>Yellow Curry</h2> <b>Description:</b>&nbsp;Choice
 		of meat, simmered in yellow curry paste, coconut milk, potatoes and
 		carrots.
 		<div class="form-group">
@@ -1417,7 +1417,7 @@
 	class="mfp-hide white-popup-block thaiPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_4_2" class="form-horizontal"
 		onsubmit="return populatePanangCurrySelectedItems();">
-		<span id="thai-popup-title"><h2>Panang Curry</h2></span> <b>Description:</b>&nbsp;Choice
+		<h2>Panang Curry</h2> <b>Description:</b>&nbsp;Choice
 		of meat simmered in thick red curry paste, coconut milk, bell pepper
 		and lime leaves.
 		<div class="form-group">
