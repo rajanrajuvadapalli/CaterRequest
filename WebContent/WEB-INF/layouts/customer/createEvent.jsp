@@ -58,7 +58,6 @@
 		action="${pageContext.request.contextPath}/customer/createEvent"
 		enctype="application/x-www-form-urlencoded" autocomplete="off"
 		onsubmit="return validateEventForm();">
-		<input type="text" hidden="hidden" name="cuisineType" value="${sessionScope.cuisineType}">
 		
 		<div class="panel panel-info">
 			<div class="panel-heading">
@@ -210,7 +209,10 @@
 				</div>
 			</div>
 		</div>
-		<!-- Guests will start by selecting the menu, so no need for this div -->
+		<!-- Guests will start by selecting the menu -->
+		<c:if test="${sessionScope.user.isGuest()}">
+			<input type="text" hidden="hidden" name="cuisineType" value="${sessionScope.cuisineType}">
+		</c:if>
 		<c:if test="${!sessionScope.user.isGuest()}">
 			<div class="panel panel-warning">
 				<div class="panel-heading">
