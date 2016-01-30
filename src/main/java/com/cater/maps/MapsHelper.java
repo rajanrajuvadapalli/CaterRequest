@@ -15,12 +15,14 @@ import com.google.maps.GeoApiContext;
 import com.google.maps.model.DistanceMatrix;
 import com.google.maps.model.Unit;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class MapsHelper.
  */
 @Component
 public class MapsHelper {
+	/** The Constant RESTAURANT_DISPLAY_RADIUS. 
+	 * 15 miles = 24140 meters */
+	private static final int RESTAURANT_DISPLAY_RADIUS = 24140;
 	/**
 	 * Gets the distance.
 	 *
@@ -43,7 +45,7 @@ public class MapsHelper {
 				if (dm.rows.length > 0 && dm.rows[0].elements.length > 0) {
 					com.google.maps.model.Distance distance = dm.rows[0].elements[0].distance;
 					Long distanceInMeters = distance.inMeters;
-					if (distanceInMeters <= 80467) {
+					if (distanceInMeters <= RESTAURANT_DISPLAY_RADIUS) {
 						RestaurantDTO restaurantDTO = new RestaurantDTO();
 						restaurantDTO.setDistance(distance.toString());
 						restaurantDTO.setDistanceInMeters(distanceInMeters);
@@ -67,7 +69,7 @@ public class MapsHelper {
 				nearByRestaurants.add(restaurantDTO);
 			}
 		} // end of iter
-			// WRITE sorting
+			// TODO: WRITE sorting
 		/*
 		 * if(!nearByRestaurants.isEmpty() && nearByRestaurants!= null){ ÷ }
 		 */
