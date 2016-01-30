@@ -28,8 +28,18 @@ function fillInAddress() {
 		if (componentForm[addressType]) {
 			var val = place.address_components[i][componentForm[addressType]];
 			document.getElementById(addressType).value = val;
+				
 		}
 	}
+	if(document.getElementById("address") != null){
+	   document.getElementById("address").style.display = "block";
+	  
+	   
+	}
+	 if (place != ''){
+		   document.getElementById("address").style.display = "block";
+	   }
+	
 }
 // [END region_fillform]
 

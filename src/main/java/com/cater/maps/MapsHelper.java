@@ -43,7 +43,7 @@ public class MapsHelper {
 				if (dm.rows.length > 0 && dm.rows[0].elements.length > 0) {
 					com.google.maps.model.Distance distance = dm.rows[0].elements[0].distance;
 					Long distanceInMeters = distance.inMeters;
-					if (distanceInMeters <= 80467) {
+					if (distanceInMeters <= 24140) {
 						RestaurantDTO restaurantDTO = new RestaurantDTO();
 						restaurantDTO.setDistance(distance.toString());
 						restaurantDTO.setDistanceInMeters(distanceInMeters);

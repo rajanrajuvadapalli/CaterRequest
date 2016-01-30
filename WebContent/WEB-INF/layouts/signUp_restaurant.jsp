@@ -227,13 +227,15 @@
 						Address validation failed. Please check your address.<br /> If
 						the problem persists, please contact customer support.
 					</div> -->
-					<div class="form-group">
+					<div class="form-group" autocomplete="off">
 						<label for="addressText" class="col-sm-4 control-label"> </label>
 						<div class="col-sm-6" id="locationField">
 							<input id="autocomplete" placeholder="Enter your address"
 								onFocus="geolocate()" type="text" class="form-control" autocomplete="off">
 						</div>
 					</div>
+				  <div id="address" style="display:none;">
+				    
 					<div class="form-group">
 						<label for="street1" class="col-sm-4 control-label">Street
 							<span style="color: red">*</span> :
@@ -248,6 +250,7 @@
 								class="form-control">
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label for="street2" class="col-sm-4 control-label">Apt/Ste
 							:</label>
@@ -287,6 +290,7 @@
 								id="postal_code" required="required" placeholder="Ex.: xxxxx"
 								pattern="^\d{5}(\-\d{4})?$" class="form-control">
 						</div>
+					</div>
 					</div>
 				</div>
 			</div>

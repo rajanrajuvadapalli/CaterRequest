@@ -40,7 +40,7 @@ public class IPNController {
 	/** The Constant PARAM_VAL_CMD. */
 	private final static String PARAM_VAL_CMD = "cmd=_notify-synch";
 	/** The Constant TOKEN_CMD. */
-	private final static String TOKEN_CMD = "&at=zWoidcCSL1Fv_It6TNJmsQGN62SRhIsqB5QtFKT9Hmn2tnKJsUKqT4nulXG";
+	private final static String TOKEN_CMD = "&at=d4c1dLhWO1Nz0dWT8ogZU1RxtvISlFMcEBXvwfZTd6Ksi2xP87O2k0ZSb3G";
 	/** The restaurant service. */
 	@Autowired
 	private RestaurantService restaurantService;

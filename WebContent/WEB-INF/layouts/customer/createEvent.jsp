@@ -126,6 +126,7 @@
 			<div class="panel-heading">
 				<h3 class="panel-title">Event Location</h3>
 			</div>
+			
 			<div class="panel-body">
 				<!-- <input type="hidden" name="LastAddressValidated" value="">
 					<div class="alert alert-danger hidden" id="addressnotok">
@@ -140,10 +141,11 @@
 					<label for="addressText" class="col-sm-3 control-label"> </label>
 					<div class="col-sm-6" id="locationField">
 						<input id="autocomplete" name="addressString" placeholder="Enter your address"
-							onFocus="geolocate()" type="text" class="form-control"
+							onFocus="geolocate()" type="text" class="form-control" autocomplete="off"
 							value="${sessionScope.addressString}">
 					</div>
 				</div>
+				<div id="address" style="display:none;">
 				<div class="form-group">
 					<label for="street1" class="col-sm-3 control-label">Street
 						<span style="color: red">*</span> :
@@ -208,7 +210,9 @@
 						<span id="deliveryOption"></span>
 					</div>
 				</div>
+				</div>
 			</div>
+			
 		</div>
 		<!-- Guests will start by selecting the menu, so no need for this div -->
 		<c:if test="${!sessionScope.user.isGuest()}">

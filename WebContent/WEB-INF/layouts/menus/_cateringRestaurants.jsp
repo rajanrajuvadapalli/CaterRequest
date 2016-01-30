@@ -50,7 +50,7 @@
 									<c:choose>
 										<c:when
 											test="${(not empty r.restaurant.deliverMiles) and (r.restaurant.deliverMiles != 0) }">
-									FREE delivery within ${r.restaurant.deliverMiles} miles
+									 Delivery within ${r.restaurant.deliverMiles} Miles Only
 									</c:when>
 										<c:otherwise>NO delivery</c:otherwise>
 									</c:choose>

@@ -108,6 +108,16 @@
 								</c:if>
 							</div>
 							<div class="col-sm-2">
+							<script async="async"
+										src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=CKUESPEQURRH2"
+										data-button="paynow" data-name="${e.name}"
+										data-amount="${quote.price}" data-currency="USD"
+										data-tax="${tax}" data-number="${quote.id}"
+										data-style="secondary"
+										data-callback="https://lupxvapabe.localtunnel.me/cater4party/payment/notify" 
+                                      data-env="sandbox"></script>
+							
+							
 								<button type="submit" class="btn btn-default">Pay at
 									Restaurant</button>
 							</div>
