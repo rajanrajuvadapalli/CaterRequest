@@ -302,7 +302,7 @@ public class RestaurantDAO extends DataAccessObject {
 					.createAlias("q.menu", "menu", JoinType.RIGHT_OUTER_JOIN)
 					.createAlias("menu.event", "e", JoinType.RIGHT_OUTER_JOIN)
 					.add(Restrictions.ge("e.date_time", new Date()))
-					.addOrder(Order.asc("e.date_time")).list();
+					.addOrder(Order.desc("e.date_time")).list();
 			logger.debug("Found " + list.size() + " upcoming quotes.");
 			return (List <Quote>) list;
 		}
@@ -332,7 +332,8 @@ public class RestaurantDAO extends DataAccessObject {
 					.createAlias("q.menu", "menu", JoinType.RIGHT_OUTER_JOIN)
 					.createAlias("menu.event", "e", JoinType.RIGHT_OUTER_JOIN)
 					.add(Restrictions.ge("e.date_time", new Date()))
-					.add(Restrictions.isNull("q.price")).list();
+					.add(Restrictions.isNull("q.price"))
+					.addOrder(Order.desc("e.date_time")).list();
 			logger.debug("Found " + list.size() + " new requests.");
 			return (List <Quote>) list;
 		}
@@ -358,8 +359,11 @@ public class RestaurantDAO extends DataAccessObject {
 			Session session = getSessionFactory().getCurrentSession();
 			List <?> list = session.createCriteria(Quote.class, "q")
 					.createAlias("q.restaurant", "r", JoinType.LEFT_OUTER_JOIN)
+					.createAlias("q.menu", "menu", JoinType.RIGHT_OUTER_JOIN)
+					.createAlias("menu.event", "e", JoinType.RIGHT_OUTER_JOIN)
 					.add(Restrictions.eq("r.id", restaurantID))
-					.add(Restrictions.isNotNull("q.price")).list();
+					.add(Restrictions.isNotNull("q.price"))
+					.addOrder(Order.desc("e.date_time")).list();
 			logger.debug("Found " + list.size() + " past quotes");
 			return (List <Quote>) list;
 		}

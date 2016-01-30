@@ -359,7 +359,7 @@ public class CustomerDAO extends DataAccessObject {
 							JoinType.LEFT_OUTER_JOIN)
 					.add(Restrictions.eq("customer.id", customerId))
 					.add(Restrictions.ge("e.date_time", new Date()))
-					.addOrder(Order.asc("e.date_time")).list();
+					.addOrder(Order.desc("e.date_time")).list();
 			logger.debug("Found " + list.size() + " upcoming events");
 			return (List <Event>) list;
 		}
