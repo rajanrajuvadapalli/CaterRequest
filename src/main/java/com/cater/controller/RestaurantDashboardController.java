@@ -192,20 +192,24 @@ public class RestaurantDashboardController {
 				request.getParameter("smsOk")));
 		String street1 = StringUtils
 				.defaultString(request.getParameter("street_number"))
+				.trim()
 				.concat(" ")
-				.concat(StringUtils.defaultString(request
-						.getParameter("street_name")));
+				.concat(StringUtils.defaultString(
+						request.getParameter("street_name")).trim());
 		data.setStreet1(street1);
-		String apt_classifier = StringUtils.defaultString(request
-				.getParameter("apt_classifier"));
-		String street2 = StringUtils.defaultString(request
-				.getParameter("street2"));
+		String apt_classifier = StringUtils.defaultString(
+				request.getParameter("apt_classifier")).trim();
+		String street2 = StringUtils.defaultString(
+				request.getParameter("street2")).trim();
 		if (StringUtils.isNotBlank(street2)) {
 			data.setStreet2(apt_classifier + " " + street2);
 		}
-		data.setCity(StringUtils.defaultString(request.getParameter("city")));
-		data.setState(StringUtils.defaultString(request.getParameter("state")));
-		data.setZip(StringUtils.defaultString(request.getParameter("zip")));
+		data.setCity(StringUtils.defaultString(request.getParameter("city"))
+				.trim());
+		data.setState(StringUtils.defaultString(request.getParameter("state"))
+				.trim());
+		data.setZip(StringUtils.defaultString(request.getParameter("zip"))
+				.trim());
 		data.setSalesTax(Helper.stringToFloat(request.getParameter("sales")));
 		//If the restaurant uses the same phone number used on other branch and if it was verified,
 		//set the current branch verification flag to true.

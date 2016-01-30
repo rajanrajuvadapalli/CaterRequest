@@ -136,8 +136,9 @@ public class RegistrationController {
 			data.setCuisineType(StringUtils.defaultString(request
 					.getParameter("cuisineType")));
 			data.setUrl(StringUtils.defaultString(request.getParameter("url")));
-			String deliverMiles = StringUtils.defaultString(request.getParameter("deliver-miles"));
-			if(StringUtils.isBlank(deliverMiles)) {
+			String deliverMiles = StringUtils.defaultString(request
+					.getParameter("deliver-miles"));
+			if (StringUtils.isBlank(deliverMiles)) {
 				deliverMiles = "0";
 			}
 			data.setDeliverMiles(deliverMiles);
@@ -161,12 +162,14 @@ public class RegistrationController {
 			if (StringUtils.isNotBlank(street2)) {
 				data.setStreet2(apt_classifier + " " + street2);
 			}
-			data.setCity(StringUtils.defaultString(request.getParameter("city")));
-			data.setState(StringUtils.defaultString(request
-					.getParameter("state")));
-			data.setZip(StringUtils.defaultString(request.getParameter("zip")));
-			data.setAboutUs(StringUtils.defaultString(request
-					.getParameter("aboutus")));
+			data.setCity(StringUtils
+					.defaultString(request.getParameter("city")).trim());
+			data.setState(StringUtils.defaultString(
+					request.getParameter("state")).trim());
+			data.setZip(StringUtils.defaultString(request.getParameter("zip"))
+					.trim());
+			data.setAboutUs(StringUtils.defaultString(
+					request.getParameter("aboutus")).trim());
 			data.setSalesTax(Helper.stringToFloat(request.getParameter("sales")));
 			logger.debug("Form data: " + data.toString());
 			login = registerService.register(data);

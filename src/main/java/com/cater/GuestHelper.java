@@ -42,6 +42,7 @@ public class GuestHelper {
 		customerService.saveOrUpdateEvent(e);
 		com.cater.model.Menu menuModel = (com.cater.model.Menu) httpSession
 				.getAttribute("menu");
+		menuModel.setEvent(e);
 		menuModel.setId(null);
 		customerService.saveOrUpdateMenu(menuModel);
 		Integer menuId = menuModel.getId();

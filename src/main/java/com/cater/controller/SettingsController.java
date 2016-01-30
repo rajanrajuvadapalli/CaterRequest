@@ -185,14 +185,16 @@ public class SettingsController {
 					.getParameter("phone")));
 			data.setSmsOk(StringUtils.equalsIgnoreCase("on",
 					request.getParameter("smsOk")));
-			data.setStreet1(StringUtils.defaultString(request
-					.getParameter("street1")));
-			data.setStreet2(StringUtils.defaultString(request
-					.getParameter("street2")));
-			data.setCity(StringUtils.defaultString(request.getParameter("city")));
-			data.setState(StringUtils.defaultString(request
-					.getParameter("state")));
-			data.setZip(StringUtils.defaultString(request.getParameter("zip")));
+			data.setStreet1(StringUtils.defaultString(
+					request.getParameter("street1")).trim());
+			data.setStreet2(StringUtils.defaultString(
+					request.getParameter("street2")).trim());
+			data.setCity(StringUtils
+					.defaultString(request.getParameter("city")).trim());
+			data.setState(StringUtils.defaultString(
+					request.getParameter("state")).trim());
+			data.setZip(StringUtils.defaultString(request.getParameter("zip"))
+					.trim());
 			data.setAboutUs(StringUtils.defaultString(request
 					.getParameter("aboutus")));
 			UpdateResult updateResult = personalSettingsService.updateDataFor(
@@ -242,7 +244,6 @@ public class SettingsController {
 					break;
 				}
 			}
-			
 			return "settings/t_personalInfo_restaurant";
 		}
 		return "settings/t_home";
@@ -283,14 +284,16 @@ public class SettingsController {
 			data.setEmail(StringUtils.defaultString(request
 					.getParameter("email")));
 			data.setDeliverMiles(request.getParameter("deliver-miles"));
-			data.setStreet1(StringUtils.defaultString(request
-					.getParameter("street1")));
-			data.setStreet2(StringUtils.defaultString(request
-					.getParameter("street2")));
-			data.setCity(StringUtils.defaultString(request.getParameter("city")));
-			data.setState(StringUtils.defaultString(request
-					.getParameter("state")));
-			data.setZip(StringUtils.defaultString(request.getParameter("zip")));
+			data.setStreet1(StringUtils.defaultString(
+					request.getParameter("street1")).trim());
+			data.setStreet2(StringUtils.defaultString(
+					request.getParameter("street2")).trim());
+			data.setCity(StringUtils
+					.defaultString(request.getParameter("city")).trim());
+			data.setState(StringUtils.defaultString(
+					request.getParameter("state")).trim());
+			data.setZip(StringUtils.defaultString(request.getParameter("zip"))
+					.trim());
 			UpdateResult updateResult = personalSettingsService.updateDataFor(
 					Roles.RESTAURANT, null, restaurantID, data);
 			if (updateResult.isUpdateSuccess()) {

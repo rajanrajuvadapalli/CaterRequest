@@ -28,6 +28,7 @@ import com.cater.model.Event;
 import com.cater.model.Login;
 import com.cater.model.Restaurant;
 import com.cater.service.LoginService;
+import com.cater.service.PersonalSettingsService;
 import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
 import com.google.common.collect.Lists;
@@ -50,6 +51,8 @@ public class LoginController {
 	private GuestHelper guestHelper;
 	@Autowired
 	private RestaurantService restaurantService;
+	@Autowired
+	private PersonalSettingsService personalSettingsService;
 
 	/**
 	 * Logout.
@@ -139,6 +142,14 @@ public class LoginController {
 						.getNearbyYelpReviews(e.getLocation(), restaurants);
 				if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
 					modelMap.put("restaurants", nearByRestaurants);
+				}
+				Object userFromDatabase = personalSettingsService
+						.getUserWithLoginID(login.getId(), user.getRole());
+				if (userFromDatabase != null
+						&& Roles.CUSTOMER == user.getRole()) {
+					Customer customer = (Customer) userFromDatabase;
+					user.setCustomer(customer);
+					user.setCustomerID(customer.getId());
 				}
 			}
 			else {
