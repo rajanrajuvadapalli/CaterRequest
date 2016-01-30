@@ -143,10 +143,11 @@
 				<b>Delivery Option:</b> <span class="badge">${event.isPickUp()?'Pick Up':'Delivered'}</span><br />
 				<b>Customer name:</b> ${event.customer.name}<br />
 				<c:if
-					test="${quote.status.toString() == 'CUSTOMER_ORDER_CONFIRMED'}">
+					test="${quote.status.toString() == 'CUSTOMER_ORDER_CONFIRMED' || quote.status.toString() == 'PAID'}">
 					<b>Customer contact number:</b>
 					<c:out
 						value="(${fn:substring(event.customer.contactNumber, 0, 3)}) ${fn:substring(event.customer.contactNumber, 3, 6)}-${fn:substring(event.customer.contactNumber, 6, 10)}" />
+					<b>Location: </b> ${event.location.getAddressString()} <br />
 				</c:if>
 				<br />
 			</div>
