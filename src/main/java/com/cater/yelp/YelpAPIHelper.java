@@ -61,6 +61,7 @@ public class YelpAPIHelper {
 		CUISINE_FILTER_LOOKUP.put("SANDWICH", "sandwiches");
 		CUISINE_FILTER_LOOKUP.put("THAI", "thai");
 		CUISINE_FILTER_LOOKUP.put("PIZZA", "pizza");
+		CUISINE_FILTER_LOOKUP.put("MIDDLE_EASTERN", "mideastern");
 	}
 	/** The service. */
 	OAuthService service;

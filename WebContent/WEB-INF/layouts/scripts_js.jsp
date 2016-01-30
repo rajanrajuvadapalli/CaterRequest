@@ -26,6 +26,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/cater-mexican.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/cater-thai.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/cater-sandwich.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/cater-middle-eastern.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/settings.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/register.js"></script>
 <%-- <script src="${pageContext.request.contextPath}/resources/js/distanceCalculator.js"></script> --%>

@@ -42,44 +42,14 @@ function populateCuisineTypes() {
 			.replaceWith(
 					"<select class=\"form-control inputs\" name=\"cuisineType\" id=\"cuisineType\" required=\"required\">"
 							+ " <option value=\"\" disabled selected>Select Cuisine Type</option> "
-							// + " <option value=\"AMERICAN\"> AMERICAN
-							// </option> "
-							// + " <option value=\"CHINESE\"> CHINESE </option>
-							// "
-							// + " <option value=\"CONTINENTAL\"> CONTINENTAL
-							// </option> "
-							// + " <option value=\"CUBAN\"> CUBAN </option> "
-							// + " <option value=\"FRENCH\"> FRENCH </option> "
-							// + " <option value=\"GREEK\"> GREEK </option> "
 							+ "	<option value=\"INDIAN_SOUTH\">	INDIAN (SOUTH) </option>"
 							+ "	<option value=\"INDIAN_NORTH\">	INDIAN (NORTH) </option>"
 							+ "	<option value=\"PIZZA\"> PIZZA </option>"
 							+ " <option value=\"MEXICAN\"> MEXICAN </option>"
 							+ " <option value=\"THAI\"> THAI </option> "
 							+ " <option value=\"SANDWICH\"> SANDWICH </option> "
-							// + " <option value=\"INDONESIAN\"> INDONESIAN
-							// </option> "
-							// + " <option value=\"ITALIAN\"> ITALIAN </option>
-							// "
-							// + " <option value=\"JAPANESE\"> JAPANESE
-							// </option> "
-							// + " <option value=\"KOREAN\"> KOREAN </option> "
-							// + " <option value=\"LEBANESE\"> LEBANESE
-							// </option> "
-							// + " <option value=\"MALAYSIAN\"> MALAYSIAN
-							// </option> "
-
-							// + " <option value=\"RUSSIAN\"> RUSSIAN </option>
-							// "
-							// + " <option value=\"SINGAPORE\"> SINGAPORE
-							// </option> "
-							// + " <option value=\"SPANISH\"> SPANISH </option>
-							// "
-							// + " <option value=\"TIBETAN\"> TIBETAN </option>
-							// "
-							// + " <option value=\"VIETNAMESE\"> VIETNAMESE
-							// </option> "
-							+ "</select>                                                          ");
+							+ " <option value=\"MIDDLE_EASTERN\"> MIDDLE EASTERN </option> "
+							+ "</select>");
 }
 
 function populateHearAboutUs() {
@@ -329,15 +299,6 @@ function validateEventForm() {
 	 */
 	return true;
 }
-
-/*
- * function validateCuisine(formId) { var element = $('form[id=' + formId + ']
- * select[id=cuisineType]'); if (element.val() != "INDIAN_SOUTH" &&
- * element.val() != "INDIAN_NORTH" && element.val() != "PIZZA" && element.val() !=
- * "MEXICAN" && element.val() != "THAI") { alert("Sorry! " + element.val() + "
- * restaurants are not registered with us at this moment."); return false; }
- * return true; }
- */
 
 function validateSelectRestaurantForm() {
 	var atLeast1Selected = false;

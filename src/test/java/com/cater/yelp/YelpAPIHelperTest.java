@@ -117,4 +117,24 @@ public class YelpAPIHelperTest {
 				response.get("websiteUrl"));
 		logger.info("Number of reviews: " + response.get("noOfReviews"));
 	}
+
+	@Test
+	public void testGetRatings_California_Kabob_Restaurant()
+			throws ParseException {
+		String zipCode = "95827";
+		RestaurantDTO restaurantDTO = new RestaurantDTO();
+		Restaurant restaurant = new Restaurant();
+		restaurant.setName("California Kabob Restaurant");
+		restaurant.setCuisineType("MIDDLE_EASTERN");
+		Address address = new Address();
+		address.setZip(zipCode);
+		restaurant.setAddress(address);
+		restaurantDTO.setRestaurant(restaurant);
+		Map <Object, Object> response = YelpAPIHelper.getRatings(restaurantDTO);
+		assertNotNull(response);
+		assertEquals(
+				"http://www.yelp.com/biz/california-kabob-restaurant-sacramento?utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=PQQCi-HgeDwHiTmLWD9xRA",
+				response.get("websiteUrl"));
+		logger.info("Number of reviews: " + response.get("noOfReviews"));
+	}
 }

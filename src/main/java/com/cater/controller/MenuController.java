@@ -220,6 +220,21 @@ public class MenuController {
 						}
 					}
 				}
+				else if ("MIDDLE_EASTERN".equalsIgnoreCase(menu.getCuisine())) {
+					Map <String, String> middle_eastern_items = Maps
+							.newLinkedHashMap();
+					modelMap.put("middle_eastern_items", middle_eastern_items);
+					for (String item : previouslySelectedMenuItemCodes) {
+						if (StringUtils.isNotBlank(item)) {
+							String description = StringUtils.replace(
+									StringUtils.substringAfter(item, "+"), "+",
+									" ");
+							String name = StringUtils
+									.substringBefore(item, "+");
+							middle_eastern_items.put(name, description);
+						}
+					}
+				}
 				else {
 					for (String previouslySelectedItemCode : previouslySelectedMenuItemCodes) {
 						for (MenuCategory cat : menu.getCategories()) {
@@ -250,6 +265,9 @@ public class MenuController {
 		}
 		if ("SANDWICH".equalsIgnoreCase(cuisine)) {
 			return "menus/t__cateringMenu_sandwich";
+		}
+		if ("MIDDLE_EASTERN".equalsIgnoreCase(cuisine)) {
+			return "menus/t__cateringMenu_middle_eastern";
 		}
 		return "menus/t__cateringMenu";
 	}
@@ -295,6 +313,7 @@ public class MenuController {
 			@RequestParam(value = "mexican_menu_items", required = false) String mexicanItemsJson,
 			@RequestParam(value = "thai_menu_items", required = false) String thaiItemsJson,
 			@RequestParam(value = "sandwich_menu_items", required = false) String sandwichItemsJson,
+			@RequestParam(value = "middle_eastern_menu_items", required = false) String middleEasternItemsJson,
 			@RequestParam(value = "cuisineType", required = true) String cuisine,
 			@RequestParam(value = "comments") String comments) {
 		User user = (User) httpSession.getAttribute("user");
@@ -346,6 +365,16 @@ public class MenuController {
 						sandwichItemsJson, new TypeReference <List <String>>() {
 						});
 				for (String selectedItemCode : sandwichItems) {
+					stringBuilder.append(selectedItemCode).append(
+							MENU_DELIMITER);
+				}
+			}
+			else if (middleEasternItemsJson != null) {
+				List <String> middleEasternItems = new ObjectMapper()
+						.readValue(middleEasternItemsJson,
+								new TypeReference <List <String>>() {
+								});
+				for (String selectedItemCode : middleEasternItems) {
 					stringBuilder.append(selectedItemCode).append(
 							MENU_DELIMITER);
 				}
@@ -626,6 +655,18 @@ public class MenuController {
 					String sandwichName = StringUtils
 							.substringBefore(item, "+");
 					sandwich_items.put(sandwichName, description);
+				}
+			}
+		}
+		else if ("MIDDLE_EASTERN".equalsIgnoreCase(baseMenu.getCuisine())) {
+			Map <String, String> middle_eastern_items = Maps.newLinkedHashMap();
+			modelMap.put("middle_eastern_items", middle_eastern_items);
+			for (String item : previouslySelectedMenuItemCodes) {
+				if (StringUtils.isNotBlank(item)) {
+					String description = StringUtils.replace(
+							StringUtils.substringAfter(item, "+"), "+", " ");
+					String name = StringUtils.substringBefore(item, "+");
+					middle_eastern_items.put(name, description);
 				}
 			}
 		}
