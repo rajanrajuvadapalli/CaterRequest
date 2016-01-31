@@ -399,7 +399,7 @@ public class CustomerDashboardController {
 			}
 			String kidsCountParameter = request.getParameter("kids_count");
 			int newKidsCount = stringToInt(kidsCountParameter);
-			if (e.getKidsCount() != newKidsCount) {
+			if (e.getKidsCount() != null && (e.getKidsCount() != newKidsCount)) {
 				isKidsCountChanged = true;
 				message.append("Old kids count: ").append(e.getKidsCount())
 						.append("\n");
