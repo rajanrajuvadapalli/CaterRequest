@@ -62,12 +62,13 @@ public class IPNController {
 	 *            the redirect attributes
 	 * @return the string
 	 */
-	@RequestMapping(value = { "notify" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "notify" }, method = RequestMethod.GET)
 	public String IpnListener(HttpServletRequest request, HttpSession session,
 			RedirectAttributes redirectAttributes) {
 		try {
 			// 2. Prepare 'notify-validate' command with exactly the same
 			// parameters
+			System.out.println("In notification methods");
 			Enumeration<String> en = request.getParameterNames();
 			StringBuilder cmd = new StringBuilder(PARAM_VAL_CMD);
 			String token = TOKEN_CMD;
