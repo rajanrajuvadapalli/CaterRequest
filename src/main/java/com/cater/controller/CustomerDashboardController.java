@@ -220,7 +220,11 @@ public class CustomerDashboardController {
 		try {
 			synchronized (this) {
 				dateTime = SDF.parse(StringUtils.defaultString(request
-						.getParameter("datetimepicker")));
+						.getParameter("datetimepicker_date"))
+						+ " "
+						+ StringUtils.defaultString(request
+								.getParameter("datetimepicker_time")));
+				logger.debug("Event date/time:" + dateTime);
 				e.setDate_time(dateTime);
 			}
 		}
@@ -370,7 +374,10 @@ public class CustomerDashboardController {
 			try {
 				synchronized (this) {
 					dateTime = SDF.parse(StringUtils.defaultString(request
-							.getParameter("datetimepicker")));
+							.getParameter("datetimepicker_date"))
+							+ " "
+							+ StringUtils.defaultString(request
+									.getParameter("datetimepicker_time")));
 					String oldDateTime = SDF_1.format(e.getDate_time());
 					String newDateTime = SDF_1.format(dateTime);
 					//If customer changes date, send notification
