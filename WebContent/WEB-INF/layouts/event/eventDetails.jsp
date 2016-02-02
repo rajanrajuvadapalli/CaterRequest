@@ -42,7 +42,7 @@
 			<div class="panel-body" align="left">
 				<c:if test="${event.date_time > now}">
 					<div id="countdowntimer">
-						<span id="future_date"><span>
+						<span id="future_date"></span>
 					</div>
 					<br />
 				</c:if>
@@ -54,16 +54,20 @@
 				<b>Number of Kids:</b> <span class="badge">${event.kidsCount}</span><br />
 				<b>Delivery Option:</b> <span class="badge">${event.isPickUp()?'Pick Up':'Delivered'}</span><br />
 				<b>Customer name:</b> ${event.customer.name}<br />
-				<c:if test="${q.status.toString() == 'CUSTOMER_ORDER_CONFIRMED' || q.status.toString() == 'PAID'}">
+				<c:if
+					test="${q.status.toString() == 'CUSTOMER_ORDER_CONFIRMED' || q.status.toString() == 'PAID'}">
 					<b>Customer contact number:</b>
 					<c:out
 						value="(${fn:substring(event.customer.contactNumber, 0, 3)}) ${fn:substring(event.customer.contactNumber, 3, 6)}-${fn:substring(event.customer.contactNumber, 6, 10)}" />
 				</c:if>
 				<br />
-				<c:if test="${event.date_time > seventy_two_hours_from_now}">
-					<a class="popup-with-form" href="#${event.id}"><span
-						class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add
-						Menu</a>
+				<!-- Allow to add only 1 menu -->
+				<c:if test="${event.date_time > seventy_two_hours_from_now }">
+					<c:if test="${menus == null || menus.size() < 1}">
+						<a class="popup-with-form" href="#${event.id}"><span
+							class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add
+							Menu</a>
+					</c:if>
 				</c:if>
 			</div>
 		</div>
