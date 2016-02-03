@@ -89,6 +89,14 @@ public class RestaurantService {
 		return restaurantDAO.fetchRestaurantsOfType(cuisine);
 	}
 
+	public Set <Restaurant> fetchRestaurantsOfTypePrimary(String cuisine) {
+		return restaurantDAO.fetchRestaurantsOfTypePrimary(cuisine);
+	}
+
+	public Set <Restaurant> fetchRestaurantsOfTypeSecondary(String cuisine) {
+		return restaurantDAO.fetchRestaurantsOfTypeSecondary(cuisine);
+	}
+
 	public List <Quote> fetchUpcomingQuotes(Integer restaurantID) {
 		return restaurantDAO.fetchUpcomingQuotes(restaurantID);
 	}

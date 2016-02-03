@@ -45,6 +45,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class CustomerDashboardController.
  */
@@ -163,13 +164,11 @@ public class CustomerDashboardController {
 
 	/**
 	 * Creates the event.
-	 * 
-	 * @param httpSession
-	 *            the http session
-	 * @param modelMap
-	 *            the model map
-	 * @param request
-	 *            the request
+	 *
+	 * @param httpSession            the http session
+	 * @param modelMap            the model map
+	 * @param request            the request
+	 * @param redirectAttributes the redirect attributes
 	 * @return the string
 	 */
 	@RequestMapping(value = { "createEvent" }, method = RequestMethod.POST)
@@ -739,8 +738,57 @@ public class CustomerDashboardController {
 		return "redirect:/customer/dashboard";
 	}
 
+	/**
+	 * Guest page1.
+	 *
+	 * @param httpSession the http session
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param redirectAttributes the redirect attributes
+	 * @return the string
+	 */
 	@RequestMapping(value = { "guestPage1" }, method = RequestMethod.GET)
 	public String guestPage1(HttpSession httpSession, ModelMap modelMap,
+			HttpServletRequest request, RedirectAttributes redirectAttributes) {
+		guestFlow(modelMap, httpSession, request, redirectAttributes);
+		String cuisineType = request.getParameter("cuisineType");
+		logger.debug("Customer selected cuisine " + cuisineType
+				+ ". Redirecting to the menu page...");
+		return "redirect:/menu/selectMenu";
+	}
+
+	/**
+	 * Guest page2.
+	 *
+	 * @param httpSession the http session
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param redirectAttributes the redirect attributes
+	 * @return the string
+	 */
+	@RequestMapping(value = { "guestPage2" }, method = RequestMethod.GET)
+	public String guestPage2(HttpSession httpSession, ModelMap modelMap,
+			HttpServletRequest request, RedirectAttributes redirectAttributes) {
+		String cuisineType = request.getParameter("cuisineType");
+		logger.debug("CuisineType: " + cuisineType);
+		guestFlow(modelMap, httpSession, request, redirectAttributes);
+		/*		String zipCode = "95825"; //FIXME: Use the alternate google API call to get the zip code during auto populate
+				request.setAttribute("zip_code", zipCode);
+				request.setAttribute("cuisineType", cuisineType);*/
+		logger.debug("Customer selected cuisine " + cuisineType
+				+ ". Redirecting to the search page...");
+		return "redirect:/search";
+	}
+
+	/**
+	 * Guest flow.
+	 *
+	 * @param modelMap the model map
+	 * @param httpSession the http session
+	 * @param request the request
+	 * @param redirectAttributes the redirect attributes
+	 */
+	private void guestFlow(ModelMap modelMap, HttpSession httpSession,
 			HttpServletRequest request, RedirectAttributes redirectAttributes) {
 		User user = (User) httpSession.getAttribute("user");
 		Customer c = new Customer();
@@ -797,9 +845,7 @@ public class CustomerDashboardController {
 		httpSession.setAttribute("event", e);
 		httpSession.setAttribute("customer", c);
 		String cuisineType = request.getParameter("cuisineType");
-		logger.debug("Customer selected cuisine " + cuisineType
-				+ ". Redirecting to the menu page...");
 		redirectAttributes.addAttribute("cuisineType", cuisineType);
-		return "redirect:/menu/selectMenu";
+		modelMap.addAttribute("cuisineType", cuisineType);
 	}
 }

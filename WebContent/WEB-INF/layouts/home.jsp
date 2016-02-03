@@ -29,12 +29,13 @@
 					<h1>Restaurants compete and bid to win your business</h1>
 				</div>
 				<form class="form-horizontal" method="GET"
-					id="customer-register-form"
-					action="${pageContext.request.contextPath}/customer/guestPage1"
+					id="customer-register-form" action=""
 					enctype="application/x-www-form-urlencoded" autocomplete="off">
+					<input type="text" hidden="true"
+						value="${pageContext.request.contextPath}" id="contextpath">
 					<div class="row"
 						style="background-color: rgba(0, 0, 0, 0.5); border-radius: 5px; margin-bottom: 40px; margin-top: 50px; padding: 10px;">
-						<div class="col-sm-4 col-sm-offset-2" id="locationField">
+						<div class="col-sm-4 col-sm-offset-1" id="locationField">
 							<input id="autocomplete" name="addressString"
 								placeholder="Enter event address" onFocus="geolocate()"
 								type="text" class="form-control" required="required">
@@ -43,23 +44,16 @@
 							<span id="cuisineType"></span>
 						</div>
 						<div class="col-sm-1">
-							<button type="submit" class="btn btn-default">Let's go!</button>
+							<button type="submit" class="btn btn-default"
+								id="startBiddingBtn">Let's go!</button>
+						</div>
+						<div class="col-sm-1">
+							<button type="submit" class="btn btn-default" id="startSearchBtn">Search</button>
 						</div>
 					</div>
 				</form>
-				<%-- <form class="form-horizontal" method="GET"
-					id="customer-register-form"
-					action="${pageContext.request.contextPath}/customer/createEvent"
-					enctype="application/x-www-form-urlencoded" autocomplete="off">
-					<button type="submit" class="btn btn-default">Let's get
-						started</button>
-				</form> --%>
 			</div>
-			<div class="background">
-				<!-- img
-					src="${pageContext.request.contextPath}/resources/assets/img/restaurant-bg.jpg"
-					alt="" -->
-			</div>
+			<div class="background"></div>
 		</section>
 		<!--end Hero Image-->
 		<!--How CaterRequest works-->
@@ -314,71 +308,6 @@
 			</div>
 		</section>
 		<!-- /.carousel -->
-
-		<!-- Testimonials -->
-		<%-- <section class="block background-color-white" id="testimonials">
-			<div class="container">
-				<!-- <div class="owl-carousel testimonials"> -->
-				<div>
-					<blockquote>
-						<figure>
-							<img
-								src="${pageContext.request.contextPath}/resources/images/people/VijayBhupathi.jpg"
-								alt="">
-						</figure>
-						<div class="description">
-							<p>This is an awesome service. You make ordering food for
-								parties easy and simple. Saved me a lot of time. Did not have to
-								dial up each and every restaurant and find out the prices. I am
-								one happy customer.</p>
-							<footer>Vijay Bhupathi</footer>
-						</div>
-					</blockquote>
-					<blockquote>
-						<figure></figure>
-						<div class="description">
-							<p>The experience was fantastic! Being a working women and a
-								mother of 3yr old, finding time to talk to restaurants and
-								finalize the order was the tough part. Glad to have
-								CaterRequest, which made the whole process smooth and simple.</p>
-							<footer>Sarvani Sarangam</footer>
-						</div>
-					</blockquote>
-				</div>
-			</div>
-		</section> --%>
-		<!--/.testimonials-->
-		<%-- <section id="image">
-			<div class="container bg-container-1">
-				<div class="col-sm-8 col-sm-offset-2">
-					<div class="text-banner">
-						<figure>
-							<img
-								src="${pageContext.request.contextPath}/resources/assets/img/marker.png"
-								alt="">
-						</figure>
-						<div class="description">
-							<h2>Get the best value for money</h2>
-							<p>CaterRequest is a price comparison tool. You submit your
-								catering request to the restaurants in your location only once.
-								Restaurants compete to win your business with their best
-								possible quote. Once you have the quotes from the restaurants
-								you can compare and choose the one at a price that's right for
-								your event. There is no confusion over the menu items, since
-								every selection is recorded.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--/.container-->
-			<!-- div class="background">
-				<img
-					src="${pageContext.request.contextPath}/resources/assets/img/about-us-bg2.jpg"
-					alt="">
-			</div>
-			<!--/.bakcground-->
-		</section> --%>
-		<!-- End about 1 -->
 	</div>
 </div>
 
@@ -386,5 +315,24 @@
 	$('document').ready(function() {
 		populateCuisineTypesDrowpdown();
 		$("select[name=cuisineType]").attr('required', 'required');
+		var contextPath = $('input[id=contextpath]').val();
+		$('#startBiddingBtn').click(function(e) {
+			//console.log("Clicked button1.");
+			e.preventDefault();
+			var url = contextPath + "/customer/guestPage1";
+			console.log("url1: " + url);
+			var form = $('#customer-register-form');
+			form.attr("action", url);
+			form.submit();
+		});
+		$('#startSearchBtn').click(function(e) {
+			//console.log("Clicked button2.");
+			e.preventDefault();
+			var url = contextPath + "/customer/guestPage2";
+			console.log("url2: " + url);
+			var form = $('#customer-register-form');
+			form.attr("action", url);
+			form.submit();
+		});
 	});
 </script>

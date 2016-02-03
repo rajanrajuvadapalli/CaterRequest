@@ -11,6 +11,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -41,49 +42,69 @@ public class SearchController {
 	@RequestMapping(value = { "search" }, method = RequestMethod.GET)
 	public String searchRestaurants(ModelMap modelMap,
 			HttpServletRequest request, HttpSession session) throws Exception {
-		String zipCode = StringUtils.defaultString(request
-				.getParameter("zip_code"));
+		/*String zipCode = StringUtils.defaultString((String) request
+				.getAttribute("zip_code"));*/
+		String zipCode = "95825"; //FIXME: Use the alternate google API call to get the zip code during auto populate
 		String cuisineType = StringUtils.defaultString(request
 				.getParameter("cuisineType"));
+		logger.debug("CuisineType: " + cuisineType);
 		if (StringUtils.isNotBlank(zipCode)
 				&& StringUtils.isNotBlank(cuisineType)) {
-			Set <Restaurant> allRestaurants = null;
+			Set <Restaurant> primaryRestaurants = null;
+			Set <Restaurant> secondaryRestaurants = null;
 			if (StringUtils.isBlank(cuisineType)) {
-				allRestaurants = Sets.newHashSet(restaurantService
+				primaryRestaurants = Sets.newHashSet(restaurantService
 						.fetchAllRestaurants());
 			}
 			else {
-				allRestaurants = restaurantService
-						.fetchRestaurantsOfType(cuisineType);
-				modelMap.put("cuisine", cuisineType);
+				modelMap.put("cuisineType", cuisineType);
+				primaryRestaurants = restaurantService
+						.fetchRestaurantsOfTypePrimary(cuisineType);
+				secondaryRestaurants = restaurantService
+						.fetchRestaurantsOfTypeSecondary(cuisineType);
 			}
-			if (CollectionUtils.isNotEmpty(allRestaurants)) {
-				MapsHelper mapsHelper = new MapsHelper();
-				Address address = new Address();
-				address.setZip(zipCode);
-				List <RestaurantDTO> nearByRestaurants = mapsHelper
-						.getDistance(address, allRestaurants);
-				if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
-					for (RestaurantDTO restaurantDTO : nearByRestaurants) {
-						Map <?, ?> yelpReviews = YelpAPIHelper
-								.getRatings(restaurantDTO);
-						if (MapUtils.isNotEmpty(yelpReviews)) {
-							restaurantDTO.setNumberOfReviews(Helper
-									.stringToInt(yelpReviews.get("noOfReviews")
-											.toString()));
-							restaurantDTO.setReviewImage(yelpReviews
-									.get("ratings"));
-							logger.debug(String.format(
-									"Restaurant %s has %s yelp ratings.",
-									restaurantDTO.getRestaurant().getName(),
-									yelpReviews.get("ratings")));
-						}
-					}
-					modelMap.put("restaurants", nearByRestaurants);
-				}
+			if (CollectionUtils.isNotEmpty(primaryRestaurants)) {
+				List <RestaurantDTO> nearByPrimaryRestaurants = getRestaurantDTOs(
+						primaryRestaurants, zipCode);
+				modelMap.put("restaurants", nearByPrimaryRestaurants);
+			}
+			if (CollectionUtils.isNotEmpty(secondaryRestaurants)) {
+				List <RestaurantDTO> nearBySecondaryRestaurants = getRestaurantDTOs(
+						secondaryRestaurants, zipCode);
+				modelMap.put("restaurants_sec", nearBySecondaryRestaurants);
 			}
 			modelMap.put("eventLocation", zipCode);
 		}
 		return "t_search";
+	}
+
+	private List <RestaurantDTO> getRestaurantDTOs(
+			Set <Restaurant> restaurants, String zipCode) throws ParseException {
+		if (CollectionUtils.isNotEmpty(restaurants)) {
+			MapsHelper mapsHelper = new MapsHelper();
+			Address address = new Address();
+			address.setZip(zipCode);
+			List <RestaurantDTO> nearByRestaurants = mapsHelper.getDistance(
+					address, restaurants);
+			if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
+				for (RestaurantDTO restaurantDTO : nearByRestaurants) {
+					Map <?, ?> yelpReviews = YelpAPIHelper
+							.getRatings(restaurantDTO);
+					if (MapUtils.isNotEmpty(yelpReviews)) {
+						restaurantDTO.setNumberOfReviews(Helper
+								.stringToInt(yelpReviews.get("noOfReviews")
+										.toString()));
+						restaurantDTO
+								.setReviewImage(yelpReviews.get("ratings"));
+						logger.debug(String.format(
+								"Restaurant %s has %s yelp ratings.",
+								restaurantDTO.getRestaurant().getName(),
+								yelpReviews.get("ratings")));
+					}
+				}
+			}
+			return nearByRestaurants;
+		}
+		return null;
 	}
 }
