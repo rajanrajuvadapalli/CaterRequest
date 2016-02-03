@@ -147,5 +147,9 @@
 		<!--paypal-->
 		<dependency org="com.paypal.sdk" name="rest-api-sdk" rev="1.2.5" conf="compile"/>
 		<dependency org="com.paypal.sdk" name="paypal-core" rev="1.6.9" conf="compile"/>
+		
+		<!--Stripe Payment-->
+		<dependency org="com.stripe" name="stripe-java" rev="1.43.0"/>
+		
 	</dependencies>
 </ivy-module>
