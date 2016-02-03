@@ -121,7 +121,7 @@
 							<span id="cuisineType"></span> <span
 								class="glyphicon glyphicon-question-sign" style="color: #00b6e6"
 								data-toggle="tooltip"
-								title="You will be included in the bidding process only if you have a primary cuisine."></span>
+								title="You will be included in the bidding process only if you have a primary cuisine type."></span>
 						</div>
 					</div>
 					<div class="form-group" id="restaurant">
@@ -309,23 +309,33 @@
 				</div>
 				<div class="panel-body">
 					<div id="consent-menu">
-						<p>Please select the cuisine type above to continue.</p>
+						<p>Please select a primary cuisine type above to be included
+							in the bidding process.</p>
 					</div>
-					<%-- <c:forEach items="${menu.categories}" var="category">
-						<c:if test="${not empty category.items}">
-							<div class="col-sm-12">
-								<b>${category.name}</b>
-								<ol>
-									<c:forEach items="${category.items}" var="item">
-										<li>${item.name}</li>
-									</c:forEach>
-								</ol>
-							</div>
-						</c:if>
-					</c:forEach> --%>
 					<div class="col-sm-6">
 						<button type="submit" class="btn btn-default"
-							name="register-button" disabled="disabled">Register</button>
+							name="register-button" disabled="disabled">Register & Join the race!</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12" id="full-menu-div">
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<h3 class="panel-title">Register</h3>
+				</div>
+				<div class="panel-body">
+					<div id="consent-menu">
+						<p>
+							I do not have a primary cuisine. I serve a variety of cuisines!<br />
+							<br /> I agree that I will not be able to place bids to earn
+							customer's business. I can only submit quotes for customers who
+							choose me.
+						</p>
+					</div>
+					<div class="col-sm-6">
+						<button type="submit" class="btn btn-default"
+							name="register-button">Register</button>
 					</div>
 				</div>
 			</div>
@@ -357,6 +367,8 @@
 									"input[name=cuisineType_sec][value='"
 											+ selectedCT + "']").attr(
 									"disabled", "disabled");
+							//Hide the other flow
+							$("#full-menu-div").addClass("hidden");
 						});
 				$("input[name=menuconsent]").live('change', function() {
 					var element = $("button[name=register-button]");

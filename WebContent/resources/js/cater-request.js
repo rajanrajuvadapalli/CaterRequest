@@ -47,7 +47,7 @@ function populateCuisineTypesCheckbox() {
 							+ "<input type=\"checkbox\" name=\"cuisineType_sec\" value=\"MEXICAN\"> MEXICAN <br />"
 							+ "<input type=\"checkbox\" name=\"cuisineType_sec\" value=\"THAI\"> THAI <br />"
 							+ "<input type=\"checkbox\" name=\"cuisineType_sec\" value=\"SANDWICH\"> SANDWICH <br />"
-							+ "<input type=\"checkbox\" name=\"cuisineType_sec\" value=\"MIDDLE_EASTERN\"> MIDDLE_EASTERN <br />");
+							+ "<input type=\"checkbox\" name=\"cuisineType_sec\" value=\"MIDDLE_EASTERN\"> MIDDLE EASTERN <br />");
 }
 
 function populateHearAboutUs() {
