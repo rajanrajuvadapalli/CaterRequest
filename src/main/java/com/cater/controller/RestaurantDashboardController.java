@@ -18,6 +18,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cater.Helper;
@@ -167,8 +168,12 @@ public class RestaurantDashboardController {
 	 * @return the string
 	 */
 	@RequestMapping(value = { "addBranch" }, method = RequestMethod.POST)
-	public String addBranch(HttpSession httpSession, ModelMap modelMap,
-			HttpServletRequest request, RedirectAttributes redirectAttributes) {
+	public String addBranch(
+			HttpSession httpSession,
+			ModelMap modelMap,
+			HttpServletRequest request,
+			RedirectAttributes redirectAttributes,
+			@RequestParam(value = "cuisineType_sec", required = false) String[] secondaryCuisineTypes) {
 		User user = (User) httpSession.getAttribute("user");
 		if (user == null) {
 			return "t_home";
@@ -177,8 +182,10 @@ public class RestaurantDashboardController {
 		RegistrationData data = new RegistrationData();
 		data.setRestaurantName(StringUtils.defaultString(request
 				.getParameter("restaurantName")));
-		data.setCuisineType(StringUtils.defaultString(request
-				.getParameter("cuisineType")));
+		String primaryCuisine = StringUtils.defaultString(request
+				.getParameter("cuisineType"));
+		data.setCuisineType(Helper.getCuisineType(primaryCuisine,
+				secondaryCuisineTypes));
 		data.setUrl(StringUtils.defaultString(request.getParameter("url")));
 		String deliverMiles = StringUtils.defaultString(request
 				.getParameter("deliver-miles"));

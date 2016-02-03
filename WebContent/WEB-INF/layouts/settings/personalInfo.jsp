@@ -119,7 +119,7 @@
 					</div>
 					<div class="form-group">
 						<label for="cuisineType" class="col-sm-3 control-label">Cuisine
-							Type<span style="color: red">*</span>:
+							Type:
 						</label>
 						<div class="col-sm-6">
 							<input type="hidden" name="cuisineType" id="cuisineType"
@@ -295,7 +295,7 @@
 
 <script>
 	$('document').ready(function() {
-		populateCuisineTypes();
+		populateCuisineTypesDrowpdown();
 		populateStateDropDown();
 		var existingState = $('input[name=stateExisting]').val();
 		$('select[name=state]').val(existingState);

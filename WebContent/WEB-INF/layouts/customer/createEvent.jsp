@@ -251,11 +251,9 @@
 	$('document').ready(
 			function() {
 				//populateStateDropDown();
-				populateCuisineTypes();
+				populateCuisineTypesDrowpdown();
 				populateAptSuite();
 				populateDeliveryOption();
-				//Cuisine type is not required here
-				$("select[name=cuisineType]").removeAttr('required');
 				$("input[id=datetimepicker]").datetimepicker(
 						{
 							dayOfWeekStart : 0,

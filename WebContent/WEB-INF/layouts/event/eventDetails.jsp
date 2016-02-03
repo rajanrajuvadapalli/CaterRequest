@@ -313,7 +313,8 @@
 	};
 
 	$('document').ready(function() {
-		populateCuisineTypes();
+		populateCuisineTypesDrowpdown();
+		$("select[name=cuisineType]").addAttr('required');
 		var event_date_time = $('input[name=event_date_time]').val();
 		addCountDownTimer(event_date_time);
 	});

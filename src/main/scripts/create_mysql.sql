@@ -107,3 +107,7 @@ CREATE TABLE cater4party.Quote
 ALTER TABLE cater4party.Quote ADD FOREIGN KEY (menu_sk) REFERENCES cater4party.Menu(id);
 -- Create Foreign Key: Quote.restaurant_sk -> Restaurant.id
 ALTER TABLE cater4party.Quote ADD FOREIGN KEY (restaurant_sk) REFERENCES cater4party.Restaurant(id);
+
+------------------------
+alter table cater4party.Restaurant
+modify `cuisine_type` VARCHAR(200) not null;

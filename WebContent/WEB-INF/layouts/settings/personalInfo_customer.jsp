@@ -265,14 +265,8 @@
 
 <script>
 	$('document').ready(function() {
-		//populateCuisineTypes();
 		populateStateDropDown();
 		var existingState = $('input[name=stateExisting]').val();
 		$('select[name=state]').val(existingState);
-		/*var existingCuisine = $('input[name=cuisineType]').val();
-		$('select[name=cuisineType]').val(existingCuisine);
-		$("input[name=changeProfilePicButton]").click(function() {
-			$("div[id=restaurant-pic]").removeClass("hidden");
-		});*/
 	});
 </script>

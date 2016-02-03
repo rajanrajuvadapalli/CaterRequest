@@ -111,7 +111,8 @@ public class RegistrationController {
 			ModelMap modelMap,
 			HttpServletRequest request,
 			HttpSession httpSession,
-			@RequestParam(value = "input-profile-pic", required = false) MultipartFile multipartFile) {
+			@RequestParam(value = "input-profile-pic", required = false) MultipartFile multipartFile,
+			@RequestParam(value = "cuisineType_sec", required = false) String[] secondaryCuisineTypes) {
 		try {
 			//First check if the email (user name used to login) is in use.
 			String username = request.getParameter("email");
@@ -133,8 +134,10 @@ public class RegistrationController {
 			data.setName(StringUtils.defaultString(request.getParameter("name")));
 			data.setRestaurantName(StringUtils.defaultString(request
 					.getParameter("restaurantName")));
-			data.setCuisineType(StringUtils.defaultString(request
-					.getParameter("cuisineType")));
+			String primaryCuisine = StringUtils.defaultString(request
+					.getParameter("cuisineType"));
+			data.setCuisineType(Helper.getCuisineType(primaryCuisine,
+					secondaryCuisineTypes));
 			data.setUrl(StringUtils.defaultString(request.getParameter("url")));
 			String deliverMiles = StringUtils.defaultString(request
 					.getParameter("deliver-miles"));

@@ -16,7 +16,7 @@
 			</button>
 			<ul>
 				<c:forEach items="${errors}" var="e">
-					<li align="left">${e}</li>
+					<li>${e}</li>
 				</c:forEach>
 			</ul>
 
@@ -31,7 +31,7 @@
 			</button>
 			<ul>
 				<c:forEach items="${successMessages}" var="sm">
-					<li align="left">${sm}</li>
+					<li>${sm}</li>
 				</c:forEach>
 			</ul>
 
@@ -46,7 +46,7 @@
 			</button>
 			<ul>
 				<c:forEach items="${warnings}" var="w">
-					<li align="left">${w}</li>
+					<li>${w}</li>
 				</c:forEach>
 			</ul>
 		</div>
@@ -115,11 +115,20 @@
 						</div>
 					</div>
 					<div class="form-group" id="restaurant">
-						<label for="cuisineType" class="col-sm-4 control-label">Cuisine
-							Type<span style="color: red">*</span>:
-						</label>
+						<label for="cuisineType" class="col-sm-4 control-label">Primary
+							Cuisine Type: </label>
 						<div class="col-sm-6">
-							<span id="cuisineType"></span>
+							<span id="cuisineType"></span> <span
+								class="glyphicon glyphicon-question-sign" style="color: #00b6e6"
+								data-toggle="tooltip"
+								title="You will be included in the bidding process only if you have a primary cuisine."></span>
+						</div>
+					</div>
+					<div class="form-group" id="restaurant">
+						<label for="cuisineType" class="col-sm-4 control-label">Secondary
+							Cuisine Types: </label>
+						<div class="col-sm-6">
+							<span id="cuisineType_sec"></span>
 						</div>
 					</div>
 					<div class="form-group" id="restaurant">
@@ -146,7 +155,8 @@
 						</label>
 						<div class="col-sm-6">
 							<input type="password" size="30" name="pwd1" id="pwd1"
-								required="required" placeholder="Password" class="form-control" autocomplete="off">
+								required="required" placeholder="Password" class="form-control"
+								autocomplete="off">
 						</div>
 					</div>
 					<div class="form-group">
@@ -231,7 +241,8 @@
 						<label for="addressText" class="col-sm-4 control-label"> </label>
 						<div class="col-sm-6" id="locationField">
 							<input id="autocomplete" placeholder="Enter your address"
-								onFocus="geolocate()" type="text" class="form-control" autocomplete="off">
+								onFocus="geolocate()" type="text" class="form-control"
+								autocomplete="off">
 						</div>
 					</div>
 					<div class="form-group">
@@ -273,9 +284,9 @@
 							style="color: red">*</span> :
 						</label>
 						<div class="col-sm-6">
-							<input type="text" size="2" maxlength="2" name="state" required="required"
-								id="administrative_area_level_1" placeholder="State"
-								class="form-control">
+							<input type="text" size="2" maxlength="2" name="state"
+								required="required" id="administrative_area_level_1"
+								placeholder="State" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
@@ -314,7 +325,7 @@
 					</c:forEach> --%>
 					<div class="col-sm-6">
 						<button type="submit" class="btn btn-default"
-							name="register-button" disabled="true">Register</button>
+							name="register-button" disabled="disabled">Register</button>
 					</div>
 				</div>
 			</div>
@@ -323,19 +334,37 @@
 </div>
 
 <script>
-	$('document').ready(function() {
-		populateCuisineTypes();
-		populateHearAboutUs();
-		//populateStateDropDown();
-		populateAptSuite();
-		$("select[name=cuisineType]").change(populateMenuForRestaurantConsent);
-		$("input[name=menuconsent]").live('change', function() {
-			var element = $("button[name=register-button]");
-			if (this.checked) {
-				element.prop('disabled', false);
-			} else {
-				element.prop('disabled', true);
-			}
-		});
-	});
+	$('document').ready(
+			function() {
+				populateCuisineTypesDrowpdown();
+				populateCuisineTypesCheckbox();
+				populateHearAboutUs();
+				//populateStateDropDown();
+				populateAptSuite();
+				$("select[name=cuisineType]").change(
+						populateMenuForRestaurantConsent);
+				$("select[name=cuisineType]").change(
+						function() {
+							var selectedCT = $(this).val();
+							//console.log("Primary cuisine: " + selectedCT);
+							//First clear all disabled attributes.
+							$("input[name=cuisineType_sec]").each(function() {
+								$(this).removeAttr("disabled");
+								$(this).attr("checked", false);
+							});
+							//Disable primary cuisine from secondary list.
+							$(
+									"input[name=cuisineType_sec][value='"
+											+ selectedCT + "']").attr(
+									"disabled", "disabled");
+						});
+				$("input[name=menuconsent]").live('change', function() {
+					var element = $("button[name=register-button]");
+					if (this.checked) {
+						element.prop('disabled', false);
+					} else {
+						element.prop('disabled', true);
+					}
+				});
+			});
 </script>
