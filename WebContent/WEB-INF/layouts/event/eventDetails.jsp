@@ -314,7 +314,7 @@
 
 	$('document').ready(function() {
 		populateCuisineTypesDrowpdown();
-		$("select[name=cuisineType]").addAttr('required');
+		$("select[name=cuisineType]").attr('required', 'required');
 		var event_date_time = $('input[name=event_date_time]').val();
 		addCountDownTimer(event_date_time);
 	});

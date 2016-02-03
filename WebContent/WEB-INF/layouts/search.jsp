@@ -76,6 +76,6 @@
 <script>
 	$('document').ready(function() {
 		populateCuisineTypesDrowpdown();
-		$("select[name=cuisineType]").addAttr('required');
+		$("select[name=cuisineType]").attr('required', 'required');
 	});
 </script>

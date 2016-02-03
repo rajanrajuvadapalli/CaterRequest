@@ -39,7 +39,7 @@
 								placeholder="Enter event address" onFocus="geolocate()"
 								type="text" class="form-control" required="required">
 						</div>
-						<div class="col-sm-2">
+						<div class="col-sm-3">
 							<span id="cuisineType"></span>
 						</div>
 						<div class="col-sm-1">
@@ -385,6 +385,6 @@
 <script>
 	$('document').ready(function() {
 		populateCuisineTypesDrowpdown();
-		$("select[name=cuisineType]").addAttr('required');
+		$("select[name=cuisineType]").attr('required', 'required');
 	});
 </script>
