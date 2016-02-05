@@ -80,9 +80,13 @@
 					<label for="datetimepicker" class="col-sm-3 control-label">Date/Time<span
 						style="color: red">*</span> :
 					</label>
-					<div class="col-sm-6">
-						<input type="text" size="30" maxlength="50" name="datetimepicker"
-							id="datetimepicker" required="required" class="form-control">
+					<div class="col-sm-3">
+						<input type="text" size="10" name="datetimepicker_date"
+							id="datetimepicker_date" required="required" class="form-control">
+					</div>
+					<div class="col-sm-3">
+						<input type="text" size="10" name="datetimepicker_time"
+							id="datetimepicker_time" required="required" class="form-control">
 					</div>
 				</div>
 
@@ -254,7 +258,9 @@
 				populateCuisineTypesDrowpdown();
 				populateAptSuite();
 				populateDeliveryOption();
-				$("input[id=datetimepicker]").datetimepicker(
+				//Cuisine type is not required here
+				$("select[name=cuisineType]").removeAttr('required');
+				$("input[id=datetimepicker_date]").datetimepicker(
 						{
 							dayOfWeekStart : 0,
 							lazyInit : true,
@@ -264,9 +270,15 @@
 									'YYYY/MM/DD'), //for today use 0 or -1970/01/01
 							startDate : moment().add(72, "hours").format(
 									'YYYY/MM/DD'),
-							//step : 15,
-							//minTime : '06:00',
-							//maxTime : '21:00',
+							timepicker:false,
+							format:'Y/m/d'
+						});
+				$("input[id=datetimepicker_time]").datetimepicker(
+						{
+							lazyInit : true,
+							lang : 'en',
+							datepicker:false,
+							format:'H:i',
 							allowTimes : [ '6:00', '6:15', '6:30', '6:45',
 									'7:00', '7:15', '7:30', '7:45', '8:00',
 									'8:15', '8:30', '8:45', '9:00', '9:15',

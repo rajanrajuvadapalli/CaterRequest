@@ -100,10 +100,15 @@
 					<label for="datetimepicker" class="col-sm-3 control-label">Date/Time<span
 						style="color: red">*</span> :
 					</label>
-					<div class="col-sm-6">
-						<input hidden="hidden" value="${event.date_time}" id="eventDate">
-						<input type="text" size="30" maxlength="50" name="datetimepicker"
-							id="datetimepicker" required="required" class="form-control">
+					<div class="col-sm-3">
+						<input hidden="hidden" value="${event.date_time}"
+							id="eventDateTime"> <input type="text" size="10"
+							name="datetimepicker_date" id="datetimepicker_date"
+							required="required" class="form-control">
+					</div>
+					<div class="col-sm-3">
+						<input type="text" size="10" name="datetimepicker_time"
+							id="datetimepicker_time" required="required" class="form-control">
 					</div>
 				</div>
 
@@ -121,13 +126,11 @@
 
 				<div class="form-group">
 					<label for="kids_count" class="col-sm-3 control-label">Number
-						of Kids :
-					</label>
+						of Kids : </label>
 					<div class="col-sm-6">
 						<input type="text" size="20" maxlength="20" name="kids_count"
-							id="kids_count" pattern="[0-9]+"
-							title="Must be a Number" class="form-control"
-							value="${event.kidsCount}">
+							id="kids_count" pattern="[0-9]+" title="Must be a Number"
+							class="form-control" value="${event.kidsCount}">
 					</div>
 				</div>
 
@@ -246,10 +249,41 @@
 		populateStateDropDown();
 		var existingState = $('input[name=stateExisting]').val();
 		$('select[name=state]').val(existingState);
-		var eventDate = $("input[id=eventDate]").val();
-		//console.log(eventDate);
-		$("#datetimepicker").datetimepicker({
-			value : new Date(eventDate)
+		var eventDateTime = $("input[id=eventDateTime]").val();
+		//console.log(eventDateTime);
+		eventDateTime = moment(eventDateTime, "YYYY-MM-DD HH:mm:s.S").format('YYYY/MM/DD HH:mm');
+		//console.log(eventDateTime);
+		var eventDate = eventDateTime.split(' ')[0];
+		var eventTime = eventDateTime.split(' ')[1];
+		$("#datetimepicker_date").datetimepicker({
+			value : eventDate,
+			startDate : eventDate,
+			dayOfWeekStart : 0,
+			lang : 'en',
+			timepicker : false,
+			format : 'Y/m/d'
+		});
+		$("#datetimepicker_time").datetimepicker({
+			value : eventTime,
+			lang : 'en',
+			datepicker : false,
+			format : 'H:i',
+			hours12: false,
+			allowTimes : [ '6:00', '6:15', '6:30', '6:45',
+							'7:00', '7:15', '7:30', '7:45', '8:00',
+							'8:15', '8:30', '8:45', '9:00', '9:15',
+							'9:30', '9:45', '10:00', '10:15', '10:30',
+							'10:45', '11:00', '11:15', '11:30',
+							'11:45', '12:00', '12:15', '12:30',
+							'12:45', '13:00', '13:15', '13:30',
+							'13:45', '14:00', '14:15', '14:30',
+							'14:45', '15:00', '15:15', '15:30',
+							'15:45', '16:00', '16:15', '16:30',
+							'16:45', '17:00', '17:15', '17:30',
+							'17:45', '18:00', '18:15', '18:30',
+							'18:45', '19:00', '19:15', '19:30',
+							'19:45', '20:00', '20:15', '20:30',
+							'20:45', '21:00' ]
 		});
 	});
 </script>

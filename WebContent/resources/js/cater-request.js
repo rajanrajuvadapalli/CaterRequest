@@ -213,16 +213,11 @@ function validateLoginForm() {
 
 function validateEventForm() {
 	// Validate that the date is in the future.
-	var dateTimePickerElement = $('input[id=datetimepicker]');
+	var dateTimePickerElement = $('input[id=datetimepicker_date]');
 	var dateObject = dateTimePickerElement.val();
-	// console.log("User entered: " + dateObject);
-	if (dateObject.split(' ')[1] == '00:00') {
-		alert('Please enter a valid time.');
-		dateTimePickerElement.focus();
-		return false;
-	}
+	//console.log("User entered: " + dateObject);
 	var now = moment().format("YYYY/MM/DD HH:mm");
-	// console.log("Now: " + now);
+	//console.log("Now: " + now);
 	if (dateObject < now) {
 		alert("Please enter a date in the future." + "\nEntered date: "
 				+ dateObject);
@@ -230,10 +225,9 @@ function validateEventForm() {
 		return false;
 	}
 	var seventy_two_hours_from_now = moment().add(72, "hours").format(
-			"YYYY/MM/DD HH:mm");
-	// console.log("72 hours from now: " + seventy_two_hours_from_now);
-	// console.log("within 72 hr window? " + (dateObject <
-	// seventy_two_hours_from_now));
+			"YYYY/MM/DD");
+	//console.log("72 hours from now: " + seventy_two_hours_from_now);
+	//console.log("within 72 hr window? "+ (dateObject < seventy_two_hours_from_now));
 	if (dateObject < seventy_two_hours_from_now) {
 		alert("Event cannot be in the next 72 hours." + "\nEntered date: "
 				+ dateObject + "\nPlease enter date/time after "
@@ -254,14 +248,6 @@ function validateEventForm() {
 		numberOfPeopleElement.focus();
 		return false;
 	}
-	/*
-	 * var numberOfKidsElement = $('input[id=kids_count]'); var numberOfKids =
-	 * numberOfKidsElement.val(); if (!numberOfKids.match(/[0-9]+/)) {
-	 * alert("Number of kids should be only numeric.\n" + numberOfKids + " is
-	 * not a valid value."); numberOfKidsElement.focus(); return false; } if
-	 * (numberOfKids <= 1) { alert("Number of kids should be 2 or more.");
-	 * numberOfKidsElement.focus(); return false; }
-	 */
 	var deliveryOption = $('select[id=deliveryOption]');
 	if (deliveryOption.val() == '') {
 		alert("Please select the delivery option.");

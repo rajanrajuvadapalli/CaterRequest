@@ -68,6 +68,7 @@ public class IPNController {
 		try {
 			// 2. Prepare 'notify-validate' command with exactly the same
 			// parameters
+			System.out.println("In notification methods");
 			Enumeration<String> en = request.getParameterNames();
 			StringBuilder cmd = new StringBuilder(PARAM_VAL_CMD);
 			String token = TOKEN_CMD;
@@ -84,6 +85,7 @@ public class IPNController {
 					.append("?").append(cmd).append("&tx=").append(txValue)
 					.append(token);
 			URL u = new URL(url.toString());
+			System.out.println("payapal URL"+ u.toString());
 			HttpsURLConnection uc = (HttpsURLConnection) u.openConnection();
 			uc.setDoOutput(true);
 			uc.setRequestProperty(CONTENT_TYPE, MIME_APP_URLENC);
@@ -95,6 +97,8 @@ public class IPNController {
 			BufferedReader in = new BufferedReader(new InputStreamReader(
 					uc.getInputStream()));
 			String response = in.readLine();
+			// print response
+			System.out.println("response: "+response);
 			StringBuilder target = new StringBuilder();
 			String line;
 			while ((line = in.readLine()) != null) {
@@ -106,6 +110,8 @@ public class IPNController {
 			}
 			in.close();
 			String status = map.get("payment_status");
+			
+			System.out.println("payment stauts-"+status);
 			Integer quoteId = Integer.parseInt(request
 					.getParameter("item_number"));
 			List<String> errors = Lists.newArrayList();
@@ -116,9 +122,11 @@ public class IPNController {
 			// 6. Validate captured Paypal IPN Information
 			if (StringUtils.equalsIgnoreCase("SUCCESS", response)
 					|| StringUtils.equalsIgnoreCase("VERIFIED", response)) {
+				System.out.println("RESPONSE SUCCESS");
 				Quote quote = restaurantService.findQuoteWithId(quoteId);
 				if (StringUtils.equalsIgnoreCase("COMPLETE", status)
 						|| StringUtils.equalsIgnoreCase("PENDING", status)) {
+					System.out.println("PAYMENT DONE!");
 					quote.setStatus(QuoteStatus.PAID.toString());
 					// Reject all other quotes
 					for (Quote q : quote.getMenu().getQuotes()) {
