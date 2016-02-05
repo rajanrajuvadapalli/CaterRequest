@@ -13,6 +13,7 @@
 <title><t:getAsString name="title" /></title>
 <c:import url="scripts_css.jsp"></c:import>
 <c:import url="scripts_js.jsp"></c:import>
+<c:import url="scripts_js_fullmenu.jsp"></c:import>
 </head>
 
 <body id="page-top">

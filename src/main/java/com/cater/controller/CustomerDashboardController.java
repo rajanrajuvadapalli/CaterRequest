@@ -258,19 +258,30 @@ public class CustomerDashboardController {
 		}
 		String cuisineType = request.getParameter("cuisineType");
 		if (user.isGuest()) {
-			com.cater.model.Address eventLocation = e.getLocation();
-			modelMap.put("eventLocation", eventLocation);
-			Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
-			modelMap.put("prevR", previouslySelectedRestaurants);
-			Set <Restaurant> restaurants = restaurantService
-					.fetchRestaurantsOfType(cuisineType);
-			List <RestaurantDTO> nearByRestaurants = restaurantService
-					.getNearbyYelpReviews(eventLocation, restaurants);
-			if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
-				modelMap.put("restaurants", nearByRestaurants);
+			//If placing direct order to restaurant
+			Object fmf = httpSession.getAttribute("full_menu_flow");
+			if (fmf != null && Boolean.TRUE.equals((Boolean) fmf)) {
+				//redirectAttributes.addFlashAttribute("as", "customer");
+				List <String> warnings = Lists.newArrayList();
+				warnings.add("You must register before continuing to place a request for quote.");
+				redirectAttributes.addFlashAttribute("warnings", warnings);
+				return "t_signUp_customer";
 			}
-			httpSession.setAttribute("eventName", e.getName());
-			return "menus/t__cateringRestaurants";
+			else {
+				com.cater.model.Address eventLocation = e.getLocation();
+				modelMap.put("eventLocation", eventLocation);
+				Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
+				modelMap.put("prevR", previouslySelectedRestaurants);
+				Set <Restaurant> restaurants = restaurantService
+						.fetchRestaurantsOfType(cuisineType);
+				List <RestaurantDTO> nearByRestaurants = restaurantService
+						.getNearbyYelpReviews(eventLocation, restaurants);
+				if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
+					modelMap.put("restaurants", nearByRestaurants);
+				}
+				httpSession.setAttribute("eventName", e.getName());
+				return "menus/t__cateringRestaurants";
+			}
 		}
 		else if (StringUtils.isNotBlank(cuisineType)) {
 			logger.debug("Customer selected cuisine " + cuisineType

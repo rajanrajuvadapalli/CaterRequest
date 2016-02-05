@@ -54,7 +54,6 @@ import com.google.common.collect.Sets;
 public class MenuController {
 	/** The Constant logger. */
 	private static final Logger logger = Logger.getLogger(MenuController.class);
-
 	/** The customer service. */
 	@Autowired
 	private CustomerService customerService;
@@ -314,6 +313,7 @@ public class MenuController {
 			@RequestParam(value = "thai_menu_items", required = false) String thaiItemsJson,
 			@RequestParam(value = "sandwich_menu_items", required = false) String sandwichItemsJson,
 			@RequestParam(value = "middle_eastern_menu_items", required = false) String middleEasternItemsJson,
+			@RequestParam(value = "full_menu_items", required = false) String fullmenuItemsJson,
 			@RequestParam(value = "cuisineType", required = true) String cuisine,
 			@RequestParam(value = "comments") String comments) {
 		User user = (User) httpSession.getAttribute("user");
@@ -375,6 +375,15 @@ public class MenuController {
 								new TypeReference <List <String>>() {
 								});
 				for (String selectedItemCode : middleEasternItems) {
+					stringBuilder.append(selectedItemCode).append(
+							MENU_DELIMITER);
+				}
+			}
+			else if (fullmenuItemsJson != null) {
+				List <String> items = new ObjectMapper().readValue(
+						fullmenuItemsJson, new TypeReference <List <String>>() {
+						});
+				for (String selectedItemCode : items) {
 					stringBuilder.append(selectedItemCode).append(
 							MENU_DELIMITER);
 				}
@@ -562,6 +571,43 @@ public class MenuController {
 			logger.error(ex);
 		}
 		return "event/t_eventDetails";
+	}
+
+	/**
+	 * View complete menu.
+	 *
+	 * @param httpSession the http session
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param menuId the menu id
+	 * @param restaurantName the restaurant name
+	 * @param restaurantZipCode the restaurant zip code
+	 * @return the string
+	 */
+	@RequestMapping(value = { "view/complete" }, method = RequestMethod.GET)
+	public String viewCompleteMenu(HttpSession httpSession, ModelMap modelMap,
+			HttpServletRequest request,
+			@RequestParam("rName") String restaurantName,
+			@RequestParam("rZip") String restaurantZipCode) {
+		User user = (User) httpSession.getAttribute("user");
+		if (user == null) {
+			return "t_home";
+		}
+		List <String> keys = Lists.newArrayList(StringUtils.split(
+				restaurantName, " "));
+		keys.add(restaurantZipCode);
+		String fileName = StringUtils.join(keys, "_");
+		try {
+			File f = new File(MenuController.class.getResource(
+					"/menus/full/" + fileName + ".json").getFile());
+			Menu baseMenu = new MenuDeserializer().readJSON(f);
+			modelMap.put("menu", baseMenu);
+		}
+		catch (Exception ex) {
+			logger.error(ex);
+		}
+		httpSession.setAttribute("full_menu_flow", true);
+		return "menus/full/t_" + fileName;
 	}
 
 	/**

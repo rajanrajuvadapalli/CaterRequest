@@ -48,7 +48,7 @@
 								id="startBiddingBtn">Let's go!</button>
 						</div>
 						<div class="col-sm-1">
-							<button type="submit" class="btn btn-default" id="startSearchBtn">Search</button>
+							<button type="submit" class="btn btn-default" id="startSearchBtn">Search Restaurants nearby</button>
 						</div>
 					</div>
 				</form>
@@ -320,7 +320,7 @@
 			//console.log("Clicked button1.");
 			e.preventDefault();
 			var url = contextPath + "/customer/guestPage1";
-			console.log("url1: " + url);
+			//console.log("url1: " + url);
 			var form = $('#customer-register-form');
 			form.attr("action", url);
 			form.submit();
@@ -329,7 +329,7 @@
 			//console.log("Clicked button2.");
 			e.preventDefault();
 			var url = contextPath + "/customer/guestPage2";
-			console.log("url2: " + url);
+			//console.log("url2: " + url);
 			var form = $('#customer-register-form');
 			form.attr("action", url);
 			form.submit();

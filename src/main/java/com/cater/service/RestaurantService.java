@@ -79,6 +79,10 @@ public class RestaurantService {
 		return restaurantDAO.fetchAllRestaurants();
 	}
 
+	public Set <Restaurant> fetchAllRestaurantsWithNoPrimaryCuisine() {
+		return restaurantDAO.fetchAllRestaurantsWithNoPrimaryCuisine();
+	}
+
 	/**
 	 * Fetch restaurants of type.
 	 *

@@ -1,0 +1,77 @@
+{
+  "cuisine": "MIDDLE_EASTERN",
+  "categories": [
+    {
+      "code": "C1",
+      "name": "APPETIZERS",
+      "items": [
+        {
+          "code": "C1_1",
+          "name": "Sarma Dolme",
+          "description": "",
+          "isSelected": false
+        },
+        {
+          "code": "C1_2",
+          "name": "Large Hummus",
+          "description": "",
+          "isSelected": false
+        }
+      ]
+    },
+    {
+      "code": "C2",
+      "name": "SALADS",
+      "items": [
+        {
+          "code": "C2_1",
+          "name": "Greek Salad",
+          "description": "",
+          "isSelected": false
+        }
+      ]
+    },
+    {
+      "code": "C3",
+      "name": "KABOB",
+      "items": [
+        {
+          "code": "C3_1",
+          "name": "Beef Kabob",
+          "description": "",
+          "isSelected": false
+        },
+        {
+          "code": "C3_2",
+          "name": "Ground Beef Kabob",
+          "description": "",
+          "isSelected": false
+        },
+        {
+          "code": "C3_3",
+          "name": "Chicken Kabob",
+          "description": "",
+          "isSelected": false
+        },
+        {
+          "code": "C3_4",
+          "name": "Ground Chicken Kabob",
+          "description": "",
+          "isSelected": false
+        },
+        {
+          "code": "C3_5",
+          "name": "Lamb Kabob",
+          "description": "",
+          "isSelected": false
+        },
+        {
+          "code": "C3_6",
+          "name": "Ground Lamb Kabob",
+          "description": "",
+          "isSelected": false
+        }
+      ]
+    }
+  ]
+}

@@ -23,7 +23,7 @@
 	text-align: left;
 }
 
-.pizzaPopupOptions, .mexicanPopupOptions, .thaiPopupOptions, .sandwichPopupOptions, .middleEasternPopupOptions {
+.pizzaPopupOptions, .mexicanPopupOptions, .thaiPopupOptions, .sandwichPopupOptions, .middleEasternPopupOptions, .fullMenuPopupOptions {
 	left: 50%;
 	margin-left: -325px;
 	/*max-width: 750px;*/
@@ -150,7 +150,7 @@
 	opacity: 0;
 }
 
-.pizza-item-close, .thai-item-close, .mexican-item-close, .sandwich-item-close, .middle-eastern-item-close {
+.pizza-item-close, .thai-item-close, .mexican-item-close, .sandwich-item-close, .middle-eastern-item-close, .item-close {
 	cursor: pointer;
 	padding-left: 4px;
 	padding-top: 1px;

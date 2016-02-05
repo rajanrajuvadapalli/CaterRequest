@@ -25,15 +25,29 @@ import com.cater.model.Address;
 import com.cater.model.Restaurant;
 import com.cater.service.RestaurantService;
 import com.cater.yelp.YelpAPIHelper;
-import com.google.common.collect.Sets;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SearchController.
+ */
 @Controller
 public class SearchController {
+	/** The Constant logger. */
 	private static final Logger logger = Logger
 			.getLogger(SearchController.class);
+	/** The restaurant service. */
 	@Autowired
 	private RestaurantService restaurantService;
 
+	/**
+	 * Search restaurants.
+	 *
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param session the session
+	 * @return the string
+	 * @throws Exception the exception
+	 */
 	/*
 	 * search for list of restaurants
 	 * 
@@ -44,40 +58,37 @@ public class SearchController {
 			HttpServletRequest request, HttpSession session) throws Exception {
 		/*String zipCode = StringUtils.defaultString((String) request
 				.getAttribute("zip_code"));*/
-		String zipCode = "95825"; //FIXME: Use the alternate google API call to get the zip code during auto populate
+		String zipCode = "95827"; //FIXME: Use the alternate google API call to get the zip code during auto populate
 		String cuisineType = StringUtils.defaultString(request
 				.getParameter("cuisineType"));
 		logger.debug("CuisineType: " + cuisineType);
-		if (StringUtils.isNotBlank(zipCode)
-				&& StringUtils.isNotBlank(cuisineType)) {
-			Set <Restaurant> primaryRestaurants = null;
-			Set <Restaurant> secondaryRestaurants = null;
-			if (StringUtils.isBlank(cuisineType)) {
-				primaryRestaurants = Sets.newHashSet(restaurantService
-						.fetchAllRestaurants());
-			}
-			else {
-				modelMap.put("cuisineType", cuisineType);
-				primaryRestaurants = restaurantService
-						.fetchRestaurantsOfTypePrimary(cuisineType);
-				secondaryRestaurants = restaurantService
-						.fetchRestaurantsOfTypeSecondary(cuisineType);
-			}
-			if (CollectionUtils.isNotEmpty(primaryRestaurants)) {
-				List <RestaurantDTO> nearByPrimaryRestaurants = getRestaurantDTOs(
-						primaryRestaurants, zipCode);
-				modelMap.put("restaurants", nearByPrimaryRestaurants);
-			}
+		if (StringUtils.isNotBlank(zipCode)) {
+			modelMap.put("cuisineType", cuisineType);
+			Set <Restaurant> secondaryRestaurants = restaurantService
+					.fetchAllRestaurantsWithNoPrimaryCuisine();
 			if (CollectionUtils.isNotEmpty(secondaryRestaurants)) {
+				logger.debug("Found " + secondaryRestaurants.size()
+						+ " restaurant without primary cuisine.");
 				List <RestaurantDTO> nearBySecondaryRestaurants = getRestaurantDTOs(
 						secondaryRestaurants, zipCode);
 				modelMap.put("restaurants_sec", nearBySecondaryRestaurants);
 			}
-			modelMap.put("eventLocation", zipCode);
+			else {
+				logger.debug("Found 0 restaurant without primary cuisine.");
+			}
+			modelMap.put("eventZip", zipCode);
 		}
 		return "t_search";
 	}
 
+	/**
+	 * Gets the restaurant dt os.
+	 *
+	 * @param restaurants the restaurants
+	 * @param zipCode the zip code
+	 * @return the restaurant dt os
+	 * @throws ParseException the parse exception
+	 */
 	private List <RestaurantDTO> getRestaurantDTOs(
 			Set <Restaurant> restaurants, String zipCode) throws ParseException {
 		if (CollectionUtils.isNotEmpty(restaurants)) {
