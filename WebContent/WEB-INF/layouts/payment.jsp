@@ -49,90 +49,90 @@
 	</div>
 </c:if>
 <div class="col-sm-10 col-sm-offset-1">
-	<form class="form-horizontal" method="POST" id="event-form"
-		action="${pageContext.request.contextPath}/customer/makePayment"
-		enctype="application/x-www-form-urlencoded" autocomplete="off">
-		<div class="col-lg-12">
-			<div class="panel panel-success">
-				<div class="panel-heading">
-					<h3 class="panel-title">Event Details</h3>
-				</div>
-				<div class="panel-body">
-					<div class="col-lg-10 sm-5" align="left">
-						<b>Event name:</b> ${e.name}<br /> <b>Time:</b>
-						<fmt:formatDate value="${e.date_time}"
-							pattern="EEE, d MMM yyyy hh:mm aaa" />
-						<br /> <b>Location: </b> ${event.location.getAddressString()} <br />
-						<b>Number of people:</b> <span style="color: red;">${e.personCount}</span><br />
-						<b>Delivery Option:</b> <span style="color: red;">${e.isPickUp()?'Pick Up':'Delivered'}</span><br />
-						<b>Customer name:</b> ${e.customer.name}<br /> <b>Customer
-							contact number:</b> ${e.customer.contactNumber}<br />
-					</div>
+
+	<div class="col-lg-12">
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h3 class="panel-title">Event Details</h3>
+			</div>
+			<div class="panel-body">
+				<div class="col-lg-10 sm-5" align="left">
+					<b>Event name:</b> ${e.name}<br /> <b>Time:</b>
+					<fmt:formatDate value="${e.date_time}"
+						pattern="EEE, d MMM yyyy hh:mm aaa" />
+					<br /> <b>Location: </b> ${event.location.getAddressString()} <br />
+					<b>Number of people:</b> <span style="color: red;">${e.personCount}</span><br />
+					<b>Delivery Option:</b> <span style="color: red;">${e.isPickUp()?'Pick Up':'Delivered'}</span><br />
+					<b>Customer name:</b> ${e.customer.name}<br /> <b>Customer
+						contact number:</b> ${e.customer.contactNumber}<br />
 				</div>
 			</div>
 		</div>
-		<div class="col-lg-12">
-			<div class="panel panel-danger">
-				<div class="panel-heading">
-					<h3 class="panel-title">Billing Info</h3>
-				</div>
-				<!-- /.panel-heading -->
-				<div class="panel-body" align="left">
-					<div class="col-lg-10 sm-6">
-						<b>Restaurant Name: </b>${r.name} <br /> <b>Restaurant Phone
-							Number: </b>${r.contactNumber} <br /> <b>Quote Price: </b>$${quote.price}
-						<br /> <b>Sales Tax: </b>$${tax} <br /> <b>Total Amount:
-							$${amount}</b> <br /> <br />
-						<div class="row">
-							<div class="col-sm-2">
-								<!-- <img
-										src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png"
-										alt="PayPal" /> -->
-								<c:if test="${sessionScope.env.isProd()}">
-									<script async="async"
-										src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=PX5RV8W8STFCY"
-										data-button="paynow" data-name="${e.name}"
-										data-amount="${quote.price}" data-currency="USD"
-										data-tax="${tax}" data-number="${quote.id}"
-										data-style="secondary"
-										data-callback="http://www.caterrequest.com/payment/notify"></script>
-								</c:if>
-								<c:if test="${sessionScope.env.isUat()}">
-									<script async="async"
-										src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=PX5RV8W8STFCY"
-										data-button="paynow" data-name="${e.name}"
-										data-amount="${quote.price}" data-currency="USD"
-										data-tax="${tax}" data-number="${quote.id}"
-										data-style="secondary"
-										data-callback="http://www.getmesponsor.com/payment/notify"></script>
-								</c:if>
-							</div>
-							<div class="col-sm-2">
+	</div>
+	<div class="col-lg-12">
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				<h3 class="panel-title">Billing Info</h3>
+			</div>
+			<!-- /.panel-heading -->
+			<div class="panel-body" align="left">
+				<div class="col-lg-10 sm-6">
+					<b>Restaurant Name: </b>${r.name} <br /> <b>Restaurant Phone
+						Number: </b>${r.contactNumber} <br /> <b>Quote Price: </b>$${quote.price}
+					<br /> <b>Sales Tax: </b>$${tax} <br /> <b>Total Amount:
+						$${amount}</b> <br /> <br />
+					<div class="row">
+						<div class="col-sm-2">
+							<form
+								action="${pageContext.request.contextPath}/stripePayment/charge"
+								method="POST">
+								<script src="https://checkout.stripe.com/checkout.js"
+									class="stripe-button"
+									data-key="pk_live_8Ip3CxrdRB2SweSSVe1oPyJt"
+									data-image="/img/documentation/checkout/marketplace.png"
+									data-name="${e.name}" data-description="Charge for ${r.name}"
+									data-amount="${totalAmountInCents}" data-locale="auto">
+  						   </script>
+								<input type="hidden" name="quoteId" value="${quote.id}">
+								<input type="hidden" size="30" maxlength="10" name="eventName"
+									value="${e.name}" readonly> <input type="hidden"
+									size="16" name="eventTime" value="${e.date_time}" readonly>
+								<input type="hidden" size="30" name="expDate"
+									value="${e.location }"> <input type="hidden" size="30"
+									name="restuarantName" required="required" value="${r.name}">
+								<input type="hidden" size="4" name="securityCode"
+									required="required" value="${quote.price}" readonly> <input
+									type="hidden" name="amountInCents"
+									value="${totalAmountInCents}">
+							</form>
+
+						</div>
+						<div class="col-sm-2">
+							<form class="form-horizontal" method="POST" id="event-form"
+								action="${pageContext.request.contextPath}/customer/makePayment"
+								enctype="application/x-www-form-urlencoded" autocomplete="off">
 								<button type="submit" class="btn btn-default">Pay at
 									Restaurant</button>
-							</div>
+								<input type="hidden" name="xquoteId" value="${quote.id}">
+							</form>
+
 						</div>
+
+
 					</div>
 				</div>
-				<!-- /.panel-body -->
 			</div>
-			<!-- /.panel -->
+			<!-- /.panel-body -->
 		</div>
-		<div>
-			<button type="button" class="btn btn-default"
-				onclick="window.location.href='${pageContext.request.contextPath}/menu/view/all?eventId=${e.id}'">
-				Cancel</button>
-		</div>
-		<input type="hidden" name="xquoteId" value="${quote.id}"> <input
-			type="hidden" size="30" maxlength="10" name="eventName"
-			value="${e.name}" readonly> <input type="hidden" size="16"
-			name="eventTime" value="${e.date_time}" readonly> <input
-			type="hidden" size="30" name="expDate" value="${e.location }">
-		<input type="hidden" size="30" name="restuarantName"
-			required="required" value="${r.name}"> <input type="hidden"
-			size="4" name="securityCode" required="required"
-			value="${quote.price}" readonly>
-		<!--
+		<!-- /.panel -->
+	</div>
+	<div>
+		<button type="button" class="btn btn-default"
+			onclick="window.location.href='${pageContext.request.contextPath}/menu/view/all?eventId=${e.id}'">
+			Cancel</button>
+	</div>
+
+	<!--
          <div class="col-sm-12">
          <div class="panel panel-success">
          <div class="panel-heading">
