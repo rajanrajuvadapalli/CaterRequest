@@ -50,6 +50,16 @@ public class Event extends TimestampEntity implements Serializable {
 	private Integer budgetTotal;
 	@Column(name = "status", length = 30, nullable = true)
 	private String status;
+	/*@Column(name = "track_id", length = 30, nullable = true)
+	private String trackingId;
+
+	public String getTrackingId() {
+		return trackingId;
+	}
+
+	public void setTrackingId(String trackingId) {
+		this.trackingId = trackingId;
+	}*/
 
 	public String getStatus() {
 		return status;
