@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +38,9 @@ import com.stripe.model.Charge;
 @Controller
 @RequestMapping(value = { "stripePayment" })
 public class StripeController {
+	private static final String STRIPE_LIVE_KEY = "sk_live_MPCHtykGcxwk1DXVWjq9UUXX";
+	private static final String STRIPE_SANDBOX_KEY = "sk_test_8DMVcm6trnvUH50s3GW90ezp";
+
 	/** The restaurant service. */
 	@Autowired
 	private RestaurantService restaurantService;
@@ -54,24 +58,28 @@ public class StripeController {
 		List<String> errors = Lists.newArrayList();
 		redirectAttributes.addFlashAttribute("errors", errors);
 		System.out.println("In Stripe Payments!!!");
-
-		Stripe.apiKey = "sk_live_MPCHtykGcxwk1DXVWjq9UUXX";
+		int amount = Integer.parseInt(StringUtils.defaultString(request.getParameter("amountInCents")).trim());
+		String rName = StringUtils.defaultString(request.getParameter("restuarantName")).trim();
+	
+	    Stripe.apiKey = STRIPE_LIVE_KEY;
 		// Get the credit card details submitted by the form
 		String token = request.getParameter("stripeToken");
+		String recieptEmail = request.getParameter("stripeEmail");
 
 		// Create the charge on Stripe's servers - this will charge the user's
 		// card
 		try {
 			Map<String, Object> chargeParams = new HashMap<String, Object>();
-			chargeParams.put("amount", totalAmount); // amount in cents, again
+			chargeParams.put("amount", amount); // amount in cents, again
 			chargeParams.put("currency", "usd");
 			chargeParams.put("source", token);
-			chargeParams.put("description", "Charge amount");
+			chargeParams.put("description", "Charge amount for"+rName);
+			chargeParams.put("receipt_email", recieptEmail);
 
 			Charge charge = Charge.create(chargeParams);
 
-			System.out.println("amount:" + charge.getAmount());
-			System.out.println("status:" + charge.getStatus());
+			
+
 			if (charge.getStatus().equals("succeeded")) {
 				System.out.println("RESPONSE SUCCESS");
 				Quote quote = restaurantService.findQuoteWithId(quoteId);
@@ -86,6 +94,7 @@ public class StripeController {
 					}
 				}
 				quote.getMenu().getEvent().setStatus(EventStatus.CONFIRMED.toString());
+				//quote.getMenu().getEvent().setTrackingId(charge.getId());
 				restaurantService.sendNotification(quote, null);
 				customerService.sendNotification(quote);
 				successMessages.add("Congratulations, your order has been placed!");
@@ -120,5 +129,37 @@ public class StripeController {
 
 		return "redirect:/customer/dashboard";
 	}
+	
+	//TODO: retrieving stripe payment
+	@RequestMapping(value = { "retrieve" }, method = RequestMethod.POST)
+	public String retrievePayment(HttpServletRequest request, HttpSession session, RedirectAttributes redirectAttributes,
+			@RequestParam(value = "trackingId", required = true) String track_id) 
+	{
+		  Stripe.apiKey = STRIPE_SANDBOX_KEY;
+		  try {
+			Charge retrieveCharge = Charge.retrieve(track_id);
+			retrieveCharge.getAmount();
+			retrieveCharge.getCard().getLast4();
+		} catch (AuthenticationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvalidRequestException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (APIConnectionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (CardException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (APIException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+	
+	
 
 }
