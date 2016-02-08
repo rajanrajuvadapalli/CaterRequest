@@ -153,13 +153,13 @@
 					</label>
 					<div class="col-sm-2">
 						<input type="text" size="5" maxlength="10" name="street_number"
-							id="street_number" placeholder="Street #" class="form-control"
-							value="${sessionScope.street_number}">
+							id="street_number" placeholder="Street #" class="form-control">
+							
 					</div>
 					<div class="col-sm-4">
 						<input type="text" size="30" maxlength="50" name="street_name"
 							id="route" required="required" placeholder="Street Name"
-							class="form-control" value="${sessionScope.street_name}">
+							class="form-control">
 					</div>
 				</div>
 				<div class="form-group">
@@ -180,7 +180,7 @@
 					<div class="col-sm-6">
 						<input type="text" size="30" name="city" required="required"
 							id="locality" placeholder="City" class="form-control"
-							value="${sessionScope.event.location.city}">
+							>
 					</div>
 				</div>
 				<div class="form-group">
@@ -190,7 +190,7 @@
 					<div class="col-sm-6">
 						<input type="text" size="30" name="state" required="required"
 							id="administrative_area_level_1" placeholder="State"
-							class="form-control" value="${sessionScope.event.location.state}">
+							class="form-control">
 					</div>
 				</div>
 				<div class="form-group">
@@ -200,6 +200,7 @@
 					<div class="col-sm-6">
 						<input type="text" size="10" name="zip" maxlength="10"
 							id="postal_code" required="required" placeholder="Ex.: xxxxx"
+							value="${sessionScope.zip}"
 							pattern="^\d{5}(\-\d{4})?$" class="form-control">
 					</div>
 				</div>
