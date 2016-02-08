@@ -3,6 +3,7 @@ package com.cater.controller;
 import static com.cater.constants.QuoteStatus.CUSTOMER_UPDATED_COUNT;
 import static com.cater.constants.QuoteStatus.CUSTOMER_UPDATED_DATE;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -21,6 +22,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.SystemPropertyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -574,19 +576,24 @@ public class CustomerDashboardController {
 			if (quote == null || quote.getPrice() == null || quote.getPrice() == 0) {
 				errors.add("Cannot confirm order with no quotes.");
 			} else {
-				double taxAmount = (quote.getPrice() * quote.getRestaurant().getSalesTax()) / 100;
-				double totalAmount = quote.getPrice() + taxAmount;
-				int totalAmountInCents = (int) totalAmount * 100;
+				BigDecimal taxInbigdecimal = new BigDecimal((quote.getPrice() * quote.getRestaurant().getSalesTax()) / 100);
+				taxInbigdecimal=taxInbigdecimal.setScale(2,
+		                BigDecimal.ROUND_HALF_UP);
+				
+				double amount = quote.getPrice() + taxInbigdecimal.doubleValue();
+				/*BigDecimal bigDecimal = new BigDecimal(amount);
+				  bigDecimal = bigDecimal.setScale(2,
+			                BigDecimal.ROUND_HALF_UP);
+				  bigDecimal.doubleValue();*/
+				double totalAmountInCents = amount * 100;
 				modelMap.put("quote", quote);
 				modelMap.put("restuarant", quote.getRestaurant());
 				modelMap.put("event", event);
-				modelMap.put("tax", taxAmount);
-				modelMap.put("amount", totalAmount);
+				modelMap.put("tax", taxInbigdecimal.doubleValue());
+				modelMap.put("amount", amount);
 				modelMap.put("totalAmountInCents", totalAmountInCents);
-				System.out.println(quote.getId());
-
+				
 				forward = "t_payment";
-				System.out.println("" + quote.getRestaurant().getName());
 			}
 		}
 		return forward;
