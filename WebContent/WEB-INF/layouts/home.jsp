@@ -28,6 +28,7 @@
 				<div class="container">
 					<h1>Restaurants compete and bid to win your business</h1>
 				</div>
+				<c:if test="${sessionScope.user==null || sessionScope.user.isGuest()}">
 				<form class="form-horizontal" method="GET"
 					id="customer-register-form"
 					action="${pageContext.request.contextPath}/customer/guestPage1"
@@ -47,6 +48,7 @@
 						</div>
 					</div>
 				</form>
+				</c:if>
 				<%-- <form class="form-horizontal" method="GET"
 					id="customer-register-form"
 					action="${pageContext.request.contextPath}/customer/createEvent"
