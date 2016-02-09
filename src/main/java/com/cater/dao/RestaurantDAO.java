@@ -275,7 +275,7 @@ public class RestaurantDAO extends DataAccessObject {
 				List <Restaurant> list = session
 						.createCriteria(Restaurant.class, "res")
 						.add(Restrictions.ilike("res.cuisineType", "%"
-								+ cuisine))
+								+ cuisine + "%"))
 						.add(Restrictions.eq("res.isNumberVerified", true))
 						.list();
 				Set <Restaurant> restaurants = Sets.newHashSet();

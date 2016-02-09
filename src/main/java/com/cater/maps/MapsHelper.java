@@ -1,5 +1,6 @@
 package com.cater.maps;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -31,7 +32,7 @@ public class MapsHelper {
 	 * @return the distance
 	 */
 	public List <RestaurantDTO> getDistance(Address address,
-			Set <Restaurant> restaurants) {
+			Collection <Restaurant> restaurants) {
 		GeoApiContext context = new GeoApiContext()
 				.setApiKey("AIzaSyAlobAYE25Q2m62_DX3wc1AMimO2Xr-WHc");
 		String[] origin = { address.getAddressString() };

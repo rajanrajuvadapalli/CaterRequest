@@ -28,15 +28,18 @@
 		</div>
 		<div class="col-sm-9">
 			<c:choose>
-				<c:when test="${empty restaurants_sec}">Sorry! No <c:out
+				<c:when test="${empty restaurants}">Sorry! No <c:out
 						value="${cuisineType}"></c:out> restaurants registered with us within 15 miles of ${eventZip}.
 				</c:when>
 				<c:otherwise>
-					<c:forEach items="${restaurants_sec}" var="r">
-						<div id="search-rest" class="hidden">
+					<c:forEach items="${restaurants}" var="r">
+						<div id="search-rest">
 							<input type="hidden" id="rest-cuisines"
 								value="${r.restaurant.cuisineType}" />
 							<h3>${r.restaurant.name}&nbsp;(${r.distance})</h3>
+							<img src="${r.reviewImage}" width="100" height="20">-
+							${r.numberOfReviews} <c:out value="reviews" />
+							<br />
 							<c:if test="${sessionScope.env.isProd()}">
 								<img width="120px"
 									src="https://s3-us-west-2.amazonaws.com/caterrequest-restaurant-profile-pics/Restaurant_${r.restaurant.id}"
@@ -49,9 +52,8 @@
 							</c:if>
 							<br />
 							${r.restaurant.address.street1}${r.restaurant.address.street2},${r.restaurant.address.city},${r.restaurant.address.state},${r.restaurant.address.zip}<br />
-							<img src="${r.reviewImage}" width="100" height="20">-
-							${r.numberOfReviews}
-							<c:out value="reviews" /><br/>
+
+							
 							<form class="form-horizontal" method="GET"
 								action="${pageContext.request.contextPath}/menu/view/complete">
 								<input type="hidden" name="rName" value="${r.restaurant.name}" />
@@ -90,18 +92,17 @@
 		});
 	};
 
-	$('document').ready(
-			function() {
-				populateCuisineTypesCheckbox();
-				$("input[name=cuisineType_sec]").change(function() {
-					var ct = $(this).attr("value");
-					var on_off = $(this).prop("checked");
-					//console.log("ct: " + ct + " is " + on_off);
-					filter(ct, on_off);
-				});
-				var cuisineType = $("input[name=cuisineType]").val();
-				$("input[name=cuisineType_sec][value='" + cuisineType + "']")
-						.attr("checked", true);
-				filter(cuisineType, true);
-			});
+	$('document').ready(function() {
+		populateCuisineTypesCheckbox();
+		$("input[name=cuisineType_sec]").change(function() {
+			var ct = $(this).attr("value");
+			var on_off = $(this).prop("checked");
+			//console.log("ct: " + ct + " is " + on_off);
+			filter(ct, on_off);
+		});
+		/*var cuisineType = $("input[name=cuisineType]").val();
+		$("input[name=cuisineType_sec][value='" + cuisineType + "']")
+				.attr("checked", true);
+		filter(cuisineType, true);*/
+	});
 </script>

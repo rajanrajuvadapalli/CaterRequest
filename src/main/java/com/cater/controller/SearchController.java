@@ -1,8 +1,8 @@
 package com.cater.controller;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cater.Helper;
 import com.cater.maps.MapsHelper;
@@ -26,7 +27,6 @@ import com.cater.model.Restaurant;
 import com.cater.service.RestaurantService;
 import com.cater.yelp.YelpAPIHelper;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SearchController.
  */
@@ -54,29 +54,34 @@ public class SearchController {
 	 * @author sandeep appikonda
 	 */
 	@RequestMapping(value = { "search" }, method = RequestMethod.GET)
-	public String searchRestaurants(ModelMap modelMap,
-			HttpServletRequest request, HttpSession session) throws Exception {
-		/*String zipCode = StringUtils.defaultString((String) request
-				.getAttribute("zip_code"));*/
-		String zipCode = "95827"; //FIXME: Use the alternate google API call to get the zip code during auto populate
-		String cuisineType = StringUtils.defaultString(request
-				.getParameter("cuisineType"));
-		logger.debug("CuisineType: " + cuisineType);
-		if (StringUtils.isNotBlank(zipCode)) {
-			modelMap.put("cuisineType", cuisineType);
-			Set <Restaurant> secondaryRestaurants = restaurantService
-					.fetchAllRestaurantsWithNoPrimaryCuisine();
-			if (CollectionUtils.isNotEmpty(secondaryRestaurants)) {
-				logger.debug("Found " + secondaryRestaurants.size()
-						+ " restaurant without primary cuisine.");
-				List <RestaurantDTO> nearBySecondaryRestaurants = getRestaurantDTOs(
-						secondaryRestaurants, zipCode);
-				modelMap.put("restaurants_sec", nearBySecondaryRestaurants);
+	public String searchRestaurants(
+			ModelMap modelMap,
+			HttpServletRequest request,
+			HttpSession session,
+			@RequestParam(value = "zip", required = true) String zip,
+			@RequestParam(value = "cuisineType", required = false) String cuisineType)
+			throws Exception {
+		if (StringUtils.isNotBlank(zip)) {
+			modelMap.put("eventZip", zip);
+			Collection <Restaurant> restaurants = null;
+			if (StringUtils.isNotBlank(cuisineType)) {
+				logger.debug("cuisineType: " + cuisineType);
+				modelMap.put("cuisineType", cuisineType);
+				restaurants = restaurantService
+						.fetchRestaurantsOfType(cuisineType);
 			}
 			else {
-				logger.debug("Found 0 restaurant without primary cuisine.");
+				restaurants = restaurantService.fetchAllRestaurants();
 			}
-			modelMap.put("eventZip", zipCode);
+			if (CollectionUtils.isNotEmpty(restaurants)) {
+				logger.debug("Found " + restaurants.size() + " restaurants.");
+				List <RestaurantDTO> nearByRestaurants = getRestaurantDTOs(
+						restaurants, zip);
+				modelMap.put("restaurants", nearByRestaurants);
+			}
+			else {
+				logger.debug("Found 0 restaurants.");
+			}
 		}
 		return "t_search";
 	}
@@ -90,7 +95,8 @@ public class SearchController {
 	 * @throws ParseException the parse exception
 	 */
 	private List <RestaurantDTO> getRestaurantDTOs(
-			Set <Restaurant> restaurants, String zipCode) throws ParseException {
+			Collection <Restaurant> restaurants, String zipCode)
+			throws ParseException {
 		if (CollectionUtils.isNotEmpty(restaurants)) {
 			MapsHelper mapsHelper = new MapsHelper();
 			Address address = new Address();

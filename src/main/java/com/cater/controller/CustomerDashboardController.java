@@ -807,14 +807,10 @@ public class CustomerDashboardController {
 	@RequestMapping(value = { "guestPage2" }, method = RequestMethod.GET)
 	public String guestPage2(HttpSession httpSession, ModelMap modelMap,
 			HttpServletRequest request, RedirectAttributes redirectAttributes) {
-		String cuisineType = request.getParameter("cuisineType");
-		logger.debug("CuisineType: " + cuisineType);
 		guestFlow(modelMap, httpSession, request, redirectAttributes);
-		/*		String zipCode = "95825"; //FIXME: Use the alternate google API call to get the zip code during auto populate
-				request.setAttribute("zip_code", zipCode);
-				request.setAttribute("cuisineType", cuisineType);*/
-		logger.debug("Customer selected cuisine " + cuisineType
-				+ ". Redirecting to the search page...");
+		String zip = request.getParameter("zip");
+		redirectAttributes.addAttribute("zip", zip);
+		logger.debug("Redirecting to the search page...");
 		return "redirect:/search";
 	}
 
@@ -844,7 +840,6 @@ public class CustomerDashboardController {
 		Event e = new Event();
 		e.setStatus(EventStatus.ACTIVE.toString());
 		String zip = request.getParameter("zip");
-		logger.debug("Zip: " + zip);
 		httpSession.setAttribute("zip", zip);
 		// For guest user, save data in session
 		e.setId(1);
