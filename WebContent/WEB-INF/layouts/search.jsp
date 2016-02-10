@@ -33,40 +33,41 @@
 				</c:when>
 				<c:otherwise>
 					<c:forEach items="${restaurants}" var="r">
-						<div id="search-rest">
+						<div id="search-rest" class="row"
+							style="border-width: 1px; border-style: solid; width: 600px; box-shadow: 10px 10px 5px #888888; padding: 0px 10px">
 							<input type="hidden" id="rest-cuisines"
 								value="${r.restaurant.cuisineType}" />
-							<h3>${r.restaurant.name}&nbsp;(${r.distance})</h3>
-							<img src="${r.reviewImage}" width="100" height="20">-
-							${r.numberOfReviews} <c:out value="reviews" />
-							<br />
-							<c:if test="${sessionScope.env.isProd()}">
-								<img width="120px"
-									src="https://s3-us-west-2.amazonaws.com/caterrequest-restaurant-profile-pics/Restaurant_${r.restaurant.id}"
-									alt="">
-							</c:if>
-							<c:if test="${sessionScope.env.isUat()}">
-								<img width="120px"
-									src="https://s3-us-west-2.amazonaws.com/rajrv-caterrequest-profile-pics/Restaurant_${r.restaurant.id}"
-									alt="">
-							</c:if>
-							<br />
-							${r.restaurant.address.street1}${r.restaurant.address.street2},${r.restaurant.address.city},${r.restaurant.address.state},${r.restaurant.address.zip}<br />
-
-							
-							<form class="form-horizontal" method="GET"
-								action="${pageContext.request.contextPath}/menu/view/complete">
-								<input type="hidden" name="rName" value="${r.restaurant.name}" />
-								<input type="hidden" name="rZip"
-									value="${r.restaurant.address.zip}" />
-								<div class="form-group">
-									<label class="col-sm-3 control-label"></label>
-									<div class="col-sm-1">
-										<button type="submit" class="btn btn-default">Select</button>
-									</div>
-								</div>
-							</form>
+							<div class="col-sm-2">
+								<c:if test="${sessionScope.env.isProd()}">
+									<img width="120px"
+										src="https://s3-us-west-2.amazonaws.com/caterrequest-restaurant-profile-pics/Restaurant_${r.restaurant.id}"
+										alt="">
+								</c:if>
+								<c:if test="${sessionScope.env.isUat()}">
+									<img width="120px"
+										src="https://s3-us-west-2.amazonaws.com/rajrv-caterrequest-profile-pics/Restaurant_${r.restaurant.id}"
+										alt="">
+								</c:if>
+							</div>
+							<div class="col-sm-8">
+								<h3>${r.restaurant.name}&nbsp;(${r.distance})</h3>
+								<img src="${r.reviewImage}" width="100" height="20">-
+								${r.numberOfReviews}
+								<c:out value="reviews" />
+								<br /> <br />
+								${r.restaurant.address.street1}${r.restaurant.address.street2},${r.restaurant.address.city},${r.restaurant.address.state},${r.restaurant.address.zip}<br />
+								<br />
+								<form class="form-horizontal" method="GET"
+									action="${pageContext.request.contextPath}/menu/view/complete">
+									<input type="hidden" name="rName" value="${r.restaurant.name}" />
+									<input type="hidden" name="rId" value="${r.restaurant.id}" />
+									<input type="hidden" name="rZip"
+										value="${r.restaurant.address.zip}" />
+									<button type="submit" class="btn btn-default">Select</button>
+								</form>
+							</div>
 						</div>
+						<br />
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
@@ -92,17 +93,22 @@
 		});
 	};
 
-	$('document').ready(function() {
-		populateCuisineTypesCheckbox();
-		$("input[name=cuisineType_sec]").change(function() {
+	function refreshResults() {
+		//console.log("Refreshing results...");
+		//First, hide all.
+		$("div#search-rest").each(function() {
+			$(this).addClass('hidden');
+		});
+		//Next, show only which are enabled.
+		$("input[name=cuisineType_sec]").each(function() {
 			var ct = $(this).attr("value");
 			var on_off = $(this).prop("checked");
-			//console.log("ct: " + ct + " is " + on_off);
 			filter(ct, on_off);
 		});
-		/*var cuisineType = $("input[name=cuisineType]").val();
-		$("input[name=cuisineType_sec][value='" + cuisineType + "']")
-				.attr("checked", true);
-		filter(cuisineType, true);*/
+	};
+
+	$('document').ready(function() {
+		populateCuisineTypesCheckbox();
+		$("input[name=cuisineType_sec]").change(refreshResults);
 	});
 </script>

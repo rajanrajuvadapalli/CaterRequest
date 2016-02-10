@@ -264,6 +264,7 @@ public class CustomerDashboardController {
 		}
 		String cuisineType = request.getParameter("cuisineType");
 		if (user.isGuest()) {
+			httpSession.setAttribute("eventName", e.getName());
 			//If placing direct order to restaurant
 			Object fmf = httpSession.getAttribute("full_menu_flow");
 			if (fmf != null && Boolean.TRUE.equals((Boolean) fmf)) {
@@ -285,7 +286,6 @@ public class CustomerDashboardController {
 				if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
 					modelMap.put("restaurants", nearByRestaurants);
 				}
-				httpSession.setAttribute("eventName", e.getName());
 				return "menus/t__cateringRestaurants";
 			}
 		}
@@ -572,36 +572,46 @@ public class CustomerDashboardController {
 			HttpSession httpSession,
 			ModelMap modelMap,
 			HttpServletRequest request,
-			@RequestParam(value = "restaurantId", required = true) String[] restaurantIds,
+			@RequestParam(value = "restaurantId", required = false) String[] restaurantIds,
 			RedirectAttributes redirectAttributes) {
 		User user = (User) httpSession.getAttribute("user");
 		if (user == null) {
 			return "t_home";
 		}
+		logger.info("Submitting request for quotes.");
 		com.cater.model.Menu menuModel = null;
-		Integer menuId = (Integer) httpSession.getAttribute("menuId");
-		if (menuId != null) {
-			menuModel = customerService.findMenuWithId(menuId);
-		}
 		List <String> selectedRestaurantNames = Lists.newArrayList();
-		for (String restaurantId : restaurantIds) {
-			// Find if a quote already exists.
-			Quote quote = restaurantService.findQuoteWithRestaurantIdAndMenuId(
-					Helper.stringToInteger(restaurantId), menuId);
-			Restaurant restaurant = restaurantService
-					.findRestaurantWithId(Helper.stringToInteger(restaurantId));
-			selectedRestaurantNames.add(restaurant.getName());
-			if (quote == null) {
-				quote = new Quote();
-				quote.setStatus(QuoteStatus.CREATED.toString());
-				quote.setMenu(menuModel);
-				quote.setRestaurant(restaurant);
-				restaurantService.saveOrUpdateQuote(quote);
-				restaurantService.sendNotification(quote, null);
+		//For guest user full menu flow
+		String rId = request.getParameter("rId");
+		if (StringUtils.isNotBlank(rId)) {
+			restaurantIds = new String[] { rId };
+		}
+		Integer menuId = (Integer) httpSession.getAttribute("menuId");
+		if (restaurantIds != null && restaurantIds.length > 0) {
+			if (menuId != null) {
+				menuModel = customerService.findMenuWithId(menuId);
 			}
-			else if (Boolean.TRUE.equals((Boolean) httpSession
-					.getAttribute("isMenuChanged"))) {
-				restaurantService.sendNotification(quote, null);
+			for (String restaurantId : restaurantIds) {
+				// Find if a quote already exists.
+				Quote quote = restaurantService
+						.findQuoteWithRestaurantIdAndMenuId(
+								Helper.stringToInteger(restaurantId), menuId);
+				Restaurant restaurant = restaurantService
+						.findRestaurantWithId(Helper
+								.stringToInteger(restaurantId));
+				selectedRestaurantNames.add(restaurant.getName());
+				if (quote == null) {
+					quote = new Quote();
+					quote.setStatus(QuoteStatus.CREATED.toString());
+					quote.setMenu(menuModel);
+					quote.setRestaurant(restaurant);
+					restaurantService.saveOrUpdateQuote(quote);
+					restaurantService.sendNotification(quote, null);
+				}
+				else if (Boolean.TRUE.equals((Boolean) httpSession
+						.getAttribute("isMenuChanged"))) {
+					restaurantService.sendNotification(quote, null);
+				}
 			}
 		}
 		String eventName = (String) httpSession.getAttribute("eventName");

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cater.Environment;
 import com.cater.GuestHelper;
@@ -103,7 +104,7 @@ public class LoginController {
 	 */
 	@RequestMapping(value = { "login" }, method = RequestMethod.POST)
 	public String login(ModelMap modelMap, HttpServletRequest request,
-			HttpSession httpSession) {
+			HttpSession httpSession, RedirectAttributes redirectAttributes) {
 		String username = StringUtils.defaultString(request
 				.getParameter("username"));
 		String password = StringUtils
@@ -125,6 +126,7 @@ public class LoginController {
 			}
 			//If a guest user created an account after creating an event, save the data first.
 			User user = (User) httpSession.getAttribute("user");
+			Event e = null;
 			boolean guestLogin = false;
 			if (user != null && user.isGuest()) {
 				guestLogin = true;
@@ -137,7 +139,7 @@ public class LoginController {
 						.getAttribute("cuisineType");
 				Set <Restaurant> restaurants = restaurantService
 						.fetchRestaurantsOfType(cuisine);
-				Event e = (Event) httpSession.getAttribute("event");
+				e = (Event) httpSession.getAttribute("event");
 				List <RestaurantDTO> nearByRestaurants = restaurantService
 						.getNearbyYelpReviews(e.getLocation(), restaurants);
 				if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
@@ -150,6 +152,7 @@ public class LoginController {
 					Customer customer = (Customer) userFromDatabase;
 					user.setCustomer(customer);
 					user.setCustomerID(customer.getId());
+					user.setGuest(false);
 				}
 			}
 			else {
@@ -160,8 +163,15 @@ public class LoginController {
 			user.setUsername(username);
 			Roles role = Roles.get(login.getRole());
 			user.setRole(role);
+			Object fmf = httpSession.getAttribute("full_menu_flow");
 			if (guestLogin) {
-				return "menus/t__cateringRestaurants";
+				if (fmf != null && Boolean.TRUE.equals((Boolean) fmf)) {
+					redirectAttributes.addAttribute("eventId", e.getId());
+					return "redirect:/menu/view/all";
+				}
+				else {
+					return "menus/t__cateringRestaurants";
+				}
 			}
 			return "redirect:dashboard";
 		}

@@ -18,12 +18,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cater.GuestHelper;
 import com.cater.Helper;
 import com.cater.constants.Roles;
 import com.cater.email.EmailHelper;
 import com.cater.maps.RestaurantDTO;
+import com.cater.model.Customer;
 import com.cater.model.Login;
 import com.cater.model.Restaurant;
 import com.cater.service.CustomerService;
@@ -197,6 +199,11 @@ public class RegistrationController {
 				tokens.add("GUEST");
 				tokens.add(httpSession.getAttribute("cuisineType"));
 				tokens.add(httpSession.getAttribute("menuId"));
+				//For full menu flow
+				Object fmf = httpSession.getAttribute("full_menu_flow");
+				if (fmf != null && Boolean.TRUE.equals((Boolean) fmf)) {
+					tokens.add("fullmenuflow");
+				}
 			}
 			String confirmationToken = StringUtils.join(tokens, "@");
 			String confirmationToken_URLSafe = Base64
@@ -253,9 +260,12 @@ public class RegistrationController {
 	 * @return the string
 	 */
 	@RequestMapping(value = { "confirmation" })
-	public String registrationConfirmation(ModelMap modelMap,
-			HttpServletRequest request, HttpSession httpSession,
-			@RequestParam("confirmation_token") String confirmationToken_URLSafe) {
+	public String confirmRegistration(
+			ModelMap modelMap,
+			HttpServletRequest request,
+			HttpSession httpSession,
+			@RequestParam("confirmation_token") String confirmationToken_URLSafe,
+			RedirectAttributes redirectAttributes) {
 		String confirmationToken = new String(
 				Base64.decodeBase64(confirmationToken_URLSafe));
 		logger.info("Received request for confirmation: " + confirmationToken);
@@ -279,7 +289,20 @@ public class RegistrationController {
 		if (tokens.length >= 4) {
 			wasGuest = "GUEST".equalsIgnoreCase(tokens[3]);
 		}
-		if (wasGuest) {
+		boolean fmf = false;
+		if (tokens.length >= 7) {
+			fmf = "fullmenuflow".equalsIgnoreCase(tokens[6]);
+			httpSession.setAttribute("full_menu_flow", true);
+		}
+		if (wasGuest && fmf) {
+			//If guest clicked the confirmation link created from full menu flow, take them directly to the event page.
+			Customer customer = customerService.findCustomerWithLoginId(login
+					.getId());
+			redirectAttributes.addAttribute("eventId", customer.getEvents()
+					.get(0).getId());
+			return "redirect:/menu/view/all";
+		}
+		if (wasGuest && !fmf) {
 			//If guest clicked the confirmation link, take them directly to the restaurant selection page.
 			String cuisine = tokens[4];
 			httpSession.setAttribute("cuisineType", cuisine);

@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cater.Helper;
 import com.cater.dao.MenuDAO;
@@ -87,9 +88,12 @@ public class MenuController {
 	 * @return the string
 	 */
 	@RequestMapping(value = { "selectMenu" }, method = RequestMethod.GET)
-	public String selectMenuForm(HttpSession httpSession, ModelMap modelMap,
+	public String selectMenuForm(
+			HttpSession httpSession,
+			ModelMap modelMap,
 			HttpServletRequest request,
-			@RequestParam(value = "cuisineType", required = true) String cuisine) {
+			@RequestParam(value = "cuisineType", required = true) String cuisine,
+			RedirectAttributes redirectAttributes) {
 		User user = (User) httpSession.getAttribute("user");
 		if (user == null) {
 			return "t_home";
@@ -100,6 +104,7 @@ public class MenuController {
 		Event e = null;
 		String customerCreatedMenuData = null;
 		String customerCreatedMenuComments = null;
+		com.cater.model.Menu customerCreatedMenuModel = null;
 		if (user.isGuest()) {
 			e = (Event) httpSession.getAttribute("event");
 			//If the guest user selects the browser's back button to see the menu
@@ -127,6 +132,7 @@ public class MenuController {
 					if (StringUtils.equalsIgnoreCase(cuisine,
 							menuModel.getCuisineType())) {
 						httpSession.setAttribute("menuId", menuModel.getId());
+						customerCreatedMenuModel = menuModel;
 						customerCreatedMenuData = menuModel.getData();
 						customerCreatedMenuComments = StringUtils
 								.defaultString(StringUtils.trim(menuModel
@@ -137,6 +143,10 @@ public class MenuController {
 			}
 		}
 		httpSession.setAttribute("eventName", e.getName());
+		if (customerCreatedMenuModel != null
+				&& customerCreatedMenuModel.isFullMenu()) {
+			return getFullMenuView(customerCreatedMenuModel, redirectAttributes);
+		}
 		Menu menu = null;
 		try {
 			File f = new File(MenuController.class.getResource(
@@ -269,6 +279,27 @@ public class MenuController {
 			return "menus/t__cateringMenu_middle_eastern";
 		}
 		return "menus/t__cateringMenu";
+	}
+
+	/**
+	 * Gets the full menu view.
+	 *
+	 * @param customerCreatedMenuModel the customer created menu model
+	 * @param redirectAttributes the redirect attributes
+	 * @return the full menu view
+	 */
+	private String getFullMenuView(
+			com.cater.model.Menu customerCreatedMenuModel,
+			RedirectAttributes redirectAttributes) {
+		//There will be only 1 quote for full menu flow
+		Restaurant r = customerCreatedMenuModel.getQuotes().get(0)
+				.getRestaurant();
+		redirectAttributes.addAttribute("rName", r.getName());
+		redirectAttributes.addAttribute("rId", r.getId());
+		redirectAttributes.addAttribute("rZip", r.getAddress().getZip());
+		redirectAttributes.addAttribute("menuId",
+				customerCreatedMenuModel.getId());
+		return "redirect:/menu/view/complete";
 	}
 
 	/**
@@ -588,7 +619,9 @@ public class MenuController {
 	public String viewCompleteMenu(HttpSession httpSession, ModelMap modelMap,
 			HttpServletRequest request,
 			@RequestParam("rName") String restaurantName,
-			@RequestParam("rZip") String restaurantZipCode) {
+			@RequestParam("rId") String restaurantId,
+			@RequestParam("rZip") String restaurantZipCode,
+			@RequestParam(value = "menuId", required = false) Integer menuId) {
 		User user = (User) httpSession.getAttribute("user");
 		if (user == null) {
 			return "t_home";
@@ -607,6 +640,26 @@ public class MenuController {
 			logger.error(ex);
 		}
 		httpSession.setAttribute("full_menu_flow", true);
+		httpSession.setAttribute("full_menu_flow_rname", restaurantName);
+		httpSession.setAttribute("full_menu_flow_rid", restaurantId);
+		//If the menu ID is present, the load the menu items
+		if (menuId != null) {
+			Map <String, String> items = Maps.newLinkedHashMap();
+			modelMap.put("items", items);
+			com.cater.model.Menu menuModel = customerService
+					.findMenuWithId(menuId);
+			List <String> previouslySelectedMenuItemCodes = Lists
+					.newArrayList(StringUtils.split(menuModel.getData(),
+							MENU_DELIMITER));
+			for (String item : previouslySelectedMenuItemCodes) {
+				if (StringUtils.isNotBlank(item)) {
+					String description = StringUtils.replace(
+							StringUtils.substringAfter(item, "+"), "+", " ");
+					String name = StringUtils.substringBefore(item, "+");
+					items.put(name, description);
+				}
+			}
+		}
 		return "menus/full/t_" + fileName;
 	}
 

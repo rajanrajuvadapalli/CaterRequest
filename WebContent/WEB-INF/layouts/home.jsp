@@ -31,6 +31,7 @@
 
 				<div class="search-box">
 					<div class="pull-left trans-bg">
+						<h3 style="color: #fff;">Find your local restaurant</h3>
 						<form method="GET"
 							action="${pageContext.request.contextPath}/customer/guestPage2"
 							enctype="application/x-www-form-urlencoded">
@@ -40,6 +41,7 @@
 						</form>
 					</div>
 					<div class="pull-right trans-bg">
+					<h3 style="color: #fff;">Request and Compare Quotes</h3>
 						<form method="GET"
 							action="${pageContext.request.contextPath}/customer/guestPage1"
 							enctype="application/x-www-form-urlencoded">
