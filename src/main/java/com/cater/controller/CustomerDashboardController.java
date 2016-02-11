@@ -567,7 +567,7 @@ public class CustomerDashboardController {
 	 *            the redirect attributes
 	 * @return the string
 	 */
-	@RequestMapping(value = { "event/requestQuote" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "event/requestQuote" })
 	public String requestQuote(
 			HttpSession httpSession,
 			ModelMap modelMap,
