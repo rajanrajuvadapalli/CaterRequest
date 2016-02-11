@@ -1,6 +1,6 @@
 var $ = jQuery.noConflict();
 var california_kabob_menu_items = [];
-function populateSarmaDolmeSelectedItems() {
+function populateFullMenuSarmaDolmeSelectedItems() {
 	var name = "Sarma Dolme";
 	// If an item is previously selected, remove if before adding the new one.
 	$('.slide').children().each(function() {
@@ -38,7 +38,7 @@ function populateSarmaDolmeSelectedItems() {
 	return false;
 }
 
-function populateLargeHummusSelectedItems() {
+function populateFullMenuLargeHummusSelectedItems() {
 	var name = "Large Hummus";
 	// If an item is previously selected, remove if before adding the new one.
 	$('.slide').children().each(function() {
@@ -76,7 +76,7 @@ function populateLargeHummusSelectedItems() {
 	return false;
 }
 
-function populateGreekSaladSelectedItems() {
+function populateFullMenuGreekSaladSelectedItems() {
 	var name = "Greek Salad";
 	// If an item is previously selected, remove if before adding the new one.
 	$('.slide').children().each(function() {
@@ -114,7 +114,7 @@ function populateGreekSaladSelectedItems() {
 	return false;
 }
 
-function populateBeefKabobSelectedItems() {
+function populateFullMenuBeefKabobSelectedItems() {
 	var name = "Beef Kabob";
 	// If an item is previously selected, remove if before adding the new one.
 	$('.slide').children().each(function() {
@@ -152,7 +152,7 @@ function populateBeefKabobSelectedItems() {
 	return false;
 }
 
-function populateGroundBeefKabobSelectedItems() {
+function populateFullMenuGroundBeefKabobSelectedItems() {
 	var name = "Ground Beef Kabob";
 	// If an item is previously selected, remove if before adding the new one.
 	$('.slide').children().each(function() {
@@ -190,7 +190,7 @@ function populateGroundBeefKabobSelectedItems() {
 	return false;
 }
 
-function populateChickenKabobSelectedItems() {
+function populateFullMenuChickenKabobSelectedItems() {
 	var name = "Chicken Kabob";
 	// If an item is previously selected, remove if before adding the new one.
 	$('.slide').children().each(function() {
@@ -228,7 +228,7 @@ function populateChickenKabobSelectedItems() {
 	return false;
 }
 
-function populateGroundChickenKabobSelectedItems() {
+function populateFullMenuGroundChickenKabobSelectedItems() {
 	var name = "Ground Chicken Kabob";
 	// If an item is previously selected, remove if before adding the new one.
 	$('.slide').children().each(function() {
@@ -266,7 +266,7 @@ function populateGroundChickenKabobSelectedItems() {
 	return false;
 }
 
-function populateLambKabobSelectedItems() {
+function populateFullMenuLambKabobSelectedItems() {
 	var name = "Lamb Kabob";
 	// If an item is previously selected, remove if before adding the new one.
 	$('.slide').children().each(function() {
@@ -304,7 +304,7 @@ function populateLambKabobSelectedItems() {
 	return false;
 }
 
-function populateGroundLambKabobSelectedItems() {
+function populateFullMenuGroundLambKabobSelectedItems() {
 	var name = "Ground Lamb Kabob";
 	// If an item is previously selected, remove if before adding the new one.
 	$('.slide').children().each(function() {

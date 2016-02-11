@@ -171,7 +171,7 @@
 <div id="popup_0_0"
 	class="mfp-hide white-popup-block fullMenuPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_0_0" class="form-horizontal"
-		onsubmit="return populateSarmaDolmeSelectedItems();">
+		onsubmit="return populateFullMenuSarmaDolmeSelectedItems();">
 		<h2>Sarma Dolme</h2>
 		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Count<span
@@ -202,7 +202,7 @@
 <div id="popup_0_1"
 	class="mfp-hide white-popup-block fullMenuPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_0_1" class="form-horizontal"
-		onsubmit="return populateLargeHummusSelectedItems();">
+		onsubmit="return populateFullMenuLargeHummusSelectedItems();">
 		<h2>Large Hummus</h2>
 		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Count<span
@@ -233,7 +233,7 @@
 <div id="popup_1_0"
 	class="mfp-hide white-popup-block fullMenuPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_1_0" class="form-horizontal"
-		onsubmit="return populateGreekSaladSelectedItems();">
+		onsubmit="return populateFullMenuGreekSaladSelectedItems();">
 		<h2>Greek Salad</h2>
 		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Count<span
@@ -264,7 +264,7 @@
 <div id="popup_2_0"
 	class="mfp-hide white-popup-block fullMenuPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_2_0" class="form-horizontal"
-		onsubmit="return populateBeefKabobSelectedItems();">
+		onsubmit="return populateFullMenuBeefKabobSelectedItems();">
 		<h2>Beef Kabob</h2>
 		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Count<span
@@ -295,7 +295,7 @@
 <div id="popup_2_1"
 	class="mfp-hide white-popup-block fullMenuPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_2_1" class="form-horizontal"
-		onsubmit="return populateGroundBeefKabobSelectedItems();">
+		onsubmit="return populateFullMenuGroundBeefKabobSelectedItems();">
 		<h2>Ground Beef Kabob</h2>
 		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Count<span
@@ -326,7 +326,7 @@
 <div id="popup_2_2"
 	class="mfp-hide white-popup-block fullMenuPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_2_2" class="form-horizontal"
-		onsubmit="return populateChickenKabobSelectedItems();">
+		onsubmit="return populateFullMenuChickenKabobSelectedItems();">
 		<h2>Chicken Kabob</h2>
 		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Count<span
@@ -357,7 +357,7 @@
 <div id="popup_2_3"
 	class="mfp-hide white-popup-block fullMenuPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_2_3" class="form-horizontal"
-		onsubmit="return populateGroundChickenKabobSelectedItems();">
+		onsubmit="return populateFullMenuGroundChickenKabobSelectedItems();">
 		<h2>Ground Chicken Kabob</h2>
 		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Count<span
@@ -388,7 +388,7 @@
 <div id="popup_2_4"
 	class="mfp-hide white-popup-block fullMenuPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_2_4" class="form-horizontal"
-		onsubmit="return populateLambKabobSelectedItems();">
+		onsubmit="return populateFullMenuLambKabobSelectedItems();">
 		<h2>Lamb Kabob</h2>
 		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Count<span
@@ -419,7 +419,7 @@
 <div id="popup_2_5"
 	class="mfp-hide white-popup-block fullMenuPopupOptions col-xs-6 col-sm-4 col-md-6">
 	<form id="popup_2_5" class="form-horizontal"
-		onsubmit="return populateGroundLambKabobSelectedItems();">
+		onsubmit="return populateFullMenuGroundLambKabobSelectedItems();">
 		<h2>Ground Lamb Kabob</h2>
 		<div class="form-group">
 			<label for="" class="col-sm-4 control-label">Count<span
