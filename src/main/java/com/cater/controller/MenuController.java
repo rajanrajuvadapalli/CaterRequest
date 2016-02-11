@@ -461,7 +461,7 @@ public class MenuController {
 			}
 			else {
 				Set <Restaurant> restaurants = restaurantService
-						.fetchRestaurantsOfType(cuisine);
+						.fetchRestaurantsOfTypePrimary(cuisine);
 				customerService.saveOrUpdateMenu(menuModel);
 				menuId = menuModel.getId();
 				httpSession.setAttribute("menuId", menuId);

@@ -151,7 +151,7 @@ public class LoginController {
 					String cuisine = (String) httpSession
 							.getAttribute("cuisineType");
 					Set <Restaurant> restaurants = restaurantService
-							.fetchRestaurantsOfType(cuisine);
+							.fetchRestaurantsOfTypePrimary(cuisine);
 					List <RestaurantDTO> nearByRestaurants = restaurantService
 							.getNearbyYelpReviews(e.getLocation(), restaurants);
 					if (CollectionUtils.isNotEmpty(nearByRestaurants)) {

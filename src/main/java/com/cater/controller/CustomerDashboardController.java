@@ -280,7 +280,7 @@ public class CustomerDashboardController {
 				Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
 				modelMap.put("prevR", previouslySelectedRestaurants);
 				Set <Restaurant> restaurants = restaurantService
-						.fetchRestaurantsOfType(cuisineType);
+						.fetchRestaurantsOfTypePrimary(cuisineType);
 				List <RestaurantDTO> nearByRestaurants = restaurantService
 						.getNearbyYelpReviews(eventLocation, restaurants);
 				if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
