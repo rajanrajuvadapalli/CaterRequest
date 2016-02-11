@@ -69,6 +69,7 @@
 			<div class="">
 				<!--Content-->
 				<div class="">
+					<h2>California Kabob Restaurant</h2>
 					<h3>Click on the items below to build your items.</h3>
 					<!--Listing Grid-->
 					<section class="block equal-height col-md-6 col-xs-12">
@@ -150,16 +151,8 @@
 										<figure class="note butnote">ONCE THE DESIRED MENU IS
 											SELECTED, CLICK ON THE BUTTON BELOW TO SUBMIT YOUR REQUEST
 										</figure>
-										<c:choose>
-											<c:when test="${sessionScope.user.isGuest()}">
-												<button type="button" onclick="california_kabob_menu_submit();"
+										<button type="button" onclick="california_kabob_menu_submit();"
 													class="btn btn-default">Next</button>
-											</c:when>
-											<c:otherwise>
-												<button type="button" onclick="california_kabob_menu_submit();"
-													class="btn btn-default">Select Restaurants</button>
-											</c:otherwise>
-										</c:choose>
 									</form>
 								</div>
 

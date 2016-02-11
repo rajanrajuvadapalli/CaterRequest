@@ -56,7 +56,7 @@
 <div class="col-sm-10 col-sm-offset-1">
 	<form class="form-horizontal" method="POST" id="event-form"
 		action="${pageContext.request.contextPath}/customer/createEvent"
-		enctype="application/x-www-form-urlencoded" autocomplete="off"
+		enctype="application/x-www-form-urlencoded"
 		onsubmit="return validateEventForm();">
 		
 		<div class="panel panel-info">

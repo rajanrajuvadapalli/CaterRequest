@@ -127,24 +127,14 @@ public class LoginController {
 			//If a guest user created an account after creating an event, save the data first.
 			User user = (User) httpSession.getAttribute("user");
 			Event e = null;
+			Object fmf = httpSession.getAttribute("full_menu_flow");
 			boolean guestLogin = false;
 			if (user != null && user.isGuest()) {
 				guestLogin = true;
 				Customer c = guestHelper.saveDataForGuest(modelMap,
 						httpSession, login, user);
-				Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
-				modelMap.put("prevR", previouslySelectedRestaurants);
-				user.setName(c.getName());
-				String cuisine = (String) httpSession
-						.getAttribute("cuisineType");
-				Set <Restaurant> restaurants = restaurantService
-						.fetchRestaurantsOfType(cuisine);
 				e = (Event) httpSession.getAttribute("event");
-				List <RestaurantDTO> nearByRestaurants = restaurantService
-						.getNearbyYelpReviews(e.getLocation(), restaurants);
-				if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
-					modelMap.put("restaurants", nearByRestaurants);
-				}
+				user.setName(c.getName());
 				Object userFromDatabase = personalSettingsService
 						.getUserWithLoginID(login.getId(), user.getRole());
 				if (userFromDatabase != null
@@ -153,6 +143,20 @@ public class LoginController {
 					user.setCustomer(customer);
 					user.setCustomerID(customer.getId());
 					user.setGuest(false);
+				}
+				if (fmf == null || Boolean.FALSE.equals((Boolean) fmf)) {
+					Set <Integer> previouslySelectedRestaurants = Sets
+							.newHashSet();
+					modelMap.put("prevR", previouslySelectedRestaurants);
+					String cuisine = (String) httpSession
+							.getAttribute("cuisineType");
+					Set <Restaurant> restaurants = restaurantService
+							.fetchRestaurantsOfType(cuisine);
+					List <RestaurantDTO> nearByRestaurants = restaurantService
+							.getNearbyYelpReviews(e.getLocation(), restaurants);
+					if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
+						modelMap.put("restaurants", nearByRestaurants);
+					}
 				}
 			}
 			else {
@@ -163,7 +167,6 @@ public class LoginController {
 			user.setUsername(username);
 			Roles role = Roles.get(login.getRole());
 			user.setRole(role);
-			Object fmf = httpSession.getAttribute("full_menu_flow");
 			if (guestLogin) {
 				if (fmf != null && Boolean.TRUE.equals((Boolean) fmf)) {
 					redirectAttributes.addAttribute("eventId", e.getId());

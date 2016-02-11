@@ -338,6 +338,7 @@ public class MenuController {
 			HttpSession httpSession,
 			ModelMap modelMap,
 			HttpServletRequest request,
+			RedirectAttributes redirectAttributes,
 			@RequestParam(value = "menu_item_codes", required = false) String itemCodesJson,
 			@RequestParam(value = "pizza_menu_items", required = false) String pizzaItemsJson,
 			@RequestParam(value = "mexican_menu_items", required = false) String mexicanItemsJson,
@@ -353,6 +354,8 @@ public class MenuController {
 		}
 		String eventId = (String) httpSession.getAttribute("eventId");
 		modelMap.put("cuisineType", cuisine);
+		Boolean fmf = (Boolean) httpSession.getAttribute("full_menu_flow");
+		Integer rId = null;
 		try {
 			StringBuilder stringBuilder = new StringBuilder();
 			if (itemCodesJson != null) {
@@ -452,18 +455,13 @@ public class MenuController {
 			if (user.isGuest()) {
 				httpSession.setAttribute("menuId", 1);
 				menuModel.setId(1);
+				if (Boolean.TRUE.equals(fmf)) {
+					menuModel.setFullMenu(true);
+				}
 			}
 			else {
-				com.cater.model.Address eventLocation = e.getLocation();
-				modelMap.put("eventLocation", eventLocation);
 				Set <Restaurant> restaurants = restaurantService
 						.fetchRestaurantsOfType(cuisine);
-				//modelMap.put("restaurants", restaurants);
-				List <RestaurantDTO> nearByRestaurants = restaurantService
-						.getNearbyYelpReviews(eventLocation, restaurants);
-				if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
-					modelMap.put("restaurants", nearByRestaurants);
-				}
 				customerService.saveOrUpdateMenu(menuModel);
 				menuId = menuModel.getId();
 				httpSession.setAttribute("menuId", menuId);
@@ -471,6 +469,7 @@ public class MenuController {
 					Quote quote = restaurantService
 							.findQuoteWithRestaurantIdAndMenuId(r.getId(),
 									menuId);
+					rId = r.getId();
 					if (quote != null) {
 						previouslySelectedRestaurants.add(r.getId());
 						if (isMenuChanged) {
@@ -480,6 +479,16 @@ public class MenuController {
 					}
 				}
 				modelMap.put("prevR", previouslySelectedRestaurants);
+				if (Boolean.FALSE.equals(fmf)) {
+					com.cater.model.Address eventLocation = e.getLocation();
+					modelMap.put("eventLocation", eventLocation);
+					//modelMap.put("restaurants", restaurants);
+					List <RestaurantDTO> nearByRestaurants = restaurantService
+							.getNearbyYelpReviews(eventLocation, restaurants);
+					if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
+						modelMap.put("restaurants", nearByRestaurants);
+					}
+				}
 			}
 			httpSession.setAttribute("menu", menuModel);
 			httpSession.setAttribute("cuisineType", cuisine);
@@ -493,6 +502,10 @@ public class MenuController {
 		if (user.isGuest()) {
 			//Send the user to create event page
 			return "customer/t_createEvent";
+		}
+		else if (Boolean.TRUE.equals(fmf)) {
+			redirectAttributes.addAttribute("rId", rId);
+			return "redirect:/customer/event/requestQuote";
 		}
 		return "menus/t__cateringRestaurants";
 	}
@@ -641,7 +654,8 @@ public class MenuController {
 		}
 		httpSession.setAttribute("full_menu_flow", true);
 		httpSession.setAttribute("full_menu_flow_rname", restaurantName);
-		httpSession.setAttribute("full_menu_flow_rid", restaurantId);
+		httpSession.setAttribute("full_menu_flow_rid",
+				Helper.stringToInt(restaurantId));
 		//If the menu ID is present, the load the menu items
 		if (menuId != null) {
 			Map <String, String> items = Maps.newLinkedHashMap();
@@ -672,9 +686,9 @@ public class MenuController {
 	private Map <String, List <Quote>> groupQuotesPerCuisine(List <Quote> quotes) {
 		Map <String, List <Quote>> groupedQuotes = Maps.newTreeMap();
 		for (Quote q : quotes) {
-			Restaurant r = q.getRestaurant();
-			if (r != null) {
-				String cuisine = r.getCuisineType();
+			com.cater.model.Menu m = q.getMenu();
+			if (m != null) {
+				String cuisine = m.getCuisineType();
 				List <Quote> q2 = groupedQuotes.get(cuisine);
 				if (q2 == null) {
 					q2 = Lists.newArrayList();
