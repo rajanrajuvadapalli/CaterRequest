@@ -72,7 +72,6 @@
 								</form>
 							</div>
 						</div>
-						<br />
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
