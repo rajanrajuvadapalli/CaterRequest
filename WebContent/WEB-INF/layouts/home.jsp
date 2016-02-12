@@ -28,30 +28,33 @@
 				<div class="container">
 					<h1>Restaurants compete and bid to win your business</h1>
 				</div>
-				<div class="search-box">
-					<div class="pull-left trans-bg">
-						<h3 style="color: #fff;">Find your local restaurant</h3>
-						<form method="GET"
-							action="${pageContext.request.contextPath}/customer/guestPage2"
-							enctype="application/x-www-form-urlencoded">
-							<input id="zip" name="zip" placeholder="Enter delivery zip"
-								type="text" required="required" /> <br />
-							<button type="submit" class="btn btn-default">Search</button>
-						</form>
+				<c:if
+					test="${sessionScope.user==null || sessionScope.user.isGuest()}">
+					<div class="search-box">
+						<div class="pull-left trans-bg">
+							<h3 style="color: #fff;">Find your local restaurant</h3>
+							<form method="GET"
+								action="${pageContext.request.contextPath}/customer/guestPage2"
+								enctype="application/x-www-form-urlencoded">
+								<input id="zip" name="zip" placeholder="Enter delivery zip"
+									type="text" required="required" /> <br />
+								<button type="submit" class="btn btn-default">Search</button>
+							</form>
+						</div>
+						<div class="pull-right trans-bg">
+							<h3 style="color: #fff;">Request and Compare Quotes</h3>
+							<form method="GET"
+								action="${pageContext.request.contextPath}/customer/guestPage1"
+								enctype="application/x-www-form-urlencoded">
+								<input id="zip" name="zip" placeholder="Enter event zip"
+									type="text" required="required" /><span id="cuisineType"></span>
+								<br />
+								<button type="submit" class="btn btn-default">Let's go!</button>
+							</form>
+						</div>
+						<div class="clr"></div>
 					</div>
-					<div class="pull-right trans-bg">
-					<h3 style="color: #fff;">Request and Compare Quotes</h3>
-						<form method="GET"
-							action="${pageContext.request.contextPath}/customer/guestPage1"
-							enctype="application/x-www-form-urlencoded">
-							<input id="zip" name="zip" placeholder="Enter event zip"
-								type="text" required="required" /><span id="cuisineType"></span>
-							<br />
-							<button type="submit" class="btn btn-default">Let's go!</button>
-						</form>
-					</div>
-					<div class="clr"></div>
-				</div>
+				</c:if>
 			</div>
 			<div class="background"></div>
 		</section>
