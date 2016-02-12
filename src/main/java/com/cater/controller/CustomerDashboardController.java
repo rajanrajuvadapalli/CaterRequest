@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.cater.Environment;
 import com.cater.Helper;
 import com.cater.constants.EventStatus;
 import com.cater.constants.QuoteStatus;
@@ -821,6 +822,7 @@ public class CustomerDashboardController {
 	@RequestMapping(value = { "guestPage2" }, method = RequestMethod.GET)
 	public String guestPage2(HttpSession httpSession, ModelMap modelMap,
 			HttpServletRequest request, RedirectAttributes redirectAttributes) {
+		httpSession.setAttribute("env", Environment.getInstance());
 		guestFlow(modelMap, httpSession, request, redirectAttributes);
 		String zip = request.getParameter("zip");
 		redirectAttributes.addAttribute("zip", zip);
