@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.cater.Environment;
 import com.cater.Helper;
 import com.cater.maps.MapsHelper;
 import com.cater.maps.RestaurantDTO;
@@ -61,6 +62,7 @@ public class SearchController {
 			@RequestParam(value = "zip", required = true) String zip,
 			@RequestParam(value = "cuisineType", required = false) String cuisineType)
 			throws Exception {
+		session.setAttribute("env", Environment.getInstance());
 		if (StringUtils.isNotBlank(zip)) {
 			modelMap.put("eventZip", zip);
 			Collection <Restaurant> restaurants = null;
