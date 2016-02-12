@@ -260,7 +260,7 @@ public class RegistrationController {
 	 * @return the string
 	 */
 	@RequestMapping(value = { "confirmation" })
-	public String confirmRegistration(
+	public String registrationConfirmation(
 			ModelMap modelMap,
 			HttpServletRequest request,
 			HttpSession httpSession,
@@ -294,6 +294,12 @@ public class RegistrationController {
 			fmf = "fullmenuflow".equalsIgnoreCase(tokens[6]);
 			httpSession.setAttribute("full_menu_flow", true);
 		}
+		User user = new User();
+		user.setLoginID(login.getId());
+		user.setUsername(username);
+		Roles role = Roles.get(login.getRole());
+		user.setRole(role);
+		httpSession.setAttribute("user", user);
 		if (wasGuest && fmf) {
 			//If guest clicked the confirmation link created from full menu flow, take them directly to the event page.
 			Customer customer = customerService.findCustomerWithLoginId(login
@@ -322,12 +328,6 @@ public class RegistrationController {
 			modelMap.put("eventLocation", menu.getEvent().getLocation());
 			Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();
 			modelMap.put("prevR", previouslySelectedRestaurants);
-			User user = new User();
-			user.setLoginID(login.getId());
-			user.setUsername(username);
-			Roles role = Roles.get(login.getRole());
-			user.setRole(role);
-			httpSession.setAttribute("user", user);
 			return "menus/t__cateringRestaurants";
 		}
 		//If the account is already active, display warning message.
