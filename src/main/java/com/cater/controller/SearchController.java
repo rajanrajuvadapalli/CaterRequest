@@ -113,6 +113,8 @@ public class SearchController {
 										.toString()));
 						restaurantDTO
 								.setReviewImage(yelpReviews.get("ratings"));
+						restaurantDTO.setWebsiteUrl(yelpReviews
+								.get("websiteUrl"));
 						logger.debug(String.format(
 								"Restaurant %s has %s yelp ratings.",
 								restaurantDTO.getRestaurant().getName(),

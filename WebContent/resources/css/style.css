@@ -103,6 +103,27 @@
 	height: 100%;
 }
 
+.search-cuisine-filter {
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	padding: 15px;
+	margin-bottom: 20px;
+	background: #f9f9f9;
+}
+
+.search-restaurant-div {
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	padding: 15px;
+	margin-bottom: 10px;
+	/* background: #f9f9f9; */
+	box-shadow: 6px 6px 5px #888888;
+}
+
 .my-mfp-zoom-in .zoom-anim-dialog {
 	opacity: 0;
 	-webkit-transition: all 0.2s ease-in-out;

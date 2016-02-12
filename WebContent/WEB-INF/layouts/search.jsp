@@ -17,13 +17,10 @@
 <div class="container container-fluid">
 	<div class="row">
 		<div class="col-sm-3">
-			<div class="panel panel-warning">
-				<div class="panel-heading">
-					<h3 class="panel-title">Cuisines Filter</h3>
-				</div>
-				<div class="panel-body">
-					<span id="cuisineType_sec"></span>
-				</div>
+			<div class="search-cuisine-filter">
+				<span
+					style="font-weight: bold; margin-bottom: 20px; font-size: 16px;">Cuisines
+					Filter</span> <br /> <span id="cuisineType_sec"></span>
 			</div>
 		</div>
 		<div class="col-sm-9">
@@ -33,27 +30,35 @@
 				</c:when>
 				<c:otherwise>
 					<c:forEach items="${restaurants}" var="r">
-						<div id="search-rest" class="row"
-							style="border-width: 1px; border-style: solid; width: 600px; box-shadow: 10px 10px 5px #888888; padding: 0px 10px">
+						<div id="search-rest" class="row search-restaurant-div">
 							<input type="hidden" id="rest-cuisines"
 								value="${r.restaurant.cuisineType}" />
-							<div class="col-sm-2">
+							<div class="col-sm-3" style="padding-top: 10px;">
 								<c:if test="${sessionScope.env.isProd()}">
-									<img width="120px"
+									<img width="200px"
 										src="https://s3-us-west-2.amazonaws.com/caterrequest-restaurant-profile-pics/Restaurant_${r.restaurant.id}"
-										alt="">
+										alt="" style="border-radius: 10px;">
 								</c:if>
 								<c:if test="${sessionScope.env.isUat()}">
-									<img width="120px"
+									<img width="200px"
 										src="https://s3-us-west-2.amazonaws.com/rajrv-caterrequest-profile-pics/Restaurant_${r.restaurant.id}"
-										alt="">
+										alt="" style="border-radius: 10px;">
 								</c:if>
 							</div>
 							<div class="col-sm-8">
-								<h3>${r.restaurant.name}&nbsp;(${r.distance})</h3>
-								<img src="${r.reviewImage}" width="100" height="20">-
-								${r.numberOfReviews}
-								<c:out value="reviews" />
+								<span style="font-size: 21px; color: #08c; padding-bottom: 2px;">${r.restaurant.name}&nbsp;(${r.distance})</span>
+								<br />
+								<c:choose>
+									<c:when test="${r.reviewImage != null}">
+										<a onclick="window.open ('${r.websiteUrl}', ''); return false"
+											href="javascript:void(0);"> <img src="${r.reviewImage}"
+											width="100" height="20">&nbsp;&nbsp;${r.numberOfReviews}
+											<c:out value="reviews" /></a>
+									</c:when>
+									<c:otherwise>
+										<i>Reviews not available</i>
+									</c:otherwise>
+								</c:choose>
 								<br /> <br />
 								${r.restaurant.address.street1}${r.restaurant.address.street2},${r.restaurant.address.city},${r.restaurant.address.state},${r.restaurant.address.zip}<br />
 								<br />
