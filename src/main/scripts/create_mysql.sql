@@ -85,6 +85,7 @@ CREATE TABLE cater4party.Menu
 	,`data` VARCHAR(10000)  NULL 
 	,`event_sk` INT NOT NULL 
 	,`cuisine_type` VARCHAR(20) NOT NULL
+	,`full_menu` BIT NOT NULL
 	,`comments` VARCHAR(1000) NULL
 	,`create_ts` DATETIME NOT NULL 
 	,`lupd_ts` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
@@ -107,3 +108,10 @@ CREATE TABLE cater4party.Quote
 ALTER TABLE cater4party.Quote ADD FOREIGN KEY (menu_sk) REFERENCES cater4party.Menu(id);
 -- Create Foreign Key: Quote.restaurant_sk -> Restaurant.id
 ALTER TABLE cater4party.Quote ADD FOREIGN KEY (restaurant_sk) REFERENCES cater4party.Restaurant(id);
+
+------------------------
+alter table cater4party.Restaurant
+modify `cuisine_type` VARCHAR(200) not null;
+
+alter table cater4party.Menu
+add `full_menu` BIT NOT NULL DEFAULT 0;

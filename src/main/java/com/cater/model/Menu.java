@@ -36,6 +36,8 @@ public class Menu extends TimestampEntity implements Serializable {
 	private Event event;
 	@Column(name = "cuisine_type", length = 20, nullable = false)
 	private String cuisineType;
+	@Column(name = "full_menu", nullable = false, unique = false, updatable = true)
+	private boolean isFullMenu;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "menu_sk")
 	@OrderBy("price ASC")
@@ -81,6 +83,14 @@ public class Menu extends TimestampEntity implements Serializable {
 		this.cuisineType = cuisineType;
 	}
 
+	public boolean isFullMenu() {
+		return isFullMenu;
+	}
+
+	public void setFullMenu(boolean isFullMenu) {
+		this.isFullMenu = isFullMenu;
+	}
+
 	public List <Quote> getQuotes() {
 		return quotes;
 	}
@@ -107,6 +117,7 @@ public class Menu extends TimestampEntity implements Serializable {
 		result = prime * result + ((data == null) ? 0 : data.hashCode());
 		result = prime * result + ((event == null) ? 0 : event.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + (isFullMenu ? 1231 : 1237);
 		return result;
 	}
 
@@ -148,6 +159,8 @@ public class Menu extends TimestampEntity implements Serializable {
 				return false;
 		}
 		else if (!id.equals(other.id))
+			return false;
+		if (isFullMenu != other.isFullMenu)
 			return false;
 		return true;
 	}

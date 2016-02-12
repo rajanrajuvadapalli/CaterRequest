@@ -98,8 +98,3 @@
 </div>
 <!-- end Navigation-->
 
-<script>
-	$('document').ready(function() {
-		populateCuisineTypes();
-	});
-</script>

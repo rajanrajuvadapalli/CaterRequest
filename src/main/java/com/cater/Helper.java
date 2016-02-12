@@ -118,4 +118,18 @@ public final class Helper {
 		}
 		return NumberFormat.getCurrencyInstance(Locale.US).format(amount);
 	}
+
+	public static String getCuisineType(String primaryCuisine,
+			String[] secondaryCuisineTypes) {
+		if (secondaryCuisineTypes != null) {
+			StringBuilder builder = new StringBuilder(primaryCuisine);
+			for (String s : secondaryCuisineTypes) {
+				builder.append(",").append(s);
+			}
+			return builder.toString();
+		}
+		else {
+			return primaryCuisine;
+		}
+	}
 }

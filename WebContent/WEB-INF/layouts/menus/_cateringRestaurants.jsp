@@ -118,10 +118,8 @@
 			placeholder="Email address" required autofocus> <label
 			for="inputPassword" class="sr-only">Password</label> <input
 			type="password" name="pwd" id="pwd" class="form-control"
-			placeholder="Password" required="required"> <span
-			class="input-group-btn">
+			placeholder="Password" required="required"><br/>
 			<button type="submit" class="btn btn-default">Sign in</button>
-		</span>
 	</form>
 </div>
 

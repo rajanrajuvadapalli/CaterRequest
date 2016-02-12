@@ -26,6 +26,7 @@ import com.cater.model.RestaurantSearch;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
+// TODO: Auto-generated Javadoc
 /**
  * Description:.
  *
@@ -234,6 +235,32 @@ public class RestaurantDAO extends DataAccessObject {
 	}
 
 	/**
+	 * Fetch all restaurants with no primary cuisine.
+	 *
+	 * @return the sets the
+	 */
+	@SuppressWarnings("unchecked")
+	public Set <Restaurant> fetchAllRestaurantsWithNoPrimaryCuisine() {
+		logger.debug("Finding all restaurants with no primary cuisine.");
+		try {
+			Session session = getSessionFactory().getCurrentSession();
+			List <Restaurant> list = session
+					.createCriteria(Restaurant.class, "res")
+					.add(Restrictions.ilike("res.cuisineType", ",%"))
+					.add(Restrictions.eq("res.isNumberVerified", true)).list();
+			Set <Restaurant> restaurants = Sets.newHashSet();
+			for (Restaurant r : list) {
+				restaurants.add(r);
+			}
+			return restaurants;
+		}
+		catch (HibernateException he) {
+			logger.error("Finding all restaurants with no primary cuisine.", he);
+			throw he;
+		}
+	}
+
+	/**
 	 * Fetch restaurants of type.
 	 *
 	 * @param cuisine the cuisine
@@ -247,7 +274,8 @@ public class RestaurantDAO extends DataAccessObject {
 				Session session = getSessionFactory().getCurrentSession();
 				List <Restaurant> list = session
 						.createCriteria(Restaurant.class, "res")
-						.add(Restrictions.eq("res.cuisineType", cuisine))
+						.add(Restrictions.ilike("res.cuisineType", "%"
+								+ cuisine + "%"))
 						.add(Restrictions.eq("res.isNumberVerified", true))
 						.list();
 				Set <Restaurant> restaurants = Sets.newHashSet();
@@ -258,6 +286,72 @@ public class RestaurantDAO extends DataAccessObject {
 			}
 			catch (HibernateException he) {
 				logger.error("Finding Restaurants of type : " + cuisine, he);
+				throw he;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Fetch restaurants of type primary.
+	 *
+	 * @param cuisine the cuisine
+	 * @return the sets the
+	 */
+	@SuppressWarnings("unchecked")
+	public Set <Restaurant> fetchRestaurantsOfTypePrimary(String cuisine) {
+		logger.debug("Finding Restaurants with primary cuisine : " + cuisine);
+		if (StringUtils.isNotBlank(cuisine)) {
+			try {
+				Session session = getSessionFactory().getCurrentSession();
+				List <Restaurant> list = session
+						.createCriteria(Restaurant.class, "res")
+						.add(Restrictions.ilike("res.cuisineType", cuisine
+								+ "%"))
+						.add(Restrictions.eq("res.isNumberVerified", true))
+						.list();
+				Set <Restaurant> restaurants = Sets.newHashSet();
+				for (Restaurant r : list) {
+					restaurants.add(r);
+				}
+				return restaurants;
+			}
+			catch (HibernateException he) {
+				logger.error("Finding Restaurants with primary cuisine : "
+						+ cuisine, he);
+				throw he;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Fetch restaurants of type secondary.
+	 *
+	 * @param cuisine the cuisine
+	 * @return the sets the
+	 */
+	@SuppressWarnings("unchecked")
+	public Set <Restaurant> fetchRestaurantsOfTypeSecondary(String cuisine) {
+		logger.debug("Finding Restaurants with secondary cuisine : " + cuisine);
+		if (StringUtils.isNotBlank(cuisine)) {
+			try {
+				Session session = getSessionFactory().getCurrentSession();
+				List <Restaurant> list = session
+						.createCriteria(Restaurant.class, "res")
+						.add(Restrictions.ilike("res.cuisineType", "%,"
+								+ cuisine + "%"))
+						.add(Restrictions.eq("res.isNumberVerified", true))
+						.list();
+				Set <Restaurant> restaurants = Sets.newHashSet();
+				for (Restaurant r : list) {
+					restaurants.add(r);
+				}
+				return restaurants;
+			}
+			catch (HibernateException he) {
+				logger.error("Finding Restaurants with secondary cuisine : "
+						+ cuisine, he);
 				throw he;
 			}
 		}

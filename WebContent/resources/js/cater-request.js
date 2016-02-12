@@ -15,32 +15,18 @@ $('document').ready(function() {
 		fixedContentPos : false,
 		fixedBgPos : true,
 		overflowY : 'auto',
-		// closeBtnInside : true,
-		// showCloseBtn: false,
-		// enableEscapeKey: false,
 		modal : true,
 		midClick : true,
 		preloader : false,
 		removalDelay : 300,
 		mainClass : 'my-mfp-zoom-in'
 	});
-	/*
-	 * $(document).on('click', '.popup-modal-dismiss', function() {
-	 * $.magnificPopup.close(); });
-	 */
-	/*
-	 * $("a[id=put-pizza-title]").click( function() { var pizzaTitle =
-	 * $(this).find("span[class=name]") .text();
-	 * $("span[id=pizza-popup-title]").replaceWith( "<span
-	 * id=\"pizza-popup-title\"><h2>" + pizzaTitle + "</h2></span>");
-	 * $("input[id=pizzaName]").val(pizzaTitle); });
-	 */
 });
 
-function populateCuisineTypes() {
+function populateCuisineTypesDrowpdown() {
 	$("span[id=cuisineType]")
 			.replaceWith(
-					"<select class=\"form-control inputs\" name=\"cuisineType\" id=\"cuisineType\" required=\"required\">"
+					"<select class=\"form-control inputs\" name=\"cuisineType\" id=\"cuisineType\">"
 							+ " <option value=\"\" disabled selected>Select Cuisine Type</option> "
 							+ "	<option value=\"INDIAN_SOUTH\">	INDIAN (SOUTH) </option>"
 							+ "	<option value=\"INDIAN_NORTH\">	INDIAN (NORTH) </option>"
@@ -50,6 +36,18 @@ function populateCuisineTypes() {
 							+ " <option value=\"SANDWICH\"> SANDWICH </option> "
 							+ " <option value=\"MIDDLE_EASTERN\"> MIDDLE EASTERN </option> "
 							+ "</select>");
+}
+
+function populateCuisineTypesCheckbox() {
+	$("span[id=cuisineType_sec]")
+			.replaceWith(
+					"<input type=\"checkbox\" name=\"cuisineType_sec\" value=\"INDIAN_SOUTH\"> INDIAN (SOUTH) <br />"
+							+ "<input type=\"checkbox\" name=\"cuisineType_sec\" value=\"INDIAN_NORTH\"> INDIAN (NORTH) <br />"
+							+ "<input type=\"checkbox\" name=\"cuisineType_sec\" value=\"PIZZA\"> PIZZA <br />"
+							+ "<input type=\"checkbox\" name=\"cuisineType_sec\" value=\"MEXICAN\"> MEXICAN <br />"
+							+ "<input type=\"checkbox\" name=\"cuisineType_sec\" value=\"THAI\"> THAI <br />"
+							+ "<input type=\"checkbox\" name=\"cuisineType_sec\" value=\"SANDWICH\"> SANDWICH <br />"
+							+ "<input type=\"checkbox\" name=\"cuisineType_sec\" value=\"MIDDLE_EASTERN\"> MIDDLE EASTERN <br />");
 }
 
 function populateHearAboutUs() {

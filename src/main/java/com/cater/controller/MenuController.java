@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cater.Helper;
 import com.cater.dao.MenuDAO;
@@ -54,7 +55,6 @@ import com.google.common.collect.Sets;
 public class MenuController {
 	/** The Constant logger. */
 	private static final Logger logger = Logger.getLogger(MenuController.class);
-
 	/** The customer service. */
 	@Autowired
 	private CustomerService customerService;
@@ -88,9 +88,12 @@ public class MenuController {
 	 * @return the string
 	 */
 	@RequestMapping(value = { "selectMenu" }, method = RequestMethod.GET)
-	public String selectMenuForm(HttpSession httpSession, ModelMap modelMap,
+	public String selectMenuForm(
+			HttpSession httpSession,
+			ModelMap modelMap,
 			HttpServletRequest request,
-			@RequestParam(value = "cuisineType", required = true) String cuisine) {
+			@RequestParam(value = "cuisineType", required = true) String cuisine,
+			RedirectAttributes redirectAttributes) {
 		User user = (User) httpSession.getAttribute("user");
 		if (user == null) {
 			return "t_home";
@@ -101,6 +104,7 @@ public class MenuController {
 		Event e = null;
 		String customerCreatedMenuData = null;
 		String customerCreatedMenuComments = null;
+		com.cater.model.Menu customerCreatedMenuModel = null;
 		if (user.isGuest()) {
 			e = (Event) httpSession.getAttribute("event");
 			//If the guest user selects the browser's back button to see the menu
@@ -128,6 +132,7 @@ public class MenuController {
 					if (StringUtils.equalsIgnoreCase(cuisine,
 							menuModel.getCuisineType())) {
 						httpSession.setAttribute("menuId", menuModel.getId());
+						customerCreatedMenuModel = menuModel;
 						customerCreatedMenuData = menuModel.getData();
 						customerCreatedMenuComments = StringUtils
 								.defaultString(StringUtils.trim(menuModel
@@ -138,6 +143,10 @@ public class MenuController {
 			}
 		}
 		httpSession.setAttribute("eventName", e.getName());
+		if (customerCreatedMenuModel != null
+				&& customerCreatedMenuModel.isFullMenu()) {
+			return getFullMenuView(customerCreatedMenuModel, redirectAttributes);
+		}
 		Menu menu = null;
 		try {
 			File f = new File(MenuController.class.getResource(
@@ -273,6 +282,27 @@ public class MenuController {
 	}
 
 	/**
+	 * Gets the full menu view.
+	 *
+	 * @param customerCreatedMenuModel the customer created menu model
+	 * @param redirectAttributes the redirect attributes
+	 * @return the full menu view
+	 */
+	private String getFullMenuView(
+			com.cater.model.Menu customerCreatedMenuModel,
+			RedirectAttributes redirectAttributes) {
+		//There will be only 1 quote for full menu flow
+		Restaurant r = customerCreatedMenuModel.getQuotes().get(0)
+				.getRestaurant();
+		redirectAttributes.addAttribute("rName", r.getName());
+		redirectAttributes.addAttribute("rId", r.getId());
+		redirectAttributes.addAttribute("rZip", r.getAddress().getZip());
+		redirectAttributes.addAttribute("menuId",
+				customerCreatedMenuModel.getId());
+		return "redirect:/menu/view/complete";
+	}
+
+	/**
 	 * Gets the categories list.
 	 *
 	 * @param menu the menu
@@ -308,12 +338,14 @@ public class MenuController {
 			HttpSession httpSession,
 			ModelMap modelMap,
 			HttpServletRequest request,
+			RedirectAttributes redirectAttributes,
 			@RequestParam(value = "menu_item_codes", required = false) String itemCodesJson,
 			@RequestParam(value = "pizza_menu_items", required = false) String pizzaItemsJson,
 			@RequestParam(value = "mexican_menu_items", required = false) String mexicanItemsJson,
 			@RequestParam(value = "thai_menu_items", required = false) String thaiItemsJson,
 			@RequestParam(value = "sandwich_menu_items", required = false) String sandwichItemsJson,
 			@RequestParam(value = "middle_eastern_menu_items", required = false) String middleEasternItemsJson,
+			@RequestParam(value = "full_menu_items", required = false) String fullmenuItemsJson,
 			@RequestParam(value = "cuisineType", required = true) String cuisine,
 			@RequestParam(value = "comments") String comments) {
 		User user = (User) httpSession.getAttribute("user");
@@ -322,6 +354,8 @@ public class MenuController {
 		}
 		String eventId = (String) httpSession.getAttribute("eventId");
 		modelMap.put("cuisineType", cuisine);
+		Boolean fmf = (Boolean) httpSession.getAttribute("full_menu_flow");
+		Integer rId = null;
 		try {
 			StringBuilder stringBuilder = new StringBuilder();
 			if (itemCodesJson != null) {
@@ -379,6 +413,15 @@ public class MenuController {
 							MENU_DELIMITER);
 				}
 			}
+			else if (fullmenuItemsJson != null) {
+				List <String> items = new ObjectMapper().readValue(
+						fullmenuItemsJson, new TypeReference <List <String>>() {
+						});
+				for (String selectedItemCode : items) {
+					stringBuilder.append(selectedItemCode).append(
+							MENU_DELIMITER);
+				}
+			}
 			String newData = stringBuilder.toString();
 			Event e = null;
 			if (user.isGuest()) {
@@ -412,18 +455,13 @@ public class MenuController {
 			if (user.isGuest()) {
 				httpSession.setAttribute("menuId", 1);
 				menuModel.setId(1);
+				if (Boolean.TRUE.equals(fmf)) {
+					menuModel.setFullMenu(true);
+				}
 			}
 			else {
-				com.cater.model.Address eventLocation = e.getLocation();
-				modelMap.put("eventLocation", eventLocation);
 				Set <Restaurant> restaurants = restaurantService
-						.fetchRestaurantsOfType(cuisine);
-				//modelMap.put("restaurants", restaurants);
-				List <RestaurantDTO> nearByRestaurants = restaurantService
-						.getNearbyYelpReviews(eventLocation, restaurants);
-				if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
-					modelMap.put("restaurants", nearByRestaurants);
-				}
+						.fetchRestaurantsOfTypePrimary(cuisine);
 				customerService.saveOrUpdateMenu(menuModel);
 				menuId = menuModel.getId();
 				httpSession.setAttribute("menuId", menuId);
@@ -431,6 +469,7 @@ public class MenuController {
 					Quote quote = restaurantService
 							.findQuoteWithRestaurantIdAndMenuId(r.getId(),
 									menuId);
+					rId = r.getId();
 					if (quote != null) {
 						previouslySelectedRestaurants.add(r.getId());
 						if (isMenuChanged) {
@@ -440,6 +479,16 @@ public class MenuController {
 					}
 				}
 				modelMap.put("prevR", previouslySelectedRestaurants);
+				if (Boolean.FALSE.equals(fmf)) {
+					com.cater.model.Address eventLocation = e.getLocation();
+					modelMap.put("eventLocation", eventLocation);
+					//modelMap.put("restaurants", restaurants);
+					List <RestaurantDTO> nearByRestaurants = restaurantService
+							.getNearbyYelpReviews(eventLocation, restaurants);
+					if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
+						modelMap.put("restaurants", nearByRestaurants);
+					}
+				}
 			}
 			httpSession.setAttribute("menu", menuModel);
 			httpSession.setAttribute("cuisineType", cuisine);
@@ -453,6 +502,10 @@ public class MenuController {
 		if (user.isGuest()) {
 			//Send the user to create event page
 			return "customer/t_createEvent";
+		}
+		else if (Boolean.TRUE.equals(fmf)) {
+			redirectAttributes.addAttribute("rId", rId);
+			return "redirect:/customer/event/requestQuote";
 		}
 		return "menus/t__cateringRestaurants";
 	}
@@ -565,6 +618,66 @@ public class MenuController {
 	}
 
 	/**
+	 * View complete menu.
+	 *
+	 * @param httpSession the http session
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param menuId the menu id
+	 * @param restaurantName the restaurant name
+	 * @param restaurantZipCode the restaurant zip code
+	 * @return the string
+	 */
+	@RequestMapping(value = { "view/complete" }, method = RequestMethod.GET)
+	public String viewCompleteMenu(HttpSession httpSession, ModelMap modelMap,
+			HttpServletRequest request,
+			@RequestParam("rName") String restaurantName,
+			@RequestParam("rId") String restaurantId,
+			@RequestParam("rZip") String restaurantZipCode,
+			@RequestParam(value = "menuId", required = false) Integer menuId) {
+		User user = (User) httpSession.getAttribute("user");
+		if (user == null) {
+			return "t_home";
+		}
+		List <String> keys = Lists.newArrayList(StringUtils.split(
+				restaurantName, " "));
+		keys.add(restaurantZipCode);
+		String fileName = StringUtils.join(keys, "_");
+		try {
+			File f = new File(MenuController.class.getResource(
+					"/menus/full/" + fileName + ".json").getFile());
+			Menu baseMenu = new MenuDeserializer().readJSON(f);
+			modelMap.put("menu", baseMenu);
+		}
+		catch (Exception ex) {
+			logger.error(ex);
+		}
+		httpSession.setAttribute("full_menu_flow", true);
+		httpSession.setAttribute("full_menu_flow_rname", restaurantName);
+		httpSession.setAttribute("full_menu_flow_rid",
+				Helper.stringToInt(restaurantId));
+		//If the menu ID is present, the load the menu items
+		if (menuId != null) {
+			Map <String, String> items = Maps.newLinkedHashMap();
+			modelMap.put("items", items);
+			com.cater.model.Menu menuModel = customerService
+					.findMenuWithId(menuId);
+			List <String> previouslySelectedMenuItemCodes = Lists
+					.newArrayList(StringUtils.split(menuModel.getData(),
+							MENU_DELIMITER));
+			for (String item : previouslySelectedMenuItemCodes) {
+				if (StringUtils.isNotBlank(item)) {
+					String description = StringUtils.replace(
+							StringUtils.substringAfter(item, "+"), "+", " ");
+					String name = StringUtils.substringBefore(item, "+");
+					items.put(name, description);
+				}
+			}
+		}
+		return "menus/full/t_" + fileName;
+	}
+
+	/**
 	 * Group quotes per cuisine.
 	 *
 	 * @param quotes the quotes
@@ -573,9 +686,9 @@ public class MenuController {
 	private Map <String, List <Quote>> groupQuotesPerCuisine(List <Quote> quotes) {
 		Map <String, List <Quote>> groupedQuotes = Maps.newTreeMap();
 		for (Quote q : quotes) {
-			Restaurant r = q.getRestaurant();
-			if (r != null) {
-				String cuisine = r.getCuisineType();
+			com.cater.model.Menu m = q.getMenu();
+			if (m != null) {
+				String cuisine = m.getCuisineType();
 				List <Quote> q2 = groupedQuotes.get(cuisine);
 				if (q2 == null) {
 					q2 = Lists.newArrayList();

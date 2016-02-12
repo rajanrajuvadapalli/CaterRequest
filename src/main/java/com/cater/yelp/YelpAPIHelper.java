@@ -1,5 +1,6 @@
 package com.cater.yelp;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Component;
 
 import com.beust.jcommander.internal.Maps;
 import com.cater.maps.RestaurantDTO;
+import com.google.common.collect.Lists;
 
 /**
  * The Class YelpAPIHelper.
@@ -102,8 +104,7 @@ public class YelpAPIHelper {
 	 * @return <tt>String</tt> JSON Response
 	 */
 	private String searchForBusinessesByLocation(String restaurantName,
-			String zip,
-			String cuisine) {
+			String zip, String cuisine) {
 		OAuthRequest request = createOAuthRequest(SEARCH_PATH);
 		request.addQuerystringParameter("term", restaurantName);
 		request.addQuerystringParameter("location", zip);
@@ -173,14 +174,21 @@ public class YelpAPIHelper {
 	private static Map <Object, Object> queryAPI(YelpAPIHelper yelpApi,
 			RestaurantDTO restaurantDTO) throws ParseException {
 		String restaurantName = restaurantDTO.getRestaurant().getName();
-		String cuisineType = StringUtils.upperCase(StringUtils
+		String cuisineTypes = StringUtils.upperCase(StringUtils
 				.defaultString(restaurantDTO.getRestaurant().getCuisineType()),
 				Locale.US);
-		String yelpCuisineFilter = cuisineType;
-		if (StringUtils.isNotBlank(cuisineType)
-				&& CUISINE_FILTER_LOOKUP.containsKey(cuisineType)) {
-			yelpCuisineFilter = CUISINE_FILTER_LOOKUP.get(cuisineType);
+		//See the list of supported categories: https://www.yelp.com/developers/documentation/v2/all_category_list
+		//The category filter can be a list of comma delimited categories. For example, 'bars,french' will filter by Bars and French.
+		List <String> yelpCategories = Lists.newArrayList();
+		if (StringUtils.isNotBlank(cuisineTypes)) {
+			String[] cts = StringUtils.split(cuisineTypes, ",");
+			for (String ct : cts) {
+				if (CUISINE_FILTER_LOOKUP.containsKey(ct)) {
+					yelpCategories.add(CUISINE_FILTER_LOOKUP.get(ct));
+				}
+			}
 		}
+		String yelpCuisineFilter = StringUtils.join(yelpCategories, ",");
 		String zip = restaurantDTO.getRestaurant().getAddress().getZip();
 		String searchResponseJSON = yelpApi.searchForBusinessesByLocation(
 				restaurantName, zip, yelpCuisineFilter);

@@ -28,40 +28,32 @@
 				<div class="container">
 					<h1>Restaurants compete and bid to win your business</h1>
 				</div>
-				<c:if test="${sessionScope.user==null || sessionScope.user.isGuest()}">
-				<form class="form-horizontal" method="GET"
-					id="customer-register-form"
-					action="${pageContext.request.contextPath}/customer/guestPage1"
-					enctype="application/x-www-form-urlencoded" autocomplete="off">
-					<div class="row"
-						style="background-color: rgba(0, 0, 0, 0.5); border-radius: 5px; margin-bottom: 40px; margin-top: 50px; padding: 10px;">
-						<div class="col-sm-4 col-sm-offset-2" id="locationField">
-							<input id="autocomplete" name="addressString"
-								placeholder="Enter event address" onFocus="geolocate()"
-								type="text" class="form-control" required="required">
-						</div>
-						<div class="col-sm-2">
-							<span id="cuisineType"></span>
-						</div>
-						<div class="col-sm-1">
-							<button type="submit" class="btn btn-default">Let's go!</button>
-						</div>
+				<div class="search-box">
+					<div class="pull-left trans-bg">
+						<h3 style="color: #fff;">Find your local restaurant</h3>
+						<form method="GET"
+							action="${pageContext.request.contextPath}/customer/guestPage2"
+							enctype="application/x-www-form-urlencoded">
+							<input id="zip" name="zip" placeholder="Enter delivery zip"
+								type="text" required="required" /> <br />
+							<button type="submit" class="btn btn-default">Search</button>
+						</form>
 					</div>
-				</form>
-				</c:if>
-				<%-- <form class="form-horizontal" method="GET"
-					id="customer-register-form"
-					action="${pageContext.request.contextPath}/customer/createEvent"
-					enctype="application/x-www-form-urlencoded" autocomplete="off">
-					<button type="submit" class="btn btn-default">Let's get
-						started</button>
-				</form> --%>
+					<div class="pull-right trans-bg">
+					<h3 style="color: #fff;">Request and Compare Quotes</h3>
+						<form method="GET"
+							action="${pageContext.request.contextPath}/customer/guestPage1"
+							enctype="application/x-www-form-urlencoded">
+							<input id="zip" name="zip" placeholder="Enter event zip"
+								type="text" required="required" /><span id="cuisineType"></span>
+							<br />
+							<button type="submit" class="btn btn-default">Let's go!</button>
+						</form>
+					</div>
+					<div class="clr"></div>
+				</div>
 			</div>
-			<div class="background">
-				<!-- img
-					src="${pageContext.request.contextPath}/resources/assets/img/restaurant-bg.jpg"
-					alt="" -->
-			</div>
+			<div class="background"></div>
 		</section>
 		<!--end Hero Image-->
 		<!--How CaterRequest works-->
@@ -316,76 +308,31 @@
 			</div>
 		</section>
 		<!-- /.carousel -->
-
-		<!-- Testimonials -->
-		<%-- <section class="block background-color-white" id="testimonials">
-			<div class="container">
-				<!-- <div class="owl-carousel testimonials"> -->
-				<div>
-					<blockquote>
-						<figure>
-							<img
-								src="${pageContext.request.contextPath}/resources/images/people/VijayBhupathi.jpg"
-								alt="">
-						</figure>
-						<div class="description">
-							<p>This is an awesome service. You make ordering food for
-								parties easy and simple. Saved me a lot of time. Did not have to
-								dial up each and every restaurant and find out the prices. I am
-								one happy customer.</p>
-							<footer>Vijay Bhupathi</footer>
-						</div>
-					</blockquote>
-					<blockquote>
-						<figure></figure>
-						<div class="description">
-							<p>The experience was fantastic! Being a working women and a
-								mother of 3yr old, finding time to talk to restaurants and
-								finalize the order was the tough part. Glad to have
-								CaterRequest, which made the whole process smooth and simple.</p>
-							<footer>Sarvani Sarangam</footer>
-						</div>
-					</blockquote>
-				</div>
-			</div>
-		</section> --%>
-		<!--/.testimonials-->
-		<%-- <section id="image">
-			<div class="container bg-container-1">
-				<div class="col-sm-8 col-sm-offset-2">
-					<div class="text-banner">
-						<figure>
-							<img
-								src="${pageContext.request.contextPath}/resources/assets/img/marker.png"
-								alt="">
-						</figure>
-						<div class="description">
-							<h2>Get the best value for money</h2>
-							<p>CaterRequest is a price comparison tool. You submit your
-								catering request to the restaurants in your location only once.
-								Restaurants compete to win your business with their best
-								possible quote. Once you have the quotes from the restaurants
-								you can compare and choose the one at a price that's right for
-								your event. There is no confusion over the menu items, since
-								every selection is recorded.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--/.container-->
-			<!-- div class="background">
-				<img
-					src="${pageContext.request.contextPath}/resources/assets/img/about-us-bg2.jpg"
-					alt="">
-			</div>
-			<!--/.bakcground-->
-		</section> --%>
-		<!-- End about 1 -->
 	</div>
 </div>
 
 <script>
 	$('document').ready(function() {
-		populateCuisineTypes();
+		populateCuisineTypesDrowpdown();
+		$("select[name=cuisineType]").attr('required', 'required');
+		var contextPath = $('input[id=contextpath]').val();
+		$('#startBiddingBtn').click(function(e) {
+			//console.log("Clicked button1.");
+			e.preventDefault();
+			var url = contextPath + "/customer/guestPage1";
+			//console.log("url1: " + url);
+			var form = $('#customer-register-form');
+			form.attr("action", url);
+			form.submit();
+		});
+		$('#startSearchBtn').click(function(e) {
+			//console.log("Clicked button2.");
+			e.preventDefault();
+			var url = contextPath + "/customer/guestPage2";
+			//console.log("url2: " + url);
+			var form = $('#customer-register-form');
+			form.attr("action", url);
+			form.submit();
+		});
 	});
 </script>

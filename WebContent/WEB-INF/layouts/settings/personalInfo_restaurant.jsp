@@ -113,13 +113,19 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="cuisineType" class="col-sm-3 control-label">Cuisine
-							Type<span style="color: red">*</span>:
-						</label>
+						<label for="cuisineType" class="col-sm-3 control-label">Primary
+							Cuisine Type: </label>
 						<div class="col-sm-6">
 							<input type="hidden" name="cuisineType" id="cuisineType"
 								value="${sessionScope.user.restaurant.cuisineType}"> <span
 								id="cuisineType"></span>
+						</div>
+					</div>
+					<div class="form-group" id="restaurant">
+						<label for="cuisineType" class="col-sm-4 control-label">Secondary
+							Cuisine Types: </label>
+						<div class="col-sm-6">
+							<span id="cuisineType_sec"></span>
 						</div>
 					</div>
 					<div class="form-group">
@@ -340,12 +346,24 @@
 
 <script>
 	$('document').ready(function() {
-		populateCuisineTypes();
+		populateCuisineTypesDrowpdown();
 		populateStateDropDown();
 		var existingState = $('input[name=stateExisting]').val();
 		$('select[name=state]').val(existingState);
 		var existingCuisine = $('input[name=cuisineType]').val();
 		$('select[name=cuisineType]').val(existingCuisine);
+		$("select[name=cuisineType]").change(
+				function() {
+					var selectedCT = $(this).val();
+					//Disable primary cuisine from secondary list.
+					var elem = $(
+							"input[name=cuisineType_sec][value='"
+							+ selectedCT + "']");
+					elem.attr(
+							"checked", false);
+					elem.attr(
+							"disabled", "disabled");
+				});
 		$("input[name=changeProfilePicButton]").click(function() {
 			$("div[id=restaurant-pic]").removeClass("hidden");
 			$(this).attr("disabled", "disabled");

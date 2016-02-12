@@ -91,13 +91,22 @@
 						</div>
 					</div>
 					<div class="form-group" id="restaurant">
-						<label for="cuisineType" class="col-sm-4 control-label">Cuisine
-							Type<span style="color: red">*</span>:
-						</label>
+						<label for="cuisineType" class="col-sm-4 control-label">Primary
+							Cuisine Type: </label>
 						<div class="col-sm-6">
 							<input type="text" hidden="true"
 								value="${pageContext.request.contextPath}" id="contextpath">
-							<span id="cuisineType"></span>
+							<span id="cuisineType"></span> <span
+								class="glyphicon glyphicon-question-sign" style="color: #00b6e6"
+								data-toggle="tooltip"
+								title="You will be included in the bidding process only if you have a primary cuisine."></span>
+						</div>
+					</div>
+					<div class="form-group" id="restaurant">
+						<label for="cuisineType" class="col-sm-4 control-label">Secondary
+							Cuisine Types: </label>
+						<div class="col-sm-6">
+							<span id="cuisineType_sec"></span>
 						</div>
 					</div>
 					<div class="form-group" id="restaurant">
@@ -244,17 +253,35 @@
 </div>
 
 <script>
-	$('document').ready(function() {
-		populateCuisineTypes();
-		populateAptSuite();
-		$("select[name=cuisineType]").change(populateMenuForRestaurantConsent);
-		$("input[name=menuconsent]").live('change', function() {
-			var element = $("button[name=add-branch-button]");
-			if (this.checked) {
-				element.prop('disabled', false);
-			} else {
-				element.prop('disabled', true);
-			}
-		});
-	});
+	$('document').ready(
+			function() {
+				populateCuisineTypesDrowpdown();
+				populateCuisineTypesCheckbox();
+				populateAptSuite();
+				$("select[name=cuisineType]").change(
+						populateMenuForRestaurantConsent);
+				$("select[name=cuisineType]").change(
+						function() {
+							var selectedCT = $(this).val();
+							//console.log("Primary cuisine: " + selectedCT);
+							//First clear all disabled attributes.
+							$("input[name=cuisineType_sec]").each(function() {
+								$(this).removeAttr("disabled");
+								$(this).attr("checked", false);
+							});
+							//Disable primary cuisine from secondary list.
+							$(
+									"input[name=cuisineType_sec][value='"
+											+ selectedCT + "']").attr(
+									"disabled", "disabled");
+						});
+				$("input[name=menuconsent]").live('change', function() {
+					var element = $("button[name=add-branch-button]");
+					if (this.checked) {
+						element.prop('disabled', false);
+					} else {
+						element.prop('disabled', true);
+					}
+				});
+			});
 </script>

@@ -193,12 +193,28 @@
 					<div align="right">
 						<c:if
 							test="${event.status == 'ACTIVE' && user.role == 'CUSTOMER' && (event.date_time > now)}">
-							<a
-								href="${pageContext.request.contextPath}/menu/selectMenu?eventId=${event.id}&cuisineType=${menu.cuisine}"
-								role="button"
-								class="btn btn-default ${event.date_time > seventy_two_hours_from_now?'':'disabled'}"><span
-								class="glyphicon glyphicon-edit"></span> Edit Menu</a>
+							<c:choose>
+								<c:when test="${sessionScope.user.isGuest() && sessionScope.full_menu_flow}">
+									<form class="form-horizontal" method="POST"
+										action="${pageContext.request.contextPath}/customer/event/requestQuote"
+										enctype="application/x-www-form-urlencoded" autocomplete="off">
+										<input type="hidden" name="rId"
+											value="${sessionScope.full_menu_flow_rid}" /> <b>${sessionScope.full_menu_flow_rname}</b>
+										<br />
+										<button type="submit" class="btn btn-default">Request
+											Price</button>
+									</form>
+								</c:when>
+								<c:otherwise>
+									<a
+										href="${pageContext.request.contextPath}/menu/selectMenu?eventId=${event.id}&cuisineType=${menu.cuisine}"
+										role="button"
+										class="btn btn-default ${event.date_time > seventy_two_hours_from_now?'':'disabled'}"><span
+										class="glyphicon glyphicon-edit"></span> Edit Menu</a>
+								</c:otherwise>
+							</c:choose>
 						</c:if>
+
 						<br />
 						<c:if
 							test="${(event.date_time > now) && (event.date_time <= seventy_two_hours_from_now)}">
@@ -317,7 +333,8 @@
 	};
 
 	$('document').ready(function() {
-		populateCuisineTypes();
+		populateCuisineTypesDrowpdown();
+		$("select[name=cuisineType]").attr('required', 'required');
 		var event_date_time = $('input[name=event_date_time]').val();
 		addCountDownTimer(event_date_time);
 	});

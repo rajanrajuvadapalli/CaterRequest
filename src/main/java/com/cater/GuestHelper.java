@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.ModelMap;
 
+import com.cater.constants.QuoteStatus;
 import com.cater.model.Customer;
 import com.cater.model.Event;
 import com.cater.model.Login;
+import com.cater.model.Quote;
 import com.cater.model.Restaurant;
 import com.cater.service.CustomerService;
 import com.cater.service.LoginService;
@@ -29,10 +31,17 @@ public class GuestHelper {
 	@Autowired
 	private RestaurantService restaurantService;
 
+	/**
+	 * Save data for guest.
+	 *
+	 * @param modelMap the model map
+	 * @param httpSession the http session
+	 * @param login the login
+	 * @param user the user
+	 * @return the customer
+	 */
 	public Customer saveDataForGuest(ModelMap modelMap,
-			HttpSession httpSession, Login login, User user
-	//,Set <Integer> previouslySelectedRestaurants
-	) {
+			HttpSession httpSession, Login login, User user) {
 		Customer c = customerService.findCustomerWithLoginId(login.getId());
 		logger.debug("Creating event for " + c.getName());
 		Event e = (Event) httpSession.getAttribute("event");
@@ -55,13 +64,19 @@ public class GuestHelper {
 				.fetchRestaurantsOfType(cuisine);
 		modelMap.put("restaurants", restaurants);
 		modelMap.put("eventLocation", e.getLocation());
-		/*for (Restaurant r : restaurants) {
-			Quote quote = restaurantService.findQuoteWithRestaurantIdAndMenuId(
-					r.getId(), menuId);
-			if (quote != null) {
-				previouslySelectedRestaurants.add(r.getId());
-			}
-		}*/
+		Boolean fmf = (Boolean) httpSession.getAttribute("full_menu_flow");
+		if (Boolean.TRUE.equals(fmf)) {
+			menuModel.setFullMenu(true);
+			Quote quote = new Quote();
+			quote.setStatus(QuoteStatus.CREATED.toString());
+			quote.setMenu(menuModel);
+			Integer rId = (Integer) httpSession
+					.getAttribute("full_menu_flow_rid");
+			quote.setRestaurant(restaurantService.findRestaurantWithId(rId));
+			restaurantService.saveOrUpdateQuote(quote);
+			httpSession.setAttribute("full_menu_flow_qid", quote.getId());
+			restaurantService.sendNotification(quote, null);
+		}
 		return c;
 	}
 }
