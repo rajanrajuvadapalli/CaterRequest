@@ -81,8 +81,7 @@
 			<div class="panel-body" align="left">
 				<c:choose>
 					<c:when test="${empty menus}">Please select a menu and submit your request for quotes.</c:when>
-					<c:when test="${empty groupedQuotes}">Restaurants have NOT responded to your request.
-										</c:when>
+					<c:when test="${empty groupedQuotes}">-&nbsp;None&nbsp;-</c:when>
 					<c:otherwise>
 						<c:choose>
 							<c:when
@@ -190,16 +189,17 @@
 					<h3 class="panel-title">${menu.cuisine}&nbsp;Menu</h3>
 				</div>
 				<div class="panel-body" align="left">
-					<div align="right">
+					<div class="pull-right" align="right">
 						<c:if
 							test="${event.status == 'ACTIVE' && user.role == 'CUSTOMER' && (event.date_time > now)}">
 							<c:choose>
-								<c:when test="${sessionScope.user.isGuest() && sessionScope.full_menu_flow}">
+								<c:when test="${empty groupedQuotes && sessionScope.full_menu_flow}">
 									<form class="form-horizontal" method="POST"
 										action="${pageContext.request.contextPath}/customer/event/requestQuote"
 										enctype="application/x-www-form-urlencoded" autocomplete="off">
 										<input type="hidden" name="rId"
 											value="${sessionScope.full_menu_flow_rid}" /> <b>${sessionScope.full_menu_flow_rname}</b>
+										<br />
 										<br />
 										<button type="submit" class="btn btn-default">Request
 											Price</button>
@@ -224,90 +224,92 @@
 							<br />
 						</c:if>
 					</div>
-					<c:forEach items="${menu.categories}" var="category">
-						<c:if test="${not empty category.items}">
-							<div class="col-sm-12">
-								<ul>
-									<li><b>${category.name}</b></li>
-									<ol>
-										<c:forEach items="${category.items}" var="item">
-											<li>${item.name}</li>
-										</c:forEach>
-									</ol>
-								</ul>
-							</div>
+					<div class="pull-left">
+						<c:forEach items="${menu.categories}" var="category">
+							<c:if test="${not empty category.items}">
+								<div class="col-sm-12">
+									<ul>
+										<li><b>${category.name}</b></li>
+										<ol>
+											<c:forEach items="${category.items}" var="item">
+												<li>${item.name}</li>
+											</c:forEach>
+										</ol>
+									</ul>
+								</div>
+							</c:if>
+						</c:forEach>
+						<c:if test="${menu.cuisine == 'PIZZA'}">
+							<c:forEach items="${pizza_items}" var="pi">
+								<div class="col-sm-12">
+									<c:choose>
+										<c:when test="${pi.key.contains('#')}">
+											<ul>
+												<li><b>${fn:substringBefore(pi.key, ' #')}</b>
+													&nbsp;&nbsp; ${pi.value}</li>
+											</ul>
+										</c:when>
+										<c:otherwise>
+											<ul>
+												<li><b>${pi.key}</b> &nbsp;&nbsp; ${pi.value}</li>
+											</ul>
+										</c:otherwise>
+									</c:choose>
+
+
+								</div>
+							</c:forEach>
 						</c:if>
-					</c:forEach>
-					<c:if test="${menu.cuisine == 'PIZZA'}">
-						<c:forEach items="${pizza_items}" var="pi">
-							<div class="col-sm-12">
-								<c:choose>
-									<c:when test="${pi.key.contains('#')}">
-										<ul>
-											<li><b>${fn:substringBefore(pi.key, ' #')}</b>
-												&nbsp;&nbsp; ${pi.value}</li>
-										</ul>
-									</c:when>
-									<c:otherwise>
-										<ul>
-											<li><b>${pi.key}</b> &nbsp;&nbsp; ${pi.value}</li>
-										</ul>
-									</c:otherwise>
-								</c:choose>
-
-
-							</div>
-						</c:forEach>
-					</c:if>
-					<c:if test="${menu.cuisine == 'MEXICAN'}">
-						<c:forEach items="${mexican_items}" var="m">
-							<div class="col-sm-12">
-								<ul>
-									<li><b>${m.key}</b> &nbsp;&nbsp; ${m.value}</li>
-								</ul>
-							</div>
-						</c:forEach>
-					</c:if>
-					<c:if test="${menu.cuisine == 'THAI'}">
-						<c:forEach items="${thai_items}" var="m">
-							<div class="col-sm-12">
-								<ul>
-									<li><b>${m.key}</b> &nbsp;&nbsp; ${m.value}</li>
-								</ul>
-							</div>
-						</c:forEach>
-					</c:if>
-					<c:if test="${menu.cuisine == 'SANDWICH'}">
-						<c:forEach items="${sandwich_items}" var="m">
-							<div class="col-sm-12">
-								<ul>
-									<li><b>${m.key}</b> &nbsp;&nbsp; ${m.value}</li>
-								</ul>
-							</div>
-						</c:forEach>
-					</c:if>
-					<c:if test="${menu.cuisine == 'MIDDLE_EASTERN'}">
-						<c:forEach items="${middle_eastern_items}" var="m">
-							<div class="col-sm-12">
-								<ul>
-									<li><b>${m.key}</b> &nbsp;&nbsp; ${m.value}</li>
-								</ul>
-							</div>
-						</c:forEach>
-					</c:if>
-					<c:if test="${not empty menu.comments}">
-						<c:choose>
-							<c:when test="${user.role == 'RESTAURANT'}">
-								<b>Comments from Customer:</b>
-								<br />
-							</c:when>
-							<c:otherwise>
-								<b>Your comments:</b>
-								<br />
-							</c:otherwise>
-						</c:choose>
-						<pre>${menu.comments}</pre>
-					</c:if>
+						<c:if test="${menu.cuisine == 'MEXICAN'}">
+							<c:forEach items="${mexican_items}" var="m">
+								<div class="col-sm-12">
+									<ul>
+										<li><b>${m.key}</b> &nbsp;&nbsp; ${m.value}</li>
+									</ul>
+								</div>
+							</c:forEach>
+						</c:if>
+						<c:if test="${menu.cuisine == 'THAI'}">
+							<c:forEach items="${thai_items}" var="m">
+								<div class="col-sm-12">
+									<ul>
+										<li><b>${m.key}</b> &nbsp;&nbsp; ${m.value}</li>
+									</ul>
+								</div>
+							</c:forEach>
+						</c:if>
+						<c:if test="${menu.cuisine == 'SANDWICH'}">
+							<c:forEach items="${sandwich_items}" var="m">
+								<div class="col-sm-12">
+									<ul>
+										<li><b>${m.key}</b> &nbsp;&nbsp; ${m.value}</li>
+									</ul>
+								</div>
+							</c:forEach>
+						</c:if>
+						<c:if test="${menu.cuisine == 'MIDDLE_EASTERN'}">
+							<c:forEach items="${middle_eastern_items}" var="m">
+								<div class="col-sm-12">
+									<ul>
+										<li><b>${m.key}</b> &nbsp;&nbsp; ${m.value}</li>
+									</ul>
+								</div>
+							</c:forEach>
+						</c:if>
+						<c:if test="${not empty menu.comments}">
+							<c:choose>
+								<c:when test="${user.role == 'RESTAURANT'}">
+									<b>Comments from Customer:</b>
+									<br />
+								</c:when>
+								<c:otherwise>
+									<b>Your comments:</b>
+									<br />
+								</c:otherwise>
+							</c:choose>
+							<pre>${menu.comments}</pre>
+						</c:if>
+					</div>
 				</div>
 			</div>
 		</div>
