@@ -218,7 +218,7 @@
 		<c:if test="${sessionScope.user.isGuest()}">
 			<input type="text" hidden="hidden" name="cuisineType" value="${sessionScope.cuisineType}">
 		</c:if>
-		<c:if test="${!sessionScope.user.isGuest()}">
+		<c:if test="${!sessionScope.user.isGuest() && !sessionScope.full_menu_flow}">
 			<div class="panel panel-warning">
 				<div class="panel-heading">
 					<h3 class="panel-title">Menu selection (optional)</h3>

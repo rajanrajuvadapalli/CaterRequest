@@ -41,13 +41,13 @@ function populateCuisineTypesDrowpdown() {
 function populateCuisineTypesCheckbox() {
 	$("span[id=cuisineType_sec]")
 			.replaceWith(
-					"<input type=\"checkbox\" name=\"cuisineType_sec\" value=\"INDIAN_SOUTH\"> INDIAN (SOUTH) <br />"
-							+ "<input type=\"checkbox\" name=\"cuisineType_sec\" value=\"INDIAN_NORTH\"> INDIAN (NORTH) <br />"
-							+ "<input type=\"checkbox\" name=\"cuisineType_sec\" value=\"PIZZA\"> PIZZA <br />"
-							+ "<input type=\"checkbox\" name=\"cuisineType_sec\" value=\"MEXICAN\"> MEXICAN <br />"
-							+ "<input type=\"checkbox\" name=\"cuisineType_sec\" value=\"THAI\"> THAI <br />"
-							+ "<input type=\"checkbox\" name=\"cuisineType_sec\" value=\"SANDWICH\"> SANDWICH <br />"
-							+ "<input type=\"checkbox\" name=\"cuisineType_sec\" value=\"MIDDLE_EASTERN\"> MIDDLE EASTERN <br />");
+					"<label style=\"cursor:hand;\"><input type=\"checkbox\" name=\"cuisineType_sec\" value=\"INDIAN_SOUTH\"> INDIAN (SOUTH) </label>"
+							+ "<label style=\"cursor:hand;\"><input type=\"checkbox\" name=\"cuisineType_sec\" value=\"INDIAN_NORTH\"> INDIAN (NORTH) </label>"
+							+ "<label style=\"cursor:hand;\"><input type=\"checkbox\" name=\"cuisineType_sec\" value=\"PIZZA\"> PIZZA </label>"
+							+ "<label style=\"cursor:hand;\"><input type=\"checkbox\" name=\"cuisineType_sec\" value=\"MEXICAN\"> MEXICAN </label>"
+							+ "<label style=\"cursor:hand;\"><input type=\"checkbox\" name=\"cuisineType_sec\" value=\"THAI\"> THAI </label>"
+							+ "<label style=\"cursor:hand;\"><input type=\"checkbox\" name=\"cuisineType_sec\" value=\"SANDWICH\"> SANDWICH </label>"
+							+ "<label style=\"cursor:hand;\"><input type=\"checkbox\" name=\"cuisineType_sec\" value=\"MIDDLE_EASTERN\"> MIDDLE EASTERN </label>");
 }
 
 function populateHearAboutUs() {
@@ -215,9 +215,9 @@ function validateEventForm() {
 	// Validate that the date is in the future.
 	var dateTimePickerElement = $('input[id=datetimepicker_date]');
 	var dateObject = dateTimePickerElement.val();
-	//console.log("User entered: " + dateObject);
+	// console.log("User entered: " + dateObject);
 	var now = moment().format("YYYY/MM/DD HH:mm");
-	//console.log("Now: " + now);
+	// console.log("Now: " + now);
 	if (dateObject < now) {
 		alert("Please enter a date in the future." + "\nEntered date: "
 				+ dateObject);
@@ -226,8 +226,9 @@ function validateEventForm() {
 	}
 	var seventy_two_hours_from_now = moment().add(72, "hours").format(
 			"YYYY/MM/DD");
-	//console.log("72 hours from now: " + seventy_two_hours_from_now);
-	//console.log("within 72 hr window? "+ (dateObject < seventy_two_hours_from_now));
+	// console.log("72 hours from now: " + seventy_two_hours_from_now);
+	// console.log("within 72 hr window? "+ (dateObject <
+	// seventy_two_hours_from_now));
 	if (dateObject < seventy_two_hours_from_now) {
 		alert("Event cannot be in the next 72 hours." + "\nEntered date: "
 				+ dateObject + "\nPlease enter date/time after "

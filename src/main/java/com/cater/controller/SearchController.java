@@ -63,6 +63,9 @@ public class SearchController {
 			@RequestParam(value = "cuisineType", required = false) String cuisineType)
 			throws Exception {
 		session.setAttribute("env", Environment.getInstance());
+		//When we use the search functionality, we start without creating the event.
+		//We should force the user to create event.
+		session.removeAttribute("eventId");
 		if (StringUtils.isNotBlank(zip)) {
 			modelMap.put("eventZip", zip);
 			Collection <Restaurant> restaurants = null;

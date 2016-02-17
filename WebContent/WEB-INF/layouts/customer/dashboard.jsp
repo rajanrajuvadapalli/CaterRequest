@@ -15,7 +15,7 @@
 			</button>
 			<ul>
 				<c:forEach items="${errors}" var="e">
-					<li align="left">${e}</li>
+					<li>${e}</li>
 				</c:forEach>
 			</ul>
 		</div>
@@ -28,7 +28,7 @@
 			</button>
 			<ul>
 				<c:forEach items="${successMessages}" var="sm">
-					<li align="left">${sm}</li>
+					<li>${sm}</li>
 				</c:forEach>
 			</ul>
 		</div>
@@ -41,7 +41,7 @@
 			</button>
 			<ul>
 				<c:forEach items="${warnings}" var="w">
-					<li align="left">${w}</li>
+					<li>${w}</li>
 				</c:forEach>
 			</ul>
 		</div>
@@ -51,9 +51,35 @@
 <div class="col-sm-10 col-sm-offset-1">
 	<!-- Guest cannot create an event on the dashboard, if there is already 1 event -->
 	<c:if test="${!sessionScope.user.isGuest() or empty events}">
-		<div align="right">
-			<a href="${pageContext.request.contextPath}/customer/createEvent"
-				role="button" class="btn btn-default"> Create Event</a>
+		<div align="center">
+			<button class="btn btn-default" type="button" data-toggle="collapse"
+				data-target="#flowOptions" aria-expanded="false"
+				aria-controls="flowOptions">Start Order</button>
+		</div>
+		<br />
+		<div class="row collapse well" id="flowOptions">
+			<div class="search-box">
+				<div class="pull-left trans-bg">
+					<h3 style="color: #fff;">Find your local restaurant</h3>
+					<form method="GET"
+						action="${pageContext.request.contextPath}/search"
+						enctype="application/x-www-form-urlencoded">
+						<input id="zip" name="zip" placeholder="Enter delivery zip"
+							type="text" required="required" /> <br />
+						<button type="submit" class="btn btn-default">Search</button>
+					</form>
+				</div>
+				<div class="pull-right trans-bg">
+					<h3 style="color: #fff;">Request and Compare Quotes</h3>
+					<form method="GET"
+						action="${pageContext.request.contextPath}/customer/createEvent"
+						enctype="application/x-www-form-urlencoded">
+						<button type="submit" class="btn btn-default">Create
+							Event</button>
+					</form>
+				</div>
+				<div class="clr"></div>
+			</div>
 		</div>
 	</c:if>
 

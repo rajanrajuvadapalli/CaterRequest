@@ -178,6 +178,7 @@ public class CustomerDashboardController {
 	public String createEvent(HttpSession httpSession, ModelMap modelMap,
 			HttpServletRequest request, RedirectAttributes redirectAttributes) {
 		User user = (User) httpSession.getAttribute("user");
+		Boolean fmf = (Boolean) httpSession.getAttribute("full_menu_flow");
 		Customer c = new Customer();
 		if (user == null) {
 			// return "t_home";
@@ -262,13 +263,20 @@ public class CustomerDashboardController {
 		}
 		else {
 			e.setCustomer(c);
-			customerService.saveOrUpdateEvent(e);
+			if (Boolean.TRUE.equals(fmf)) {
+				Menu m = (Menu) httpSession.getAttribute("menu");
+				m.setEvent(e);
+				customerService.saveOrUpdateMenu(m);
+				httpSession.setAttribute("menuId", m.getId());
+			}
+			else {
+				customerService.saveOrUpdateEvent(e);
+			}
 		}
 		String cuisineType = request.getParameter("cuisineType");
 		if (user.isGuest()) {
 			httpSession.setAttribute("eventName", e.getName());
 			//If placing direct order to restaurant
-			Object fmf = httpSession.getAttribute("full_menu_flow");
 			if (fmf != null && Boolean.TRUE.equals((Boolean) fmf)) {
 				//redirectAttributes.addFlashAttribute("as", "customer");
 				List <String> warnings = Lists.newArrayList();
@@ -290,6 +298,11 @@ public class CustomerDashboardController {
 				}
 				return "menus/t__cateringRestaurants";
 			}
+		}
+		else if (fmf != null && Boolean.TRUE.equals((Boolean) fmf)) {
+			redirectAttributes.addAttribute("eventId", e.getId());
+			httpSession.setAttribute("eventName", e.getName());
+			return "redirect:/menu/view/all";
 		}
 		else if (StringUtils.isNotBlank(cuisineType)) {
 			logger.debug("Customer selected cuisine " + cuisineType
@@ -681,15 +694,17 @@ public class CustomerDashboardController {
 			if (quote == null || quote.getPrice() == null
 					|| quote.getPrice() == 0) {
 				errors.add("Cannot confirm order with no quotes.");
-			} else {
-				BigDecimal taxInbigdecimal = new BigDecimal((quote.getPrice() * quote.getRestaurant().getSalesTax()) / 100);
-				taxInbigdecimal=taxInbigdecimal.setScale(2,
-		                BigDecimal.ROUND_HALF_UP);
-				
-				double amount = quote.getPrice() + taxInbigdecimal.doubleValue();
+			}
+			else {
+				BigDecimal taxInbigdecimal = new BigDecimal(
+						(quote.getPrice() * quote.getRestaurant().getSalesTax()) / 100);
+				taxInbigdecimal = taxInbigdecimal.setScale(2,
+						BigDecimal.ROUND_HALF_UP);
+				double amount = quote.getPrice()
+						+ taxInbigdecimal.doubleValue();
 				/*BigDecimal bigDecimal = new BigDecimal(amount);
 				  bigDecimal = bigDecimal.setScale(2,
-			                BigDecimal.ROUND_HALF_UP);
+				            BigDecimal.ROUND_HALF_UP);
 				  bigDecimal.doubleValue();*/
 				double totalAmountInCents = amount * 100;
 				modelMap.put("quote", quote);

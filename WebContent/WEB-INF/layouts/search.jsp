@@ -20,7 +20,8 @@
 			<div class="search-cuisine-filter">
 				<span
 					style="font-weight: bold; margin-bottom: 20px; font-size: 16px;">Cuisines
-					Filter</span> <br /> <span id="cuisineType_sec"></span>
+					Filter</span> <br />
+				<br /> <span id="cuisineType_sec"></span>
 			</div>
 		</div>
 		<div class="col-sm-9">

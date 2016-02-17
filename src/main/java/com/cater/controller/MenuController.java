@@ -356,6 +356,7 @@ public class MenuController {
 		modelMap.put("cuisineType", cuisine);
 		Boolean fmf = (Boolean) httpSession.getAttribute("full_menu_flow");
 		Integer rId = null;
+		Event e = null;
 		try {
 			StringBuilder stringBuilder = new StringBuilder();
 			if (itemCodesJson != null) {
@@ -423,14 +424,6 @@ public class MenuController {
 				}
 			}
 			String newData = stringBuilder.toString();
-			Event e = null;
-			if (user.isGuest()) {
-				e = (Event) httpSession.getAttribute("event");
-			}
-			else {
-				e = customerService.findEventWithId(Helper
-						.stringToInteger(eventId));
-			}
 			// Create or update menu in database
 			com.cater.model.Menu menuModel = null;
 			Integer menuId = (Integer) httpSession.getAttribute("menuId");
@@ -444,7 +437,14 @@ public class MenuController {
 			if (menuModel == null) {
 				menuModel = new com.cater.model.Menu();
 			}
-			menuModel.setEvent(e);
+			if (user.isGuest() || Boolean.TRUE.equals(fmf)) {
+				e = (Event) httpSession.getAttribute("event");
+			}
+			else {
+				e = customerService.findEventWithId(Helper
+						.stringToInteger(eventId));
+				menuModel.setEvent(e);
+			}
 			logger.debug("New menu:" + newData);
 			boolean isMenuChanged = !StringUtils.equalsIgnoreCase(newData,
 					menuModel.getData());
@@ -458,6 +458,9 @@ public class MenuController {
 				if (Boolean.TRUE.equals(fmf)) {
 					menuModel.setFullMenu(true);
 				}
+			}
+			else if (Boolean.TRUE.equals(fmf)) {
+				menuModel.setFullMenu(true);
 			}
 			else {
 				Set <Restaurant> restaurants = restaurantService
@@ -493,13 +496,13 @@ public class MenuController {
 			httpSession.setAttribute("menu", menuModel);
 			httpSession.setAttribute("cuisineType", cuisine);
 		}
-		catch (IOException e) {
+		catch (IOException ex) {
 			logger.error(
 					"Exception occurred while reading menu and saving quote.",
-					e);
+					ex);
 			return "t_500";
 		}
-		if (user.isGuest()) {
+		if (user.isGuest() || e == null) {
 			//Send the user to create event page
 			return "customer/t_createEvent";
 		}
