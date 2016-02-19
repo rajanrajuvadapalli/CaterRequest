@@ -143,6 +143,7 @@ public class MenuController {
 			}
 		}
 		httpSession.setAttribute("eventName", e.getName());
+		httpSession.setAttribute("eventId", e.getId() + "");
 		if (customerCreatedMenuModel != null
 				&& customerCreatedMenuModel.isFullMenu()) {
 			return getFullMenuView(customerCreatedMenuModel, redirectAttributes);
@@ -437,10 +438,11 @@ public class MenuController {
 			if (menuModel == null) {
 				menuModel = new com.cater.model.Menu();
 			}
-			if (user.isGuest() || Boolean.TRUE.equals(fmf)) {
+			if (user.isGuest()) {
 				e = (Event) httpSession.getAttribute("event");
 			}
 			else {
+				//e is null when viewing fmf menu
 				e = customerService.findEventWithId(Helper
 						.stringToInteger(eventId));
 				menuModel.setEvent(e);
