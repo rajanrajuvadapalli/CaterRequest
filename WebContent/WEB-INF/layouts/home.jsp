@@ -17,17 +17,8 @@
 	<!--Page Content-->
 	<div id="page-content">
 		<!--Hero Image-->
-		<section class="hero-image search-filter-middle height-750">
-			<div class="inner">
-				<div class="container">
-					<h1>The smart way to order food for your event!</h1>
-				</div>
-				<div class="container">
-					<h1>Request, Compare and Confirm Quote</h1>
-				</div>
-				<div class="container">
-					<h1>Restaurants compete and bid to win your business</h1>
-				</div>
+		<section class="hero-image search-filter-middle">
+			<div class="inner"style="display:none">
 				<c:if
 					test="${sessionScope.user==null || sessionScope.user.isGuest()}">
 					<div class="search-box">
@@ -56,7 +47,29 @@
 					</div>
 				</c:if>
 			</div>
-			<div class="background"></div>
+			<div class="slide-container">
+	            <ul class="slideshow">
+	                <li><span></span></li>
+	                <li><span></span></li>
+	                <li><span></span></li>
+	                <li><span></span></li>
+	                <li><span></span></li>
+	                <li><span></span></li>
+	            </ul>
+	            <div class="search-container fit-me">
+	                <div class="trans-bg theme1">
+	                    <input placeholder="Delivery Address"/>
+	                    <button>Search</button>
+	                </div>
+            	</div>
+        	</div>
+        	<div class="container">
+        		<div class="search-container">
+	                <div class="trans-bg theme1">
+	                    <input placeholder="Select Restaurant"/>
+	                    <button class="btn-theme">Let's Go</button>
+	                </div>
+            	</div>
 		</section>
 		<!--end Hero Image-->
 		<!--How CaterRequest works-->

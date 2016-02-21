@@ -91,7 +91,8 @@ nav ul {
 	margin: 0;
 }
 nav ul li {
-	margin: 1.5em 0.5em;
+	/*margin: 1.5em 0.5em;*/
+	line-height: 75px;
 }
 
 nav ul li a{
