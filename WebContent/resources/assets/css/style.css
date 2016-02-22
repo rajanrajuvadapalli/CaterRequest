@@ -7138,7 +7138,7 @@ ol,ul {
 }
 .slideshow:after {
     content: '';
-    background: rgba(0,0,0,0.5) url(../img/design/pattern.png) repeat top left;
+    
 }
 .slideshow li span {
 	position: absolute;

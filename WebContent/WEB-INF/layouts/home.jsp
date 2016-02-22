@@ -56,20 +56,42 @@
 	                <li><span></span></li>
 	                <li><span></span></li>
 	            </ul>
+	            <c:if
+					test="${sessionScope.user==null || sessionScope.user.isGuest()}">
+	            
 	            <div class="search-container fit-me">
-	                <div class="trans-bg theme1">
-	                    <input placeholder="Delivery Address"/>
-	                    <button>Search</button>
+	          
+	               <div class="trans-bg theme1">
+	                  <h3 style="color: #fff;">Order from your favorite local restaurant</h3>
+	                  <form method="GET"
+								action="${pageContext.request.contextPath}/customer/guestPage2"
+								enctype="application/x-www-form-urlencoded">
+								<input id="zip" name="zip" type="text" placeholder="Zip Code"  maxlength="5" required="required" />
+								<button type="submit" class="btn-theme">Search</button>
+							</form>
+	                 
 	                </div>
             	</div>
+            </c:if>	
         	</div>
-        	<div class="container">
+        	<c:if
+					test="${sessionScope.user==null || sessionScope.user.isGuest()}">
+	            
+        	<div class="container" >
         		<div class="search-container">
 	                <div class="trans-bg theme1">
-	                    <input placeholder="Select Restaurant"/>
-	                    <button class="btn-theme">Let's Go</button>
+	                <h3 style="color: #fff;">Compare quotes between Restaurants</h3>
+	                    <form method="GET"
+								action="${pageContext.request.contextPath}/customer/guestPage1"
+								enctype="application/x-www-form-urlencoded">
+								<input id="zip" name="zip" placeholder="Zip Code"
+									type="text" required="required"   maxlength="5"   /><span id="cuisineType"></span>
+							   <button type="submit" class="btn-theme">Let's go!</button>
+							</form>
 	                </div>
             	</div>
+            	</div>
+            	</c:if>
 		</section>
 		<!--end Hero Image-->
 		<!--How CaterRequest works-->
