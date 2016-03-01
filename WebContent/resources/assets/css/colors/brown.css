@@ -390,7 +390,7 @@ ul.bullets li a:hover {
 }
 
 .block {
-  padding: 0;
+  padding: 40px 0;
   transform: translateZ(0);
   overflow: hidden;
 }
@@ -1559,10 +1559,9 @@ ul.bullets li a:hover {
 
 .hero-image {
   display: table;
-  height: 256px;
+  height: 700px;
   width: 100%;
   text-align: center;
-  position:relative;
 }
 .hero-image .form-group {
   text-align: left;
@@ -5543,6 +5542,8 @@ input[type="text"]:focus, input[type="text"]:active, input[type="date"]:focus, i
 }
 .header .wrapper {
   display: table;
+  padding: 10px 10px;
+  padding-top: 12px;
   overflow: visible;
   width: 100%;
 }
@@ -6942,5 +6943,3 @@ body.navigation-top-header .header .wrapper .toggle-navigation {
     opacity: 0;
   }
 }
-
-

@@ -23,4 +23,3 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/tab-styles-main.css" type="text/css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/tab-tiles.css" type="text/css" />
 
-
