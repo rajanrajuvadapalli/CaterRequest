@@ -15,8 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -41,6 +43,7 @@ import com.cater.model.Restaurant;
 import com.cater.service.CustomerService;
 import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
+import com.cater.yelp.YelpAPIHelper;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
@@ -644,43 +647,75 @@ public class MenuController {
 		if (user == null) {
 			return "t_home";
 		}
-		List <String> keys = Lists.newArrayList(StringUtils.split(
-				restaurantName, " "));
-		keys.add(restaurantZipCode);
-		String fileName = StringUtils.join(keys, "_");
 		try {
-			File f = new File(MenuController.class.getResource(
-					"/menus/full/" + fileName + ".json").getFile());
-			Menu baseMenu = new MenuDeserializer().readJSON(f);
-			modelMap.put("menu", baseMenu);
-		}
-		catch (Exception ex) {
-			logger.error(ex);
-		}
-		httpSession.setAttribute("full_menu_flow", true);
-		httpSession.setAttribute("full_menu_flow_rname", restaurantName);
-		httpSession.setAttribute("full_menu_flow_rid",
-				Helper.stringToInt(restaurantId));
-		//If the menu ID is present, the load the menu items
-		if (menuId != null) {
-			Map <String, String> items = Maps.newLinkedHashMap();
-			modelMap.put("items", items);
-			com.cater.model.Menu menuModel = customerService
-					.findMenuWithId(menuId);
-			List <String> previouslySelectedMenuItemCodes = Lists
-					.newArrayList(StringUtils.split(menuModel.getData(),
-							MENU_DELIMITER));
-			for (String item : previouslySelectedMenuItemCodes) {
-				if (StringUtils.isNotBlank(item)) {
-					String description = StringUtils.replace(
-							StringUtils.substringAfter(item, "+"), "+", " ");
-					String name = StringUtils.substringBefore(item, "+");
-					items.put(name, description);
+			List <String> keys = Lists.newArrayList(StringUtils.split(
+					restaurantName, " "));
+			keys.add(restaurantZipCode);
+			String fileName = StringUtils.join(keys, "_");
+			try {
+				File f = new File(MenuController.class.getResource(
+						"/menus/full/" + fileName + ".json").getFile());
+				Menu baseMenu = new MenuDeserializer().readJSON(f);
+				modelMap.put("menu", baseMenu);
+			}
+			catch (Exception ex) {
+				logger.error(ex);
+			}
+			httpSession.setAttribute("full_menu_flow", true);
+			httpSession.setAttribute("full_menu_flow_rname", restaurantName);
+			httpSession.setAttribute("full_menu_flow_rid",
+					Helper.stringToInt(restaurantId));
+			RestaurantDTO r = getYelpReviews(restaurantId);
+			modelMap.addAttribute("r", r);
+			//If the menu ID is present, load the menu items
+			if (menuId != null) {
+				Map <String, String> items = Maps.newLinkedHashMap();
+				modelMap.put("items", items);
+				com.cater.model.Menu menuModel = customerService
+						.findMenuWithId(menuId);
+				List <String> previouslySelectedMenuItemCodes = Lists
+						.newArrayList(StringUtils.split(menuModel.getData(),
+								MENU_DELIMITER));
+				for (String item : previouslySelectedMenuItemCodes) {
+					if (StringUtils.isNotBlank(item)) {
+						String description = StringUtils
+								.replace(StringUtils.substringAfter(item, "+"),
+										"+", " ");
+						String name = StringUtils.substringBefore(item, "+");
+						items.put(name, description);
+					}
 				}
 			}
+			return "menus/full/t_" + fileName;
 		}
-		
-		return "menus/full/t_" + fileName;
+		catch (Exception e) {
+			return "t_500";
+		}
+	}
+
+	/**
+	 * Gets the yelp reviews.
+	 *
+	 * @param restaurantId the restaurant id
+	 * @return the yelp reviews
+	 * @throws ParseException the parse exception
+	 */
+	private RestaurantDTO getYelpReviews(String restaurantId)
+			throws ParseException {
+		Restaurant restaurant = restaurantService.findRestaurantWithId(Helper
+				.stringToInteger(restaurantId));
+		RestaurantDTO r = new RestaurantDTO();
+		r.setRestaurant(restaurant);
+		Map <?, ?> yelpReviews = YelpAPIHelper.getRatings(r);
+		if (MapUtils.isNotEmpty(yelpReviews)) {
+			r.setNumberOfReviews(Helper.stringToInt(yelpReviews.get(
+					"noOfReviews").toString()));
+			r.setReviewImage(yelpReviews.get("ratings"));
+			r.setWebsiteUrl(yelpReviews.get("websiteUrl"));
+			logger.debug(String.format("Restaurant %s has %s yelp ratings.", r
+					.getRestaurant().getName(), yelpReviews.get("ratings")));
+		}
+		return r;
 	}
 
 	/**

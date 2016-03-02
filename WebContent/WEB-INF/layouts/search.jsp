@@ -61,7 +61,7 @@
 									</c:otherwise>
 								</c:choose>
 								<br /> <br />
-								${r.restaurant.address.street1}${r.restaurant.address.street2},${r.restaurant.address.city},${r.restaurant.address.state},${r.restaurant.address.zip}<br />
+								${r.restaurant.address.street1}${r.restaurant.address.street2},&nbsp;${r.restaurant.address.city},&nbsp;${r.restaurant.address.state},&nbsp;${r.restaurant.address.zip}<br />
 								<br />
 								<form class="form-horizontal" method="GET"
 									action="${pageContext.request.contextPath}/menu/view/complete">
