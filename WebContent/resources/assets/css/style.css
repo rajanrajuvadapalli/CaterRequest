@@ -7569,3 +7569,12 @@ ol,ul {
 .checkout{ text-align: center;}
 .checkout a{ color: #949494; border-radius: 3px; display: block; font-size: 18px; font-weight: 700; padding: 14px 0 15px; background: #d3d3d3;
 order: 1px solid #c4c4c4;}
+
+/* from diwakar */
+.rest-sidebar{ padding-top: 20px;}
+.rest-sidebar .add-cart{ padding: 20px; background: #fff3d8; border: 1px solid #e7d1a0; color: #000; font-size: 19px; font-weight: 700; margin:20px 0;}
+.rest-sidebar .add-cart a i { padding: 0 0 0 30px;}
+.rest-sidebar .add-cart a{ border: 1px solid #dea406; border-radius: 3px; color: #000; display: block; font-size: 18px; padding: 8px 0; text-align: center; background:#ffd100;background:-moz-linear-gradient(top,#ffd100 0%,#ffb100 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#ffd100),color-stop(100%,#ffb100));background:-webkit-linear-gradient(top,#ffd100 0%,#ffb100 100%);background:-o-linear-gradient(top,#ffd100 0%,#ffb100 100%);background:-ms-linear-gradient(top,#ffd100 0%,#ffb100 100%);background:linear-gradient(to bottom,#ffd100 0%,#ffb100 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd100',endColorstr='#ffb100',GradientType=0);border:1px solid #dea406;border-radius:3px;}
+@media (max-width: 991px){
+.rest-sidebar{ margin-top:0 !important;}
+}
