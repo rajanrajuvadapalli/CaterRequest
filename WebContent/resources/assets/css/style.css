@@ -2472,7 +2472,7 @@ ul.bullets li a:hover {
   top: 50px;
 }
 .modal .modal-dialog {
-  width: 750px;
+  width: 450px;
   margin: 80px auto;
 }
 .modal .modal-dialog .modal-content {
@@ -2483,15 +2483,15 @@ ul.bullets li a:hover {
   -webkit-border-radius: 0px;
   border-radius: 0px;
   border: none;
-  padding: 25px;
+  padding: 0px;
 }
 .modal .modal-dialog .modal-content hr {
   border-color: #f4f4f2;
 }
 .modal .modal-dialog .modal-content h3 {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: bold;
-  margin-top: 0;
+  margin: 10px;
 }
 .modal .modal-dialog .modal-content dl {
   font-size: 12px;
@@ -2508,9 +2508,9 @@ ul.bullets li a:hover {
 .modal .modal-dialog .modal-content .modal-header .close {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
-  right: 0px;
+  right: 10px;
   position: absolute;
-  top: 2px;
+  top: 10px;
   z-index: 3;
 }
 .modal .modal-dialog .modal-content .modal-header .left {
@@ -2571,10 +2571,15 @@ ul.bullets li a:hover {
 .modal .modal-dialog .modal-content .modal-header .rating .fa-star.active {
   color: #ff513f;
 }
+.modal-header {
+	min-height: 50px;
+}
+
 .modal .modal-dialog .modal-body {
-  padding: 0px;
+  padding: 0px 25px;
   padding-bottom: 15px;
-  border-bottom: 1px solid #f4f4f2;
+  /* border-bottom: 1px solid #f4f4f2; */
+  border-bottom: 1px solid #ccc;
   margin-bottom: 20px;
 }
 .modal .modal-dialog .modal-body p {
@@ -2594,7 +2599,7 @@ ul.bullets li a:hover {
 .modal .modal-dialog .modal-footer {
   border: none;
   margin-top: 0;
-  padding: 0;
+  padding: 10px;
 }
 .modal.register-sign-in .checkbox {
   margin: 0;
@@ -2605,7 +2610,7 @@ ul.bullets li a:hover {
 .modal.register-sign-in .modal-body {
   border-bottom: 0;
   margin-bottom: 0;
-  padding: 0;
+  padding: 25px;
 }
 .modal.register-sign-in .modal-footer {
   text-align: left;
@@ -7524,7 +7529,10 @@ ol,ul {
 .full-menu-content .modal-content .modal-box-left h3 span{ float: right;}
 .full-menu-content .modal-content .modal-desc{ padding:20px;}
 .modal-box-left h4{ font-size:18px; margin:0; padding:0 0 20px;}
-.modal-textarea{ border-top: 1px solid #ccc; padding: 20px 0 0 0;}
+.modal-textarea{ 
+	/* border-top: 1px solid #ccc;  */
+	padding: 0 0 0 0;
+}
 .modal-textarea h5{ font-size:17px; margin: 14px 10px 0px 0; float:left;}
 .modal-textarea h5 span{ display:block; font-size:12px; font-weight:400;}
 .modal-textarea textarea { border: 1px solid #ccc; float: right; resize: none; width: 270px;}
