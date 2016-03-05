@@ -127,8 +127,51 @@
 											data-whatever="Chips">
 											<span>Sarma Dolme</span>
 										</button>
-										
-							
+										<div class="modal fade" id="chips" tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Sarma Dolme</h3>
+														</div>
+														<div class="modal-desc">
+															<form id="popup_0_0" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20" name="SarmaDolmeCount"
+																		maxlength="20" required="required" pattern="^\d+$">
+
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+
+																	<input type="text" size="60" name="SarmaDolmeSpl"
+																		maxlength="20">
+
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<!-- <button type="submit" class="btn btn-default">Add</button> -->
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuSarmaDolmeSelectedItems();" />
+																	</div>
+																</div>
+																</form>
+														</div>
+
+													</div>
+												</div>
+											</div>
+										</div>
+
+
 									</div>
 								</div>
 							</div>
@@ -259,19 +302,21 @@
 							<div class="quote">Delivery Minimum: $20.00 (Before tax) No
 								minimum on Pickup orders</div> -->
 							<div class="checkout">
-								<form action="${pageContext.request.contextPath}/menu/saveMenu"
-									id="california_kabob_target" method="post">
-									<input type="hidden" name="full_menu_items"
-										id="full_menu_items"> <input type="hidden"
-										name="cuisineType" value="${menu.cuisine}">
-									<textarea rows="4" cols="50" name="comments"
-										placeholder="Enter your comments to restaurant here"
-										class="form-control">${menu.comments}</textarea>
-									<br />
-									<!-- <button type="button" onclick="california_kabob_menu_submit();"
+								
+									<form action="${pageContext.request.contextPath}/menu/saveMenu"
+										id="california_kabob_target" method="post">
+										<input type="hidden" name="full_menu_items"
+											id="full_menu_items"> <input type="hidden"
+											name="cuisineType" value="${menu.cuisine}">
+										<textarea rows="4" cols="50" name="comments"
+											placeholder="Enter your comments to restaurant here"
+											class="form-control">${menu.comments}</textarea>
+										<br />
+										<!-- <button type="button" onclick="california_kabob_menu_submit();"
 										class="btn btn-default">Next</button> -->
-									<a href="javascript:california_kabob_menu_submit();">Next</a>
-								</form>
+										<a href="javascript:california_kabob_menu_submit();">Next</a>
+									</form>
+								
 								<!-- <a href="#">CHECKOUT</a> -->
 							</div>
 							<p>
@@ -288,48 +333,8 @@
 		</div>
 	</div>
 </section>
-<div class="modal fade" id="chips" tabindex="-1" role="dialog"
-											aria-labelledby="exampleModalLabel" aria-hidden="true">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<!-- <div class="modal-box-left"> -->
-													
-														<div class="modal-header" style="background: #ff6600">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Sarma Dolme</h3>
-														</div>
-														<div class="modal-body">
-															<form id="popup_0_0" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="SarmaDolmeCount"
-																		maxlength="20" required="required" pattern="^\d+$">
 
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
 
-																	<input type="text" size="60" name="SarmaDolmeSpl"
-																		maxlength="20">																	
-																</div>
-															</form>
-														</div>
-														<div class="modal-footer">
-																		<!-- <button type="submit" class="btn btn-default">Add</button> -->
-																		<input type="button" name="" value="Add to Cart" class="btn btn-grey-dark"
-																			onclick="populateFullMenuSarmaDolmeSelectedItems();" />
-														</div>
-													
-													<!-- </div> -->	
-												</div>
-											</div>
-										</div>
-							
 <script>
 	$(window).load(function() {
 		var rtl = false; // Use RTL

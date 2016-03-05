@@ -4,7 +4,9 @@ function populateFullMenuSarmaDolmeSelectedItems() {
 	var name = "Sarma Dolme";
 	// If an item is previously selected, remove if before adding the new one.
 	$('.slide').children().each(function() {
+		console.log(this);
 		if ($(this).html().indexOf(name) >= 0) {
+			console.log("remove =="+this);
 			$(this).remove();
 		}
 	});
@@ -28,7 +30,7 @@ function populateFullMenuSarmaDolmeSelectedItems() {
 			+ '</div>'
 			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
 			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
-	// console.log(html);
+	//console.log(html);
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
