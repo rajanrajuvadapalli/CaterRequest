@@ -240,7 +240,8 @@
 					Cancel</button>
 			</div>
 		</c:if>
-		<div class="col-sm-1 col-sm-offset-9 col-xs-6">
+		<div class="row">
+			<div class="col-sm-12 col-md-push-10">
 			<c:choose>
 				<c:when test="${sessionScope.user.isGuest()}">
 					<button type="submit" class="btn btn-default">Next</button>
@@ -249,6 +250,7 @@
 					<button type="submit" class="btn btn-default">Create Event</button>
 				</c:otherwise>
 			</c:choose>
+			</div>
 			<br /> <br /> <br />
 		</div>
 	</form>

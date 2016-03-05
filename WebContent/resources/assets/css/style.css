@@ -2468,13 +2468,13 @@ ul.bullets li a:hover {
 }
 
 .modal {
-  overflow: hidden;
+  overflow: scroll;
   top: 50px;
 }
-.modal .modal-dialog {
-  width: 450px;
+/* .modal .modal-dialog {
+  width: 750px;
   margin: 80px auto;
-}
+} */
 .modal .modal-dialog .modal-content {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -2489,9 +2489,9 @@ ul.bullets li a:hover {
   border-color: #f4f4f2;
 }
 .modal .modal-dialog .modal-content h3 {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: bold;
-  margin: 10px;
+  margin-top: 0;
 }
 .modal .modal-dialog .modal-content dl {
   font-size: 12px;
@@ -2571,12 +2571,10 @@ ul.bullets li a:hover {
 .modal .modal-dialog .modal-content .modal-header .rating .fa-star.active {
   color: #ff513f;
 }
-.modal-header {
-	min-height: 50px;
-}
+
 
 .modal .modal-dialog .modal-body {
-  padding: 0px 25px;
+  padding: 0px;
   padding-bottom: 15px;
   /* border-bottom: 1px solid #f4f4f2; */
   border-bottom: 1px solid #ccc;
@@ -2599,7 +2597,7 @@ ul.bullets li a:hover {
 .modal .modal-dialog .modal-footer {
   border: none;
   margin-top: 0;
-  padding: 10px;
+  padding: 0;
 }
 .modal.register-sign-in .checkbox {
   margin: 0;
@@ -2610,7 +2608,7 @@ ul.bullets li a:hover {
 .modal.register-sign-in .modal-body {
   border-bottom: 0;
   margin-bottom: 0;
-  padding: 25px;
+  padding: 0;
 }
 .modal.register-sign-in .modal-footer {
   text-align: left;
@@ -7538,7 +7536,9 @@ ol,ul {
 .modal-textarea textarea { border: 1px solid #ccc; float: right; resize: none; width: 270px;}
 .modal-box-left .modal-sub{ margin:20px 0 0; border-top:1px solid #ccc; padding:80px 0 0; text-align: center;}
 .modal-box-left .modal-sub input{ border:none; cursor: pointer; font-size: 18px; padding:10px 100px; color:#fff; font-weight:700;text-shadow:0 -1px 0 rgba(0,0,0,0.28);background:#20abd0;background:-moz-linear-gradient(top,#20abd0 0%,#1285b9 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#20abd0),color-stop(100%,#1285b9));background:-webkit-linear-gradient(top,#20abd0 0%,#1285b9 100%);background:-o-linear-gradient(top,#20abd0 0%,#1285b9 100%);background:-ms-linear-gradient(top,#20abd0 0%,#1285b9 100%);background:linear-gradient(to bottom,#20abd0 0%,#1285b9 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#20abd0',endColorstr='#1285b9',GradientType=0);border:1px solid #0096cf;}
-.modal-box-left{ float:left; width:65%; border-right: 1px solid #ccc;}
+.modal-box-left{ position:relative;}
+/* .modal-box-left{ float:left; width:65%; border-right: 1px solid #ccc;} */
+
 .modal-box-right{ float:left; width:35%; position:relative; overflow:hidden;}
 .modal-box-right span{ color:#fff; float:left;}
 .modal-box-right ul.nav-tabs{ border-bottom: 5px solid #bf2600; float:right;}
