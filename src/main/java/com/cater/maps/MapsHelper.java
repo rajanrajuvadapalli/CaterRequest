@@ -1,6 +1,7 @@
 package com.cater.maps;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -69,11 +70,11 @@ public class MapsHelper {
 				restaurantDTO.setRestaurant(rest);
 				nearByRestaurants.add(restaurantDTO);
 			}
-		} // end of iter
-			// TODO: WRITE sorting
-		/*
-		 * if(!nearByRestaurants.isEmpty() && nearByRestaurants!= null){ ÷ }
-		 */
+		}
+		
+		// Sort restaurants by distance.
+		Collections.sort(nearByRestaurants, new RestaurantDistanceComparator());
+		
 		return nearByRestaurants;
 	}
 
