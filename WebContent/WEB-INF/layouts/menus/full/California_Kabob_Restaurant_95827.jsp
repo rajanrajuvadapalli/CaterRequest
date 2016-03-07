@@ -34,9 +34,6 @@
 	<div class="row">
 		<div class="col-md-9 rest-left">
 			<div class="beach-img">
-				<img
-					src="https://s3-us-west-2.amazonaws.com/caterrequest-restaurant-profile-pics/Restaurant_10"
-					alt="">
 				<c:if test="${sessionScope.env.isProd()}">
 					<img
 						src="https://s3-us-west-2.amazonaws.com/caterrequest-restaurant-profile-pics/Restaurant_${r.restaurant.id}"
@@ -91,6 +88,7 @@
 		</div>
 	</div>
 </section>
+
 <section class="rest-main-content">
 	<div class="menu-sidebar" id="accordion" aria-multiselectable="true"
 		role="tablist"></div>
@@ -109,7 +107,6 @@
 					<div role="tabpanel" class="tab-pane active full-menu-content"
 						id="full-menu">
 						<p></p>
-
 						<!-- Collapse start -->
 						<div class="panel-group" id="accordion" role="tablist"
 							aria-multiselectable="true">
@@ -122,6 +119,7 @@
 								<div id="BeachMunchies" class="panel-collapse collapse in"
 									role="tabpanel" aria-labelledby="headingOne">
 									<div class="panel-body">
+										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
 											data-toggle="modal" data-target="#chips"
 											data-whatever="Chips">
@@ -140,188 +138,433 @@
 															<h3>Sarma Dolme</h3>
 														</div>
 														<div class="modal-desc">
-															<form id="popup_0_0" class="form-horizontal"
+															<form id="popup_1_1" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
 																	<input type="text" size="20" name="SarmaDolmeCount"
 																		maxlength="20" required="required" pattern="^\d+$">
-
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-
 																	<input type="text" size="60" name="SarmaDolmeSpl"
 																		maxlength="20">
-
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<!-- <button type="submit" class="btn btn-default">Add</button> -->
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
 																			onclick="populateFullMenuSarmaDolmeSelectedItems();" />
 																	</div>
 																</div>
-																</form>
+															</form>
 														</div>
-
 													</div>
 												</div>
 											</div>
 										</div>
+										<!-- item end -->
 
-
-									</div>
-								</div>
-							</div>
-
-
-						</div>
-					</div>
-					<%-- <div role="tabpanel" class="tab-pane full-menu-content"
-							id="extra-items">
-							<!-- Collapse start -->
-							<div class="panel-group" id="accordion" role="tablist"
-								aria-multiselectable="true">
-								<div class="panel panel-default">
-									<div class="panel-heading" role="tab"
-										id="headingPlatesSilverware">
-										<a role="button" data-toggle="collapse"
-											data-parent="#accordion" href="#PlatesSilverware"
-											aria-expanded="true" aria-controls="PlatesSilverware">Plates,
-											Silverware Packets &amp; Extras</a>
-									</div>
-									<div id="PlatesSilverware" class="panel-collapse collapse in"
-										role="tabpanel" aria-labelledby="headingPlatesSilverware">
-										<div class="panel-body">
-											<button type="button" class="btn btn-primary"
-												data-toggle="modal" data-target="#Silverware"
-												data-whatever="Chips">
-												<span>Silverware</span><span>$0.29</span>
-											</button>
-											<div class="modal fade" id="Silverware" tabindex="-1"
-												role="dialog" aria-labelledby="exampleModalLabel">
-												<div class="modal-dialog" role="document">
-													<div class="modal-content">
-														<div class="modal-box-left">
-															<div class="modal-head">
-																<h3>
-																	Chips<span>$1.95</span>
-																</h3>
-															</div>
-															<div class="modal-desc">
-																<h4>quantity</h4>
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#LargeHummus"
+											data-whatever="LargeHummus">
+											<span>Large Hummus</span>
+										</button>
+										<div class="modal fade" id="LargeHummus" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Large Hummus</h3>
+														</div>
+														<div class="modal-desc">
+															<form id="popup_1_2" class="form-horizontal"
+																onsubmit="return false;">
 																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20" name="LargeHummusCount"
+																		maxlength="20" required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<form>
-																		<textarea></textarea>
-																	</form>
+																	<input type="text" size="60" name="LargeHummusSpl"
+																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" name="" value="Add to Cart" />
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuLargeHummusSelectedItems();" />
 																	</div>
 																</div>
-															</div>
+															</form>
 														</div>
-														<div class="modal-box-right">
-															<div class="modal-head">
-																<span>Be the first to order</span>
-																<ul class="nav nav-tabs" role="tablist">
-																	<li role="presentation" class="active"><a
-																		href="#tab-photo" aria-controls="tab-photo" role="tab"
-																		data-toggle="tab"><img
-																			src="${pageContext.request.contextPath}/resources/assets/img/icon_photo.png"
-																			alt="" /></a></li>
-																	<li role="presentation"><a href="#tab-notes"
-																		aria-controls="tab-notes" role="tab" data-toggle="tab"><img
-																			src="${pageContext.request.contextPath}/resources/assets/img/icon_notes.png"
-																			alt="" /></a></li>
-																</ul>
-																<div class="clearfix"></div>
-															</div>
-															<div class="tab-content">
-																<div role="tabpanel" class="tab-pane active"
-																	id="tab-photo">
-																	<img
-																		src="${pageContext.request.contextPath}/resources/assets/img/img_addphoto.png"
-																		alt="" />
-																</div>
-																<div role="tabpanel" class="tab-pane" id="tab-notes">
-																	<img
-																		src="${pageContext.request.contextPath}/resources/assets/img/notes_instructN.jpg"
-																		alt="" />
-																	<div class="note-btn">
-																		<input type="button" name="" value="Note it" />
-																	</div>
-																</div>
-															</div>
-														</div>
-														<div class="clearfix"></div>
 													</div>
 												</div>
 											</div>
 										</div>
+										<!-- item end -->
+
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#GreekSalad"
+											data-whatever="GreekSalad">
+											<span>Greek Salad</span>
+										</button>
+										<div class="modal fade" id="GreekSalad" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Greek Salad</h3>
+														</div>
+														<div class="modal-desc">
+															<form id="popup_2_1" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20" name="GreekSaladCount"
+																		maxlength="20" required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60" name="GreekSaladSpl"
+																		maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuGreekSaladSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
+
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#BeefKabob"
+											data-whatever="BeefKabob">
+											<span>Beef Kabob</span>
+										</button>
+										<div class="modal fade" id="BeefKabob" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Beef Kabob</h3>
+														</div>
+														<div class="modal-desc">
+															<form id="popup_3_1" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20" name="BeefKabobCount"
+																		maxlength="20" required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60" name="BeefKabobSpl"
+																		maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuBeefKabobSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
+
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#GroundBeefKabob"
+											data-whatever="GroundBeefKabob">
+											<span>Ground Beef Kabob</span>
+										</button>
+										<div class="modal fade" id="GroundBeefKabob" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Ground Beef Kabob</h3>
+														</div>
+														<div class="modal-desc">
+															<form id="popup_3_2" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20"
+																		name="GroundBeefKabobCount" maxlength="20"
+																		required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60" name="GroundBeefKabobSpl"
+																		maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuGroundBeefKabobSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
+
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#ChickenKabob"
+											data-whatever="ChickenKabob">
+											<span>Chicken Kabob</span>
+										</button>
+										<div class="modal fade" id="ChickenKabob" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Chicken Kabob</h3>
+														</div>
+														<div class="modal-desc">
+															<form id="popup_3_3" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20" name="ChickenKabobCount"
+																		maxlength="20" required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60" name="ChickenKabobSpl"
+																		maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuChickenKabobSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
+
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#GroundChickenKabob"
+											data-whatever="GroundChickenKabob">
+											<span>Ground Chicken Kabob</span>
+										</button>
+										<div class="modal fade" id="GroundChickenKabob" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Ground Chicken Kabob</h3>
+														</div>
+														<div class="modal-desc">
+															<form id="popup_3_4" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20"
+																		name="GroundChickenKabobCount" maxlength="20"
+																		required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60"
+																		name="GroundChickenKabobSpl" maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuGroundChickenKabobSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
+
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#LambKabob"
+											data-whatever="LambKabob">
+											<span>Lamb Kabob</span>
+										</button>
+										<div class="modal fade" id="LambKabob" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Lamb Kabob</h3>
+														</div>
+														<div class="modal-desc">
+															<form id="popup_3_5" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20" name="LambKabobCount"
+																		maxlength="20" required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60" name="LambKabobSpl"
+																		maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuLambKabobSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
+
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#GroundLambKabob"
+											data-whatever="GroundLambKabob">
+											<span>Ground Lamb Kabob</span>
+										</button>
+										<div class="modal fade" id="GroundLambKabob" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Ground Lamb Kabob</h3>
+														</div>
+														<div class="modal-desc">
+															<form id="popup_3_6" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20"
+																		name="GroundLambKabobCount" maxlength="20"
+																		required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60" name="GroundLambKabobSpl"
+																		maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuGroundLambKabobSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
+
 									</div>
 								</div>
 							</div>
-						</div> --%>
+						</div>
+					</div>
 				</div>
 				<div class="col-md-4 rest-sidebar">
 					<div class="hut-sec">
 						<h3>Selected Items</h3>
 						<div class="slide"></div>
-						<!-- <div class="cart-main">
-							<div class="cart-item">Item</div>
-							<div class="cart-qty">Qty</div>
-							<div class="cart-price">Price</div>
-							<div class="clearfix"></div>
-						</div> -->
-						<!-- <p>Your cart is hungry</p> -->
-						<!-- <div class="cart-total">
-							<ul>
-								<li>Subtotal: <span>0.00</span></li>
-								<li>Tax: <span>0.52</span></li>
-								<li>Delivery Charge: <span>5.99</span></li>
-								<li><strong>Total: <span>$6.51</span></strong></li>
-							</ul>
-						</div> -->
+
 						<div class="pick-deliver">
-							<!-- <div class="pick">
-								<img src="img/icon_radial_off.png" alt="" /> <span>PICKUP</span>
-								<img src="img/icon_pickup_off.png" alt="" />
-							</div>
-							<div class="delivery">
-								<img src="img/icon_radial_on.png" alt="" /> <span>PICKUP</span>
-								<img src="img/icon_delivery_on.png" alt="" />
-							</div>
-							<div class="clearfix"></div>
-							<div class="quote">Delivery Minimum: $20.00 (Before tax) No
-								minimum on Pickup orders</div> -->
 							<div class="checkout">
-								
-									<form action="${pageContext.request.contextPath}/menu/saveMenu"
-										id="california_kabob_target" method="post">
-										<input type="hidden" name="full_menu_items"
-											id="full_menu_items"> <input type="hidden"
-											name="cuisineType" value="${menu.cuisine}">
-										<textarea rows="4" cols="50" name="comments"
-											placeholder="Enter your comments to restaurant here"
-											class="form-control">${menu.comments}</textarea>
-										<br />
-										<!-- <button type="button" onclick="california_kabob_menu_submit();"
+
+								<form action="${pageContext.request.contextPath}/menu/saveMenu"
+									id="california_kabob_target" method="post">
+									<input type="hidden" name="full_menu_items"
+										id="full_menu_items"> <input type="hidden"
+										name="cuisineType" value="${menu.cuisine}">
+									<textarea rows="4" cols="50" name="comments"
+										placeholder="Enter your comments to restaurant here"
+										class="form-control">${menu.comments}</textarea>
+									<br />
+									<!-- <button type="button" onclick="california_kabob_menu_submit();"
 										class="btn btn-default">Next</button> -->
-										<a href="javascript:california_kabob_menu_submit();">Next</a>
-									</form>
-								
-								<!-- <a href="#">CHECKOUT</a> -->
+									<a href="javascript:california_kabob_menu_submit();">Next</a>
+								</form>
 							</div>
-							<p>
-								<!-- <a href="#">Cart, Don't Follow Me!</a> -->
-							</p>
+							<p></p>
 						</div>
 					</div>
 				</div>
