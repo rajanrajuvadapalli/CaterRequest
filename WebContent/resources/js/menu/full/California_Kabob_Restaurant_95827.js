@@ -6,7 +6,7 @@ function populateFullMenuSarmaDolmeSelectedItems() {
 	$('.slide').children().each(function() {
 		console.log(this);
 		if ($(this).html().indexOf(name) >= 0) {
-			console.log("remove =="+this);
+			console.log("remove ==" + this);
 			$(this).remove();
 		}
 	});
@@ -17,20 +17,17 @@ function populateFullMenuSarmaDolmeSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
+	var html = '<div style="padding-left:10px;" id="'
 			+ div_id
 			+ '">'
-			+ '<div class="left">'
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
-	//console.log(html);
+			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+			+'</div>';
+	// console.log(html);
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
@@ -55,19 +52,17 @@ function populateFullMenuLargeHummusSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
+	var html = '<div style="padding-left:10px;" id="'
 			+ div_id
 			+ '">'
-			+ '<div class="left">'
+
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
@@ -93,19 +88,17 @@ function populateFullMenuGreekSaladSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
+	var html = '<div style="padding-left:10px;" id="'
 			+ div_id
 			+ '">'
-			+ '<div class="left">'
+
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+			'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
@@ -131,19 +124,17 @@ function populateFullMenuBeefKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
+	var html = '<div style="padding-left:10px;" id="'
 			+ div_id
 			+ '">'
-			+ '<div class="left">'
+
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+			'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
@@ -169,19 +160,17 @@ function populateFullMenuGroundBeefKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
+	var html = '<div style="padding-left:10px;" id="'
 			+ div_id
 			+ '">'
-			+ '<div class="left">'
+
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+			'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
@@ -207,19 +196,17 @@ function populateFullMenuChickenKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
+	var html = '<div style="padding-left:10px;" id="'
 			+ div_id
 			+ '">'
-			+ '<div class="left">'
+
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+			'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
@@ -245,19 +232,17 @@ function populateFullMenuGroundChickenKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
+	var html = '<div style="padding-left:10px;" id="'
 			+ div_id
 			+ '">'
-			+ '<div class="left">'
+
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+			'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
@@ -283,19 +268,17 @@ function populateFullMenuLambKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
+	var html = '<div style="padding-left:10px;" id="'
 			+ div_id
 			+ '">'
-			+ '<div class="left">'
+
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+			'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
@@ -321,19 +304,17 @@ function populateFullMenuGroundLambKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
+	var html = '<div style="padding-left:10px;" id="'
 			+ div_id
 			+ '">'
-			+ '<div class="left">'
+
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+			'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 

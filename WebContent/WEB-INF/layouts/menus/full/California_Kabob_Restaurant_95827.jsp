@@ -579,7 +579,7 @@
 				<div class="col-md-4 rest-sidebar">
 					<div class="hut-sec">
 						<h3>Selected Items</h3>
-						<ul class="slide"></ul>
+						<div class="slide"></div>
 
 						<div class="pick-deliver">
 							<div class="checkout">
