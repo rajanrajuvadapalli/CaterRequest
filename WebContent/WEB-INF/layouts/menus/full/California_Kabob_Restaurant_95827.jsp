@@ -99,24 +99,26 @@
 					<li class="active"><a href="#full-menu"
 						aria-controls="full-menu" role="tab" data-toggle="tab">Full
 							Menu</a></li>
-					<li><a href="#extra-items" aria-controls="extra-items"
-						role="tab" data-toggle="tab">Extra Items</a></li>
+					<!-- <li><a href="#extra-items" aria-controls="extra-items"
+						role="tab" data-toggle="tab">Extra Items</a></li> -->
 				</ul>
 				<div class="clearfix"></div>
 				<div class="tab-content col-md-8">
 					<div role="tabpanel" class="tab-pane active full-menu-content"
 						id="full-menu">
 						<p></p>
+
 						<!-- Collapse start -->
-						<div class="panel-group" id="accordion" role="tablist"
+						<div class="panel-group" id="accordion-APPETIZERS" role="tablist"
 							aria-multiselectable="true">
 							<div class="panel panel-default">
 								<div class="panel-heading" role="tab" id="headingOne">
 									<a role="button" data-toggle="collapse"
-										data-parent="#accordion" href="#BeachMunchies"
-										aria-expanded="true" aria-controls="BeachMunchies"> Menu </a>
+										data-parent="#accordion-APPETIZERS" href="#APPETIZERS"
+										aria-expanded="true" aria-controls="APPETIZERS">
+										APPETIZERS </a>
 								</div>
-								<div id="BeachMunchies" class="panel-collapse collapse in"
+								<div id="APPETIZERS" class="panel-collapse collapse in"
 									role="tabpanel" aria-labelledby="headingOne">
 									<div class="panel-body">
 										<!-- item begin -->
@@ -210,7 +212,23 @@
 											</div>
 										</div>
 										<!-- item end -->
+									</div>
+								</div>
+							</div>
+						</div>
 
+						<!-- Collapse start -->
+						<div class="panel-group" id="accordion-SALADS" role="tablist"
+							aria-multiselectable="true">
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="headingOne">
+									<a role="button" data-toggle="collapse"
+										data-parent="#accordion-SALADS" href="#SALADS"
+										aria-expanded="true" aria-controls="SALADS"> SALADS </a>
+								</div>
+								<div id="SALADS" class="panel-collapse collapse in"
+									role="tabpanel" aria-labelledby="headingOne">
+									<div class="panel-body">
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
 											data-toggle="modal" data-target="#GreekSalad"
@@ -256,7 +274,23 @@
 											</div>
 										</div>
 										<!-- item end -->
+									</div>
+								</div>
+							</div>
+						</div>
 
+						<!-- Collapse start -->
+						<div class="panel-group" id="accordion-KABOB" role="tablist"
+							aria-multiselectable="true">
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="headingOne">
+									<a role="button" data-toggle="collapse"
+										data-parent="#accordion-KABOB" href="#KABOB"
+										aria-expanded="true" aria-controls="KABOB"> KABOB </a>
+								</div>
+								<div id="KABOB" class="panel-collapse collapse in"
+									role="tabpanel" aria-labelledby="headingOne">
+									<div class="panel-body">
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
 											data-toggle="modal" data-target="#BeefKabob"
@@ -535,17 +569,17 @@
 											</div>
 										</div>
 										<!-- item end -->
-
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+
 				<div class="col-md-4 rest-sidebar">
 					<div class="hut-sec">
 						<h3>Selected Items</h3>
-						<div class="slide"></div>
+						<ul class="slide"></ul>
 
 						<div class="pick-deliver">
 							<div class="checkout">
@@ -570,9 +604,6 @@
 				</div>
 				<div class="clearfix"></div>
 			</div>
-		</div>
-		<div role="tabpanel" class="tab-pane" id="info">
-			<div class="info-tab-content">test1</div>
 		</div>
 	</div>
 </section>
