@@ -579,7 +579,17 @@
 				<div class="col-md-4 rest-sidebar">
 					<div class="hut-sec">
 						<h3>Selected Items</h3>
-						<div class="slide"></div>
+						<div class="slide">
+							<c:forEach items="${items}" var="m" varStatus="loop">
+								<div class="full-menu-list-item" id="m_${loop.index}">
+									<h4>${m.key}</h4>
+
+									<span class="full-menu-remove-item"
+										onclick="remove_california_kabob_item('m_${loop.index}');">X</span>
+									<figure>${m.value}</figure>
+								</div>
+							</c:forEach>
+						</div>
 
 						<div class="pick-deliver">
 							<div class="checkout">
@@ -616,13 +626,13 @@
 	});
 
 	$('document').ready(function() {
-		/* $('.slide .list-item .left').each(function() {   modal-sm
+		$('.slide .full-menu-list-item').each(function() {
 			var name = $(this).children().prev().text();
-			var desc = $(this).children().next().text();
+			var desc = $(this).children().next().next().text();
 			console.log("Title: " + name);
 			console.log("Desc: " + desc);
 			california_kabob_menu_items.push(name + "+" + desc); //california_kabob_menu_items is in California_Kabob_Restaurant_95827.js 
-		}); */
+		});
 	});
 </script>
 <!-- Sidebar Scrolling -->

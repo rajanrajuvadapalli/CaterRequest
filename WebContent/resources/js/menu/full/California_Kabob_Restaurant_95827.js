@@ -17,7 +17,7 @@ function populateFullMenuSarmaDolmeSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div style="padding-left:10px;" id="'
+	var html = '<div class="full-menu-list-item" id="'
 			+ div_id
 			+ '">'
 			+ '<h4>'
@@ -52,7 +52,7 @@ function populateFullMenuLargeHummusSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div style="padding-left:10px;" id="'
+	var html = '<div class="full-menu-list-item" id="'
 			+ div_id
 			+ '">'
 
@@ -88,7 +88,7 @@ function populateFullMenuGreekSaladSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div style="padding-left:10px;" id="'
+	var html = '<div class="full-menu-list-item" id="'
 			+ div_id
 			+ '">'
 
@@ -124,7 +124,7 @@ function populateFullMenuBeefKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div style="padding-left:10px;" id="'
+	var html = '<div class="full-menu-list-item" id="'
 			+ div_id
 			+ '">'
 
@@ -160,7 +160,7 @@ function populateFullMenuGroundBeefKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div style="padding-left:10px;" id="'
+	var html = '<div class="full-menu-list-item" id="'
 			+ div_id
 			+ '">'
 
@@ -196,7 +196,7 @@ function populateFullMenuChickenKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div style="padding-left:10px;" id="'
+	var html = '<div class="full-menu-list-item" id="'
 			+ div_id
 			+ '">'
 
@@ -232,7 +232,7 @@ function populateFullMenuGroundChickenKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div style="padding-left:10px;" id="'
+	var html = '<div class="full-menu-list-item" id="'
 			+ div_id
 			+ '">'
 
@@ -268,7 +268,7 @@ function populateFullMenuLambKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div style="padding-left:10px;" id="'
+	var html = '<div class="full-menu-list-item" id="'
 			+ div_id
 			+ '">'
 
@@ -304,7 +304,7 @@ function populateFullMenuGroundLambKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div style="padding-left:10px;" id="'
+	var html = '<div class="full-menu-list-item" id="'
 			+ div_id
 			+ '">'
 
