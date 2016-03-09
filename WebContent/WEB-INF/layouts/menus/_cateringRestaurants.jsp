@@ -112,7 +112,7 @@
 		action="${pageContext.request.contextPath}/login" method="POST"
 		enctype="application/x-www-form-urlencoded"
 		onsubmit="return validateLoginForm();">
-		<h2 class="form-signin-heading">Already have an account?</h2>
+		<h2>Already have an account?</h2>
 		<label for="inputEmail" class="sr-only">Email address</label> <input
 			type="email" name="username" id="username" class="form-control"
 			placeholder="Email address" required autofocus> <label
