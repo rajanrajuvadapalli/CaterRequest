@@ -376,6 +376,7 @@ public class RegistrationController {
 			errors.add("Invalid link used.");
 			return "t_login";
 		}
+		registerService.activateUser(login);
 		//Redirect to change password screen.
 		User user = new User();
 		user.setLoginID(login.getId());
