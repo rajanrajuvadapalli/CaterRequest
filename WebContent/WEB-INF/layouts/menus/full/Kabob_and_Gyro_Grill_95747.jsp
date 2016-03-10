@@ -200,7 +200,7 @@
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuSteakGyroSelectedItems();" />
+																			onclick="populateFullMenuSteakGyrosSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -246,7 +246,7 @@
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuChickenGyroSelectedItems();" />
+																			onclick="populateFullMenuChickenGryosSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -291,7 +291,7 @@
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuVeggieGyroSelectedItems();" />
+																			onclick="populateFullMenuVeggieGryosSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -337,7 +337,7 @@
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuCombinationGyroSelectedItems();" />
+																			onclick="populateFullMenuCombinationGryosSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -354,12 +354,12 @@
 								</div>
 							</div>
 						</div>
-						<div class="panel-group" id="accordion" role="tablist"
+						<div class="panel-group" id="accordion-kabob" role="tablist"
 							aria-multiselectable="true">
 							<div class="panel panel-default">
 								<div class="panel-heading" role="tab" id="headingOne">
 									<a role="button" data-toggle="collapse"
-										data-parent="#accordion" href="#ShawarmaCollapse"
+										data-parent="#accordion-kabob" href="#ShawarmaCollapse"
 										aria-expanded="true" aria-controls="ShawarmaCollapse" class="collapse"> Shawarmas </a>
 								</div>
 								<div id="ShawarmaCollapse" class="panel-collapse collapse in "
@@ -1145,13 +1145,13 @@
 	});
 
 	$('document').ready(function() {
-		/* $('.slide .list-item .left').each(function() {   modal-sm
+		 $('.slide .list-item .left').each(function() {   modal-sm
 			var name = $(this).children().prev().text();
 			var desc = $(this).children().next().text();
 			console.log("Title: " + name);
 			console.log("Desc: " + desc);
-			california_kabob_menu_items.push(name + "+" + desc); //california_kabob_menu_items is in California_Kabob_Restaurant_95827.js 
-		}); */
+			kabob_and_gyro_grill_items.push(name + "+" + desc); //california_kabob_menu_items is in California_Kabob_Restaurant_95827.js 
+		}); 
 	});
 </script>
 <!-- Sidebar Scrolling -->
@@ -1162,7 +1162,11 @@
 		$(window).scroll(function() {
 			if ($(window).scrollTop() > offset.top) {
 				$(".rest-sidebar").stop().animate({
-					marginTop : $(window).scrollTop() - offset.top + topPadding
+					//marginTop : $(window).scrollTop() - offset.top + topPadding,
+					marginTop : ($(window).scrollTop() - offset.top + topPadding)/4,
+					//marginTop : 0,
+					//marginBottom : ($(window).scrollTop() - offset.top + topPadding)/4,
+				
 				});
 			} else {
 				$(".rest-sidebar").stop().animate({
@@ -1173,3 +1177,4 @@
 		});
 	});
 </script>
+

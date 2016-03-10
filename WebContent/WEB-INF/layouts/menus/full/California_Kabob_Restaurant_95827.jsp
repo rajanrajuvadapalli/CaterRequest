@@ -643,7 +643,11 @@
 		$(window).scroll(function() {
 			if ($(window).scrollTop() > offset.top) {
 				$(".rest-sidebar").stop().animate({
-					marginTop : $(window).scrollTop() - offset.top + topPadding
+					//marginTop : $(window).scrollTop() - offset.top + topPadding,
+					marginTop : ($(window).scrollTop() - offset.top + topPadding)/4,
+					//marginTop : 0,
+					//marginBottom : ($(window).scrollTop() - offset.top + topPadding)/4,
+				
 				});
 			} else {
 				$(".rest-sidebar").stop().animate({

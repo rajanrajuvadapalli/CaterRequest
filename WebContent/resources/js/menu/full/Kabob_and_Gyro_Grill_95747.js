@@ -17,20 +17,16 @@ function populateFullMenuLambGryosSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
+	  var html = '<div class="full-menu-list-item" id="'
 			+ div_id
 			+ '">'
-			+ '<div class="left">'
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
-	//console.log(html);
+			+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+			+'</div>';
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
@@ -57,19 +53,16 @@ function populateFullMenuChickenGryosSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
-			+ div_id
-			+ '">'
-			+ '<div class="left">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
+	var html = '<div class="full-menu-list-item" id="'
+		+ div_id
+		+ '">'
+		+ '<h4>'
+		+ name
+		+ '</h4>'
+		+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
+		+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+		+'</div>';
 	//console.log(html);
 	$(html).appendTo('.slide');
 
@@ -80,7 +73,7 @@ function populateFullMenuChickenGryosSelectedItems() {
 	return false;
 }
 
-function populateFullMenuSteakGyroSelectedItems() {
+function populateFullMenuSteakGyrosSelectedItems() {
 	var name = "Steak Gyro";
 	// If an item is previously selected, remove if before adding the new one.
 	$('.slide').children().each(function() {
@@ -95,19 +88,16 @@ function populateFullMenuSteakGyroSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
-			+ div_id
-			+ '">'
-			+ '<div class="left">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
+	var html = '<div class="full-menu-list-item" id="'
+		+ div_id
+		+ '">'
+		+ '<h4>'
+		+ name
+		+ '</h4>'
+		+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
+		+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+		+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
@@ -136,19 +126,16 @@ function populateFullMenuCombinationGryosSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
-			+ div_id
-			+ '">'
-			+ '<div class="left">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
+	var html = '<div class="full-menu-list-item" id="'
+		+ div_id
+		+ '">'
+		+ '<h4>'
+		+ name
+		+ '</h4>'
+		+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
+		+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+		+'</div>';
 	//console.log(html);
 	$(html).appendTo('.slide');
 
@@ -178,20 +165,16 @@ function populateFullMenuVeggieGryosSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
-			+ div_id
-			+ '">'
-			+ '<div class="left">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
-	//console.log(html);
+	var html = '<div class="full-menu-list-item" id="'
+		+ div_id
+		+ '">'
+		+ '<h4>'
+		+ name
+		+ '</h4>'
+		+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
+		+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+		+'</div>';
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
@@ -220,20 +203,16 @@ function populateFullMenuLambShawarmaSelectedItems() {
 	  var desc = "Count: " + n;
 	  if (spl != "")
 	    desc += ", Special Instructions: " + spl;
-	  var html = '<div class="" id="'
-	      + div_id
-	      + '">'
-	      + '<div class="left">'
-	      + '<h4>'
-	      + name
-	      + '</h4>'
-	      + '<figure>'
-	      + desc
-	      + '</figure>'
-	      + '</div>'
-	      + '<span class="item-close remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-	      + div_id + '\');">X</span><div class="right"></div>' + '</div>';
-	  //console.log(html);
+	  var html = '<div class="full-menu-list-item" id="'
+			+ div_id
+			+ '">'
+			+ '<h4>'
+			+ name
+			+ '</h4>'
+			+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+			+'</div>';
 	  $(html).appendTo('.slide');
 
 	  var data = name + "+" + desc;
@@ -261,20 +240,16 @@ function populateFullMenuSteakShawarmaSelectedItems() {
   var desc = "Count: " + n;
   if (spl != "")
     desc += ", Special Instructions: " + spl;
-  var html = '<div class="" id="'
-      + div_id
-      + '">'
-      + '<div class="left">'
-      + '<h4>'
-      + name
-      + '</h4>'
-      + '<figure>'
-      + desc
-      + '</figure>'
-      + '</div>'
-      + '<span class="item-close remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-      + div_id + '\');">X</span><div class="right"></div>' + '</div>';
-  //console.log(html);
+  var html = '<div class="full-menu-list-item" id="'
+		+ div_id
+		+ '">'
+		+ '<h4>'
+		+ name
+		+ '</h4>'
+		+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
+		+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+		+'</div>';
   $(html).appendTo('.slide');
 
   var data = name + "+" + desc;
@@ -303,20 +278,16 @@ function populateFullMenuChickenShawarmaSelectedItems() {
   var desc = "Count: " + n;
   if (spl != "")
     desc += ", Special Instructions: " + spl;
-  var html = '<div class="" id="'
-      + div_id
-      + '">'
-      + '<div class="left">'
-      + '<h4>'
-      + name
-      + '</h4>'
-      + '<figure>'
-      + desc
-      + '</figure>'
-      + '</div>'
-      + '<span class="item-close remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-      + div_id + '\');">X</span><div class="right"></div>' + '</div>';
-  //console.log(html);
+  var html = '<div class="full-menu-list-item" id="'
+		+ div_id
+		+ '">'
+		+ '<h4>'
+		+ name
+		+ '</h4>'
+		+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
+		+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+		+'</div>';
   $(html).appendTo('.slide');
 
   var data = name + "+" + desc;
@@ -344,20 +315,16 @@ function populateFullMenuMediterraneanShawarmaSelectedItems() {
   var desc = "Count: " + n;
   if (spl != "")
     desc += ", Special Instructions: " + spl;
-  var html = '<div class="" id="'
-      + div_id
-      + '">'
-      + '<div class="left">'
-      + '<h4>'
-      + name
-      + '</h4>'
-      + '<figure>'
-      + desc
-      + '</figure>'
-      + '</div>'
-      + '<span class="item-close remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-      + div_id + '\');">X</span><div class="right"></div>' + '</div>';
-  //console.log(html);
+  var html = '<div class="full-menu-list-item" id="'
+		+ div_id
+		+ '">'
+		+ '<h4>'
+		+ name
+		+ '</h4>'
+		+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
+		+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+		+'</div>';
   $(html).appendTo('.slide');
 
   var data = name + "+" + desc;
@@ -384,20 +351,16 @@ function populateFullMenuCombinationShawarmaSelectedItems() {
   var desc = "Count: " + n;
   if (spl != "")
     desc += ", Special Instructions: " + spl;
-  var html = '<div class="" id="'
-      + div_id
-      + '">'
-      + '<div class="left">'
-      + '<h4>'
-      + name
-      + '</h4>'
-      + '<figure>'
-      + desc
-      + '</figure>'
-      + '</div>'
-      + '<span class="item-close remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-      + div_id + '\');">X</span><div class="right"></div>' + '</div>';
-  //console.log(html);
+  var html = '<div class="full-menu-list-item" id="'
+		+ div_id
+		+ '">'
+		+ '<h4>'
+		+ name
+		+ '</h4>'
+		+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
+		+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+		+'</div>';
   $(html).appendTo('.slide');
 
   var data = name + "+" + desc;
@@ -423,24 +386,20 @@ function populateFullMenuGreekSaladSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
-			+ div_id
-			+ '">'
-			+ '<div class="left">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
-	// console.log(html);
+	var html = '<div class="full-menu-list-item" id="'
+		+ div_id
+		+ '">'
+		+ '<h4>'
+		+ name
+		+ '</h4>'
+		+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
+		+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+		+'</div>';
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
-	california_kabob_menu_items.push(data);
+	remove_kabob_and_gyro_grill_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
@@ -461,24 +420,20 @@ function populateFullMenuBeefKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
-			+ div_id
-			+ '">'
-			+ '<div class="left">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
-	// console.log(html);
+	var html = '<div class="full-menu-list-item" id="'
+		+ div_id
+		+ '">'
+		+ '<h4>'
+		+ name
+		+ '</h4>'
+		+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
+		+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+		+'</div>';
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
-	california_kabob_menu_items.push(data);
+	remove_kabob_and_gyro_grill_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
@@ -499,24 +454,20 @@ function populateFullMenuGroundBeefKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
-			+ div_id
-			+ '">'
-			+ '<div class="left">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
-	// console.log(html);
+	var html = '<div class="full-menu-list-item" id="'
+		+ div_id
+		+ '">'
+		+ '<h4>'
+		+ name
+		+ '</h4>'
+		+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
+		+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+		+'</div>';
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
-	california_kabob_menu_items.push(data);
+	remove_kabob_and_gyro_grill_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
@@ -537,24 +488,20 @@ function populateFullMenuChickenKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
-			+ div_id
-			+ '">'
-			+ '<div class="left">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
-	// console.log(html);
+	var html = '<div class="full-menu-list-item" id="'
+		+ div_id
+		+ '">'
+		+ '<h4>'
+		+ name
+		+ '</h4>'
+		+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
+		+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+		+'</div>';
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
-	california_kabob_menu_items.push(data);
+	remove_kabob_and_gyro_grill_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
@@ -575,24 +522,20 @@ function populateFullMenuGroundChickenKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
-			+ div_id
-			+ '">'
-			+ '<div class="left">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
-	// console.log(html);
+	var html = '<div class="full-menu-list-item" id="'
+		+ div_id
+		+ '">'
+		+ '<h4>'
+		+ name
+		+ '</h4>'
+		+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
+		+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+		+'</div>';
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
-	california_kabob_menu_items.push(data);
+	remove_kabob_and_gyro_grill_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
@@ -613,24 +556,20 @@ function populateFullMenuLambKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
-			+ div_id
-			+ '">'
-			+ '<div class="left">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
-	// console.log(html);
+	var html = '<div class="full-menu-list-item" id="'
+		+ div_id
+		+ '">'
+		+ '<h4>'
+		+ name
+		+ '</h4>'
+		+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
+		+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+		+'</div>';
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
-	california_kabob_menu_items.push(data);
+	remove_kabob_and_gyro_grill_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
@@ -651,24 +590,20 @@ function populateFullMenuGroundLambKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
-			+ div_id
-			+ '">'
-			+ '<div class="left">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
-	// console.log(html);
+	var html = '<div class="full-menu-list-item" id="'
+		+ div_id
+		+ '">'
+		+ '<h4>'
+		+ name
+		+ '</h4>'
+		+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
+		+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+		+'</div>';
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
-	california_kabob_menu_items.push(data);
+	remove_kabob_and_gyro_grill_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
