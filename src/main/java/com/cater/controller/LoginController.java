@@ -1,6 +1,7 @@
 package com.cater.controller;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -152,7 +153,7 @@ public class LoginController {
 							.getAttribute("cuisineType");
 					Set <Restaurant> restaurants = restaurantService
 							.fetchRestaurantsOfTypePrimary(cuisine);
-					List <RestaurantDTO> nearByRestaurants = restaurantService
+					Collection <RestaurantDTO> nearByRestaurants = restaurantService
 							.getNearbyYelpReviews(e.getLocation(), restaurants);
 					if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
 						modelMap.put("restaurants", nearByRestaurants);

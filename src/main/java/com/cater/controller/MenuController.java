@@ -5,6 +5,7 @@ import static com.cater.menu.MenuHelper.MENU_DELIMITER;
 import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -491,7 +492,7 @@ public class MenuController {
 					com.cater.model.Address eventLocation = e.getLocation();
 					modelMap.put("eventLocation", eventLocation);
 					//modelMap.put("restaurants", restaurants);
-					List <RestaurantDTO> nearByRestaurants = restaurantService
+					Collection <RestaurantDTO> nearByRestaurants = restaurantService
 							.getNearbyYelpReviews(eventLocation, restaurants);
 					if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
 						modelMap.put("restaurants", nearByRestaurants);

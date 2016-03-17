@@ -1,5 +1,6 @@
 package com.cater.controller;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -319,7 +320,7 @@ public class RegistrationController {
 			Set <Restaurant> restaurants = restaurantService
 					.fetchRestaurantsOfType(cuisine);
 			//modelMap.put("restaurants", restaurants);
-			List <RestaurantDTO> nearByRestaurants = restaurantService
+			Collection <RestaurantDTO> nearByRestaurants = restaurantService
 					.getNearbyYelpReviews(menu.getEvent().getLocation(),
 							restaurants);
 			if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
