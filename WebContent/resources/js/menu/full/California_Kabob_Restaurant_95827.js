@@ -2,14 +2,6 @@ var $ = jQuery.noConflict();
 var california_kabob_menu_items = [];
 function populateFullMenuSarmaDolmeSelectedItems() {
 	var name = "Sarma Dolme";
-	// If an item is previously selected, remove if before adding the new one.
-	$('.slide').children().each(function() {
-		console.log(this);
-		if ($(this).html().indexOf(name) >= 0) {
-			console.log("remove =="+this);
-			$(this).remove();
-		}
-	});
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=SarmaDolmeCount]').val();
@@ -17,20 +9,17 @@ function populateFullMenuSarmaDolmeSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
+	var html = '<div class="full-menu-list-item" id="'
 			+ div_id
 			+ '">'
-			+ '<div class="left">'
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
-	//console.log(html);
+			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+			+'</div>';
+	// console.log(html);
 	$(html).appendTo('.slide');
 
 	var data = name + "+" + desc;
@@ -42,12 +31,6 @@ function populateFullMenuSarmaDolmeSelectedItems() {
 
 function populateFullMenuLargeHummusSelectedItems() {
 	var name = "Large Hummus";
-	// If an item is previously selected, remove if before adding the new one.
-	$('.slide').children().each(function() {
-		if ($(this).html().indexOf(name) >= 0) {
-			$(this).remove();
-		}
-	});
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=LargeHummusCount]').val();
@@ -55,19 +38,17 @@ function populateFullMenuLargeHummusSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
+	var html = '<div class="full-menu-list-item" id="'
 			+ div_id
 			+ '">'
-			+ '<div class="left">'
+
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
@@ -80,12 +61,6 @@ function populateFullMenuLargeHummusSelectedItems() {
 
 function populateFullMenuGreekSaladSelectedItems() {
 	var name = "Greek Salad";
-	// If an item is previously selected, remove if before adding the new one.
-	$('.slide').children().each(function() {
-		if ($(this).html().indexOf(name) >= 0) {
-			$(this).remove();
-		}
-	});
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=GreekSaladCount]').val();
@@ -93,19 +68,17 @@ function populateFullMenuGreekSaladSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
+	var html = '<div class="full-menu-list-item" id="'
 			+ div_id
 			+ '">'
-			+ '<div class="left">'
+
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+			'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
@@ -118,12 +91,6 @@ function populateFullMenuGreekSaladSelectedItems() {
 
 function populateFullMenuBeefKabobSelectedItems() {
 	var name = "Beef Kabob";
-	// If an item is previously selected, remove if before adding the new one.
-	$('.slide').children().each(function() {
-		if ($(this).html().indexOf(name) >= 0) {
-			$(this).remove();
-		}
-	});
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=BeefKabobCount]').val();
@@ -131,19 +98,17 @@ function populateFullMenuBeefKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
+	var html = '<div class="full-menu-list-item" id="'
 			+ div_id
 			+ '">'
-			+ '<div class="left">'
+
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+			'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
@@ -156,12 +121,6 @@ function populateFullMenuBeefKabobSelectedItems() {
 
 function populateFullMenuGroundBeefKabobSelectedItems() {
 	var name = "Ground Beef Kabob";
-	// If an item is previously selected, remove if before adding the new one.
-	$('.slide').children().each(function() {
-		if ($(this).html().indexOf(name) >= 0) {
-			$(this).remove();
-		}
-	});
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=GroundBeefKabobCount]').val();
@@ -169,19 +128,17 @@ function populateFullMenuGroundBeefKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
+	var html = '<div class="full-menu-list-item" id="'
 			+ div_id
 			+ '">'
-			+ '<div class="left">'
+
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+			'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
@@ -194,12 +151,6 @@ function populateFullMenuGroundBeefKabobSelectedItems() {
 
 function populateFullMenuChickenKabobSelectedItems() {
 	var name = "Chicken Kabob";
-	// If an item is previously selected, remove if before adding the new one.
-	$('.slide').children().each(function() {
-		if ($(this).html().indexOf(name) >= 0) {
-			$(this).remove();
-		}
-	});
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=ChickenKabobCount]').val();
@@ -207,19 +158,17 @@ function populateFullMenuChickenKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
+	var html = '<div class="full-menu-list-item" id="'
 			+ div_id
 			+ '">'
-			+ '<div class="left">'
+
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+			'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
@@ -232,12 +181,6 @@ function populateFullMenuChickenKabobSelectedItems() {
 
 function populateFullMenuGroundChickenKabobSelectedItems() {
 	var name = "Ground Chicken Kabob";
-	// If an item is previously selected, remove if before adding the new one.
-	$('.slide').children().each(function() {
-		if ($(this).html().indexOf(name) >= 0) {
-			$(this).remove();
-		}
-	});
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=GroundChickenKabobCount]').val();
@@ -245,19 +188,17 @@ function populateFullMenuGroundChickenKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
+	var html = '<div class="full-menu-list-item" id="'
 			+ div_id
 			+ '">'
-			+ '<div class="left">'
+
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+			'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
@@ -270,12 +211,6 @@ function populateFullMenuGroundChickenKabobSelectedItems() {
 
 function populateFullMenuLambKabobSelectedItems() {
 	var name = "Lamb Kabob";
-	// If an item is previously selected, remove if before adding the new one.
-	$('.slide').children().each(function() {
-		if ($(this).html().indexOf(name) >= 0) {
-			$(this).remove();
-		}
-	});
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=LambKabobCount]').val();
@@ -283,19 +218,17 @@ function populateFullMenuLambKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
+	var html = '<div class="full-menu-list-item" id="'
 			+ div_id
 			+ '">'
-			+ '<div class="left">'
+
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+			'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 
@@ -308,12 +241,6 @@ function populateFullMenuLambKabobSelectedItems() {
 
 function populateFullMenuGroundLambKabobSelectedItems() {
 	var name = "Ground Lamb Kabob";
-	// If an item is previously selected, remove if before adding the new one.
-	$('.slide').children().each(function() {
-		if ($(this).html().indexOf(name) >= 0) {
-			$(this).remove();
-		}
-	});
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=GroundLambKabobCount]').val();
@@ -321,19 +248,17 @@ function populateFullMenuGroundLambKabobSelectedItems() {
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
-	var html = '<div class="" id="'
+	var html = '<div class="full-menu-list-item" id="'
 			+ div_id
 			+ '">'
-			+ '<div class="left">'
+
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<figure>'
-			+ desc
-			+ '</figure>'
-			+ '</div>'
-			+ '<span class="item-close remove-item" onclick="remove_california_kabob_item(\''
-			+ div_id + '\');">X</span><div class="right"></div>' + '</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+
+			'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 

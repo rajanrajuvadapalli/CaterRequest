@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="col-sm-11">
-	<div class="col-sm-4 col-sm-offset-4 text-center">
+	<div class="col-sm-4 col-sm-offset-4">
 		<c:if test="${not empty errors}">
 			<div class="alert alert-danger">
 				<button type="button" class="close btn-lg" data-dismiss="alert"
@@ -15,7 +15,7 @@
 
 				<ul>
 					<c:forEach items="${errors}" var="e">
-						<li align="left">${e}</li>
+						<li>${e}</li>
 					</c:forEach>
 				</ul>
 
@@ -30,7 +30,7 @@
 				</button>
 				<ul>
 					<c:forEach items="${successMessages}" var="sm">
-						<li align="left">${sm}</li>
+						<li>${sm}</li>
 					</c:forEach>
 				</ul>
 
@@ -45,7 +45,7 @@
 				</button>
 				<ul>
 					<c:forEach items="${warnings}" var="w">
-						<li align="left">${w}</li>
+						<li>${w}</li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -56,26 +56,27 @@
 			enctype="application/x-www-form-urlencoded"
 			onsubmit="return validateLoginForm();">
 
-			<h2 class="form-signin-heading">Please sign in</h2>
-			<label for="inputEmail" class="sr-only">Email address</label> <input
-				type="email" name="username" id="username" class="form-control"
-				placeholder="Email address" required autofocus> <label
-				for="inputPassword" class="sr-only">Password</label> <input
-				type="password" name="pwd" id="pwd" class="form-control"
-				placeholder="Password" required="required">
-			<!-- <div class="checkbox">
-			<label> <input type="checkbox" value="remember-me">
-				Remember me
-			</label>
-		</div> -->
-		<br/>
+			<h2>Please sign in</h2>
+			<div style="padding-top: 10px;">
+				Email address:<br /> <input type="email" name="username"
+					id="username" class="form-control" placeholder="Email address"
+					required autofocus>
+			</div>
+			<div style="padding-top: 10px;">
+				Password:<br /> <input type="password" name="pwd" id="pwd"
+					class="form-control" placeholder="Password" required="required">
+			</div>
+			<div style="padding-top: 10px;">
+				<a class="popup-with-form" style="font-size: 13px;"
+					href="#forgot-pwd-form">Forgot Password?</a>
+			</div>
+			<br />
 			<button class="btn btn-default" type="submit">Sign in</button>
 		</form>
-		<br /> <a class="popup-with-form" href="#forgot-pwd-form"
-			style="font-size: 16px;">Forgot Password?</a>
+		<br />
 
-		<form class="mfp-hide white-popup-block forgotPasswordPopup" method="POST"
-			id="forgot-pwd-form"
+		<form class="mfp-hide white-popup-block forgotPasswordPopup"
+			method="POST" id="forgot-pwd-form"
 			action="${pageContext.request.contextPath}/forgotPassword"
 			enctype="application/x-www-form-urlencoded">
 			<h2 class="form-signin-heading">Forgot Password</h2>
@@ -86,6 +87,5 @@
 		</form>
 
 	</div>
-	<div class="col-sm-4"></div>
 </div>
 <!-- /container -->

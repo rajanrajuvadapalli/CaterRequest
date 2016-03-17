@@ -1,6 +1,7 @@
 package com.cater.service;
 
 import java.io.File;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -302,9 +303,9 @@ public class RestaurantService {
 	 * @param restaurants the restaurants
 	 * @return the nearby yelp reviews
 	 */
-	public List <RestaurantDTO> getNearbyYelpReviews(
+	public Collection <RestaurantDTO> getNearbyYelpReviews(
 			com.cater.model.Address eventLocation, Set <Restaurant> restaurants) {
-		List <RestaurantDTO> nearByRestaurants = null;
+		Collection <RestaurantDTO> nearByRestaurants = null;
 		try {
 			nearByRestaurants = new MapsHelper().getDistance(eventLocation,
 					restaurants);

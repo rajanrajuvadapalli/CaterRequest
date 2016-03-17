@@ -212,3 +212,7 @@
 .clr {
 	clear: both;
 }
+
+.full-menu-list-item {
+	padding-left:10px;
+}

@@ -99,24 +99,26 @@
 					<li class="active"><a href="#full-menu"
 						aria-controls="full-menu" role="tab" data-toggle="tab">Full
 							Menu</a></li>
-					<li><a href="#extra-items" aria-controls="extra-items"
-						role="tab" data-toggle="tab">Extra Items</a></li>
+					<!-- <li><a href="#extra-items" aria-controls="extra-items"
+						role="tab" data-toggle="tab">Extra Items</a></li> -->
 				</ul>
 				<div class="clearfix"></div>
 				<div class="tab-content col-md-8">
 					<div role="tabpanel" class="tab-pane active full-menu-content"
 						id="full-menu">
 						<p></p>
+
 						<!-- Collapse start -->
-						<div class="panel-group" id="accordion" role="tablist"
+						<div class="panel-group" id="accordion-APPETIZERS" role="tablist"
 							aria-multiselectable="true">
 							<div class="panel panel-default">
 								<div class="panel-heading" role="tab" id="headingOne">
 									<a role="button" data-toggle="collapse"
-										data-parent="#accordion" href="#BeachMunchies"
-										aria-expanded="true" aria-controls="BeachMunchies"> Menu </a>
+										data-parent="#accordion-APPETIZERS" href="#APPETIZERS"
+										aria-expanded="true" aria-controls="APPETIZERS">
+										APPETIZERS </a>
 								</div>
-								<div id="BeachMunchies" class="panel-collapse collapse in"
+								<div id="APPETIZERS" class="panel-collapse collapse in"
 									role="tabpanel" aria-labelledby="headingOne">
 									<div class="panel-body">
 										<!-- item begin -->
@@ -210,7 +212,23 @@
 											</div>
 										</div>
 										<!-- item end -->
+									</div>
+								</div>
+							</div>
+						</div>
 
+						<!-- Collapse start -->
+						<div class="panel-group" id="accordion-SALADS" role="tablist"
+							aria-multiselectable="true">
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="headingOne">
+									<a role="button" data-toggle="collapse"
+										data-parent="#accordion-SALADS" href="#SALADS"
+										aria-expanded="true" aria-controls="SALADS"> SALADS </a>
+								</div>
+								<div id="SALADS" class="panel-collapse collapse in"
+									role="tabpanel" aria-labelledby="headingOne">
+									<div class="panel-body">
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
 											data-toggle="modal" data-target="#GreekSalad"
@@ -256,7 +274,23 @@
 											</div>
 										</div>
 										<!-- item end -->
+									</div>
+								</div>
+							</div>
+						</div>
 
+						<!-- Collapse start -->
+						<div class="panel-group" id="accordion-KABOB" role="tablist"
+							aria-multiselectable="true">
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="headingOne">
+									<a role="button" data-toggle="collapse"
+										data-parent="#accordion-KABOB" href="#KABOB"
+										aria-expanded="true" aria-controls="KABOB"> KABOB </a>
+								</div>
+								<div id="KABOB" class="panel-collapse collapse in"
+									role="tabpanel" aria-labelledby="headingOne">
+									<div class="panel-body">
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
 											data-toggle="modal" data-target="#BeefKabob"
@@ -535,17 +569,27 @@
 											</div>
 										</div>
 										<!-- item end -->
-
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+
 				<div class="col-md-4 rest-sidebar">
 					<div class="hut-sec">
 						<h3>Selected Items</h3>
-						<div class="slide"></div>
+						<div class="slide">
+							<c:forEach items="${items}" var="m" varStatus="loop">
+								<div class="full-menu-list-item" id="m_${loop.index}">
+									<h4>${m.key}</h4>
+
+									<span class="full-menu-remove-item"
+										onclick="remove_california_kabob_item('m_${loop.index}');">X</span>
+									<figure>${m.value}</figure>
+								</div>
+							</c:forEach>
+						</div>
 
 						<div class="pick-deliver">
 							<div class="checkout">
@@ -571,9 +615,6 @@
 				<div class="clearfix"></div>
 			</div>
 		</div>
-		<div role="tabpanel" class="tab-pane" id="info">
-			<div class="info-tab-content">test1</div>
-		</div>
 	</div>
 </section>
 
@@ -585,13 +626,13 @@
 	});
 
 	$('document').ready(function() {
-		/* $('.slide .list-item .left').each(function() {   modal-sm
+		$('.slide .full-menu-list-item').each(function() {
 			var name = $(this).children().prev().text();
-			var desc = $(this).children().next().text();
+			var desc = $(this).children().next().next().text();
 			console.log("Title: " + name);
 			console.log("Desc: " + desc);
 			california_kabob_menu_items.push(name + "+" + desc); //california_kabob_menu_items is in California_Kabob_Restaurant_95827.js 
-		}); */
+		});
 	});
 </script>
 <!-- Sidebar Scrolling -->
@@ -602,7 +643,11 @@
 		$(window).scroll(function() {
 			if ($(window).scrollTop() > offset.top) {
 				$(".rest-sidebar").stop().animate({
-					marginTop : $(window).scrollTop() - offset.top + topPadding
+					//marginTop : $(window).scrollTop() - offset.top + topPadding,
+					marginTop : ($(window).scrollTop() - offset.top + topPadding)/4,
+					//marginTop : 0,
+					//marginBottom : ($(window).scrollTop() - offset.top + topPadding)/4,
+				
 				});
 			} else {
 				$(".rest-sidebar").stop().animate({

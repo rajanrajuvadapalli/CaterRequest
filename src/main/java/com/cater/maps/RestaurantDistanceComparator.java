@@ -7,6 +7,7 @@ public class RestaurantDistanceComparator implements Comparator<RestaurantDTO> {
 	public int compare(RestaurantDTO restaurant1, RestaurantDTO restaurant2) {
 		Long distance1 = restaurant1.getDistanceInMeters();
 		Long distance2 = restaurant2.getDistanceInMeters();
-		return (int) (distance1.longValue() - distance2.longValue());
+		return distance1 != null && distance2 != null ? (int) (distance1
+				.longValue() - distance2.longValue()) : 0;
 	}
 }

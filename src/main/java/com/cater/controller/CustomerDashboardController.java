@@ -6,6 +6,7 @@ import static com.cater.constants.QuoteStatus.CUSTOMER_UPDATED_DATE;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -291,7 +292,7 @@ public class CustomerDashboardController {
 				modelMap.put("prevR", previouslySelectedRestaurants);
 				Set <Restaurant> restaurants = restaurantService
 						.fetchRestaurantsOfTypePrimary(cuisineType);
-				List <RestaurantDTO> nearByRestaurants = restaurantService
+				Collection <RestaurantDTO> nearByRestaurants = restaurantService
 						.getNearbyYelpReviews(eventLocation, restaurants);
 				if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
 					modelMap.put("restaurants", nearByRestaurants);

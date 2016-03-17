@@ -77,6 +77,9 @@ dependencies {
 	//Stripe
 	compile "com.stripe:stripe-java:1.43.0"
 	
+	compile 'org.apache.commons:commons-collections4:4.1'
+
+	
 	testCompile "junit:junit:4.9"
 	testCompile "org.springframework:spring-test:${springVersion}"	
 }
