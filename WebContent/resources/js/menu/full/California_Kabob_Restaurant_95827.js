@@ -2,14 +2,6 @@ var $ = jQuery.noConflict();
 var california_kabob_menu_items = [];
 function populateFullMenuSarmaDolmeSelectedItems() {
 	var name = "Sarma Dolme";
-	// If an item is previously selected, remove if before adding the new one.
-	$('.slide').children().each(function() {
-		console.log(this);
-		if ($(this).html().indexOf(name) >= 0) {
-			console.log("remove ==" + this);
-			$(this).remove();
-		}
-	});
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=SarmaDolmeCount]').val();
@@ -39,12 +31,6 @@ function populateFullMenuSarmaDolmeSelectedItems() {
 
 function populateFullMenuLargeHummusSelectedItems() {
 	var name = "Large Hummus";
-	// If an item is previously selected, remove if before adding the new one.
-	$('.slide').children().each(function() {
-		if ($(this).html().indexOf(name) >= 0) {
-			$(this).remove();
-		}
-	});
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=LargeHummusCount]').val();
@@ -75,12 +61,6 @@ function populateFullMenuLargeHummusSelectedItems() {
 
 function populateFullMenuGreekSaladSelectedItems() {
 	var name = "Greek Salad";
-	// If an item is previously selected, remove if before adding the new one.
-	$('.slide').children().each(function() {
-		if ($(this).html().indexOf(name) >= 0) {
-			$(this).remove();
-		}
-	});
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=GreekSaladCount]').val();
@@ -111,12 +91,6 @@ function populateFullMenuGreekSaladSelectedItems() {
 
 function populateFullMenuBeefKabobSelectedItems() {
 	var name = "Beef Kabob";
-	// If an item is previously selected, remove if before adding the new one.
-	$('.slide').children().each(function() {
-		if ($(this).html().indexOf(name) >= 0) {
-			$(this).remove();
-		}
-	});
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=BeefKabobCount]').val();
@@ -147,12 +121,6 @@ function populateFullMenuBeefKabobSelectedItems() {
 
 function populateFullMenuGroundBeefKabobSelectedItems() {
 	var name = "Ground Beef Kabob";
-	// If an item is previously selected, remove if before adding the new one.
-	$('.slide').children().each(function() {
-		if ($(this).html().indexOf(name) >= 0) {
-			$(this).remove();
-		}
-	});
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=GroundBeefKabobCount]').val();
@@ -183,12 +151,6 @@ function populateFullMenuGroundBeefKabobSelectedItems() {
 
 function populateFullMenuChickenKabobSelectedItems() {
 	var name = "Chicken Kabob";
-	// If an item is previously selected, remove if before adding the new one.
-	$('.slide').children().each(function() {
-		if ($(this).html().indexOf(name) >= 0) {
-			$(this).remove();
-		}
-	});
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=ChickenKabobCount]').val();
@@ -219,12 +181,6 @@ function populateFullMenuChickenKabobSelectedItems() {
 
 function populateFullMenuGroundChickenKabobSelectedItems() {
 	var name = "Ground Chicken Kabob";
-	// If an item is previously selected, remove if before adding the new one.
-	$('.slide').children().each(function() {
-		if ($(this).html().indexOf(name) >= 0) {
-			$(this).remove();
-		}
-	});
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=GroundChickenKabobCount]').val();
@@ -255,12 +211,6 @@ function populateFullMenuGroundChickenKabobSelectedItems() {
 
 function populateFullMenuLambKabobSelectedItems() {
 	var name = "Lamb Kabob";
-	// If an item is previously selected, remove if before adding the new one.
-	$('.slide').children().each(function() {
-		if ($(this).html().indexOf(name) >= 0) {
-			$(this).remove();
-		}
-	});
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=LambKabobCount]').val();
@@ -291,12 +241,6 @@ function populateFullMenuLambKabobSelectedItems() {
 
 function populateFullMenuGroundLambKabobSelectedItems() {
 	var name = "Ground Lamb Kabob";
-	// If an item is previously selected, remove if before adding the new one.
-	$('.slide').children().each(function() {
-		if ($(this).html().indexOf(name) >= 0) {
-			$(this).remove();
-		}
-	});
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
 	var n = $('input[name=GroundLambKabobCount]').val();
