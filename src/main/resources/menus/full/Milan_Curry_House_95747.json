@@ -1,0 +1,454 @@
+{
+	"cuisine": "MEXICAN",
+	"categories": [{
+			"code": "C_1",
+			"name": "SIGNATURE_WRAPS",
+			"items": [{
+					"code": "C_1_1",
+					"name": "Vegetarian Wraps",
+					"description": "Seasoned Veggie cutlet W/ tomatoes, lettuce, cilantro, onion, mint, and tamarind sauce wrapped in fresh Naan.",
+					"isSelected": false
+				}, {
+					"code": "C_1_2",
+					"name": "Paneer Wrap",
+					"description": "Seasoned Veggie cutlet and Paneer W/ tomatoes, lettuce, cilantro, onion, mint, and tamarind wrapped in fresh Naan.",
+					"isSelected": false
+				}, {
+					"code": "C_1_3",
+					"name": "Chicken Wrap",
+					"description": "Baked boneless Chicken W/ tomatoes, lettuce, cilantro, onion, mint, and tamarind sauce wrapped in fresh Naan.",
+					"isSelected": false
+				}, {
+					"code": "C_1_4",
+					"name": "Fish Wrap",
+					"description": "Baked boneless Fish W/ tomatoes, lettuce, cilantro, onion, mint, and tamarind sauce wrapped in fresh Naan.",
+					"isSelected": false
+				}, {
+					"code": "C_1_5",
+					"name": "Lamb Wrap",
+					"description": "Baked boneless Lamb W/ tomatoes, lettuce, cilantro, onion, mint, and tamarind sauce wrapped in fresh Naan.",
+					"isSelected": false
+				}
+
+			]
+		}, {
+			"code": "C_2",
+			"name": "APPETIZERS",
+			"items": [{
+					"code": "C_2_1",
+					"name": "Aloo Tikki",
+					"description": "Potato / Veggie Cutlets crispy on the outside, blended W/ herbs and spices.",
+					"isSelected": false
+				}, {
+					"code": "C_2_2",
+					"name": "Panni Puri (8 PC)",
+					"description": "Crispy Shallow Ball to be filled W/ Potatoes, chickpeas, onions, mint, Tamarind, and sweet and spicy Water.",
+					"isSelected": false
+				}, {
+					"code": "C_2_3",
+					"name": "Panni Puri (20 PC)",
+					"description": "Crispy Shallow Ball to be filled W/ Potatoes, chickpeas, onions, mint, Tamarind, and sweet and spicy Water.",
+					"isSelected": false
+				}, {
+					"code": "C_2_4",
+					"name": "Samosas (2PC)",
+					"description": "Pastry filled W/ Potatoes, Peas, Onions, mint, blended W/ herb and spices. Served W/ Tamarind and mint chutney",
+					"isSelected": false
+				}, {
+					"code": "C_2_5",
+					"name": "Bhel Puri",
+					"description": "Mixed Papri, puffed rice, onions, potatoes blended W/ herbs and spices. Served W/ Tamarind and Mint chutney.",
+					"isSelected": false
+				}, {
+					"code": "C_2_6",
+					"name": "Dhai Vada",
+					"description": "Soft Lentil Patties soaked in Indian Yogurt, onions, cilantro, Smothered W/ Tamarind and mint chutney.",
+					"isSelected": false
+				}, {
+					"code": "C_2_7",
+					"name": "Choley Bhature",
+					"description": "Chickpeas Curry Served W/ Indian bread lightly fried along W/ onions, Mint Chutney, Achaar (Indian Pickles)",
+					"isSelected": false
+				}, {
+					"code": "C_2_8",
+					"name": "Mixed Veggie Pakora",
+					"description": "Fried snack mulched W/ Mixed Veggies, Lentil, Wheat flour, onions, potatoes, blended W/ herbs and spices.",
+					"isSelected": false
+				}, {
+					"code": "C_2_9",
+					"name": "Paneer Pakora (Indian Cheese)",
+					"description": "Fried snack mulched W/ Paneer, Lentil, Wheat flour, onions, potatoes, blended W/ herbs and spices.",
+					"isSelected": false
+				}, {
+					"code": "C_2_10",
+					"name": "Fish Pakora",
+					"description": "Fried snack mulched W/ Fish, Lentil, Wheat flour, onions, potatoes, blended W/ herbs and spices.",
+					"isSelected": false
+				}
+
+			]
+		}, {
+			"code": "C_3",
+			"name": "CHAAT",
+			"items": [{
+					"code": "C_3_1",
+					"name": "Papri Chaat",
+					"description": "Crispy Wafers W/ potatoes, chickpeas, cilantro, onions, yogurt Smothered W/ Tamarind and mint chutney.",
+					"isSelected": false
+				}, {
+					"code": "C_3_2",
+					"name": "Aloo Tikki Chaat",
+					"description": "Veggie Cutlets mixed W/ chickpeas onions, cilantro, yogurt, Smothered W/ Tamarind and mint chutney.",
+					"isSelected": false
+				}, {
+					"code": "C_3_3",
+					"name": "Samosa Chaat",
+					"description": "Mashed Samosa mixed W/ chickpeas onions, cilantro, yogurt, Smothered W/ Tamarind and Mint Chutney.",
+					"isSelected": false
+				}
+
+			]
+		}, {
+			"code": "C_4",
+			"name": "SPECIALTY_SALADS",
+			"items": [{
+					"code": "C_4_1",
+					"name": "Rang Salad",
+					"description": "Colorful Salad of Red Onions, Green Chili, Cucumbers, Tomatoes, Cilantro. W/ lemon juice, salt and masala.",
+					"isSelected": false
+				}, {
+					"code": "C_4_2",
+					"name": "Chicken Tikka Salad",
+					"description": "Tandoori Chicken breast, wafers, crispy noodles, lettuce, tomatoes, onions, Cilantro W/ Indian spicy dressing.",
+					"isSelected": false
+				}, {
+					"code": "C_4_3",
+					"name": "Cucumber Salad",
+					"description": "Sliced Cucumbers. W/ lemon juice, salt and masala.",
+					"isSelected": false
+				}
+
+			]
+		}, {
+			"code": "C_5",
+			"name": "MILAN_CHEFS_SPECIAL",
+			"items": [{
+					"code": "C_5_1",
+					"name": "Milan Tandoori Special",
+					"description": "Chicken Leg, Thigh, and Breast Marinated W/ Indian herbs and Spices, yogurt, ginger, Sizzled Onions, Lemon and Chili.",
+					"isSelected": false
+				}, {
+					"code": "C_5_2",
+					"name": "Lamb Seekh Kabob",
+					"description": "Minced Lamb Marinated W/ Indian herbs and Spices, yogurt, Green Chili, Ginger, Served W/ Indian Sauces.",
+					"isSelected": false
+				}, {
+					"code": "C_5_3",
+					"name": "Chicken Seekh Kabob",
+					"description": "Minced Chicken Marinated W/ Indian herbs and Spices, yogurt, Green Chili, Ginger, Served W/ Indian Sauces.",
+					"isSelected": false
+				}, {
+					"code": "C_5_4",
+					"name": "Mixed Grilled Tandoori",
+					"description": "Combination of all tandoori Entrées (Chicken and Lamb)",
+					"isSelected": false
+				}, {
+					"code": "C_5_5",
+					"name": "Lamb Vindaloo",
+					"description": "A fiery Spicy Dish of Lamb and Spicy Potatoes Curry",
+					"isSelected": false
+				}, {
+					"code": "C_5_6",
+					"name": "Chicken Vindaloo",
+					"description": "A fiery Spicy Dish of Chicken and Spicy Potatoes Curry",
+					"isSelected": false
+				}
+
+			]
+		}, {
+			"code": "C_6",
+			"name": "TANDOORI_SIZZLER_ON_TANDOOR_CLAY_OVEN",
+			"items": [{
+					"code": "C_6_1",
+					"name": "Chicken Tandoori",
+					"description": "Chicken Marinated W/ Indian herbs and Spices, yogurt, ginger, Sizzled Onions, Lemon and Chili.",
+					"isSelected": false
+				}, {
+					"code": "C_6_2",
+					"name": "Chicken Tikka Kabob",
+					"description": "Chicken Marinated W/ Indian herbs and Spices, yogurt, Green Chili, Ginger, Served W/ Indian Sauces.",
+					"isSelected": false
+				}, {
+					"code": "C_6_3",
+					"name": "Fish Tandoori",
+					"description": "Fish of the Day Marinated W/ Indian herbs and Spices, yogurt, ginger, Sizzled Onions, Lemon and Chili.",
+					"isSelected": false
+				}, {
+					"code": "C_6_4",
+					"name": "Paneer Tandoori",
+					"description": "Indian Cheese Marinated W/ Indian Herbs and Spices, yogurt, ginger, Sizzled Onions, Lemon and Chili.",
+					"isSelected": false
+				}
+
+			]
+		}, {
+			"code": "C_7",
+			"name": "INDIAN_BREAD",
+			"items": [{
+					"code": "C_7_1",
+					"name": "Plain Naan (W/ Butter)",
+					"description": "Indian bread Baked in Clay Oven. Eaten W/ Entrée",
+					"isSelected": false
+				}, {
+					"code": "C_7_2",
+					"name": "Garlic Naan (W/ Butter Minced Garlic)",
+					"description": "Indian bread Baked in Clay Oven. Eaten W/ Entrée",
+					"isSelected": false
+				}, {
+					"code": "C_7_3",
+					"name": "Paneer Kulcha (Indian Cheese)",
+					"description": "Leaven Indian bread stuffed W/ indian cheese baked in Tandoor (Clay oven)",
+					"isSelected": false
+				}, {
+					"code": "C_7_4",
+					"name": "Keema Kulcha (Ground Meat)",
+					"description": "Leaven Indian bread stuffed W/ ground meat baked in Tandoor (Clay oven)",
+					"isSelected": false
+				}, {
+					"code": "C_7_5",
+					"name": "Pyaaj Kulcha (Diced Onion)",
+					"description": "Leaven Indian bread stuffed W/ dices onion Baked in Tandoor (Clay oven)",
+					"isSelected": false
+				}, {
+					"code": "C_7_6",
+					"name": "Aloo Kulcha (Minced potatoes)",
+					"description": "Leaven Indian bread stuffed W/ minced potato baked in Tandoor (Clay oven)",
+					"isSelected": false
+				}, {
+					"code": "C_7_7",
+					"name": "Plain Roti / Chapati",
+					"description": "Indian Tortilla made on Tava (Iron grill). Eaten W/ your Entrée",
+					"isSelected": false
+				}
+
+			]
+		}, {
+			"code": "C_8",
+			"name": "ROYAL_BIRYANI",
+			"items": [{
+					"code": "C_8_1",
+					"name": "Vegetarian Biryani",
+					"description": "Mixed Vegetables cooked W/ Basmati Rice, Indian Herbs, Spices, chili, onions, cilantro. W/Indian Yogurt",
+					"isSelected": false
+				}, {
+					"code": "C_8_2",
+					"name": "Chicken Biryani",
+					"description": "Boneless Chicken cooked W/ Basmati Rice, Indian Herbs, Spices, chili, onions, cilantro. W/Indian Yogurt",
+					"isSelected": false
+				}, {
+					"code": "C_8_3",
+					"name": "Lamb Biryani",
+					"description": "Lamb Chops cooked W/ Basmati Rice, Indian Herbs, Spices, chili, onions, cilantro. W/Indian Yogurt",
+					"isSelected": false
+				}
+
+			]
+		}, {
+			"code": "C_9",
+			"name": "MEAT_SPECIALTY_ENTRES",
+			"items": [{
+					"code": "C_9_1",
+					"name": "Traditional Chicken Curry",
+					"description": "Chicken savored in Indian spicy gravy, chili, onions, and cilantro.",
+					"isSelected": false
+				}, {
+					"code": "C_9_2",
+					"name": "Butter Chicken",
+					"description": "Chicken simmered in Tomato Cream Sauce, Herb and Spices.",
+					"isSelected": false
+				}, {
+					"code": "C_9_3",
+					"name": "Chicken Tikka Masala",
+					"description": "Roasted Chicken Tandoori cooked in spicy creamy sauce W/ Indian Herbs and Spice.",
+					"isSelected": false
+				}, {
+					"code": "C_9_4",
+					"name": "Chili Chicken",
+					"description": "Chicken pieces, tomatoes, peppers, onions, and chili sautéed W/ Herbs and Spices.",
+					"isSelected": false
+				}, {
+					"code": "C_9_5",
+					"name": "Saag Chicken",
+					"description": "Chicken cooked W/ minced spinach sautéed W/ Indian Herbs and Spices.",
+					"isSelected": false
+				}, {
+					"code": "C_9_6",
+					"name": "Traditional Lamb Curry",
+					"description": "Chopped Lamb savored in Indian spicy gravy, chili, onions, and cilantro.",
+					"isSelected": false
+				}, {
+					"code": "C_9_7",
+					"name": "Saag Lamb",
+					"description": "Chopped Lamb cooked W/ minced spinach sautéed W/ Indian Herbs and Spices.",
+					"isSelected": false
+				}, {
+					"code": "C_9_8",
+					"name": "Traditional Goat Curry (Occasional)",
+					"description": "Chopped Goat savored in Indian spicy gravy, chili, onions, and cilantro.",
+					"isSelected": false
+				}, {
+					"code": "C_9_9",
+					"name": "Traditional Fish Curry",
+					"description": "Fish of the Day savored in Indian spicy gravy, chili, onions, and cilantro.",
+					"isSelected": false
+				}
+
+			]
+		}, {
+			"code": "C_10",
+			"name": "VEGETARIAN_SPECIALTY_ENTRES",
+			"items": [{
+					"code": "C_10_1",
+					"name": "Malai Kofta",
+					"description": "Vegetarian dumplings simmered in Indian Herbs and Spices, and creamy curry sauce.",
+					"isSelected": false
+				}, {
+					"code": "C_10_2",
+					"name": "Shahi Paneer",
+					"description": "Indian Cheese cooked in Spicy, Creamy Gravy Sauce, W/ tomatoes, Herbs and Spices.",
+					"isSelected": false
+				}, {
+					"code": "C_10_3",
+					"name": "Matar Paneer",
+					"description": "Green Peas and Indian Cheese savored in Indian spicy gravy, chili, onions, tomatoes and cilantro.",
+					"isSelected": false
+				}, {
+					"code": "C_10_4",
+					"name": "Chili Paneer",
+					"description": "Indian Cheese sautéed W/ Tomatoes, Peppers, Onions, Chili sautéed in herbs and Spices.",
+					"isSelected": false
+				}, {
+					"code": "C_10_5",
+					"name": "Paneer Burji",
+					"description": "Crumbled Indian Cheese Sautéed W/ Onion, Chili sautéed W/ herbs and Spices.",
+					"isSelected": false
+				}, {
+					"code": "C_10_6",
+					"name": "Saag Paneer",
+					"description": "Indian Cheese cooked W/ minced spinach sautéed W/ Indian Herbs and Spices.",
+					"isSelected": false
+				}, {
+					"code": "C_10_7",
+					"name": "Dal Makhni",
+					"description": "Cooked Lentils, Mung Beans made W/ onions, tomatoes, ginger, in Indian Herbs and Spices.",
+					"isSelected": false
+				}, {
+					"code": "C_10_8",
+					"name": "Chana Masala",
+					"description": "Chickpeas savored in Indian spicy gravy, chili, onions, tomatoes and cilantro, W/ a hint of citrus.",
+					"isSelected": false
+				}, {
+					"code": "C_10_9",
+					"name": "Mixed Vegetables",
+					"description": "Mixed vegetables sautéed W/ Tomatoes, Peppers, Onions, Chili sautéed W/ Indian Herbs and Spices.",
+					"isSelected": false
+				}, {
+					"code": "C_10_10",
+					"name": "Bhindi Masala",
+					"description": "Chopped Okra sautéed W/ Tomatoes, Peppers, Onions, Chili sautéed W/ herbs and Spices.",
+					"isSelected": false
+				}
+
+			]
+		}, {
+			"code": "C_11",
+			"name": "SIDE_ORDERS",
+			"items": [{
+					"code": "C_11_1",
+					"name": "Raita (Indian Yogurt)",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_11_2",
+					"name": "Basmati Rice",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_11_3",
+					"name": "Chili, Onions, Carrots, etc.",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_11_4",
+					"name": "Achaar (Indian Pickles)",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_11_5",
+					"name": "Chutney (Indian Sauce)",
+					"description": "On the House",
+					"isSelected": false
+				}
+
+			]
+		}, {
+			"code": "C_12",
+			"name": "DESSERTS",
+			"items": [{
+					"code": "C_12_1",
+					"name": "Falooda Kulfi (Indian Ice Cream)",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_12_2",
+					"name": "Kheer (Indian Rice Pudding)",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_12_3",
+					"name": "Gulab Jamun (Spongy Balls W/ Syrup)",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_12_4",
+					"name": "Rasmalai (Cheesecake W/ Cream)",
+					"description": "",
+					"isSelected": false
+				}
+
+			]
+		}, {
+			"code": "C_13",
+			"name": "BEVERAGES",
+			"items": [{
+					"code": "C_13_1",
+					"name": "Sweet & Salty Lassi (Yogurt Drink)",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_13_2",
+					"name": "Mango Lassi (Sweet Mango Drink)",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_13_3",
+					"name": "Masala Chai (Indian Tea W/ Spices)",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_13_4",
+					"name": "Coffee W/ Cream",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_13_5",
+					"name": "Drinks (Coke Co.)",
+					"description": "",
+					"isSelected": false
+				}
+
+			]
+		}
+
+	]
+}

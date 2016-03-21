@@ -1,0 +1,192 @@
+{
+	"cuisine": "MEXICAN",
+	"categories": [{
+			"code": "C_1",
+			"name": "APPETIZERS",
+			"items": [{
+					"code": "C_1_1",
+					"name": "Queso Nachos",
+					"description": "Corn tortilla chips, house melted queso cheese, black beans and jalape&#241;os with pico de gallo",
+					"isSelected": false
+				}, {
+					"code": "C_1_2",
+					"name": "Super Nachos",
+					"description": "Your choice of meat, corn tortilla chips, black beans, sour cream, guacamole and pico de gallo with house queso cheese",
+					"isSelected": false
+				}, {
+					"code": "C_1_3",
+					"name": "Grilled Corn Mexican Style",
+					"description": "Two whole grilled corn served with mayo, cotija cheese, chili powder and lime",
+					"isSelected": false
+				}, {
+					"code": "C_1_4",
+					"name": "Chicken Quesadilla",
+					"description": "Melted Jack, chedder and cotija cheese and grilled chicken with your choice of cilantro-lime, white or chipotle sauce on side",
+					"isSelected": false
+				}, {
+					"code": "C_1_5",
+					"name": "Vegetarian Quesadilla",
+					"description": "Melted monterey jack cheese, black beans, roasted sweet n'spicy corn, tomatoes, cilantro, sour cream, lettuce, onions and guacamole",
+					"isSelected": false
+				}
+
+			]
+		}, {
+			"code": "C_2",
+			"name": "BURRITOS",
+			"items": [{
+					"code": "C_2_1",
+					"name": "Amecameca",
+					"description": "Your choice of meat, cilantro-lime rice, black beans, lettuce, queso cheese and sour cream",
+					"isSelected": false
+				}, {
+					"code": "C_2_2",
+					"name": "Mexicali",
+					"description": "Your choice of meat, Mexican rice, sour cream, roasted sweet n' spicy corn, pico de gallo, pinto beans and guacamole with fresh salsa",
+					"isSelected": false
+				}, {
+					"code": "C_2_3",
+					"name": "Chicano",
+					"description": "Your choice of meat, cilantro-lime rice, black beans, lettuce, jack and cheddar cheese and tortilla strips with chipotle sauce",
+					"isSelected": false
+				}, {
+					"code": "C_2_4",
+					"name": "Mahi Mahi Fish Burrito",
+					"description": "Cilantro-lime rice, black beans, cheese guacamole, sweet n' spicy corn and cabbage, with your choice of chipotle or white sauce",
+					"isSelected": false
+				}, {
+					"code": "C_2_5",
+					"name": "Vera",
+					"description": "Cilantro-lime rice, black beans, Jack and cheddar cheese, pico de gallo, sweet n' spicy corn and lettuce with fresh salsa",
+					"isSelected": false
+				}, {
+					"code": "C_2_6",
+					"name": "Xochimilco",
+					"description": "Rice, lettuce, pinto beans, sour cream, guacamole, pico de gallo and cheese with white sauce",
+					"isSelected": false
+				}, {
+					"code": "C_2_7",
+					"name": "Bowl",
+					"description": "Make any above burritos a bowl, Big portion, Low carb Served Without tortilla or chips",
+					"isSelected": false
+				}
+
+			]
+		}, {
+			"code": "C_3",
+			"name": "TACOS",
+			"items": [{
+					"code": "C_3_1",
+					"name": "Chalupa",
+					"description": "Your choice of meat, black beans, sour cream, pico de gallo, lettuce and cheese served on corn tostada",
+					"isSelected": false
+				}, {
+					"code": "C_3_2",
+					"name": "Street",
+					"description": "Your choice of meat, Onions and cilantro served in corn tortilla",
+					"isSelected": false
+				}, {
+					"code": "C_3_3",
+					"name": "Soft",
+					"description": "Your choice of meat, guacamole, pico de gallo and melted queso cheese served in soft flour tortilla",
+					"isSelected": false
+				}, {
+					"code": "C_3_4",
+					"name": "Crispy",
+					"description": "Your choice of meat, lettuce, pico de gallo and cheese served in crispy corn shell",
+					"isSelected": false
+				}, {
+					"code": "C_3_5",
+					"name": "Mahi Mahi Fish Taco",
+					"description": "Cabbage, cilantro and onions with white and chipotle sauce served in corn tortilla",
+					"isSelected": false
+				}, {
+					"code": "C_3_6",
+					"name": "Crispy Fish",
+					"description": "Cabbage, cilantro and onions with white and chipotle sauce served in corn tortilla",
+					"isSelected": false
+				}, {
+					"code": "C_3_7",
+					"name": "Veggie",
+					"description": "Your choice of black beans or pinto beans, pico de gallo, sour cream, guacamole and cheese served in soft tortilla",
+					"isSelected": false
+				}
+
+			]
+		}, {
+			"code": "C_4",
+			"name": "SALADS",
+			"items": [{
+					"code": "C_4_1",
+					"name": "Taco Salad",
+					"description": "Your choice of meat, lettuce, rice, beans, sour cream, guacamole, pico de gallo and cheese served on flour tostada",
+					"isSelected": false
+				}, {
+					"code": "C_4_2",
+					"name": "Amore Salad",
+					"description": "your choice of meat, fresh romaine lettuce, black beans, pico de gallo, sweet n' spicy corn, chips strips, crispy tostada and cilantro-lime dressing",
+					"isSelected": false
+				}, {
+					"code": "C_4_3",
+					"name": "Tapatia Salad",
+					"description": "Your choice of meat , lettuce, tomatoes, cheese, shredded carrot, roasted sweet n' spicy corn, cubed pineapple, chips strips and smokey chipotle-balsamic dressing served on whole flour tortilla",
+					"isSelected": false
+				}, {
+					"code": "C_4_4",
+					"name": "Mexican Salad",
+					"description": "Your choice of meat, lettuce, black beans, tomatoes, onions, spicy pumpkin seeds, red cabbage, cotija cheese, chips strips, crispy tostada with mexican vinaigrette",
+					"isSelected": false
+				}
+
+			]
+		}, {
+			"code": "C_5",
+			"name": "KIDS_MENU",
+			"items": [{
+					"code": "C_5_1",
+					"name": "Burrito",
+					"description": "Flour tortilla filled with your choice of meat, refried beans, cheese and sour cream",
+					"isSelected": false
+				}, {
+					"code": "C_5_2",
+					"name": "Chicken Quesadilla",
+					"description": "Flour tortilla filled with grilled chicken and melted cheese",
+					"isSelected": false
+				}, {
+					"code": "C_5_3",
+					"name": "Soft Taco",
+					"description": "Flour tortilla filled with your choice of meat, lettuce and cheese",
+					"isSelected": false
+				}
+
+			]
+		}, {
+			"code": "C_6",
+			"name": "ENCHILADAS",
+			"items": [{
+					"code": "C_6_1",
+					"name": "Red Chile",
+					"description": "Topped with red chile sauce",
+					"isSelected": false
+				}, {
+					"code": "C_6_2",
+					"name": "Green Chile",
+					"description": "Topped with green sauce",
+					"isSelected": false
+				}, {
+					"code": "C_6_3",
+					"name": "Enfrijoladas",
+					"description": "Topped with black beans sauce",
+					"isSelected": false
+				}, {
+					"code": "C_6_4",
+					"name": "Swiss",
+					"description": "Topped with Swiss sauce",
+					"isSelected": false
+				}
+
+			]
+		}
+
+	]
+}
