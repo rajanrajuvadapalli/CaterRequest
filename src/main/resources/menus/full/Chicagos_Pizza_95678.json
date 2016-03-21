@@ -1,0 +1,269 @@
+{
+	"cuisine": "INDIAN(NORTH)",
+	"categories": [{
+			"code": "C_1",
+			"name": "APPETIZERS",
+			"items": [{
+					"code": "C_1_1",
+					"name": "Hot-N-Spicy Tandoori Wings",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_1_2",
+					"name": "Honey BBQ Tequila-Lime",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_1_3",
+					"name": "Garlic Breadsticks",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_1_4",
+					"name": "Cheese Breadsticks",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_1_5",
+					"name": "Bacon Breadsticks",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_1_6",
+					"name": "Indian Style Breadsticks",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_1_7",
+					"name": "Caesar Salad",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_1_8",
+					"name": "Garden Salad",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_1_9",
+					"name": "Chicken Salad",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_1_10",
+					"name": "All Meat Salad",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_1_11",
+					"name": "Calzone Veggie",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_1_12",
+					"name": "G-Force Calzone (all meat)",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_1_13",
+					"name": "Samosas 4X",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_1_14",
+					"name": "Oven Baked Chicken Nuggets (12pc)",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_1_15",
+					"name": "Veggie Sandwich",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_1_16",
+					"name": "Chicken Sandwich (BBQ or Spicy)",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_1_17",
+					"name": "Ham Sandwich",
+					"description": "",
+					"isSelected": false
+				}, {
+					"code": "C_1_18",
+					"name": "Turkey Sandwich",
+					"description": "",
+					"isSelected": false
+				}
+
+			]
+		}, {
+			"code": "C_2",
+			"name": "SPECIALITY_PIZZAS",
+			"items": [{
+					"code": "C_2_1",
+					"name": "Combination",
+					"description": "Cheese, Pepperoni, Salami, Beef, Canadian Bacon, Italian Sausage, Mushrooms, Black Olives, Green Peppers and Onions",
+					"isSelected": false
+				}, {
+					"code": "C_2_2",
+					"name": "Vegetarian",
+					"description": "Cheese, Mushrooms, Onions, Black Olives, Green Peppers, Artichokes Hearts and Fresh Tomatoes",
+					"isSelected": false
+				}, {
+					"code": "C_2_3",
+					"name": "All Meat",
+					"description": "Cheese, Salami, Pepperoni, Canadian Bacon, Ground Beef and Italian Sausage",
+					"isSelected": false
+				}, {
+					"code": "C_2_4",
+					"name": "All Stars or Deluxe",
+					"description": "Cheese, Pepperoni, Italian Sausage, Mushrooms, Onions and Green Peppers",
+					"isSelected": false
+				}, {
+					"code": "C_2_5",
+					"name": "Hawaiian",
+					"description": "Cheese, Ham and Pineapple",
+					"isSelected": false
+				}, {
+					"code": "C_2_6",
+					"name": "Spicy Hawaiian",
+					"description": "Cheese, Ham, Pineapple and Jalapeno",
+					"isSelected": false
+				}, {
+					"code": "C_2_7",
+					"name": "Latino Style",
+					"description": "Pepperoni, Italian Sausage, Ham, White Onions, Pineapple and Jalapeno",
+					"isSelected": false
+				}, {
+					"code": "C_2_8",
+					"name": "Italian Garlic",
+					"description": "Garlic Sauce, Pepperoni, Italian Sausage, Mushrooms, Tomatoes, Red Onions, Chopped Garlic and Green Onion",
+					"isSelected": false
+				}, {
+					"code": "C_2_9",
+					"name": "Garlic Chicken",
+					"description": "White Garlic Sauce, Cheese, Garlic Chicken, Tomatoes, Mushrooms, Red Onions and Chopped Garlic",
+					"isSelected": false
+				}, {
+					"code": "C_2_10",
+					"name": "BBQ Chicken",
+					"description": "BBQ Sauce, Chicken, Crunchy Bacon, Tomatoes and Red Onions",
+					"isSelected": false
+				}, {
+					"code": "C_2_11",
+					"name": "Chicken Bacon Ranch",
+					"description": "Ranch, Garlic Chicken and Crunchy Bacon",
+					"isSelected": false
+				}, {
+					"code": "C_2_12",
+					"name": "Cheeseburger",
+					"description": "Mozzarella Cheese, Hamburger and Crunchy Bacon",
+					"isSelected": false
+				}, {
+					"code": "C_2_13",
+					"name": "Chicago’s Favorite",
+					"description": "Cheese, Chicken, Italian Sausage, Mushrooms, Pepperoni, Black Olives, Green Peppers, Red Onions and Green Onions",
+					"isSelected": false
+				}, {
+					"code": "C_2_14",
+					"name": "Three Idiots * Top Favorite!",
+					"description": "BBQ Chicken, Spicy Chicken and Garlic Chicken",
+					"isSelected": false
+				}, {
+					"code": "C_2_15",
+					"name": "Chicken Delight",
+					"description": "White Sauce, Chicken, Artichoke Hearts and Mushrooms",
+					"isSelected": false
+				}, {
+					"code": "C_2_16",
+					"name": "Garlic Veggie",
+					"description": "Garlic Sauce, Cheese, Mushrooms, Small Sliced Broccoli, Tomatoes, Black Olives and Chopped Garlic",
+					"isSelected": false
+				}
+
+			]
+		}, {
+			"code": "C_3",
+			"name": "INDIAN_PIZZAS",
+			"items": [{
+					"code": "C_3_1",
+					"name": "Tikka Masala Veggie",
+					"description": "Tikka Sauce, Mozzarella Cheese, Mushrooms, Red Onion, Tomatoes, Bell Pepper, Garlic, Ginger, Fresh Cilantro, Green Chilies and Jalapeno (on request)",
+					"isSelected": false
+				}, {
+					"code": "C_3_2",
+					"name": "Tandoori Veggie Pizza",
+					"description": "Tandoori Sauce, Mozzarella Cheese, Mushrooms, Red Onion,Tomatoes, Garlic, Ginger, Fresh Cilantro, Green Chilies and Jalapeno (on request)",
+					"isSelected": false
+				}, {
+					"code": "C_3_3",
+					"name": "Curry Veggie Pizza",
+					"description": "Curry Sauce, Mozzarella Cheese, Mushrooms, Black Olive, Red Onion, Tomatoes, Garlic, Ginger, Fresh Cilantro, Green Chilies and Jalapeno (on request)",
+					"isSelected": false
+				}, {
+					"code": "C_3_4",
+					"name": "Indian Veggie Pizza",
+					"description": "Red Sauce or White Sauce, Mozzarella Cheese, Mushrooms, Black Olive, Red onion, Tomatoes, Bell Pepper, Garlic, Ginger, Fresh Cilantro, and Green Chilies (on request)",
+					"isSelected": false
+				}, {
+					"code": "C_3_5",
+					"name": "Lime Veggie Pizza",
+					"description": "Red Sauce, Mozzarella Cheese, Mushrooms, Black Olive,Fresh Green Onions, Red Onion, Tomatoes, Bell Pepper, Garlic, Ginger, Fresh Dice Cucumber, Fresh Sliced Lime and Green Chili (on request)",
+					"isSelected": false
+				}, {
+					"code": "C_3_6",
+					"name": "Paneer Tikka Masala",
+					"description": "Tikka Sauce, Cheese, Mushrooms, Bell Pepper, Red Onion, Tomatoes, Garlic, Ginger, Green Chilies and Jalapeno (on request), Tikka Paneer and Fres Cilantro",
+					"isSelected": false
+				}, {
+					"code": "C_3_7",
+					"name": "Tandoori Paneer",
+					"description": "Tandoori Sauce, Cheese, Mushrooms, Red Onion, Tomatoes, Garlic, Ginger, Green Chilies Or Jalapeno (on request), Tandoori Paneer and Fresh Cilantro",
+					"isSelected": false
+				}, {
+					"code": "C_3_8",
+					"name": "Curry Paneer",
+					"description": "Curry Sauce, Cheese, Mushrooms, Bell Pepper, Red Onion, Black Olives, Tomatoes, Garlic, Ginger, Green Chilies Or Jalapeno (on request), Curry Paneer and Fresh Cilantro",
+					"isSelected": false
+				}, {
+					"code": "C_3_9",
+					"name": "Palak Paneer",
+					"description": "Pesto Sauce, Paneer, Spinach, Ginger, Garlic, Red Onions, Green Chilies and Cilantro",
+					"isSelected": false
+				}, {
+					"code": "C_3_10",
+					"name": "Paneer Veggie",
+					"description": "Red Sauce, Mozzarella Cheese, Mushrooms, Black Olive, Red Onion, Tomatoes, Bell Pepper, Garlic, Ginger, Paneer, Fresh Cilantro and Green Chilies (on request)",
+					"isSelected": false
+				}, {
+					"code": "C_3_11",
+					"name": "Chicken Tikka Masala",
+					"description": "Tikka Sauce, Tikka Chicken, Mozzarella Cheese, Mushrooms, Red Onion, Bell Pepper, Garlic, Ginger, Fresh Cilantro, Green Chilies and Jalapeno (on request)",
+					"isSelected": false
+				}, {
+					"code": "C_3_12",
+					"name": "Tandoori Chicken Pizza",
+					"description": "Tandoori Sauce, Tandoori Chicken, Mozzarella Cheese, Mushrooms, Red Onion, Garlic, Ginger, Fresh Cilantro, Green Chilies and Jalapeno (on request)",
+					"isSelected": false
+				}, {
+					"code": "C_3_13",
+					"name": "Chicken Curry Pizza",
+					"description": "Curry Sauce, Curry Chicken, Mozzarella Cheese, Mushrooms, Black Olive, Red Onion, Garlic, Ginger, Fresh Cilantro, Green Chilies and Jalapeno (on request)",
+					"isSelected": false
+				}, {
+					"code": "C_3_14",
+					"name": "Indian Garlic Chicken",
+					"description": "Garlic Sauce, Cheese, Mushrooms, Red Onion, Bell Pepper, Black Olives, Tomatoes, Garlic, Ginger, Jalapeno and Green Chilies (on request), Garlic Chicken, and Fresh Cilantro",
+					"isSelected": false
+				}, {
+					"code": "C_3_15",
+					"name": "Butter Chicken",
+					"description": "Butter Sauce, Cheese, Red Onion, Tomatoes, Chopped Garlic, Ginger, Butter Chicken, Fresh Cilantro, Green Chili (on request)",
+					"isSelected": false
+				}
+
+			]
+		}
+
+	]
+}
