@@ -4,25 +4,28 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script>
-	function remove_kabob_and_gyro_grill_item(div_id) {
+
+function remove_kabob_and_gyro_grill_item(div_id) {
 		var divToRemove = $("div[id=" + div_id + "]");
 		var name = divToRemove.children().children().prev().text();
 		var desc = divToRemove.children().children().next().text();
 		var data = name + "+" + desc;
 		console.log("Removing " + data);
-		kabob_and_gyro_grill_items.splice($.inArray(data,
-				kabob_and_gyro_grill_menu_items), 1);
+		remove_kabob_and_gyro_grill_items.splice($.inArray(data,
+				remove_kabob_and_gyro_grill_items), 1);
 		divToRemove.remove();
 	}
 
+	
+	
 	function kabob_and_gyro_grill_menu_submit() {
-		if (kabob_and_gyro_grill_items.length == 0) {
+		if (remove_kabob_and_gyro_grill_items.length == 0) {
 			alert("Please select at least 1 item to proceed.");
 			return false;
 		}
-		console.log(kabob_and_gyro_grill_items);
+		console.log(remove_kabob_and_gyro_grill_items);
 		//console.log(JSON.stringify(california_kabob_menu_items));
-		$("#full_menu_items").val(JSON.stringify(kabob_and_gyro_grill_items));
+		$("#full_menu_items").val(JSON.stringify(remove_kabob_and_gyro_grill_items));
 		$("#kabob_and_gyro_grill_target").submit();
 	}
 </script>
@@ -142,13 +145,13 @@
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="LambGyroCount"
+																	<input type="text" size="20" name="lambGyroCount"
 																		maxlength="20" required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="LambGyroSpl"
+																	<input type="text" size="60" name="lambGyroSpl"
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
@@ -354,254 +357,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="panel-group" id="accordion-kabob" role="tablist"
-							aria-multiselectable="true">
-							<div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="headingOne">
-									<a role="button" data-toggle="collapse"
-										data-parent="#accordion-kabob" href="#ShawarmaCollapse"
-										aria-expanded="true" aria-controls="ShawarmaCollapse" class="collapse"> Shawarmas </a>
-								</div>
-								<div id="ShawarmaCollapse" class="panel-collapse collapse in "
-									role="tabpanel" aria-labelledby="headingOne">
-									<div class="panel-body">
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="LambShawarma"
-											data-whatever="LambShawarma">
-											<span>Lamb Shawarma</span>
-										</button>
-										<div class="modal fade" id="LambShawarma" tabindex="-1" role="dialog"
-											aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Lamb Shawarma</h3>
-														</div>
-														<div class="modal-desc">
-															<form id="popup_1_1" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="LambShawarmaCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="LambShawarmaSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuLambShawarmaSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-
-										                    <!-- item begin -->
-                    <button type="button" class="btn btn-primary"
-                      data-toggle="modal" data-target="SteakShawarma"
-                      data-whatever="SteakShawarma">
-                      <span>Steak Shawarma</span>
-                    </button>
-                    <div class="modal fade" id="SteakShawarma" tabindex="-1" role="dialog"
-                      aria-labelledby="exampleModalLabel">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-box-left">
-                            <div class="modal-head">
-                              <button type="button" class="close" data-dismiss="modal"
-                                aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                              <h3>Steak Shawarma</h3>
-                            </div>
-                            <div class="modal-desc">
-                              <form id="popup_1_1" class="form-horizontal"
-                                onsubmit="return false;">
-                                <div class="modal-textarea">
-                                  <h4>Quantity</h4>
-                                  <input type="text" size="20" name="SteakShawarmaCount"
-                                    maxlength="20" required="required" pattern="^\d+$">
-                                  <h5>
-                                    Special Instructions<span>Additional charges
-                                      may apply.</span>
-                                  </h5>
-                                  <input type="text" size="60" name="SteakShawarmaSpl"
-                                    maxlength="20">
-                                  <div class="clearfix"></div>
-                                  <div class="modal-sub">
-                                    <input type="button" data-dismiss="modal" name=""
-                                      value="Add to Cart"
-                                      onclick="populateFullMenuSteakShawarmaSelectedItems();" />
-                                  </div>
-                                </div>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- item end -->
-										
-                    <!-- item begin -->
-                    <button type="button" class="btn btn-primary"
-                      data-toggle="modal" data-target="ChickenShawarma"
-                      data-whatever="ChickenShawarma">
-                      <span>Chicken Shawarma</span>
-                    </button>
-                    <div class="modal fade" id="ChickenShawarma" tabindex="-1" role="dialog"
-                      aria-labelledby="exampleModalLabel">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-box-left">
-                            <div class="modal-head">
-                              <button type="button" class="close" data-dismiss="modal"
-                                aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                              <h3>Chicken Shawarma</h3>
-                            </div>
-                            <div class="modal-desc">
-                              <form id="popup_1_1" class="form-horizontal"
-                                onsubmit="return false;">
-                                <div class="modal-textarea">
-                                  <h4>Quantity</h4>
-                                  <input type="text" size="20" name="ChickenShawarmaCount"
-                                    maxlength="20" required="required" pattern="^\d+$">
-                                  <h5>
-                                    Special Instructions<span>Additional charges
-                                      may apply.</span>
-                                  </h5>
-                                  <input type="text" size="60" name="ChickenShawarmaSpl"
-                                    maxlength="20">
-                                  <div class="clearfix"></div>
-                                  <div class="modal-sub">
-                                    <input type="button" data-dismiss="modal" name=""
-                                      value="Add to Cart"
-                                      onclick="populateFullMenuChickenShawarmaSelectedItems();" />
-                                  </div>
-                                </div>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- item end -->
-
-										                    <!-- item begin -->
-                    <button type="button" class="btn btn-primary"
-                      data-toggle="modal" data-target="MediterraneanShawarma"
-                      data-whatever="MediterraneanShawarma">
-                      <span>Mediterranean Shawarma</span>
-                    </button>
-                    <div class="modal fade" id="MediterraneanShawarma" tabindex="-1" role="dialog"
-                      aria-labelledby="exampleModalLabel">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-box-left">
-                            <div class="modal-head">
-                              <button type="button" class="close" data-dismiss="modal"
-                                aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                              <h3>Mediterranean Shawarma</h3>
-                            </div>
-                            <div class="modal-desc">
-                              <form id="popup_1_1" class="form-horizontal"
-                                onsubmit="return false;">
-                                <div class="modal-textarea">
-                                  <h4>Quantity</h4>
-                                  <input type="text" size="20" name="MediterraneanShawarmaCount"
-                                    maxlength="20" required="required" pattern="^\d+$">
-                                  <h5>
-                                    Special Instructions<span>Additional charges
-                                      may apply.</span>
-                                  </h5>
-                                  <input type="text" size="60" name="MediterraneanShawarmaSpl"
-                                    maxlength="20">
-                                  <div class="clearfix"></div>
-                                  <div class="modal-sub">
-                                    <input type="button" data-dismiss="modal" name=""
-                                      value="Add to Cart"
-                                      onclick="populateFullMenuMediterraneanShawarmaSelectedItems();" />
-                                  </div>
-                                </div>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- item end -->
-
-                                                           <!-- item begin -->
-                    <button type="button" class="btn btn-primary"
-                      data-toggle="modal" data-target="CombinationShawarma"
-                      data-whatever="CombinationShawarma">
-                      <span>Combination Shawarma</span>
-                    </button>
-                    <div class="modal fade" id="CombinationShawarma" tabindex="-1" role="dialog"
-                      aria-labelledby="exampleModalLabel">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-box-left">
-                            <div class="modal-head">
-                              <button type="button" class="close" data-dismiss="modal"
-                                aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                              <h3>Combination Shawarma</h3>
-                            </div>
-                            <div class="modal-desc">
-                              <form id="popup_1_1" class="form-horizontal"
-                                onsubmit="return false;">
-                                <div class="modal-textarea">
-                                  <h4>Quantity</h4>
-                                  <input type="text" size="20" name="CombinationShawarmaCount"
-                                    maxlength="20" required="required" pattern="^\d+$">
-                                  <h5>
-                                    Special Instructions<span>Additional charges
-                                      may apply.</span>
-                                  </h5>
-                                  <input type="text" size="60" name="CombinationShawarmaSpl"
-                                    maxlength="20">
-                                  <div class="clearfix"></div>
-                                  <div class="modal-sub">
-                                    <input type="button" data-dismiss="modal" name=""
-                                      value="Add to Cart"
-                                      onclick="populateFullMenuCombinationShawarmaSelectedItems();" />
-                                  </div>
-                                </div>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- item end -->
-
-
-
-									</div>
-								</div>
-							</div>
-						</div>
-					<!-- Collapse start -->
+						
 						<div class="panel-group" id="accordion" role="tablist"
 							aria-multiselectable="true">
 							<div class="panel panel-default">

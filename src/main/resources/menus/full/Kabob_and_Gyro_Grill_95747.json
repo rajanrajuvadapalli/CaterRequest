@@ -1,49 +1,36 @@
 {
   "cuisine": "MIDDLE_EASTERN",
-  "categories": [
-    {
+  "categories": [{
       "code": "C1",
       "name": "Gryos",
       "items": [
         {
           "code": "C1_1",
-          "name": "Lamb Gyros",
+          "name": "Lamb Gyro",
           "description": "",
           "isSelected": false
         },
         {
           "code": "C1_2",
-          "name": "Steak Gyros",
+          "name": "Steak Gyro",
           "description": "",
           "isSelected": false
         },
 
           "code": "C1_3",
-          "name": "Chicken Gyros",
+          "name": "Chicken Gyro",
           "description": "",
           "isSelected": false
         },
 
           "code": "C1_4",
-          "name": "Veggie Gyros",
+          "name": "Veggie Gyro",
           "description": "",
           "isSelected": false
         },
 
           "code": "C1_5",
-          "name": "Combination Gyros",
-          "description": "",
-          "isSelected": false
-        }
-      ]
-    },
-    {
-      "code": "C2",
-      "name": "SALADS",
-      "items": [
-        {
-          "code": "C2_1",
-          "name": "Greek Salad",
+          "name": "Combination Gyro",
           "description": "",
           "isSelected": false
         }
@@ -51,7 +38,7 @@
     },
     {
       "code": "C3",
-      "name": "KABOB",
+      "name": "Kabob Platters",
       "items": [
         {
           "code": "C3_1",
@@ -86,6 +73,42 @@
         {
           "code": "C3_6",
           "name": "Ground Lamb Kabob",
+          "description": "",
+          "isSelected": false
+        }
+      ]
+    }
+    {
+      "code": "C4",
+      "name": "Shawarma",
+      "items": [
+        {
+          "code": "C4_1",
+          "name": "Lamb Shawarma",
+          "description": "",
+          "isSelected": false
+        },
+        {
+          "code": "C4_2",
+          "name": "Steak Shawarma",
+          "description": "",
+          "isSelected": false
+        },
+
+          "code": "C4_3",
+          "name": "Chicken Shawarma",
+          "description": "",
+          "isSelected": false
+        },
+
+          "code": "C4_4",
+          "name": "Mediterranean Shawarma",
+          "description": "",
+          "isSelected": false
+        },
+
+          "code": "C4_5",
+          "name": "Combination Shawarma",
           "description": "",
           "isSelected": false
         }
