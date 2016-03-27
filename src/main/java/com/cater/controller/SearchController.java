@@ -38,8 +38,7 @@ import com.cater.yelp.YelpAPIHelper;
 @Controller
 public class SearchController {
 	/** The Constant logger. */
-	private static final Logger logger = Logger
-			.getLogger(SearchController.class);
+	private static final Logger logger = Logger.getLogger(SearchController.class);
 	/** The restaurant service. */
 	@Autowired
 	private RestaurantService restaurantService;
@@ -47,11 +46,15 @@ public class SearchController {
 	/**
 	 * Search restaurants.
 	 *
-	 * @param modelMap the model map
-	 * @param request the request
-	 * @param session the session
+	 * @param modelMap
+	 *            the model map
+	 * @param request
+	 *            the request
+	 * @param session
+	 *            the session
 	 * @return the string
-	 * @throws Exception the exception
+	 * @throws Exception
+	 *             the exception
 	 */
 	/*
 	 * search for list of restaurants
@@ -59,36 +62,29 @@ public class SearchController {
 	 * @author sandeep appikonda
 	 */
 	@RequestMapping(value = { "search" }, method = RequestMethod.GET)
-	public String searchRestaurants(
-			ModelMap modelMap,
-			HttpServletRequest request,
-			HttpSession session,
+	public String searchRestaurants(ModelMap modelMap, HttpServletRequest request, HttpSession session,
 			@RequestParam(value = "zip", required = true) String zip,
-			@RequestParam(value = "cuisineType", required = false) String cuisineType)
-			throws Exception {
+			@RequestParam(value = "cuisineType", required = false) String cuisineType) throws Exception {
 		session.setAttribute("env", Environment.getInstance());
-		//When we use the search functionality, we start without creating the event.
-		//We should force the user to create event.
+		// When we use the search functionality, we start without creating the
+		// event.
+		// We should force the user to create event.
 		session.removeAttribute("eventId");
 		if (StringUtils.isNotBlank(zip)) {
 			modelMap.put("eventZip", zip);
-			Collection <Restaurant> restaurants = null;
+			Collection<Restaurant> restaurants = null;
 			if (StringUtils.isNotBlank(cuisineType)) {
 				logger.debug("cuisineType: " + cuisineType);
 				modelMap.put("cuisineType", cuisineType);
-				restaurants = restaurantService
-						.fetchRestaurantsOfType(cuisineType);
-			}
-			else {
-				restaurants = restaurantService.fetchAllRestaurants();
+				restaurants = restaurantService.fetchRestaurantsOfType(cuisineType);
+			} else {
+				restaurants = restaurantService.fetchAllRestaurantsWithFullMenu();
 			}
 			if (CollectionUtils.isNotEmpty(restaurants)) {
 				logger.debug("Found " + restaurants.size() + " restaurants.");
-				Collection <RestaurantDTO> nearByRestaurants = getRestaurantDTOs(
-						restaurants, zip);
+				Collection<RestaurantDTO> nearByRestaurants = getRestaurantDTOs(restaurants, zip);
 				modelMap.put("restaurants", nearByRestaurants);
-			}
-			else {
+			} else {
 				logger.debug("Found 0 restaurants.");
 			}
 		}
@@ -98,45 +94,42 @@ public class SearchController {
 	/**
 	 * Gets the restaurant dt os.
 	 *
-	 * @param restaurants the restaurants
-	 * @param zipCode the zip code
+	 * @param restaurants
+	 *            the restaurants
+	 * @param zipCode
+	 *            the zip code
 	 * @return the restaurant dt os
-	 * @throws ParseException the parse exception
+	 * @throws ParseException
+	 *             the parse exception
 	 */
-	private Collection <RestaurantDTO> getRestaurantDTOs(
-			Collection <Restaurant> restaurants, String zipCode)
+	private Collection<RestaurantDTO> getRestaurantDTOs(Collection<Restaurant> restaurants, String zipCode)
 			throws ParseException {
 		if (CollectionUtils.isNotEmpty(restaurants)) {
 			MapsHelper mapsHelper = new MapsHelper();
 			Address address = new Address();
 			address.setZip(zipCode);
 			long start = System.currentTimeMillis();
-			Collection <RestaurantDTO> nearByRestaurants = mapsHelper
-					.getDistance(address, restaurants);
-			logger.info("Took " + (System.currentTimeMillis() - start) / 1000
-					+ " seconds to get distance matrix.");
+			Collection<RestaurantDTO> nearByRestaurants = mapsHelper.getDistance(address, restaurants);
+			logger.info("Took " + (System.currentTimeMillis() - start) / 1000 + " seconds to get distance matrix.");
 			if (CollectionUtils.isNotEmpty(nearByRestaurants)) {
 				start = System.currentTimeMillis();
 				ExecutorService executor = Executors.newFixedThreadPool(10);
-				List <Future <?>> list = new TreeList <>();
+				List<Future<?>> list = new TreeList<>();
 				for (RestaurantDTO restaurantDTO : nearByRestaurants) {
 					if (restaurantDTO != null) {
-						Future <?> future = executor.submit(new YelpCallable(
-								restaurantDTO));
+						Future<?> future = executor.submit(new YelpCallable(restaurantDTO));
 						list.add(future);
 					}
 				}
-				for (Future <?> future : list) {
+				for (Future<?> future : list) {
 					try {
 						future.get();
-					}
-					catch (Exception e) {
+					} catch (Exception e) {
 						logger.error("Failed to get yelp reviews.", e);
 					}
 				}
 				executor.shutdown();
-				logger.info("Took " + (System.currentTimeMillis() - start)
-						/ 1000 + " seconds to get yelp reviews for "
+				logger.info("Took " + (System.currentTimeMillis() - start) / 1000 + " seconds to get yelp reviews for "
 						+ nearByRestaurants.size() + " restaurants.");
 			}
 			return nearByRestaurants;
@@ -157,21 +150,15 @@ public class SearchController {
 		@Override
 		public void run() {
 			try {
-				Map <?, ?> yelpReviews = YelpAPIHelper
-						.getRatings(restaurantDTO);
+				Map<?, ?> yelpReviews = YelpAPIHelper.getRatings(restaurantDTO);
 				if (MapUtils.isNotEmpty(yelpReviews)) {
-					restaurantDTO.setNumberOfReviews(Helper
-							.stringToInt(yelpReviews.get("noOfReviews")
-									.toString()));
+					restaurantDTO.setNumberOfReviews(Helper.stringToInt(yelpReviews.get("noOfReviews").toString()));
 					restaurantDTO.setReviewImage(yelpReviews.get("ratings"));
 					restaurantDTO.setWebsiteUrl(yelpReviews.get("websiteUrl"));
-					logger.debug(String.format(
-							"Restaurant %s has %s yelp ratings.", restaurantDTO
-									.getRestaurant().getName(), yelpReviews
-									.get("ratings")));
+					logger.debug(String.format("Restaurant %s has %s yelp ratings.",
+							restaurantDTO.getRestaurant().getName(), yelpReviews.get("ratings")));
 				}
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				logger.error("Failed to get yelp ratings.", ex);
 			}
 		}
