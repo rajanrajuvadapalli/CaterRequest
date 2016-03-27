@@ -1,5 +1,6 @@
 package com.cater.dao;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -47,20 +48,19 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Save or update.
 	 *
-	 * @param restaurant the restaurant
+	 * @param restaurant
+	 *            the restaurant
 	 * @return true, if successful
 	 */
 	public boolean saveOrUpdate(Restaurant restaurant) {
 		if (restaurant == null) {
 			logger.error("Cannot save null value for Restaurant.");
-		}
-		else {
+		} else {
 			loginDAO.saveOrUpdate(restaurant.getLogin());
 			addressDAO.saveOrUpdate(restaurant.getAddress());
 			if (restaurant.getId() == null) {
 				return super.save(Restaurant.class, restaurant);
-			}
-			else {
+			} else {
 				return super.update(Restaurant.class, restaurant);
 			}
 		}
@@ -70,7 +70,8 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Find by id.
 	 *
-	 * @param id the id
+	 * @param id
+	 *            the id
 	 * @return the restaurant
 	 */
 	public Restaurant findById(Integer id) {
@@ -80,32 +81,28 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Find by login id.
 	 *
-	 * @param loginID the login id
+	 * @param loginID
+	 *            the login id
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
-	public List <Restaurant> findByLoginID(Integer loginID) {
+	public List<Restaurant> findByLoginID(Integer loginID) {
 		if (loginID == null) {
 			return null;
 		}
 		logger.debug("Finding Restaurant with login ID: " + loginID);
 		try {
 			Session session = getSessionFactory().getCurrentSession();
-			List <?> list = session
-					.createCriteria(Restaurant.class, "res")
+			List<?> list = session.createCriteria(Restaurant.class, "res")
 					.createAlias("res.login", "login", JoinType.LEFT_OUTER_JOIN)
 					.add(Restrictions.eq("login.id", loginID)).list();
 			if (CollectionUtils.isNotEmpty(list)) {
-				logger.debug("Found " + list.size()
-						+ " Restaurant(s) with login ID: " + loginID);
-				return (List <Restaurant>) list;
+				logger.debug("Found " + list.size() + " Restaurant(s) with login ID: " + loginID);
+				return (List<Restaurant>) list;
 			}
 			return null;
-		}
-		catch (HibernateException he) {
-			logger.error(
-					"Exception occurred while Finding Restaurant with login ID: "
-							+ loginID, he);
+		} catch (HibernateException he) {
+			logger.error("Exception occurred while Finding Restaurant with login ID: " + loginID, he);
 			throw he;
 		}
 	}
@@ -113,115 +110,82 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Search restaurants by user name.
 	 *
-	 * @param userName the user name
-	 * @return User Id, Restaurant name, Phone Number, Location, Event Name, Location, Date & time, Menu,
-	 *  Restaurant Quote (Sort by Alphabet), Confirmed Restaurant, total payment.
+	 * @param userName
+	 *            the user name
+	 * @return User Id, Restaurant name, Phone Number, Location, Event Name,
+	 *         Location, Date & time, Menu, Restaurant Quote (Sort by Alphabet),
+	 *         Confirmed Restaurant, total payment.
 	 */
 	@SuppressWarnings("unchecked")
-	public List <RestaurantSearch> searchRestaurantsByUserName(String userName) {
+	public List<RestaurantSearch> searchRestaurantsByUserName(String userName) {
 		logger.debug("Searching restaurants with user name " + userName);
 		Session session = getSessionFactory().getCurrentSession();
-		Criteria c = session
-				.createCriteria(Quote.class, "q")
-				.createAlias("q.restaurant", "r")
-				.createAlias("r.address", "rl")
-				.createAlias("q.menu", "m")
-				.createAlias("m.event", "e")
+		Criteria c = session.createCriteria(Quote.class, "q").createAlias("q.restaurant", "r")
+				.createAlias("r.address", "rl").createAlias("q.menu", "m")
+				.createAlias("m.event",
+						"e")
 				.createAlias("e.location", "el")
-				.createAlias("r.login", "login")
-				.add(Restrictions.eq("login.username", userName))
-				.setProjection(
-						Projections
-								.projectionList()
-								.add(Projections.property("login.username"),
-										"emailId")
-								.add(Projections.property("r.name"),
-										"restaurantName")
-								.add(Projections.property("r.contactNumber"),
-										"restaurantNumber")
-								.add(Projections.property("rl.street1"),
-										"rStreet1")
-								.add(Projections.property("rl.street2"),
-										"rStreet2")
-								.add(Projections.property("rl.city"), "rCity")
-								.add(Projections.property("rl.state"), "rState")
-								.add(Projections.property("rl.zip"), "rZip")
-								.add(Projections.property("e.name"),
-										"eventName")
-								.add(Projections.property("el.street1"),
-										"eventStreet1")
-								.add(Projections.property("el.street2"),
-										"eventStreet2")
-								.add(Projections.property("el.city"),
-										"eventCity")
-								.add(Projections.property("el.state"),
-										"eventState")
-								.add(Projections.property("el.zip"), "eventZip")
-								.add(Projections.property("q.price"), "price")
-								.add(Projections.property("e.status"), "status")
-								.add(Projections.property("e.date_time"),
-										"date_time"))
-				.setResultTransformer(
-						Transformers.aliasToBean(RestaurantSearch.class));
-		List <RestaurantSearch> restaurants = c.list();
+				.createAlias("r.login", "login").add(
+						Restrictions
+								.eq("login.username",
+										userName))
+				.setProjection(Projections.projectionList().add(Projections.property("login.username"), "emailId")
+						.add(Projections.property("r.name"), "restaurantName")
+						.add(Projections.property("r.contactNumber"), "restaurantNumber")
+						.add(Projections.property("rl.street1"), "rStreet1")
+						.add(Projections.property("rl.street2"), "rStreet2")
+						.add(Projections.property("rl.city"), "rCity").add(Projections.property("rl.state"), "rState")
+						.add(Projections.property("rl.zip"), "rZip").add(Projections.property("e.name"), "eventName")
+						.add(Projections.property("el.street1"), "eventStreet1")
+						.add(Projections.property("el.street2"), "eventStreet2")
+						.add(Projections.property("el.city"), "eventCity")
+						.add(Projections.property("el.state"), "eventState")
+						.add(Projections.property("el.zip"), "eventZip").add(Projections.property("q.price"), "price")
+						.add(Projections.property("e.status"), "status")
+						.add(Projections.property("e.date_time"), "date_time"))
+				.setResultTransformer(Transformers.aliasToBean(RestaurantSearch.class));
+		List<RestaurantSearch> restaurants = c.list();
 		return restaurants;
 	}
 
 	/**
 	 * Search restaurants by date range.
 	 *
-	 * @param fromDate the from date
-	 * @param toDate the to date
+	 * @param fromDate
+	 *            the from date
+	 * @param toDate
+	 *            the to date
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
-	public List <RestaurantSearch> searchRestaurantsByDateRange(Date fromDate,
-			Date toDate) {
+	public List<RestaurantSearch> searchRestaurantsByDateRange(Date fromDate, Date toDate) {
 		logger.debug("Searching restaurants by date range.");
 		Session session = getSessionFactory().getCurrentSession();
-		Criteria c = session
-				.createCriteria(Quote.class, "q")
-				.createAlias("q.restaurant", "r")
-				.createAlias("r.address", "rl")
-				.createAlias("q.menu", "m")
-				.createAlias("m.event", "e")
+		Criteria c = session.createCriteria(Quote.class, "q").createAlias("q.restaurant", "r")
+				.createAlias("r.address", "rl").createAlias("q.menu", "m")
+				.createAlias("m.event",
+						"e")
 				.createAlias("e.location", "el")
-				.createAlias("r.login", "login")
-				.add(Restrictions.between("e.date_time", fromDate, toDate))
-				.setProjection(
-						Projections
-								.projectionList()
-								.add(Projections.property("login.username"),
-										"emailId")
-								.add(Projections.property("r.name"),
-										"restaurantName")
-								.add(Projections.property("r.contactNumber"),
-										"restaurantNumber")
-								.add(Projections.property("rl.street1"),
-										"rStreet1")
-								.add(Projections.property("rl.street2"),
-										"rStreet2")
-								.add(Projections.property("rl.city"), "rCity")
-								.add(Projections.property("rl.state"), "rState")
-								.add(Projections.property("rl.zip"), "rZip")
-								.add(Projections.property("e.name"),
-										"eventName")
-								.add(Projections.property("el.street1"),
-										"eventStreet1")
-								.add(Projections.property("el.street2"),
-										"eventStreet2")
-								.add(Projections.property("el.city"),
-										"eventCity")
-								.add(Projections.property("el.state"),
-										"eventState")
-								.add(Projections.property("el.zip"), "eventZip")
-								.add(Projections.property("q.price"), "price")
-								.add(Projections.property("e.status"), "status")
-								.add(Projections.property("e.date_time"),
-										"date_time"))
-				.setResultTransformer(
-						Transformers.aliasToBean(RestaurantSearch.class));
-		List <RestaurantSearch> restaurants = c.list();
+				.createAlias("r.login", "login").add(
+						Restrictions
+								.between("e.date_time", fromDate,
+										toDate))
+				.setProjection(Projections.projectionList().add(Projections.property("login.username"), "emailId")
+						.add(Projections.property("r.name"), "restaurantName")
+						.add(Projections.property("r.contactNumber"), "restaurantNumber")
+						.add(Projections.property("rl.street1"), "rStreet1")
+						.add(Projections.property("rl.street2"), "rStreet2")
+						.add(Projections.property("rl.city"), "rCity").add(Projections.property("rl.state"), "rState")
+						.add(Projections.property("rl.zip"), "rZip").add(Projections.property("e.name"), "eventName")
+						.add(Projections.property("el.street1"), "eventStreet1")
+						.add(Projections.property("el.street2"), "eventStreet2")
+						.add(Projections.property("el.city"), "eventCity")
+						.add(Projections.property("el.state"), "eventState")
+						.add(Projections.property("el.zip"), "eventZip").add(Projections.property("q.price"), "price")
+						.add(Projections.property("e.status"), "status")
+						.add(Projections.property("e.date_time"), "date_time"))
+				.setResultTransformer(Transformers.aliasToBean(RestaurantSearch.class));
+		List<RestaurantSearch> restaurants = c.list();
 		return restaurants;
 	}
 
@@ -230,8 +194,22 @@ public class RestaurantDAO extends DataAccessObject {
 	 *
 	 * @return the list
 	 */
-	public List <Restaurant> fetchAllRestaurants() {
+	public List<Restaurant> fetchAllRestaurants() {
 		return super.fetchAll(Restaurant.class);
+	}
+
+	public List<Restaurant> fetchAllRestaurantsWithFullMenu() {
+		logger.debug("Finding all restaurants with no primary cuisine.");
+		try {
+			Session session = getSessionFactory().getCurrentSession();
+			List<Restaurant> list = session.createCriteria(Restaurant.class, "res")
+					.add(Restrictions.eq("res.isFullMenuExist", true)).list();
+
+			return list;
+		} catch (HibernateException he) {
+			logger.error("Finding all restaurants with no primary cuisine.", he);
+			throw he;
+		}
 	}
 
 	/**
@@ -240,21 +218,19 @@ public class RestaurantDAO extends DataAccessObject {
 	 * @return the sets the
 	 */
 	@SuppressWarnings("unchecked")
-	public Set <Restaurant> fetchAllRestaurantsWithNoPrimaryCuisine() {
+	public Set<Restaurant> fetchAllRestaurantsWithNoPrimaryCuisine() {
 		logger.debug("Finding all restaurants with no primary cuisine.");
 		try {
 			Session session = getSessionFactory().getCurrentSession();
-			List <Restaurant> list = session
-					.createCriteria(Restaurant.class, "res")
-					.add(Restrictions.ilike("res.cuisineType", ",%"))
-					.add(Restrictions.eq("res.isNumberVerified", true)).list();
-			Set <Restaurant> restaurants = Sets.newHashSet();
+			List<Restaurant> list = session.createCriteria(Restaurant.class, "res")
+					.add(Restrictions.ilike("res.cuisineType", ",%")).add(Restrictions.eq("res.isNumberVerified", true))
+					.list();
+			Set<Restaurant> restaurants = Sets.newHashSet();
 			for (Restaurant r : list) {
 				restaurants.add(r);
 			}
 			return restaurants;
-		}
-		catch (HibernateException he) {
+		} catch (HibernateException he) {
 			logger.error("Finding all restaurants with no primary cuisine.", he);
 			throw he;
 		}
@@ -263,28 +239,25 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Fetch restaurants of type.
 	 *
-	 * @param cuisine the cuisine
+	 * @param cuisine
+	 *            the cuisine
 	 * @return the sets the
 	 */
 	@SuppressWarnings("unchecked")
-	public Set <Restaurant> fetchRestaurantsOfType(String cuisine) {
+	public Set<Restaurant> fetchRestaurantsOfType(String cuisine) {
 		logger.debug("Finding Restaurants of type : " + cuisine);
 		if (StringUtils.isNotBlank(cuisine)) {
 			try {
 				Session session = getSessionFactory().getCurrentSession();
-				List <Restaurant> list = session
-						.createCriteria(Restaurant.class, "res")
-						.add(Restrictions.ilike("res.cuisineType", "%"
-								+ cuisine + "%"))
-						.add(Restrictions.eq("res.isNumberVerified", true))
-						.list();
-				Set <Restaurant> restaurants = Sets.newHashSet();
+				List<Restaurant> list = session.createCriteria(Restaurant.class, "res")
+						.add(Restrictions.ilike("res.cuisineType", "%" + cuisine + "%"))
+						.add(Restrictions.eq("res.isNumberVerified", true)).list();
+				Set<Restaurant> restaurants = Sets.newHashSet();
 				for (Restaurant r : list) {
 					restaurants.add(r);
 				}
 				return restaurants;
-			}
-			catch (HibernateException he) {
+			} catch (HibernateException he) {
 				logger.error("Finding Restaurants of type : " + cuisine, he);
 				throw he;
 			}
@@ -295,30 +268,26 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Fetch restaurants of type primary.
 	 *
-	 * @param cuisine the cuisine
+	 * @param cuisine
+	 *            the cuisine
 	 * @return the sets the
 	 */
 	@SuppressWarnings("unchecked")
-	public Set <Restaurant> fetchRestaurantsOfTypePrimary(String cuisine) {
+	public Set<Restaurant> fetchRestaurantsOfTypePrimary(String cuisine) {
 		logger.debug("Finding Restaurants with primary cuisine : " + cuisine);
 		if (StringUtils.isNotBlank(cuisine)) {
 			try {
 				Session session = getSessionFactory().getCurrentSession();
-				List <Restaurant> list = session
-						.createCriteria(Restaurant.class, "res")
-						.add(Restrictions.ilike("res.cuisineType", cuisine
-								+ "%"))
-						.add(Restrictions.eq("res.isNumberVerified", true))
-						.list();
-				Set <Restaurant> restaurants = Sets.newHashSet();
+				List<Restaurant> list = session.createCriteria(Restaurant.class, "res")
+						.add(Restrictions.ilike("res.cuisineType", cuisine + "%"))
+						.add(Restrictions.eq("res.isNumberVerified", true)).list();
+				Set<Restaurant> restaurants = Sets.newHashSet();
 				for (Restaurant r : list) {
 					restaurants.add(r);
 				}
 				return restaurants;
-			}
-			catch (HibernateException he) {
-				logger.error("Finding Restaurants with primary cuisine : "
-						+ cuisine, he);
+			} catch (HibernateException he) {
+				logger.error("Finding Restaurants with primary cuisine : " + cuisine, he);
 				throw he;
 			}
 		}
@@ -328,30 +297,26 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Fetch restaurants of type secondary.
 	 *
-	 * @param cuisine the cuisine
+	 * @param cuisine
+	 *            the cuisine
 	 * @return the sets the
 	 */
 	@SuppressWarnings("unchecked")
-	public Set <Restaurant> fetchRestaurantsOfTypeSecondary(String cuisine) {
+	public Set<Restaurant> fetchRestaurantsOfTypeSecondary(String cuisine) {
 		logger.debug("Finding Restaurants with secondary cuisine : " + cuisine);
 		if (StringUtils.isNotBlank(cuisine)) {
 			try {
 				Session session = getSessionFactory().getCurrentSession();
-				List <Restaurant> list = session
-						.createCriteria(Restaurant.class, "res")
-						.add(Restrictions.ilike("res.cuisineType", "%,"
-								+ cuisine + "%"))
-						.add(Restrictions.eq("res.isNumberVerified", true))
-						.list();
-				Set <Restaurant> restaurants = Sets.newHashSet();
+				List<Restaurant> list = session.createCriteria(Restaurant.class, "res")
+						.add(Restrictions.ilike("res.cuisineType", "%," + cuisine + "%"))
+						.add(Restrictions.eq("res.isNumberVerified", true)).list();
+				Set<Restaurant> restaurants = Sets.newHashSet();
 				for (Restaurant r : list) {
 					restaurants.add(r);
 				}
 				return restaurants;
-			}
-			catch (HibernateException he) {
-				logger.error("Finding Restaurants with secondary cuisine : "
-						+ cuisine, he);
+			} catch (HibernateException he) {
+				logger.error("Finding Restaurants with secondary cuisine : " + cuisine, he);
 				throw he;
 			}
 		}
@@ -369,11 +334,8 @@ public class RestaurantDAO extends DataAccessObject {
 			Session session = getSessionFactory().getCurrentSession();
 			Query q = session.createQuery("select count(*) from Restaurant");
 			return ((Long) q.uniqueResult()).intValue();
-		}
-		catch (HibernateException he) {
-			logger.error(
-					"Exception occurred while Finding number of restaurants.",
-					he);
+		} catch (HibernateException he) {
+			logger.error("Exception occurred while Finding number of restaurants.", he);
 			return 0;
 		}
 	}
@@ -381,29 +343,25 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Fetch upcoming quotes.
 	 *
-	 * @param restaurantID the restaurant id
+	 * @param restaurantID
+	 *            the restaurant id
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
-	public List <Quote> fetchUpcomingQuotes(Integer restaurantID) {
-		logger.debug("Fetching upcoming quotes for restaurant with ID: "
-				+ restaurantID);
+	public List<Quote> fetchUpcomingQuotes(Integer restaurantID) {
+		logger.debug("Fetching upcoming quotes for restaurant with ID: " + restaurantID);
 		try {
 			Session session = getSessionFactory().getCurrentSession();
-			List <?> list = session.createCriteria(Quote.class, "q")
+			List<?> list = session.createCriteria(Quote.class, "q")
 					.createAlias("q.restaurant", "r", JoinType.LEFT_OUTER_JOIN)
-					.add(Restrictions.eq("r.id", restaurantID))
-					.createAlias("q.menu", "menu", JoinType.RIGHT_OUTER_JOIN)
+					.add(Restrictions.eq("r.id", restaurantID)).createAlias("q.menu", "menu", JoinType.RIGHT_OUTER_JOIN)
 					.createAlias("menu.event", "e", JoinType.RIGHT_OUTER_JOIN)
-					.add(Restrictions.ge("e.date_time", new Date()))
-					.addOrder(Order.desc("e.date_time")).list();
+					.add(Restrictions.ge("e.date_time", new Date())).addOrder(Order.desc("e.date_time")).list();
 			logger.debug("Found " + list.size() + " upcoming quotes.");
-			return (List <Quote>) list;
-		}
-		catch (HibernateException he) {
-			logger.error(
-					"Exception occurred while fetching upcoming quotes for restaurant with ID: "
-							+ restaurantID, he);
+			return (List<Quote>) list;
+		} catch (HibernateException he) {
+			logger.error("Exception occurred while fetching upcoming quotes for restaurant with ID: " + restaurantID,
+					he);
 		}
 		return Lists.newArrayList();
 	}
@@ -411,30 +369,25 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Fetch new requests.
 	 *
-	 * @param restaurantID the restaurant id
+	 * @param restaurantID
+	 *            the restaurant id
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
-	public List <Quote> fetchNewRequests(Integer restaurantID) {
-		logger.debug("Fetching new requests for restaurant with ID: "
-				+ restaurantID);
+	public List<Quote> fetchNewRequests(Integer restaurantID) {
+		logger.debug("Fetching new requests for restaurant with ID: " + restaurantID);
 		try {
 			Session session = getSessionFactory().getCurrentSession();
-			List <?> list = session.createCriteria(Quote.class, "q")
+			List<?> list = session.createCriteria(Quote.class, "q")
 					.createAlias("q.restaurant", "r", JoinType.LEFT_OUTER_JOIN)
-					.add(Restrictions.eq("r.id", restaurantID))
-					.createAlias("q.menu", "menu", JoinType.RIGHT_OUTER_JOIN)
+					.add(Restrictions.eq("r.id", restaurantID)).createAlias("q.menu", "menu", JoinType.RIGHT_OUTER_JOIN)
 					.createAlias("menu.event", "e", JoinType.RIGHT_OUTER_JOIN)
-					.add(Restrictions.ge("e.date_time", new Date()))
-					.add(Restrictions.isNull("q.price"))
+					.add(Restrictions.ge("e.date_time", new Date())).add(Restrictions.isNull("q.price"))
 					.addOrder(Order.desc("e.date_time")).list();
 			logger.debug("Found " + list.size() + " new requests.");
-			return (List <Quote>) list;
-		}
-		catch (HibernateException he) {
-			logger.error(
-					"Exception occurred while fetching new requests for restaurant with ID: "
-							+ restaurantID, he);
+			return (List<Quote>) list;
+		} catch (HibernateException he) {
+			logger.error("Exception occurred while fetching new requests for restaurant with ID: " + restaurantID, he);
 		}
 		return Lists.newArrayList();
 	}
@@ -442,29 +395,25 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Fetch past quotes.
 	 *
-	 * @param restaurantID the restaurant id
+	 * @param restaurantID
+	 *            the restaurant id
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
-	public List <Quote> fetchPastQuotes(Integer restaurantID) {
-		logger.debug("Fetching past quotes for restaurant with ID: "
-				+ restaurantID);
+	public List<Quote> fetchPastQuotes(Integer restaurantID) {
+		logger.debug("Fetching past quotes for restaurant with ID: " + restaurantID);
 		try {
 			Session session = getSessionFactory().getCurrentSession();
-			List <?> list = session.createCriteria(Quote.class, "q")
+			List<?> list = session.createCriteria(Quote.class, "q")
 					.createAlias("q.restaurant", "r", JoinType.LEFT_OUTER_JOIN)
 					.createAlias("q.menu", "menu", JoinType.RIGHT_OUTER_JOIN)
 					.createAlias("menu.event", "e", JoinType.RIGHT_OUTER_JOIN)
-					.add(Restrictions.eq("r.id", restaurantID))
-					.add(Restrictions.isNotNull("q.price"))
+					.add(Restrictions.eq("r.id", restaurantID)).add(Restrictions.isNotNull("q.price"))
 					.addOrder(Order.desc("e.date_time")).list();
 			logger.debug("Found " + list.size() + " past quotes");
-			return (List <Quote>) list;
-		}
-		catch (HibernateException he) {
-			logger.error(
-					"Exception occurred while fetching past quotes for restaurant with ID: "
-							+ restaurantID, he);
+			return (List<Quote>) list;
+		} catch (HibernateException he) {
+			logger.error("Exception occurred while fetching past quotes for restaurant with ID: " + restaurantID, he);
 		}
 		return Lists.newArrayList();
 	}
@@ -472,32 +421,26 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Fetch confirmed quotes.
 	 *
-	 * @param restaurantID the restaurant id
+	 * @param restaurantID
+	 *            the restaurant id
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
-	public List <Quote> fetchConfirmedQuotes(Integer restaurantID) {
-		logger.debug("Fetching confirmed quotes for restaurant with ID: "
-				+ restaurantID);
+	public List<Quote> fetchConfirmedQuotes(Integer restaurantID) {
+		logger.debug("Fetching confirmed quotes for restaurant with ID: " + restaurantID);
 		try {
 			Session session = getSessionFactory().getCurrentSession();
-			List <?> list = session
-					.createCriteria(Quote.class, "q")
-					.createAlias("q.restaurant", "r", JoinType.LEFT_OUTER_JOIN)
-					.add(Restrictions.isNotNull("q.price"))
-					.add(Restrictions.eq("r.id", restaurantID))
-					.createAlias("q.menu", "menu", JoinType.RIGHT_OUTER_JOIN)
+			List<?> list = session.createCriteria(Quote.class, "q")
+					.createAlias("q.restaurant", "r", JoinType.LEFT_OUTER_JOIN).add(Restrictions.isNotNull("q.price"))
+					.add(Restrictions.eq("r.id", restaurantID)).createAlias("q.menu", "menu", JoinType.RIGHT_OUTER_JOIN)
 					.createAlias("menu.event", "e", JoinType.RIGHT_OUTER_JOIN)
-					.add(Restrictions.eq("e.status",
-							EventStatus.CONFIRMED.toString()))
+					.add(Restrictions.eq("e.status", EventStatus.CONFIRMED.toString()))
 					.addOrder(Order.asc("e.date_time")).list();
 			logger.debug("Found " + list.size() + " confirmed quotes");
-			return (List <Quote>) list;
-		}
-		catch (HibernateException he) {
-			logger.error(
-					"Exception occurred while Fetching confirmed quotes for restaurant with ID: "
-							+ restaurantID, he);
+			return (List<Quote>) list;
+		} catch (HibernateException he) {
+			logger.error("Exception occurred while Fetching confirmed quotes for restaurant with ID: " + restaurantID,
+					he);
 		}
 		return Lists.newArrayList();
 	}
