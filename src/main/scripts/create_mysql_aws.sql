@@ -50,6 +50,7 @@ CREATE TABLE mycaterdb.Restaurant (
 	,`deliver_miles` INT NOT NULL
 	,`sales_tax` DECIMAL(4,2) NOT NULL
 	,`about_us` VARCHAR(5000) NULL
+	,`full_menu_exist` BIT NOT NULL,
 	,`create_ts` DATETIME NOT NULL 
 	,`lupd_ts` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
 -- Create Foreign Key: Restaurant.address_sk -> Address.id
