@@ -108,6 +108,224 @@
 						id="full-menu">
 						<p></p>
 						<!-- Collapse start -->
+						<div class="panel-group" id="accordion-Appetizers" role="tablist"
+							aria-multiselectable="true">
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="headingOne">
+									<a role="button" data-toggle="collapse"
+										data-parent="#accordion-Appetizers" href="#Appetizers"
+										aria-expanded="true" aria-controls="Appetizers">
+										Appetizers </a>
+								</div>
+								<div id="Appetizers" class="panel-collapse collapse in"
+									role="tabpanel" aria-labelledby="headingOne">
+									<div class="panel-body">
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#AlooTikki"
+											data-whatever="AlooTikki">
+											<span>Aloo Tikki</span> <br /> <span
+												style="font-size: 12px;">Potato / Veggie Cutlets
+												crispy on the outside, blended W/ herbs and spices.</span>
+										</button>
+										<div class="modal fade" id="AlooTikki" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Aloo Tikki</h3>
+															<span>Potato / Veggie Cutlets crispy on the
+																outside, blended W/ herbs and spices.</span>
+														</div>
+														<div class="modal-desc">
+															<form id="popup1_1" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20" name="AlooTikkiCount"
+																		maxlength="20" required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60" name="AlooTikkiSpl"
+																		maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuAlooTikkiSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#SamosasPC"
+											data-whatever="SamosasPC">
+											<span>Samosas (2PC) </span> <br /> <span
+												style="font-size: 12px;">Pastry filled W/ Potatoes,
+												Peas, Onions, mint, blended W/ herb and spices. Served W/
+												Tamarind and mint chutney.</span>
+										</button>
+										<div class="modal fade" id="SamosasPC" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Samosas (2PC)</h3>
+															<span>Pastry filled W/ Potatoes, Peas, Onions,
+																mint, blended W/ herb and spices. Served W/ Tamarind and
+																mint chutney.</span>
+														</div>
+														<div class="modal-desc">
+															<form id="popup1_2" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20" name="SamosasPCCount"
+																		maxlength="20" required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60" name="SamosasPCSpl"
+																		maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuSamosasPCSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#Pakora"
+											data-whatever="Pakora">
+											<span>Pakora</span> <br /> <span style="font-size: 12px;">Fried
+												snack mulched W/ Lentil, Wheat flour, onions, potatoes,
+												blended W/ herbs and spices.</span>
+										</button>
+										<div class="modal fade" id="Pakora" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Pakora</h3>
+															<span>Fried snack mulched W/ Lentil, Wheat flour,
+																onions, potatoes, blended W/ herbs and spices.</span>
+														</div>
+														<div class="modal-desc">
+															<form id="popup1_3" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20" name="PakoraCount"
+																		maxlength="20" required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60" name="PakoraSpl"
+																		maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuPakoraSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#MixedVeggiePakora"
+											data-whatever="MixedVeggiePakora">
+											<span>Mixed Veggie Pakora</span> <br /> <span
+												style="font-size: 12px;">Mixed Vegetables fried snack
+												mulched W/ Lentil, Wheat flour, onions, potatoes, blended W/
+												herbs and spices.</span>
+										</button>
+										<div class="modal fade" id="MixedVeggiePakora" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Mixed Veggie Pakora</h3>
+															<span>Mixed Vegetables fried snack mulched W/
+																Lentil, Wheat flour, onions, potatoes, blended W/ herbs
+																and spices.</span>
+														</div>
+														<div class="modal-desc">
+															<form id="popup1_4" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20"
+																		name="MixedVeggiePakoraCount" maxlength="20"
+																		required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60"
+																		name="MixedVeggiePakoraSpl" maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuMixedVeggiePakoraSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Collapse start -->
 						<div class="panel-group" id="accordion-Signature_Wraps"
 							role="tablist" aria-multiselectable="true">
 							<div class="panel panel-default">
@@ -145,7 +363,7 @@
 																fresh Naan.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup1_1" class="form-horizontal"
+															<form id="popup2_1" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
@@ -197,7 +415,7 @@
 																wrapped in fresh Naan.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup1_2" class="form-horizontal"
+															<form id="popup2_2" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
@@ -248,7 +466,7 @@
 																fresh Naan.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup1_3" class="form-horizontal"
+															<form id="popup2_3" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
@@ -276,61 +494,12 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#FishWrap"
-											data-whatever="FishWrap">
-											<span>Fish Wrap</span> <br /> <span style="font-size: 12px;">Baked
-												boneless Fish W/ tomatoes, lettuce, cilantro, onion, mint,
-												and tamarind sauce wrapped in fresh Naan.</span>
-										</button>
-										<div class="modal fade" id="FishWrap" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Fish Wrap</h3>
-															<span>Baked boneless Fish W/ tomatoes, lettuce,
-																cilantro, onion, mint, and tamarind sauce wrapped in
-																fresh Naan.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup1_4" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="FishWrapCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="FishWrapSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuFishWrapSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
 											data-toggle="modal" data-target="#LambWrap"
 											data-whatever="LambWrap">
-											<span>Lamb Wrap</span> <br /> <span style="font-size: 12px;">Baked
-												boneless Lamb W/ tomatoes, lettuce, cilantro, onion, mint,
-												and tamarind sauce wrapped in fresh Naan.</span>
+											<span>Lamb Wrap </span> <br /> <span
+												style="font-size: 12px;">Baked boneless Lamb W/
+												tomatoes, lettuce, cilantro, onion, mint, and tamarind sauce
+												wrapped in fresh Naan.</span>
 										</button>
 										<div class="modal fade" id="LambWrap" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
@@ -348,7 +517,7 @@
 																fresh Naan.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup1_5" class="form-horizontal"
+															<form id="popup2_4" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
@@ -374,872 +543,6 @@
 											</div>
 										</div>
 										<!-- item end -->
-
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Collapse start -->
-						<div class="panel-group" id="accordion-Appetizers" role="tablist"
-							aria-multiselectable="true">
-							<div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="headingOne">
-									<a role="button" data-toggle="collapse"
-										data-parent="#accordion-Appetizers" href="#Appetizers"
-										aria-expanded="true" aria-controls="Appetizers">
-										Appetizers </a>
-								</div>
-								<div id="Appetizers" class="panel-collapse collapse in"
-									role="tabpanel" aria-labelledby="headingOne">
-									<div class="panel-body">
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#AlooTikki"
-											data-whatever="AlooTikki">
-											<span>Aloo Tikki</span> <br /> <span
-												style="font-size: 12px;">Potato / Veggie Cutlets
-												crispy on the outside, blended W/ herbs and spices.</span>
-										</button>
-										<div class="modal fade" id="AlooTikki" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Aloo Tikki</h3>
-															<span>Potato / Veggie Cutlets crispy on the
-																outside, blended W/ herbs and spices.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup2_1" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="AlooTikkiCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="AlooTikkiSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuAlooTikkiSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#PanniPuriPC"
-											data-whatever="PanniPuriPC">
-											<span>Panni Puri (8 PC)</span> <br /> <span
-												style="font-size: 12px;">Crispy Shallow Ball to be
-												filled W/ Potatoes, chickpeas, onions, mint, Tamarind, and
-												sweet and spicy Water.</span>
-										</button>
-										<div class="modal fade" id="PanniPuriPC" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Panni Puri (8 PC)</h3>
-															<span>Crispy Shallow Ball to be filled W/
-																Potatoes, chickpeas, onions, mint, Tamarind, and sweet
-																and spicy Water.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup2_2" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="PanniPuriPCCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="PanniPuriPCSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuPanniPuriPCSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#PanniPuriPC"
-											data-whatever="PanniPuriPC">
-											<span>Panni Puri (20 PC)</span> <br /> <span
-												style="font-size: 12px;">Crispy Shallow Ball to be
-												filled W/ Potatoes, chickpeas, onions, mint, Tamarind, and
-												sweet and spicy Water.</span>
-										</button>
-										<div class="modal fade" id="PanniPuriPC" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Panni Puri (20 PC)</h3>
-															<span>Crispy Shallow Ball to be filled W/
-																Potatoes, chickpeas, onions, mint, Tamarind, and sweet
-																and spicy Water.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup2_3" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="PanniPuriPCCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="PanniPuriPCSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuPanniPuriPCSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#SamosasPC"
-											data-whatever="SamosasPC">
-											<span>Samosas (2PC)</span> <br /> <span
-												style="font-size: 12px;">Pastry filled W/ Potatoes,
-												Peas, Onions, mint, blended W/ herb and spices. Served W/
-												Tamarind and mint chutney</span>
-										</button>
-										<div class="modal fade" id="SamosasPC" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Samosas (2PC)</h3>
-															<span>Pastry filled W/ Potatoes, Peas, Onions,
-																mint, blended W/ herb and spices. Served W/ Tamarind and
-																mint chutney</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup2_4" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="SamosasPCCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="SamosasPCSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuSamosasPCSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#BhelPuri"
-											data-whatever="BhelPuri">
-											<span>Bhel Puri</span> <br /> <span style="font-size: 12px;">Mixed
-												Papri, puffed rice, onions, potatoes blended W/ herbs and
-												spices. Served W/ Tamarind and Mint chutney.</span>
-										</button>
-										<div class="modal fade" id="BhelPuri" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Bhel Puri</h3>
-															<span>Mixed Papri, puffed rice, onions, potatoes
-																blended W/ herbs and spices. Served W/ Tamarind and Mint
-																chutney.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup2_5" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="BhelPuriCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="BhelPuriSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuBhelPuriSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#DhaiVada"
-											data-whatever="DhaiVada">
-											<span>Dhai Vada</span> <br /> <span style="font-size: 12px;">Soft
-												Lentil Patties soaked in Indian Yogurt, onions, cilantro,
-												Smothered W/ Tamarind and mint chutney.</span>
-										</button>
-										<div class="modal fade" id="DhaiVada" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Dhai Vada</h3>
-															<span>Soft Lentil Patties soaked in Indian Yogurt,
-																onions, cilantro, Smothered W/ Tamarind and mint
-																chutney.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup2_6" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="DhaiVadaCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="DhaiVadaSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuDhaiVadaSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#CholeyBhature"
-											data-whatever="CholeyBhature">
-											<span>Choley Bhature</span> <br /> <span
-												style="font-size: 12px;">Chickpeas Curry Served W/
-												Indian bread lightly fried along W/ onions, Mint Chutney,
-												Achaar (Indian Pickles)</span>
-										</button>
-										<div class="modal fade" id="CholeyBhature" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Choley Bhature</h3>
-															<span>Chickpeas Curry Served W/ Indian bread
-																lightly fried along W/ onions, Mint Chutney, Achaar
-																(Indian Pickles)</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup2_7" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="CholeyBhatureCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="CholeyBhatureSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuCholeyBhatureSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#MixedVeggiePakora"
-											data-whatever="MixedVeggiePakora">
-											<span>Mixed Veggie Pakora</span> <br /> <span
-												style="font-size: 12px;">Fried snack mulched W/ Mixed
-												Veggies, Lentil, Wheat flour, onions, potatoes, blended W/
-												herbs and spices.</span>
-										</button>
-										<div class="modal fade" id="MixedVeggiePakora" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Mixed Veggie Pakora</h3>
-															<span>Fried snack mulched W/ Mixed Veggies,
-																Lentil, Wheat flour, onions, potatoes, blended W/ herbs
-																and spices.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup2_8" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="MixedVeggiePakoraCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="MixedVeggiePakoraSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuMixedVeggiePakoraSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#PaneerPakoraIndianCheese"
-											data-whatever="PaneerPakoraIndianCheese">
-											<span>Paneer Pakora (Indian Cheese)</span> <br /> <span
-												style="font-size: 12px;">Fried snack mulched W/
-												Paneer, Lentil, Wheat flour, onions, potatoes, blended W/
-												herbs and spices.</span>
-										</button>
-										<div class="modal fade" id="PaneerPakoraIndianCheese"
-											tabindex="-1" role="dialog"
-											aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Paneer Pakora (Indian Cheese)</h3>
-															<span>Fried snack mulched W/ Paneer, Lentil, Wheat
-																flour, onions, potatoes, blended W/ herbs and spices.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup2_9" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="PaneerPakoraIndianCheeseCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="PaneerPakoraIndianCheeseSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuPaneerPakoraIndianCheeseSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#FishPakora"
-											data-whatever="FishPakora">
-											<span>Fish Pakora</span> <br /> <span
-												style="font-size: 12px;">Fried snack mulched W/ Fish,
-												Lentil, Wheat flour, onions, potatoes, blended W/ herbs and
-												spices.</span>
-										</button>
-										<div class="modal fade" id="FishPakora" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Fish Pakora</h3>
-															<span>Fried snack mulched W/ Fish, Lentil, Wheat
-																flour, onions, potatoes, blended W/ herbs and spices.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup2_10" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="FishPakoraCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="FishPakoraSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuFishPakoraSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Collapse start -->
-						<div class="panel-group" id="accordion-Chaat" role="tablist"
-							aria-multiselectable="true">
-							<div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="headingOne">
-									<a role="button" data-toggle="collapse"
-										data-parent="#accordion-Chaat" href="#Chaat"
-										aria-expanded="true" aria-controls="Chaat"> Chaat </a>
-								</div>
-								<div id="Chaat" class="panel-collapse collapse in"
-									role="tabpanel" aria-labelledby="headingOne">
-									<div class="panel-body">
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#PapriChaat"
-											data-whatever="PapriChaat">
-											<span>Papri Chaat</span> <br /> <span
-												style="font-size: 12px;">Crispy Wafers W/ potatoes,
-												chickpeas, cilantro, onions, yogurt Smothered W/ Tamarind
-												and mint chutney.</span>
-										</button>
-										<div class="modal fade" id="PapriChaat" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Papri Chaat</h3>
-															<span>Crispy Wafers W/ potatoes, chickpeas,
-																cilantro, onions, yogurt Smothered W/ Tamarind and mint
-																chutney.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup3_1" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="PapriChaatCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="PapriChaatSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuPapriChaatSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#AlooTikkiChaat"
-											data-whatever="AlooTikkiChaat">
-											<span>Aloo Tikki Chaat</span> <br /> <span
-												style="font-size: 12px;">Veggie Cutlets mixed W/
-												chickpeas onions, cilantro, yogurt, Smothered W/ Tamarind
-												and mint chutney.</span>
-										</button>
-										<div class="modal fade" id="AlooTikkiChaat" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Aloo Tikki Chaat</h3>
-															<span>Veggie Cutlets mixed W/ chickpeas onions,
-																cilantro, yogurt, Smothered W/ Tamarind and mint
-																chutney.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup3_2" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="AlooTikkiChaatCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="AlooTikkiChaatSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuAlooTikkiChaatSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#SamosaChaat"
-											data-whatever="SamosaChaat">
-											<span>Samosa Chaat</span> <br /> <span
-												style="font-size: 12px;">Mashed Samosa mixed W/
-												chickpeas onions, cilantro, yogurt, Smothered W/ Tamarind
-												and Mint Chutney.</span>
-										</button>
-										<div class="modal fade" id="SamosaChaat" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Samosa Chaat</h3>
-															<span>Mashed Samosa mixed W/ chickpeas onions,
-																cilantro, yogurt, Smothered W/ Tamarind and Mint
-																Chutney.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup3_3" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="SamosaChaatCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="SamosaChaatSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuSamosaChaatSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Collapse start -->
-						<div class="panel-group" id="accordion-Specialty_Salads"
-							role="tablist" aria-multiselectable="true">
-							<div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="headingOne">
-									<a role="button" data-toggle="collapse"
-										data-parent="#accordion-Specialty_Salads"
-										href="#Specialty_Salads" aria-expanded="true"
-										aria-controls="Specialty_Salads"> Specialty Salads </a>
-								</div>
-								<div id="Specialty_Salads" class="panel-collapse collapse in"
-									role="tabpanel" aria-labelledby="headingOne">
-									<div class="panel-body">
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#RangSalad"
-											data-whatever="RangSalad">
-											<span>Rang Salad</span> <br /> <span
-												style="font-size: 12px;">Colorful Salad of Red
-												Onions, Green Chili, Cucumbers, Tomatoes, Cilantro. W/ lemon
-												juice, salt and masala.</span>
-										</button>
-										<div class="modal fade" id="RangSalad" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Rang Salad</h3>
-															<span>Colorful Salad of Red Onions, Green Chili,
-																Cucumbers, Tomatoes, Cilantro. W/ lemon juice, salt and
-																masala.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup4_1" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="RangSaladCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="RangSaladSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuRangSaladSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#ChickenTikkaSalad"
-											data-whatever="ChickenTikkaSalad">
-											<span>Chicken Tikka Salad</span> <br /> <span
-												style="font-size: 12px;">Tandoori Chicken breast,
-												wafers, crispy noodles, lettuce, tomatoes, onions, Cilantro
-												W/ Indian spicy dressing.</span>
-										</button>
-										<div class="modal fade" id="ChickenTikkaSalad" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Chicken Tikka Salad</h3>
-															<span>Tandoori Chicken breast, wafers, crispy
-																noodles, lettuce, tomatoes, onions, Cilantro W/ Indian
-																spicy dressing.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup4_2" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="ChickenTikkaSaladCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="ChickenTikkaSaladSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuChickenTikkaSaladSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#CucumberSalad"
-											data-whatever="CucumberSalad">
-											<span>Cucumber Salad</span> <br /> <span
-												style="font-size: 12px;">Sliced Cucumbers. W/ lemon
-												juice, salt and masala.</span>
-										</button>
-										<div class="modal fade" id="CucumberSalad" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Cucumber Salad</h3>
-															<span>Sliced Cucumbers. W/ lemon juice, salt and
-																masala.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup4_3" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="CucumberSaladCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="CucumberSaladSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuCucumberSaladSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-
 									</div>
 								</div>
 							</div>
@@ -1265,7 +568,7 @@
 											<span>Milan Tandoori Special</span> <br /> <span
 												style="font-size: 12px;">Chicken Leg, Thigh, and
 												Breast Marinated W/ Indian herbs and Spices, yogurt, ginger,
-												Sizzled Onions, Lemon and Chili.</span>
+												Sizzled Onions, Lemon and Chili. Add Bread or Rice.</span>
 										</button>
 										<div class="modal fade" id="MilanTandooriSpecial"
 											tabindex="-1" role="dialog"
@@ -1281,10 +584,10 @@
 															<h3>Milan Tandoori Special</h3>
 															<span>Chicken Leg, Thigh, and Breast Marinated W/
 																Indian herbs and Spices, yogurt, ginger, Sizzled Onions,
-																Lemon and Chili.</span>
+																Lemon and Chili. Add Bread or Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup5_1" class="form-horizontal"
+															<form id="popup3_1" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
@@ -1313,114 +616,11 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#LambSeekhKabob"
-											data-whatever="LambSeekhKabob">
-											<span>Lamb Seekh Kabob</span> <br /> <span
-												style="font-size: 12px;">Minced Lamb Marinated W/
-												Indian herbs and Spices, yogurt, Green Chili, Ginger, Served
-												W/ Indian Sauces.</span>
-										</button>
-										<div class="modal fade" id="LambSeekhKabob" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Lamb Seekh Kabob</h3>
-															<span>Minced Lamb Marinated W/ Indian herbs and
-																Spices, yogurt, Green Chili, Ginger, Served W/ Indian
-																Sauces.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup5_2" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="LambSeekhKabobCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="LambSeekhKabobSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuLambSeekhKabobSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#ChickenSeekhKabob"
-											data-whatever="ChickenSeekhKabob">
-											<span>Chicken Seekh Kabob</span> <br /> <span
-												style="font-size: 12px;">Minced Chicken Marinated W/
-												Indian herbs and Spices, yogurt, Green Chili, Ginger, Served
-												W/ Indian Sauces.</span>
-										</button>
-										<div class="modal fade" id="ChickenSeekhKabob" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Chicken Seekh Kabob</h3>
-															<span>Minced Chicken Marinated W/ Indian herbs and
-																Spices, yogurt, Green Chili, Ginger, Served W/ Indian
-																Sauces.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup5_3" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="ChickenSeekhKabobCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="ChickenSeekhKabobSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuChickenSeekhKabobSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
 											data-toggle="modal" data-target="#MixedGrilledTandoori"
 											data-whatever="MixedGrilledTandoori">
 											<span>Mixed Grilled Tandoori</span> <br /> <span
 												style="font-size: 12px;">Combination of all tandoori
-												Entrées (Chicken and Lamb)</span>
+												EntrÃƒÂ©es (Chicken and Lamb). Add Bread or Rice.</span>
 										</button>
 										<div class="modal fade" id="MixedGrilledTandoori"
 											tabindex="-1" role="dialog"
@@ -1434,11 +634,11 @@
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Mixed Grilled Tandoori</h3>
-															<span>Combination of all tandoori Entrées (Chicken
-																and Lamb)</span>
+															<span>Combination of all tandoori EntrÃƒÂ©es
+																(Chicken and Lamb). Add Bread or Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup5_4" class="form-horizontal"
+															<form id="popup3_2" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
@@ -1465,332 +665,6 @@
 											</div>
 										</div>
 										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#LambVindaloo"
-											data-whatever="LambVindaloo">
-											<span>Lamb Vindaloo</span> <br /> <span
-												style="font-size: 12px;">A fiery Spicy Dish of Lamb
-												and Spicy Potatoes Curry</span>
-										</button>
-										<div class="modal fade" id="LambVindaloo" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Lamb Vindaloo</h3>
-															<span>A fiery Spicy Dish of Lamb and Spicy
-																Potatoes Curry</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup5_5" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="LambVindalooCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="LambVindalooSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuLambVindalooSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#ChickenVindaloo"
-											data-whatever="ChickenVindaloo">
-											<span>Chicken Vindaloo</span> <br /> <span
-												style="font-size: 12px;">A fiery Spicy Dish of
-												Chicken and Spicy Potatoes Curry</span>
-										</button>
-										<div class="modal fade" id="ChickenVindaloo" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Chicken Vindaloo</h3>
-															<span>A fiery Spicy Dish of Chicken and Spicy
-																Potatoes Curry</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup5_6" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="ChickenVindalooCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="ChickenVindalooSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuChickenVindalooSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Collapse start -->
-						<div class="panel-group"
-							id="accordion-Tandoori_Sizzler_on_Tandoor_Clay_Oven"
-							role="tablist" aria-multiselectable="true">
-							<div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="headingOne">
-									<a role="button" data-toggle="collapse"
-										data-parent="#accordion-Tandoori_Sizzler_on_Tandoor_Clay_Oven"
-										href="#Tandoori_Sizzler_on_Tandoor_Clay_Oven"
-										aria-expanded="true"
-										aria-controls="Tandoori_Sizzler_on_Tandoor_Clay_Oven">
-										Tandoori Sizzler on Tandoor (Clay Oven) </a>
-								</div>
-								<div id="Tandoori_Sizzler_on_Tandoor_Clay_Oven"
-									class="panel-collapse collapse in" role="tabpanel"
-									aria-labelledby="headingOne">
-									<div class="panel-body">
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#ChickenTandoori"
-											data-whatever="ChickenTandoori">
-											<span>Chicken Tandoori</span> <br /> <span
-												style="font-size: 12px;">Chicken Marinated W/ Indian
-												herbs and Spices, yogurt, ginger, Sizzled Onions, Lemon and
-												Chili.</span>
-										</button>
-										<div class="modal fade" id="ChickenTandoori" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Chicken Tandoori</h3>
-															<span>Chicken Marinated W/ Indian herbs and
-																Spices, yogurt, ginger, Sizzled Onions, Lemon and Chili.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup6_1" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="ChickenTandooriCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="ChickenTandooriSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuChickenTandooriSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#ChickenTikkaKabob"
-											data-whatever="ChickenTikkaKabob">
-											<span>Chicken Tikka Kabob</span> <br /> <span
-												style="font-size: 12px;">Chicken Marinated W/ Indian
-												herbs and Spices, yogurt, Green Chili, Ginger, Served W/
-												Indian Sauces.</span>
-										</button>
-										<div class="modal fade" id="ChickenTikkaKabob" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Chicken Tikka Kabob</h3>
-															<span>Chicken Marinated W/ Indian herbs and
-																Spices, yogurt, Green Chili, Ginger, Served W/ Indian
-																Sauces.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup6_2" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="ChickenTikkaKabobCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="ChickenTikkaKabobSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuChickenTikkaKabobSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#FishTandoori"
-											data-whatever="FishTandoori">
-											<span>Fish Tandoori</span> <br /> <span
-												style="font-size: 12px;">Fish of the Day Marinated W/
-												Indian herbs and Spices, yogurt, ginger, Sizzled Onions,
-												Lemon and Chili.</span>
-										</button>
-										<div class="modal fade" id="FishTandoori" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Fish Tandoori</h3>
-															<span>Fish of the Day Marinated W/ Indian herbs
-																and Spices, yogurt, ginger, Sizzled Onions, Lemon and
-																Chili.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup6_3" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="FishTandooriCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="FishTandooriSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuFishTandooriSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#PaneerTandoori"
-											data-whatever="PaneerTandoori">
-											<span>Paneer Tandoori</span> <br /> <span
-												style="font-size: 12px;">Indian Cheese Marinated W/
-												Indian Herbs and Spices, yogurt, ginger, Sizzled Onions,
-												Lemon and Chili.</span>
-										</button>
-										<div class="modal fade" id="PaneerTandoori" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Paneer Tandoori</h3>
-															<span>Indian Cheese Marinated W/ Indian Herbs and
-																Spices, yogurt, ginger, Sizzled Onions, Lemon and Chili.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup6_4" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="PaneerTandooriCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="PaneerTandooriSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuPaneerTandooriSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-
 									</div>
 								</div>
 							</div>
@@ -1810,65 +684,11 @@
 									<div class="panel-body">
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#PlainNaanWButter"
-											data-whatever="PlainNaanWButter">
-											<span>Plain Naan (W/ Butter)</span> <br /> <span
-												style="font-size: 12px;">Indian bread Baked in Clay
-												Oven. Eaten W/ Entrée</span>
+											data-toggle="modal" data-target="#Naan" data-whatever="Naan">
+											<span>Naan</span> <br /> <span style="font-size: 12px;">Indian
+												bread Baked in Clay Oven. Eaten W/ EntrÃƒÂ©e</span>
 										</button>
-										<div class="modal fade" id="PlainNaanWButter" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Plain Naan (W/ Butter)</h3>
-															<span>Indian bread Baked in Clay Oven. Eaten W/
-																Entrée</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup7_1" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="PlainNaanWButterCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="PlainNaanWButterSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuPlainNaanWButterSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal"
-											data-target="#GarlicNaanWButterMincedGarlic"
-											data-whatever="GarlicNaanWButterMincedGarlic">
-											<span>Garlic Naan (W/ Butter Minced Garlic)</span> <br /> <span
-												style="font-size: 12px;">Indian bread Baked in Clay
-												Oven. Eaten W/ Entrée</span>
-										</button>
-										<div class="modal fade" id="GarlicNaanWButterMincedGarlic"
-											tabindex="-1" role="dialog"
+										<div class="modal fade" id="Naan" tabindex="-1" role="dialog"
 											aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
@@ -1878,29 +698,28 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Garlic Naan (W/ Butter Minced Garlic)</h3>
+															<h3>Naan</h3>
 															<span>Indian bread Baked in Clay Oven. Eaten W/
-																Entrée</span>
+																EntrÃƒÂ©e</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup7_2" class="form-horizontal"
+															<form id="popup4_1" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="GarlicNaanWButterMincedGarlicCount"
+																	<input type="text" size="20" name="NaanCount"
 																		maxlength="20" required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60"
-																		name="GarlicNaanWButterMincedGarlicSpl" maxlength="20">
+																	<input type="text" size="60" name="NaanSpl"
+																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuGarlicNaanWButterMincedGarlicSelectedItems();" />
+																			onclick="populateFullMenuNaanSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -1912,217 +731,12 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#PaneerKulchaIndianCheese"
-											data-whatever="PaneerKulchaIndianCheese">
-											<span>Paneer Kulcha (Indian Cheese)</span> <br /> <span
-												style="font-size: 12px;">Leaven Indian bread stuffed
-												W/ indian cheese baked in Tandoor (Clay oven)</span>
+											data-toggle="modal" data-target="#PlainRoti"
+											data-whatever="PlainRoti">
+											<span>Plain Roti</span> <br /> <span
+												style="font-size: 12px;">Plain bread</span>
 										</button>
-										<div class="modal fade" id="PaneerKulchaIndianCheese"
-											tabindex="-1" role="dialog"
-											aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Paneer Kulcha (Indian Cheese)</h3>
-															<span>Leaven Indian bread stuffed W/ indian cheese
-																baked in Tandoor (Clay oven)</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup7_3" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="PaneerKulchaIndianCheeseCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="PaneerKulchaIndianCheeseSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuPaneerKulchaIndianCheeseSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#KeemaKulchaGroundMeat"
-											data-whatever="KeemaKulchaGroundMeat">
-											<span>Keema Kulcha (Ground Meat)</span> <br /> <span
-												style="font-size: 12px;">Leaven Indian bread stuffed
-												W/ ground meat baked in Tandoor (Clay oven)</span>
-										</button>
-										<div class="modal fade" id="KeemaKulchaGroundMeat"
-											tabindex="-1" role="dialog"
-											aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Keema Kulcha (Ground Meat)</h3>
-															<span>Leaven Indian bread stuffed W/ ground meat
-																baked in Tandoor (Clay oven)</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup7_4" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="KeemaKulchaGroundMeatCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="KeemaKulchaGroundMeatSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuKeemaKulchaGroundMeatSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#PyaajKulchaDicedOnion"
-											data-whatever="PyaajKulchaDicedOnion">
-											<span>Pyaaj Kulcha (Diced Onion)</span> <br /> <span
-												style="font-size: 12px;">Leaven Indian bread stuffed
-												W/ dices onion Baked in Tandoor (Clay oven)</span>
-										</button>
-										<div class="modal fade" id="PyaajKulchaDicedOnion"
-											tabindex="-1" role="dialog"
-											aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Pyaaj Kulcha (Diced Onion)</h3>
-															<span>Leaven Indian bread stuffed W/ dices onion
-																Baked in Tandoor (Clay oven)</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup7_5" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="PyaajKulchaDicedOnionCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="PyaajKulchaDicedOnionSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuPyaajKulchaDicedOnionSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#AlooKulchaMincedpotatoes"
-											data-whatever="AlooKulchaMincedpotatoes">
-											<span>Aloo Kulcha (Minced potatoes)</span> <br /> <span
-												style="font-size: 12px;">Leaven Indian bread stuffed
-												W/ minced potato baked in Tandoor (Clay oven)</span>
-										</button>
-										<div class="modal fade" id="AlooKulchaMincedpotatoes"
-											tabindex="-1" role="dialog"
-											aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Aloo Kulcha (Minced potatoes)</h3>
-															<span>Leaven Indian bread stuffed W/ minced potato
-																baked in Tandoor (Clay oven)</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup7_6" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="AlooKulchaMincedpotatoesCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="AlooKulchaMincedpotatoesSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuAlooKulchaMincedpotatoesSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#PlainRotiChapati"
-											data-whatever="PlainRotiChapati">
-											<span>Plain Roti / Chapati</span> <br /> <span
-												style="font-size: 12px;">Indian Tortilla made on Tava
-												(Iron grill). Eaten W/ your Entrée</span>
-										</button>
-										<div class="modal fade" id="PlainRotiChapati" tabindex="-1"
+										<div class="modal fade" id="PlainRoti" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
@@ -2132,29 +746,27 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Plain Roti / Chapati</h3>
-															<span>Indian Tortilla made on Tava (Iron grill).
-																Eaten W/ your Entrée</span>
+															<h3>Plain Roti</h3>
+															<span>Plain bread</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup7_7" class="form-horizontal"
+															<form id="popup4_2" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="PlainRotiChapatiCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																	<input type="text" size="20" name="PlainRotiCount"
+																		maxlength="20" required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="PlainRotiChapatiSpl"
+																	<input type="text" size="60" name="PlainRotiSpl"
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuPlainRotiChapatiSelectedItems();" />
+																			onclick="populateFullMenuPlainRotiSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -2164,194 +776,70 @@
 											</div>
 										</div>
 										<!-- item end -->
-
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#AlooKulcha"
+											data-whatever="AlooKulcha">
+											<span>Aloo Kulcha</span> <br /> <span
+												style="font-size: 12px;">Flat bread with minced
+												potatoes.</span>
+										</button>
+										<div class="modal fade" id="AlooKulcha" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Aloo Kulcha</h3>
+															<span>Flat bread with minced potatoes.</span>
+														</div>
+														<div class="modal-desc">
+															<form id="popup4_3" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20" name="AlooKulchaCount"
+																		maxlength="20" required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60" name="AlooKulchaSpl"
+																		maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuAlooKulchaSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
 									</div>
 								</div>
 							</div>
 						</div>
 						<!-- Collapse start -->
-						<div class="panel-group" id="accordion-Royal_Biryani"
+						<div class="panel-group" id="accordion-Meat_Speciality_Entrees"
 							role="tablist" aria-multiselectable="true">
 							<div class="panel panel-default">
 								<div class="panel-heading" role="tab" id="headingOne">
 									<a role="button" data-toggle="collapse"
-										data-parent="#accordion-Royal_Biryani" href="#Royal_Biryani"
-										aria-expanded="true" aria-controls="Royal_Biryani"> Royal
-										Biryani </a>
+										data-parent="#accordion-Meat_Speciality_Entrees"
+										href="#Meat_Speciality_Entrees" aria-expanded="true"
+										aria-controls="Meat_Speciality_Entrees"> Meat Speciality
+										Entrees </a>
 								</div>
-								<div id="Royal_Biryani" class="panel-collapse collapse in"
-									role="tabpanel" aria-labelledby="headingOne">
-									<div class="panel-body">
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#VegetarianBiryani"
-											data-whatever="VegetarianBiryani">
-											<span>Vegetarian Biryani</span> <br /> <span
-												style="font-size: 12px;">Mixed Vegetables cooked W/
-												Basmati Rice, Indian Herbs, Spices, chili, onions, cilantro.
-												W/Indian Yogurt</span>
-										</button>
-										<div class="modal fade" id="VegetarianBiryani" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Vegetarian Biryani</h3>
-															<span>Mixed Vegetables cooked W/ Basmati Rice,
-																Indian Herbs, Spices, chili, onions, cilantro. W/Indian
-																Yogurt</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup8_1" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="VegetarianBiryaniCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="VegetarianBiryaniSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuVegetarianBiryaniSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#ChickenBiryani"
-											data-whatever="ChickenBiryani">
-											<span>Chicken Biryani</span> <br /> <span
-												style="font-size: 12px;">Boneless Chicken cooked W/
-												Basmati Rice, Indian Herbs, Spices, chili, onions, cilantro.
-												W/Indian Yogurt</span>
-										</button>
-										<div class="modal fade" id="ChickenBiryani" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Chicken Biryani</h3>
-															<span>Boneless Chicken cooked W/ Basmati Rice,
-																Indian Herbs, Spices, chili, onions, cilantro. W/Indian
-																Yogurt</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup8_2" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="ChickenBiryaniCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="ChickenBiryaniSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuChickenBiryaniSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#LambBiryani"
-											data-whatever="LambBiryani">
-											<span>Lamb Biryani</span> <br /> <span
-												style="font-size: 12px;">Lamb Chops cooked W/ Basmati
-												Rice, Indian Herbs, Spices, chili, onions, cilantro.
-												W/Indian Yogurt</span>
-										</button>
-										<div class="modal fade" id="LambBiryani" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Lamb Biryani</h3>
-															<span>Lamb Chops cooked W/ Basmati Rice, Indian
-																Herbs, Spices, chili, onions, cilantro. W/Indian Yogurt</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup8_3" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="LambBiryaniCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="LambBiryaniSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuLambBiryaniSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Collapse start -->
-						<div class="panel-group" id="accordion-Meat_Specialty_Entres"
-							role="tablist" aria-multiselectable="true">
-							<div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="headingOne">
-									<a role="button" data-toggle="collapse"
-										data-parent="#accordion-Meat_Specialty_Entres"
-										href="#Meat_Specialty_Entres" aria-expanded="true"
-										aria-controls="Meat_Specialty_Entres"> Meat Specialty
-										Entrées </a>
-								</div>
-								<div id="Meat_Specialty_Entres"
+								<div id="Meat_Speciality_Entrees"
 									class="panel-collapse collapse in" role="tabpanel"
 									aria-labelledby="headingOne">
 									<div class="panel-body">
@@ -2359,9 +847,9 @@
 										<button type="button" class="btn btn-primary"
 											data-toggle="modal" data-target="#TraditionalChickenCurry"
 											data-whatever="TraditionalChickenCurry">
-											<span>Traditional Chicken Curry</span> <br /> <span
+											<span>Traditional Chicken Curry </span> <br /> <span
 												style="font-size: 12px;">Chicken savored in Indian
-												spicy gravy, chili, onions, and cilantro.</span>
+												spicy gravy, chili, onions, and cilantro. Add Bread or Rice.</span>
 										</button>
 										<div class="modal fade" id="TraditionalChickenCurry"
 											tabindex="-1" role="dialog"
@@ -2376,10 +864,10 @@
 															</button>
 															<h3>Traditional Chicken Curry</h3>
 															<span>Chicken savored in Indian spicy gravy,
-																chili, onions, and cilantro.</span>
+																chili, onions, and cilantro. Add Bread or Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup9_1" class="form-horizontal"
+															<form id="popup5_1" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
@@ -2410,9 +898,9 @@
 										<button type="button" class="btn btn-primary"
 											data-toggle="modal" data-target="#ButterChicken"
 											data-whatever="ButterChicken">
-											<span>Butter Chicken</span> <br /> <span
+											<span>Butter Chicken </span> <br /> <span
 												style="font-size: 12px;">Chicken simmered in Tomato
-												Cream Sauce, Herb and Spices.</span>
+												Cream Sauce, Herb and Spices. Add Bread or Rice.</span>
 										</button>
 										<div class="modal fade" id="ButterChicken" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
@@ -2426,10 +914,10 @@
 															</button>
 															<h3>Butter Chicken</h3>
 															<span>Chicken simmered in Tomato Cream Sauce, Herb
-																and Spices.</span>
+																and Spices. Add Bread or Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup9_2" class="form-horizontal"
+															<form id="popup5_2" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
@@ -2461,7 +949,8 @@
 											data-whatever="ChickenTikkaMasala">
 											<span>Chicken Tikka Masala</span> <br /> <span
 												style="font-size: 12px;">Roasted Chicken Tandoori
-												cooked in spicy creamy sauce W/ Indian Herbs and Spice.</span>
+												cooked in spicy creamy sauce W/ Indian Herbs and Spice. Add
+												Bread or Rice.</span>
 										</button>
 										<div class="modal fade" id="ChickenTikkaMasala" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
@@ -2475,10 +964,11 @@
 															</button>
 															<h3>Chicken Tikka Masala</h3>
 															<span>Roasted Chicken Tandoori cooked in spicy
-																creamy sauce W/ Indian Herbs and Spice.</span>
+																creamy sauce W/ Indian Herbs and Spice. Add Bread or
+																Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup9_3" class="form-horizontal"
+															<form id="popup5_3" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
@@ -2507,109 +997,12 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#ChiliChicken"
-											data-whatever="ChiliChicken">
-											<span>Chili Chicken</span> <br /> <span
-												style="font-size: 12px;">Chicken pieces, tomatoes,
-												peppers, onions, and chili sautéed W/ Herbs and Spices.</span>
-										</button>
-										<div class="modal fade" id="ChiliChicken" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Chili Chicken</h3>
-															<span>Chicken pieces, tomatoes, peppers, onions,
-																and chili sautéed W/ Herbs and Spices.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup9_4" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="ChiliChickenCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="ChiliChickenSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuChiliChickenSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#SaagChicken"
-											data-whatever="SaagChicken">
-											<span>Saag Chicken</span> <br /> <span
-												style="font-size: 12px;">Chicken cooked W/ minced
-												spinach sautéed W/ Indian Herbs and Spices.</span>
-										</button>
-										<div class="modal fade" id="SaagChicken" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Saag Chicken</h3>
-															<span>Chicken cooked W/ minced spinach sautéed W/
-																Indian Herbs and Spices.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup9_5" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="SaagChickenCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="SaagChickenSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuSaagChickenSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
 											data-toggle="modal" data-target="#TraditionalLambCurry"
 											data-whatever="TraditionalLambCurry">
-											<span>Traditional Lamb Curry</span> <br /> <span
+											<span>Traditional Lamb Curry </span> <br /> <span
 												style="font-size: 12px;">Chopped Lamb savored in
-												Indian spicy gravy, chili, onions, and cilantro.</span>
+												Indian spicy gravy, chili, onions, and cilantro. Add Bread
+												or Rice.</span>
 										</button>
 										<div class="modal fade" id="TraditionalLambCurry"
 											tabindex="-1" role="dialog"
@@ -2624,10 +1017,10 @@
 															</button>
 															<h3>Traditional Lamb Curry</h3>
 															<span>Chopped Lamb savored in Indian spicy gravy,
-																chili, onions, and cilantro.</span>
+																chili, onions, and cilantro. Add Bread or Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup9_6" class="form-horizontal"
+															<form id="popup5_4" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
@@ -2659,8 +1052,8 @@
 											data-toggle="modal" data-target="#SaagLamb"
 											data-whatever="SaagLamb">
 											<span>Saag Lamb</span> <br /> <span style="font-size: 12px;">Chopped
-												Lamb cooked W/ minced spinach sautéed W/ Indian Herbs and
-												Spices.</span>
+												Lamb cooked W/ minced spinach sautÃƒÂ©ed W/ Indian Herbs and
+												Spices. Add Bread or Rice.</span>
 										</button>
 										<div class="modal fade" id="SaagLamb" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
@@ -2674,10 +1067,11 @@
 															</button>
 															<h3>Saag Lamb</h3>
 															<span>Chopped Lamb cooked W/ minced spinach
-																sautéed W/ Indian Herbs and Spices.</span>
+																sautÃƒÂ©ed W/ Indian Herbs and Spices. Add Bread or
+																Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup9_7" class="form-horizontal"
+															<form id="popup5_5" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
@@ -2703,128 +1097,23 @@
 											</div>
 										</div>
 										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal"
-											data-target="#TraditionalGoatCurryOccasional"
-											data-whatever="TraditionalGoatCurryOccasional">
-											<span>Traditional Goat Curry (Occasional)</span> <br /> <span
-												style="font-size: 12px;">Chopped Goat savored in
-												Indian spicy gravy, chili, onions, and cilantro.</span>
-										</button>
-										<div class="modal fade" id="TraditionalGoatCurryOccasional"
-											tabindex="-1" role="dialog"
-											aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Traditional Goat Curry (Occasional)</h3>
-															<span>Chopped Goat savored in Indian spicy gravy,
-																chili, onions, and cilantro.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup9_8" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="TraditionalGoatCurryOccasionalCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="TraditionalGoatCurryOccasionalSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuTraditionalGoatCurryOccasionalSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#TraditionalFishCurry"
-											data-whatever="TraditionalFishCurry">
-											<span>Traditional Fish Curry</span> <br /> <span
-												style="font-size: 12px;">Fish of the Day savored in
-												Indian spicy gravy, chili, onions, and cilantro.</span>
-										</button>
-										<div class="modal fade" id="TraditionalFishCurry"
-											tabindex="-1" role="dialog"
-											aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Traditional Fish Curry</h3>
-															<span>Fish of the Day savored in Indian spicy
-																gravy, chili, onions, and cilantro.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup9_9" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="TraditionalFishCurryCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="TraditionalFishCurrySpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuTraditionalFishCurrySelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-
 									</div>
 								</div>
 							</div>
 						</div>
 						<!-- Collapse start -->
 						<div class="panel-group"
-							id="accordion-Vegetarian_Specialty_Entres" role="tablist"
+							id="accordion-Vegetarian_Speciality_Entrees" role="tablist"
 							aria-multiselectable="true">
 							<div class="panel panel-default">
 								<div class="panel-heading" role="tab" id="headingOne">
 									<a role="button" data-toggle="collapse"
-										data-parent="#accordion-Vegetarian_Specialty_Entres"
-										href="#Vegetarian_Specialty_Entres" aria-expanded="true"
-										aria-controls="Vegetarian_Specialty_Entres"> Vegetarian
-										Specialty Entrées </a>
+										data-parent="#accordion-Vegetarian_Speciality_Entrees"
+										href="#Vegetarian_Speciality_Entrees" aria-expanded="true"
+										aria-controls="Vegetarian_Speciality_Entrees"> Vegetarian
+										Speciality Entrees </a>
 								</div>
-								<div id="Vegetarian_Specialty_Entres"
+								<div id="Vegetarian_Speciality_Entrees"
 									class="panel-collapse collapse in" role="tabpanel"
 									aria-labelledby="headingOne">
 									<div class="panel-body">
@@ -2834,7 +1123,8 @@
 											data-whatever="MalaiKofta">
 											<span>Malai Kofta</span> <br /> <span
 												style="font-size: 12px;">Vegetarian dumplings
-												simmered in Indian Herbs and Spices, and creamy curry sauce.</span>
+												simmered in Indian Herbs and Spices, and creamy curry sauce.
+												Add Bread or Rice.</span>
 										</button>
 										<div class="modal fade" id="MalaiKofta" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
@@ -2848,10 +1138,11 @@
 															</button>
 															<h3>Malai Kofta</h3>
 															<span>Vegetarian dumplings simmered in Indian
-																Herbs and Spices, and creamy curry sauce.</span>
+																Herbs and Spices, and creamy curry sauce. Add Bread or
+																Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup10_1" class="form-horizontal"
+															<form id="popup6_1" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
@@ -2883,7 +1174,8 @@
 											data-whatever="ShahiPaneer">
 											<span>Shahi Paneer</span> <br /> <span
 												style="font-size: 12px;">Indian Cheese cooked in
-												Spicy, Creamy Gravy Sauce, W/ tomatoes, Herbs and Spices.</span>
+												Spicy, Creamy Gravy Sauce, W/ tomatoes, Herbs and Spices.
+												Add Bread or Rice.</span>
 										</button>
 										<div class="modal fade" id="ShahiPaneer" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
@@ -2897,10 +1189,10 @@
 															</button>
 															<h3>Shahi Paneer</h3>
 															<span>Indian Cheese cooked in Spicy, Creamy Gravy
-																Sauce, W/ tomatoes, Herbs and Spices.</span>
+																Sauce, W/ tomatoes, Herbs and Spices. Add Bread or Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup10_2" class="form-horizontal"
+															<form id="popup6_2" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
@@ -2933,7 +1225,7 @@
 											<span>Matar Paneer</span> <br /> <span
 												style="font-size: 12px;">Green Peas and Indian Cheese
 												savored in Indian spicy gravy, chili, onions, tomatoes and
-												cilantro.</span>
+												cilantro. Add Bread or Rice.</span>
 										</button>
 										<div class="modal fade" id="MatarPaneer" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
@@ -2948,10 +1240,10 @@
 															<h3>Matar Paneer</h3>
 															<span>Green Peas and Indian Cheese savored in
 																Indian spicy gravy, chili, onions, tomatoes and
-																cilantro.</span>
+																cilantro. Add Bread or Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup10_3" class="form-horizontal"
+															<form id="popup6_3" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
@@ -2979,160 +1271,12 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#ChiliPaneer"
-											data-whatever="ChiliPaneer">
-											<span>Chili Paneer</span> <br /> <span
-												style="font-size: 12px;">Indian Cheese sautéed W/
-												Tomatoes, Peppers, Onions, Chili sautéed in herbs and
-												Spices.</span>
-										</button>
-										<div class="modal fade" id="ChiliPaneer" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Chili Paneer</h3>
-															<span>Indian Cheese sautéed W/ Tomatoes, Peppers,
-																Onions, Chili sautéed in herbs and Spices.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup10_4" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="ChiliPaneerCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="ChiliPaneerSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuChiliPaneerSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#PaneerBurji"
-											data-whatever="PaneerBurji">
-											<span>Paneer Burji</span> <br /> <span
-												style="font-size: 12px;">Crumbled Indian Cheese
-												Sautéed W/ Onion, Chili sautéed W/ herbs and Spices.</span>
-										</button>
-										<div class="modal fade" id="PaneerBurji" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Paneer Burji</h3>
-															<span>Crumbled Indian Cheese Sautéed W/ Onion,
-																Chili sautéed W/ herbs and Spices.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup10_5" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="PaneerBurjiCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="PaneerBurjiSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuPaneerBurjiSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#SaagPaneer"
-											data-whatever="SaagPaneer">
-											<span>Saag Paneer</span> <br /> <span
-												style="font-size: 12px;">Indian Cheese cooked W/
-												minced spinach sautéed W/ Indian Herbs and Spices.</span>
-										</button>
-										<div class="modal fade" id="SaagPaneer" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Saag Paneer</h3>
-															<span>Indian Cheese cooked W/ minced spinach
-																sautéed W/ Indian Herbs and Spices.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup10_6" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="SaagPaneerCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="SaagPaneerSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuSaagPaneerSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
 											data-toggle="modal" data-target="#DalMakhni"
 											data-whatever="DalMakhni">
 											<span>Dal Makhni</span> <br /> <span
 												style="font-size: 12px;">Cooked Lentils, Mung Beans
 												made W/ onions, tomatoes, ginger, in Indian Herbs and
-												Spices.</span>
+												Spices. Add Bread or Rice.</span>
 										</button>
 										<div class="modal fade" id="DalMakhni" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
@@ -3146,10 +1290,11 @@
 															</button>
 															<h3>Dal Makhni</h3>
 															<span>Cooked Lentils, Mung Beans made W/ onions,
-																tomatoes, ginger, in Indian Herbs and Spices.</span>
+																tomatoes, ginger, in Indian Herbs and Spices. Add Bread
+																or Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup10_7" class="form-horizontal"
+															<form id="popup6_4" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
@@ -3177,63 +1322,12 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#ChanaMasala"
-											data-whatever="ChanaMasala">
-											<span>Chana Masala</span> <br /> <span
-												style="font-size: 12px;">Chickpeas savored in Indian
-												spicy gravy, chili, onions, tomatoes and cilantro, W/ a hint
-												of citrus.</span>
-										</button>
-										<div class="modal fade" id="ChanaMasala" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Chana Masala</h3>
-															<span>Chickpeas savored in Indian spicy gravy,
-																chili, onions, tomatoes and cilantro, W/ a hint of
-																citrus.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup10_8" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="ChanaMasalaCount"
-																		maxlength="20" required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60" name="ChanaMasalaSpl"
-																		maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuChanaMasalaSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
 											data-toggle="modal" data-target="#MixedVegetables"
 											data-whatever="MixedVegetables">
 											<span>Mixed Vegetables</span> <br /> <span
-												style="font-size: 12px;">Mixed vegetables sautéed W/
-												Tomatoes, Peppers, Onions, Chili sautéed W/ Indian Herbs and
-												Spices.</span>
+												style="font-size: 12px;">Mixed vegetables sautÃƒÂ©ed
+												W/ Tomatoes, Peppers, Onions, Chili sautÃƒÂ©ed W/ Indian
+												Herbs and Spices. Add Bread or Rice.</span>
 										</button>
 										<div class="modal fade" id="MixedVegetables" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
@@ -3246,12 +1340,12 @@
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Mixed Vegetables</h3>
-															<span>Mixed vegetables sautéed W/ Tomatoes,
-																Peppers, Onions, Chili sautéed W/ Indian Herbs and
-																Spices.</span>
+															<span>Mixed vegetables sautÃƒÂ©ed W/ Tomatoes,
+																Peppers, Onions, Chili sautÃƒÂ©ed W/ Indian Herbs and
+																Spices. Add Bread or Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup10_9" class="form-horizontal"
+															<form id="popup6_5" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
@@ -3280,14 +1374,14 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#BhindiMasala"
-											data-whatever="BhindiMasala">
-											<span>Bhindi Masala</span> <br /> <span
-												style="font-size: 12px;">Chopped Okra sautéed W/
-												Tomatoes, Peppers, Onions, Chili sautéed W/ herbs and
-												Spices.</span>
+											data-toggle="modal" data-target="#ChanaMasala"
+											data-whatever="ChanaMasala">
+											<span>Chana Masala</span> <br /> <span
+												style="font-size: 12px;">Chickpeas savored in Indian
+												spicy gravy, chili, onions, tomatoes and cilantro, W/ a hint
+												of citrus. Add Bread or Rice.</span>
 										</button>
-										<div class="modal fade" id="BhindiMasala" tabindex="-1"
+										<div class="modal fade" id="ChanaMasala" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
@@ -3297,28 +1391,29 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Bhindi Masala</h3>
-															<span>Chopped Okra sautéed W/ Tomatoes, Peppers,
-																Onions, Chili sautéed W/ herbs and Spices.</span>
+															<h3>Chana Masala</h3>
+															<span>Chickpeas savored in Indian spicy gravy,
+																chili, onions, tomatoes and cilantro, W/ a hint of
+																citrus. Add Bread or Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup10_10" class="form-horizontal"
+															<form id="popup6_6" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="BhindiMasalaCount"
+																	<input type="text" size="20" name="ChanaMasalaCount"
 																		maxlength="20" required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="BhindiMasalaSpl"
+																	<input type="text" size="60" name="ChanaMasalaSpl"
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuBhindiMasalaSelectedItems();" />
+																			onclick="populateFullMenuChanaMasalaSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -3328,7 +1423,6 @@
 											</div>
 										</div>
 										<!-- item end -->
-
 									</div>
 								</div>
 							</div>
@@ -3367,7 +1461,7 @@
 															<span></span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup11_1" class="form-horizontal"
+															<form id="popup7_1" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
@@ -3415,7 +1509,7 @@
 															<span></span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup11_2" class="form-horizontal"
+															<form id="popup7_2" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
@@ -3441,152 +1535,6 @@
 											</div>
 										</div>
 										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#ChiliOnionsCarrotsetc"
-											data-whatever="ChiliOnionsCarrotsetc">
-											<span>Chili, Onions, Carrots, etc.</span> <br /> <span
-												style="font-size: 12px;"></span>
-										</button>
-										<div class="modal fade" id="ChiliOnionsCarrotsetc"
-											tabindex="-1" role="dialog"
-											aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Chili, Onions, Carrots, etc.</h3>
-															<span></span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup11_3" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="ChiliOnionsCarrotsetcCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="ChiliOnionsCarrotsetcSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuChiliOnionsCarrotsetcSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#AchaarIndianPickles"
-											data-whatever="AchaarIndianPickles">
-											<span>Achaar (Indian Pickles)</span> <br /> <span
-												style="font-size: 12px;"></span>
-										</button>
-										<div class="modal fade" id="AchaarIndianPickles" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Achaar (Indian Pickles)</h3>
-															<span></span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup11_4" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="AchaarIndianPicklesCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="AchaarIndianPicklesSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuAchaarIndianPicklesSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#ChutneyIndianSauce"
-											data-whatever="ChutneyIndianSauce">
-											<span>Chutney (Indian Sauce)</span> <br /> <span
-												style="font-size: 12px;">On the House</span>
-										</button>
-										<div class="modal fade" id="ChutneyIndianSauce" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Chutney (Indian Sauce)</h3>
-															<span>On the House</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup11_5" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="ChutneyIndianSauceCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="ChutneyIndianSauceSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuChutneyIndianSauceSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-
 									</div>
 								</div>
 							</div>
@@ -3605,13 +1553,12 @@
 									<div class="panel-body">
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#FaloodaKulfiIndianIceCream"
-											data-whatever="FaloodaKulfiIndianIceCream">
-											<span>Falooda Kulfi (Indian Ice Cream)</span> <br /> <span
-												style="font-size: 12px;"></span>
+											data-toggle="modal" data-target="#Kheer"
+											data-whatever="Kheer">
+											<span>Kheer</span> <br /> <span style="font-size: 12px;">Indian
+												Rice Pudding</span>
 										</button>
-										<div class="modal fade" id="FaloodaKulfiIndianIceCream"
-											tabindex="-1" role="dialog"
+										<div class="modal fade" id="Kheer" tabindex="-1" role="dialog"
 											aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
@@ -3621,28 +1568,27 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Falooda Kulfi (Indian Ice Cream)</h3>
-															<span></span>
+															<h3>Kheer</h3>
+															<span>Indian Rice Pudding</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup12_1" class="form-horizontal"
+															<form id="popup8_1" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="FaloodaKulfiIndianIceCreamCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																	<input type="text" size="20" name="KheerCount"
+																		maxlength="20" required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60"
-																		name="FaloodaKulfiIndianIceCreamSpl" maxlength="20">
+																	<input type="text" size="60" name="KheerSpl"
+																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuFaloodaKulfiIndianIceCreamSelectedItems();" />
+																			onclick="populateFullMenuKheerSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -3654,14 +1600,14 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#KheerIndianRicePudding"
-											data-whatever="KheerIndianRicePudding">
-											<span>Kheer (Indian Rice Pudding)</span> <br /> <span
-												style="font-size: 12px;"></span>
+											data-toggle="modal" data-target="#GulabJamun"
+											data-whatever="GulabJamun">
+											<span>Gulab Jamun</span> <br /> <span
+												style="font-size: 12px;">Spongy Balls with Sugar
+												Syrup</span>
 										</button>
-										<div class="modal fade" id="KheerIndianRicePudding"
-											tabindex="-1" role="dialog"
-											aria-labelledby="exampleModalLabel">
+										<div class="modal fade" id="GulabJamun" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
@@ -3670,28 +1616,27 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Kheer (Indian Rice Pudding)</h3>
-															<span></span>
+															<h3>Gulab Jamun</h3>
+															<span>Spongy Balls with Sugar Syrup</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup12_2" class="form-horizontal"
+															<form id="popup8_2" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="KheerIndianRicePuddingCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																	<input type="text" size="20" name="GulabJamunCount"
+																		maxlength="20" required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60"
-																		name="KheerIndianRicePuddingSpl" maxlength="20">
+																	<input type="text" size="60" name="GulabJamunSpl"
+																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuKheerIndianRicePuddingSelectedItems();" />
+																			onclick="populateFullMenuGulabJamunSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -3701,106 +1646,6 @@
 											</div>
 										</div>
 										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal"
-											data-target="#GulabJamunSpongyBallsWSyrup"
-											data-whatever="GulabJamunSpongyBallsWSyrup">
-											<span>Gulab Jamun (Spongy Balls W/ Syrup)</span> <br /> <span
-												style="font-size: 12px;"></span>
-										</button>
-										<div class="modal fade" id="GulabJamunSpongyBallsWSyrup"
-											tabindex="-1" role="dialog"
-											aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Gulab Jamun (Spongy Balls W/ Syrup)</h3>
-															<span></span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup12_3" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="GulabJamunSpongyBallsWSyrupCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="GulabJamunSpongyBallsWSyrupSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuGulabJamunSpongyBallsWSyrupSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#RasmalaiCheesecakeWCream"
-											data-whatever="RasmalaiCheesecakeWCream">
-											<span>Rasmalai (Cheesecake W/ Cream)</span> <br /> <span
-												style="font-size: 12px;"></span>
-										</button>
-										<div class="modal fade" id="RasmalaiCheesecakeWCream"
-											tabindex="-1" role="dialog"
-											aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Rasmalai (Cheesecake W/ Cream)</h3>
-															<span></span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup12_4" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="RasmalaiCheesecakeWCreamCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="RasmalaiCheesecakeWCreamSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuRasmalaiCheesecakeWCreamSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-
 									</div>
 								</div>
 							</div>
@@ -3820,159 +1665,12 @@
 									<div class="panel-body">
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#SweetSaltyLassiYogurtDrink"
-											data-whatever="SweetSaltyLassiYogurtDrink">
-											<span>Sweet & Salty Lassi (Yogurt Drink)</span> <br /> <span
+											data-toggle="modal" data-target="#AssortedSoda"
+											data-whatever="AssortedSoda">
+											<span>Assorted Soda</span> <br /> <span
 												style="font-size: 12px;"></span>
 										</button>
-										<div class="modal fade" id="SweetSaltyLassiYogurtDrink"
-											tabindex="-1" role="dialog"
-											aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Sweet & Salty Lassi (Yogurt Drink)</h3>
-															<span></span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup13_1" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="SweetSaltyLassiYogurtDrinkCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="SweetSaltyLassiYogurtDrinkSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuSweetSaltyLassiYogurtDrinkSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#MangoLassiSweetMangoDrink"
-											data-whatever="MangoLassiSweetMangoDrink">
-											<span>Mango Lassi (Sweet Mango Drink)</span> <br /> <span
-												style="font-size: 12px;"></span>
-										</button>
-										<div class="modal fade" id="MangoLassiSweetMangoDrink"
-											tabindex="-1" role="dialog"
-											aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Mango Lassi (Sweet Mango Drink)</h3>
-															<span></span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup13_2" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="MangoLassiSweetMangoDrinkCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="MangoLassiSweetMangoDrinkSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuMangoLassiSweetMangoDrinkSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#MasalaChaiIndianTeaWSpices"
-											data-whatever="MasalaChaiIndianTeaWSpices">
-											<span>Masala Chai (Indian Tea W/ Spices)</span> <br /> <span
-												style="font-size: 12px;"></span>
-										</button>
-										<div class="modal fade" id="MasalaChaiIndianTeaWSpices"
-											tabindex="-1" role="dialog"
-											aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Masala Chai (Indian Tea W/ Spices)</h3>
-															<span></span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup13_3" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="MasalaChaiIndianTeaWSpicesCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="MasalaChaiIndianTeaWSpicesSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuMasalaChaiIndianTeaWSpicesSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#CoffeeWCream"
-											data-whatever="CoffeeWCream">
-											<span>Coffee W/ Cream</span> <br /> <span
-												style="font-size: 12px;"></span>
-										</button>
-										<div class="modal fade" id="CoffeeWCream" tabindex="-1"
+										<div class="modal fade" id="AssortedSoda" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
@@ -3982,27 +1680,27 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Coffee W/ Cream</h3>
+															<h3>Assorted Soda</h3>
 															<span></span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup13_4" class="form-horizontal"
+															<form id="popup9_1" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="CoffeeWCreamCount"
+																	<input type="text" size="20" name="AssortedSodaCount"
 																		maxlength="20" required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="CoffeeWCreamSpl"
+																	<input type="text" size="60" name="AssortedSodaSpl"
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuCoffeeWCreamSelectedItems();" />
+																			onclick="populateFullMenuAssortedSodaSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -4014,12 +1712,12 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#DrinksCokeCo"
-											data-whatever="DrinksCokeCo">
-											<span>Drinks (Coke Co.)</span> <br /> <span
+											data-toggle="modal" data-target="#BottledWater"
+											data-whatever="BottledWater">
+											<span>Bottled Water</span> <br /> <span
 												style="font-size: 12px;"></span>
 										</button>
-										<div class="modal fade" id="DrinksCokeCo" tabindex="-1"
+										<div class="modal fade" id="BottledWater" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
@@ -4029,27 +1727,27 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Drinks (Coke Co.)</h3>
+															<h3>Bottled Water</h3>
 															<span></span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup13_5" class="form-horizontal"
+															<form id="popup9_2" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="DrinksCokeCoCount"
+																	<input type="text" size="20" name="BottledWaterCount"
 																		maxlength="20" required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="DrinksCokeCoSpl"
+																	<input type="text" size="60" name="BottledWaterSpl"
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuDrinksCokeCoSelectedItems();" />
+																			onclick="populateFullMenuBottledWaterSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -4059,12 +1757,10 @@
 											</div>
 										</div>
 										<!-- item end -->
-
 									</div>
 								</div>
 							</div>
 						</div>
-
 					</div>
 				</div>
 				<div class="col-md-4 rest-sidebar">
