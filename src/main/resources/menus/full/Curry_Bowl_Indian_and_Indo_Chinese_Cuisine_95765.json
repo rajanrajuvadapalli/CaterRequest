@@ -1,0 +1,198 @@
+{
+	"cuisine": "SANDWICH",
+	"categories": [{
+		"code": "C_1",
+		"name": "APPEITIZERS",
+		"items": [{
+			"code": "C_1_1",
+			"name": "Vegetable Samosa",
+			"description": "Minced Potato and Peas Wrapped in Pastry Dough and Fried.",
+			"isSelected": false
+		}, {
+			"code": "C_1_2",
+			"name": "Vegetable Cutlet",
+			"description": "Potato and Vegetables Pan-Fried with Spices.",
+			"isSelected": false
+		}, {
+			"code": "C_1_3",
+			"name": "Onion Pakora",
+			"description": "Fresh Onions Coated with Chickpeas Flour.",
+			"isSelected": false
+		}, {
+			"code": "C_1_4",
+			"name": "Mixed Vegetable Pakora",
+			"description": "Fresh Mixed Vegetable Coated with Chickpeas Flour.",
+			"isSelected": false
+		}, {
+			"code": "C_1_5",
+			"name": "Gobi Manchurian",
+			"description": "Butter Fried Cauliflower with Ginger, Garlic, Onion.",
+			"isSelected": false
+		}, {
+			"code": "C_1_6",
+			"name": "Chicken Lilly Pop",
+			"description": "Chicken Wings Indian Style Spices.",
+			"isSelected": false
+		}, {
+			"code": "C_1_7",
+			"name": "Chicken Tikka",
+			"description": "Boneless Chicken Bowl Marinated with Curry Bowl Special.",
+			"isSelected": false
+		}, {
+			"code": "C_1_8",
+			"name": "Chicken 65",
+			"description": "Boneless Chicken Marinated In Yogurt Cooked with Curry Leaves and Species",
+			"isSelected": false
+		}, {
+			"code": "C_1_9",
+			"name": "Tandoori Shrimp",
+			"description": "Jumbo Shrimp Marinated in Red White And Curry Bowl spl Herbs and Spices.",
+			"isSelected": false
+		}]
+	}, {
+		"code": "C_2",
+		"name": "BIRIYANI",
+		"items": [{
+			"code": "C_2_1",
+			"name": "Vegetable Biryani",
+			"description": "",
+			"isSelected": false
+		}, {
+			"code": "C_2_2",
+			"name": "Chicken Biryani",
+			"description": "",
+			"isSelected": false
+		}, {
+			"code": "C_2_3",
+			"name": "Curry Bowl (Sp) Chicken Biryani",
+			"description": "",
+			"isSelected": false
+		}, {
+			"code": "C_2_4",
+			"name": "Lamb Biryani",
+			"description": "",
+			"isSelected": false
+		}]
+	}, {
+		"code": "C_3",
+		"name": "RICE",
+		"items": [{
+			"code": "C_3_1",
+			"name": "Rice",
+			"description": "Steamed Basmati Rice",
+			"isSelected": false
+		}, {
+			"code": "C_3_2",
+			"name": "Yogurt Rice",
+			"description": "Billed Rice Mixed With A Mild Yogurt.",
+			"isSelected": false
+		}]
+	}, {
+		"code": "C_4",
+		"name": "ENTREES",
+		"items": [{
+			"code": "C_4_1",
+			"name": "Aloo Gobi",
+			"description": "Cauliflower, Potatoes Cooked In Curry Bowl Special Spices served with Basmati Rice.",
+			"isSelected": false
+		}, {
+			"code": "C_4_2",
+			"name": "Baingan Bhurta",
+			"description": "Egg Plant Rosted In Tandoor Cooked with Curry Bowl Special Spices served with Basmati Rice.",
+			"isSelected": false
+		}, {
+			"code": "C_4_3",
+			"name": "Channa Masala",
+			"description": "Chickpeas Cooked with North Indian Spices served with Basmati Rice.",
+			"isSelected": false
+		}, {
+			"code": "C_4_4",
+			"name": "Mixed Vegetable Korma",
+			"description": "Fresh Vegetables Cooked In Cashew Paste and Spices served with Basmati Rice.",
+			"isSelected": false
+		}, {
+			"code": "C_4_5",
+			"name": "Chicken Curry",
+			"description": "Chicken Finished with Curry Bowl Special Spices served with Basmati Rice.",
+			"isSelected": false
+		}, {
+			"code": "C_4_6",
+			"name": "Chicken Tikka Masala Signature",
+			"description": "Grilled Chicken with Eggs Cooked In Tomato Sauce with a Touch of Cream served with Basmati Rice.",
+			"isSelected": false
+		}, {
+			"code": "C_4_7",
+			"name": "Butter Chicken",
+			"description": "Tandoori Chicken Cooked With Spices and Butter Sauce served with Basmati Rice.",
+			"isSelected": false
+		}, {
+			"code": "C_4_8",
+			"name": "Chicken Vindaloo",
+			"description": "For a True Adventure Who Has Passing for Spice Food. Tangy and Spicy Curry, served with Basmati Rice.",
+			"isSelected": false
+		}, {
+			"code": "C_4_9",
+			"name": "Lamb Curry",
+			"description": "Tender Lamb Marinated and Cooked In a Curry of Fresh, served with Basmati Rice.",
+			"isSelected": false
+		}, {
+			"code": "C_4_10",
+			"name": "Mutton Rogan Josh",
+			"description": "Lamb Delates Cooked with Spiced Curry Leaves and Jogury and Spices, served with Basmati Rice.",
+			"isSelected": false
+		}, {
+			"code": "C_4_11",
+			"name": "Lamb Korma",
+			"description": "Lamb Delite Creamy Sweet and Spicy with Flavour with Cardamom, served with Basmati Rice.",
+			"isSelected": false
+		}, {
+			"code": "C_4_12",
+			"name": "Lamb Vindaloo",
+			"description": "Passion for Spices Food Lambs Potatoes Cooked In Fresh Red Chilies, served with Basmati Rice.",
+			"isSelected": false
+		}]
+	}, {
+		"code": "C_5",
+		"name": "INDIAN_BREAD",
+		"items": [{
+			"code": "C_5_1",
+			"name": "Tandoori Roti",
+			"description": "Baked Whole Wheat Bread.",
+			"isSelected": false
+		}, {
+			"code": "C_5_2",
+			"name": "Plain Naan",
+			"description": "Leaven White Flour Baked In Clay Oven.",
+			"isSelected": false
+		}, {
+			"code": "C_5_3",
+			"name": "Butter Naan",
+			"description": "Leaven White Flour Baked In Clay Oven with Butter.",
+			"isSelected": false
+		}, {
+			"code": "C_5_4",
+			"name": "Aloo Parata",
+			"description": "Whole Wheat Bread Stuffed with Potato.",
+			"isSelected": false
+		}]
+	}, {
+		"code": "C_6",
+		"name": "DESSERTS",
+		"items": [{
+			"code": "C_6_1",
+			"name": "Gulab Jamun",
+			"description": "",
+			"isSelected": false
+		}, {
+			"code": "C_6_2",
+			"name": "Kheer",
+			"description": "",
+			"isSelected": false
+		}, {
+			"code": "C_6_3",
+			"name": "Bread Halwa",
+			"description": "",
+			"isSelected": false
+		}]
+	}]
+}

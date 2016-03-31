@@ -1,0 +1,258 @@
+{
+	"cuisine": "SANDWICH",
+	"categories": [{
+		"code": "C_1",
+		"name": "APPETIZER",
+		"items": [{
+			"code": "C_1_1",
+			"name": "Fresh Rolls",
+			"description": "Combination of vegetables, alfalfa sprout, mint leaves, cilantro and tofu wrapped in rice paper served with peanut sauce and honey plum sauce.",
+			"isSelected": false
+		}, {
+			"code": "C_1_2",
+			"name": "Thai Rolls",
+			"description": "Deep fried egg rolls stuffed with combination vegetables and silver noodles served with sweet and sour sauce.",
+			"isSelected": false
+		}, {
+			"code": "C_1_3",
+			"name": "Chicken Satay",
+			"description": "Grilled chicken marinated in coconut milk and a medley of spices served on skewers with peanut sauce and cucumber salad.",
+			"isSelected": false
+		}]
+	}, {
+		"code": "C_2",
+		"name": "SALAD",
+		"items": [{
+			"code": "C_2_1",
+			"name": "Papaya Salad",
+			"description": "Traditional Thai salad with sliced papaya. Delicious tomatoes, lemon juice, ground peanut, green beans and spices with mild to strong chilies. We can cook it to your favorite taste.",
+			"isSelected": false
+		}, {
+			"code": "C_2_2",
+			"name": "Thai Salad",
+			"description": "A mixture of lettuce, sliced tomatoes, cucumbers, onions and a hard boiled egg with our homemade peanut dressing.",
+			"isSelected": false
+		}, {
+			"code": "C_2_3",
+			"name": "Spicy Chicken Salad",
+			"description": "Grilled chicken mixed with crispy noodles, ginger and seasoned with a spicy lime dressing.",
+			"isSelected": false
+		}]
+	}, {
+		"code": "C_3",
+		"name": "MEAT__VEGETABLES",
+		"items": [{
+			"code": "C_3_1",
+			"name": "Chicken & Mixed Vegetables",
+			"description": "Chicken and variety of vegetables, garlic with light brown sauce.",
+			"isSelected": false
+		}, {
+			"code": "C_3_2",
+			"name": "Beef & Mixed Vegetables",
+			"description": "Beef and variety of vegetables, garlic with light brown sauce.",
+			"isSelected": false
+		}, {
+			"code": "C_3_3",
+			"name": "Pork & Mixed Vegetables",
+			"description": "Pork and variety of vegetables, garlic with light brown sauce.",
+			"isSelected": false
+		}, {
+			"code": "C_3_4",
+			"name": "Tofu & Mixed Vegetables",
+			"description": "Tofu and variety of vegetables, garlic with light brown sauce.",
+			"isSelected": false
+		}, {
+			"code": "C_3_5",
+			"name": "Mixed Vegetables",
+			"description": "Variety of vegetables, garlic with light brown sauce.",
+			"isSelected": false
+		}, {
+			"code": "C_3_6",
+			"name": "Sweet & Sour (Beef)",
+			"description": "Stir-fried pineapples, cucumber, onions, tomatoes and bell peppers.",
+			"isSelected": false
+		}, {
+			"code": "C_3_7",
+			"name": "Sweet & Sour (Chicken)",
+			"description": "Stir-fried pineapples, cucumber, onions, tomatoes and bell peppers.",
+			"isSelected": false
+		}, {
+			"code": "C_3_8",
+			"name": "Sweet & Sour (Pork)",
+			"description": "Stir-fried pineapples, cucumber, onions, tomatoes and bell peppers.",
+			"isSelected": false
+		}, {
+			"code": "C_3_9",
+			"name": "Sweet & Sour (Tofu)",
+			"description": "Stir-fried pineapples, cucumber, onions, tomatoes and bell peppers.",
+			"isSelected": false
+		}, {
+			"code": "C_3_10",
+			"name": "Sweet & Sour (Only Vegetables)",
+			"description": "Stir-fried pineapples, cucumber, onions, tomatoes and bell peppers.",
+			"isSelected": false
+		}]
+	}, {
+		"code": "C_4",
+		"name": "NOODLES",
+		"items": [{
+			"code": "C_4_1",
+			"name": "Pad Thai Noodle (Beef)",
+			"description": "One of Thailand's best known noodle dishes pan-fried rice noodles with your choice of meat egg, ground peanuts, bean sprouts and green onions.",
+			"isSelected": false
+		}, {
+			"code": "C_4_2",
+			"name": "Pad Thai Noodle (Chicken)",
+			"description": "One of Thailand's best known noodle dishes pan-fried rice noodles with your choice of meat egg, ground peanuts, bean sprouts and green onions.",
+			"isSelected": false
+		}, {
+			"code": "C_4_3",
+			"name": "Pad Thai Noodle (Pork)",
+			"description": "One of Thailand's best known noodle dishes pan-fried rice noodles with your choice of meat egg, ground peanuts, bean sprouts and green onions.",
+			"isSelected": false
+		}, {
+			"code": "C_4_4",
+			"name": "Pad Thai Noodle (Tofu)",
+			"description": "One of Thailand's best known noodle dishes pan-fried rice noodles with your choice of meat egg, ground peanuts, bean sprouts and green onions.",
+			"isSelected": false
+		}, {
+			"code": "C_4_5",
+			"name": "Pad Thai Noodle (Only Vegetables)",
+			"description": "One of Thailand's best known noodle dishes pan-fried rice noodles with your choice of meat egg, ground peanuts, bean sprouts and green onions.",
+			"isSelected": false
+		}, {
+			"code": "C_4_6",
+			"name": "Drunken Noodles (Beef)",
+			"description": "Spicy flat noodles with green onions, onions, chilies, garlic and Thai basil.",
+			"isSelected": false
+		}, {
+			"code": "C_4_7",
+			"name": "Drunken Noodles (Chicken)",
+			"description": "Spicy flat noodles with green onions, onions, chilies, garlic and Thai basil.",
+			"isSelected": false
+		}, {
+			"code": "C_4_8",
+			"name": "Drunken Noodles (Pork)",
+			"description": "Spicy flat noodles with green onions, onions, chilies, garlic and Thai basil.",
+			"isSelected": false
+		}, {
+			"code": "C_4_9",
+			"name": "Drunken Noodles (Tofu)",
+			"description": "Spicy flat noodles with green onions, onions, chilies, garlic and Thai basil.",
+			"isSelected": false
+		}, {
+			"code": "C_4_10",
+			"name": "Drunken Noodles (Only Vegetables)",
+			"description": "Spicy flat noodles with green onions, onions, chilies, garlic and Thai basil.",
+			"isSelected": false
+		}]
+	}, {
+		"code": "C_5",
+		"name": "CURRIES",
+		"items": [{
+			"code": "C_5_1",
+			"name": "Red Curry (Beef)",
+			"description": "Eggplant, bell pepper, sweet Thai basil with bamboo shoots simmered in coconut milk and red curry.",
+			"isSelected": false
+		}, {
+			"code": "C_5_2",
+			"name": "Red Curry (Chicken)",
+			"description": "Eggplant, bell pepper, sweet Thai basil with bamboo shoots simmered in coconut milk and red curry.",
+			"isSelected": false
+		}, {
+			"code": "C_5_3",
+			"name": "Red Curry (Pork)",
+			"description": "Eggplant, bell pepper, sweet Thai basil with bamboo shoots simmered in coconut milk and red curry.",
+			"isSelected": false
+		}, {
+			"code": "C_5_4",
+			"name": "Red Curry (Tofu)",
+			"description": "Eggplant, bell pepper, sweet Thai basil with bamboo shoots simmered in coconut milk and red curry.",
+			"isSelected": false
+		}, {
+			"code": "C_5_5",
+			"name": "Red Curry (Only Vegetables)",
+			"description": "Eggplant, bell pepper, sweet Thai basil with bamboo shoots simmered in coconut milk and red curry.",
+			"isSelected": false
+		}, {
+			"code": "C_5_6",
+			"name": "Yellow Curry (Beef)",
+			"description": "Potatoes, onion, carrot, simmered in coconut milk yellow curry.",
+			"isSelected": false
+		}, {
+			"code": "C_5_7",
+			"name": "Yellow Curry (Chicken)",
+			"description": "Potatoes, onion, carrot, simmered in coconut milk yellow curry.",
+			"isSelected": false
+		}, {
+			"code": "C_5_8",
+			"name": "Yellow Curry (Pork)",
+			"description": "Potatoes, onion, carrot, simmered in coconut milk yellow curry.",
+			"isSelected": false
+		}, {
+			"code": "C_5_9",
+			"name": "Yellow Curry (Tofu)",
+			"description": "Potatoes, onion, carrot, simmered in coconut milk yellow curry.",
+			"isSelected": false
+		}, {
+			"code": "C_5_10",
+			"name": "Yellow Curry (Only Vegetables)",
+			"description": "Potatoes, onion, carrot, simmered in coconut milk yellow curry.",
+			"isSelected": false
+		}, {
+			"code": "C_5_11",
+			"name": "Green Curry (Beef)",
+			"description": "Green curry in coconut milk with Thai basil and assorted vegetables.",
+			"isSelected": false
+		}, {
+			"code": "C_5_12",
+			"name": "Green Curry (Chicken)",
+			"description": "Green curry in coconut milk with Thai basil and assorted vegetables.",
+			"isSelected": false
+		}, {
+			"code": "C_5_13",
+			"name": "Green Curry (Pork)",
+			"description": "Green curry in coconut milk with Thai basil and assorted vegetables.",
+			"isSelected": false
+		}, {
+			"code": "C_5_14",
+			"name": "Green Curry (Tofu)",
+			"description": "Green curry in coconut milk with Thai basil and assorted vegetables.",
+			"isSelected": false
+		}, {
+			"code": "C_5_15",
+			"name": "Green Curry (Only Vegetables)",
+			"description": "Green curry in coconut milk with Thai basil and assorted vegetables.",
+			"isSelected": false
+		}]
+	}, {
+		"code": "C_6",
+		"name": "RICE",
+		"items": [{
+			"code": "C_6_1",
+			"name": "Thai Fried Rice (Beef)",
+			"description": "Fried rice with eggs, tomatoes, onions.",
+			"isSelected": false
+		}, {
+			"code": "C_6_2",
+			"name": "Thai Fried Rice (Chicken)",
+			"description": "Fried rice with eggs, tomatoes, onions.",
+			"isSelected": false
+		}, {
+			"code": "C_6_3",
+			"name": "Thai Fried Rice (Pork)",
+			"description": "Fried rice with eggs, tomatoes, onions.",
+			"isSelected": false
+		}, {
+			"code": "C_6_4",
+			"name": "Thai Fried Rice (Tofu)",
+			"description": "Fried rice with eggs, tomatoes, onions.",
+			"isSelected": false
+		}, {
+			"code": "C_6_5",
+			"name": "Thai Fried Rice (Only Vegetables)",
+			"description": "Fried rice with eggs, tomatoes, onions.",
+			"isSelected": false
+		}]
+	}]
+}
