@@ -1,12 +1,12 @@
 var $ = jQuery.noConflict();
-var chalupa_fresh_mexican_grill_menu_items = [];
+var fire_house_subs_menu_items = [];
 
-function populateFullMenuQuesoNachosSelectedItems() {
-	var name = "Queso Nachos";
+function populateFullMenuFirehouseSaladGrilledChickenSelectedItems() {
+	var name = "Firehouse Salad(Grilled Chicken)";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=QuesoNachosCount]').val();
-	var spl = $('input[name=QuesoNachosSpl]').val();
+	var n = $('input[name=FirehouseSaladGrilledChickenCount]').val();
+	var spl = $('input[name=FirehouseSaladGrilledChickenSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -16,51 +16,24 @@ function populateFullMenuQuesoNachosSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
-	// console.log(data);
-	$.magnificPopup.close();
-	return false;
-}
-
-function populateFullMenuGrilledCornMexicanStyleSelectedItems() {
-	var name = "Grilled Corn Mexican Style";
-	var id = $('.slide').children().length;
-	var div_id = "m_" + id;
-	var n = $('input[name=GrilledCornMexicanStyleCount]').val();
-	var spl = $('input[name=GrilledCornMexicanStyleSpl]').val();
-	var desc = "Count: " + n;
-	if (spl != "")
-		desc += ", Special Instructions: " + spl;
-	var html = '<div class="full-menu-list-item" id="'
-			+ div_id
-			+ '">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
-	// console.log(html);
-	$(html).appendTo('.slide');
-	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
+	fire_house_subs_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuChickenQuesadillaSelectedItems() {
-	var name = "Chicken Quesadilla";
+function populateFullMenuItalianwithGrilledChickenSaladSelectedItems() {
+	var name = "Italian with Grilled Chicken Salad";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=ChickenQuesadillaCount]').val();
-	var spl = $('input[name=ChickenQuesadillaSpl]').val();
+	var n = $('input[name=ItalianwithGrilledChickenSaladCount]').val();
+	var spl = $('input[name=ItalianwithGrilledChickenSaladSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -70,24 +43,24 @@ function populateFullMenuChickenQuesadillaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
+	fire_house_subs_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuVegetarianQuesadillaSelectedItems() {
-	var name = "Vegetarian Quesadilla";
+function populateFullMenuHookandLadderSaladSelectedItems() {
+	var name = "Hook and Ladder Salad";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=VegetarianQuesadillaCount]').val();
-	var spl = $('input[name=VegetarianQuesadillaSpl]').val();
+	var n = $('input[name=HookandLadderSaladCount]').val();
+	var spl = $('input[name=HookandLadderSaladSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -97,50 +70,24 @@ function populateFullMenuVegetarianQuesadillaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
-	// console.log(data);
-	$.magnificPopup.close();
-	return false;
-}
-function populateFullMenuTacoSalasChickenSelectedItems() {
-	var name = "Taco Salas(Chicken)";
-	var id = $('.slide').children().length;
-	var div_id = "m_" + id;
-	var n = $('input[name=TacoSalasChickenCount]').val();
-	var spl = $('input[name=TacoSalasChickenSpl]').val();
-	var desc = "Count: " + n;
-	if (spl != "")
-		desc += ", Special Instructions: " + spl;
-	var html = '<div class="full-menu-list-item" id="'
-			+ div_id
-			+ '">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
-	// console.log(html);
-	$(html).appendTo('.slide');
-	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
+	fire_house_subs_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuTacoSalasSteakSelectedItems() {
-	var name = "Taco Salas(Steak)";
+function populateFullMenuMommasHomemadeChickenSaladSelectedItems() {
+	var name = "Momma's Homemade Chicken Salad";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=TacoSalasSteakCount]').val();
-	var spl = $('input[name=TacoSalasSteakSpl]').val();
+	var n = $('input[name=MommasHomemadeChickenSaladCount]').val();
+	var spl = $('input[name=MommasHomemadeChickenSaladSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -150,24 +97,50 @@ function populateFullMenuTacoSalasSteakSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
+	fire_house_subs_menu_items.push(data);
+	// console.log(data);
+	$.magnificPopup.close();
+	return false;
+}
+function populateFullMenuHookandLadderSandwichSelectedItems() {
+	var name = "Hook and Ladder Sandwich";
+	var id = $('.slide').children().length;
+	var div_id = "m_" + id;
+	var n = $('input[name=HookandLadderSandwichCount]').val();
+	var spl = $('input[name=HookandLadderSandwichSpl]').val();
+	var desc = "Count: " + n;
+	if (spl != "")
+		desc += ", Special Instructions: " + spl;
+	var html = '<div class="full-menu-list-item" id="'
+			+ div_id
+			+ '">'
+			+ '<h4>'
+			+ name
+			+ '</h4>'
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+			+'</div>';
+	// console.log(html);
+	$(html).appendTo('.slide');
+	var data = name + "+" + desc;
+	fire_house_subs_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuTacoSalasCarnitasSelectedItems() {
-	var name = "Taco Salas(Carnitas)";
+function populateFullMenuFirehouseMeatballSandwichSelectedItems() {
+	var name = "Firehouse Meatball Sandwich";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=TacoSalasCarnitasCount]').val();
-	var spl = $('input[name=TacoSalasCarnitasSpl]').val();
+	var n = $('input[name=FirehouseMeatballSandwichCount]').val();
+	var spl = $('input[name=FirehouseMeatballSandwichSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -177,24 +150,24 @@ function populateFullMenuTacoSalasCarnitasSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
+	fire_house_subs_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuTacoSalasVegetarianSelectedItems() {
-	var name = "Taco Salas(Vegetarian)";
+function populateFullMenuNewYorkSteamerSandwichSelectedItems() {
+	var name = "New York Steamer Sandwich";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=TacoSalasVegetarianCount]').val();
-	var spl = $('input[name=TacoSalasVegetarianSpl]').val();
+	var n = $('input[name=NewYorkSteamerSandwichCount]').val();
+	var spl = $('input[name=NewYorkSteamerSandwichSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -204,24 +177,24 @@ function populateFullMenuTacoSalasVegetarianSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
+	fire_house_subs_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuMexicanSaladChickenSelectedItems() {
-	var name = "Mexican Salad(Chicken)";
+function populateFullMenuItalianSandwichSelectedItems() {
+	var name = "Italian Sandwich";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=MexicanSaladChickenCount]').val();
-	var spl = $('input[name=MexicanSaladChickenSpl]').val();
+	var n = $('input[name=ItalianSandwichCount]').val();
+	var spl = $('input[name=ItalianSandwichSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -231,24 +204,24 @@ function populateFullMenuMexicanSaladChickenSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
+	fire_house_subs_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuMexicanSaladSteakSelectedItems() {
-	var name = "Mexican Salad(Steak)";
+function populateFullMenuTurkeyBaconRanchSandwichSelectedItems() {
+	var name = "Turkey Bacon Ranch Sandwich";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=MexicanSaladSteakCount]').val();
-	var spl = $('input[name=MexicanSaladSteakSpl]').val();
+	var n = $('input[name=TurkeyBaconRanchSandwichCount]').val();
+	var spl = $('input[name=TurkeyBaconRanchSandwichSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -258,24 +231,24 @@ function populateFullMenuMexicanSaladSteakSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
+	fire_house_subs_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuMexicanSaladCarnitasSelectedItems() {
-	var name = "Mexican Salad(Carnitas)";
+function populateFullMenuClubonaSubSelectedItems() {
+	var name = "Club on a Sub";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=MexicanSaladCarnitasCount]').val();
-	var spl = $('input[name=MexicanSaladCarnitasSpl]').val();
+	var n = $('input[name=ClubonaSubCount]').val();
+	var spl = $('input[name=ClubonaSubSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -285,24 +258,24 @@ function populateFullMenuMexicanSaladCarnitasSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
+	fire_house_subs_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuMexicanSaladVegetarianSelectedItems() {
-	var name = "Mexican Salad(Vegetarian)";
+function populateFullMenuSteakandCheeseSandwichSelectedItems() {
+	var name = "Steak and Cheese Sandwich";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=MexicanSaladVegetarianCount]').val();
-	var spl = $('input[name=MexicanSaladVegetarianSpl]').val();
+	var n = $('input[name=SteakandCheeseSandwichCount]').val();
+	var spl = $('input[name=SteakandCheeseSandwichSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -312,50 +285,24 @@ function populateFullMenuMexicanSaladVegetarianSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
-	// console.log(data);
-	$.magnificPopup.close();
-	return false;
-}
-function populateFullMenuChalupaChickenSelectedItems() {
-	var name = "Chalupa(Chicken)";
-	var id = $('.slide').children().length;
-	var div_id = "m_" + id;
-	var n = $('input[name=ChalupaChickenCount]').val();
-	var spl = $('input[name=ChalupaChickenSpl]').val();
-	var desc = "Count: " + n;
-	if (spl != "")
-		desc += ", Special Instructions: " + spl;
-	var html = '<div class="full-menu-list-item" id="'
-			+ div_id
-			+ '">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
-	// console.log(html);
-	$(html).appendTo('.slide');
-	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
+	fire_house_subs_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuChalupaSteakSelectedItems() {
-	var name = "Chalupa(Steak)";
+function populateFullMenuEngineerSandwichSelectedItems() {
+	var name = "Engineer Sandwich";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=ChalupaSteakCount]').val();
-	var spl = $('input[name=ChalupaSteakSpl]').val();
+	var n = $('input[name=EngineerSandwichCount]').val();
+	var spl = $('input[name=EngineerSandwichSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -365,24 +312,24 @@ function populateFullMenuChalupaSteakSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
+	fire_house_subs_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuChalupaCarnitasSelectedItems() {
-	var name = "Chalupa(Carnitas)";
+function populateFullMenuFirehouseHeroSelectedItems() {
+	var name = "Firehouse Hero";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=ChalupaCarnitasCount]').val();
-	var spl = $('input[name=ChalupaCarnitasSpl]').val();
+	var n = $('input[name=FirehouseHeroCount]').val();
+	var spl = $('input[name=FirehouseHeroSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -392,24 +339,50 @@ function populateFullMenuChalupaCarnitasSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
+	fire_house_subs_menu_items.push(data);
+	// console.log(data);
+	$.magnificPopup.close();
+	return false;
+}
+function populateFullMenuSrirachaBeefSubSelectedItems() {
+	var name = "Sriracha Beef Sub";
+	var id = $('.slide').children().length;
+	var div_id = "m_" + id;
+	var n = $('input[name=SrirachaBeefSubCount]').val();
+	var spl = $('input[name=SrirachaBeefSubSpl]').val();
+	var desc = "Count: " + n;
+	if (spl != "")
+		desc += ", Special Instructions: " + spl;
+	var html = '<div class="full-menu-list-item" id="'
+			+ div_id
+			+ '">'
+			+ '<h4>'
+			+ name
+			+ '</h4>'
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+			+'</div>';
+	// console.log(html);
+	$(html).appendTo('.slide');
+	var data = name + "+" + desc;
+	fire_house_subs_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuStreetTacosChickenSelectedItems() {
-	var name = "Street Tacos (Chicken)";
+function populateFullMenuCaptSorensensDatilPepperGrilledChickenSubSelectedItems() {
+	var name = "Capt. Sorensen's Datil Pepper Grilled Chicken Sub";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=StreetTacosChickenCount]').val();
-	var spl = $('input[name=StreetTacosChickenSpl]').val();
+	var n = $('input[name=CaptSorensensDatilPepperGrilledChickenSubCount]').val();
+	var spl = $('input[name=CaptSorensensDatilPepperGrilledChickenSubSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -419,24 +392,24 @@ function populateFullMenuStreetTacosChickenSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
+	fire_house_subs_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuStreetTacosSteakSelectedItems() {
-	var name = "Street Tacos (Steak)";
+function populateFullMenuHookandLaddarLightSubSelectedItems() {
+	var name = "Hook and Laddar Light Sub";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=StreetTacosSteakCount]').val();
-	var spl = $('input[name=StreetTacosSteakSpl]').val();
+	var n = $('input[name=HookandLaddarLightSubCount]').val();
+	var spl = $('input[name=HookandLaddarLightSubSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -446,24 +419,24 @@ function populateFullMenuStreetTacosSteakSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
+	fire_house_subs_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuStreetTacosCarnitasSelectedItems() {
-	var name = "Street Tacos (Carnitas)";
+function populateFullMenuTurkeyandCranberrySubSelectedItems() {
+	var name = "Turkey and Cranberry Sub";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=StreetTacosCarnitasCount]').val();
-	var spl = $('input[name=StreetTacosCarnitasSpl]').val();
+	var n = $('input[name=TurkeyandCranberrySubCount]').val();
+	var spl = $('input[name=TurkeyandCranberrySubSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -473,24 +446,24 @@ function populateFullMenuStreetTacosCarnitasSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
+	fire_house_subs_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuMahiMahiFishTacoSelectedItems() {
-	var name = "Mahi Mahi Fish Taco";
+function populateFullMenuTurkeySalsaVerdeSubSelectedItems() {
+	var name = "Turkey Salsa Verde Sub";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=MahiMahiFishTacoCount]').val();
-	var spl = $('input[name=MahiMahiFishTacoSpl]').val();
+	var n = $('input[name=TurkeySalsaVerdeSubCount]').val();
+	var spl = $('input[name=TurkeySalsaVerdeSubSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -500,24 +473,24 @@ function populateFullMenuMahiMahiFishTacoSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
+	fire_house_subs_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuVeggieTacoSelectedItems() {
-	var name = "Veggie Taco";
+function populateFullMenuMommasHomemadeChickenSaladSubSelectedItems() {
+	var name = "Momma's Homemade Chicken Salad Sub";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=VeggieTacoCount]').val();
-	var spl = $('input[name=VeggieTacoSpl]').val();
+	var n = $('input[name=MommasHomemadeChickenSaladSubCount]').val();
+	var spl = $('input[name=MommasHomemadeChickenSaladSubSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -527,23 +500,23 @@ function populateFullMenuVeggieTacoSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
+	fire_house_subs_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
-function populateFullMenuAmecamecaChickenSelectedItems() {
-	var name = "Amecameca(Chicken)";
+function populateFullMenuCookieSelectedItems() {
+	var name = "Cookie";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=AmecamecaChickenCount]').val();
-	var spl = $('input[name=AmecamecaChickenSpl]').val();
+	var n = $('input[name=CookieCount]').val();
+	var spl = $('input[name=CookieSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -553,51 +526,24 @@ function populateFullMenuAmecamecaChickenSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
-	// console.log(data);
-	$.magnificPopup.close();
-	return false;
-}
-
-function populateFullMenuAmecamecaSteakSelectedItems() {
-	var name = "Amecameca(Steak)";
-	var id = $('.slide').children().length;
-	var div_id = "m_" + id;
-	var n = $('input[name=AmecamecaSteakCount]').val();
-	var spl = $('input[name=AmecamecaSteakSpl]').val();
-	var desc = "Count: " + n;
-	if (spl != "")
-		desc += ", Special Instructions: " + spl;
-	var html = '<div class="full-menu-list-item" id="'
-			+ div_id
-			+ '">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
-	// console.log(html);
-	$(html).appendTo('.slide');
-	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
+	fire_house_subs_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuAmecamecaCarnitasSelectedItems() {
-	var name = "Amecameca(Carnitas)";
+function populateFullMenuBrownieSelectedItems() {
+	var name = "Brownie";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=AmecamecaCarnitasCount]').val();
-	var spl = $('input[name=AmecamecaCarnitasSpl]').val();
+	var n = $('input[name=BrownieCount]').val();
+	var spl = $('input[name=BrownieSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -607,24 +553,24 @@ function populateFullMenuAmecamecaCarnitasSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
+	fire_house_subs_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuMexicaliChickenSelectedItems() {
-	var name = "Mexicali (Chicken)";
+function populateFullMenuDoritosnachocheeseSelectedItems() {
+	var name = "Doritos nacho cheese ";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=MexicaliChickenCount]').val();
-	var spl = $('input[name=MexicaliChickenSpl]').val();
+	var n = $('input[name=DoritosnachocheeseCount]').val();
+	var spl = $('input[name=DoritosnachocheeseSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -634,24 +580,24 @@ function populateFullMenuMexicaliChickenSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
+	fire_house_subs_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuMexicaliSteakSelectedItems() {
-	var name = "Mexicali (Steak)";
+function populateFullMenuDoritoscoolranchSelectedItems() {
+	var name = "Doritos cool ranch ";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=MexicaliSteakCount]').val();
-	var spl = $('input[name=MexicaliSteakSpl]').val();
+	var n = $('input[name=DoritoscoolranchCount]').val();
+	var spl = $('input[name=DoritoscoolranchSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -661,24 +607,24 @@ function populateFullMenuMexicaliSteakSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
+	fire_house_subs_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuMexicaliCarnitasSelectedItems() {
-	var name = "Mexicali (Carnitas)";
+function populateFullMenuBakedlaysSelectedItems() {
+	var name = "Baked lay's ";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=MexicaliCarnitasCount]').val();
-	var spl = $('input[name=MexicaliCarnitasSpl]').val();
+	var n = $('input[name=BakedlaysCount]').val();
+	var spl = $('input[name=BakedlaysSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -688,13 +634,94 @@ function populateFullMenuMexicaliCarnitasSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chalupa_fresh_mexican_grill_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chalupa_fresh_mexican_grill_menu_items.push(data);
+	fire_house_subs_menu_items.push(data);
+	// console.log(data);
+	$.magnificPopup.close();
+	return false;
+}
+
+function populateFullMenuBakedlaysbarbecueSelectedItems() {
+	var name = "Baked lay's barbecue ";
+	var id = $('.slide').children().length;
+	var div_id = "m_" + id;
+	var n = $('input[name=BakedlaysbarbecueCount]').val();
+	var spl = $('input[name=BakedlaysbarbecueSpl]').val();
+	var desc = "Count: " + n;
+	if (spl != "")
+		desc += ", Special Instructions: " + spl;
+	var html = '<div class="full-menu-list-item" id="'
+			+ div_id
+			+ '">'
+			+ '<h4>'
+			+ name
+			+ '</h4>'
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+			+'</div>';
+	// console.log(html);
+	$(html).appendTo('.slide');
+	var data = name + "+" + desc;
+	fire_house_subs_menu_items.push(data);
+	// console.log(data);
+	$.magnificPopup.close();
+	return false;
+}
+
+function populateFullMenuMrsVickiesjalapenoSelectedItems() {
+	var name = "Mrs. Vickies jalapeno ";
+	var id = $('.slide').children().length;
+	var div_id = "m_" + id;
+	var n = $('input[name=MrsVickiesjalapenoCount]').val();
+	var spl = $('input[name=MrsVickiesjalapenoSpl]').val();
+	var desc = "Count: " + n;
+	if (spl != "")
+		desc += ", Special Instructions: " + spl;
+	var html = '<div class="full-menu-list-item" id="'
+			+ div_id
+			+ '">'
+			+ '<h4>'
+			+ name
+			+ '</h4>'
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+			+'</div>';
+	// console.log(html);
+	$(html).appendTo('.slide');
+	var data = name + "+" + desc;
+	fire_house_subs_menu_items.push(data);
+	// console.log(data);
+	$.magnificPopup.close();
+	return false;
+}
+
+function populateFullMenuSunchipsSelectedItems() {
+	var name = "Sun chips.";
+	var id = $('.slide').children().length;
+	var div_id = "m_" + id;
+	var n = $('input[name=SunchipsCount]').val();
+	var spl = $('input[name=SunchipsSpl]').val();
+	var desc = "Count: " + n;
+	if (spl != "")
+		desc += ", Special Instructions: " + spl;
+	var html = '<div class="full-menu-list-item" id="'
+			+ div_id
+			+ '">'
+			+ '<h4>'
+			+ name
+			+ '</h4>'
+			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+			+'</div>';
+	// console.log(html);
+	$(html).appendTo('.slide');
+	var data = name + "+" + desc;
+	fire_house_subs_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;

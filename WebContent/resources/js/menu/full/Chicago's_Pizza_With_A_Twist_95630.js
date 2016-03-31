@@ -1,12 +1,12 @@
 var $ = jQuery.noConflict();
-var milan_curry_house_menu_items = [];
+var chicagos_pizza_menu_items = [];
 
-function populateFullMenuAlooTikkiSelectedItems() {
-	var name = "Aloo Tikki";
+function populateFullMenuHotNSpicyTandooriWingsSelectedItems() {
+	var name = "Hot-N-Spicy Tandoori Wings";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=AlooTikkiCount]').val();
-	var spl = $('input[name=AlooTikkiSpl]').val();
+	var n = $('input[name=HotNSpicyTandooriWingsCount]').val();
+	var spl = $('input[name=HotNSpicyTandooriWingsSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -16,51 +16,24 @@ function populateFullMenuAlooTikkiSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
-	// console.log(data);
-	$.magnificPopup.close();
-	return false;
-}
-
-function populateFullMenuSamosasPCSelectedItems() {
-	var name = "Samosas (2PC) ";
-	var id = $('.slide').children().length;
-	var div_id = "m_" + id;
-	var n = $('input[name=SamosasPCCount]').val();
-	var spl = $('input[name=SamosasPCSpl]').val();
-	var desc = "Count: " + n;
-	if (spl != "")
-		desc += ", Special Instructions: " + spl;
-	var html = '<div class="full-menu-list-item" id="'
-			+ div_id
-			+ '">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
-	// console.log(html);
-	$(html).appendTo('.slide');
-	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
+	chicagos_pizza_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuPakoraSelectedItems() {
-	var name = "Pakora";
+function populateFullMenuHoneyBBQTequilaLimeSelectedItems() {
+	var name = "Honey BBQ Tequila-Lime";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=PakoraCount]').val();
-	var spl = $('input[name=PakoraSpl]').val();
+	var n = $('input[name=HoneyBBQTequilaLimeCount]').val();
+	var spl = $('input[name=HoneyBBQTequilaLimeSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -70,24 +43,24 @@ function populateFullMenuPakoraSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
+	chicagos_pizza_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuMixedVeggiePakoraSelectedItems() {
-	var name = "Mixed Veggie Pakora";
+function populateFullMenuGarlicBreadsticksSelectedItems() {
+	var name = "Garlic Breadsticks";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=MixedVeggiePakoraCount]').val();
-	var spl = $('input[name=MixedVeggiePakoraSpl]').val();
+	var n = $('input[name=GarlicBreadsticksCount]').val();
+	var spl = $('input[name=GarlicBreadsticksSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -97,50 +70,24 @@ function populateFullMenuMixedVeggiePakoraSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
-	// console.log(data);
-	$.magnificPopup.close();
-	return false;
-}
-function populateFullMenuVegetarianWrapsSelectedItems() {
-	var name = "Vegetarian Wraps";
-	var id = $('.slide').children().length;
-	var div_id = "m_" + id;
-	var n = $('input[name=VegetarianWrapsCount]').val();
-	var spl = $('input[name=VegetarianWrapsSpl]').val();
-	var desc = "Count: " + n;
-	if (spl != "")
-		desc += ", Special Instructions: " + spl;
-	var html = '<div class="full-menu-list-item" id="'
-			+ div_id
-			+ '">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
-	// console.log(html);
-	$(html).appendTo('.slide');
-	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
+	chicagos_pizza_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuPaneerWrapSelectedItems() {
-	var name = "Paneer Wrap";
+function populateFullMenuCheeseBreadsticksSelectedItems() {
+	var name = "Cheese Breadsticks";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=PaneerWrapCount]').val();
-	var spl = $('input[name=PaneerWrapSpl]').val();
+	var n = $('input[name=CheeseBreadsticksCount]').val();
+	var spl = $('input[name=CheeseBreadsticksSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -150,24 +97,24 @@ function populateFullMenuPaneerWrapSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
+	chicagos_pizza_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuChickenWrapSelectedItems() {
-	var name = "Chicken Wrap";
+function populateFullMenuBaconBreadsticksSelectedItems() {
+	var name = "Bacon Breadsticks";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=ChickenWrapCount]').val();
-	var spl = $('input[name=ChickenWrapSpl]').val();
+	var n = $('input[name=BaconBreadsticksCount]').val();
+	var spl = $('input[name=BaconBreadsticksSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -177,24 +124,24 @@ function populateFullMenuChickenWrapSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
+	chicagos_pizza_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuLambWrapSelectedItems() {
-	var name = "Lamb Wrap ";
+function populateFullMenuIndianStyleBreadsticksSelectedItems() {
+	var name = "Indian Style Breadsticks";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=LambWrapCount]').val();
-	var spl = $('input[name=LambWrapSpl]').val();
+	var n = $('input[name=IndianStyleBreadsticksCount]').val();
+	var spl = $('input[name=IndianStyleBreadsticksSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -204,23 +151,23 @@ function populateFullMenuLambWrapSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
+	chicagos_pizza_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
-function populateFullMenuMilanTandooriSpecialSelectedItems() {
-	var name = "Milan Tandoori Special";
+function populateFullMenuGardenSaladSelectedItems() {
+	var name = "Garden Salad";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=MilanTandooriSpecialCount]').val();
-	var spl = $('input[name=MilanTandooriSpecialSpl]').val();
+	var n = $('input[name=GardenSaladCount]').val();
+	var spl = $('input[name=GardenSaladSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -230,77 +177,24 @@ function populateFullMenuMilanTandooriSpecialSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
-	// console.log(data);
-	$.magnificPopup.close();
-	return false;
-}
-
-function populateFullMenuMixedGrilledTandooriSelectedItems() {
-	var name = "Mixed Grilled Tandoori";
-	var id = $('.slide').children().length;
-	var div_id = "m_" + id;
-	var n = $('input[name=MixedGrilledTandooriCount]').val();
-	var spl = $('input[name=MixedGrilledTandooriSpl]').val();
-	var desc = "Count: " + n;
-	if (spl != "")
-		desc += ", Special Instructions: " + spl;
-	var html = '<div class="full-menu-list-item" id="'
-			+ div_id
-			+ '">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
-	// console.log(html);
-	$(html).appendTo('.slide');
-	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
-	// console.log(data);
-	$.magnificPopup.close();
-	return false;
-}
-function populateFullMenuNaanSelectedItems() {
-	var name = "Naan";
-	var id = $('.slide').children().length;
-	var div_id = "m_" + id;
-	var n = $('input[name=NaanCount]').val();
-	var spl = $('input[name=NaanSpl]').val();
-	var desc = "Count: " + n;
-	if (spl != "")
-		desc += ", Special Instructions: " + spl;
-	var html = '<div class="full-menu-list-item" id="'
-			+ div_id
-			+ '">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
-	// console.log(html);
-	$(html).appendTo('.slide');
-	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
+	chicagos_pizza_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuPlainRotiSelectedItems() {
-	var name = "Plain Roti";
+function populateFullMenuChickenSaladSelectedItems() {
+	var name = "Chicken Salad";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=PlainRotiCount]').val();
-	var spl = $('input[name=PlainRotiSpl]').val();
+	var n = $('input[name=ChickenSaladCount]').val();
+	var spl = $('input[name=ChickenSaladSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -310,24 +204,50 @@ function populateFullMenuPlainRotiSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
+	chicagos_pizza_menu_items.push(data);
+	// console.log(data);
+	$.magnificPopup.close();
+	return false;
+}
+function populateFullMenuCombinationPizzaLargeSelectedItems() {
+	var name = "Combination Pizza(Large)";
+	var id = $('.slide').children().length;
+	var div_id = "m_" + id;
+	var n = $('input[name=CombinationPizzaLargeCount]').val();
+	var spl = $('input[name=CombinationPizzaLargeSpl]').val();
+	var desc = "Count: " + n;
+	if (spl != "")
+		desc += ", Special Instructions: " + spl;
+	var html = '<div class="full-menu-list-item" id="'
+			+ div_id
+			+ '">'
+			+ '<h4>'
+			+ name
+			+ '</h4>'
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+			+'</div>';
+	// console.log(html);
+	$(html).appendTo('.slide');
+	var data = name + "+" + desc;
+	chicagos_pizza_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuAlooKulchaSelectedItems() {
-	var name = "Aloo Kulcha";
+function populateFullMenuVegetarianPizzaLargeSelectedItems() {
+	var name = "Vegetarian Pizza (Large)";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=AlooKulchaCount]').val();
-	var spl = $('input[name=AlooKulchaSpl]').val();
+	var n = $('input[name=VegetarianPizzaLargeCount]').val();
+	var spl = $('input[name=VegetarianPizzaLargeSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -337,50 +257,24 @@ function populateFullMenuAlooKulchaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
-	// console.log(data);
-	$.magnificPopup.close();
-	return false;
-}
-function populateFullMenuTraditionalChickenCurrySelectedItems() {
-	var name = "Traditional Chicken Curry ";
-	var id = $('.slide').children().length;
-	var div_id = "m_" + id;
-	var n = $('input[name=TraditionalChickenCurryCount]').val();
-	var spl = $('input[name=TraditionalChickenCurrySpl]').val();
-	var desc = "Count: " + n;
-	if (spl != "")
-		desc += ", Special Instructions: " + spl;
-	var html = '<div class="full-menu-list-item" id="'
-			+ div_id
-			+ '">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
-	// console.log(html);
-	$(html).appendTo('.slide');
-	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
+	chicagos_pizza_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuButterChickenSelectedItems() {
-	var name = "Butter Chicken  ";
+function populateFullMenuAllMeatPizzaLargeSelectedItems() {
+	var name = "All Meat Pizza (Large)";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=ButterChickenCount]').val();
-	var spl = $('input[name=ButterChickenSpl]').val();
+	var n = $('input[name=AllMeatPizzaLargeCount]').val();
+	var spl = $('input[name=AllMeatPizzaLargeSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -390,24 +284,24 @@ function populateFullMenuButterChickenSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
+	chicagos_pizza_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuChickenTikkaMasalaSelectedItems() {
-	var name = "Chicken Tikka Masala";
+function populateFullMenuAllStarsorDeluxePizzaLargeSelectedItems() {
+	var name = "All Stars or Deluxe Pizza (Large)";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=ChickenTikkaMasalaCount]').val();
-	var spl = $('input[name=ChickenTikkaMasalaSpl]').val();
+	var n = $('input[name=AllStarsorDeluxePizzaLargeCount]').val();
+	var spl = $('input[name=AllStarsorDeluxePizzaLargeSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -417,24 +311,24 @@ function populateFullMenuChickenTikkaMasalaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
+	chicagos_pizza_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuTraditionalLambCurrySelectedItems() {
-	var name = "Traditional Lamb Curry ";
+function populateFullMenuHawaiianPizzaLargeSelectedItems() {
+	var name = "Hawaiian Pizza (Large)";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=TraditionalLambCurryCount]').val();
-	var spl = $('input[name=TraditionalLambCurrySpl]').val();
+	var n = $('input[name=HawaiianPizzaLargeCount]').val();
+	var spl = $('input[name=HawaiianPizzaLargeSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -444,24 +338,24 @@ function populateFullMenuTraditionalLambCurrySelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
+	chicagos_pizza_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuSaagLambSelectedItems() {
-	var name = "Saag Lamb";
+function populateFullMenuLatinoStylePizzaLargeSelectedItems() {
+	var name = "Latino Style Pizza (Large)";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=SaagLambCount]').val();
-	var spl = $('input[name=SaagLambSpl]').val();
+	var n = $('input[name=LatinoStylePizzaLargeCount]').val();
+	var spl = $('input[name=LatinoStylePizzaLargeSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -471,50 +365,24 @@ function populateFullMenuSaagLambSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
-	// console.log(data);
-	$.magnificPopup.close();
-	return false;
-}
-function populateFullMenuMalaiKoftaSelectedItems() {
-	var name = "Malai Kofta";
-	var id = $('.slide').children().length;
-	var div_id = "m_" + id;
-	var n = $('input[name=MalaiKoftaCount]').val();
-	var spl = $('input[name=MalaiKoftaSpl]').val();
-	var desc = "Count: " + n;
-	if (spl != "")
-		desc += ", Special Instructions: " + spl;
-	var html = '<div class="full-menu-list-item" id="'
-			+ div_id
-			+ '">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
-	// console.log(html);
-	$(html).appendTo('.slide');
-	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
+	chicagos_pizza_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuShahiPaneerSelectedItems() {
-	var name = "Shahi Paneer";
+function populateFullMenuItalianGarlicPizzaLargeSelectedItems() {
+	var name = "Italian Garlic Pizza (Large)";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=ShahiPaneerCount]').val();
-	var spl = $('input[name=ShahiPaneerSpl]').val();
+	var n = $('input[name=ItalianGarlicPizzaLargeCount]').val();
+	var spl = $('input[name=ItalianGarlicPizzaLargeSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -524,24 +392,24 @@ function populateFullMenuShahiPaneerSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
+	chicagos_pizza_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuMatarPaneerSelectedItems() {
-	var name = "Matar Paneer";
+function populateFullMenuBBQChickenPizzaLargeSelectedItems() {
+	var name = "BBQ Chicken Pizza (Large)";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=MatarPaneerCount]').val();
-	var spl = $('input[name=MatarPaneerSpl]').val();
+	var n = $('input[name=BBQChickenPizzaLargeCount]').val();
+	var spl = $('input[name=BBQChickenPizzaLargeSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -551,24 +419,24 @@ function populateFullMenuMatarPaneerSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
+	chicagos_pizza_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuDalMakhniSelectedItems() {
-	var name = "Dal Makhni";
+function populateFullMenuChickenBaconRanchPizzaLargeSelectedItems() {
+	var name = "Chicken Bacon Ranch Pizza (Large)";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=DalMakhniCount]').val();
-	var spl = $('input[name=DalMakhniSpl]').val();
+	var n = $('input[name=ChickenBaconRanchPizzaLargeCount]').val();
+	var spl = $('input[name=ChickenBaconRanchPizzaLargeSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -578,24 +446,24 @@ function populateFullMenuDalMakhniSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
+	chicagos_pizza_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuMixedVegetablesSelectedItems() {
-	var name = "Mixed Vegetables";
+function populateFullMenuChicagosFavoritePizzaLargeSelectedItems() {
+	var name = "Chicagoâ€™s Favorite Pizza (Large)";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=MixedVegetablesCount]').val();
-	var spl = $('input[name=MixedVegetablesSpl]').val();
+	var n = $('input[name=ChicagosFavoritePizzaLargeCount]').val();
+	var spl = $('input[name=ChicagosFavoritePizzaLargeSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -605,24 +473,24 @@ function populateFullMenuMixedVegetablesSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
+	chicagos_pizza_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuChanaMasalaSelectedItems() {
-	var name = "Chana Masala";
+function populateFullMenuGarlicVeggiePizzaLargeSelectedItems() {
+	var name = "Garlic Veggie Pizza (Large)";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=ChanaMasalaCount]').val();
-	var spl = $('input[name=ChanaMasalaSpl]').val();
+	var n = $('input[name=GarlicVeggiePizzaLargeCount]').val();
+	var spl = $('input[name=GarlicVeggiePizzaLargeSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -632,23 +500,23 @@ function populateFullMenuChanaMasalaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
+	chicagos_pizza_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
-function populateFullMenuRaitaIndianYogurtSelectedItems() {
-	var name = "Raita (Indian Yogurt)";
+function populateFullMenuTikkaMasalaVeggiePizzaLargeSelectedItems() {
+	var name = "Tikka Masala Veggie Pizza (Large)";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=RaitaIndianYogurtCount]').val();
-	var spl = $('input[name=RaitaIndianYogurtSpl]').val();
+	var n = $('input[name=TikkaMasalaVeggiePizzaLargeCount]').val();
+	var spl = $('input[name=TikkaMasalaVeggiePizzaLargeSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -658,77 +526,24 @@ function populateFullMenuRaitaIndianYogurtSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
-	// console.log(data);
-	$.magnificPopup.close();
-	return false;
-}
-
-function populateFullMenuBasmatiRiceSelectedItems() {
-	var name = "Basmati Rice";
-	var id = $('.slide').children().length;
-	var div_id = "m_" + id;
-	var n = $('input[name=BasmatiRiceCount]').val();
-	var spl = $('input[name=BasmatiRiceSpl]').val();
-	var desc = "Count: " + n;
-	if (spl != "")
-		desc += ", Special Instructions: " + spl;
-	var html = '<div class="full-menu-list-item" id="'
-			+ div_id
-			+ '">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
-	// console.log(html);
-	$(html).appendTo('.slide');
-	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
-	// console.log(data);
-	$.magnificPopup.close();
-	return false;
-}
-function populateFullMenuKheerSelectedItems() {
-	var name = "Kheer";
-	var id = $('.slide').children().length;
-	var div_id = "m_" + id;
-	var n = $('input[name=KheerCount]').val();
-	var spl = $('input[name=KheerSpl]').val();
-	var desc = "Count: " + n;
-	if (spl != "")
-		desc += ", Special Instructions: " + spl;
-	var html = '<div class="full-menu-list-item" id="'
-			+ div_id
-			+ '">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
-	// console.log(html);
-	$(html).appendTo('.slide');
-	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
+	chicagos_pizza_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuGulabJamunSelectedItems() {
-	var name = "Gulab Jamun";
+function populateFullMenuTandooriVeggiePizzaLargeSelectedItems() {
+	var name = "Tandoori Veggie Pizza (Large)";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=GulabJamunCount]').val();
-	var spl = $('input[name=GulabJamunSpl]').val();
+	var n = $('input[name=TandooriVeggiePizzaLargeCount]').val();
+	var spl = $('input[name=TandooriVeggiePizzaLargeSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -738,50 +553,24 @@ function populateFullMenuGulabJamunSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
-	// console.log(data);
-	$.magnificPopup.close();
-	return false;
-}
-function populateFullMenuAssortedSodaSelectedItems() {
-	var name = "Assorted Soda";
-	var id = $('.slide').children().length;
-	var div_id = "m_" + id;
-	var n = $('input[name=AssortedSodaCount]').val();
-	var spl = $('input[name=AssortedSodaSpl]').val();
-	var desc = "Count: " + n;
-	if (spl != "")
-		desc += ", Special Instructions: " + spl;
-	var html = '<div class="full-menu-list-item" id="'
-			+ div_id
-			+ '">'
-			+ '<h4>'
-			+ name
-			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
-	// console.log(html);
-	$(html).appendTo('.slide');
-	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
+	chicagos_pizza_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;
 }
 
-function populateFullMenuBottledWaterSelectedItems() {
-	var name = "Bottled Water";
+function populateFullMenuCurryVeggiePizzaLargeSelectedItems() {
+	var name = "Curry Veggie Pizza (Large)";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=BottledWaterCount]').val();
-	var spl = $('input[name=BottledWaterSpl]').val();
+	var n = $('input[name=CurryVeggiePizzaLargeCount]').val();
+	var spl = $('input[name=CurryVeggiePizzaLargeSpl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -791,13 +580,256 @@ function populateFullMenuBottledWaterSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_milan_curry_house_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
 			+'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	milan_curry_house_menu_items.push(data);
+	chicagos_pizza_menu_items.push(data);
+	// console.log(data);
+	$.magnificPopup.close();
+	return false;
+}
+
+function populateFullMenuIndianVeggiePizzaLargeSelectedItems() {
+	var name = "Indian Veggie Pizza (Large)";
+	var id = $('.slide').children().length;
+	var div_id = "m_" + id;
+	var n = $('input[name=IndianVeggiePizzaLargeCount]').val();
+	var spl = $('input[name=IndianVeggiePizzaLargeSpl]').val();
+	var desc = "Count: " + n;
+	if (spl != "")
+		desc += ", Special Instructions: " + spl;
+	var html = '<div class="full-menu-list-item" id="'
+			+ div_id
+			+ '">'
+			+ '<h4>'
+			+ name
+			+ '</h4>'
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+			+'</div>';
+	// console.log(html);
+	$(html).appendTo('.slide');
+	var data = name + "+" + desc;
+	chicagos_pizza_menu_items.push(data);
+	// console.log(data);
+	$.magnificPopup.close();
+	return false;
+}
+
+function populateFullMenuLimeVeggiePizzaLargeSelectedItems() {
+	var name = "Lime Veggie Pizza (Large)";
+	var id = $('.slide').children().length;
+	var div_id = "m_" + id;
+	var n = $('input[name=LimeVeggiePizzaLargeCount]').val();
+	var spl = $('input[name=LimeVeggiePizzaLargeSpl]').val();
+	var desc = "Count: " + n;
+	if (spl != "")
+		desc += ", Special Instructions: " + spl;
+	var html = '<div class="full-menu-list-item" id="'
+			+ div_id
+			+ '">'
+			+ '<h4>'
+			+ name
+			+ '</h4>'
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+			+'</div>';
+	// console.log(html);
+	$(html).appendTo('.slide');
+	var data = name + "+" + desc;
+	chicagos_pizza_menu_items.push(data);
+	// console.log(data);
+	$.magnificPopup.close();
+	return false;
+}
+
+function populateFullMenuPaneerTikkaMasalaPizzaLargeSelectedItems() {
+	var name = "Paneer Tikka Masala Pizza (Large)";
+	var id = $('.slide').children().length;
+	var div_id = "m_" + id;
+	var n = $('input[name=PaneerTikkaMasalaPizzaLargeCount]').val();
+	var spl = $('input[name=PaneerTikkaMasalaPizzaLargeSpl]').val();
+	var desc = "Count: " + n;
+	if (spl != "")
+		desc += ", Special Instructions: " + spl;
+	var html = '<div class="full-menu-list-item" id="'
+			+ div_id
+			+ '">'
+			+ '<h4>'
+			+ name
+			+ '</h4>'
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+			+'</div>';
+	// console.log(html);
+	$(html).appendTo('.slide');
+	var data = name + "+" + desc;
+	chicagos_pizza_menu_items.push(data);
+	// console.log(data);
+	$.magnificPopup.close();
+	return false;
+}
+
+function populateFullMenuTandooriPaneerPizzaLargeSelectedItems() {
+	var name = "Tandoori Paneer Pizza (Large)";
+	var id = $('.slide').children().length;
+	var div_id = "m_" + id;
+	var n = $('input[name=TandooriPaneerPizzaLargeCount]').val();
+	var spl = $('input[name=TandooriPaneerPizzaLargeSpl]').val();
+	var desc = "Count: " + n;
+	if (spl != "")
+		desc += ", Special Instructions: " + spl;
+	var html = '<div class="full-menu-list-item" id="'
+			+ div_id
+			+ '">'
+			+ '<h4>'
+			+ name
+			+ '</h4>'
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+			+'</div>';
+	// console.log(html);
+	$(html).appendTo('.slide');
+	var data = name + "+" + desc;
+	chicagos_pizza_menu_items.push(data);
+	// console.log(data);
+	$.magnificPopup.close();
+	return false;
+}
+
+function populateFullMenuCurryPaneerPizzaLargeSelectedItems() {
+	var name = "Curry Paneer Pizza (Large)";
+	var id = $('.slide').children().length;
+	var div_id = "m_" + id;
+	var n = $('input[name=CurryPaneerPizzaLargeCount]').val();
+	var spl = $('input[name=CurryPaneerPizzaLargeSpl]').val();
+	var desc = "Count: " + n;
+	if (spl != "")
+		desc += ", Special Instructions: " + spl;
+	var html = '<div class="full-menu-list-item" id="'
+			+ div_id
+			+ '">'
+			+ '<h4>'
+			+ name
+			+ '</h4>'
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+			+'</div>';
+	// console.log(html);
+	$(html).appendTo('.slide');
+	var data = name + "+" + desc;
+	chicagos_pizza_menu_items.push(data);
+	// console.log(data);
+	$.magnificPopup.close();
+	return false;
+}
+
+function populateFullMenuChickenTikkaMasalaLargeSelectedItems() {
+	var name = "Chicken Tikka Masala (Large)";
+	var id = $('.slide').children().length;
+	var div_id = "m_" + id;
+	var n = $('input[name=ChickenTikkaMasalaLargeCount]').val();
+	var spl = $('input[name=ChickenTikkaMasalaLargeSpl]').val();
+	var desc = "Count: " + n;
+	if (spl != "")
+		desc += ", Special Instructions: " + spl;
+	var html = '<div class="full-menu-list-item" id="'
+			+ div_id
+			+ '">'
+			+ '<h4>'
+			+ name
+			+ '</h4>'
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+			+'</div>';
+	// console.log(html);
+	$(html).appendTo('.slide');
+	var data = name + "+" + desc;
+	chicagos_pizza_menu_items.push(data);
+	// console.log(data);
+	$.magnificPopup.close();
+	return false;
+}
+
+function populateFullMenuTandooriChickenPizzaLargeSelectedItems() {
+	var name = "Tandoori Chicken Pizza (Large)";
+	var id = $('.slide').children().length;
+	var div_id = "m_" + id;
+	var n = $('input[name=TandooriChickenPizzaLargeCount]').val();
+	var spl = $('input[name=TandooriChickenPizzaLargeSpl]').val();
+	var desc = "Count: " + n;
+	if (spl != "")
+		desc += ", Special Instructions: " + spl;
+	var html = '<div class="full-menu-list-item" id="'
+			+ div_id
+			+ '">'
+			+ '<h4>'
+			+ name
+			+ '</h4>'
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+			+'</div>';
+	// console.log(html);
+	$(html).appendTo('.slide');
+	var data = name + "+" + desc;
+	chicagos_pizza_menu_items.push(data);
+	// console.log(data);
+	$.magnificPopup.close();
+	return false;
+}
+
+function populateFullMenuChickenCurryPizzaLargeSelectedItems() {
+	var name = "Chicken Curry Pizza (Large)";
+	var id = $('.slide').children().length;
+	var div_id = "m_" + id;
+	var n = $('input[name=ChickenCurryPizzaLargeCount]').val();
+	var spl = $('input[name=ChickenCurryPizzaLargeSpl]').val();
+	var desc = "Count: " + n;
+	if (spl != "")
+		desc += ", Special Instructions: " + spl;
+	var html = '<div class="full-menu-list-item" id="'
+			+ div_id
+			+ '">'
+			+ '<h4>'
+			+ name
+			+ '</h4>'
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+			+'</div>';
+	// console.log(html);
+	$(html).appendTo('.slide');
+	var data = name + "+" + desc;
+	chicagos_pizza_menu_items.push(data);
+	// console.log(data);
+	$.magnificPopup.close();
+	return false;
+}
+
+function populateFullMenuButterChickenPizzaLargeSelectedItems() {
+	var name = "Butter Chicken Pizza (Large)";
+	var id = $('.slide').children().length;
+	var div_id = "m_" + id;
+	var n = $('input[name=ButterChickenPizzaLargeCount]').val();
+	var spl = $('input[name=ButterChickenPizzaLargeSpl]').val();
+	var desc = "Count: " + n;
+	if (spl != "")
+		desc += ", Special Instructions: " + spl;
+	var html = '<div class="full-menu-list-item" id="'
+			+ div_id
+			+ '">'
+			+ '<h4>'
+			+ name
+			+ '</h4>'
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
+			+'</div>';
+	// console.log(html);
+	$(html).appendTo('.slide');
+	var data = name + "+" + desc;
+	chicagos_pizza_menu_items.push(data);
 	// console.log(data);
 	$.magnificPopup.close();
 	return false;

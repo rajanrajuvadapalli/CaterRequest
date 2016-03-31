@@ -4,27 +4,26 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script>
-	function remove_chalupa_fresh_mexican_grill_item(div_id) {
+	function remove_chicagos_pizza_item(div_id) {
 		var divToRemove = $("div[id=" + div_id + "]");
 		var name = divToRemove.children().children().prev().text();
 		var desc = divToRemove.children().children().next().text();
 		var data = name + "+" + desc;
 		console.log("Removing " + data);
-		chalupa_fresh_mexican_grill_menu_items.splice($.inArray(data,
-				chalupa_fresh_mexican_grill_menu_items), 1);
+		chicagos_pizza_menu_items.splice($.inArray(data,
+				chicagos_pizza_menu_items), 1);
 		divToRemove.remove();
 	}
 
-	function chalupa_fresh_mexican_grill_menu_submit() {
-		if (chalupa_fresh_mexican_grill_menu_items.length == 0) {
+	function chicagos_pizza_menu_submit() {
+		if (chicagos_pizza_menu_items.length == 0) {
 			alert("Please select at least 1 item to proceed.");
 			return false;
 		}
-		console.log(chalupa_fresh_mexican_grill_menu_items);
-		//console.log(JSON.stringify(chalupa_fresh_mexican_grill_menu_items));
-		$("#full_menu_items").val(
-				JSON.stringify(chalupa_fresh_mexican_grill_menu_items));
-		$("#chalupa_fresh_mexican_grill_target").submit();
+		console.log(chicagos_pizza_menu_items);
+		//console.log(JSON.stringify(chicagos_pizza_menu_items));
+		$("#full_menu_items").val(JSON.stringify(chicagos_pizza_menu_items));
+		$("#chicagos_pizza_target").submit();
 	}
 </script>
 
@@ -123,15 +122,14 @@
 									<div class="panel-body">
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#QuesoNachos"
-											data-whatever="QuesoNachos">
-											<span>Queso Nachos</span> <br /> <span
-												style="font-size: 12px;">Corn tortilla chips, house
-												melted queso cheese, black beans and jalape&#241;os with pico
-												de gallo.</span>
+											data-toggle="modal" data-target="#HotNSpicyTandooriWings"
+											data-whatever="HotNSpicyTandooriWings">
+											<span>Hot-N-Spicy Tandoori Wings</span> <br /> <span
+												style="font-size: 12px;"></span>
 										</button>
-										<div class="modal fade" id="QuesoNachos" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
+										<div class="modal fade" id="HotNSpicyTandooriWings"
+											tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
@@ -140,28 +138,28 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Queso Nachos</h3>
-															<span>Corn tortilla chips, house melted queso
-																cheese, black beans and jalape&#241;os with pico de gallo.</span>
+															<h3>Hot-N-Spicy Tandoori Wings</h3>
+															<span></span>
 														</div>
 														<div class="modal-desc">
 															<form id="popup1_1" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="QuesoNachosCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="text" size="20"
+																		name="HotNSpicyTandooriWingsCount" maxlength="20"
+																		required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="QuesoNachosSpl"
-																		maxlength="20">
+																	<input type="text" size="60"
+																		name="HotNSpicyTandooriWingsSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuQuesoNachosSelectedItems();" />
+																			onclick="populateFullMenuHotNSpicyTandooriWingsSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -173,15 +171,13 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#GrilledCornMexicanStyle"
-											data-whatever="GrilledCornMexicanStyle">
-											<span>Grilled Corn Mexican Style</span> <br /> <span
-												style="font-size: 12px;">Two whole grilled corn
-												served with mayo, cotija cheese, chili powder and lime.</span>
+											data-toggle="modal" data-target="#HoneyBBQTequilaLime"
+											data-whatever="HoneyBBQTequilaLime">
+											<span>Honey BBQ Tequila-Lime</span> <br /> <span
+												style="font-size: 12px;"></span>
 										</button>
-										<div class="modal fade" id="GrilledCornMexicanStyle"
-											tabindex="-1" role="dialog"
-											aria-labelledby="exampleModalLabel">
+										<div class="modal fade" id="HoneyBBQTequilaLime" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
@@ -190,9 +186,8 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Grilled Corn Mexican Style</h3>
-															<span>Two whole grilled corn served with mayo,
-																cotija cheese, chili powder and lime.</span>
+															<h3>Honey BBQ Tequila-Lime</h3>
+															<span></span>
 														</div>
 														<div class="modal-desc">
 															<form id="popup1_2" class="form-horizontal"
@@ -200,19 +195,19 @@
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
 																	<input type="text" size="20"
-																		name="GrilledCornMexicanStyleCount" maxlength="20"
+																		name="HoneyBBQTequilaLimeCount" maxlength="20"
 																		required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
 																	<input type="text" size="60"
-																		name="GrilledCornMexicanStyleSpl" maxlength="20">
+																		name="HoneyBBQTequilaLimeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuGrilledCornMexicanStyleSelectedItems();" />
+																			onclick="populateFullMenuHoneyBBQTequilaLimeSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -224,14 +219,12 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#ChickenQuesadilla"
-											data-whatever="ChickenQuesadilla">
-											<span>Chicken Quesadilla</span> <br /> <span
-												style="font-size: 12px;">Melted Jack, chedder and
-												cotija cheese and grilled chicken with your choice of
-												cilantro-lime, white or chipotle sauce on side.</span>
+											data-toggle="modal" data-target="#GarlicBreadsticks"
+											data-whatever="GarlicBreadsticks">
+											<span>Garlic Breadsticks</span> <br /> <span
+												style="font-size: 12px;"></span>
 										</button>
-										<div class="modal fade" id="ChickenQuesadilla" tabindex="-1"
+										<div class="modal fade" id="GarlicBreadsticks" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
@@ -241,10 +234,8 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Chicken Quesadilla</h3>
-															<span>Melted Jack, chedder and cotija cheese and
-																grilled chicken with your choice of cilantro-lime, white
-																or chipotle sauce on side.</span>
+															<h3>Garlic Breadsticks</h3>
+															<span></span>
 														</div>
 														<div class="modal-desc">
 															<form id="popup1_3" class="form-horizontal"
@@ -252,19 +243,19 @@
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
 																	<input type="text" size="20"
-																		name="ChickenQuesadillaCount" maxlength="20"
+																		name="GarlicBreadsticksCount" maxlength="20"
 																		required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
 																	<input type="text" size="60"
-																		name="ChickenQuesadillaSpl" maxlength="20">
+																		name="GarlicBreadsticksSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuChickenQuesadillaSelectedItems();" />
+																			onclick="populateFullMenuGarlicBreadsticksSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -276,14 +267,108 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#VegetarianQuesadilla"
-											data-whatever="VegetarianQuesadilla">
-											<span>Vegetarian Quesadilla</span> <br /> <span
-												style="font-size: 12px;">Melted monterey jack cheese,
-												black beans, roasted sweet n'spicy corn, tomatoes, cilantro,
-												sour cream, lettuce, onions and guacamole.</span>
+											data-toggle="modal" data-target="#CheeseBreadsticks"
+											data-whatever="CheeseBreadsticks">
+											<span>Cheese Breadsticks</span> <br /> <span
+												style="font-size: 12px;"></span>
 										</button>
-										<div class="modal fade" id="VegetarianQuesadilla"
+										<div class="modal fade" id="CheeseBreadsticks" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Cheese Breadsticks</h3>
+															<span></span>
+														</div>
+														<div class="modal-desc">
+															<form id="popup1_4" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20"
+																		name="CheeseBreadsticksCount" maxlength="20"
+																		required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60"
+																		name="CheeseBreadsticksSpl" maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuCheeseBreadsticksSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#BaconBreadsticks"
+											data-whatever="BaconBreadsticks">
+											<span>Bacon Breadsticks</span> <br /> <span
+												style="font-size: 12px;"></span>
+										</button>
+										<div class="modal fade" id="BaconBreadsticks" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Bacon Breadsticks</h3>
+															<span></span>
+														</div>
+														<div class="modal-desc">
+															<form id="popup1_5" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20"
+																		name="BaconBreadsticksCount" maxlength="20"
+																		required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60" name="BaconBreadsticksSpl"
+																		maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuBaconBreadsticksSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#IndianStyleBreadsticks"
+											data-whatever="IndianStyleBreadsticks">
+											<span>Indian Style Breadsticks</span> <br /> <span
+												style="font-size: 12px;"></span>
+										</button>
+										<div class="modal fade" id="IndianStyleBreadsticks"
 											tabindex="-1" role="dialog"
 											aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
@@ -294,30 +379,28 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Vegetarian Quesadilla</h3>
-															<span>Melted monterey jack cheese, black beans,
-																roasted sweet n'spicy corn, tomatoes, cilantro, sour
-																cream, lettuce, onions and guacamole.</span>
+															<h3>Indian Style Breadsticks</h3>
+															<span></span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup1_4" class="form-horizontal"
+															<form id="popup1_6" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
 																	<input type="text" size="20"
-																		name="VegetarianQuesadillaCount" maxlength="20"
+																		name="IndianStyleBreadsticksCount" maxlength="20"
 																		required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
 																	<input type="text" size="60"
-																		name="VegetarianQuesadillaSpl" maxlength="20">
+																		name="IndianStyleBreadsticksSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuVegetarianQuesadillaSelectedItems();" />
+																			onclick="populateFullMenuIndianStyleBreadsticksSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -345,14 +428,12 @@
 									<div class="panel-body">
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#TacoSalasChicken"
-											data-whatever="TacoSalasChicken">
-											<span>Taco Salas(Chicken)</span> <br /> <span
-												style="font-size: 12px;">Chicken, lettuce, rice,
-												beans, sour cream, guacamole, pico de gallo and cheese
-												served on flour tostada.</span>
+											data-toggle="modal" data-target="#GardenSalad"
+											data-whatever="GardenSalad">
+											<span>Garden Salad</span> <br /> <span
+												style="font-size: 12px;"></span>
 										</button>
-										<div class="modal fade" id="TacoSalasChicken" tabindex="-1"
+										<div class="modal fade" id="GardenSalad" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
@@ -362,30 +443,27 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Taco Salas(Chicken)</h3>
-															<span>Chicken, lettuce, rice, beans, sour cream,
-																guacamole, pico de gallo and cheese served on flour
-																tostada.</span>
+															<h3>Garden Salad</h3>
+															<span></span>
 														</div>
 														<div class="modal-desc">
 															<form id="popup2_1" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="TacoSalasChickenCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																	<input type="text" size="20" name="GardenSaladCount"
+																		maxlength="20" required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="TacoSalasChickenSpl"
+																	<input type="text" size="60" name="GardenSaladSpl"
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuTacoSalasChickenSelectedItems();" />
+																			onclick="populateFullMenuGardenSaladSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -397,14 +475,12 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#TacoSalasSteak"
-											data-whatever="TacoSalasSteak">
-											<span>Taco Salas(Steak)</span> <br /> <span
-												style="font-size: 12px;">Steak, lettuce, rice, beans,
-												sour cream, guacamole, pico de gallo and cheese served on
-												flour tostada.</span>
+											data-toggle="modal" data-target="#ChickenSalad"
+											data-whatever="ChickenSalad">
+											<span>Chicken Salad</span> <br /> <span
+												style="font-size: 12px;"></span>
 										</button>
-										<div class="modal fade" id="TacoSalasSteak" tabindex="-1"
+										<div class="modal fade" id="ChickenSalad" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
@@ -414,346 +490,27 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Taco Salas(Steak)</h3>
-															<span>Steak, lettuce, rice, beans, sour cream,
-																guacamole, pico de gallo and cheese served on flour
-																tostada.</span>
+															<h3>Chicken Salad</h3>
+															<span></span>
 														</div>
 														<div class="modal-desc">
 															<form id="popup2_2" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="TacoSalasSteakCount"
+																	<input type="text" size="20" name="ChickenSaladCount"
 																		maxlength="20" required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="TacoSalasSteakSpl"
+																	<input type="text" size="60" name="ChickenSaladSpl"
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuTacoSalasSteakSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#TacoSalasCarnitas"
-											data-whatever="TacoSalasCarnitas">
-											<span>Taco Salas(Carnitas)</span> <br /> <span
-												style="font-size: 12px;">Carnitas, lettuce, rice,
-												beans, sour cream, guacamole, pico de gallo and cheese
-												served on flour tostada.</span>
-										</button>
-										<div class="modal fade" id="TacoSalasCarnitas" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Taco Salas(Carnitas)</h3>
-															<span>Carnitas, lettuce, rice, beans, sour cream,
-																guacamole, pico de gallo and cheese served on flour
-																tostada.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup2_3" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="TacoSalasCarnitasCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="TacoSalasCarnitasSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuTacoSalasCarnitasSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#TacoSalasVegetarian"
-											data-whatever="TacoSalasVegetarian">
-											<span>Taco Salas(Vegetarian)</span> <br /> <span
-												style="font-size: 12px;">Lettuce, rice, beans, sour
-												cream, guacamole, pico de gallo and cheese served on flour
-												tostada.</span>
-										</button>
-										<div class="modal fade" id="TacoSalasVegetarian" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Taco Salas(Vegetarian)</h3>
-															<span>Lettuce, rice, beans, sour cream, guacamole,
-																pico de gallo and cheese served on flour tostada.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup2_4" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="TacoSalasVegetarianCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="TacoSalasVegetarianSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuTacoSalasVegetarianSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#MexicanSaladChicken"
-											data-whatever="MexicanSaladChicken">
-											<span>Mexican Salad(Chicken)</span> <br /> <span
-												style="font-size: 12px;">Chicken, lettuce, black
-												beans, tomatoes, onions, spicy pumpkin seeds, red cabbage,
-												cotija cheese, chips strips, crispy tostada with mexican
-												vinaigrette.</span>
-										</button>
-										<div class="modal fade" id="MexicanSaladChicken" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Mexican Salad(Chicken)</h3>
-															<span>Chicken, lettuce, black beans, tomatoes,
-																onions, spicy pumpkin seeds, red cabbage, cotija cheese,
-																chips strips, crispy tostada with mexican vinaigrette.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup2_5" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="MexicanSaladChickenCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="MexicanSaladChickenSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuMexicanSaladChickenSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#MexicanSaladSteak"
-											data-whatever="MexicanSaladSteak">
-											<span>Mexican Salad(Steak)</span> <br /> <span
-												style="font-size: 12px;">Steak, lettuce, black beans,
-												tomatoes, onions, spicy pumpkin seeds, red cabbage, cotija
-												cheese, chips strips, crispy tostada with mexican
-												vinaigrette.</span>
-										</button>
-										<div class="modal fade" id="MexicanSaladSteak" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Mexican Salad(Steak)</h3>
-															<span>Steak, lettuce, black beans, tomatoes,
-																onions, spicy pumpkin seeds, red cabbage, cotija cheese,
-																chips strips, crispy tostada with mexican vinaigrette.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup2_6" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="MexicanSaladSteakCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="MexicanSaladSteakSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuMexicanSaladSteakSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#MexicanSaladCarnitas"
-											data-whatever="MexicanSaladCarnitas">
-											<span>Mexican Salad(Carnitas)</span> <br /> <span
-												style="font-size: 12px;">Carnitas, lettuce, black
-												beans, tomatoes, onions, spicy pumpkin seeds, red cabbage,
-												cotija cheese, chips strips, crispy tostada with mexican
-												vinaigrette.</span>
-										</button>
-										<div class="modal fade" id="MexicanSaladCarnitas"
-											tabindex="-1" role="dialog"
-											aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Mexican Salad(Carnitas)</h3>
-															<span>Carnitas, lettuce, black beans, tomatoes,
-																onions, spicy pumpkin seeds, red cabbage, cotija cheese,
-																chips strips, crispy tostada with mexican vinaigrette.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup2_7" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="MexicanSaladCarnitasCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="MexicanSaladCarnitasSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuMexicanSaladCarnitasSelectedItems();" />
-																	</div>
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- item end -->
-										<!-- item begin -->
-										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#MexicanSaladVegetarian"
-											data-whatever="MexicanSaladVegetarian">
-											<span>Mexican Salad(Vegetarian)</span> <br /> <span
-												style="font-size: 12px;">Lettuce, black beans,
-												tomatoes, onions, spicy pumpkin seeds, red cabbage, cotija
-												cheese, chips strips, crispy tostada with mexican
-												vinaigrette.</span>
-										</button>
-										<div class="modal fade" id="MexicanSaladVegetarian"
-											tabindex="-1" role="dialog"
-											aria-labelledby="exampleModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-box-left">
-														<div class="modal-head">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-															<h3>Mexican Salad(Vegetarian)</h3>
-															<span>Lettuce, black beans, tomatoes, onions,
-																spicy pumpkin seeds, red cabbage, cotija cheese, chips
-																strips, crispy tostada with mexican vinaigrette.</span>
-														</div>
-														<div class="modal-desc">
-															<form id="popup2_8" class="form-horizontal"
-																onsubmit="return false;">
-																<div class="modal-textarea">
-																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="MexicanSaladVegetarianCount" maxlength="20"
-																		required="required" pattern="^\d+$">
-																	<h5>
-																		Special Instructions<span>Additional charges
-																			may apply.</span>
-																	</h5>
-																	<input type="text" size="60"
-																		name="MexicanSaladVegetarianSpl" maxlength="20">
-																	<div class="clearfix"></div>
-																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuMexicanSaladVegetarianSelectedItems();" />
+																			onclick="populateFullMenuChickenSaladSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -768,28 +525,30 @@
 							</div>
 						</div>
 						<!-- Collapse start -->
-						<div class="panel-group" id="accordion-Tacos" role="tablist"
-							aria-multiselectable="true">
+						<div class="panel-group" id="accordion-Speciality_Pizzas"
+							role="tablist" aria-multiselectable="true">
 							<div class="panel panel-default">
 								<div class="panel-heading" role="tab" id="headingOne">
 									<a role="button" data-toggle="collapse"
-										data-parent="#accordion-Tacos" href="#Tacos"
-										aria-expanded="true" aria-controls="Tacos"> Tacos </a>
+										data-parent="#accordion-Speciality_Pizzas"
+										href="#Speciality_Pizzas" aria-expanded="true"
+										aria-controls="Speciality_Pizzas"> Speciality Pizzas </a>
 								</div>
-								<div id="Tacos" class="panel-collapse collapse in"
+								<div id="Speciality_Pizzas" class="panel-collapse collapse in"
 									role="tabpanel" aria-labelledby="headingOne">
 									<div class="panel-body">
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#ChalupaChicken"
-											data-whatever="ChalupaChicken">
-											<span>Chalupa(Chicken)</span> <br /> <span
-												style="font-size: 12px;">Chicken, black beans, sour
-												cream, pico de gallo, lettuce and cheese served on corn
-												tostada.</span>
+											data-toggle="modal" data-target="#CombinationPizzaLarge"
+											data-whatever="CombinationPizzaLarge">
+											<span>Combination Pizza(Large)</span> <br /> <span
+												style="font-size: 12px;">Large Pizza with Cheese,
+												Pepperoni, Salami, Beef, Canadian Bacon, Italian Sausage,
+												Mushrooms, Black Olives, Green Peppers and Onions.</span>
 										</button>
-										<div class="modal fade" id="ChalupaChicken" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
+										<div class="modal fade" id="CombinationPizzaLarge"
+											tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
@@ -798,28 +557,30 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Chalupa(Chicken)</h3>
-															<span>Chicken, black beans, sour cream, pico de
-																gallo, lettuce and cheese served on corn tostada.</span>
+															<h3>Combination Pizza(Large)</h3>
+															<span>Large Pizza with Cheese, Pepperoni, Salami,
+																Beef, Canadian Bacon, Italian Sausage, Mushrooms, Black
+																Olives, Green Peppers and Onions.</span>
 														</div>
 														<div class="modal-desc">
 															<form id="popup3_1" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="ChalupaChickenCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="text" size="20"
+																		name="CombinationPizzaLargeCount" maxlength="20"
+																		required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="ChalupaChickenSpl"
-																		maxlength="20">
+																	<input type="text" size="60"
+																		name="CombinationPizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuChalupaChickenSelectedItems();" />
+																			onclick="populateFullMenuCombinationPizzaLargeSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -831,15 +592,16 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#ChalupaSteak"
-											data-whatever="ChalupaSteak">
-											<span>Chalupa(Steak)</span> <br /> <span
-												style="font-size: 12px;">Steak, black beans, sour
-												cream, pico de gallo, lettuce and cheese served on corn
-												tostada.</span>
+											data-toggle="modal" data-target="#VegetarianPizzaLarge"
+											data-whatever="VegetarianPizzaLarge">
+											<span>Vegetarian Pizza (Large)</span> <br /> <span
+												style="font-size: 12px;">Large Pizza with Cheese,
+												Mushrooms, Onions, Black Olives, Green Peppers, Artichokes
+												Hearts and Fresh Tomatoes.</span>
 										</button>
-										<div class="modal fade" id="ChalupaSteak" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
+										<div class="modal fade" id="VegetarianPizzaLarge"
+											tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
@@ -848,28 +610,30 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Chalupa(Steak)</h3>
-															<span>Steak, black beans, sour cream, pico de
-																gallo, lettuce and cheese served on corn tostada.</span>
+															<h3>Vegetarian Pizza (Large)</h3>
+															<span>Large Pizza with Cheese, Mushrooms, Onions,
+																Black Olives, Green Peppers, Artichokes Hearts and Fresh
+																Tomatoes.</span>
 														</div>
 														<div class="modal-desc">
 															<form id="popup3_2" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="ChalupaSteakCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="text" size="20"
+																		name="VegetarianPizzaLargeCount" maxlength="20"
+																		required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="ChalupaSteakSpl"
-																		maxlength="20">
+																	<input type="text" size="60"
+																		name="VegetarianPizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuChalupaSteakSelectedItems();" />
+																			onclick="populateFullMenuVegetarianPizzaLargeSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -881,14 +645,14 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#ChalupaCarnitas"
-											data-whatever="ChalupaCarnitas">
-											<span>Chalupa(Carnitas)</span> <br /> <span
-												style="font-size: 12px;">Chicken, black beans, sour
-												cream, pico de gallo, lettuce and cheese served on corn
-												tostada.</span>
+											data-toggle="modal" data-target="#AllMeatPizzaLarge"
+											data-whatever="AllMeatPizzaLarge">
+											<span>All Meat Pizza (Large)</span> <br /> <span
+												style="font-size: 12px;">Large Pizza with Cheese,
+												Salami, Pepperoni, Canadian Bacon, Ground Beef and Italian
+												Sausage.</span>
 										</button>
-										<div class="modal fade" id="ChalupaCarnitas" tabindex="-1"
+										<div class="modal fade" id="AllMeatPizzaLarge" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
@@ -898,9 +662,9 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Chalupa(Carnitas)</h3>
-															<span>Chicken, black beans, sour cream, pico de
-																gallo, lettuce and cheese served on corn tostada.</span>
+															<h3>All Meat Pizza (Large)</h3>
+															<span>Large Pizza with Cheese, Salami, Pepperoni,
+																Canadian Bacon, Ground Beef and Italian Sausage.</span>
 														</div>
 														<div class="modal-desc">
 															<form id="popup3_3" class="form-horizontal"
@@ -908,19 +672,19 @@
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
 																	<input type="text" size="20"
-																		name="ChalupaCarnitasCount" maxlength="20"
+																		name="AllMeatPizzaLargeCount" maxlength="20"
 																		required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="ChalupaCarnitasSpl"
-																		maxlength="20">
+																	<input type="text" size="60"
+																		name="AllMeatPizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuChalupaCarnitasSelectedItems();" />
+																			onclick="populateFullMenuAllMeatPizzaLargeSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -932,14 +696,16 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#StreetTacosChicken"
-											data-whatever="StreetTacosChicken">
-											<span>Street Tacos (Chicken)</span> <br /> <span
-												style="font-size: 12px;">Chicken, Onions and cilantro
-												served in corn tortilla.</span>
+											data-toggle="modal" data-target="#AllStarsorDeluxePizzaLarge"
+											data-whatever="AllStarsorDeluxePizzaLarge">
+											<span>All Stars or Deluxe Pizza (Large)</span> <br /> <span
+												style="font-size: 12px;">Large Pizza with Cheese,
+												Pepperoni, Italian Sausage, Mushrooms, Onions and Green
+												Peppers.</span>
 										</button>
-										<div class="modal fade" id="StreetTacosChicken" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
+										<div class="modal fade" id="AllStarsorDeluxePizzaLarge"
+											tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
@@ -948,9 +714,9 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Street Tacos (Chicken)</h3>
-															<span>Chicken, Onions and cilantro served in corn
-																tortilla.</span>
+															<h3>All Stars or Deluxe Pizza (Large)</h3>
+															<span>Large Pizza with Cheese, Pepperoni, Italian
+																Sausage, Mushrooms, Onions and Green Peppers.</span>
 														</div>
 														<div class="modal-desc">
 															<form id="popup3_4" class="form-horizontal"
@@ -958,19 +724,19 @@
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
 																	<input type="text" size="20"
-																		name="StreetTacosChickenCount" maxlength="20"
+																		name="AllStarsorDeluxePizzaLargeCount" maxlength="20"
 																		required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
 																	<input type="text" size="60"
-																		name="StreetTacosChickenSpl" maxlength="20">
+																		name="AllStarsorDeluxePizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuStreetTacosChickenSelectedItems();" />
+																			onclick="populateFullMenuAllStarsorDeluxePizzaLargeSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -982,13 +748,13 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#StreetTacosSteak"
-											data-whatever="StreetTacosSteak">
-											<span>Street Tacos (Steak)</span> <br /> <span
-												style="font-size: 12px;">Chicken, Onions and cilantro
-												served in corn tortilla.</span>
+											data-toggle="modal" data-target="#HawaiianPizzaLarge"
+											data-whatever="HawaiianPizzaLarge">
+											<span>Hawaiian Pizza (Large)</span> <br /> <span
+												style="font-size: 12px;">Large Pizza with Cheese, Ham
+												and Pineapple.</span>
 										</button>
-										<div class="modal fade" id="StreetTacosSteak" tabindex="-1"
+										<div class="modal fade" id="HawaiianPizzaLarge" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
@@ -998,9 +764,8 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Street Tacos (Steak)</h3>
-															<span>Chicken, Onions and cilantro served in corn
-																tortilla.</span>
+															<h3>Hawaiian Pizza (Large)</h3>
+															<span>Large Pizza with Cheese, Ham and Pineapple.</span>
 														</div>
 														<div class="modal-desc">
 															<form id="popup3_5" class="form-horizontal"
@@ -1008,19 +773,19 @@
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
 																	<input type="text" size="20"
-																		name="StreetTacosSteakCount" maxlength="20"
+																		name="HawaiianPizzaLargeCount" maxlength="20"
 																		required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="StreetTacosSteakSpl"
-																		maxlength="20">
+																	<input type="text" size="60"
+																		name="HawaiianPizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuStreetTacosSteakSelectedItems();" />
+																			onclick="populateFullMenuHawaiianPizzaLargeSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -1032,14 +797,15 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#StreetTacosCarnitas"
-											data-whatever="StreetTacosCarnitas">
-											<span>Street Tacos (Carnitas)</span> <br /> <span
-												style="font-size: 12px;">Chicken, Onions and cilantro
-												served in corn tortilla.</span>
+											data-toggle="modal" data-target="#LatinoStylePizzaLarge"
+											data-whatever="LatinoStylePizzaLarge">
+											<span>Latino Style Pizza (Large)</span> <br /> <span
+												style="font-size: 12px;">Large Pizza with Pepperoni,
+												Italian Sausage, Ham, White Onions, Pineapple and Jalapeno.</span>
 										</button>
-										<div class="modal fade" id="StreetTacosCarnitas" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
+										<div class="modal fade" id="LatinoStylePizzaLarge"
+											tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
@@ -1048,9 +814,9 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Street Tacos (Carnitas)</h3>
-															<span>Chicken, Onions and cilantro served in corn
-																tortilla.</span>
+															<h3>Latino Style Pizza (Large)</h3>
+															<span>Large Pizza with Pepperoni, Italian Sausage,
+																Ham, White Onions, Pineapple and Jalapeno.</span>
 														</div>
 														<div class="modal-desc">
 															<form id="popup3_6" class="form-horizontal"
@@ -1058,19 +824,19 @@
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
 																	<input type="text" size="20"
-																		name="StreetTacosCarnitasCount" maxlength="20"
+																		name="LatinoStylePizzaLargeCount" maxlength="20"
 																		required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
 																	<input type="text" size="60"
-																		name="StreetTacosCarnitasSpl" maxlength="20">
+																		name="LatinoStylePizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuStreetTacosCarnitasSelectedItems();" />
+																			onclick="populateFullMenuLatinoStylePizzaLargeSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -1082,14 +848,16 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#MahiMahiFishTaco"
-											data-whatever="MahiMahiFishTaco">
-											<span>Mahi Mahi Fish Taco</span> <br /> <span
-												style="font-size: 12px;">Cabbage, cilantro and onions
-												with white and chipotle sauce served in corn tortilla.</span>
+											data-toggle="modal" data-target="#ItalianGarlicPizzaLarge"
+											data-whatever="ItalianGarlicPizzaLarge">
+											<span>Italian Garlic Pizza (Large)</span> <br /> <span
+												style="font-size: 12px;">Large Pizza with Garlic
+												Sauce, Pepperoni, Italian Sausage, Mushrooms, Tomatoes, Red
+												Onions, Chopped Garlic and Green Onion.</span>
 										</button>
-										<div class="modal fade" id="MahiMahiFishTaco" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
+										<div class="modal fade" id="ItalianGarlicPizzaLarge"
+											tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
@@ -1098,9 +866,10 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Mahi Mahi Fish Taco</h3>
-															<span>Cabbage, cilantro and onions with white and
-																chipotle sauce served in corn tortilla.</span>
+															<h3>Italian Garlic Pizza (Large)</h3>
+															<span>Large Pizza with Garlic Sauce, Pepperoni,
+																Italian Sausage, Mushrooms, Tomatoes, Red Onions,
+																Chopped Garlic and Green Onion.</span>
 														</div>
 														<div class="modal-desc">
 															<form id="popup3_7" class="form-horizontal"
@@ -1108,19 +877,19 @@
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
 																	<input type="text" size="20"
-																		name="MahiMahiFishTacoCount" maxlength="20"
+																		name="ItalianGarlicPizzaLargeCount" maxlength="20"
 																		required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="MahiMahiFishTacoSpl"
-																		maxlength="20">
+																	<input type="text" size="60"
+																		name="ItalianGarlicPizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuMahiMahiFishTacoSelectedItems();" />
+																			onclick="populateFullMenuItalianGarlicPizzaLargeSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -1132,15 +901,16 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#VeggieTaco"
-											data-whatever="VeggieTaco">
-											<span>Veggie Taco</span> <br /> <span
-												style="font-size: 12px;">Black beans or Pinto beans,
-												pico de gallo, sour cream, guacamole and cheese served in
-												soft tortilla.</span>
+											data-toggle="modal" data-target="#BBQChickenPizzaLarge"
+											data-whatever="BBQChickenPizzaLarge">
+											<span>BBQ Chicken Pizza (Large)</span> <br /> <span
+												style="font-size: 12px;">Large Pizza with White
+												Garlic Sauce, Cheese, Garlic Chicken, Tomatoes, Mushrooms,
+												Red Onions and Chopped Garlic.</span>
 										</button>
-										<div class="modal fade" id="VeggieTaco" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
+										<div class="modal fade" id="BBQChickenPizzaLarge"
+											tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
@@ -1149,29 +919,188 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Veggie Taco</h3>
-															<span>Black beans or Pinto beans, pico de gallo,
-																sour cream, guacamole and cheese served in soft
-																tortilla.</span>
+															<h3>BBQ Chicken Pizza (Large)</h3>
+															<span>Large Pizza with White Garlic Sauce, Cheese,
+																Garlic Chicken, Tomatoes, Mushrooms, Red Onions and
+																Chopped Garlic.</span>
 														</div>
 														<div class="modal-desc">
 															<form id="popup3_8" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="VeggieTacoCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="text" size="20"
+																		name="BBQChickenPizzaLargeCount" maxlength="20"
+																		required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="VeggieTacoSpl"
-																		maxlength="20">
+																	<input type="text" size="60"
+																		name="BBQChickenPizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuVeggieTacoSelectedItems();" />
+																			onclick="populateFullMenuBBQChickenPizzaLargeSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal"
+											data-target="#ChickenBaconRanchPizzaLarge"
+											data-whatever="ChickenBaconRanchPizzaLarge">
+											<span>Chicken Bacon Ranch Pizza (Large)</span> <br /> <span
+												style="font-size: 12px;">Large Pizza with Ranch,
+												Garlic Chicken and Crunchy Bacon.</span>
+										</button>
+										<div class="modal fade" id="ChickenBaconRanchPizzaLarge"
+											tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Chicken Bacon Ranch Pizza (Large)</h3>
+															<span>Large Pizza with Ranch, Garlic Chicken and
+																Crunchy Bacon.</span>
+														</div>
+														<div class="modal-desc">
+															<form id="popup3_9" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20"
+																		name="ChickenBaconRanchPizzaLargeCount" maxlength="20"
+																		required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60"
+																		name="ChickenBaconRanchPizzaLargeSpl" maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuChickenBaconRanchPizzaLargeSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#ChicagosFavoritePizzaLarge"
+											data-whatever="ChicagosFavoritePizzaLarge">
+											<span>Chicagoâ€™s Favorite Pizza (Large)</span> <br />
+											<span style="font-size: 12px;">Large Pizza with
+												Cheese, Chicken, Italian Sausage, Mushrooms, Pepperoni,
+												Black, Olives, Green Peppers, Red Onions and Green Onions.</span>
+										</button>
+										<div class="modal fade" id="ChicagosFavoritePizzaLarge"
+											tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Chicagoâ€™s Favorite Pizza (Large)</h3>
+															<span>Large Pizza with Cheese, Chicken, Italian
+																Sausage, Mushrooms, Pepperoni, Black, Olives, Green
+																Peppers, Red Onions and Green Onions.</span>
+														</div>
+														<div class="modal-desc">
+															<form id="popup3_10" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20"
+																		name="ChicagosFavoritePizzaLargeCount" maxlength="20"
+																		required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60"
+																		name="ChicagosFavoritePizzaLargeSpl" maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuChicagosFavoritePizzaLargeSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#GarlicVeggiePizzaLarge"
+											data-whatever="GarlicVeggiePizzaLarge">
+											<span>Garlic Veggie Pizza (Large)</span> <br /> <span
+												style="font-size: 12px;">Large Pizza with Garlic
+												Sauce, Cheese, Mushrooms, Small Sliced Broccoli, Tomatoes,
+												Black Olives and Chopped Garlic.</span>
+										</button>
+										<div class="modal fade" id="GarlicVeggiePizzaLarge"
+											tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Garlic Veggie Pizza (Large)</h3>
+															<span>Large Pizza with Garlic Sauce, Cheese,
+																Mushrooms, Small Sliced Broccoli, Tomatoes, Black Olives
+																and Chopped Garlic.</span>
+														</div>
+														<div class="modal-desc">
+															<form id="popup3_11" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20"
+																		name="GarlicVeggiePizzaLargeCount" maxlength="20"
+																		required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60"
+																		name="GarlicVeggiePizzaLargeSpl" maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuGarlicVeggiePizzaLargeSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -1186,27 +1115,32 @@
 							</div>
 						</div>
 						<!-- Collapse start -->
-						<div class="panel-group" id="accordion-Burritos" role="tablist"
-							aria-multiselectable="true">
+						<div class="panel-group" id="accordion-Indian_Pizzas"
+							role="tablist" aria-multiselectable="true">
 							<div class="panel panel-default">
 								<div class="panel-heading" role="tab" id="headingOne">
 									<a role="button" data-toggle="collapse"
-										data-parent="#accordion-Burritos" href="#Burritos"
-										aria-expanded="true" aria-controls="Burritos"> Burritos </a>
+										data-parent="#accordion-Indian_Pizzas" href="#Indian_Pizzas"
+										aria-expanded="true" aria-controls="Indian_Pizzas"> Indian
+										Pizzas </a>
 								</div>
-								<div id="Burritos" class="panel-collapse collapse in"
+								<div id="Indian_Pizzas" class="panel-collapse collapse in"
 									role="tabpanel" aria-labelledby="headingOne">
 									<div class="panel-body">
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#AmecamecaChicken"
-											data-whatever="AmecamecaChicken">
-											<span>Amecameca(Chicken)</span> <br /> <span
-												style="font-size: 12px;">Chicken, cilantro-lime rice,
-												black beans, lettuce, queso cheese and sour cream.</span>
+											data-toggle="modal"
+											data-target="#TikkaMasalaVeggiePizzaLarge"
+											data-whatever="TikkaMasalaVeggiePizzaLarge">
+											<span>Tikka Masala Veggie Pizza (Large)</span> <br /> <span
+												style="font-size: 12px;">Large Pizza with Tikka
+												Sauce, Mozzarella Cheese, Mushrooms, Red Onion, Tomatoes,
+												Bell Pepper, Garlic, Ginger, Fresh Cilantro, Green Chilies
+												and Jalapeno.</span>
 										</button>
-										<div class="modal fade" id="AmecamecaChicken" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
+										<div class="modal fade" id="TikkaMasalaVeggiePizzaLarge"
+											tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
@@ -1215,9 +1149,11 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Amecameca(Chicken)</h3>
-															<span>Chicken, cilantro-lime rice, black beans,
-																lettuce, queso cheese and sour cream.</span>
+															<h3>Tikka Masala Veggie Pizza (Large)</h3>
+															<span>Large Pizza with Tikka Sauce, Mozzarella
+																Cheese, Mushrooms, Red Onion, Tomatoes, Bell Pepper,
+																Garlic, Ginger, Fresh Cilantro, Green Chilies and
+																Jalapeno.</span>
 														</div>
 														<div class="modal-desc">
 															<form id="popup4_1" class="form-horizontal"
@@ -1225,19 +1161,19 @@
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
 																	<input type="text" size="20"
-																		name="AmecamecaChickenCount" maxlength="20"
+																		name="TikkaMasalaVeggiePizzaLargeCount" maxlength="20"
 																		required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="AmecamecaChickenSpl"
-																		maxlength="20">
+																	<input type="text" size="60"
+																		name="TikkaMasalaVeggiePizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuAmecamecaChickenSelectedItems();" />
+																			onclick="populateFullMenuTikkaMasalaVeggiePizzaLargeSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -1249,14 +1185,16 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#AmecamecaSteak"
-											data-whatever="AmecamecaSteak">
-											<span>Amecameca(Steak)</span> <br /> <span
-												style="font-size: 12px;">Steak, cilantro-lime rice,
-												black beans, lettuce, queso cheese and sour cream.</span>
+											data-toggle="modal" data-target="#TandooriVeggiePizzaLarge"
+											data-whatever="TandooriVeggiePizzaLarge">
+											<span>Tandoori Veggie Pizza (Large)</span> <br /> <span
+												style="font-size: 12px;">Large Pizza with Tandoori
+												Sauce, Mozzarella Cheese, Mushrooms, Red Onion,Tomatoes,
+												Garlic, Ginger, Fresh Cilantro, Green Chilies and Jalapeno.</span>
 										</button>
-										<div class="modal fade" id="AmecamecaSteak" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
+										<div class="modal fade" id="TandooriVeggiePizzaLarge"
+											tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
@@ -1265,28 +1203,30 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Amecameca(Steak)</h3>
-															<span>Steak, cilantro-lime rice, black beans,
-																lettuce, queso cheese and sour cream.</span>
+															<h3>Tandoori Veggie Pizza (Large)</h3>
+															<span>Large Pizza with Tandoori Sauce, Mozzarella
+																Cheese, Mushrooms, Red Onion,Tomatoes, Garlic, Ginger,
+																Fresh Cilantro, Green Chilies and Jalapeno.</span>
 														</div>
 														<div class="modal-desc">
 															<form id="popup4_2" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="AmecamecaSteakCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="text" size="20"
+																		name="TandooriVeggiePizzaLargeCount" maxlength="20"
+																		required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="AmecamecaSteakSpl"
-																		maxlength="20">
+																	<input type="text" size="60"
+																		name="TandooriVeggiePizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuAmecamecaSteakSelectedItems();" />
+																			onclick="populateFullMenuTandooriVeggiePizzaLargeSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -1298,14 +1238,17 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#AmecamecaCarnitas"
-											data-whatever="AmecamecaCarnitas">
-											<span>Amecameca(Carnitas)</span> <br /> <span
-												style="font-size: 12px;">Carnitas, cilantro-lime
-												rice, black beans, lettuce, queso cheese and sour cream.</span>
+											data-toggle="modal" data-target="#CurryVeggiePizzaLarge"
+											data-whatever="CurryVeggiePizzaLarge">
+											<span>Curry Veggie Pizza (Large)</span> <br /> <span
+												style="font-size: 12px;">Large Pizza with Curry
+												Sauce, Mozzarella Cheese, Mushrooms, Black Olive, Red Onion,
+												Tomatoes, Garlic, Ginger, Fresh Cilantro, Green Chilies and
+												Jalapeno.</span>
 										</button>
-										<div class="modal fade" id="AmecamecaCarnitas" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
+										<div class="modal fade" id="CurryVeggiePizzaLarge"
+											tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
@@ -1314,9 +1257,11 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Amecameca(Carnitas)</h3>
-															<span>Carnitas, cilantro-lime rice, black beans,
-																lettuce, queso cheese and sour cream.</span>
+															<h3>Curry Veggie Pizza (Large)</h3>
+															<span>Large Pizza with Curry Sauce, Mozzarella
+																Cheese, Mushrooms, Black Olive, Red Onion, Tomatoes,
+																Garlic, Ginger, Fresh Cilantro, Green Chilies and
+																Jalapeno.</span>
 														</div>
 														<div class="modal-desc">
 															<form id="popup4_3" class="form-horizontal"
@@ -1324,19 +1269,19 @@
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
 																	<input type="text" size="20"
-																		name="AmecamecaCarnitasCount" maxlength="20"
+																		name="CurryVeggiePizzaLargeCount" maxlength="20"
 																		required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
 																	<input type="text" size="60"
-																		name="AmecamecaCarnitasSpl" maxlength="20">
+																		name="CurryVeggiePizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuAmecamecaCarnitasSelectedItems();" />
+																			onclick="populateFullMenuCurryVeggiePizzaLargeSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -1348,15 +1293,17 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#MexicaliChicken"
-											data-whatever="MexicaliChicken">
-											<span>Mexicali (Chicken)</span> <br /> <span
-												style="font-size: 12px;">Chicken, Mexican rice, sour
-												cream, roasted sweet n' spicy corn, pico de gallo, pinto
-												beans and guacamole with fresh salsa.</span>
+											data-toggle="modal" data-target="#IndianVeggiePizzaLarge"
+											data-whatever="IndianVeggiePizzaLarge">
+											<span>Indian Veggie Pizza (Large)</span> <br /> <span
+												style="font-size: 12px;">Large Pizza with Red Sauce
+												or White Sauce, Mozzarella Cheese, Mushrooms, Black Olive,
+												Red onion, Tomatoes, Bell Pepper, Garlic, Ginger, Fresh
+												Cilantro, and Green Chilies.</span>
 										</button>
-										<div class="modal fade" id="MexicaliChicken" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
+										<div class="modal fade" id="IndianVeggiePizzaLarge"
+											tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
@@ -1365,10 +1312,11 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Mexicali (Chicken)</h3>
-															<span>Chicken, Mexican rice, sour cream, roasted
-																sweet n' spicy corn, pico de gallo, pinto beans and
-																guacamole with fresh salsa.</span>
+															<h3>Indian Veggie Pizza (Large)</h3>
+															<span>Large Pizza with Red Sauce or White Sauce,
+																Mozzarella Cheese, Mushrooms, Black Olive, Red onion,
+																Tomatoes, Bell Pepper, Garlic, Ginger, Fresh Cilantro,
+																and Green Chilies.</span>
 														</div>
 														<div class="modal-desc">
 															<form id="popup4_4" class="form-horizontal"
@@ -1376,19 +1324,19 @@
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
 																	<input type="text" size="20"
-																		name="MexicaliChickenCount" maxlength="20"
+																		name="IndianVeggiePizzaLargeCount" maxlength="20"
 																		required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="MexicaliChickenSpl"
-																		maxlength="20">
+																	<input type="text" size="60"
+																		name="IndianVeggiePizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuMexicaliChickenSelectedItems();" />
+																			onclick="populateFullMenuIndianVeggiePizzaLargeSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -1400,15 +1348,17 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#MexicaliSteak"
-											data-whatever="MexicaliSteak">
-											<span>Mexicali (Steak)</span> <br /> <span
-												style="font-size: 12px;">Steak, Mexican rice, sour
-												cream, roasted sweet n' spicy corn, pico de gallo, pinto
-												beans and guacamole with fresh salsa.</span>
+											data-toggle="modal" data-target="#LimeVeggiePizzaLarge"
+											data-whatever="LimeVeggiePizzaLarge">
+											<span>Lime Veggie Pizza (Large)</span> <br /> <span
+												style="font-size: 12px;">Large Pizza with Red Sauce,
+												Mozzarella Cheese, Mushrooms, Black Olive,Fresh Green
+												Onions, Red Onion, Tomatoes, Bell Pepper, Garlic, Ginger,
+												Fresh Dice Cucumber, Fresh Sliced Lime and Green Chili.</span>
 										</button>
-										<div class="modal fade" id="MexicaliSteak" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
+										<div class="modal fade" id="LimeVeggiePizzaLarge"
+											tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
@@ -1417,29 +1367,31 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Mexicali (Steak)</h3>
-															<span>Steak, Mexican rice, sour cream, roasted
-																sweet n' spicy corn, pico de gallo, pinto beans and
-																guacamole with fresh salsa.</span>
+															<h3>Lime Veggie Pizza (Large)</h3>
+															<span>Large Pizza with Red Sauce, Mozzarella
+																Cheese, Mushrooms, Black Olive,Fresh Green Onions, Red
+																Onion, Tomatoes, Bell Pepper, Garlic, Ginger, Fresh Dice
+																Cucumber, Fresh Sliced Lime and Green Chili.</span>
 														</div>
 														<div class="modal-desc">
 															<form id="popup4_5" class="form-horizontal"
 																onsubmit="return false;">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="MexicaliSteakCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="text" size="20"
+																		name="LimeVeggiePizzaLargeCount" maxlength="20"
+																		required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="MexicaliSteakSpl"
-																		maxlength="20">
+																	<input type="text" size="60"
+																		name="LimeVeggiePizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuMexicaliSteakSelectedItems();" />
+																			onclick="populateFullMenuLimeVeggiePizzaLargeSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -1451,15 +1403,18 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#MexicaliCarnitas"
-											data-whatever="MexicaliCarnitas">
-											<span>Mexicali (Carnitas)</span> <br /> <span
-												style="font-size: 12px;">Carnitas, Mexican rice, sour
-												cream, roasted sweet n' spicy corn, pico de gallo, pinto
-												beans and guacamole with fresh salsa.</span>
+											data-toggle="modal"
+											data-target="#PaneerTikkaMasalaPizzaLarge"
+											data-whatever="PaneerTikkaMasalaPizzaLarge">
+											<span>Paneer Tikka Masala Pizza (Large)</span> <br /> <span
+												style="font-size: 12px;">Large Pizza with Tikka
+												Sauce, Cheese, Mushrooms, Bell Pepper, Red Onion, Tomatoes,
+												Garlic, Ginger, Green Chilies and Jalapeno (on request),
+												Tikka Paneer and Fres Cilantro.</span>
 										</button>
-										<div class="modal fade" id="MexicaliCarnitas" tabindex="-1"
-											role="dialog" aria-labelledby="exampleModalLabel">
+										<div class="modal fade" id="PaneerTikkaMasalaPizzaLarge"
+											tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
@@ -1468,10 +1423,11 @@
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
-															<h3>Mexicali (Carnitas)</h3>
-															<span>Carnitas, Mexican rice, sour cream, roasted
-																sweet n' spicy corn, pico de gallo, pinto beans and
-																guacamole with fresh salsa.</span>
+															<h3>Paneer Tikka Masala Pizza (Large)</h3>
+															<span>Large Pizza with Tikka Sauce, Cheese,
+																Mushrooms, Bell Pepper, Red Onion, Tomatoes, Garlic,
+																Ginger, Green Chilies and Jalapeno (on request), Tikka
+																Paneer and Fres Cilantro.</span>
 														</div>
 														<div class="modal-desc">
 															<form id="popup4_6" class="form-horizontal"
@@ -1479,19 +1435,347 @@
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
 																	<input type="text" size="20"
-																		name="MexicaliCarnitasCount" maxlength="20"
+																		name="PaneerTikkaMasalaPizzaLargeCount" maxlength="20"
 																		required="required" pattern="^\d+$">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="MexicaliCarnitasSpl"
-																		maxlength="20">
+																	<input type="text" size="60"
+																		name="PaneerTikkaMasalaPizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
 																		<input type="button" data-dismiss="modal" name=""
 																			value="Add to Cart"
-																			onclick="populateFullMenuMexicaliCarnitasSelectedItems();" />
+																			onclick="populateFullMenuPaneerTikkaMasalaPizzaLargeSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#TandooriPaneerPizzaLarge"
+											data-whatever="TandooriPaneerPizzaLarge">
+											<span>Tandoori Paneer Pizza (Large)</span> <br /> <span
+												style="font-size: 12px;">Large Pizza with Tandoori
+												Sauce, Cheese, Mushrooms, Red Onion, Tomatoes, Garlic,
+												Ginger, Green Chilies Or Jalapeno (on request), Tandoori
+												Paneer and Fresh Cilantro.</span>
+										</button>
+										<div class="modal fade" id="TandooriPaneerPizzaLarge"
+											tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Tandoori Paneer Pizza (Large)</h3>
+															<span>Large Pizza with Tandoori Sauce, Cheese,
+																Mushrooms, Red Onion, Tomatoes, Garlic, Ginger, Green
+																Chilies Or Jalapeno (on request), Tandoori Paneer and
+																Fresh Cilantro.</span>
+														</div>
+														<div class="modal-desc">
+															<form id="popup4_7" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20"
+																		name="TandooriPaneerPizzaLargeCount" maxlength="20"
+																		required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60"
+																		name="TandooriPaneerPizzaLargeSpl" maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuTandooriPaneerPizzaLargeSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#CurryPaneerPizzaLarge"
+											data-whatever="CurryPaneerPizzaLarge">
+											<span>Curry Paneer Pizza (Large)</span> <br /> <span
+												style="font-size: 12px;">Large Pizza with Curry
+												Sauce, Cheese, Mushrooms, Bell Pepper, Red Onion, Black
+												Olives, Tomatoes, Garlic, Ginger, Green Chilies Or Jalapeno
+												(on request), Curry Paneer and Fresh Cilantro.</span>
+										</button>
+										<div class="modal fade" id="CurryPaneerPizzaLarge"
+											tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Curry Paneer Pizza (Large)</h3>
+															<span>Large Pizza with Curry Sauce, Cheese,
+																Mushrooms, Bell Pepper, Red Onion, Black Olives,
+																Tomatoes, Garlic, Ginger, Green Chilies Or Jalapeno (on
+																request), Curry Paneer and Fresh Cilantro.</span>
+														</div>
+														<div class="modal-desc">
+															<form id="popup4_8" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20"
+																		name="CurryPaneerPizzaLargeCount" maxlength="20"
+																		required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60"
+																		name="CurryPaneerPizzaLargeSpl" maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuCurryPaneerPizzaLargeSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#ChickenTikkaMasalaLarge"
+											data-whatever="ChickenTikkaMasalaLarge">
+											<span>Chicken Tikka Masala (Large)</span> <br /> <span
+												style="font-size: 12px;">Large Pizza with Tikka
+												Sauce, Tikka Chicken, Mozzarella Cheese, Mushrooms, Red
+												Onion, Bell Pepper, Garlic, Ginger, Fresh Cilantro, Green
+												Chilies and Jalapeno.</span>
+										</button>
+										<div class="modal fade" id="ChickenTikkaMasalaLarge"
+											tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Chicken Tikka Masala (Large)</h3>
+															<span>Large Pizza with Tikka Sauce, Tikka Chicken,
+																Mozzarella Cheese, Mushrooms, Red Onion, Bell Pepper,
+																Garlic, Ginger, Fresh Cilantro, Green Chilies and
+																Jalapeno.</span>
+														</div>
+														<div class="modal-desc">
+															<form id="popup4_9" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20"
+																		name="ChickenTikkaMasalaLargeCount" maxlength="20"
+																		required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60"
+																		name="ChickenTikkaMasalaLargeSpl" maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuChickenTikkaMasalaLargeSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#TandooriChickenPizzaLarge"
+											data-whatever="TandooriChickenPizzaLarge">
+											<span>Tandoori Chicken Pizza (Large)</span> <br /> <span
+												style="font-size: 12px;">Large Pizza with Tandoori
+												Sauce, Tandoori Chicken, Mozzarella Cheese, Mushrooms, Red
+												Onion, Garlic, Ginger, Fresh Cilantro, Green Chilies and
+												Jalapeno.</span>
+										</button>
+										<div class="modal fade" id="TandooriChickenPizzaLarge"
+											tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Tandoori Chicken Pizza (Large)</h3>
+															<span>Large Pizza with Tandoori Sauce, Tandoori
+																Chicken, Mozzarella Cheese, Mushrooms, Red Onion,
+																Garlic, Ginger, Fresh Cilantro, Green Chilies and
+																Jalapeno.</span>
+														</div>
+														<div class="modal-desc">
+															<form id="popup4_10" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20"
+																		name="TandooriChickenPizzaLargeCount" maxlength="20"
+																		required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60"
+																		name="TandooriChickenPizzaLargeSpl" maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuTandooriChickenPizzaLargeSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#ChickenCurryPizzaLarge"
+											data-whatever="ChickenCurryPizzaLarge">
+											<span>Chicken Curry Pizza (Large)</span> <br /> <span
+												style="font-size: 12px;">Large Pizza with Curry
+												Sauce, Curry Chicken, Mozzarella Cheese, Mushrooms, Black
+												Olive, Red Onion, Garlic, Ginger, Fresh Cilantro, Green
+												Chilies and Jalapeno.</span>
+										</button>
+										<div class="modal fade" id="ChickenCurryPizzaLarge"
+											tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Chicken Curry Pizza (Large)</h3>
+															<span>Large Pizza with Curry Sauce, Curry Chicken,
+																Mozzarella Cheese, Mushrooms, Black Olive, Red Onion,
+																Garlic, Ginger, Fresh Cilantro, Green Chilies and
+																Jalapeno.</span>
+														</div>
+														<div class="modal-desc">
+															<form id="popup4_11" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20"
+																		name="ChickenCurryPizzaLargeCount" maxlength="20"
+																		required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60"
+																		name="ChickenCurryPizzaLargeSpl" maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuChickenCurryPizzaLargeSelectedItems();" />
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- item end -->
+										<!-- item begin -->
+										<button type="button" class="btn btn-primary"
+											data-toggle="modal" data-target="#ButterChickenPizzaLarge"
+											data-whatever="ButterChickenPizzaLarge">
+											<span>Butter Chicken Pizza (Large)</span> <br /> <span
+												style="font-size: 12px;">Large Pizza with Butter
+												Sauce, Cheese, Red Onion, Tomatoes, Chopped Garlic, Ginger,
+												Butter Chicken, Fresh Cilantro, Green Chili.</span>
+										</button>
+										<div class="modal fade" id="ButterChickenPizzaLarge"
+											tabindex="-1" role="dialog"
+											aria-labelledby="exampleModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-box-left">
+														<div class="modal-head">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+															<h3>Butter Chicken Pizza (Large)</h3>
+															<span>Large Pizza with Butter Sauce, Cheese, Red
+																Onion, Tomatoes, Chopped Garlic, Ginger, Butter Chicken,
+																Fresh Cilantro, Green Chili.</span>
+														</div>
+														<div class="modal-desc">
+															<form id="popup4_12" class="form-horizontal"
+																onsubmit="return false;">
+																<div class="modal-textarea">
+																	<h4>Quantity</h4>
+																	<input type="text" size="20"
+																		name="ButterChickenPizzaLargeCount" maxlength="20"
+																		required="required" pattern="^\d+$">
+																	<h5>
+																		Special Instructions<span>Additional charges
+																			may apply.</span>
+																	</h5>
+																	<input type="text" size="60"
+																		name="ButterChickenPizzaLargeSpl" maxlength="20">
+																	<div class="clearfix"></div>
+																	<div class="modal-sub">
+																		<input type="button" data-dismiss="modal" name=""
+																			value="Add to Cart"
+																			onclick="populateFullMenuButterChickenPizzaLargeSelectedItems();" />
 																	</div>
 																</div>
 															</form>
@@ -1515,7 +1799,7 @@
 								<div class="full-menu-list-item" id="m_${loop.index}">
 									<h4>${m.key}</h4>
 									<span class="full-menu-remove-item"
-										onclick="remove_chalupa_fresh_mexican_grill_item('m_${loop.index}');">X</span>
+										onclick="remove_chicagos_pizza_item('m_${loop.index}');">X</span>
 									<figure>${m.value}</figure>
 								</div>
 							</c:forEach>
@@ -1523,7 +1807,7 @@
 						<div class="pick-deliver">
 							<div class="checkout">
 								<form action="${pageContext.request.contextPath}/menu/saveMenu"
-									id="chalupa_fresh_mexican_grill_target" method="post">
+									id="chicagos_pizza_target" method="post">
 									<input type="hidden" name="full_menu_items"
 										id="full_menu_items"> <input type="hidden"
 										name="cuisineType" value="${menu.cuisine}">
@@ -1531,9 +1815,9 @@
 										placeholder="Enter your comments to restaurant here"
 										class="form-control">${menu.comments}</textarea>
 									<br />
-									<!-- <button type="button" onclick="chalupa_fresh_mexican_grill_menu_submit();"
+									<!-- <button type="button" onclick="chicagos_pizza_menu_submit();"
 										class="btn btn-default">Next</button> -->
-									<a href="javascript:chalupa_fresh_mexican_grill_menu_submit();">Next</a>
+									<a href="javascript:chicagos_pizza_menu_submit();">Next</a>
 								</form>
 							</div>
 							<p></p>
@@ -1559,7 +1843,7 @@
 			var desc = $(this).children().next().next().text();
 			console.log("Title: " + name);
 			console.log("Desc: " + desc);
-			chalupa_fresh_mexican_grill_menu_items.push(name + "+" + desc); //chalupa_fresh_mexican_grill_menu_items is in chalupa_fresh_mexican_grill_95670.js 
+			chicagos_pizza_menu_items.push(name + "+" + desc); //chicagos_pizza_menu_items is in chicagos_pizza_95630.js 
 		});
 	});
 </script>

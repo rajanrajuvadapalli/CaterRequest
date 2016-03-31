@@ -1,0 +1,155 @@
+{
+	"cuisine": "SANDWICH",
+	"categories": [{
+		"code": "C_1",
+		"name": "SALADS",
+		"items": [{
+			"code": "C_1_1",
+			"name": "Firehouse Salad(Grilled Chicken)",
+			"description": "Grilled Chicken, dressing, Romaine, tomato, bell pepper, cucumber, mozzarella, pepperoncini, kalamata olives, and light Italian dressing.",
+			"isSelected": false
+		}, {
+			"code": "C_1_2",
+			"name": "Italian with Grilled Chicken Salad",
+			"description": "Salami and grilled chicken breast, dressing, Romaine, tomato, bell pepper, cucumber, mozzarella, pepperoncini, kalamata olives, and light Italian dressing.",
+			"isSelected": false
+		}, {
+			"code": "C_1_3",
+			"name": "Hook and Ladder Salad",
+			"description": "Smoked turkey breast and virginia honey ham, dressing, Romaine, tomato, bell pepper, cucumber, mozzarella, pepperoncini, kalamata olives, and light Italian dressing.",
+			"isSelected": false
+		}, {
+			"code": "C_1_4",
+			"name": "Momma's Homemade Chicken Salad",
+			"description": "A scoop of chicken salad with pecans, dressing. Romaine, tomato, bell pepper, cucumber, mozzarella, pepperoncini, kalamata olives, and light Italian dressing.",
+			"isSelected": false
+		}]
+	}, {
+		"code": "C_2",
+		"name": "HOT_SPECIALITY_SUBS",
+		"items": [{
+			"code": "C_2_1",
+			"name": "Hook and Ladder Sandwich",
+			"description": "Smoked turkey breast, virginia honey ham, monterey jack, served fully involved.",
+			"isSelected": false
+		}, {
+			"code": "C_2_2",
+			"name": "Firehouse Meatball Sandwich",
+			"description": "Italian meatballs, provolone, zesty marinara, Italian seasonings.",
+			"isSelected": false
+		}, {
+			"code": "C_2_3",
+			"name": "New York Steamer Sandwich",
+			"description": "USDA choice corned beef brisket, pastrami, provolone, deli mustard, mayo, Italian dressing. ",
+			"isSelected": false
+		}, {
+			"code": "C_2_4",
+			"name": "Italian Sandwich",
+			"description": "Genoa salami, pepperoni, virginia honey ham, provolone, Italian dressing and seasonings, served fully involved.",
+			"isSelected": false
+		}, {
+			"code": "C_2_5",
+			"name": "Turkey Bacon Ranch Sandwich",
+			"description": "Smoked turkey breast, bacon, cheddar, onion, lettuce, tomato, mayo, and creamy peppercorn ranch dressing.",
+			"isSelected": false
+		}, {
+			"code": "C_2_6",
+			"name": "Club on a Sub",
+			"description": "Smoked turkey breast, virginia honey ham, bacon, monterey jack, served fully involved.",
+			"isSelected": false
+		}, {
+			"code": "C_2_7",
+			"name": "Steak and Cheese Sandwich",
+			"description": "Sauteed USDA choice steak, provolone, sauteed peppers and onions, mayo, deli mustard.",
+			"isSelected": false
+		}, {
+			"code": "C_2_8",
+			"name": "Engineer Sandwich",
+			"description": "Smoked turkey breast, Swiss, sauteed mushrooms, served fully involved.",
+			"isSelected": false
+		}, {
+			"code": "C_2_9",
+			"name": "Firehouse Hero",
+			"description": "Usda choice roast beef, smoked turkey breast, virginia honey ham, provolone, served fully involved.",
+			"isSelected": false
+		}]
+	}, {
+		"code": "C_3",
+		"name": "HEARTY__FLAVORFULL_SUB",
+		"items": [{
+			"code": "C_3_1",
+			"name": "Sriracha Beef Sub",
+			"description": "Hot USDA choice roast beef, monterey jack, spicy sriracha sauce, lettuce, tomato, onion.",
+			"isSelected": false
+		}, {
+			"code": "C_3_2",
+			"name": "Capt. Sorensen's Datil Pepper Grilled Chicken Sub",
+			"description": "Hot grilled chicken, monterey jack, Capt. Sorensen's Datil Pepper Sauce, lettuce, tomato, onion. ",
+			"isSelected": false
+		}, {
+			"code": "C_3_3",
+			"name": "Hook and Laddar Light Sub",
+			"description": "Hot smoked turkey breast, virginia honey ham, monterey jack, lettuce, tomato, onion, deli mustard.",
+			"isSelected": false
+		}, {
+			"code": "C_3_4",
+			"name": "Turkey and Cranberry Sub",
+			"description": "Hot smoked turkey breast, monterey jack, cranberry spread, lettuce, tomato, onion.",
+			"isSelected": false
+		}, {
+			"code": "C_3_5",
+			"name": "Turkey Salsa Verde Sub",
+			"description": "Hot smoked turkey breast, monterey jack, salsa verde sauce, lettuce, tomato, onion.",
+			"isSelected": false
+		}, {
+			"code": "C_3_6",
+			"name": "Momma's Homemade Chicken Salad Sub",
+			"description": "Chicken salad, pecans, swiss, tomato.",
+			"isSelected": false
+		}]
+	}, {
+		"code": "C_4",
+		"name": "SIDES",
+		"items": [{
+			"code": "C_4_1",
+			"name": "Cookie",
+			"description": "",
+			"isSelected": false
+		}, {
+			"code": "C_4_2",
+			"name": "Brownie",
+			"description": "",
+			"isSelected": false
+		}, {
+			"code": "C_4_3",
+			"name": "Doritos nacho cheese ",
+			"description": "",
+			"isSelected": false
+		}, {
+			"code": "C_4_4",
+			"name": "Doritos cool ranch ",
+			"description": "",
+			"isSelected": false
+		}, {
+			"code": "C_4_5",
+			"name": "Baked lay's ",
+			"description": "",
+			"isSelected": false
+		}, {
+			"code": "C_4_6",
+			"name": "Baked lay's barbecue ",
+			"description": "",
+			"isSelected": false
+		}, {
+			"code": "C_4_7",
+			"name": "Mrs. Vickies jalapeno ",
+			"description": "",
+			"isSelected": false
+		}, {
+			"code": "C_4_8",
+			"name": "Sun chips.",
+			"description": "",
+			"isSelected": false
+		}]
+	}]
+}
