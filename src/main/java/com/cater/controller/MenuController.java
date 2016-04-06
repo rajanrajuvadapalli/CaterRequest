@@ -488,7 +488,7 @@ public class MenuController {
 					}
 				}
 				modelMap.put("prevR", previouslySelectedRestaurants);
-				if (Boolean.FALSE.equals(fmf)) {
+				if (!Boolean.TRUE.equals(fmf)) {//fmf could be null. Therefore, double negative logic.
 					com.cater.model.Address eventLocation = e.getLocation();
 					modelMap.put("eventLocation", eventLocation);
 					//modelMap.put("restaurants", restaurants);
