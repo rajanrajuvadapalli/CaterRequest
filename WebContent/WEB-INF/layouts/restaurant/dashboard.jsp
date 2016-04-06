@@ -19,7 +19,7 @@
 			</button>
 			<ul>
 				<c:forEach items="${errors}" var="e">
-					<li align="left">${e}</li>
+					<li>${e}</li>
 				</c:forEach>
 			</ul>
 		</div>
@@ -32,7 +32,7 @@
 			</button>
 			<ul>
 				<c:forEach items="${successMessages}" var="sm">
-					<li align="left">${sm}</li>
+					<li>${sm}</li>
 				</c:forEach>
 			</ul>
 		</div>
@@ -45,7 +45,7 @@
 			</button>
 			<ul>
 				<c:forEach items="${warnings}" var="w">
-					<li align="left">${w}</li>
+					<li>${w}</li>
 				</c:forEach>
 			</ul>
 		</div>
