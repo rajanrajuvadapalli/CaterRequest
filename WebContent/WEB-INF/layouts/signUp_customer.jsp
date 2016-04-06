@@ -53,7 +53,7 @@
 	</c:if>
 </div>
 
-<div class="container container-fluid">
+<div>
 	<div class="row">
 		<div class="col-sm-4">
 			<form class="form-horizontal"
