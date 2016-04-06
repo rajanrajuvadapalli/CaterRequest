@@ -14,8 +14,9 @@
 <![endif]-->
 
 <!-- <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script> -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlobAYE25Q2m62_DX3wc1AMimO2Xr-WHc&signed_in=true&libraries=places&callback=initAutocomplete"
+        async defer></script>
 <script src="${pageContext.request.contextPath}/resources/js/cater-maps.js"></script>
-
 
 <!-- <script src="http://maps.google.com/maps?file=api&v=2&key=AIzaSyAlobAYE25Q2m62_DX3wc1AMimO2Xr-WHc" type="text/javascript"></script>  -->
 <!-- <script src = "http://www.myersdaily.org/joseph/javascript/md5.js"></script> -->
