@@ -3,8 +3,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlobAYE25Q2m62_DX3wc1AMimO2Xr-WHc&signed_in=true&libraries=places&callback=initAutocomplete"
-        async defer></script>
+<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlobAYE25Q2m62_DX3wc1AMimO2Xr-WHc&signed_in=true&libraries=places&callback=initAutocomplete"
+	async defer></script>
 
 <div class="col-sm-10 col-sm-offset-1 page-header">
 	<h1>Create Event</h1>
@@ -60,7 +61,7 @@
 		action="${pageContext.request.contextPath}/customer/createEvent"
 		enctype="application/x-www-form-urlencoded"
 		onsubmit="return validateEventForm();">
-		
+
 		<div class="panel panel-info">
 			<div class="panel-heading">
 				<h3 class="panel-title">The Basics</h3>
@@ -105,12 +106,11 @@
 
 				<div class="form-group">
 					<label for="kids_count" class="col-sm-3 control-label">Number
-						of Kids :
-					</label>
+						of Kids : </label>
 					<div class="col-sm-6">
 						<input type="text" size="20" maxlength="20" name="kids_count"
-							id="kids_count" pattern="[0-9]+"
-							title="Must be a Number" class="form-control">
+							id="kids_count" pattern="[0-9]+" title="Must be a Number"
+							class="form-control">
 					</div>
 				</div>
 
@@ -144,8 +144,9 @@
 				<div class="form-group">
 					<label for="addressText" class="col-sm-3 control-label"> </label>
 					<div class="col-sm-6" id="locationField">
-						<input id="autocomplete" name="addressString" placeholder="Enter your address"
-							onFocus="geolocate()" type="text" class="form-control"
+						<input id="autocomplete" name="addressString"
+							placeholder="Enter your address" onFocus="geolocate()"
+							type="text" class="form-control"
 							value="${sessionScope.addressString}">
 					</div>
 				</div>
@@ -156,7 +157,7 @@
 					<div class="col-sm-2">
 						<input type="text" size="5" maxlength="10" name="street_number"
 							id="street_number" placeholder="Street #" class="form-control">
-							
+
 					</div>
 					<div class="col-sm-4">
 						<input type="text" size="30" maxlength="50" name="street_name"
@@ -181,8 +182,7 @@
 					</label>
 					<div class="col-sm-6">
 						<input type="text" size="30" name="city" required="required"
-							id="locality" placeholder="City" class="form-control"
-							>
+							id="locality" placeholder="City" class="form-control">
 					</div>
 				</div>
 				<div class="form-group">
@@ -202,8 +202,8 @@
 					<div class="col-sm-6">
 						<input type="text" size="10" name="zip" maxlength="10"
 							id="postal_code" required="required" placeholder="Ex.: xxxxx"
-							value="${sessionScope.zip}"
-							pattern="^\d{5}(\-\d{4})?$" class="form-control">
+							value="${sessionScope.zip}" pattern="^\d{5}(\-\d{4})?$"
+							class="form-control">
 					</div>
 				</div>
 				<div class="form-group">
@@ -216,8 +216,11 @@
 				</div>
 			</div>
 		</div>
+		<!-- Users will start by selecting the menu -->
+		<input type="text" hidden="hidden" name="cuisineType"
+			value="${sessionScope.cuisineType}">
 		<!-- Guests will start by selecting the menu -->
-		<c:if test="${sessionScope.user.isGuest()}">
+		<%-- <c:if test="${sessionScope.user.isGuest()}">
 			<input type="text" hidden="hidden" name="cuisineType" value="${sessionScope.cuisineType}">
 		</c:if>
 		<c:if test="${!sessionScope.user.isGuest() && !sessionScope.full_menu_flow}">
@@ -232,24 +235,32 @@
 					</div>
 				</div>
 			</div>
-		</c:if>
-		<c:if test="${!sessionScope.user.isGuest()}">
+		</c:if> --%>
+		<%-- <c:if test="${!sessionScope.user.isGuest()}">
 			<div class="col-sm-1 col-xs-6">
 				<button type="button" class="btn btn-default"
 					onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">
 					Cancel</button>
 			</div>
-		</c:if>
+		</c:if> --%>
 		<div class="row">
-			<div class="col-sm-12 col-md-push-10">
-			<c:choose>
-				<c:when test="${sessionScope.user.isGuest()}">
-					<button type="submit" class="btn btn-default">Next</button>
-				</c:when>
-				<c:otherwise>
-					<button type="submit" class="btn btn-default">Create Event</button>
-				</c:otherwise>
-			</c:choose>
+			<div class="col-sm-1 col-xs-6">
+				<c:if test="${!sessionScope.user.isGuest()}">
+					<button type="button" class="btn btn-default"
+						onclick="window.location.href='${pageContext.request.contextPath}/dashboard'">
+						Cancel</button>
+				</c:if>
+			</div>
+			<div class="col-sm-1 col-md-push-9">
+				<c:choose>
+					<c:when test="${sessionScope.user.isGuest()}">
+						<button type="submit" class="btn btn-default">Next</button>
+					</c:when>
+					<c:otherwise>
+						<button type="submit" class="btn btn-default">Create
+							Event</button>
+					</c:otherwise>
+				</c:choose>
 			</div>
 			<br /> <br /> <br />
 		</div>
@@ -265,25 +276,22 @@
 				populateDeliveryOption();
 				//Cuisine type is not required here
 				$("select[name=cuisineType]").removeAttr('required');
-				$("input[id=datetimepicker_date]").datetimepicker(
-						{
-							dayOfWeekStart : 0,
-							lazyInit : true,
-							lang : 'en',
-							//closeOnDateSelect : true,
-							minDate : moment().add(72, "hours").format(
-									'YYYY/MM/DD'), //for today use 0 or -1970/01/01
-							startDate : moment().add(72, "hours").format(
-									'YYYY/MM/DD'),
-							timepicker:false,
-							format:'Y/m/d'
-						});
+				$("input[id=datetimepicker_date]").datetimepicker({
+					dayOfWeekStart : 0,
+					lazyInit : true,
+					lang : 'en',
+					//closeOnDateSelect : true,
+					minDate : moment().add(72, "hours").format('YYYY/MM/DD'), //for today use 0 or -1970/01/01
+					startDate : moment().add(72, "hours").format('YYYY/MM/DD'),
+					timepicker : false,
+					format : 'Y/m/d'
+				});
 				$("input[id=datetimepicker_time]").datetimepicker(
 						{
 							lazyInit : true,
 							lang : 'en',
-							datepicker:false,
-							format:'H:i',
+							datepicker : false,
+							format : 'H:i',
 							allowTimes : [ '6:00', '6:15', '6:30', '6:45',
 									'7:00', '7:15', '7:30', '7:45', '8:00',
 									'8:15', '8:30', '8:45', '9:00', '9:15',

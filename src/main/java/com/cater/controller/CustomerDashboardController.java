@@ -251,6 +251,7 @@ public class CustomerDashboardController {
 				&& NUMERIC.matcher(budgetTotalParameter).matches()) {
 			e.setBudgetTotal(Integer.parseInt(budgetTotalParameter));
 		}
+		Menu m = (Menu) httpSession.getAttribute("menu");
 		if (user.isGuest()) {
 			// For guest user, save data in session
 			e.setId(1);
@@ -264,8 +265,7 @@ public class CustomerDashboardController {
 		}
 		else {
 			e.setCustomer(c);
-			if (Boolean.TRUE.equals(fmf)) {
-				Menu m = (Menu) httpSession.getAttribute("menu");
+			if (Boolean.TRUE.equals(fmf) || m != null) {
 				m.setEvent(e);
 				customerService.saveOrUpdateMenu(m);
 				httpSession.setAttribute("menuId", m.getId());
@@ -300,7 +300,8 @@ public class CustomerDashboardController {
 				return "menus/t__cateringRestaurants";
 			}
 		}
-		else if (fmf != null && Boolean.TRUE.equals((Boolean) fmf)) {
+		else if ((fmf != null && Boolean.TRUE.equals((Boolean) fmf))
+				|| m != null) {
 			redirectAttributes.addAttribute("eventId", e.getId());
 			httpSession.setAttribute("eventName", e.getName());
 			return "redirect:/menu/view/all";

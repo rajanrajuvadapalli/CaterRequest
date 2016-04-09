@@ -205,6 +205,9 @@
 											Price</button>
 									</form>
 								</c:when>
+								<c:when test="${}">
+								
+								</c:when>
 								<c:otherwise>
 									<a
 										href="${pageContext.request.contextPath}/menu/selectMenu?eventId=${event.id}&cuisineType=${menu.cuisine}"

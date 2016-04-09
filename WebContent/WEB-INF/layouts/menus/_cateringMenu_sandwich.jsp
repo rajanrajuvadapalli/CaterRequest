@@ -150,7 +150,9 @@
 											SELECTED, CLICK ON THE BUTTON BELOW TO SELECT THE RESTAURANTS
 											TO REQUEST QUOTE FROM
 										</figure>
-										<c:choose>
+										<button type="button" onclick="sandwich_menu_submit();"
+													class="btn btn-default">Next</button>
+										<%-- <c:choose>
 											<c:when test="${sessionScope.user.isGuest()}">
 												<button type="button" onclick="sandwich_menu_submit();"
 													class="btn btn-default">Next</button>
@@ -159,10 +161,9 @@
 												<button type="button" onclick="sandwich_menu_submit();"
 													class="btn btn-default">Select Restaurants</button>
 											</c:otherwise>
-										</c:choose>
+										</c:choose> --%>
 									</form>
 								</div>
-
 							</section>
 						</div>
 					</section>

@@ -121,7 +121,7 @@ public class MenuController {
 						StringUtils.trim(menuModel.getComments()), null);
 			}
 		}
-		else {
+		else if (StringUtils.isNotBlank(eventId)) {
 			// First check the DB if a menu is selected earlier for this cuisine.
 			e = customerService
 					.findEventWithId(Helper.stringToInteger(eventId));
@@ -145,9 +145,9 @@ public class MenuController {
 					}
 				}
 			}
+			httpSession.setAttribute("eventName", e.getName());
+			httpSession.setAttribute("eventId", e.getId() + "");
 		}
-		httpSession.setAttribute("eventName", e.getName());
-		httpSession.setAttribute("eventId", e.getId() + "");
 		if (customerCreatedMenuModel != null
 				&& customerCreatedMenuModel.isFullMenu()) {
 			return getFullMenuView(customerCreatedMenuModel, redirectAttributes);
@@ -468,7 +468,7 @@ public class MenuController {
 			else if (Boolean.TRUE.equals(fmf)) {
 				menuModel.setFullMenu(true);
 			}
-			else {
+			else if (StringUtils.isNotBlank(eventId)) {
 				Set <Restaurant> restaurants = restaurantService
 						.fetchRestaurantsOfTypePrimary(cuisine);
 				customerService.saveOrUpdateMenu(menuModel);

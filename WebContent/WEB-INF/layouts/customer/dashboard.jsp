@@ -72,11 +72,19 @@
 				<div class="pull-right trans-bg">
 					<h3 style="color: #fff;">Request and Compare Quotes</h3>
 					<form method="GET"
+						action="${pageContext.request.contextPath}/menu/selectMenu"
+						enctype="application/x-www-form-urlencoded">
+						<input id="zip" name="zip" placeholder="Zip Code" type="text"
+							required="required" maxlength="5" /><span id="cuisineType"></span>
+						<br />
+						<button type="submit" class="btn btn-default">Let's go!</button>
+					</form>
+					<%-- <form method="GET"
 						action="${pageContext.request.contextPath}/customer/createEvent"
 						enctype="application/x-www-form-urlencoded">
 						<button type="submit" class="btn btn-default">Create
 							Event</button>
-					</form>
+					</form> --%>
 				</div>
 				<div class="clr"></div>
 			</div>
@@ -137,6 +145,10 @@
 </div>
 
 <script>
+$('document').ready(function() {
+	populateCuisineTypesDrowpdown();
+});
+
 	(function() {
 		// Menu for smaller devices
 		$('#menu').menu();
