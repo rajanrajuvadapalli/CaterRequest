@@ -1,12 +1,12 @@
 {
-	"cuisine": "SANDWICH",
+	"cuisine": "MEXICAN",
 	"categories": [{
 		"code": "C_1",
 		"name": "APPETIZERS",
 		"items": [{
 			"code": "C_1_1",
 			"name": "Queso Nachos",
-			"description": "Corn tortilla chips, house melted queso cheese, black beans and jalapeÃ±os with pico de gallo.",
+			"description": "Corn tortilla chips, house melted queso cheese, black beans and jalape&#241;os with pico de gallo.",
 			"isSelected": false
 		}, {
 			"code": "C_1_2",

@@ -1,5 +1,5 @@
 var $ = jQuery.noConflict();
-var chicagos_pizza_menu_items = [];
+var chicagos_pizza_with_a_twist_menu_items = [];
 
 function populateFullMenuHotNSpicyTandooriWingsSelectedItems() {
 	var name = "Hot-N-Spicy Tandoori Wings";
@@ -16,18 +16,18 @@ function populateFullMenuHotNSpicyTandooriWingsSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#HotNSpicyTandooriWingsCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuHoneyBBQTequilaLimeSelectedItems() {
 	var name = "Honey BBQ Tequila-Lime";
 	var id = $('.slide').children().length;
@@ -43,18 +43,18 @@ function populateFullMenuHoneyBBQTequilaLimeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#HoneyBBQTequilaLimeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuGarlicBreadsticksSelectedItems() {
 	var name = "Garlic Breadsticks";
 	var id = $('.slide').children().length;
@@ -70,18 +70,18 @@ function populateFullMenuGarlicBreadsticksSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#GarlicBreadsticksCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuCheeseBreadsticksSelectedItems() {
 	var name = "Cheese Breadsticks";
 	var id = $('.slide').children().length;
@@ -97,18 +97,18 @@ function populateFullMenuCheeseBreadsticksSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#CheeseBreadsticksCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuBaconBreadsticksSelectedItems() {
 	var name = "Bacon Breadsticks";
 	var id = $('.slide').children().length;
@@ -124,18 +124,18 @@ function populateFullMenuBaconBreadsticksSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#BaconBreadsticksCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuIndianStyleBreadsticksSelectedItems() {
 	var name = "Indian Style Breadsticks";
 	var id = $('.slide').children().length;
@@ -151,17 +151,19 @@ function populateFullMenuIndianStyleBreadsticksSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#IndianStyleBreadsticksCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuGardenSaladSelectedItems() {
 	var name = "Garden Salad";
 	var id = $('.slide').children().length;
@@ -177,18 +179,18 @@ function populateFullMenuGardenSaladSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#GardenSaladCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuChickenSaladSelectedItems() {
 	var name = "Chicken Salad";
 	var id = $('.slide').children().length;
@@ -204,17 +206,19 @@ function populateFullMenuChickenSaladSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenSaladCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuCombinationPizzaLargeSelectedItems() {
 	var name = "Combination Pizza(Large)";
 	var id = $('.slide').children().length;
@@ -230,18 +234,18 @@ function populateFullMenuCombinationPizzaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#CombinationPizzaLargeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuVegetarianPizzaLargeSelectedItems() {
 	var name = "Vegetarian Pizza (Large)";
 	var id = $('.slide').children().length;
@@ -257,18 +261,18 @@ function populateFullMenuVegetarianPizzaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#VegetarianPizzaLargeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuAllMeatPizzaLargeSelectedItems() {
 	var name = "All Meat Pizza (Large)";
 	var id = $('.slide').children().length;
@@ -284,18 +288,18 @@ function populateFullMenuAllMeatPizzaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#AllMeatPizzaLargeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuAllStarsorDeluxePizzaLargeSelectedItems() {
 	var name = "All Stars or Deluxe Pizza (Large)";
 	var id = $('.slide').children().length;
@@ -311,18 +315,18 @@ function populateFullMenuAllStarsorDeluxePizzaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#AllStarsorDeluxePizzaLargeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuHawaiianPizzaLargeSelectedItems() {
 	var name = "Hawaiian Pizza (Large)";
 	var id = $('.slide').children().length;
@@ -338,18 +342,18 @@ function populateFullMenuHawaiianPizzaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#HawaiianPizzaLargeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuLatinoStylePizzaLargeSelectedItems() {
 	var name = "Latino Style Pizza (Large)";
 	var id = $('.slide').children().length;
@@ -365,18 +369,18 @@ function populateFullMenuLatinoStylePizzaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#LatinoStylePizzaLargeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuItalianGarlicPizzaLargeSelectedItems() {
 	var name = "Italian Garlic Pizza (Large)";
 	var id = $('.slide').children().length;
@@ -392,18 +396,18 @@ function populateFullMenuItalianGarlicPizzaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ItalianGarlicPizzaLargeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuBBQChickenPizzaLargeSelectedItems() {
 	var name = "BBQ Chicken Pizza (Large)";
 	var id = $('.slide').children().length;
@@ -419,18 +423,18 @@ function populateFullMenuBBQChickenPizzaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#BBQChickenPizzaLargeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuChickenBaconRanchPizzaLargeSelectedItems() {
 	var name = "Chicken Bacon Ranch Pizza (Large)";
 	var id = $('.slide').children().length;
@@ -446,18 +450,18 @@ function populateFullMenuChickenBaconRanchPizzaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenBaconRanchPizzaLargeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuChicagosFavoritePizzaLargeSelectedItems() {
 	var name = "Chicagoâ€™s Favorite Pizza (Large)";
 	var id = $('.slide').children().length;
@@ -473,18 +477,18 @@ function populateFullMenuChicagosFavoritePizzaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChicagosFavoritePizzaLargeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuGarlicVeggiePizzaLargeSelectedItems() {
 	var name = "Garlic Veggie Pizza (Large)";
 	var id = $('.slide').children().length;
@@ -500,17 +504,19 @@ function populateFullMenuGarlicVeggiePizzaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#GarlicVeggiePizzaLargeCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuTikkaMasalaVeggiePizzaLargeSelectedItems() {
 	var name = "Tikka Masala Veggie Pizza (Large)";
 	var id = $('.slide').children().length;
@@ -526,18 +532,18 @@ function populateFullMenuTikkaMasalaVeggiePizzaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#TikkaMasalaVeggiePizzaLargeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuTandooriVeggiePizzaLargeSelectedItems() {
 	var name = "Tandoori Veggie Pizza (Large)";
 	var id = $('.slide').children().length;
@@ -553,18 +559,18 @@ function populateFullMenuTandooriVeggiePizzaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#TandooriVeggiePizzaLargeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuCurryVeggiePizzaLargeSelectedItems() {
 	var name = "Curry Veggie Pizza (Large)";
 	var id = $('.slide').children().length;
@@ -580,18 +586,18 @@ function populateFullMenuCurryVeggiePizzaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#CurryVeggiePizzaLargeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuIndianVeggiePizzaLargeSelectedItems() {
 	var name = "Indian Veggie Pizza (Large)";
 	var id = $('.slide').children().length;
@@ -607,18 +613,18 @@ function populateFullMenuIndianVeggiePizzaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#IndianVeggiePizzaLargeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuLimeVeggiePizzaLargeSelectedItems() {
 	var name = "Lime Veggie Pizza (Large)";
 	var id = $('.slide').children().length;
@@ -634,18 +640,18 @@ function populateFullMenuLimeVeggiePizzaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#LimeVeggiePizzaLargeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuPaneerTikkaMasalaPizzaLargeSelectedItems() {
 	var name = "Paneer Tikka Masala Pizza (Large)";
 	var id = $('.slide').children().length;
@@ -661,18 +667,18 @@ function populateFullMenuPaneerTikkaMasalaPizzaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#PaneerTikkaMasalaPizzaLargeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuTandooriPaneerPizzaLargeSelectedItems() {
 	var name = "Tandoori Paneer Pizza (Large)";
 	var id = $('.slide').children().length;
@@ -688,18 +694,18 @@ function populateFullMenuTandooriPaneerPizzaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#TandooriPaneerPizzaLargeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuCurryPaneerPizzaLargeSelectedItems() {
 	var name = "Curry Paneer Pizza (Large)";
 	var id = $('.slide').children().length;
@@ -715,18 +721,18 @@ function populateFullMenuCurryPaneerPizzaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#CurryPaneerPizzaLargeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuChickenTikkaMasalaLargeSelectedItems() {
 	var name = "Chicken Tikka Masala (Large)";
 	var id = $('.slide').children().length;
@@ -742,18 +748,18 @@ function populateFullMenuChickenTikkaMasalaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenTikkaMasalaLargeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuTandooriChickenPizzaLargeSelectedItems() {
 	var name = "Tandoori Chicken Pizza (Large)";
 	var id = $('.slide').children().length;
@@ -769,18 +775,18 @@ function populateFullMenuTandooriChickenPizzaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#TandooriChickenPizzaLargeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuChickenCurryPizzaLargeSelectedItems() {
 	var name = "Chicken Curry Pizza (Large)";
 	var id = $('.slide').children().length;
@@ -796,18 +802,18 @@ function populateFullMenuChickenCurryPizzaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenCurryPizzaLargeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuButterChickenPizzaLargeSelectedItems() {
 	var name = "Butter Chicken Pizza (Large)";
 	var id = $('.slide').children().length;
@@ -823,15 +829,15 @@ function populateFullMenuButterChickenPizzaLargeSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_chicagos_pizza_with_a_twist_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	chicagos_pizza_menu_items.push(data);
+	chicagos_pizza_with_a_twist_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ButterChickenPizzaLargeCloseBtn').click();
 	return false;
 }
-

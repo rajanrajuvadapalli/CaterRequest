@@ -1,5 +1,5 @@
 var $ = jQuery.noConflict();
-var ruchi_menu_items = [];
+var ruchi_indian_cuisine_menu_items = [];
 
 function populateFullMenuOnionPakorasSelectedItems() {
 	var name = "Onion Pakoras";
@@ -16,18 +16,18 @@ function populateFullMenuOnionPakorasSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#OnionPakorasCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuMixVegetablePakorasSelectedItems() {
 	var name = "Mix Vegetable Pakoras";
 	var id = $('.slide').children().length;
@@ -43,18 +43,18 @@ function populateFullMenuMixVegetablePakorasSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#MixVegetablePakorasCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuVegetableSamosaSelectedItems() {
 	var name = "Vegetable Samosa";
 	var id = $('.slide').children().length;
@@ -70,18 +70,18 @@ function populateFullMenuVegetableSamosaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#VegetableSamosaCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuVegetableCutletSelectedItems() {
 	var name = "Vegetable Cutlet";
 	var id = $('.slide').children().length;
@@ -97,18 +97,18 @@ function populateFullMenuVegetableCutletSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#VegetableCutletCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuBabyCornManchurianSelectedItems() {
 	var name = "Baby Corn Manchurian";
 	var id = $('.slide').children().length;
@@ -124,18 +124,18 @@ function populateFullMenuBabyCornManchurianSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#BabyCornManchurianCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuChickenSelectedItems() {
 	var name = "Chicken 65";
 	var id = $('.slide').children().length;
@@ -151,18 +151,18 @@ function populateFullMenuChickenSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuChickenManchurianSelectedItems() {
 	var name = "Chicken Manchurian";
 	var id = $('.slide').children().length;
@@ -178,17 +178,19 @@ function populateFullMenuChickenManchurianSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenManchurianCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuSambarSoupSelectedItems() {
 	var name = "Sambar Soup";
 	var id = $('.slide').children().length;
@@ -204,18 +206,18 @@ function populateFullMenuSambarSoupSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#SambarSoupCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuCornSoupwithChickenSelectedItems() {
 	var name = "Corn Soup with Chicken";
 	var id = $('.slide').children().length;
@@ -231,18 +233,18 @@ function populateFullMenuCornSoupwithChickenSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#CornSoupwithChickenCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuRasamSoupSelectedItems() {
 	var name = "Rasam Soup";
 	var id = $('.slide').children().length;
@@ -258,17 +260,19 @@ function populateFullMenuRasamSoupSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#RasamSoupCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuChickenTikkaMasalaSelectedItems() {
 	var name = "Chicken Tikka Masala";
 	var id = $('.slide').children().length;
@@ -284,18 +288,18 @@ function populateFullMenuChickenTikkaMasalaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenTikkaMasalaCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuChickenCurrySelectedItems() {
 	var name = "Chicken Curry";
 	var id = $('.slide').children().length;
@@ -311,18 +315,18 @@ function populateFullMenuChickenCurrySelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenCurryCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuChickenKormaSelectedItems() {
 	var name = "Chicken Korma";
 	var id = $('.slide').children().length;
@@ -338,18 +342,18 @@ function populateFullMenuChickenKormaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenKormaCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuChickenDoPiazaSelectedItems() {
 	var name = "Chicken Do Piaza";
 	var id = $('.slide').children().length;
@@ -365,18 +369,18 @@ function populateFullMenuChickenDoPiazaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenDoPiazaCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuChickenKadaiSpicySelectedItems() {
 	var name = "Chicken Kadai(Spicy)";
 	var id = $('.slide').children().length;
@@ -392,18 +396,18 @@ function populateFullMenuChickenKadaiSpicySelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenKadaiSpicyCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuChickenVindalooSpicySelectedItems() {
 	var name = "Chicken Vindaloo(Spicy)";
 	var id = $('.slide').children().length;
@@ -419,17 +423,19 @@ function populateFullMenuChickenVindalooSpicySelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenVindalooSpicyCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuLambRoganJoshSpicySelectedItems() {
 	var name = "Lamb Rogan Josh(Spicy)";
 	var id = $('.slide').children().length;
@@ -445,18 +451,18 @@ function populateFullMenuLambRoganJoshSpicySelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#LambRoganJoshSpicyCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuLambVindalooSpicySelectedItems() {
 	var name = "Lamb Vindaloo(Spicy)";
 	var id = $('.slide').children().length;
@@ -472,18 +478,18 @@ function populateFullMenuLambVindalooSpicySelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#LambVindalooSpicyCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuLambDoPiazaSelectedItems() {
 	var name = "Lamb Do Piaza";
 	var id = $('.slide').children().length;
@@ -499,18 +505,18 @@ function populateFullMenuLambDoPiazaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#LambDoPiazaCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuLambKadaiSpicySelectedItems() {
 	var name = "Lamb Kadai(Spicy)";
 	var id = $('.slide').children().length;
@@ -526,18 +532,18 @@ function populateFullMenuLambKadaiSpicySelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#LambKadaiSpicyCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuLambCurrySelectedItems() {
 	var name = "Lamb Curry";
 	var id = $('.slide').children().length;
@@ -553,17 +559,19 @@ function populateFullMenuLambCurrySelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#LambCurryCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuChannaMasalaSelectedItems() {
 	var name = "Channa Masala";
 	var id = $('.slide').children().length;
@@ -579,18 +587,18 @@ function populateFullMenuChannaMasalaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChannaMasalaCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuAlooGobiSelectedItems() {
 	var name = "Aloo Gobi";
 	var id = $('.slide').children().length;
@@ -606,18 +614,18 @@ function populateFullMenuAlooGobiSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#AlooGobiCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuMalaiKoftaSelectedItems() {
 	var name = "Malai Kofta";
 	var id = $('.slide').children().length;
@@ -633,18 +641,18 @@ function populateFullMenuMalaiKoftaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#MalaiKoftaCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuPaneerButterMasalaSelectedItems() {
 	var name = "Paneer Butter Masala";
 	var id = $('.slide').children().length;
@@ -660,18 +668,18 @@ function populateFullMenuPaneerButterMasalaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#PaneerButterMasalaCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuNavaratanKormaSelectedItems() {
 	var name = "Navaratan Korma";
 	var id = $('.slide').children().length;
@@ -687,18 +695,18 @@ function populateFullMenuNavaratanKormaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#NavaratanKormaCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuBainganBharthaSelectedItems() {
 	var name = "Baingan Bhartha";
 	var id = $('.slide').children().length;
@@ -714,18 +722,18 @@ function populateFullMenuBainganBharthaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#BainganBharthaCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuSaagPaneerSelectedItems() {
 	var name = "Saag Paneer";
 	var id = $('.slide').children().length;
@@ -741,18 +749,18 @@ function populateFullMenuSaagPaneerSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#SaagPaneerCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuMutterPaneerSelectedItems() {
 	var name = "Mutter Paneer";
 	var id = $('.slide').children().length;
@@ -768,17 +776,19 @@ function populateFullMenuMutterPaneerSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#MutterPaneerCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuPooriSelectedItems() {
 	var name = "Poori";
 	var id = $('.slide').children().length;
@@ -794,18 +804,18 @@ function populateFullMenuPooriSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#PooriCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuParathaSelectedItems() {
 	var name = "Paratha";
 	var id = $('.slide').children().length;
@@ -821,18 +831,18 @@ function populateFullMenuParathaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ParathaCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuRotiSelectedItems() {
 	var name = "Roti";
 	var id = $('.slide').children().length;
@@ -848,18 +858,18 @@ function populateFullMenuRotiSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#RotiCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuNaanSelectedItems() {
 	var name = "Naan";
 	var id = $('.slide').children().length;
@@ -875,18 +885,18 @@ function populateFullMenuNaanSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#NaanCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuAlooParathaSelectedItems() {
 	var name = "Aloo Paratha";
 	var id = $('.slide').children().length;
@@ -902,18 +912,18 @@ function populateFullMenuAlooParathaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#AlooParathaCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuOnionKulchaSelectedItems() {
 	var name = "Onion Kulcha";
 	var id = $('.slide').children().length;
@@ -929,17 +939,19 @@ function populateFullMenuOnionKulchaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#OnionKulchaCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuWhiteRiceSelectedItems() {
 	var name = "White Rice";
 	var id = $('.slide').children().length;
@@ -955,18 +967,18 @@ function populateFullMenuWhiteRiceSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#WhiteRiceCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuRaitaSelectedItems() {
 	var name = "Raita";
 	var id = $('.slide').children().length;
@@ -982,17 +994,19 @@ function populateFullMenuRaitaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#RaitaCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuVegetableFriedRiceSelectedItems() {
 	var name = "Vegetable Fried Rice";
 	var id = $('.slide').children().length;
@@ -1008,18 +1022,18 @@ function populateFullMenuVegetableFriedRiceSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#VegetableFriedRiceCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuEggFriedRiceSelectedItems() {
 	var name = "Egg Fried Rice";
 	var id = $('.slide').children().length;
@@ -1035,18 +1049,18 @@ function populateFullMenuEggFriedRiceSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#EggFriedRiceCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuChickenFriedRiceSelectedItems() {
 	var name = "Chicken Fried Rice";
 	var id = $('.slide').children().length;
@@ -1062,18 +1076,18 @@ function populateFullMenuChickenFriedRiceSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenFriedRiceCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuVegetableDumBiryaniSelectedItems() {
 	var name = "Vegetable Dum Biryani";
 	var id = $('.slide').children().length;
@@ -1089,18 +1103,18 @@ function populateFullMenuVegetableDumBiryaniSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#VegetableDumBiryaniCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuHyderabadiChickenDumBiryaniSelectedItems() {
 	var name = "Hyderabadi Chicken Dum Biryani";
 	var id = $('.slide').children().length;
@@ -1116,18 +1130,18 @@ function populateFullMenuHyderabadiChickenDumBiryaniSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#HyderabadiChickenDumBiryaniCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuLambBiryaniSpicySelectedItems() {
 	var name = "Lamb Biryani(Spicy)";
 	var id = $('.slide').children().length;
@@ -1143,17 +1157,19 @@ function populateFullMenuLambBiryaniSpicySelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#LambBiryaniSpicyCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuGulabJamunPlainSelectedItems() {
 	var name = "Gulab Jamun (Plain)";
 	var id = $('.slide').children().length;
@@ -1169,18 +1185,18 @@ function populateFullMenuGulabJamunPlainSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#GulabJamunPlainCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuRiceKheerSelectedItems() {
 	var name = "Rice Kheer";
 	var id = $('.slide').children().length;
@@ -1196,18 +1212,18 @@ function populateFullMenuRiceKheerSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#RiceKheerCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuMangoMousseSelectedItems() {
 	var name = "Mango Mousse";
 	var id = $('.slide').children().length;
@@ -1223,17 +1239,19 @@ function populateFullMenuMangoMousseSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#MangoMousseCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuAssortedSodaSelectedItems() {
 	var name = "Assorted Soda";
 	var id = $('.slide').children().length;
@@ -1249,18 +1267,18 @@ function populateFullMenuAssortedSodaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#AssortedSodaCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuBottledWaterSelectedItems() {
 	var name = "Bottled Water";
 	var id = $('.slide').children().length;
@@ -1276,15 +1294,15 @@ function populateFullMenuBottledWaterSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_ruchi_indian_cuisine_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	ruchi_menu_items.push(data);
+	ruchi_indian_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#BottledWaterCloseBtn').click();
 	return false;
 }
-

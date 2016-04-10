@@ -58,7 +58,7 @@
 				</c:otherwise>
 			</c:choose>
 			<p>
-				<strong>${r.restaurant.address.street1}${r.restaurant.address.street2},&nbsp;${r.restaurant.address.city},&nbsp;${r.restaurant.address.state},&nbsp;${r.restaurant.address.zip}</strong>
+				<strong>${r.restaurant.address.street1}&nbsp;${r.restaurant.address.street2},&nbsp;${r.restaurant.address.city},&nbsp;${r.restaurant.address.state},&nbsp;${r.restaurant.address.zip}</strong>
 				<!-- <a href="#">Get Directions</a> -->
 			</p>
 			<!-- <p>
@@ -135,7 +135,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="AlooTikkiCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Aloo Tikki</h3>
@@ -143,12 +143,13 @@
 																outside, blended W/ herbs and spices.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup1_1" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_1_1" class="form-horizontal"
+																onsubmit="return populateFullMenuAlooTikkiSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="AlooTikkiCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="AlooTikkiCount" maxlength="20"
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -157,9 +158,7 @@
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuAlooTikkiSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -185,7 +184,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="SamosasPCCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Samosas (2PC)</h3>
@@ -194,12 +193,13 @@
 																mint chutney.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup1_2" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_1_2" class="form-horizontal"
+																onsubmit="return populateFullMenuSamosasPCSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="SamosasPCCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="SamosasPCCount" maxlength="20"
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -208,9 +208,7 @@
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuSamosasPCSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -235,7 +233,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="PakoraCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Pakora</h3>
@@ -243,12 +241,12 @@
 																onions, potatoes, blended W/ herbs and spices.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup1_3" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_1_3" class="form-horizontal"
+																onsubmit="return populateFullMenuPakoraSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="PakoraCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="PakoraCount" maxlength="20" required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -257,9 +255,7 @@
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuPakoraSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -285,7 +281,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="MixedVeggiePakoraCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Mixed Veggie Pakora</h3>
@@ -294,13 +290,13 @@
 																and spices.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup1_4" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_1_4" class="form-horizontal"
+																onsubmit="return populateFullMenuMixedVeggiePakoraSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="MixedVeggiePakoraCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -309,9 +305,7 @@
 																		name="MixedVeggiePakoraSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuMixedVeggiePakoraSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -354,7 +348,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="VegetarianWrapsCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Vegetarian Wraps</h3>
@@ -363,13 +357,13 @@
 																fresh Naan.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup2_1" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_2_1" class="form-horizontal"
+																onsubmit="return populateFullMenuVegetarianWrapsSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="VegetarianWrapsCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -378,9 +372,7 @@
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuVegetarianWrapsSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -406,7 +398,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="PaneerWrapCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Paneer Wrap</h3>
@@ -415,12 +407,13 @@
 																wrapped in fresh Naan.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup2_2" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_2_2" class="form-horizontal"
+																onsubmit="return populateFullMenuPaneerWrapSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="PaneerWrapCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="PaneerWrapCount" maxlength="20"
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -429,9 +422,7 @@
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuPaneerWrapSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -457,7 +448,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="ChickenWrapCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Chicken Wrap</h3>
@@ -466,12 +457,13 @@
 																fresh Naan.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup2_3" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_2_3" class="form-horizontal"
+																onsubmit="return populateFullMenuChickenWrapSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="ChickenWrapCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="ChickenWrapCount" maxlength="20"
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -480,9 +472,7 @@
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuChickenWrapSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -508,7 +498,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="LambWrapCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Lamb Wrap</h3>
@@ -517,12 +507,13 @@
 																fresh Naan.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup2_4" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_2_4" class="form-horizontal"
+																onsubmit="return populateFullMenuLambWrapSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="LambWrapCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="LambWrapCount" maxlength="20"
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -531,9 +522,7 @@
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuLambWrapSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -578,7 +567,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="MilanTandooriSpecialCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Milan Tandoori Special</h3>
@@ -587,13 +576,13 @@
 																Lemon and Chili. Add Bread or Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup3_1" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_3_1" class="form-horizontal"
+																onsubmit="return populateFullMenuMilanTandooriSpecialSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="MilanTandooriSpecialCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -602,9 +591,7 @@
 																		name="MilanTandooriSpecialSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuMilanTandooriSpecialSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -620,7 +607,7 @@
 											data-whatever="MixedGrilledTandoori">
 											<span>Mixed Grilled Tandoori</span> <br /> <span
 												style="font-size: 12px;">Combination of all tandoori
-												EntrÃ©es (Chicken and Lamb). Add Bread or Rice.</span>
+												Entr&#233;es (Chicken and Lamb). Add Bread or Rice.</span>
 										</button>
 										<div class="modal fade" id="MixedGrilledTandoori"
 											tabindex="-1" role="dialog"
@@ -630,21 +617,21 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="MixedGrilledTandooriCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Mixed Grilled Tandoori</h3>
-															<span>Combination of all tandoori EntrÃ©es
+															<span>Combination of all tandoori Entr&#233;es
 																(Chicken and Lamb). Add Bread or Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup3_2" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_3_2" class="form-horizontal"
+																onsubmit="return populateFullMenuMixedGrilledTandooriSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="MixedGrilledTandooriCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -653,9 +640,7 @@
 																		name="MixedGrilledTandooriSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuMixedGrilledTandooriSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -684,42 +669,41 @@
 									<div class="panel-body">
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#Naan" data-whatever="Naan">
+											data-toggle="modal" data-target="#Naan1"
+											data-whatever="Naan1">
 											<span>Naan</span> <br /> <span style="font-size: 12px;">Indian
-												bread Baked in Clay Oven. Eaten W/ EntrÃ©e</span>
+												bread Baked in Clay Oven. Eaten W/ Entr&#233;e</span>
 										</button>
-										<div class="modal fade" id="Naan" tabindex="-1" role="dialog"
+										<div class="modal fade" id="Naan1" tabindex="-1" role="dialog"
 											aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="Naan1CloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Naan</h3>
 															<span>Indian bread Baked in Clay Oven. Eaten W/
-																EntrÃ©e</span>
+																Entr&#233;e</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup4_1" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_4_1" class="form-horizontal"
+																onsubmit="return populateFullMenuNaan1SelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="NaanCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="Naan1Count" maxlength="20" required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="NaanSpl"
+																	<input type="text" size="60" name="Naan1Spl"
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuNaanSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -743,19 +727,20 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="PlainRotiCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Plain Roti</h3>
 															<span>Plain bread</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup4_2" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_4_2" class="form-horizontal"
+																onsubmit="return populateFullMenuPlainRotiSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="PlainRotiCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="PlainRotiCount" maxlength="20"
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -764,9 +749,7 @@
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuPlainRotiSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -791,19 +774,20 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="AlooKulchaCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Aloo Kulcha</h3>
 															<span>Flat bread with minced potatoes.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup4_3" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_4_3" class="form-horizontal"
+																onsubmit="return populateFullMenuAlooKulchaSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="AlooKulchaCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="AlooKulchaCount" maxlength="20"
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -812,9 +796,7 @@
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuAlooKulchaSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -859,7 +841,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="TraditionalChickenCurryCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Traditional Chicken Curry</h3>
@@ -867,13 +849,13 @@
 																chili, onions, and cilantro. Add Bread or Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup5_1" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_5_1" class="form-horizontal"
+																onsubmit="return populateFullMenuTraditionalChickenCurrySelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="TraditionalChickenCurryCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -882,9 +864,7 @@
 																		name="TraditionalChickenCurrySpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuTraditionalChickenCurrySelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -896,20 +876,20 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#ButterChicken"
-											data-whatever="ButterChicken">
+											data-toggle="modal" data-target="#ButterChicken1"
+											data-whatever="ButterChicken1">
 											<span>Butter Chicken </span> <br /> <span
 												style="font-size: 12px;">Chicken simmered in Tomato
 												Cream Sauce, Herb and Spices. Add Bread or Rice.</span>
 										</button>
-										<div class="modal fade" id="ButterChicken" tabindex="-1"
+										<div class="modal fade" id="ButterChicken1" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="ButterChicken1CloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Butter Chicken</h3>
@@ -917,23 +897,22 @@
 																and Spices. Add Bread or Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup5_2" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_5_2" class="form-horizontal"
+																onsubmit="return populateFullMenuButterChicken1SelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="ButterChickenCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="ButterChicken1Count" maxlength="20"
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="ButterChickenSpl"
+																	<input type="text" size="60" name="ButterChicken1Spl"
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuButterChickenSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -945,21 +924,21 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#ChickenTikkaMasala"
-											data-whatever="ChickenTikkaMasala">
+											data-toggle="modal" data-target="#ChickenTikkaMasala1"
+											data-whatever="ChickenTikkaMasala1">
 											<span>Chicken Tikka Masala</span> <br /> <span
 												style="font-size: 12px;">Roasted Chicken Tandoori
 												cooked in spicy creamy sauce W/ Indian Herbs and Spice. Add
 												Bread or Rice.</span>
 										</button>
-										<div class="modal fade" id="ChickenTikkaMasala" tabindex="-1"
+										<div class="modal fade" id="ChickenTikkaMasala1" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="ChickenTikkaMasala1CloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Chicken Tikka Masala</h3>
@@ -968,24 +947,22 @@
 																Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup5_3" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_5_3" class="form-horizontal"
+																onsubmit="return populateFullMenuChickenTikkaMasala1SelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="ChickenTikkaMasalaCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="ChickenTikkaMasala1Count" maxlength="20"
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
 																	<input type="text" size="60"
-																		name="ChickenTikkaMasalaSpl" maxlength="20">
+																		name="ChickenTikkaMasala1Spl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuChickenTikkaMasalaSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1012,7 +989,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="TraditionalLambCurryCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Traditional Lamb Curry</h3>
@@ -1020,13 +997,13 @@
 																chili, onions, and cilantro. Add Bread or Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup5_4" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_5_4" class="form-horizontal"
+																onsubmit="return populateFullMenuTraditionalLambCurrySelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="TraditionalLambCurryCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -1035,9 +1012,7 @@
 																		name="TraditionalLambCurrySpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuTraditionalLambCurrySelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1052,7 +1027,7 @@
 											data-toggle="modal" data-target="#SaagLamb"
 											data-whatever="SaagLamb">
 											<span>Saag Lamb</span> <br /> <span style="font-size: 12px;">Chopped
-												Lamb cooked W/ minced spinach sautÃ©ed W/ Indian Herbs and
+												Lamb cooked W/ minced spinach saut&#233;ed W/ Indian Herbs and
 												Spices. Add Bread or Rice.</span>
 										</button>
 										<div class="modal fade" id="SaagLamb" tabindex="-1"
@@ -1062,21 +1037,22 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="SaagLambCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Saag Lamb</h3>
 															<span>Chopped Lamb cooked W/ minced spinach
-																sautÃ©ed W/ Indian Herbs and Spices. Add Bread or
+																saut&#233;ed W/ Indian Herbs and Spices. Add Bread or
 																Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup5_5" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_5_5" class="form-horizontal"
+																onsubmit="return populateFullMenuSaagLambSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="SaagLambCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="SaagLambCount" maxlength="20"
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -1085,9 +1061,7 @@
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuSaagLambSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1119,21 +1093,21 @@
 									<div class="panel-body">
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#MalaiKofta"
-											data-whatever="MalaiKofta">
+											data-toggle="modal" data-target="#MalaiKofta1"
+											data-whatever="MalaiKofta1">
 											<span>Malai Kofta</span> <br /> <span
 												style="font-size: 12px;">Vegetarian dumplings
 												simmered in Indian Herbs and Spices, and creamy curry sauce.
 												Add Bread or Rice.</span>
 										</button>
-										<div class="modal fade" id="MalaiKofta" tabindex="-1"
+										<div class="modal fade" id="MalaiKofta1" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="MalaiKofta1CloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Malai Kofta</h3>
@@ -1142,23 +1116,22 @@
 																Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup6_1" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_6_1" class="form-horizontal"
+																onsubmit="return populateFullMenuMalaiKofta1SelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="MalaiKoftaCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="MalaiKofta1Count" maxlength="20"
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="MalaiKoftaSpl"
+																	<input type="text" size="60" name="MalaiKofta1Spl"
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuMalaiKoftaSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1184,7 +1157,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="ShahiPaneerCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Shahi Paneer</h3>
@@ -1192,12 +1165,13 @@
 																Sauce, W/ tomatoes, Herbs and Spices. Add Bread or Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup6_2" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_6_2" class="form-horizontal"
+																onsubmit="return populateFullMenuShahiPaneerSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="ShahiPaneerCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="ShahiPaneerCount" maxlength="20"
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -1206,9 +1180,7 @@
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuShahiPaneerSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1234,7 +1206,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="MatarPaneerCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Matar Paneer</h3>
@@ -1243,12 +1215,13 @@
 																cilantro. Add Bread or Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup6_3" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_6_3" class="form-horizontal"
+																onsubmit="return populateFullMenuMatarPaneerSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="MatarPaneerCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="MatarPaneerCount" maxlength="20"
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -1257,9 +1230,7 @@
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuMatarPaneerSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1285,7 +1256,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="DalMakhniCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Dal Makhni</h3>
@@ -1294,12 +1265,13 @@
 																or Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup6_4" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_6_4" class="form-horizontal"
+																onsubmit="return populateFullMenuDalMakhniSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="DalMakhniCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="DalMakhniCount" maxlength="20"
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -1308,9 +1280,7 @@
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuDalMakhniSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1322,47 +1292,45 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#MixedVegetables"
-											data-whatever="MixedVegetables">
+											data-toggle="modal" data-target="#MixedVegetables1"
+											data-whatever="MixedVegetables1">
 											<span>Mixed Vegetables</span> <br /> <span
-												style="font-size: 12px;">Mixed vegetables sautÃ©ed
-												W/ Tomatoes, Peppers, Onions, Chili sautÃ©ed W/ Indian
+												style="font-size: 12px;">Mixed vegetables saut&#233;ed
+												W/ Tomatoes, Peppers, Onions, Chili saut&#233;ed W/ Indian
 												Herbs and Spices. Add Bread or Rice.</span>
 										</button>
-										<div class="modal fade" id="MixedVegetables" tabindex="-1"
+										<div class="modal fade" id="MixedVegetables1" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="MixedVegetables1CloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Mixed Vegetables</h3>
-															<span>Mixed vegetables sautÃ©ed W/ Tomatoes,
-																Peppers, Onions, Chili sautÃ©ed W/ Indian Herbs and
+															<span>Mixed vegetables saut&#233;ed W/ Tomatoes,
+																Peppers, Onions, Chili saut&#233;ed W/ Indian Herbs and
 																Spices. Add Bread or Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup6_5" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_6_5" class="form-horizontal"
+																onsubmit="return populateFullMenuMixedVegetables1SelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
-																		name="MixedVegetablesCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="MixedVegetables1Count" maxlength="20"
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="MixedVegetablesSpl"
+																	<input type="text" size="60" name="MixedVegetables1Spl"
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuMixedVegetablesSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1388,7 +1356,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="ChanaMasalaCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Chana Masala</h3>
@@ -1397,12 +1365,13 @@
 																citrus. Add Bread or Rice.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup6_6" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_6_6" class="form-horizontal"
+																onsubmit="return populateFullMenuChanaMasalaSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="ChanaMasalaCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="ChanaMasalaCount" maxlength="20"
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -1411,9 +1380,7 @@
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuChanaMasalaSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1454,20 +1421,20 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="RaitaIndianYogurtCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Raita (Indian Yogurt)</h3>
 															<span></span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup7_1" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_7_1" class="form-horizontal"
+																onsubmit="return populateFullMenuRaitaIndianYogurtSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="RaitaIndianYogurtCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -1476,9 +1443,7 @@
 																		name="RaitaIndianYogurtSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuRaitaIndianYogurtSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1502,19 +1467,20 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="BasmatiRiceCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Basmati Rice</h3>
 															<span></span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup7_2" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_7_2" class="form-horizontal"
+																onsubmit="return populateFullMenuBasmatiRiceSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="BasmatiRiceCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="BasmatiRiceCount" maxlength="20"
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -1523,9 +1489,7 @@
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuBasmatiRiceSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1553,42 +1517,40 @@
 									<div class="panel-body">
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#Kheer"
-											data-whatever="Kheer">
+											data-toggle="modal" data-target="#Kheer1"
+											data-whatever="Kheer1">
 											<span>Kheer</span> <br /> <span style="font-size: 12px;">Indian
 												Rice Pudding</span>
 										</button>
-										<div class="modal fade" id="Kheer" tabindex="-1" role="dialog"
-											aria-labelledby="exampleModalLabel">
+										<div class="modal fade" id="Kheer1" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="Kheer1CloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Kheer</h3>
 															<span>Indian Rice Pudding</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup8_1" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_8_1" class="form-horizontal"
+																onsubmit="return populateFullMenuKheer1SelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="KheerCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="Kheer1Count" maxlength="20" required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="KheerSpl"
+																	<input type="text" size="60" name="Kheer1Spl"
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuKheerSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1600,43 +1562,42 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#GulabJamun"
-											data-whatever="GulabJamun">
+											data-toggle="modal" data-target="#GulabJamun1"
+											data-whatever="GulabJamun1">
 											<span>Gulab Jamun</span> <br /> <span
 												style="font-size: 12px;">Spongy Balls with Sugar
 												Syrup</span>
 										</button>
-										<div class="modal fade" id="GulabJamun" tabindex="-1"
+										<div class="modal fade" id="GulabJamun1" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="GulabJamun1CloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Gulab Jamun</h3>
 															<span>Spongy Balls with Sugar Syrup</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup8_2" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_8_2" class="form-horizontal"
+																onsubmit="return populateFullMenuGulabJamun1SelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="GulabJamunCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="GulabJamun1Count" maxlength="20"
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="GulabJamunSpl"
+																	<input type="text" size="60" name="GulabJamun1Spl"
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuGulabJamunSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1665,42 +1626,41 @@
 									<div class="panel-body">
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#AssortedSoda"
-											data-whatever="AssortedSoda">
+											data-toggle="modal" data-target="#AssortedSoda1"
+											data-whatever="AssortedSoda1">
 											<span>Assorted Soda</span> <br /> <span
 												style="font-size: 12px;"></span>
 										</button>
-										<div class="modal fade" id="AssortedSoda" tabindex="-1"
+										<div class="modal fade" id="AssortedSoda1" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="AssortedSoda1CloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Assorted Soda</h3>
 															<span></span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup9_1" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_9_1" class="form-horizontal"
+																onsubmit="return populateFullMenuAssortedSoda1SelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="AssortedSodaCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="AssortedSoda1Count" maxlength="20"
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="AssortedSodaSpl"
+																	<input type="text" size="60" name="AssortedSoda1Spl"
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuAssortedSodaSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1712,42 +1672,41 @@
 										<!-- item end -->
 										<!-- item begin -->
 										<button type="button" class="btn btn-primary"
-											data-toggle="modal" data-target="#BottledWater"
-											data-whatever="BottledWater">
+											data-toggle="modal" data-target="#BottledWater1"
+											data-whatever="BottledWater1">
 											<span>Bottled Water</span> <br /> <span
 												style="font-size: 12px;"></span>
 										</button>
-										<div class="modal fade" id="BottledWater" tabindex="-1"
+										<div class="modal fade" id="BottledWater1" tabindex="-1"
 											role="dialog" aria-labelledby="exampleModalLabel">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="BottledWater1CloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Bottled Water</h3>
 															<span></span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup9_2" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_9_2" class="form-horizontal"
+																onsubmit="return populateFullMenuBottledWater1SelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="BottledWaterCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="BottledWater1Count" maxlength="20"
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
 																	</h5>
-																	<input type="text" size="60" name="BottledWaterSpl"
+																	<input type="text" size="60" name="BottledWater1Spl"
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuBottledWaterSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>

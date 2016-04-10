@@ -1,12 +1,12 @@
 var $ = jQuery.noConflict();
-var curry_bowl_menu_items = [];
+var curry_bowl_indian_and_indo_chinese_cuisine_menu_items = [];
 
-function populateFullMenuVegetableSamosaSelectedItems() {
+function populateFullMenuVegetableSamosa1SelectedItems() {
 	var name = "Vegetable Samosa";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=VegetableSamosaCount]').val();
-	var spl = $('input[name=VegetableSamosaSpl]').val();
+	var n = $('input[name=VegetableSamosa1Count]').val();
+	var spl = $('input[name=VegetableSamosa1Spl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -16,23 +16,24 @@ function populateFullMenuVegetableSamosaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#VegetableSamosa1CloseBtn').click();
 	return false;
 }
-function populateFullMenuVegetableCutletSelectedItems() {
+function populateFullMenuVegetableCutlet1SelectedItems() {
 	var name = "Vegetable Cutlet";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=VegetableCutletCount]').val();
-	var spl = $('input[name=VegetableCutletSpl]').val();
+	var n = $('input[name=VegetableCutlet1Count]').val();
+	var spl = $('input[name=VegetableCutlet1Spl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -42,15 +43,16 @@ function populateFullMenuVegetableCutletSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#VegetableCutlet1CloseBtn').click();
 	return false;
 }
 function populateFullMenuOnionPakoraSelectedItems() {
@@ -68,15 +70,16 @@ function populateFullMenuOnionPakoraSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#OnionPakoraCloseBtn').click();
 	return false;
 }
 function populateFullMenuMixedVegetablePakoraSelectedItems() {
@@ -94,15 +97,16 @@ function populateFullMenuMixedVegetablePakoraSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#MixedVegetablePakoraCloseBtn').click();
 	return false;
 }
 function populateFullMenuGobiManchurianSelectedItems() {
@@ -120,15 +124,16 @@ function populateFullMenuGobiManchurianSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#GobiManchurianCloseBtn').click();
 	return false;
 }
 function populateFullMenuChickenLillyPopSelectedItems() {
@@ -146,15 +151,16 @@ function populateFullMenuChickenLillyPopSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenLillyPopCloseBtn').click();
 	return false;
 }
 function populateFullMenuChickenTikkaSelectedItems() {
@@ -172,23 +178,24 @@ function populateFullMenuChickenTikkaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenTikkaCloseBtn').click();
 	return false;
 }
-function populateFullMenuChickenSelectedItems() {
+function populateFullMenuChicken1SelectedItems() {
 	var name = "Chicken 65";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=ChickenCount]').val();
-	var spl = $('input[name=ChickenSpl]').val();
+	var n = $('input[name=Chicken1Count]').val();
+	var spl = $('input[name=Chicken1Spl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -198,15 +205,16 @@ function populateFullMenuChickenSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#Chicken1CloseBtn').click();
 	return false;
 }
 function populateFullMenuTandooriShrimpSelectedItems() {
@@ -224,17 +232,19 @@ function populateFullMenuTandooriShrimpSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#TandooriShrimpCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuVegetableBiryaniSelectedItems() {
 	var name = "Vegetable Biryani";
 	var id = $('.slide').children().length;
@@ -250,15 +260,16 @@ function populateFullMenuVegetableBiryaniSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#VegetableBiryaniCloseBtn').click();
 	return false;
 }
 function populateFullMenuChickenBiryaniSelectedItems() {
@@ -276,15 +287,16 @@ function populateFullMenuChickenBiryaniSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenBiryaniCloseBtn').click();
 	return false;
 }
 function populateFullMenuCurryBowlSpChickenBiryaniSelectedItems() {
@@ -302,15 +314,16 @@ function populateFullMenuCurryBowlSpChickenBiryaniSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#CurryBowlSpChickenBiryaniCloseBtn').click();
 	return false;
 }
 function populateFullMenuLambBiryaniSelectedItems() {
@@ -328,17 +341,19 @@ function populateFullMenuLambBiryaniSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#LambBiryaniCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuRiceSelectedItems() {
 	var name = "Rice";
 	var id = $('.slide').children().length;
@@ -354,15 +369,16 @@ function populateFullMenuRiceSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#RiceCloseBtn').click();
 	return false;
 }
 function populateFullMenuYogurtRiceSelectedItems() {
@@ -380,23 +396,25 @@ function populateFullMenuYogurtRiceSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#YogurtRiceCloseBtn').click();
 	return false;
 }
-function populateFullMenuAlooGobiSelectedItems() {
+
+function populateFullMenuAlooGobi1SelectedItems() {
 	var name = "Aloo Gobi";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=AlooGobiCount]').val();
-	var spl = $('input[name=AlooGobiSpl]').val();
+	var n = $('input[name=AlooGobi1Count]').val();
+	var spl = $('input[name=AlooGobi1Spl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -406,15 +424,16 @@ function populateFullMenuAlooGobiSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#AlooGobi1CloseBtn').click();
 	return false;
 }
 function populateFullMenuBainganBhurtaSelectedItems() {
@@ -432,23 +451,24 @@ function populateFullMenuBainganBhurtaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#BainganBhurtaCloseBtn').click();
 	return false;
 }
-function populateFullMenuChannaMasalaSelectedItems() {
+function populateFullMenuChannaMasala1SelectedItems() {
 	var name = "Channa Masala";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=ChannaMasalaCount]').val();
-	var spl = $('input[name=ChannaMasalaSpl]').val();
+	var n = $('input[name=ChannaMasala1Count]').val();
+	var spl = $('input[name=ChannaMasala1Spl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -458,15 +478,16 @@ function populateFullMenuChannaMasalaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChannaMasala1CloseBtn').click();
 	return false;
 }
 function populateFullMenuMixedVegetableKormaSelectedItems() {
@@ -484,23 +505,24 @@ function populateFullMenuMixedVegetableKormaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#MixedVegetableKormaCloseBtn').click();
 	return false;
 }
-function populateFullMenuChickenCurrySelectedItems() {
+function populateFullMenuChickenCurry1SelectedItems() {
 	var name = "Chicken Curry";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=ChickenCurryCount]').val();
-	var spl = $('input[name=ChickenCurrySpl]').val();
+	var n = $('input[name=ChickenCurry1Count]').val();
+	var spl = $('input[name=ChickenCurry1Spl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -510,15 +532,16 @@ function populateFullMenuChickenCurrySelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenCurry1CloseBtn').click();
 	return false;
 }
 function populateFullMenuChickenTikkaMasalaSignatureSelectedItems() {
@@ -536,15 +559,16 @@ function populateFullMenuChickenTikkaMasalaSignatureSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenTikkaMasalaSignatureCloseBtn').click();
 	return false;
 }
 function populateFullMenuButterChickenSelectedItems() {
@@ -562,15 +586,16 @@ function populateFullMenuButterChickenSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ButterChickenCloseBtn').click();
 	return false;
 }
 function populateFullMenuChickenVindalooSelectedItems() {
@@ -588,23 +613,24 @@ function populateFullMenuChickenVindalooSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenVindalooCloseBtn').click();
 	return false;
 }
-function populateFullMenuLambCurrySelectedItems() {
+function populateFullMenuLambCurry1SelectedItems() {
 	var name = "Lamb Curry";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=LambCurryCount]').val();
-	var spl = $('input[name=LambCurrySpl]').val();
+	var n = $('input[name=LambCurry1Count]').val();
+	var spl = $('input[name=LambCurry1Spl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -614,15 +640,16 @@ function populateFullMenuLambCurrySelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#LambCurry1CloseBtn').click();
 	return false;
 }
 function populateFullMenuMuttonRoganJoshSelectedItems() {
@@ -640,15 +667,16 @@ function populateFullMenuMuttonRoganJoshSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#MuttonRoganJoshCloseBtn').click();
 	return false;
 }
 function populateFullMenuLambKormaSelectedItems() {
@@ -666,15 +694,16 @@ function populateFullMenuLambKormaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#LambKormaCloseBtn').click();
 	return false;
 }
 function populateFullMenuLambVindalooSelectedItems() {
@@ -692,17 +721,19 @@ function populateFullMenuLambVindalooSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#LambVindalooCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuTandooriRotiSelectedItems() {
 	var name = "Tandoori Roti";
 	var id = $('.slide').children().length;
@@ -718,15 +749,16 @@ function populateFullMenuTandooriRotiSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#TandooriRotiCloseBtn').click();
 	return false;
 }
 function populateFullMenuPlainNaanSelectedItems() {
@@ -744,15 +776,16 @@ function populateFullMenuPlainNaanSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#PlainNaanCloseBtn').click();
 	return false;
 }
 function populateFullMenuButterNaanSelectedItems() {
@@ -770,15 +803,16 @@ function populateFullMenuButterNaanSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ButterNaanCloseBtn').click();
 	return false;
 }
 function populateFullMenuAlooParataSelectedItems() {
@@ -796,17 +830,19 @@ function populateFullMenuAlooParataSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#AlooParataCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuGulabJamunSelectedItems() {
 	var name = "Gulab Jamun";
 	var id = $('.slide').children().length;
@@ -822,15 +858,16 @@ function populateFullMenuGulabJamunSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#GulabJamunCloseBtn').click();
 	return false;
 }
 function populateFullMenuKheerSelectedItems() {
@@ -848,15 +885,16 @@ function populateFullMenuKheerSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#KheerCloseBtn').click();
 	return false;
 }
 function populateFullMenuBreadHalwaSelectedItems() {
@@ -874,14 +912,15 @@ function populateFullMenuBreadHalwaSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_item(\''
+			+ '<span class="full-menu-remove-item" onclick="remove_curry_bowl_indian_and_indo_chinese_cuisine_item(\''
 			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
 			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	curry_bowl_menu_items.push(data);
+	curry_bowl_indian_and_indo_chinese_cuisine_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#BreadHalwaCloseBtn').click();
 	return false;
 }

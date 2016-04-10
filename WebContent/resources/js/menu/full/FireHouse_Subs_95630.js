@@ -1,5 +1,5 @@
 var $ = jQuery.noConflict();
-var fire_house_subs_menu_items = [];
+var firehouse_subs_menu_items = [];
 
 function populateFullMenuFirehouseSaladGrilledChickenSelectedItems() {
 	var name = "Firehouse Salad(Grilled Chicken)";
@@ -16,18 +16,18 @@ function populateFullMenuFirehouseSaladGrilledChickenSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#FirehouseSaladGrilledChickenCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuItalianwithGrilledChickenSaladSelectedItems() {
 	var name = "Italian with Grilled Chicken Salad";
 	var id = $('.slide').children().length;
@@ -43,18 +43,18 @@ function populateFullMenuItalianwithGrilledChickenSaladSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ItalianwithGrilledChickenSaladCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuHookandLadderSaladSelectedItems() {
 	var name = "Hook and Ladder Salad";
 	var id = $('.slide').children().length;
@@ -70,18 +70,18 @@ function populateFullMenuHookandLadderSaladSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#HookandLadderSaladCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuMommasHomemadeChickenSaladSelectedItems() {
 	var name = "Momma's Homemade Chicken Salad";
 	var id = $('.slide').children().length;
@@ -97,17 +97,19 @@ function populateFullMenuMommasHomemadeChickenSaladSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#MommasHomemadeChickenSaladCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuHookandLadderSandwichSelectedItems() {
 	var name = "Hook and Ladder Sandwich";
 	var id = $('.slide').children().length;
@@ -123,18 +125,18 @@ function populateFullMenuHookandLadderSandwichSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#HookandLadderSandwichCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuFirehouseMeatballSandwichSelectedItems() {
 	var name = "Firehouse Meatball Sandwich";
 	var id = $('.slide').children().length;
@@ -150,18 +152,18 @@ function populateFullMenuFirehouseMeatballSandwichSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#FirehouseMeatballSandwichCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuNewYorkSteamerSandwichSelectedItems() {
 	var name = "New York Steamer Sandwich";
 	var id = $('.slide').children().length;
@@ -177,18 +179,18 @@ function populateFullMenuNewYorkSteamerSandwichSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#NewYorkSteamerSandwichCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuItalianSandwichSelectedItems() {
 	var name = "Italian Sandwich";
 	var id = $('.slide').children().length;
@@ -204,18 +206,18 @@ function populateFullMenuItalianSandwichSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ItalianSandwichCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuTurkeyBaconRanchSandwichSelectedItems() {
 	var name = "Turkey Bacon Ranch Sandwich";
 	var id = $('.slide').children().length;
@@ -231,18 +233,18 @@ function populateFullMenuTurkeyBaconRanchSandwichSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#TurkeyBaconRanchSandwichCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuClubonaSubSelectedItems() {
 	var name = "Club on a Sub";
 	var id = $('.slide').children().length;
@@ -258,18 +260,18 @@ function populateFullMenuClubonaSubSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ClubonaSubCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuSteakandCheeseSandwichSelectedItems() {
 	var name = "Steak and Cheese Sandwich";
 	var id = $('.slide').children().length;
@@ -285,18 +287,18 @@ function populateFullMenuSteakandCheeseSandwichSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#SteakandCheeseSandwichCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuEngineerSandwichSelectedItems() {
 	var name = "Engineer Sandwich";
 	var id = $('.slide').children().length;
@@ -312,18 +314,18 @@ function populateFullMenuEngineerSandwichSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#EngineerSandwichCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuFirehouseHeroSelectedItems() {
 	var name = "Firehouse Hero";
 	var id = $('.slide').children().length;
@@ -339,17 +341,19 @@ function populateFullMenuFirehouseHeroSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#FirehouseHeroCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuSrirachaBeefSubSelectedItems() {
 	var name = "Sriracha Beef Sub";
 	var id = $('.slide').children().length;
@@ -365,24 +369,26 @@ function populateFullMenuSrirachaBeefSubSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#SrirachaBeefSubCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuCaptSorensensDatilPepperGrilledChickenSubSelectedItems() {
 	var name = "Capt. Sorensen's Datil Pepper Grilled Chicken Sub";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=CaptSorensensDatilPepperGrilledChickenSubCount]').val();
-	var spl = $('input[name=CaptSorensensDatilPepperGrilledChickenSubSpl]').val();
+	var n = $('input[name=CaptSorensensDatilPepperGrilledChickenSubCount]')
+			.val();
+	var spl = $('input[name=CaptSorensensDatilPepperGrilledChickenSubSpl]')
+			.val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -392,18 +398,18 @@ function populateFullMenuCaptSorensensDatilPepperGrilledChickenSubSelectedItems(
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#CaptSorensensDatilPepperGrilledChickenSubCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuHookandLaddarLightSubSelectedItems() {
 	var name = "Hook and Laddar Light Sub";
 	var id = $('.slide').children().length;
@@ -419,18 +425,18 @@ function populateFullMenuHookandLaddarLightSubSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#HookandLaddarLightSubCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuTurkeyandCranberrySubSelectedItems() {
 	var name = "Turkey and Cranberry Sub";
 	var id = $('.slide').children().length;
@@ -446,18 +452,18 @@ function populateFullMenuTurkeyandCranberrySubSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#TurkeyandCranberrySubCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuTurkeySalsaVerdeSubSelectedItems() {
 	var name = "Turkey Salsa Verde Sub";
 	var id = $('.slide').children().length;
@@ -473,18 +479,18 @@ function populateFullMenuTurkeySalsaVerdeSubSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#TurkeySalsaVerdeSubCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuMommasHomemadeChickenSaladSubSelectedItems() {
 	var name = "Momma's Homemade Chicken Salad Sub";
 	var id = $('.slide').children().length;
@@ -500,17 +506,19 @@ function populateFullMenuMommasHomemadeChickenSaladSubSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#MommasHomemadeChickenSaladSubCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuCookieSelectedItems() {
 	var name = "Cookie";
 	var id = $('.slide').children().length;
@@ -526,18 +534,18 @@ function populateFullMenuCookieSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#CookieCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuBrownieSelectedItems() {
 	var name = "Brownie";
 	var id = $('.slide').children().length;
@@ -553,18 +561,18 @@ function populateFullMenuBrownieSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#BrownieCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuDoritosnachocheeseSelectedItems() {
 	var name = "Doritos nacho cheese ";
 	var id = $('.slide').children().length;
@@ -580,18 +588,18 @@ function populateFullMenuDoritosnachocheeseSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#DoritosnachocheeseCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuDoritoscoolranchSelectedItems() {
 	var name = "Doritos cool ranch ";
 	var id = $('.slide').children().length;
@@ -607,18 +615,18 @@ function populateFullMenuDoritoscoolranchSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#DoritoscoolranchCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuBakedlaysSelectedItems() {
 	var name = "Baked lay's ";
 	var id = $('.slide').children().length;
@@ -634,18 +642,18 @@ function populateFullMenuBakedlaysSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#BakedlaysCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuBakedlaysbarbecueSelectedItems() {
 	var name = "Baked lay's barbecue ";
 	var id = $('.slide').children().length;
@@ -661,18 +669,18 @@ function populateFullMenuBakedlaysbarbecueSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#BakedlaysbarbecueCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuMrsVickiesjalapenoSelectedItems() {
 	var name = "Mrs. Vickies jalapeno ";
 	var id = $('.slide').children().length;
@@ -688,18 +696,18 @@ function populateFullMenuMrsVickiesjalapenoSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#MrsVickiesjalapenoCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuSunchipsSelectedItems() {
 	var name = "Sun chips.";
 	var id = $('.slide').children().length;
@@ -715,15 +723,15 @@ function populateFullMenuSunchipsSelectedItems() {
 			+ '<h4>'
 			+ name
 			+ '</h4>'
-			+ '<span class="full-menu-remove-item" onclick="remove_fire_house_subs_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ '<span class="full-menu-remove-item" onclick="remove_firehouse_subs_item(\''
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
-	fire_house_subs_menu_items.push(data);
+	firehouse_subs_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#SunchipsCloseBtn').click();
 	return false;
 }
-
