@@ -20,7 +20,7 @@ function populateMenuForRestaurantConsent() {
 				}
 			});
 			var checkbox = "<div class=\"col-sm-12\"><br /> <br /> ";
-			checkbox += "<input required type=\"checkbox\" name=\"menuconsent\" value=\"yes\"> I accept the menu.";
+			checkbox += "<input type=\"checkbox\" name=\"menuconsent\" value=\"yes\"> I accept the menu.";
 			checkbox += "<br /> <br /></div>";
 			$("div[id=consent-menu]").append(checkbox);
 		});

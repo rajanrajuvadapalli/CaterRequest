@@ -285,7 +285,7 @@ public class CustomerDashboardController {
 				redirectAttributes.addFlashAttribute("warnings", warnings);
 				return "t_signUp_customer";
 			}
-			else {
+			else if (StringUtils.isNotBlank(cuisineType)) {
 				com.cater.model.Address eventLocation = e.getLocation();
 				modelMap.put("eventLocation", eventLocation);
 				Set <Integer> previouslySelectedRestaurants = Sets.newHashSet();

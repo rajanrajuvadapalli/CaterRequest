@@ -80,11 +80,12 @@
 											</a></li>
 										</ul></li></span>
 							</c:if>
-
-							<span style="padding-right: 15px;"><a
-								href="${pageContext.request.contextPath}/dashboard"> <span
-									class="glyphicon glyphicon-home"></span> My Dashboard
-							</a></span>
+							<c:if test="${!sessionScope.user.isGuest()}">
+								<span style="padding-right: 15px;"><a
+									href="${pageContext.request.contextPath}/dashboard"> <span
+										class="glyphicon glyphicon-home"></span> My Dashboard
+								</a></span>
+							</c:if>
 							<span style="padding-right: 15px;"> <a
 								href="${pageContext.request.contextPath}/logout"> <span
 									class="glyphicon glyphicon-off"></span> Logout

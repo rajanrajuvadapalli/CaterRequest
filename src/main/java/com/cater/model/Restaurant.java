@@ -51,6 +51,8 @@ public class Restaurant extends TimestampEntity implements Serializable {
 	public List<Quote> quotes;
 	@Column(name = "sales_tax", length = 5, nullable = false)
 	private float salesTax;
+	@Column(name = "full_menu_exist", nullable = false, unique = false, updatable = true)
+	private boolean isFullMenuExist;
 
 	public float getSalesTax() {
 		return salesTax;
@@ -162,22 +164,17 @@ public class Restaurant extends TimestampEntity implements Serializable {
 		int result = super.hashCode();
 		result = prime * result + ((aboutUs == null) ? 0 : aboutUs.hashCode());
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
-		result = prime * result
-				+ ((contactEmail == null) ? 0 : contactEmail.hashCode());
-		result = prime * result
-				+ ((contactNumber == null) ? 0 : contactNumber.hashCode());
-		result = prime * result
-				+ ((cuisineType == null) ? 0 : cuisineType.hashCode());
-		result = prime * result
-				+ ((deliverMiles == null) ? 0 : deliverMiles.hashCode());
+		result = prime * result + ((contactEmail == null) ? 0 : contactEmail.hashCode());
+		result = prime * result + ((contactNumber == null) ? 0 : contactNumber.hashCode());
+		result = prime * result + ((cuisineType == null) ? 0 : cuisineType.hashCode());
+		result = prime * result + ((deliverMiles == null) ? 0 : deliverMiles.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + (isNumberVerified ? 1231 : 1237);
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((quotes == null) ? 0 : quotes.hashCode());
 		result = prime * result + Float.floatToIntBits(salesTax);
-		result = prime * result
-				+ ((websiteUrl == null) ? 0 : websiteUrl.hashCode());
+		result = prime * result + ((websiteUrl == null) ? 0 : websiteUrl.hashCode());
 		return result;
 	}
 
@@ -242,8 +239,7 @@ public class Restaurant extends TimestampEntity implements Serializable {
 				return false;
 		} else if (!quotes.equals(other.quotes))
 			return false;
-		if (Float.floatToIntBits(salesTax) != Float
-				.floatToIntBits(other.salesTax))
+		if (Float.floatToIntBits(salesTax) != Float.floatToIntBits(other.salesTax))
 			return false;
 		if (websiteUrl == null) {
 			if (other.websiteUrl != null)

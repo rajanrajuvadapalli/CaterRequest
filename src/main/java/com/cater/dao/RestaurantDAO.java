@@ -47,7 +47,8 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Save or update.
 	 *
-	 * @param restaurant the restaurant
+	 * @param restaurant
+	 *            the restaurant
 	 * @return true, if successful
 	 */
 	public boolean saveOrUpdate(Restaurant restaurant) {
@@ -70,7 +71,8 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Find by id.
 	 *
-	 * @param id the id
+	 * @param id
+	 *            the id
 	 * @return the restaurant
 	 */
 	public Restaurant findById(Integer id) {
@@ -80,7 +82,8 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Find by login id.
 	 *
-	 * @param loginID the login id
+	 * @param loginID
+	 *            the login id
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
@@ -113,9 +116,11 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Search restaurants by user name.
 	 *
-	 * @param userName the user name
-	 * @return User Id, Restaurant name, Phone Number, Location, Event Name, Location, Date & time, Menu,
-	 *  Restaurant Quote (Sort by Alphabet), Confirmed Restaurant, total payment.
+	 * @param userName
+	 *            the user name
+	 * @return User Id, Restaurant name, Phone Number, Location, Event Name,
+	 *         Location, Date & time, Menu, Restaurant Quote (Sort by Alphabet),
+	 *         Confirmed Restaurant, total payment.
 	 */
 	@SuppressWarnings("unchecked")
 	public List <RestaurantSearch> searchRestaurantsByUserName(String userName) {
@@ -170,8 +175,10 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Search restaurants by date range.
 	 *
-	 * @param fromDate the from date
-	 * @param toDate the to date
+	 * @param fromDate
+	 *            the from date
+	 * @param toDate
+	 *            the to date
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
@@ -234,6 +241,22 @@ public class RestaurantDAO extends DataAccessObject {
 		return super.fetchAll(Restaurant.class);
 	}
 
+	@SuppressWarnings("unchecked")
+	public List <Restaurant> fetchAllRestaurantsWithFullMenu() {
+		logger.debug("Finding all restaurants with no primary cuisine.");
+		try {
+			Session session = getSessionFactory().getCurrentSession();
+			List <Restaurant> list = session
+					.createCriteria(Restaurant.class, "res")
+					.add(Restrictions.eq("res.isFullMenuExist", true)).list();
+			return list;
+		}
+		catch (HibernateException he) {
+			logger.error("Finding all restaurants with no primary cuisine.", he);
+			throw he;
+		}
+	}
+
 	/**
 	 * Fetch all restaurants with no primary cuisine.
 	 *
@@ -263,7 +286,8 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Fetch restaurants of type.
 	 *
-	 * @param cuisine the cuisine
+	 * @param cuisine
+	 *            the cuisine
 	 * @return the sets the
 	 */
 	@SuppressWarnings("unchecked")
@@ -295,7 +319,8 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Fetch restaurants of type primary.
 	 *
-	 * @param cuisine the cuisine
+	 * @param cuisine
+	 *            the cuisine
 	 * @return the sets the
 	 */
 	@SuppressWarnings("unchecked")
@@ -306,10 +331,12 @@ public class RestaurantDAO extends DataAccessObject {
 				Session session = getSessionFactory().getCurrentSession();
 				List <Restaurant> list = session
 						.createCriteria(Restaurant.class, "res")
-						.add(Restrictions.ilike("res.cuisineType", cuisine
-								+ "%"))
+						.add(Restrictions.ilike("res.cuisineType",
+								StringUtils.lowerCase(cuisine) + "%"))
 						.add(Restrictions.eq("res.isNumberVerified", true))
 						.list();
+				logger.debug("Finding Restaurants with primary cuisine : "
+						+ cuisine + ". Found " + list.size());
 				Set <Restaurant> restaurants = Sets.newHashSet();
 				for (Restaurant r : list) {
 					restaurants.add(r);
@@ -328,7 +355,8 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Fetch restaurants of type secondary.
 	 *
-	 * @param cuisine the cuisine
+	 * @param cuisine
+	 *            the cuisine
 	 * @return the sets the
 	 */
 	@SuppressWarnings("unchecked")
@@ -381,7 +409,8 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Fetch upcoming quotes.
 	 *
-	 * @param restaurantID the restaurant id
+	 * @param restaurantID
+	 *            the restaurant id
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
@@ -411,7 +440,8 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Fetch new requests.
 	 *
-	 * @param restaurantID the restaurant id
+	 * @param restaurantID
+	 *            the restaurant id
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
@@ -442,7 +472,8 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Fetch past quotes.
 	 *
-	 * @param restaurantID the restaurant id
+	 * @param restaurantID
+	 *            the restaurant id
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
@@ -472,7 +503,8 @@ public class RestaurantDAO extends DataAccessObject {
 	/**
 	 * Fetch confirmed quotes.
 	 *
-	 * @param restaurantID the restaurant id
+	 * @param restaurantID
+	 *            the restaurant id
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
