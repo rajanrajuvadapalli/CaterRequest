@@ -341,7 +341,7 @@ public class RestaurantDashboardController {
 				}
 				quote.setNotes(notes);
 				restaurantService.saveOrUpdateQuote(quote);
-				customerService.sendNotification(quote);
+				customerService.sendNotification(quote, null);
 				List <String> successMessages = Lists.newArrayList();
 				successMessages
 						.add("Your quote is successfully submitted for event: "

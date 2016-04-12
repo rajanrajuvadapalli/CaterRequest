@@ -105,7 +105,6 @@
 									type="hidden" name="amountInCents"
 									value="${totalAmountInCents}">
 							</form>
-
 						</div>
 						<div class="col-sm-2">
 							<form class="form-horizontal" method="POST" id="event-form"
@@ -115,10 +114,7 @@
 									Restaurant</button>
 								<input type="hidden" name="xquoteId" value="${quote.id}">
 							</form>
-
 						</div>
-
-
 					</div>
 				</div>
 			</div>
@@ -227,5 +223,4 @@
          </div>
          </div>
          -->
-	</form>
 </div>

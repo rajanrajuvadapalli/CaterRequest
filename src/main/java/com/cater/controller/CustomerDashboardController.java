@@ -798,7 +798,7 @@ public class CustomerDashboardController {
 				quote.getMenu().getEvent()
 						.setStatus(EventStatus.CONFIRMED.toString());
 				restaurantService.sendNotification(quote, null);
-				customerService.sendNotification(quote);
+				customerService.sendNotification(quote, null);
 				successMessages
 						.add("Congratulations, your order has been placed!");
 			}

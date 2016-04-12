@@ -39,7 +39,7 @@ public class CustomerService {
 	@Autowired
 	private SMSHelper smsHelper;
 
-	public List<Customer> fetchAllCustomers() {
+	public List <Customer> fetchAllCustomers() {
 		return customerDAO.fetchAllCustomers();
 	}
 
@@ -67,7 +67,7 @@ public class CustomerService {
 		return eventDAO.saveOrUpdate(e);
 	}
 
-	public List<Event> fetchAllEvents() {
+	public List <Event> fetchAllEvents() {
 		return eventDAO.fetchAllEvents();
 	}
 
@@ -99,7 +99,7 @@ public class CustomerService {
 		return menuDAO.saveOrUpdate(m);
 	}
 
-	public List<Menu> findMenusWithEventId(Integer eventId) {
+	public List <Menu> findMenusWithEventId(Integer eventId) {
 		return menuDAO.findMenusWithEventId(eventId);
 	}
 
@@ -111,27 +111,26 @@ public class CustomerService {
 		return eventDAO.getNumberOfEvents();
 	}
 
-	public void sendNotification(Quote quote) {
-		emailHelper.sendNotificationEmailTo(Roles.CUSTOMER, quote, null);
+	public void sendNotification(Quote quote, StringBuilder optionalMessage) {
+		emailHelper.sendNotificationEmailTo(Roles.CUSTOMER, quote,
+				optionalMessage);
 		smsHelper.sendNotificationSMSto(Roles.CUSTOMER, quote, null);
 	}
 
-	public Map<Integer, String> sparseDownloadMyEvents(Integer customerID) {
+	public Map <Integer, String> sparseDownloadMyEvents(Integer customerID) {
 		return customerDAO.sparseDownloadMyEvents(customerID);
 	}
 
-	public List<Event> findEventsByDateRange(Date fromDate, Date toDate) {
+	public List <Event> findEventsByDateRange(Date fromDate, Date toDate) {
 		return eventDAO.findEventsByDateRange(fromDate, toDate);
-
 	}
 
-	public List<CustomerSearch> searchCustomerByName(String customerName) {
+	public List <CustomerSearch> searchCustomerByName(String customerName) {
 		return customerDAO.getCustomerInfo(customerName);
 	}
 
-	public List<CustomerSearch> searchCustomerByDateRange(Date fromDate,
+	public List <CustomerSearch> searchCustomerByDateRange(Date fromDate,
 			Date toDate) {
 		return customerDAO.getCustomerInfoByDateRange(fromDate, toDate);
 	}
-
 }
