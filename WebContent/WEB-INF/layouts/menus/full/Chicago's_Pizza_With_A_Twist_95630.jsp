@@ -4,26 +4,27 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script>
-	function remove_chicagos_pizza_item(div_id) {
+	function remove_chicagos_pizza_with_a_twist_item(div_id) {
 		var divToRemove = $("div[id=" + div_id + "]");
 		var name = divToRemove.children().children().prev().text();
 		var desc = divToRemove.children().children().next().text();
 		var data = name + "+" + desc;
 		console.log("Removing " + data);
-		chicagos_pizza_menu_items.splice($.inArray(data,
-				chicagos_pizza_menu_items), 1);
+		chicagos_pizza_with_a_twist_menu_items.splice($.inArray(data,
+				chicagos_pizza_with_a_twist_menu_items), 1);
 		divToRemove.remove();
 	}
 
-	function chicagos_pizza_menu_submit() {
-		if (chicagos_pizza_menu_items.length == 0) {
+	function chicagos_pizza_with_a_twist_menu_submit() {
+		if (chicagos_pizza_with_a_twist_menu_items.length == 0) {
 			alert("Please select at least 1 item to proceed.");
 			return false;
 		}
-		console.log(chicagos_pizza_menu_items);
-		//console.log(JSON.stringify(chicagos_pizza_menu_items));
-		$("#full_menu_items").val(JSON.stringify(chicagos_pizza_menu_items));
-		$("#chicagos_pizza_target").submit();
+		console.log(chicagos_pizza_with_a_twist_menu_items);
+		//console.log(JSON.stringify(chicagos_pizza_with_a_twist_menu_items));
+		$("#full_menu_items").val(
+				JSON.stringify(chicagos_pizza_with_a_twist_menu_items));
+		$("#chicagos_pizza_with_a_twist_target").submit();
 	}
 </script>
 
@@ -58,7 +59,7 @@
 				</c:otherwise>
 			</c:choose>
 			<p>
-				<strong>${r.restaurant.address.street1}${r.restaurant.address.street2},&nbsp;${r.restaurant.address.city},&nbsp;${r.restaurant.address.state},&nbsp;${r.restaurant.address.zip}</strong>
+				<strong>${r.restaurant.address.street1}&nbsp;${r.restaurant.address.street2},&nbsp;${r.restaurant.address.city},&nbsp;${r.restaurant.address.state},&nbsp;${r.restaurant.address.zip}</strong>
 				<!-- <a href="#">Get Directions</a> -->
 			</p>
 			<!-- <p>
@@ -135,20 +136,20 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="HotNSpicyTandooriWingsCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Hot-N-Spicy Tandoori Wings</h3>
 															<span></span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup1_1" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_1_1" class="form-horizontal"
+																onsubmit="return populateFullMenuHotNSpicyTandooriWingsSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="HotNSpicyTandooriWingsCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -157,9 +158,7 @@
 																		name="HotNSpicyTandooriWingsSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuHotNSpicyTandooriWingsSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -183,20 +182,20 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="HoneyBBQTequilaLimeCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Honey BBQ Tequila-Lime</h3>
 															<span></span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup1_2" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_1_2" class="form-horizontal"
+																onsubmit="return populateFullMenuHoneyBBQTequilaLimeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="HoneyBBQTequilaLimeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -205,9 +204,7 @@
 																		name="HoneyBBQTequilaLimeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuHoneyBBQTequilaLimeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -231,20 +228,20 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="GarlicBreadsticksCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Garlic Breadsticks</h3>
 															<span></span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup1_3" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_1_3" class="form-horizontal"
+																onsubmit="return populateFullMenuGarlicBreadsticksSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="GarlicBreadsticksCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -253,9 +250,7 @@
 																		name="GarlicBreadsticksSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuGarlicBreadsticksSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -279,20 +274,20 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="CheeseBreadsticksCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Cheese Breadsticks</h3>
 															<span></span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup1_4" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_1_4" class="form-horizontal"
+																onsubmit="return populateFullMenuCheeseBreadsticksSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="CheeseBreadsticksCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -301,9 +296,7 @@
 																		name="CheeseBreadsticksSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuCheeseBreadsticksSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -327,20 +320,20 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="BaconBreadsticksCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Bacon Breadsticks</h3>
 															<span></span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup1_5" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_1_5" class="form-horizontal"
+																onsubmit="return populateFullMenuBaconBreadsticksSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="BaconBreadsticksCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -349,9 +342,7 @@
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuBaconBreadsticksSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -376,20 +367,20 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="IndianStyleBreadsticksCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Indian Style Breadsticks</h3>
 															<span></span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup1_6" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_1_6" class="form-horizontal"
+																onsubmit="return populateFullMenuIndianStyleBreadsticksSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="IndianStyleBreadsticksCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -398,9 +389,7 @@
 																		name="IndianStyleBreadsticksSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuIndianStyleBreadsticksSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -440,19 +429,20 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="GardenSaladCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Garden Salad</h3>
 															<span></span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup2_1" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_2_1" class="form-horizontal"
+																onsubmit="return populateFullMenuGardenSaladSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="GardenSaladCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="GardenSaladCount" maxlength="20"
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -461,9 +451,7 @@
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuGardenSaladSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -487,19 +475,20 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="ChickenSaladCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Chicken Salad</h3>
 															<span></span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup2_2" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_2_2" class="form-horizontal"
+																onsubmit="return populateFullMenuChickenSaladSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20" name="ChickenSaladCount"
-																		maxlength="20" required="required" pattern="^\d+$">
+																	<input type="number" min="1" size="20"
+																		name="ChickenSaladCount" maxlength="20"
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -508,9 +497,7 @@
 																		maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuChickenSaladSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -554,7 +541,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="CombinationPizzaLargeCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Combination Pizza(Large)</h3>
@@ -563,13 +550,13 @@
 																Olives, Green Peppers and Onions.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup3_1" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_3_1" class="form-horizontal"
+																onsubmit="return populateFullMenuCombinationPizzaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="CombinationPizzaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -578,9 +565,7 @@
 																		name="CombinationPizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuCombinationPizzaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -607,7 +592,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="VegetarianPizzaLargeCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Vegetarian Pizza (Large)</h3>
@@ -616,13 +601,13 @@
 																Tomatoes.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup3_2" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_3_2" class="form-horizontal"
+																onsubmit="return populateFullMenuVegetarianPizzaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="VegetarianPizzaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -631,9 +616,7 @@
 																		name="VegetarianPizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuVegetarianPizzaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -659,7 +642,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="AllMeatPizzaLargeCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>All Meat Pizza (Large)</h3>
@@ -667,13 +650,13 @@
 																Canadian Bacon, Ground Beef and Italian Sausage.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup3_3" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_3_3" class="form-horizontal"
+																onsubmit="return populateFullMenuAllMeatPizzaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="AllMeatPizzaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -682,9 +665,7 @@
 																		name="AllMeatPizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuAllMeatPizzaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -711,6 +692,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
+																id="AllStarsorDeluxePizzaLargeCloseBtn"
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
@@ -719,13 +701,13 @@
 																Sausage, Mushrooms, Onions and Green Peppers.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup3_4" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_3_4" class="form-horizontal"
+																onsubmit="return populateFullMenuAllStarsorDeluxePizzaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="AllStarsorDeluxePizzaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -734,9 +716,7 @@
 																		name="AllStarsorDeluxePizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuAllStarsorDeluxePizzaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -761,20 +741,20 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="HawaiianPizzaLargeCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Hawaiian Pizza (Large)</h3>
 															<span>Large Pizza with Cheese, Ham and Pineapple.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup3_5" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_3_5" class="form-horizontal"
+																onsubmit="return populateFullMenuHawaiianPizzaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="HawaiianPizzaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -783,9 +763,7 @@
 																		name="HawaiianPizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuHawaiianPizzaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -811,7 +789,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="LatinoStylePizzaLargeCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Latino Style Pizza (Large)</h3>
@@ -819,13 +797,13 @@
 																Ham, White Onions, Pineapple and Jalapeno.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup3_6" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_3_6" class="form-horizontal"
+																onsubmit="return populateFullMenuLatinoStylePizzaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="LatinoStylePizzaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -834,9 +812,7 @@
 																		name="LatinoStylePizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuLatinoStylePizzaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -863,7 +839,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="ItalianGarlicPizzaLargeCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Italian Garlic Pizza (Large)</h3>
@@ -872,13 +848,13 @@
 																Chopped Garlic and Green Onion.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup3_7" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_3_7" class="form-horizontal"
+																onsubmit="return populateFullMenuItalianGarlicPizzaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="ItalianGarlicPizzaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -887,9 +863,7 @@
 																		name="ItalianGarlicPizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuItalianGarlicPizzaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -916,7 +890,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="BBQChickenPizzaLargeCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>BBQ Chicken Pizza (Large)</h3>
@@ -925,13 +899,13 @@
 																Chopped Garlic.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup3_8" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_3_8" class="form-horizontal"
+																onsubmit="return populateFullMenuBBQChickenPizzaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="BBQChickenPizzaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -940,9 +914,7 @@
 																		name="BBQChickenPizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuBBQChickenPizzaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -969,6 +941,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
+																id="ChickenBaconRanchPizzaLargeCloseBtn"
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
@@ -977,13 +950,13 @@
 																Crunchy Bacon.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup3_9" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_3_9" class="form-horizontal"
+																onsubmit="return populateFullMenuChickenBaconRanchPizzaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="ChickenBaconRanchPizzaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -992,9 +965,7 @@
 																		name="ChickenBaconRanchPizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuChickenBaconRanchPizzaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1021,6 +992,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
+																id="ChicagosFavoritePizzaLargeCloseBtn"
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
@@ -1030,13 +1002,13 @@
 																Peppers, Red Onions and Green Onions.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup3_10" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_3_10" class="form-horizontal"
+																onsubmit="return populateFullMenuChicagosFavoritePizzaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="ChicagosFavoritePizzaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -1045,9 +1017,7 @@
 																		name="ChicagosFavoritePizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuChicagosFavoritePizzaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1074,7 +1044,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="GarlicVeggiePizzaLargeCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Garlic Veggie Pizza (Large)</h3>
@@ -1083,13 +1053,13 @@
 																and Chopped Garlic.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup3_11" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_3_11" class="form-horizontal"
+																onsubmit="return populateFullMenuGarlicVeggiePizzaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="GarlicVeggiePizzaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -1098,9 +1068,7 @@
 																		name="GarlicVeggiePizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuGarlicVeggiePizzaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1146,6 +1114,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
+																id="TikkaMasalaVeggiePizzaLargeCloseBtn"
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
@@ -1156,13 +1125,13 @@
 																Jalapeno.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup4_1" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_4_1" class="form-horizontal"
+																onsubmit="return populateFullMenuTikkaMasalaVeggiePizzaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="TikkaMasalaVeggiePizzaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -1171,9 +1140,7 @@
 																		name="TikkaMasalaVeggiePizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuTikkaMasalaVeggiePizzaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1200,7 +1167,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="TandooriVeggiePizzaLargeCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Tandoori Veggie Pizza (Large)</h3>
@@ -1209,13 +1176,13 @@
 																Fresh Cilantro, Green Chilies and Jalapeno.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup4_2" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_4_2" class="form-horizontal"
+																onsubmit="return populateFullMenuTandooriVeggiePizzaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="TandooriVeggiePizzaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -1224,9 +1191,7 @@
 																		name="TandooriVeggiePizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuTandooriVeggiePizzaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1254,7 +1219,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="CurryVeggiePizzaLargeCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Curry Veggie Pizza (Large)</h3>
@@ -1264,13 +1229,13 @@
 																Jalapeno.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup4_3" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_4_3" class="form-horizontal"
+																onsubmit="return populateFullMenuCurryVeggiePizzaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="CurryVeggiePizzaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -1279,9 +1244,7 @@
 																		name="CurryVeggiePizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuCurryVeggiePizzaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1309,7 +1272,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="IndianVeggiePizzaLargeCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Indian Veggie Pizza (Large)</h3>
@@ -1319,13 +1282,13 @@
 																and Green Chilies.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup4_4" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_4_4" class="form-horizontal"
+																onsubmit="return populateFullMenuIndianVeggiePizzaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="IndianVeggiePizzaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -1334,9 +1297,7 @@
 																		name="IndianVeggiePizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuIndianVeggiePizzaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1364,7 +1325,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="LimeVeggiePizzaLargeCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Lime Veggie Pizza (Large)</h3>
@@ -1374,13 +1335,13 @@
 																Cucumber, Fresh Sliced Lime and Green Chili.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup4_5" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_4_5" class="form-horizontal"
+																onsubmit="return populateFullMenuLimeVeggiePizzaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="LimeVeggiePizzaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -1389,9 +1350,7 @@
 																		name="LimeVeggiePizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuLimeVeggiePizzaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1420,6 +1379,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
+																id="PaneerTikkaMasalaPizzaLargeCloseBtn"
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
@@ -1430,13 +1390,13 @@
 																Paneer and Fres Cilantro.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup4_6" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_4_6" class="form-horizontal"
+																onsubmit="return populateFullMenuPaneerTikkaMasalaPizzaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="PaneerTikkaMasalaPizzaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -1445,9 +1405,7 @@
 																		name="PaneerTikkaMasalaPizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuPaneerTikkaMasalaPizzaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1475,7 +1433,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="TandooriPaneerPizzaLargeCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Tandoori Paneer Pizza (Large)</h3>
@@ -1485,13 +1443,13 @@
 																Fresh Cilantro.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup4_7" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_4_7" class="form-horizontal"
+																onsubmit="return populateFullMenuTandooriPaneerPizzaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="TandooriPaneerPizzaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -1500,9 +1458,7 @@
 																		name="TandooriPaneerPizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuTandooriPaneerPizzaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1530,7 +1486,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="CurryPaneerPizzaLargeCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Curry Paneer Pizza (Large)</h3>
@@ -1540,13 +1496,13 @@
 																request), Curry Paneer and Fresh Cilantro.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup4_8" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_4_8" class="form-horizontal"
+																onsubmit="return populateFullMenuCurryPaneerPizzaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="CurryPaneerPizzaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -1555,9 +1511,7 @@
 																		name="CurryPaneerPizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuCurryPaneerPizzaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1585,7 +1539,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="ChickenTikkaMasalaLargeCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Chicken Tikka Masala (Large)</h3>
@@ -1595,13 +1549,13 @@
 																Jalapeno.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup4_9" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_4_9" class="form-horizontal"
+																onsubmit="return populateFullMenuChickenTikkaMasalaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="ChickenTikkaMasalaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -1610,9 +1564,7 @@
 																		name="ChickenTikkaMasalaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuChickenTikkaMasalaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1640,6 +1592,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
+																id="TandooriChickenPizzaLargeCloseBtn"
 																aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
@@ -1650,13 +1603,13 @@
 																Jalapeno.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup4_10" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_4_10" class="form-horizontal"
+																onsubmit="return populateFullMenuTandooriChickenPizzaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="TandooriChickenPizzaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -1665,9 +1618,7 @@
 																		name="TandooriChickenPizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuTandooriChickenPizzaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1695,7 +1646,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="ChickenCurryPizzaLargeCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Chicken Curry Pizza (Large)</h3>
@@ -1705,13 +1656,13 @@
 																Jalapeno.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup4_11" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_4_11" class="form-horizontal"
+																onsubmit="return populateFullMenuChickenCurryPizzaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="ChickenCurryPizzaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -1720,9 +1671,7 @@
 																		name="ChickenCurryPizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuChickenCurryPizzaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1749,7 +1698,7 @@
 													<div class="modal-box-left">
 														<div class="modal-head">
 															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
+																id="ButterChickenPizzaLargeCloseBtn" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 															</button>
 															<h3>Butter Chicken Pizza (Large)</h3>
@@ -1758,13 +1707,13 @@
 																Fresh Cilantro, Green Chili.</span>
 														</div>
 														<div class="modal-desc">
-															<form id="popup4_12" class="form-horizontal"
-																onsubmit="return false;">
+															<form id="popup_4_12" class="form-horizontal"
+																onsubmit="return populateFullMenuButterChickenPizzaLargeSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="text" size="20"
+																	<input type="number" min="1" size="20"
 																		name="ButterChickenPizzaLargeCount" maxlength="20"
-																		required="required" pattern="^\d+$">
+																		required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
 																			may apply.</span>
@@ -1773,9 +1722,7 @@
 																		name="ButterChickenPizzaLargeSpl" maxlength="20">
 																	<div class="clearfix"></div>
 																	<div class="modal-sub">
-																		<input type="button" data-dismiss="modal" name=""
-																			value="Add to Cart"
-																			onclick="populateFullMenuButterChickenPizzaLargeSelectedItems();" />
+																		<input type="submit" value="Add to Cart" />
 																	</div>
 																</div>
 															</form>
@@ -1799,7 +1746,7 @@
 								<div class="full-menu-list-item" id="m_${loop.index}">
 									<h4>${m.key}</h4>
 									<span class="full-menu-remove-item"
-										onclick="remove_chicagos_pizza_item('m_${loop.index}');">X</span>
+										onclick="remove_chicagos_pizza_with_a_twist_item('m_${loop.index}');">X</span>
 									<figure>${m.value}</figure>
 								</div>
 							</c:forEach>
@@ -1807,7 +1754,7 @@
 						<div class="pick-deliver">
 							<div class="checkout">
 								<form action="${pageContext.request.contextPath}/menu/saveMenu"
-									id="chicagos_pizza_target" method="post">
+									id="chicagos_pizza_with_a_twist_target" method="post">
 									<input type="hidden" name="full_menu_items"
 										id="full_menu_items"> <input type="hidden"
 										name="cuisineType" value="${menu.cuisine}">
@@ -1815,9 +1762,9 @@
 										placeholder="Enter your comments to restaurant here"
 										class="form-control">${menu.comments}</textarea>
 									<br />
-									<!-- <button type="button" onclick="chicagos_pizza_menu_submit();"
+									<!-- <button type="button" onclick="chicagos_pizza_with_a_twist_menu_submit();"
 										class="btn btn-default">Next</button> -->
-									<a href="javascript:chicagos_pizza_menu_submit();">Next</a>
+									<a href="javascript:chicagos_pizza_with_a_twist_menu_submit();">Next</a>
 								</form>
 							</div>
 							<p></p>
@@ -1843,7 +1790,7 @@
 			var desc = $(this).children().next().next().text();
 			console.log("Title: " + name);
 			console.log("Desc: " + desc);
-			chicagos_pizza_menu_items.push(name + "+" + desc); //chicagos_pizza_menu_items is in chicagos_pizza_95630.js 
+			chicagos_pizza_with_a_twist_menu_items.push(name + "+" + desc); //chicagos_pizza_with_a_twist_menu_items is in chicago's_pizza_with_a_twist_95630.js 
 		});
 	});
 </script>

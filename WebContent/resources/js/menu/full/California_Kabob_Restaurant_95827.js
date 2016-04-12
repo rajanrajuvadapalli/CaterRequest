@@ -17,17 +17,17 @@ function populateFullMenuSarmaDolmeSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_restaurant_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	california_kabob_restaurant_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#SarmaDolmeCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuLargeHummusSelectedItems() {
 	var name = "Large Hummus";
 	var id = $('.slide').children().length;
@@ -44,16 +44,18 @@ function populateFullMenuLargeHummusSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_restaurant_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	california_kabob_restaurant_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#LargeHummusCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuGreekSaladSelectedItems() {
 	var name = "Greek Salad";
 	var id = $('.slide').children().length;
@@ -70,17 +72,17 @@ function populateFullMenuGreekSaladSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_restaurant_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	california_kabob_restaurant_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#GreekSaladCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuTabboulehSaladSelectedItems() {
 	var name = "Tabbouleh Salad";
 	var id = $('.slide').children().length;
@@ -97,16 +99,18 @@ function populateFullMenuTabboulehSaladSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_restaurant_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	california_kabob_restaurant_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#TabboulehSaladCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuBeefKabobSelectedItems() {
 	var name = "Beef Kabob";
 	var id = $('.slide').children().length;
@@ -123,17 +127,17 @@ function populateFullMenuBeefKabobSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_restaurant_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	california_kabob_restaurant_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#BeefKabobCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuGroundBeefKabobSelectedItems() {
 	var name = "Ground Beef Kabob";
 	var id = $('.slide').children().length;
@@ -150,17 +154,17 @@ function populateFullMenuGroundBeefKabobSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_restaurant_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	california_kabob_restaurant_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#GroundBeefKabobCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuChickenKabobSelectedItems() {
 	var name = "Chicken Kabob";
 	var id = $('.slide').children().length;
@@ -177,17 +181,17 @@ function populateFullMenuChickenKabobSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_restaurant_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	california_kabob_restaurant_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenKabobCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuGroundChickenKabobSelectedItems() {
 	var name = "Ground Chicken Kabob";
 	var id = $('.slide').children().length;
@@ -204,17 +208,17 @@ function populateFullMenuGroundChickenKabobSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_restaurant_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	california_kabob_restaurant_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#GroundChickenKabobCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuLambKabobSelectedItems() {
 	var name = "Lamb Kabob";
 	var id = $('.slide').children().length;
@@ -231,17 +235,17 @@ function populateFullMenuLambKabobSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_restaurant_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	california_kabob_restaurant_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#LambKabobCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuGroundLambKabobSelectedItems() {
 	var name = "Ground Lamb Kabob";
 	var id = $('.slide').children().length;
@@ -258,17 +262,17 @@ function populateFullMenuGroundLambKabobSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_restaurant_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	california_kabob_restaurant_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#GroundLambKabobCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuChickenBeefLambKabobSelectedItems() {
 	var name = "Chicken Beef & Lamb Kabob";
 	var id = $('.slide').children().length;
@@ -285,17 +289,17 @@ function populateFullMenuChickenBeefLambKabobSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_restaurant_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	california_kabob_restaurant_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenBeefLambKabobCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuSpecialKabobBurgerSelectedItems() {
 	var name = "Special Kabob Burger";
 	var id = $('.slide').children().length;
@@ -312,16 +316,18 @@ function populateFullMenuSpecialKabobBurgerSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_restaurant_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	california_kabob_restaurant_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#SpecialKabobBurgerCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuChickenShawarmaSelectedItems() {
 	var name = "Chicken Shawarma";
 	var id = $('.slide').children().length;
@@ -338,17 +344,17 @@ function populateFullMenuChickenShawarmaSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_restaurant_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	california_kabob_restaurant_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenShawarmaCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuLambShawarmaSelectedItems() {
 	var name = "Lamb Shawarma";
 	var id = $('.slide').children().length;
@@ -365,17 +371,17 @@ function populateFullMenuLambShawarmaSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_restaurant_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	california_kabob_restaurant_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#LambShawarmaCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuBeefShawarmaSelectedItems() {
 	var name = "Beef Shawarma";
 	var id = $('.slide').children().length;
@@ -392,14 +398,14 @@ function populateFullMenuBeefShawarmaSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_california_kabob_restaurant_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	california_kabob_restaurant_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#BeefShawarmaCloseBtn').click();
 	return false;
 }
-

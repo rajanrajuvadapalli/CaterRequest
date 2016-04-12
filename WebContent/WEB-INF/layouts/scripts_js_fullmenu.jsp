@@ -8,4 +8,3 @@
 <script src="${pageContext.request.contextPath}/resources/js/menu/full/Ruchi_Indian_Cuisine_95630.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/menu/full/Sala_Thai_95670.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/menu/full/South_Beach_Grill_95742.js"></script>
-

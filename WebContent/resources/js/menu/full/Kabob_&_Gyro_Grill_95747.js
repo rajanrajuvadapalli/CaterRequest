@@ -1,12 +1,12 @@
 var $ = jQuery.noConflict();
 var kabob_and_gyro_grill_menu_items = [];
 
-function populateFullMenuGreekSaladSelectedItems() {
+function populateFullMenuGreekSalad1SelectedItems() {
 	var name = "Greek Salad";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=GreekSaladCount]').val();
-	var spl = $('input[name=GreekSaladSpl]').val();
+	var n = $('input[name=GreekSalad1Count]').val();
+	var spl = $('input[name=GreekSalad1Spl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -17,17 +17,17 @@ function populateFullMenuGreekSaladSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	kabob_and_gyro_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#GreekSalad1CloseBtn').click();
 	return false;
 }
-
 function populateFullMenuSteakSaladSelectedItems() {
 	var name = "Steak Salad";
 	var id = $('.slide').children().length;
@@ -44,17 +44,17 @@ function populateFullMenuSteakSaladSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	kabob_and_gyro_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#SteakSaladCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuChickenSaladSelectedItems() {
 	var name = "Chicken Salad";
 	var id = $('.slide').children().length;
@@ -71,17 +71,17 @@ function populateFullMenuChickenSaladSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	kabob_and_gyro_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenSaladCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuCombinationSaladSelectedItems() {
 	var name = "Combination Salad";
 	var id = $('.slide').children().length;
@@ -98,16 +98,18 @@ function populateFullMenuCombinationSaladSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	kabob_and_gyro_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#CombinationSaladCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuChickenGyrosSelectedItems() {
 	var name = "Chicken Gyros";
 	var id = $('.slide').children().length;
@@ -124,17 +126,17 @@ function populateFullMenuChickenGyrosSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	kabob_and_gyro_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenGyrosCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuSteakGyrosSelectedItems() {
 	var name = "Steak Gyros";
 	var id = $('.slide').children().length;
@@ -151,17 +153,17 @@ function populateFullMenuSteakGyrosSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	kabob_and_gyro_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#SteakGyrosCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuMixedGyrosChickenSteakSelectedItems() {
 	var name = "Mixed Gyros(Chicken & Steak)";
 	var id = $('.slide').children().length;
@@ -178,17 +180,17 @@ function populateFullMenuMixedGyrosChickenSteakSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	kabob_and_gyro_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#MixedGyrosChickenSteakCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuVeggieGyrosSelectedItems() {
 	var name = "Veggie Gyros";
 	var id = $('.slide').children().length;
@@ -205,22 +207,24 @@ function populateFullMenuVeggieGyrosSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	kabob_and_gyro_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#VeggieGyrosCloseBtn').click();
 	return false;
 }
-function populateFullMenuBeefKabobSelectedItems() {
+
+function populateFullMenuBeefKabob1SelectedItems() {
 	var name = "Beef Kabob";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=BeefKabobCount]').val();
-	var spl = $('input[name=BeefKabobSpl]').val();
+	var n = $('input[name=BeefKabob1Count]').val();
+	var spl = $('input[name=BeefKabob1Spl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -231,23 +235,23 @@ function populateFullMenuBeefKabobSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	kabob_and_gyro_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#BeefKabob1CloseBtn').click();
 	return false;
 }
-
-function populateFullMenuChickenKabobSelectedItems() {
+function populateFullMenuChickenKabob1SelectedItems() {
 	var name = "Chicken Kabob";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=ChickenKabobCount]').val();
-	var spl = $('input[name=ChickenKabobSpl]').val();
+	var n = $('input[name=ChickenKabob1Count]').val();
+	var spl = $('input[name=ChickenKabob1Spl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -258,23 +262,23 @@ function populateFullMenuChickenKabobSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	kabob_and_gyro_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenKabob1CloseBtn').click();
 	return false;
 }
-
-function populateFullMenuLambKabobSelectedItems() {
+function populateFullMenuLambKabob1SelectedItems() {
 	var name = "Lamb Kabob";
 	var id = $('.slide').children().length;
 	var div_id = "m_" + id;
-	var n = $('input[name=LambKabobCount]').val();
-	var spl = $('input[name=LambKabobSpl]').val();
+	var n = $('input[name=LambKabob1Count]').val();
+	var spl = $('input[name=LambKabob1Spl]').val();
 	var desc = "Count: " + n;
 	if (spl != "")
 		desc += ", Special Instructions: " + spl;
@@ -285,17 +289,17 @@ function populateFullMenuLambKabobSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	kabob_and_gyro_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#LambKabob1CloseBtn').click();
 	return false;
 }
-
 function populateFullMenuCombinationKabobChickenandLambBeefSelectedItems() {
 	var name = "Combination Kabob (Chicken and Lamb/Beef)";
 	var id = $('.slide').children().length;
@@ -312,17 +316,17 @@ function populateFullMenuCombinationKabobChickenandLambBeefSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	kabob_and_gyro_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#CombinationKabobChickenandLambBeefCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuChappaliKabobSelectedItems() {
 	var name = "Chappali Kabob";
 	var id = $('.slide').children().length;
@@ -339,16 +343,18 @@ function populateFullMenuChappaliKabobSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	kabob_and_gyro_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChappaliKabobCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuHummusSelectedItems() {
 	var name = "Hummus";
 	var id = $('.slide').children().length;
@@ -365,17 +371,17 @@ function populateFullMenuHummusSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	kabob_and_gyro_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#HummusCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuFalafelSelectedItems() {
 	var name = "Falafel";
 	var id = $('.slide').children().length;
@@ -392,14 +398,14 @@ function populateFullMenuFalafelSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_kabob_and_gyro_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	kabob_and_gyro_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#FalafelCloseBtn').click();
 	return false;
 }
-

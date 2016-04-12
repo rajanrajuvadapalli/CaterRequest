@@ -17,17 +17,17 @@ function populateFullMenuFreshRollsSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#FreshRollsCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuThaiRollsSelectedItems() {
 	var name = "Thai Rolls";
 	var id = $('.slide').children().length;
@@ -44,17 +44,17 @@ function populateFullMenuThaiRollsSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ThaiRollsCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuChickenSataySelectedItems() {
 	var name = "Chicken Satay";
 	var id = $('.slide').children().length;
@@ -71,16 +71,18 @@ function populateFullMenuChickenSataySelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenSatayCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuPapayaSaladSelectedItems() {
 	var name = "Papaya Salad";
 	var id = $('.slide').children().length;
@@ -97,17 +99,17 @@ function populateFullMenuPapayaSaladSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#PapayaSaladCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuThaiSaladSelectedItems() {
 	var name = "Thai Salad";
 	var id = $('.slide').children().length;
@@ -124,17 +126,17 @@ function populateFullMenuThaiSaladSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ThaiSaladCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuSpicyChickenSaladSelectedItems() {
 	var name = "Spicy Chicken Salad";
 	var id = $('.slide').children().length;
@@ -151,16 +153,18 @@ function populateFullMenuSpicyChickenSaladSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#SpicyChickenSaladCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuChickenMixedVegetablesSelectedItems() {
 	var name = "Chicken & Mixed Vegetables";
 	var id = $('.slide').children().length;
@@ -177,17 +181,17 @@ function populateFullMenuChickenMixedVegetablesSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChickenMixedVegetablesCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuBeefMixedVegetablesSelectedItems() {
 	var name = "Beef & Mixed Vegetables";
 	var id = $('.slide').children().length;
@@ -204,17 +208,17 @@ function populateFullMenuBeefMixedVegetablesSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#BeefMixedVegetablesCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuPorkMixedVegetablesSelectedItems() {
 	var name = "Pork & Mixed Vegetables";
 	var id = $('.slide').children().length;
@@ -231,17 +235,17 @@ function populateFullMenuPorkMixedVegetablesSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#PorkMixedVegetablesCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuTofuMixedVegetablesSelectedItems() {
 	var name = "Tofu & Mixed Vegetables";
 	var id = $('.slide').children().length;
@@ -258,17 +262,17 @@ function populateFullMenuTofuMixedVegetablesSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#TofuMixedVegetablesCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuMixedVegetablesSelectedItems() {
 	var name = "Mixed Vegetables";
 	var id = $('.slide').children().length;
@@ -285,17 +289,17 @@ function populateFullMenuMixedVegetablesSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#MixedVegetablesCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuSweetSourBeefSelectedItems() {
 	var name = "Sweet & Sour (Beef)";
 	var id = $('.slide').children().length;
@@ -312,17 +316,17 @@ function populateFullMenuSweetSourBeefSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#SweetSourBeefCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuSweetSourChickenSelectedItems() {
 	var name = "Sweet & Sour (Chicken)";
 	var id = $('.slide').children().length;
@@ -339,17 +343,17 @@ function populateFullMenuSweetSourChickenSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#SweetSourChickenCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuSweetSourPorkSelectedItems() {
 	var name = "Sweet & Sour (Pork)";
 	var id = $('.slide').children().length;
@@ -366,17 +370,17 @@ function populateFullMenuSweetSourPorkSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#SweetSourPorkCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuSweetSourTofuSelectedItems() {
 	var name = "Sweet & Sour (Tofu)";
 	var id = $('.slide').children().length;
@@ -393,17 +397,17 @@ function populateFullMenuSweetSourTofuSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#SweetSourTofuCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuSweetSourOnlyVegetablesSelectedItems() {
 	var name = "Sweet & Sour (Only Vegetables)";
 	var id = $('.slide').children().length;
@@ -420,16 +424,18 @@ function populateFullMenuSweetSourOnlyVegetablesSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#SweetSourOnlyVegetablesCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuPadThaiNoodleBeefSelectedItems() {
 	var name = "Pad Thai Noodle (Beef)";
 	var id = $('.slide').children().length;
@@ -446,17 +452,17 @@ function populateFullMenuPadThaiNoodleBeefSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#PadThaiNoodleBeefCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuPadThaiNoodleChickenSelectedItems() {
 	var name = "Pad Thai Noodle (Chicken)";
 	var id = $('.slide').children().length;
@@ -473,17 +479,17 @@ function populateFullMenuPadThaiNoodleChickenSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#PadThaiNoodleChickenCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuPadThaiNoodlePorkSelectedItems() {
 	var name = "Pad Thai Noodle (Pork)";
 	var id = $('.slide').children().length;
@@ -500,17 +506,17 @@ function populateFullMenuPadThaiNoodlePorkSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#PadThaiNoodlePorkCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuPadThaiNoodleTofuSelectedItems() {
 	var name = "Pad Thai Noodle (Tofu)";
 	var id = $('.slide').children().length;
@@ -527,17 +533,17 @@ function populateFullMenuPadThaiNoodleTofuSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#PadThaiNoodleTofuCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuPadThaiNoodleOnlyVegetablesSelectedItems() {
 	var name = "Pad Thai Noodle (Only Vegetables)";
 	var id = $('.slide').children().length;
@@ -554,17 +560,17 @@ function populateFullMenuPadThaiNoodleOnlyVegetablesSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#PadThaiNoodleOnlyVegetablesCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuDrunkenNoodlesBeefSelectedItems() {
 	var name = "Drunken Noodles (Beef)";
 	var id = $('.slide').children().length;
@@ -581,17 +587,17 @@ function populateFullMenuDrunkenNoodlesBeefSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#DrunkenNoodlesBeefCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuDrunkenNoodlesChickenSelectedItems() {
 	var name = "Drunken Noodles (Chicken)";
 	var id = $('.slide').children().length;
@@ -608,17 +614,17 @@ function populateFullMenuDrunkenNoodlesChickenSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#DrunkenNoodlesChickenCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuDrunkenNoodlesPorkSelectedItems() {
 	var name = "Drunken Noodles (Pork)";
 	var id = $('.slide').children().length;
@@ -635,17 +641,17 @@ function populateFullMenuDrunkenNoodlesPorkSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#DrunkenNoodlesPorkCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuDrunkenNoodlesTofuSelectedItems() {
 	var name = "Drunken Noodles (Tofu)";
 	var id = $('.slide').children().length;
@@ -662,17 +668,17 @@ function populateFullMenuDrunkenNoodlesTofuSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#DrunkenNoodlesTofuCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuDrunkenNoodlesOnlyVegetablesSelectedItems() {
 	var name = "Drunken Noodles (Only Vegetables)";
 	var id = $('.slide').children().length;
@@ -689,16 +695,18 @@ function populateFullMenuDrunkenNoodlesOnlyVegetablesSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#DrunkenNoodlesOnlyVegetablesCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuRedCurryBeefSelectedItems() {
 	var name = "Red Curry (Beef)";
 	var id = $('.slide').children().length;
@@ -715,17 +723,17 @@ function populateFullMenuRedCurryBeefSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#RedCurryBeefCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuRedCurryChickenSelectedItems() {
 	var name = "Red Curry (Chicken)";
 	var id = $('.slide').children().length;
@@ -742,17 +750,17 @@ function populateFullMenuRedCurryChickenSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#RedCurryChickenCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuRedCurryPorkSelectedItems() {
 	var name = "Red Curry (Pork)";
 	var id = $('.slide').children().length;
@@ -769,17 +777,17 @@ function populateFullMenuRedCurryPorkSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#RedCurryPorkCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuRedCurryTofuSelectedItems() {
 	var name = "Red Curry (Tofu)";
 	var id = $('.slide').children().length;
@@ -796,17 +804,17 @@ function populateFullMenuRedCurryTofuSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#RedCurryTofuCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuRedCurryOnlyVegetablesSelectedItems() {
 	var name = "Red Curry (Only Vegetables)";
 	var id = $('.slide').children().length;
@@ -823,17 +831,17 @@ function populateFullMenuRedCurryOnlyVegetablesSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#RedCurryOnlyVegetablesCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuYellowCurryBeefSelectedItems() {
 	var name = "Yellow Curry (Beef)";
 	var id = $('.slide').children().length;
@@ -850,17 +858,17 @@ function populateFullMenuYellowCurryBeefSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#YellowCurryBeefCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuYellowCurryChickenSelectedItems() {
 	var name = "Yellow Curry (Chicken)";
 	var id = $('.slide').children().length;
@@ -877,17 +885,17 @@ function populateFullMenuYellowCurryChickenSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#YellowCurryChickenCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuYellowCurryPorkSelectedItems() {
 	var name = "Yellow Curry (Pork)";
 	var id = $('.slide').children().length;
@@ -904,17 +912,17 @@ function populateFullMenuYellowCurryPorkSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#YellowCurryPorkCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuYellowCurryTofuSelectedItems() {
 	var name = "Yellow Curry (Tofu)";
 	var id = $('.slide').children().length;
@@ -931,17 +939,17 @@ function populateFullMenuYellowCurryTofuSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#YellowCurryTofuCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuYellowCurryOnlyVegetablesSelectedItems() {
 	var name = "Yellow Curry (Only Vegetables)";
 	var id = $('.slide').children().length;
@@ -958,17 +966,17 @@ function populateFullMenuYellowCurryOnlyVegetablesSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#YellowCurryOnlyVegetablesCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuGreenCurryBeefSelectedItems() {
 	var name = "Green Curry (Beef)";
 	var id = $('.slide').children().length;
@@ -985,17 +993,17 @@ function populateFullMenuGreenCurryBeefSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#GreenCurryBeefCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuGreenCurryChickenSelectedItems() {
 	var name = "Green Curry (Chicken)";
 	var id = $('.slide').children().length;
@@ -1012,17 +1020,17 @@ function populateFullMenuGreenCurryChickenSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#GreenCurryChickenCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuGreenCurryPorkSelectedItems() {
 	var name = "Green Curry (Pork)";
 	var id = $('.slide').children().length;
@@ -1039,17 +1047,17 @@ function populateFullMenuGreenCurryPorkSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#GreenCurryPorkCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuGreenCurryTofuSelectedItems() {
 	var name = "Green Curry (Tofu)";
 	var id = $('.slide').children().length;
@@ -1066,17 +1074,17 @@ function populateFullMenuGreenCurryTofuSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#GreenCurryTofuCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuGreenCurryOnlyVegetablesSelectedItems() {
 	var name = "Green Curry (Only Vegetables)";
 	var id = $('.slide').children().length;
@@ -1093,16 +1101,18 @@ function populateFullMenuGreenCurryOnlyVegetablesSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#GreenCurryOnlyVegetablesCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuThaiFriedRiceBeefSelectedItems() {
 	var name = "Thai Fried Rice (Beef)";
 	var id = $('.slide').children().length;
@@ -1119,17 +1129,17 @@ function populateFullMenuThaiFriedRiceBeefSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ThaiFriedRiceBeefCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuThaiFriedRiceChickenSelectedItems() {
 	var name = "Thai Fried Rice (Chicken)";
 	var id = $('.slide').children().length;
@@ -1146,17 +1156,17 @@ function populateFullMenuThaiFriedRiceChickenSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ThaiFriedRiceChickenCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuThaiFriedRicePorkSelectedItems() {
 	var name = "Thai Fried Rice (Pork)";
 	var id = $('.slide').children().length;
@@ -1173,17 +1183,17 @@ function populateFullMenuThaiFriedRicePorkSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ThaiFriedRicePorkCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuThaiFriedRiceTofuSelectedItems() {
 	var name = "Thai Fried Rice (Tofu)";
 	var id = $('.slide').children().length;
@@ -1200,17 +1210,17 @@ function populateFullMenuThaiFriedRiceTofuSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ThaiFriedRiceTofuCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuThaiFriedRiceOnlyVegetablesSelectedItems() {
 	var name = "Thai Fried Rice (Only Vegetables)";
 	var id = $('.slide').children().length;
@@ -1227,14 +1237,14 @@ function populateFullMenuThaiFriedRiceOnlyVegetablesSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_sala_thai_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	sala_thai_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ThaiFriedRiceOnlyVegetablesCloseBtn').click();
 	return false;
 }
-

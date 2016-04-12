@@ -17,17 +17,17 @@ function populateFullMenuSouthBeachBaconBurgerwithFriesSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#SouthBeachBaconBurgerwithFriesCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuSouthBeachBaconBurgerwithSaladSelectedItems() {
 	var name = "South Beach Bacon Burger with Salad";
 	var id = $('.slide').children().length;
@@ -44,17 +44,17 @@ function populateFullMenuSouthBeachBaconBurgerwithSaladSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#SouthBeachBaconBurgerwithSaladCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuBigMamaBurgerwithFriesSelectedItems() {
 	var name = "Big Mama Burger with Fries";
 	var id = $('.slide').children().length;
@@ -71,17 +71,17 @@ function populateFullMenuBigMamaBurgerwithFriesSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#BigMamaBurgerwithFriesCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuBigMamaBurgerwithSaladSelectedItems() {
 	var name = "Big Mama Burger with Salad";
 	var id = $('.slide').children().length;
@@ -98,17 +98,17 @@ function populateFullMenuBigMamaBurgerwithSaladSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#BigMamaBurgerwithSaladCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuMimisBurgerwithFriesSelectedItems() {
 	var name = "Mimi's Burger with Fries";
 	var id = $('.slide').children().length;
@@ -125,17 +125,17 @@ function populateFullMenuMimisBurgerwithFriesSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#MimisBurgerwithFriesCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuMimisBurgerwithSaladSelectedItems() {
 	var name = "Mimi's Burger with Salad";
 	var id = $('.slide').children().length;
@@ -152,17 +152,17 @@ function populateFullMenuMimisBurgerwithSaladSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#MimisBurgerwithSaladCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuIlisBurgerSelectedItems() {
 	var name = "Ili's Burger";
 	var id = $('.slide').children().length;
@@ -179,17 +179,17 @@ function populateFullMenuIlisBurgerSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#IlisBurgerCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuDomainBurgerlbSelectedItems() {
 	var name = "Domain Burger 1/3 lb";
 	var id = $('.slide').children().length;
@@ -206,16 +206,18 @@ function populateFullMenuDomainBurgerlbSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#DomainBurgerlbCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuJuicyCarneAsadaSelectedItems() {
 	var name = "Juicy Carne Asada";
 	var id = $('.slide').children().length;
@@ -232,17 +234,17 @@ function populateFullMenuJuicyCarneAsadaSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#JuicyCarneAsadaCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuSavoryCarnitasSelectedItems() {
 	var name = "Savory Carnitas";
 	var id = $('.slide').children().length;
@@ -259,17 +261,17 @@ function populateFullMenuSavoryCarnitasSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#SavoryCarnitasCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuTenderChickenSelectedItems() {
 	var name = "Tender Chicken";
 	var id = $('.slide').children().length;
@@ -286,17 +288,17 @@ function populateFullMenuTenderChickenSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#TenderChickenCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuBeerBatteredCodSelectedItems() {
 	var name = "Beer Battered Cod";
 	var id = $('.slide').children().length;
@@ -313,16 +315,18 @@ function populateFullMenuBeerBatteredCodSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#BeerBatteredCodCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuBurritoGrandeCarneAsadaSelectedItems() {
 	var name = "Burrito Grande (Carne Asada)";
 	var id = $('.slide').children().length;
@@ -339,17 +343,17 @@ function populateFullMenuBurritoGrandeCarneAsadaSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#BurritoGrandeCarneAsadaCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuBurritoGrandeCarnitasSelectedItems() {
 	var name = "Burrito Grande (Carnitas)";
 	var id = $('.slide').children().length;
@@ -366,17 +370,17 @@ function populateFullMenuBurritoGrandeCarnitasSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#BurritoGrandeCarnitasCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuBurritoGrandeChickenSelectedItems() {
 	var name = "Burrito Grande (Chicken)";
 	var id = $('.slide').children().length;
@@ -393,17 +397,17 @@ function populateFullMenuBurritoGrandeChickenSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#BurritoGrandeChickenCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuBurritoGrandeNoMeatSelectedItems() {
 	var name = "Burrito Grande (No Meat)";
 	var id = $('.slide').children().length;
@@ -420,17 +424,17 @@ function populateFullMenuBurritoGrandeNoMeatSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#BurritoGrandeNoMeatCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuCarneAsadaFriesSelectedItems() {
 	var name = "Carne Asada Fries";
 	var id = $('.slide').children().length;
@@ -447,16 +451,18 @@ function populateFullMenuCarneAsadaFriesSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#CarneAsadaFriesCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuCarneAsadaPlateCornTortillaSelectedItems() {
 	var name = "Carne Asada Plate(Corn Tortilla)";
 	var id = $('.slide').children().length;
@@ -473,17 +479,17 @@ function populateFullMenuCarneAsadaPlateCornTortillaSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#CarneAsadaPlateCornTortillaCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuCarneAsadaPlateFlourTortillaSelectedItems() {
 	var name = "Carne Asada Plate(Flour Tortilla)";
 	var id = $('.slide').children().length;
@@ -500,17 +506,17 @@ function populateFullMenuCarneAsadaPlateFlourTortillaSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#CarneAsadaPlateFlourTortillaCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuCarnitasPlateCornTortillaSelectedItems() {
 	var name = "Carnitas Plate(Corn Tortilla)";
 	var id = $('.slide').children().length;
@@ -527,17 +533,17 @@ function populateFullMenuCarnitasPlateCornTortillaSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#CarnitasPlateCornTortillaCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuCarnitasPlateFlourTortillaSelectedItems() {
 	var name = "Carnitas Plate(Flour Tortilla)";
 	var id = $('.slide').children().length;
@@ -554,16 +560,18 @@ function populateFullMenuCarnitasPlateFlourTortillaSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#CarnitasPlateFlourTortillaCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuGrilledChickenSaladSelectedItems() {
 	var name = "Grilled Chicken Salad";
 	var id = $('.slide').children().length;
@@ -580,17 +588,17 @@ function populateFullMenuGrilledChickenSaladSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#GrilledChickenSaladCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuCaesarSaladSelectedItems() {
 	var name = "Caesar Salad";
 	var id = $('.slide').children().length;
@@ -607,17 +615,17 @@ function populateFullMenuCaesarSaladSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#CaesarSaladCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuGreenSaladSelectedItems() {
 	var name = "Green Salad";
 	var id = $('.slide').children().length;
@@ -634,16 +642,18 @@ function populateFullMenuGreenSaladSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#GreenSaladCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuFriesSelectedItems() {
 	var name = "Fries";
 	var id = $('.slide').children().length;
@@ -660,17 +670,17 @@ function populateFullMenuFriesSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#FriesCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuOnionRingsSelectedItems() {
 	var name = "Onion Rings";
 	var id = $('.slide').children().length;
@@ -687,17 +697,17 @@ function populateFullMenuOnionRingsSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#OnionRingsCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuFreshGuacamoleSelectedItems() {
 	var name = "Fresh Guacamole";
 	var id = $('.slide').children().length;
@@ -714,17 +724,17 @@ function populateFullMenuFreshGuacamoleSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#FreshGuacamoleCloseBtn').click();
 	return false;
 }
-
 function populateFullMenuChipsSalsaSelectedItems() {
 	var name = "Chips & Salsa";
 	var id = $('.slide').children().length;
@@ -741,16 +751,18 @@ function populateFullMenuChipsSalsaSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#ChipsSalsaCloseBtn').click();
 	return false;
 }
+
 function populateFullMenuWaterSelectedItems() {
 	var name = "Water";
 	var id = $('.slide').children().length;
@@ -767,14 +779,14 @@ function populateFullMenuWaterSelectedItems() {
 			+ name
 			+ '</h4>'
 			+ '<span class="full-menu-remove-item" onclick="remove_south_beach_grill_item(\''
-			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>' +
-			+'</div>';
+			+ div_id + '\');">X</span>' + '<figure>' + desc + '</figure>'
+			+ +'</div>';
 	// console.log(html);
 	$(html).appendTo('.slide');
 	var data = name + "+" + desc;
 	south_beach_grill_menu_items.push(data);
 	// console.log(data);
-	$.magnificPopup.close();
+	// $.magnificPopup.close();
+	$('button#WaterCloseBtn').click();
 	return false;
 }
-
