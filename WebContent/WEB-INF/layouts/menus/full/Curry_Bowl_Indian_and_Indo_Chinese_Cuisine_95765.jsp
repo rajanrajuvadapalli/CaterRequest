@@ -152,7 +152,7 @@
 																onsubmit="return populateFullMenuVegetableSamosa1SelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="VegetableSamosa1Count" maxlength="20"
 																		required="required">
 																	<h5>
@@ -199,7 +199,7 @@
 																onsubmit="return populateFullMenuVegetableCutlet1SelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="VegetableCutlet1Count" maxlength="20"
 																		required="required">
 																	<h5>
@@ -246,7 +246,7 @@
 																onsubmit="return populateFullMenuOnionPakoraSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="OnionPakoraCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -295,7 +295,7 @@
 																onsubmit="return populateFullMenuMixedVegetablePakoraSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="MixedVegetablePakoraCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -343,7 +343,7 @@
 																onsubmit="return populateFullMenuGobiManchurianSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="GobiManchurianCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -390,7 +390,7 @@
 																onsubmit="return populateFullMenuChickenLillyPopSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="ChickenLillyPopCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -438,7 +438,7 @@
 																onsubmit="return populateFullMenuChickenTikkaSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="ChickenTikkaCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -486,7 +486,7 @@
 																onsubmit="return populateFullMenuChicken1SelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="Chicken1Count" maxlength="20"
 																		required="required">
 																	<h5>
@@ -534,7 +534,7 @@
 																onsubmit="return populateFullMenuTandooriShrimpSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="TandooriShrimpCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -596,7 +596,7 @@
 																onsubmit="return populateFullMenuVegetableBiryaniSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="VegetableBiryaniCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -642,7 +642,7 @@
 																onsubmit="return populateFullMenuChickenBiryaniSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="ChickenBiryaniCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -690,7 +690,7 @@
 																onsubmit="return populateFullMenuCurryBowlSpChickenBiryaniSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="CurryBowlSpChickenBiryaniCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -736,7 +736,7 @@
 																onsubmit="return populateFullMenuLambBiryaniSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="LambBiryaniCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -797,7 +797,7 @@
 																onsubmit="return populateFullMenuRiceSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20" name="RiceCount"
+																	<input type="number" pattern="^\d+$"  min="1" size="20" name="RiceCount"
 																		maxlength="20" required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
@@ -843,7 +843,7 @@
 																onsubmit="return populateFullMenuYogurtRiceSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="YogurtRiceCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -907,7 +907,7 @@
 																onsubmit="return populateFullMenuAlooGobi1SelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="AlooGobi1Count" maxlength="20"
 																		required="required">
 																	<h5>
@@ -956,7 +956,7 @@
 																onsubmit="return populateFullMenuBainganBhurtaSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="BainganBhurtaCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -1004,7 +1004,7 @@
 																onsubmit="return populateFullMenuChannaMasala1SelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="ChannaMasala1Count" maxlength="20"
 																		required="required">
 																	<h5>
@@ -1052,7 +1052,7 @@
 																onsubmit="return populateFullMenuMixedVegetableKormaSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="MixedVegetableKormaCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -1100,7 +1100,7 @@
 																onsubmit="return populateFullMenuChickenCurry1SelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="ChickenCurry1Count" maxlength="20"
 																		required="required">
 																	<h5>
@@ -1152,7 +1152,7 @@
 																onsubmit="return populateFullMenuChickenTikkaMasalaSignatureSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="ChickenTikkaMasalaSignatureCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -1200,7 +1200,7 @@
 																onsubmit="return populateFullMenuButterChickenSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="ButterChickenCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -1250,7 +1250,7 @@
 																onsubmit="return populateFullMenuChickenVindalooSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="ChickenVindalooCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -1298,7 +1298,7 @@
 																onsubmit="return populateFullMenuLambCurry1SelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="LambCurry1Count" maxlength="20"
 																		required="required">
 																	<h5>
@@ -1347,7 +1347,7 @@
 																onsubmit="return populateFullMenuMuttonRoganJoshSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="MuttonRoganJoshCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -1395,7 +1395,7 @@
 																onsubmit="return populateFullMenuLambKormaSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="LambKormaCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -1444,7 +1444,7 @@
 																onsubmit="return populateFullMenuLambVindalooSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="LambVindalooCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -1507,7 +1507,7 @@
 																onsubmit="return populateFullMenuTandooriRotiSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="TandooriRotiCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -1554,7 +1554,7 @@
 																onsubmit="return populateFullMenuPlainNaanSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="PlainNaanCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -1602,7 +1602,7 @@
 																onsubmit="return populateFullMenuButterNaanSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="ButterNaanCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -1649,7 +1649,7 @@
 																onsubmit="return populateFullMenuAlooParataSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="AlooParataCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -1711,7 +1711,7 @@
 																onsubmit="return populateFullMenuGulabJamunSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="GulabJamunCount" maxlength="20"
 																		required="required">
 																	<h5>
@@ -1756,7 +1756,7 @@
 																onsubmit="return populateFullMenuKheerSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="KheerCount" maxlength="20" required="required">
 																	<h5>
 																		Special Instructions<span>Additional charges
@@ -1801,7 +1801,7 @@
 																onsubmit="return populateFullMenuBreadHalwaSelectedItems();">
 																<div class="modal-textarea">
 																	<h4>Quantity</h4>
-																	<input type="number" min="1" size="20"
+																	<input type="number" pattern="^\d+$"  min="1" size="20"
 																		name="BreadHalwaCount" maxlength="20"
 																		required="required">
 																	<h5>
