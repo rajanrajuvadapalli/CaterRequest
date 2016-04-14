@@ -107,11 +107,11 @@ public class StripeController {
 			// The card has been declined
 			System.out.println("Status is: " + e.getCode());
 			System.out.println("Message is: " + e.getMessage());
-			errors.add("The card has been declined");
+			errors.add(e.getMessage());
 
 			e.printStackTrace();
 		} catch (AuthenticationException e) {
-			errors.add("he card has been declined");
+			errors.add("Authentication with Stripe's API failed");
 			e.printStackTrace();
 		} catch (InvalidRequestException e) {
 			errors.add("Invalid Request ");
@@ -120,7 +120,7 @@ public class StripeController {
 			errors.add("Network communication with Stripe failed");
 			e.printStackTrace();
 		} catch (APIException e) {
-
+			errors.add("Stripe communication failed");
 			e.printStackTrace();
 		} catch (Exception e) {
 			errors.add(e.getMessage());
@@ -159,7 +159,5 @@ public class StripeController {
 		return null;
 		
 	}
-	
-	
 
 }
