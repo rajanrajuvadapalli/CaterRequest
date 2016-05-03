@@ -703,17 +703,15 @@ public class CustomerDashboardController {
 						BigDecimal.ROUND_HALF_UP);
 				double amount = quote.getPrice()
 						+ taxInbigdecimal.doubleValue();
-				/*BigDecimal bigDecimal = new BigDecimal(amount);
-				  bigDecimal = bigDecimal.setScale(2,
-				            BigDecimal.ROUND_HALF_UP);
-				  bigDecimal.doubleValue();*/
+				
 				double totalAmountInCents = amount * 100;
+				long mStrippedValue = new Double(totalAmountInCents).longValue();
 				modelMap.put("quote", quote);
 				modelMap.put("restuarant", quote.getRestaurant());
 				modelMap.put("event", event);
 				modelMap.put("tax", taxInbigdecimal.doubleValue());
 				modelMap.put("amount", amount);
-				modelMap.put("totalAmountInCents", totalAmountInCents);
+				modelMap.put("totalAmountInCents", mStrippedValue);
 				forward = "t_payment";
 			}
 		}
