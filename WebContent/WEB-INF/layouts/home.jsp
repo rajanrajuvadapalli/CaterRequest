@@ -50,11 +50,7 @@
 			<div class="slide-container">
 	            <ul class="slideshow">
 	                <li><span></span></li>
-	                <li><span></span></li>
-	                <li><span></span></li>
-	                <li><span></span></li>
-	                <li><span></span></li>
-	                <li><span></span></li>
+	               
 	            </ul>
 	            <c:if
 					test="${sessionScope.user==null || sessionScope.user.isGuest()}">

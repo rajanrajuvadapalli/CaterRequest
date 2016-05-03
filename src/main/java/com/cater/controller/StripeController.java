@@ -127,7 +127,7 @@ public class StripeController {
 			logger.error("Exception occurred while using Stripe.", e);
 		}
 		catch (AuthenticationException e) {
-			errors.add("Your card has been declined.");
+			errors.add("Authentication with Stripe's API failed");
 			logger.error("Exception occurred while using Stripe.", e);
 		}
 		catch (InvalidRequestException e) {
@@ -139,6 +139,7 @@ public class StripeController {
 			logger.error("Exception occurred while using Stripe.", e);
 		}
 		catch (APIException e) {
+			errors.add("Stripe communication failed");
 			logger.error("Exception occurred while using Stripe.", e);
 		}
 		catch (Exception e) {

@@ -89,7 +89,7 @@
 								<script src="https://checkout.stripe.com/checkout.js"
 									class="stripe-button"
 									data-key="pk_live_8Ip3CxrdRB2SweSSVe1oPyJt"
-									data-image="/img/documentation/checkout/marketplace.png"
+									data-image="${pageContext.request.contextPath}/resources/assets/img/marker.png"
 									data-name="${e.name}" data-description="Charge for ${r.name}"
 									data-amount="${totalAmountInCents}" data-locale="auto">
   						   </script>
