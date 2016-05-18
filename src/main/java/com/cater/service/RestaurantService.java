@@ -25,6 +25,7 @@ import com.cater.constants.Roles;
 import com.cater.dao.QuoteDAO;
 import com.cater.dao.RestaurantDAO;
 import com.cater.email.EmailHelper;
+import com.cater.email.Notification;
 import com.cater.maps.MapsHelper;
 import com.cater.maps.RestaurantDTO;
 import com.cater.model.Quote;
@@ -204,6 +205,19 @@ public class RestaurantService {
 	 */
 	public void sendNotification(Quote quote, StringBuilder optionalMessage) {
 		emailHelper.sendNotificationEmailTo(Roles.RESTAURANT, quote,
+				optionalMessage);
+		smsHelper.sendNotificationSMSto(Roles.RESTAURANT, quote,
+				optionalMessage);
+	}
+	
+	/**
+	 * Send payment notification.
+	 *
+	 * @param quote the quote
+	 * @param optionalMessage the optional message
+	 */
+	public void paymentNotification(Quote quote, Notification notification, StringBuilder optionalMessage) {
+		emailHelper.paymentNotificationEmail(Roles.RESTAURANT, quote, notification,
 				optionalMessage);
 		smsHelper.sendNotificationSMSto(Roles.RESTAURANT, quote,
 				optionalMessage);

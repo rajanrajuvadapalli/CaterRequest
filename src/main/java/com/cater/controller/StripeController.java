@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cater.constants.EventStatus;
 import com.cater.constants.QuoteStatus;
+import com.cater.email.Notification;
 import com.cater.model.Quote;
 import com.cater.service.CustomerService;
 import com.cater.service.RestaurantService;
@@ -39,8 +40,7 @@ import com.stripe.model.Charge;
 @Controller
 @RequestMapping(value = { "stripePayment" })
 public class StripeController {
-	private static final Logger logger = Logger
-			.getLogger(StripeController.class);
+	private static final Logger logger = Logger.getLogger(StripeController.class);
 	private static final String STRIPE_LIVE_KEY = "sk_live_MPCHtykGcxwk1DXVWjq9UUXX";
 	private static final String STRIPE_SANDBOX_KEY = "sk_test_8DMVcm6trnvUH50s3GW90ezp";
 	/** The restaurant service. */
@@ -54,28 +54,31 @@ public class StripeController {
 	/**
 	 * Charge payment.
 	 *
-	 * @param request the request
-	 * @param session the session
-	 * @param redirectAttributes the redirect attributes
-	 * @param quoteId the quote id
-	 * @param totalAmount the total amount
+	 * @param request
+	 *            the request
+	 * @param session
+	 *            the session
+	 * @param redirectAttributes
+	 *            the redirect attributes
+	 * @param quoteId
+	 *            the quote id
+	 * @param totalAmount
+	 *            the total amount
 	 * @return the string
 	 */
 	// public static String Stripe_apiKey = "sk_test_8DMVcm6trnvUH50s3GW90ezp";
 	@RequestMapping(value = { "charge" }, method = RequestMethod.POST)
-	public String chargePayment(
-			HttpServletRequest request,
-			HttpSession session,
-			RedirectAttributes redirectAttributes,
+	public String chargePayment(HttpServletRequest request, HttpSession session, RedirectAttributes redirectAttributes,
 			@RequestParam(value = "quoteId", required = true) Integer quoteId,
 			@RequestParam(value = "amountInCents", required = true) Integer totalAmount) {
-		List <String> errors = Lists.newArrayList();
+		List<String> errors = Lists.newArrayList();
 		redirectAttributes.addFlashAttribute("errors", errors);
 		logger.info("In Stripe Payments!!!");
-		int amount = Integer.parseInt(StringUtils.defaultString(
-				request.getParameter("amountInCents")).trim());
-		String rName = StringUtils.defaultString(
-				request.getParameter("restuarantName")).trim();
+		int amount = Integer.parseInt(StringUtils.defaultString(request.getParameter("amountInCents")).trim());
+		Double salesTax = Double.parseDouble(StringUtils.defaultString(request.getParameter("salesTax")));
+		Double totalAmt = Double.parseDouble(StringUtils.defaultString(request.getParameter("totalAmt")));
+
+		String rName = StringUtils.defaultString(request.getParameter("restuarantName")).trim();
 		Stripe.apiKey = STRIPE_LIVE_KEY;
 		// Get the credit card details submitted by the form
 		String token = request.getParameter("stripeToken");
@@ -83,7 +86,7 @@ public class StripeController {
 		// Create the charge on Stripe's servers - this will charge the user's
 		// card
 		try {
-			Map <String, Object> chargeParams = Maps.newHashMap();
+			Map<String, Object> chargeParams = Maps.newHashMap();
 			chargeParams.put("amount", amount); // amount in cents, again
 			chargeParams.put("currency", "usd");
 			chargeParams.put("source", token);
@@ -92,57 +95,52 @@ public class StripeController {
 			Charge charge = Charge.create(chargeParams);
 			if (charge.getStatus().equals("succeeded")) {
 				logger.info("RESPONSE SUCCESS");
+				Notification notification = new Notification();
 				Quote quote = restaurantService.findQuoteWithId(quoteId);
 				quote.setStatus(QuoteStatus.PAID.toString());
-				List <String> successMessages = Lists.newArrayList();
-				redirectAttributes.addFlashAttribute("successMessages",
-						successMessages);
+				List<String> successMessages = Lists.newArrayList();
+				redirectAttributes.addFlashAttribute("successMessages", successMessages);
 				// Reject all other quotes
 				for (Quote q : quote.getMenu().getQuotes()) {
 					if (!q.getId().equals(quote.getId())) {
 						q.setStatus(QuoteStatus.DENIED.toString());
 					}
 				}
-				quote.getMenu().getEvent()
-						.setStatus(EventStatus.CONFIRMED.toString());
-				//quote.getMenu().getEvent().setTrackingId(charge.getId());
-				restaurantService.sendNotification(quote, null);
+				quote.getMenu().getEvent().setStatus(EventStatus.CONFIRMED.toString());
+				notification.setPaymentStatus(QuoteStatus.PAID.toString());
+				notification.setSalesTax(salesTax);
+				notification.setTotalAmount(totalAmt);
+				StringBuilder message = new StringBuilder("Customer has made a succesful payment for the below menu");
+				restaurantService.paymentNotification(quote, notification, message);
+				//restaurantService.sendNotification(quote, null);
 				StringBuilder optionalMessage = new StringBuilder(
 						"You have to show this confirmation email at the time of food delivery or food pick up.");
-				customerService.sendNotification(quote, optionalMessage);
-				successMessages
-						.add("Congratulations, your order has been placed!");
+				customerService.paymentNotification(quote, notification, optionalMessage);
+				successMessages.add("Congratulations, your order has been placed!");
 				successMessages
 						.add("You have to show the confirmation email at the time of food delivery or food pick up.");
-			}
-			else {
+			} else {
 				throw new Exception("Payment failed. Please try again.");
 			}
-		}
-		catch (CardException e) {
+		} catch (CardException e) {
 			// The card has been declined
 			logger.info("Status is: " + e.getCode());
 			logger.info("Message is: " + e.getMessage());
 			errors.add("Your card has been declined.");
 			logger.error("Exception occurred while using Stripe.", e);
-		}
-		catch (AuthenticationException e) {
+		} catch (AuthenticationException e) {
 			errors.add("Authentication with Stripe's API failed");
 			logger.error("Exception occurred while using Stripe.", e);
-		}
-		catch (InvalidRequestException e) {
+		} catch (InvalidRequestException e) {
 			errors.add("Invalid Request.");
 			logger.error("Exception occurred while using Stripe.", e);
-		}
-		catch (APIConnectionException e) {
+		} catch (APIConnectionException e) {
 			errors.add("Network communication with Stripe failed.");
 			logger.error("Exception occurred while using Stripe.", e);
-		}
-		catch (APIException e) {
+		} catch (APIException e) {
 			errors.add("Stripe communication failed");
 			logger.error("Exception occurred while using Stripe.", e);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			errors.add(e.getMessage());
 			logger.error("Exception occurred while using Stripe.", e);
 		}
@@ -152,26 +150,28 @@ public class StripeController {
 	/**
 	 * Retrieve payment.
 	 *
-	 * @param request the request
-	 * @param session the session
-	 * @param redirectAttributes the redirect attributes
-	 * @param track_id the track_id
+	 * @param request
+	 *            the request
+	 * @param session
+	 *            the session
+	 * @param redirectAttributes
+	 *            the redirect attributes
+	 * @param track_id
+	 *            the track_id
 	 * @return the string
 	 */
-	//TODO: retrieving stripe payment
+	// TODO: retrieving stripe payment
 	@RequestMapping(value = { "retrieve" }, method = RequestMethod.POST)
-	public String retrievePayment(HttpServletRequest request,
-			HttpSession session, RedirectAttributes redirectAttributes,
+	public String retrievePayment(HttpServletRequest request, HttpSession session,
+			RedirectAttributes redirectAttributes,
 			@RequestParam(value = "trackingId", required = true) String track_id) {
 		Stripe.apiKey = STRIPE_SANDBOX_KEY;
 		try {
 			Charge retrieveCharge = Charge.retrieve(track_id);
 			retrieveCharge.getAmount();
 			retrieveCharge.getCard().getLast4();
-		}
-		catch (Exception e) {
-			logger.error("Exception occurred while retrieving stripe payment.",
-					e);
+		} catch (Exception e) {
+			logger.error("Exception occurred while retrieving stripe payment.", e);
 		}
 		return null;
 	}
