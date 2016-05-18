@@ -94,16 +94,16 @@
 									data-amount="${totalAmountInCents}" data-locale="auto">
   						   </script>
 								<input type="hidden" name="quoteId" value="${quote.id}">
-								<input type="hidden" size="30" maxlength="10" name="eventName"
-									value="${e.name}" readonly> <input type="hidden"
-									size="16" name="eventTime" value="${e.date_time}" readonly>
-								<input type="hidden" size="30" name="expDate"
-									value="${e.location }"> <input type="hidden" size="30"
-									name="restuarantName" required="required" value="${r.name}">
-								<input type="hidden" size="4" name="securityCode"
-									required="required" value="${quote.price}" readonly> <input
-									type="hidden" name="amountInCents"
-									value="${totalAmountInCents}">
+								<input type="hidden" size="30" maxlength="10" name="eventName" value="${e.name}" readonly>
+							    <input type="hidden" size="16" name="eventTime" value="${e.date_time}" readonly>
+								<input type="hidden" size="30" name="expDate" value="${e.location }"> 
+								<input type="hidden" size="30" name="restuarantName" required="required" value="${r.name}">
+								<input type="hidden" size="4" name="securityCode" required="required" value="${quote.price}" readonly>
+								<input type="hidden" name="amountInCents" value="${totalAmountInCents}">
+								<input type="hidden" name="salesTax" value="${tax}">
+								<input type="hidden" name="totalAmt" value="${amount}">
+								
+									
 							</form>
 						</div>
 						<div class="col-sm-2">
