@@ -1,10 +1,7 @@
 package com.cater.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cater.email.EmailHelper;
-import com.google.common.collect.Lists;
 
 /**
  * Description:.
@@ -47,7 +43,9 @@ public class ContactUsController {
 	@RequestMapping(value = { "" }, method = RequestMethod.GET)
 	public String contactUs(HttpServletRequest request, ModelMap modelMap) {
 		modelMap.addAttribute("infoEmail", INFO_EMAIL);
-		return "t_contactUs";
+		//FIXME: Temporarily commented the code to prevent attacks (spam emails being sent from our own website).
+		//return "t_contactUs";
+		return "t_500";
 	}
 
 	/**
@@ -59,7 +57,8 @@ public class ContactUsController {
 	 */
 	@RequestMapping(value = { "" }, method = RequestMethod.POST)
 	public String sendEmail(HttpServletRequest request, ModelMap modelMap) {
-		String name = StringUtils.defaultString(request.getParameter("name"));
+		//FIXME: Temporarily commented the code to prevent attacks (spam emails being sent from our own website).
+		/*String name = StringUtils.defaultString(request.getParameter("name"));
 		String requesterEmail = StringUtils.defaultString(request
 				.getParameter("email"));
 		String subject = StringUtils.defaultString(request
@@ -81,6 +80,7 @@ public class ContactUsController {
 			modelMap.addAttribute("errors", errors);
 		}
 		modelMap.addAttribute("infoEmail", INFO_EMAIL);
-		return "t_contactUs";
+		return "t_contactUs";*/
+		return "t_500";
 	}
 }
