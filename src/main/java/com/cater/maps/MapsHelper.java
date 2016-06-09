@@ -11,6 +11,7 @@ import java.util.concurrent.Future;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections4.list.TreeList;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
@@ -44,7 +45,7 @@ public class MapsHelper {
 			Collection <Restaurant> restaurants) {
 		GeoApiContext context = new GeoApiContext()
 				.setApiKey("AIzaSyAlobAYE25Q2m62_DX3wc1AMimO2Xr-WHc");
-		String[] origin = { address.getAddressString() };
+		String[] origin = { getOriginAddress(address) };
 		List <RestaurantDTO> nearByRestaurants = new TreeList <>();
 		ExecutorService executor = Executors.newFixedThreadPool(10);
 		List <Future <RestaurantDTO>> list = Lists.newArrayList();
@@ -71,6 +72,26 @@ public class MapsHelper {
 		// Sort restaurants by distance.
 		Collections.sort(nearByRestaurants, new RestaurantDistanceComparator());
 		return nearByRestaurants;
+	}
+
+	private String getOriginAddress(Address address) {
+		StringBuilder builder = new StringBuilder();
+		if (StringUtils.isNotBlank(address.getStreet1())) {
+			builder.append(address.getStreet1()).append(", ");
+		}
+		if (StringUtils.isNotBlank(address.getStreet2())) {
+			builder.append(address.getStreet2()).append(", ");
+		}
+		if (StringUtils.isNotBlank(address.getCity())) {
+			builder.append(address.getCity()).append(", ");
+		}
+		if (StringUtils.isNotBlank(address.getState())) {
+			builder.append(address.getState()).append(", ");
+		}
+		if (StringUtils.isNotBlank(address.getZip())) {
+			builder.append(address.getZip());
+		}
+		return builder.toString();
 	}
 
 	/**
