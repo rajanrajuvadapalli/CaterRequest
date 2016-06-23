@@ -1,0 +1,44 @@
+<!-- item begin -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{item_id}}" data-whatever="{{item_id}}">
+	<div>{{item_name}} <span style="float:right;">{{item_price}}</span></div>
+	<span style="font-size:12px;">{{item_description}}</span>
+</button>
+<div id="{{item_id}}" class="sel_modal modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:none;">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-box-left">
+				<div class="modal-head">
+					<button id="{{item_id}}CloseBtn" type="button" class="sel_close close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<h3>{{item_name}} {{item_price}}</h3>
+					<span>{{item_description}}</span>
+				</div>
+				<div class="modal-desc">
+					<div data-cid="{{category_id}}" data-pid="{{product_id}}" class="sel_add_to_cart_wrapper modal-textarea">
+
+						<h4>Quantity</h4>
+						<input class="sel_quantity" type="number" min="{{item_quantity}}" name="quantity" value="{{item_quantity}}" required="required">
+						<div class="">
+
+							{{additions}}
+
+							<div class="cf">
+								<h5>Special Instructions<span>Additional charges may apply.</span></h5>
+								<textarea class="sel_special_instructions" maxlength="{{item_special_instructions_maxlength}}" placeholder="{{item_special_instructions}}"></textarea>
+							</div>
+						</div>
+
+						<div class="clearfix"></div>
+
+						<div class="modal-sub">
+							<div class="sel_add_to_cart_message"></div>
+							<input class="sel_add_to_cart_button" type="submit" value="Add to Cart">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- item end -->

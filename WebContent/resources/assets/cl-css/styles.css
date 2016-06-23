@@ -1,0 +1,120 @@
+@media(max-width:980px){
+	body .sel_ingredients label {
+    white-space: normal;
+    width: 100%;
+	}
+	body#page-top .modal-dialog {
+    width: 100%;
+    margin: 0;
+	}
+	body .modal {
+    min-height: 100%;
+    overflow: auto;
+    top: 0;
+    background: white none repeat scroll 0 0;
+	}
+}
+@media(max-width:1024px){
+	/*body #shopping_cart {
+    max-height: 360px;
+	}*/
+}
+@media(max-width:1366px){
+	/*body #shopping_cart {
+    max-height: 360px;
+	}*/
+}
+#page-top .modal-dialog {
+    width: 1000px;
+}
+.sel_ingredients label {
+    display: block;
+    float: left;
+    white-space: nowrap;
+    width: 25%;
+}
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="search"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+  textarea.form-control {
+    border: 1px solid #ccc;
+    border-radius: 0;
+}
+.sel_add_to_cart_wrapper h5 {
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+.sel_add_to_cart_wrapper .sel_quantity {
+    width: 210px;
+}
+.cf::before, .cf::after {
+    content: "";
+    display: table;
+}
+.cf::after {
+    clear: both;
+}
+.cf::before, .cf::after {
+    content: "";
+    display: table;
+}
+.clr{
+	clear:both;
+}
+.modal-textarea textarea {
+    border: 1px solid #ccc;
+    float: left;
+    width: 100%;
+}
+
+.ta-right{
+	text-align: right;
+}
+.sel_edit > img {
+    border: 1px solid #4981cd;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 2px;
+    width: 22px;
+}
+.right{
+	float:right;
+}
+.full-menu-remove-item {
+    margin-bottom: 10px
+}
+/*
+#shopping_cart {
+    max-height: 530px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+*/
+.btn {
+    white-space: normal;
+}
+#shopping_cart .name-price{
+	margin:0px -15px
+}
+.full-menu-content .panel-body button.btn {
+    font-size: 18px;
+}
+.modal-box-left .modal-sub {
+    padding: 20px 0 0;
+}
+.numbering {
+    border: 1px solid;
+    border-radius: 50%;
+    float: left;
+    font-size: 12px;
+    font-weight: normal;
+    height: 20px;
+    line-height: 18px;
+    margin-right: 5px;
+    text-align: center;
+    width: 20px;
+}

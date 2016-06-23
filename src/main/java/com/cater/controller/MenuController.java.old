@@ -644,42 +644,31 @@ public class MenuController {
 			@RequestParam("rId") String restaurantId,
 			@RequestParam("rZip") String restaurantZipCode,
 			@RequestParam(value = "menuId", required = false) Integer menuId) {
-
 		User user = (User) httpSession.getAttribute("user");
-
 		if (user == null) {
 			return "t_home";
 		}
-
 		try {
-
-			List <String> keys = Lists.newArrayList(StringUtils.split(restaurantName, " "));
+			List <String> keys = Lists.newArrayList(StringUtils.split(
+					restaurantName, " "));
 			keys.add(restaurantZipCode);
 			String fileName = StringUtils.join(keys, "_");
-			String fileNameExtension = ".json";
-
-			/*
 			try {
-				File f = new File(MenuController.class.getResource("/menus/full/" + fileName + fileNameExtension).getFile());
+				File f = new File(MenuController.class.getResource(
+						"/menus/full/" + fileName + ".json").getFile());
 				Menu baseMenu = new MenuDeserializer().readJSON(f);
 				modelMap.put("menu", baseMenu);
 			}
 			catch (Exception ex) {
 				logger.error(ex);
 			}
-			*/
-
 			httpSession.setAttribute("full_menu_flow", true);
 			httpSession.setAttribute("full_menu_flow_rname", restaurantName);
-			httpSession.setAttribute("full_menu_flow_rid", Helper.stringToInt(restaurantId));
-
+			httpSession.setAttribute("full_menu_flow_rid",
+					Helper.stringToInt(restaurantId));
 			RestaurantDTO r = getYelpReviews(restaurantId);
 			modelMap.addAttribute("r", r);
-
-			modelMap.addAttribute("menu_source_url", fileName + fileNameExtension);
-
-			/*
-			// If the menu ID is present, load the menu items
+			//If the menu ID is present, load the menu items
 			if (menuId != null) {
 				Map <String, String> items = Maps.newLinkedHashMap();
 				modelMap.put("items", items);
@@ -698,9 +687,7 @@ public class MenuController {
 					}
 				}
 			}
-			*/
-			
-			return "menus/full/t_base";
+			return "menus/full/t_" + fileName;
 		}
 		catch (Exception e) {
 			return "t_500";

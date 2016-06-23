@@ -1,0 +1,460 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.hidden {
+	display: none;
+}
+
+input, textarea {
+	outline-width: 0;
+	font-family: "Roboto", sans-serif;
+}
+
+span.info {
+	color: rgb(160, 160, 160);
+}
+
+html, body {
+	color: rgb(80, 80, 80);
+	background-color: rgb(240, 240, 240);
+	line-height: 22px;
+	font-family: "Roboto", sans-serif;
+	font-size: 16px;
+	font-weight: normal;
+	font-style: normal;
+}
+
+html, body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+html, body, header, footer, main, div {
+	display: block;
+}
+
+header {
+	padding: 8px 20px;
+	line-height: 30px;
+	height: 30px;
+	background-color: rgb(40, 40, 40);
+	color: rgb(240, 240, 240);
+}
+
+header .item {
+	display: inline-block;
+	border-radius: 3px;
+}
+
+header .item.separator {
+	color: rgb(100, 100, 100);
+}
+
+header .item.button {
+	padding: 0 6px;
+	cursor: pointer;
+}
+
+header .item.button + .item.button {
+	margin-left: 6px;
+}
+
+header .item.button:not(.disabled):hover {
+	background-color: rgb(240, 240, 240);
+	color: rgb(40, 40, 40);
+}
+
+header .item.button.active {
+	background-color: rgb(240, 240, 240);
+	color: rgb(40, 40, 40);
+	cursor: default;
+}
+
+header .item.button.download {
+	float: right;
+}
+
+header .item.button.my-ingredients.disabled,
+header .item.button.download.disabled {
+	color: rgb(100, 100, 100);
+	cursor: default;
+}
+
+main {
+	position: relative;
+	width: auto;
+	height: auto;
+	min-height: 600px;
+	min-width: 800px;
+	margin: 0px;
+	padding: 20px;
+	font-size: 16px;
+	overflow: hidden;
+}
+
+main .item {
+	line-height: 22px;
+	padding: 8px 16px;
+	background-color: rgb(40, 40, 40);
+	cursor: pointer;
+	border-radius: 3px;
+	box-shadow: 3px 3px 6px rgba(40, 40, 40, 0.3);
+}
+
+main .item {
+	margin-bottom: 4px;
+}
+
+main .item .title {
+	font-weight: 500;
+	color: rgb(240, 240, 240);
+}
+
+main .item .added {
+	font-weight: 500;
+	color: rgb(40, 240, 40);
+	float: right;
+}
+
+main .item .action {
+	color: rgb(240, 240, 240);
+	float: right;
+}
+
+main .item .action.delete:hover {
+	color: rgb(240, 40, 40);
+}
+
+main .item .action.edit:hover {
+	color: rgb(40, 240, 40);
+}
+
+main .item .action + .action {
+	margin-right: 10px;
+}
+
+main .item .action.down + .action.up {
+	margin-right: 4px;
+}
+
+main .item .action .action-svg {
+	margin: 2px 0 0;
+	padding: 0;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	float: right;
+	cursor: pointer;
+}
+
+div.action-button {
+	font-size: inherit;
+	padding: 8px 16px;
+	background-color: rgb(40, 40, 40);
+	color: rgb(240, 240, 240);
+	text-align: center;
+	display: inline-block;
+	cursor: pointer;
+	border-radius: 3px;
+	box-shadow: 3px 3px 6px rgba(40, 40, 40, 0.3);
+}
+
+div.action-button:hover {
+	color: rgb(40, 240, 40);
+}
+
+div.action-button {
+	margin-bottom: 12px;
+}
+
+div.action-button.save,
+div.action-button.back {
+	margin-bottom: 20px;
+}
+
+div.action-button + div.action-button {
+	/*margin-left: 6px;*/
+	margin-left: 12px;
+}
+
+#ingredients-list,
+#my-ingredients-list,
+.additions-add-remove-existing,
+.addition-edit,
+.product-edit,
+.category-edit,
+.category-list {
+	width: 600px;
+}
+
+.category-list .item {
+	line-height: 22px;
+	padding: 8px 16px;
+	background-color: rgb(40, 40, 40);
+	cursor: pointer;
+}
+
+#my-menu .category-list .action-button,
+.category-list .action-button.add-category {
+	margin-bottom: 12px;
+}
+
+.section {
+	position: relative;
+}
+
+.section + .section {
+	margin-top: 20px;
+}
+
+.column {
+	display: inline-block;
+}
+
+.column.s4 {
+	width: 25%;
+}
+
+#download label.tax,
+#download label.download-file-name,
+#mm-select-source .title,
+#my-ingredients-edit label.ingredient-price
+#ingredients-edit label.ingredient-price
+#my-ingredients-edit label.ingredient-name,
+#ingredients-edit label.ingredient-name,
+.addition-edit label.addition-ingredients,
+.addition-edit label.addition-type,
+.addition-edit label.addition-price-range,
+.addition-edit label.addition-max,
+.addition-edit label.addition-min,
+.addition-edit label.addition-name,
+.product-edit label.product-instructions-ml,
+.product-edit label.product-instructions,
+.product-edit label.product-max,
+.product-edit label.product-min,
+.product-edit label.product-description,
+.product-edit label.product-price,
+.product-edit label.product-name,
+.category-edit label.category-description,
+.category-edit label.category-name {
+	font-weight: 500;
+	margin-bottom: 4px;
+	display: block;
+}
+
+#download input.tax,
+#download input.download-file-name,
+#mm-select-source textarea.your-own-menu-source,
+#my-ingredients-edit input.ingredient-price,
+#ingredients-edit input.ingredient-price,
+#my-ingredients-edit input.ingredient-name,
+#ingredients-edit input.ingredient-name,
+#ingredients-list-filter-wrapper input.ingredients-filter,
+#my-ingredients-list-filter-wrapper input.ingredients-filter,
+.addition-edit input.addition-max,
+.addition-edit input.addition-min,
+.addition-edit input.addition-name,
+.product-edit input.product-instructions-ml,
+.product-edit textarea.product-instructions,
+.product-edit input.product-max,
+.product-edit input.product-min,
+.product-edit textarea.product-description,
+.product-edit input.product-price,
+.product-edit input.product-name,
+.category-edit textarea.category-description,
+.category-edit input.category-name {
+	width: 580px;
+	padding: 9px;
+	color: rgb(40, 40, 40);
+	background-color: rgb(255, 255, 255);
+	font-size: inherit;
+	border: 1px solid rgb(80, 80, 80);
+	display: block;
+	border-radius: 3px;
+}
+
+#mm-select-source textarea.your-own-menu-source:focus,
+#my-ingredients-edit input.ingredient-price:focus,
+#ingredients-edit input.ingredient-price:focus,
+#my-ingredients-edit input.ingredient-name:focus,
+#ingredients-edit input.ingredient-name:focus,
+#ingredients-list-filter-wrapper input.ingredients-filter:focus,
+#my-ingredients-list-filter-wrapper input.ingredients-filter:focus,
+.addition-edit input.addition-max:focus,
+.addition-edit input.addition-min:focus,
+.addition-edit input.addition-name:focus,
+.product-edit input.product-instructions-ml:focus,
+.product-edit textarea.product-instructions:focus,
+.product-edit input.product-max:focus,
+.product-edit input.product-min:focus,
+.product-edit textarea.product-description:focus,
+.product-edit input.product-price:focus,
+.product-edit input.product-name:focus,
+.category-edit textarea.category-description:focus,
+.category-edit input.category-name:focus {
+	border-color: rgb(40, 180, 40);
+}
+
+.product-edit textarea.product-instructions,
+.product-edit textarea.product-description,
+.category-edit textarea.category-description {
+	resize: none;
+	height: 76px;
+}
+
+.addition-edit label.addition-price-range-label,
+.addition-edit label.addition-type-label {
+	padding: 3px;
+	display: block;
+}
+
+#download input.tax {
+	margin-bottom: 12px;
+}
+
+#download input.download-file-name {
+	margin-bottom: 12px;
+}
+
+#download .download-message {
+	color: rgb(240, 40, 40);
+}
+
+#download .download-notice p.warn {
+	color: rgb(240, 40, 40);
+}
+
+#download .download-notice p.title {
+	color: rgb(80, 80, 80);
+	font-weight: 700;
+}
+
+.addition-edit .ingredient-item {
+	padding-right: 10px;
+	padding-bottom: 4px;
+	display: inline-block;
+}
+
+#my-ingredients-list-filter-wrapper,
+#ingredients-list-filter-wrapper {
+	padding-bottom: 12px;
+}
+
+#my-ingredients-list-filter-wrapper input.ingredients-filter,
+#ingredients-list-filter-wrapper input.ingredients-filter {
+	width: 456px;
+	display: inline-block;
+}
+
+#my-ingredients-list-filter-wrapper .action-button.reset-filter,
+#ingredients-list-filter-wrapper .action-button.reset-filter {
+	margin: 0 0 0 12px;
+}
+
+.status-message {
+	padding: 8px 16px;
+	display: inline-block;
+}
+
+.status-message.error {
+	color: rgb(240, 40, 40);
+}
+
+.status-message.success {
+	color: rgb(20, 160, 20);
+}
+
+#main-wrapper {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	min-height: 100%;
+}
+
+#mm-select-source .title {
+	padding: 6px 0 4px 0;
+}
+
+#mm-select-source textarea.your-own-menu-source {
+	resize: none;
+	height: 404px;
+}
+
+#mm-use-custom-source {
+	margin-top: 0;
+}
+
+#mm-select-source-error {
+	padding-top: 10px;
+	color: rgb(240, 40, 40);
+}
+
+#popup {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	/*
+	width: 100%;
+	height: 100%;
+	*/
+	background-color: rgba(0, 0, 0, 0.8);
+	z-index: 999999;
+}
+
+#popup .wrapper {
+	position: relative;
+	margin: 100px auto 0;
+	padding: 10px;
+	width: 400px;
+	height: 200px;
+	background-color: rgb(240, 240, 240);
+}
+
+#popup .wrapper .header {
+	padding: 5px 10px;
+	height: 30px;
+	line-height: 30px;
+	background-color: rgb(40, 40, 40);
+	color: rgb(240, 240, 240);
+	border-radius: 3px;
+	box-shadow: 3px 3px 6px rgba(40, 40, 40, 0.3);
+}
+
+#popup .wrapper .body {
+	padding: 10px;
+	line-height: 30px;
+}
+
+#popup .wrapper .body .warn {
+	color: rgb(240, 40, 40);
+}
+
+#popup .wrapper .footer {
+	position: absolute;
+	height: 46px;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	text-align: right;
+	padding: 10px;
+	line-height: 30px;
+}
+
+#popup .wrapper .footer .yes:hover {
+	color: rgb(240, 40, 40);
+}
+
+#popup .wrapper .header .close {
+	margin: 5px 0 0;
+	padding: 0;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	float: right;
+	cursor: pointer;
+}

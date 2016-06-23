@@ -105,8 +105,7 @@
 				</ul>
 				<div class="clearfix"></div>
 				<div class="tab-content col-md-8">
-					<div role="tabpanel" class="tab-pane active full-menu-content"
-						id="full-menu">
+					<div id="full-menu" role="tabpanel" class="tab-pane active full-menu-content">
 						<p></p>
 						<!-- Collapse start -->
 						<div class="panel-group" id="accordion-Appetizers" role="tablist"
