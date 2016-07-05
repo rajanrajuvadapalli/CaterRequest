@@ -676,7 +676,10 @@ public class MenuController {
 			RestaurantDTO r = getYelpReviews(restaurantId);
 			modelMap.addAttribute("r", r);
 
-			modelMap.addAttribute("menu_source_url", fileName + fileNameExtension);
+			String jsonMenuFile = //"http://d1zj4tl2dwin45.cloudfront.net/"
+			"rest/s3/menu/"
+					+ fileName + fileNameExtension;
+			modelMap.addAttribute("menu_source_url", jsonMenuFile);
 
 			/*
 			// If the menu ID is present, load the menu items
