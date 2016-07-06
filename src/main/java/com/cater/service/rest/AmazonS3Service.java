@@ -32,11 +32,12 @@ public class AmazonS3Service {
 		try {
 			logger.debug("Retrieving " + filename + " from S3.");
 			String jsonMenu = amazonS3.downloadJsonMenu(filename).toString();
+			logger.debug("Found " + filename);
 			return Response.ok().entity(jsonMenu)
 					.type(MediaType.APPLICATION_JSON).build();
 		}
 		catch (Exception ex) {
-			logger.error(ex);
+			logger.error("Failed to retrieve file " + filename, ex);
 			return Response.serverError().build();
 		}
 	}
