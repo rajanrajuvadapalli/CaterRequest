@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.auth.SystemPropertiesCredentialsProvider;
-import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.GetObjectRequest;
@@ -80,7 +79,7 @@ public class AmazonS3 {
 	 */
 	public StringBuffer downloadJsonMenu(String fileName) {
 		AmazonS3Client s3Client = new AmazonS3Client(
-				new ProfileCredentialsProvider());
+				new SystemPropertiesCredentialsProvider());
 		try {
 			String keyName = fileName;
 			logger.info(String.format(
