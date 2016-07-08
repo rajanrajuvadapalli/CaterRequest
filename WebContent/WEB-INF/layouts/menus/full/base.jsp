@@ -172,5 +172,5 @@
 
 <!-- Menu Generator -->
 <link rel="stylesheet" href="/cater4party/resources/assets/cl-css/styles.css" type="text/css">
-<script type="text/javascript">var menu_source_url = "/cater4party/${menu_source_url}";</script>
+<script type="text/javascript">var menu_source_url = "/${menu_source_url}";</script>
 <script src="/cater4party/resources/assets/cl-js/app.js?v5" type="text/javascript"></script>
