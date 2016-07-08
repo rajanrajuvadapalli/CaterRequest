@@ -91,7 +91,7 @@ $(document).ready( function() {
 
 	// load data
 	function load_data() {
-
+		console.log("menu URL: " + bucket.data.url);
 		$.getJSON( bucket.data.url, function(data) {
 			bucket.data.ready = true;
 			bucket.data.content = data;

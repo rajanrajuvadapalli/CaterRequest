@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,12 +13,13 @@ import org.springframework.stereotype.Component;
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.auth.SystemPropertiesCredentialsProvider;
+import com.amazonaws.regions.Region;
+import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
-import com.amazonaws.services.s3.transfer.Download;
 import com.amazonaws.services.s3.transfer.TransferManager;
 import com.amazonaws.services.s3.transfer.Upload;
 
@@ -80,47 +80,18 @@ public class AmazonS3 {
 	 * @return the string buffer
 	 */
 	public StringBuffer downloadJsonMenu(String fileName) {
-		String keyName = fileName;
-		TransferManager tm = new TransferManager(
-				new SystemPropertiesCredentialsProvider());
-		logger.debug(String.format(
-				"Downloading a file from AmazonS3 [bucket: %s, file: %s]",
-				menuBucketName, keyName));
-		// TransferManager processes all transfers asynchronously, 
-		// so this call will return immediately.
-		File f = new File("tmp");
-		Download download = tm.download(bucketName, keyName, f);
-		try {
-			// Or you can block and wait for the download to finish
-			download.waitForCompletion();
-			logger.debug("Download complete.");
-			return new StringBuffer(FileUtils.readFileToString(f));
-		}
-		catch (Exception ex) {
-			logger.error("Failed to download file, download was aborted.", ex);
-		}
-		finally {
-			FileUtils.deleteQuietly(f);
-		}
-		return new StringBuffer("");
-	}
-
-	/**
-	 * Download json menu.
-	 *
-	 * @param fileName the file name
-	 * @return the string buffer
-	 */
-	public StringBuffer downloadJsonMenu_1(String fileName) {
 		AmazonS3Client s3Client = new AmazonS3Client(
 				new SystemPropertiesCredentialsProvider());
+		Region REGION = Region.getRegion(Regions.US_WEST_2);
+		s3Client.setRegion(REGION);
 		try {
-			String keyName = fileName;
+			String keyName = "menu_json/" + fileName;
 			logger.info(String.format(
 					"Downloading a file from AmazonS3 [bucket: %s, file: %s]",
 					menuBucketName, keyName));
 			S3Object s3object = s3Client.getObject(new GetObjectRequest(
-					bucketName, keyName));
+					menuBucketName, keyName));
+			logger.debug("Download complete.");
 			logger.info("Content-Type: "
 					+ s3object.getObjectMetadata().getContentType());
 			S3ObjectInputStream s3ObjectInputStream = s3object

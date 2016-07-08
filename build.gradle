@@ -52,8 +52,8 @@ dependencies {
 	compile "commons-dbcp:commons-dbcp:1.4"
 	
 	//AWS
-	compile 'com.amazonaws:aws-java-sdk-ses:1.9.16'
-	compile 'com.amazonaws:aws-java-sdk:1.10.30'
+	compile 'com.amazonaws:aws-java-sdk-ses:1.11.14'
+	compile 'com.amazonaws:aws-java-sdk:1.11.14'
 	
 	//Twilio Cloud Communications - APIs for Voice, VoIP, and text messaging.
 	compile "com.twilio.sdk:twilio-java-sdk:3.4.5"
