@@ -832,7 +832,7 @@ $(document).ready( function() {
 					ingredient_data = get_ingredient_data(additions[i].ingredients[a]);
 
 					if (ingredient_data.price > 0) {
-						ingredient_name = ingredient_data.name + " " + "($ " + ingredient_data.price.toFixed(2) + ")";
+						ingredient_name = ingredient_data.name + " " + "($" + ingredient_data.price.toFixed(2) + ")";
 					}
 					else {
 						ingredient_name = ingredient_data.name;
@@ -871,6 +871,28 @@ $(document).ready( function() {
 		}
 
 		return result.join("; ");
+	}
+	
+	function compile_cart_item_additions_prices(additions) {
+		var result = [], addition_data, product, ingredient_data, ingredient_name;
+		for (var i in additions) {
+			addition_data = get_addition_data(additions[i].id);
+			// "single", "multiple"
+			if (typeof(additions[i].ingredients) !== "undefined") {
+				var ingredients = [];
+				for (var a in additions[i].ingredients) {
+					ingredient_data = get_ingredient_data(additions[i].ingredients[a]);
+					if (ingredient_data.price > 0) {
+						result.push((ingredient_data.price.toFixed(2)));
+					}
+				}
+			}
+			// Unknown
+			else {
+				throw new Error("Unknown addition type");
+			}
+		}
+		return result;
 	}
 
 	// remove item from the shopping cart
@@ -918,8 +940,25 @@ $(document).ready( function() {
 		cart_item = cart_item.replace(/\{\{quantity\}\}/g, item.quantity);
 		cart_item = cart_item.replace(/\{\{items\}\}/g, additions);
 		cart_item = cart_item.replace(/\{\{instructions\}\}/g, instructions);
-		cart_item = cart_item.replace(/\{\{price\}\}/g, item.price);
+		cart_item = cart_item.replace(/\{\{base_price\}\}/g, product_data.price);
+		//cart_item = cart_item.replace(/\{\{price\}\}/g, item.price);
+		
+		//will return array of prices []
+		var result = compile_cart_item_additions_prices(item.additions);
+		var expl = item.quantity + " x [$" + product_data.price;
+		var cart_item_total_price = parseFloat(product_data.price);
+		for(var i in result) {
+			expl = expl + " + $" + parseFloat(result[i]).toFixed(2);
+			cart_item_total_price += parseFloat(result[i]);
+		}
+		expl = expl + "]";
+		
+		cart_item_total_price = parseInt(item.quantity) * cart_item_total_price;
+		cart_item = cart_item.replace(/\{\{price\}\}/g, cart_item_total_price.toFixed(2));
 
+		expl = expl + " = $" + cart_item_total_price.toFixed(2);
+		cart_item = cart_item.replace(/\{\{expl\}\}/g, expl);
+		
 		return cart_item;
 	}
 
@@ -1028,8 +1067,10 @@ $(document).ready( function() {
 
 			price = parseFloat(bucket.shopping_cart_items[i].price);
 
+			//NOTE (hari): price already includes the additions, so we don't need to 
+			//calculate additions again. Therefore commenting the following code.
 			// calculate the ingredients additional price
-			additions_total_to_add = 0;
+			/*additions_total_to_add = 0;
 			for (var a in bucket.shopping_cart_items[i].additions) {
 
 				addition_data = get_addition_data(bucket.shopping_cart_items[i].additions[a].id);
@@ -1040,11 +1081,14 @@ $(document).ready( function() {
 
 				for (var b in bucket.shopping_cart_items[i].additions[a].ingredients) {
 					ingredient_data = get_ingredient_data(bucket.shopping_cart_items[i].additions[a].ingredients[b]);
+					console.log("ingredient_data.price=" + ingredient_data.price);
 					additions_total_to_add += ingredient_data.price;
+					console.log("additions_total_to_add=" + additions_total_to_add);
 				}
-			}
+			}*/
 
-			summary.subtotal += quantity * (price + additions_total_to_add);
+			//summary.subtotal += quantity * (price + additions_total_to_add);
+			summary.subtotal += quantity * (price);
 		}
 
 		if (typeof(bucket.data.content.settings) === "object" && typeof(bucket.data.content.settings.tax) === "number" && bucket.data.content.settings.tax > 0) {

@@ -1,8 +1,8 @@
 <div data-id="{{id}}" data-object="{{object_id}}" class="sel_item full-menu-list-item cf">
 	<div class="name-price cf">
-		<div class="col-md-8 col-sm-8 col-xs-8"><h4><div class="numbering"></div> {{name}}</h4></div>
+		<div class="col-md-8 col-sm-8 col-xs-8"><h4><div class="numbering"></div> {{name}}&nbsp;(${{base_price}})</h4></div>
 		<div class="col-md-4 col-sm-4 col-xs-4">
-			<div style="text-align:right;padding-right: 10px;">Price: {{price}}</div>
+			<div style="text-align:right;padding-right: 10px;">${{price}}</div>
 			<div class="right">
 				<span class="sel_edit"><img src="/cater4party/resources/assets/cl-images/pencil.png"/></span>
 				<span class="sel_remove full-menu-remove-item">X</span>
@@ -12,4 +12,5 @@
 	<figure>Count: {{quantity}}</figure>
 	<div>{{items}}</div>
 	<div>{{instructions}}</div>
+	<div>{{expl}}</div>
 </div>
