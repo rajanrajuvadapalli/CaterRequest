@@ -184,6 +184,8 @@ public class RestaurantDashboardController {
 				.getParameter("restaurantName")));
 		String primaryCuisine = StringUtils.defaultString(request
 				.getParameter("cuisineType"));
+		data.setPrimaryCuisine(primaryCuisine);
+		data.setSecondaryCuisineTypes(secondaryCuisineTypes);
 		data.setCuisineType(Helper.getCuisineType(primaryCuisine,
 				secondaryCuisineTypes));
 		data.setUrl(StringUtils.defaultString(request.getParameter("url")));

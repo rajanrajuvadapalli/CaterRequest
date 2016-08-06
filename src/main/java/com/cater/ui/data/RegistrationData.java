@@ -1,5 +1,7 @@
 package com.cater.ui.data;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class RegistrationData {
 	private static final String NEW_LINE = "\n";
 	private String name;
@@ -20,7 +22,8 @@ public class RegistrationData {
 	private String zip;
 	private String aboutUs;
 	private float salesTax;
-	
+	private String primaryCuisine;
+	private String[] secondaryCuisineTypes;
 
 	public float getSalesTax() {
 		return salesTax;
@@ -166,14 +169,40 @@ public class RegistrationData {
 		this.aboutUs = aboutUs;
 	}
 
+	public String getPrimaryCuisine() {
+		return primaryCuisine;
+	}
+
+	public void setPrimaryCuisine(String primaryCuisine) {
+		this.primaryCuisine = primaryCuisine;
+	}
+
+	public String[] getSecondaryCuisineTypes() {
+		return secondaryCuisineTypes;
+	}
+
+	public void setSecondaryCuisineTypes(String[] secondaryCuisineTypes) {
+		this.secondaryCuisineTypes = secondaryCuisineTypes;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("[name: ").append(name).append(NEW_LINE);
-		builder.append("restaurantName: ").append(restaurantName)
-				.append(NEW_LINE);
-		builder.append("cuisineType: ").append(cuisineType).append(NEW_LINE);
-		builder.append("url: ").append(url).append(NEW_LINE);
+		if (StringUtils.isNotBlank(restaurantName)) {
+			builder.append("[restaurantName: ").append(restaurantName)
+					.append(NEW_LINE);
+			builder.append("primaryCuisine: ").append(primaryCuisine)
+					.append(NEW_LINE);
+			builder.append("secondaryCuisineTypes: ")
+					.append(secondaryCuisineTypes).append(NEW_LINE);
+			builder.append("cuisineType: ").append(cuisineType)
+					.append(NEW_LINE);
+			builder.append("url: ").append(url).append(NEW_LINE);
+			builder.append("aboutUs: ").append(aboutUs).append(NEW_LINE);
+		}
+		else {
+			builder.append("[name: ").append(name).append(NEW_LINE);
+		}
 		builder.append("email: ").append(email).append(NEW_LINE);
 		builder.append("password: ").append(password).append(NEW_LINE);
 		builder.append("phone: ").append(phone).append(NEW_LINE);
@@ -182,8 +211,7 @@ public class RegistrationData {
 		builder.append("street2: ").append(street2).append(NEW_LINE);
 		builder.append("city: ").append(city).append(NEW_LINE);
 		builder.append("state: ").append(state).append(NEW_LINE);
-		builder.append("zip: ").append(zip).append(NEW_LINE);
-		builder.append("aboutUs: ").append(aboutUs).append("]");
+		builder.append("zip: ").append(zip).append("]");
 		return builder.toString();
 	}
 }

@@ -48,7 +48,7 @@ public class Restaurant extends TimestampEntity implements Serializable {
 	private String aboutUs;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "restaurant_sk")
-	public List<Quote> quotes;
+	public List <Quote> quotes;
 	@Column(name = "sales_tax", length = 5, nullable = false)
 	private float salesTax;
 	@Column(name = "full_menu_exist", nullable = false, unique = false, updatable = true)
@@ -150,12 +150,20 @@ public class Restaurant extends TimestampEntity implements Serializable {
 		this.aboutUs = aboutUs;
 	}
 
-	public List<Quote> getQuotes() {
+	public List <Quote> getQuotes() {
 		return quotes;
 	}
 
-	public void setQuotes(List<Quote> quotes) {
+	public void setQuotes(List <Quote> quotes) {
 		this.quotes = quotes;
+	}
+
+	public boolean isFullMenuExist() {
+		return isFullMenuExist;
+	}
+
+	public void setFullMenuExist(boolean isFullMenuExist) {
+		this.isFullMenuExist = isFullMenuExist;
 	}
 
 	@Override
@@ -164,17 +172,23 @@ public class Restaurant extends TimestampEntity implements Serializable {
 		int result = super.hashCode();
 		result = prime * result + ((aboutUs == null) ? 0 : aboutUs.hashCode());
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
-		result = prime * result + ((contactEmail == null) ? 0 : contactEmail.hashCode());
-		result = prime * result + ((contactNumber == null) ? 0 : contactNumber.hashCode());
-		result = prime * result + ((cuisineType == null) ? 0 : cuisineType.hashCode());
-		result = prime * result + ((deliverMiles == null) ? 0 : deliverMiles.hashCode());
+		result = prime * result
+				+ ((contactEmail == null) ? 0 : contactEmail.hashCode());
+		result = prime * result
+				+ ((contactNumber == null) ? 0 : contactNumber.hashCode());
+		result = prime * result
+				+ ((cuisineType == null) ? 0 : cuisineType.hashCode());
+		result = prime * result
+				+ ((deliverMiles == null) ? 0 : deliverMiles.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + (isFullMenuExist ? 1231 : 1237);
 		result = prime * result + (isNumberVerified ? 1231 : 1237);
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((quotes == null) ? 0 : quotes.hashCode());
 		result = prime * result + Float.floatToIntBits(salesTax);
-		result = prime * result + ((websiteUrl == null) ? 0 : websiteUrl.hashCode());
+		result = prime * result
+				+ ((websiteUrl == null) ? 0 : websiteUrl.hashCode());
 		return result;
 	}
 
@@ -190,61 +204,75 @@ public class Restaurant extends TimestampEntity implements Serializable {
 		if (aboutUs == null) {
 			if (other.aboutUs != null)
 				return false;
-		} else if (!aboutUs.equals(other.aboutUs))
+		}
+		else if (!aboutUs.equals(other.aboutUs))
 			return false;
 		if (address == null) {
 			if (other.address != null)
 				return false;
-		} else if (!address.equals(other.address))
+		}
+		else if (!address.equals(other.address))
 			return false;
 		if (contactEmail == null) {
 			if (other.contactEmail != null)
 				return false;
-		} else if (!contactEmail.equals(other.contactEmail))
+		}
+		else if (!contactEmail.equals(other.contactEmail))
 			return false;
 		if (contactNumber == null) {
 			if (other.contactNumber != null)
 				return false;
-		} else if (!contactNumber.equals(other.contactNumber))
+		}
+		else if (!contactNumber.equals(other.contactNumber))
 			return false;
 		if (cuisineType == null) {
 			if (other.cuisineType != null)
 				return false;
-		} else if (!cuisineType.equals(other.cuisineType))
+		}
+		else if (!cuisineType.equals(other.cuisineType))
 			return false;
 		if (deliverMiles == null) {
 			if (other.deliverMiles != null)
 				return false;
-		} else if (!deliverMiles.equals(other.deliverMiles))
+		}
+		else if (!deliverMiles.equals(other.deliverMiles))
 			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
-		} else if (!id.equals(other.id))
+		}
+		else if (!id.equals(other.id))
+			return false;
+		if (isFullMenuExist != other.isFullMenuExist)
 			return false;
 		if (isNumberVerified != other.isNumberVerified)
 			return false;
 		if (login == null) {
 			if (other.login != null)
 				return false;
-		} else if (!login.equals(other.login))
+		}
+		else if (!login.equals(other.login))
 			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
-		} else if (!name.equals(other.name))
+		}
+		else if (!name.equals(other.name))
 			return false;
 		if (quotes == null) {
 			if (other.quotes != null)
 				return false;
-		} else if (!quotes.equals(other.quotes))
+		}
+		else if (!quotes.equals(other.quotes))
 			return false;
-		if (Float.floatToIntBits(salesTax) != Float.floatToIntBits(other.salesTax))
+		if (Float.floatToIntBits(salesTax) != Float
+				.floatToIntBits(other.salesTax))
 			return false;
 		if (websiteUrl == null) {
 			if (other.websiteUrl != null)
 				return false;
-		} else if (!websiteUrl.equals(other.websiteUrl))
+		}
+		else if (!websiteUrl.equals(other.websiteUrl))
 			return false;
 		return true;
 	}
