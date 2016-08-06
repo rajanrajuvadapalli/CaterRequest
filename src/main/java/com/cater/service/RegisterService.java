@@ -96,6 +96,10 @@ public class RegisterService {
 			restaurant.setAboutUs(data.getAboutUs());
 			restaurant.setSalesTax(data.getSalesTax());
 			restaurant.setNumberVerified(data.isNumberVerified());
+			if (data.getSecondaryCuisineTypes() != null
+					&& data.getSecondaryCuisineTypes().length > 0) {
+				restaurant.setFullMenuExist(true);
+			}
 			restaurantDAO.saveOrUpdate(restaurant);
 		}
 	}
