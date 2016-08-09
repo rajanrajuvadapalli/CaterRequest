@@ -1,11 +1,16 @@
 package com.cater.controller;
 
+import java.io.IOException;
+import java.io.StringWriter;
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,7 +23,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cater.Helper;
 import com.cater.constants.Roles;
+import com.cater.data.DiscountElement;
 import com.cater.model.Customer;
+import com.cater.model.Discount;
 import com.cater.model.Login;
 import com.cater.model.Restaurant;
 import com.cater.service.CustomerService;
@@ -29,6 +36,7 @@ import com.cater.service.UpdateResult;
 import com.cater.twilio.sms.SMSHelper;
 import com.cater.ui.data.RegistrationData;
 import com.cater.ui.data.User;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 
 /**
@@ -37,6 +45,8 @@ import com.google.common.collect.Lists;
 @Controller
 @RequestMapping(value = { "settings" })
 public class SettingsController {
+	private static final Logger logger = Logger
+			.getLogger(SettingsController.class);
 	/** The personal settings service. */
 	@Autowired
 	private PersonalSettingsService personalSettingsService;
@@ -78,6 +88,27 @@ public class SettingsController {
 				return "settings/t_personalInfo_restaurants";
 			}
 			else {
+				try {
+					List <Discount> discountsFromDb = user.getRestaurant()
+							.getDiscountStrategy();
+					if (CollectionUtils.isNotEmpty(discountsFromDb)) {
+						List <DiscountElement> discounts = Lists.newArrayList();
+						for (Discount d : discountsFromDb) {
+							DiscountElement de = new DiscountElement(d
+									.getLower().intValue(), d.getUpper()
+									.intValue(), new BigDecimal(d.getPercent()));
+							discounts.add(de);
+						}
+						StringWriter sw = new StringWriter();
+						new ObjectMapper().writeValue(sw, discounts);
+						logger.info(sw.toString());
+						modelMap.addAttribute("discounts", sw.toString());
+					}
+				}
+				catch (IOException e) {
+					logger.error(
+							"Failed to convert discount strategy to json.", e);
+				}
 				return "settings/t_personalInfo_restaurant";
 			}
 		}

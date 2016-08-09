@@ -110,6 +110,19 @@ ALTER TABLE cater4party.Quote ADD FOREIGN KEY (menu_sk) REFERENCES cater4party.M
 -- Create Foreign Key: Quote.restaurant_sk -> Restaurant.id
 ALTER TABLE cater4party.Quote ADD FOREIGN KEY (restaurant_sk) REFERENCES cater4party.Restaurant(id);
 
+CREATE TABLE cater4party.Discount
+(
+	`id` INT NOT NULL AUTO_INCREMENT
+	,PRIMARY KEY (id)
+	,`restaurant_sk` INT NOT NULL 
+	,`lower` INT NOT NULL 
+	,`upper` INT NOT NULL 
+	,`pct` DECIMAL(10,2)  NULL
+	,`create_ts` DATETIME NOT NULL 
+	,`lupd_ts` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
+-- Create Foreign Key: Discount.restaurant_sk -> Restaurant.id
+ALTER TABLE cater4party.Discount ADD FOREIGN KEY (restaurant_sk) REFERENCES cater4party.Restaurant(id);
+
 ------------------------
 alter table cater4party.Restaurant
 modify `cuisine_type` VARCHAR(200) not null;

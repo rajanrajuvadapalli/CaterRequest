@@ -344,6 +344,32 @@
 	</div>
 </div>
 
+<div class="col-sm-10 col-sm-offset-1">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">Add/Change Discount</h3>
+		</div>
+		<div class="panel-body">
+			<div class="col-sm-3">
+				<c:if
+					test="${not empty sessionScope.user.restaurant.discountStrategy}">
+					<div class="col-sm-3">
+						<b>Current&nbsp;discounts:</b><br /> <span
+							id="discountTableCurrent" />
+					</div>
+					<br />
+				</c:if>
+				<form class="form-horizontal" method="POST" id="discountForm"
+					action="${pageContext.request.contextPath}/settings/changeDiscount"
+					novalidate enctype="application/x-www-form-urlencoded"
+					autocomplete="off" onsubmit="return validateChangeDiscountForm();">
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script>
 	$('document').ready(function() {
 		populateCuisineTypesDrowpdown();
@@ -368,5 +394,13 @@
 			$("div[id=restaurant-pic]").removeClass("hidden");
 			$(this).attr("disabled", "disabled");
 		});
+		var discounts=JSON.parse('${discounts}');
+		var discountTableCurrent="<table class=\"table table-bordered\"><tr><th>From</th><th>To</th><th>Discount</th></tr>";
+		for (var i = 0; i < discounts.length; i++) { 
+			var row = "<tr><td>$"+discounts[i].lower+"</td><td>$"+discounts[i].upper+"</td><td>"+discounts[i].pct+"%</td></tr>";
+			discountTableCurrent += row;
+		}
+		discountTableCurrent += "</table>";
+		$("span[id=discountTableCurrent]").html(discountTableCurrent);
 	});
 </script>
