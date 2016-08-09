@@ -53,6 +53,9 @@ public class Restaurant extends TimestampEntity implements Serializable {
 	private float salesTax;
 	@Column(name = "full_menu_exist", nullable = false, unique = false, updatable = true)
 	private boolean isFullMenuExist;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "restaurant_sk")
+	public List <Discount> discountStrategy;
 
 	public float getSalesTax() {
 		return salesTax;
@@ -166,6 +169,14 @@ public class Restaurant extends TimestampEntity implements Serializable {
 		this.isFullMenuExist = isFullMenuExist;
 	}
 
+	public List <Discount> getDiscountStrategy() {
+		return discountStrategy;
+	}
+
+	public void setDiscountStrategy(List <Discount> discountStrategy) {
+		this.discountStrategy = discountStrategy;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -180,6 +191,9 @@ public class Restaurant extends TimestampEntity implements Serializable {
 				+ ((cuisineType == null) ? 0 : cuisineType.hashCode());
 		result = prime * result
 				+ ((deliverMiles == null) ? 0 : deliverMiles.hashCode());
+		result = prime
+				* result
+				+ ((discountStrategy == null) ? 0 : discountStrategy.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + (isFullMenuExist ? 1231 : 1237);
 		result = prime * result + (isNumberVerified ? 1231 : 1237);
@@ -236,6 +250,12 @@ public class Restaurant extends TimestampEntity implements Serializable {
 				return false;
 		}
 		else if (!deliverMiles.equals(other.deliverMiles))
+			return false;
+		if (discountStrategy == null) {
+			if (other.discountStrategy != null)
+				return false;
+		}
+		else if (!discountStrategy.equals(other.discountStrategy))
 			return false;
 		if (id == null) {
 			if (other.id != null)

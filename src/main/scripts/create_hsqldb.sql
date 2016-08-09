@@ -1,4 +1,4 @@
-create schema cater4party;
+--create schema cater4party;
 
 CREATE TABLE cater4party.Login (
 	id INT NOT NULL IDENTITY
@@ -48,7 +48,7 @@ CREATE TABLE cater4party.Restaurant (
 	,deliver_miles INT NOT NULL
 	,about_us VARCHAR(5000) NULL
 	,sales_tax DECIMAL(4,2) NOT NULL
-	,`full_menu_exist` BIT NOT NULL
+	,full_menu_exist BIT NOT NULL
 	,create_ts DATETIME NOT NULL 
 	,lupd_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP );
 -- Create Foreign Key: Restaurant.address_sk -> Address.id
@@ -102,3 +102,15 @@ CREATE TABLE cater4party.Quote
 ALTER TABLE cater4party.Quote ADD FOREIGN KEY (menu_sk) REFERENCES cater4party.Menu(id);
 -- Create Foreign Key: Quote.restaurant_sk -> Restaurant.id
 ALTER TABLE cater4party.Quote ADD FOREIGN KEY (restaurant_sk) REFERENCES cater4party.Restaurant(id);
+
+CREATE TABLE cater4party.Discount
+(
+	id INT NOT NULL IDENTITY
+	,restaurant_sk INT NOT NULL 
+	,lower INT NOT NULL 
+	,upper INT NOT NULL 
+	,pct DECIMAL(10,2)  NULL
+	,create_ts DATETIME NOT NULL 
+	,lupd_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP );
+-- Create Foreign Key: Discount.restaurant_sk -> Restaurant.id
+ALTER TABLE cater4party.Discount ADD FOREIGN KEY (restaurant_sk) REFERENCES cater4party.Restaurant(id);
