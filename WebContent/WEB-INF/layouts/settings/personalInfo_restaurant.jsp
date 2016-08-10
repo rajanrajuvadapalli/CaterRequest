@@ -365,14 +365,15 @@
 					action="${pageContext.request.contextPath}/settings/changeDiscount"
 					novalidate enctype="application/x-www-form-urlencoded"
 					autocomplete="off" onsubmit="return validateChangeDiscountForm();">
-					<input type="text" hidden="hidden" id="newDiscountJson" name="newDiscountJson">
-					<input type="text" hidden="hidden" id="restaurantID" name="restaurantID" value="${sessionScope.user.restaurantID}">
+					<input type="text" hidden="hidden" id="newDiscountJson"
+						name="newDiscountJson"> <input type="text" hidden="hidden"
+						id="restaurantID" name="restaurantID"
+						value="${sessionScope.user.restaurantID}">
 					<table class="table table-striped table-bordered" id="newDiscTable">
 						<tr>
 							<th>From</th>
 							<th>To</th>
 							<th>Discount</th>
-							<%-- <th></th> --%>
 						</tr>
 						<tr id="1">
 							<td><input type="number" size="5" id="l1"
@@ -381,10 +382,6 @@
 								class="form-control" placeholder="To"></td>
 							<td><input type="number" size="5" id="d1"
 								class="form-control" placeholder="Discount"></td>
-							<%-- <td><button type="button" class="btn btn-default"
-									onclick="deleteRow('1')">
-									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;Delete
-								</button></td> --%>
 						</tr>
 					</table>
 					<br />
@@ -445,9 +442,7 @@
 				'<td><input type="number" size="5" id="l' + numberOfRows + '" class="form-control" placeholder="From"></td>'+
 				'<td><input type="number" size="5" id="u' + numberOfRows + '" class="form-control" placeholder="To"></td>'+
 				'<td><input type="number" size="5" id="d' + numberOfRows + '" class="form-control" placeholder="Discount"></td>'+
-				//'<td><button type="button" class="btn btn-default" onclick="deleteRow(\'' + numberOfRows + '\')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;Delete</button></td>'+
 				'</tr>'; 
-			//console.log("newRow="+newRow);
 			$('#newDiscTable tr:last').after(newRow);
 		});
 	});
@@ -473,14 +468,7 @@ function validateChangeDiscountForm() {
 	var newJsonString = JSON.stringify(discStrategy);
 	//console.log("newJsonString="+newJsonString);
 	$('form#discountForm input#newDiscountJson').val(newJsonString);
-	//$('form#discountForm').submit();
 	return;
 }
 </script>
 
-<!-- <script>
-function deleteRow(rowId) {
-	console.log("Deleting row with id=" + rowId);
-	$('table#newDiscTable tr#'+rowId).remove();
-}
-</script> -->

@@ -115,9 +115,9 @@ CREATE TABLE cater4party.Discount
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
 	,`restaurant_sk` INT NOT NULL 
-	,`lower` INT NOT NULL 
-	,`upper` INT NOT NULL 
-	,`pct` DECIMAL(10,2)  NULL
+	,`lower` DECIMAL(10,2) NOT NULL 
+	,`upper` DECIMAL(10,2) NOT NULL 
+	,`pct` DECIMAL(10,2) NOT NULL
 	,`create_ts` DATETIME NOT NULL 
 	,`lupd_ts` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
 -- Create Foreign Key: Discount.restaurant_sk -> Restaurant.id
@@ -129,3 +129,6 @@ modify `cuisine_type` VARCHAR(200) not null;
 
 alter table cater4party.Menu
 add `full_menu` BIT NOT NULL DEFAULT 0;
+
+alter table cater4party.Discount
+modify `pct` DECIMAL(10,2) NOT NULL;

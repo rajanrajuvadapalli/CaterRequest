@@ -5,17 +5,21 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.hibernate.PropertyValueException;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.beust.jcommander.internal.Lists;
 import com.cater.constants.Cuisines;
 import com.cater.constants.Roles;
 import com.cater.model.Address;
+import com.cater.model.Discount;
 import com.cater.model.Login;
 import com.cater.model.Restaurant;
 
@@ -114,6 +118,29 @@ public class RestaurantDAOImplTest extends AbstractDAOImplTest {
 		assertEquals(persistedRestaurant.getAddress().getCity(), "Rancho");
 		assertEquals(persistedRestaurant.getAddress().getState(), "CA");
 		assertEquals(persistedRestaurant.getAddress().getZip(), "958250000");
+	}
+
+	@Test
+	@Ignore
+	public void testFindById_DiscountStrategy() throws InterruptedException {
+		Restaurant restaurant = createSampleRestaurant();
+		List <Discount> discountStrategy = Lists.newArrayList();
+		Discount d1 = new Discount();
+		d1.setLower(new Double(10));
+		d1.setUpper(new Double(200));
+		d1.setPercent(new Double(20.10));
+		d1.setRestaurant(restaurant);
+		discountStrategy.add(d1);
+		restaurant.setDiscountStrategy(discountStrategy);
+		fixture.saveOrUpdate(restaurant);
+		Restaurant persistedRestaurant = fixture.findById(restaurant.getId());
+		assertNotNull(persistedRestaurant);
+		assertNotNull(persistedRestaurant.getDiscountStrategy());
+		Discount d1_persisted = persistedRestaurant.getDiscountStrategy()
+				.get(0);
+		assertEquals(d1_persisted.getLower(), new Integer(10));
+		assertEquals(d1_persisted.getUpper(), new Integer(200));
+		assertEquals(d1_persisted.getPercent(), new Double(20.10));
 	}
 
 	@Test

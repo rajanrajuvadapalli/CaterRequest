@@ -95,9 +95,10 @@ public class SettingsController {
 					if (CollectionUtils.isNotEmpty(discountsFromDb)) {
 						List <DiscountElement> discounts = Lists.newArrayList();
 						for (Discount d : discountsFromDb) {
-							DiscountElement de = new DiscountElement(d
-									.getLower().intValue(), d.getUpper()
-									.intValue(), new BigDecimal(d.getPercent()));
+							DiscountElement de = new DiscountElement(
+									new BigDecimal(d.getLower()),
+									new BigDecimal(d.getUpper()),
+									new BigDecimal(d.getPercent()));
 							discounts.add(de);
 						}
 						StringWriter sw = new StringWriter();
@@ -411,7 +412,7 @@ public class SettingsController {
 	 */
 	@RequestMapping(value = { "changeDiscount" }, method = RequestMethod.POST)
 	public String changeDiscount(ModelMap modelMap, HttpServletRequest request,
-			HttpSession session,
+			HttpSession session, RedirectAttributes redirectAttributes,
 			@RequestParam("newDiscountJson") String newDiscountJson,
 			@RequestParam("restaurantID") int restaurantID) {
 		logger.info("newDiscountJson = " + newDiscountJson);
@@ -427,11 +428,15 @@ public class SettingsController {
 				for (DiscountElement de : discountStrategy.getValues()) {
 					Discount d = new Discount();
 					d.setRestaurant(restaurant);
-					d.setLower(de.getLower());
-					d.setUpper(de.getUpper());
+					d.setLower(de.getLower().doubleValue());
+					d.setUpper(de.getUpper().doubleValue());
 					d.setPercent(de.getDiscountPercent().doubleValue());
 					restaurantService.saveOrUpdateDiscount(d);
 				}
+				List <String> successMessages = Lists.newArrayList();
+				successMessages.add("Successfully updated discounts.");
+				redirectAttributes.addFlashAttribute("successMessages",
+						successMessages);
 			}
 		}
 		catch (Exception e) {

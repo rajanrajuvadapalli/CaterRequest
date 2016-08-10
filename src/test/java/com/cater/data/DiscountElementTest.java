@@ -30,12 +30,13 @@ public class DiscountElementTest {
 	@Test
 	public void testSerialize_1() throws JsonGenerationException,
 			JsonMappingException, IOException {
-		fixture.setLower(0);
-		fixture.setUpper(200);
+		fixture.setLower(new BigDecimal(0));
+		fixture.setUpper(new BigDecimal(200));
 		fixture.setDiscountPercent(new BigDecimal(20.1));
 		StringWriter sw = new StringWriter();
 		new ObjectMapper().writeValue(sw, fixture);
-		assertEquals("{\"lower\":0,\"upper\":200,\"pct\":20.10}", sw.toString());
+		assertEquals("{\"lower\":0.00,\"upper\":200.00,\"pct\":20.10}",
+				sw.toString());
 	}
 
 	@Test
@@ -53,8 +54,8 @@ public class DiscountElementTest {
 		String json = "{\"lower\":10,\"upper\":300,\"pct\":15.25}";
 		DiscountElement element = new ObjectMapper().readValue(json,
 				DiscountElement.class);
-		assertEquals(10, element.getLower());
-		assertEquals(300, element.getUpper());
-		assertEquals(new BigDecimal(15.25), element.getDiscountPercent());
+		assertEquals("10.00", element.getLower().toString());
+		assertEquals("300.00", element.getUpper().toString());
+		assertEquals("15.25", element.getDiscountPercent().toString());
 	}
 }

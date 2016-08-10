@@ -107,10 +107,11 @@ CREATE TABLE cater4party.Discount
 (
 	id INT NOT NULL IDENTITY
 	,restaurant_sk INT NOT NULL 
-	,lower INT NOT NULL 
-	,upper INT NOT NULL 
-	,pct DECIMAL(10,2)  NULL
+	,lower DECIMAL(10,2) NOT NULL 
+	,upper DECIMAL(10,2) NOT NULL 
+	,pct DECIMAL(10,2) NOT NULL
 	,create_ts DATETIME NOT NULL 
 	,lupd_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP );
 -- Create Foreign Key: Discount.restaurant_sk -> Restaurant.id
 ALTER TABLE cater4party.Discount ADD FOREIGN KEY (restaurant_sk) REFERENCES cater4party.Restaurant(id);
+

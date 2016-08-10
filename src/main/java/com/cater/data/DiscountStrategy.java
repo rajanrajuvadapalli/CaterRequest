@@ -29,9 +29,10 @@ public class DiscountStrategy {
 	 * @param value the value
 	 * @return the discount percent for
 	 */
-	public BigDecimal getDiscountPercentFor(int value) {
+	public BigDecimal getDiscountPercentFor(BigDecimal value) {
 		for (DiscountElement de : getValues()) {
-			if (de != null && value >= de.getLower() && value <= de.getUpper()) {
+			if (de != null && value.compareTo(de.getLower()) == 1
+					&& value.compareTo(de.getUpper()) == -1) {
 				return de.getDiscountPercent();
 			}
 		}
