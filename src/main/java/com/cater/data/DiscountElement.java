@@ -10,10 +10,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DiscountElement {
 	/** The lower. */
 	@JsonProperty("lower")
-	private int lower;
+	private BigDecimal lower;
 	/** The upper. */
 	@JsonProperty("upper")
-	private int upper;
+	private BigDecimal upper;
 	/** The discount percent. */
 	@JsonProperty("pct")
 	private BigDecimal discountPercent;
@@ -32,7 +32,8 @@ public class DiscountElement {
 	 * @param upper the upper
 	 * @param discountPercent the discount percent
 	 */
-	public DiscountElement(int lower, int upper, BigDecimal discountPercent) {
+	public DiscountElement(BigDecimal lower, BigDecimal upper,
+			BigDecimal discountPercent) {
 		this.lower = lower;
 		this.upper = upper;
 		this.discountPercent = discountPercent;
@@ -43,8 +44,8 @@ public class DiscountElement {
 	 *
 	 * @return the lower
 	 */
-	public int getLower() {
-		return lower;
+	public BigDecimal getLower() {
+		return lower.setScale(2, BigDecimal.ROUND_HALF_UP);
 	}
 
 	/**
@@ -52,7 +53,7 @@ public class DiscountElement {
 	 *
 	 * @param lower the new lower
 	 */
-	public void setLower(int lower) {
+	public void setLower(BigDecimal lower) {
 		this.lower = lower;
 	}
 
@@ -61,8 +62,8 @@ public class DiscountElement {
 	 *
 	 * @return the upper
 	 */
-	public int getUpper() {
-		return upper;
+	public BigDecimal getUpper() {
+		return upper.setScale(2, BigDecimal.ROUND_HALF_UP);
 	}
 
 	/**
@@ -70,7 +71,7 @@ public class DiscountElement {
 	 *
 	 * @param upper the new upper
 	 */
-	public void setUpper(int upper) {
+	public void setUpper(BigDecimal upper) {
 		this.upper = upper;
 	}
 

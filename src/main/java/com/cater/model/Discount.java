@@ -25,9 +25,9 @@ public class Discount extends TimestampEntity implements Serializable {
 	@JoinColumn(name = "restaurant_sk", nullable = false)
 	private Restaurant restaurant;
 	@Column(name = "lower")
-	private Integer lower;
+	private Double lower;
 	@Column(name = "upper")
-	private Integer upper;
+	private Double upper;
 	@Column(name = "pct")
 	private Double percent;
 
@@ -47,19 +47,19 @@ public class Discount extends TimestampEntity implements Serializable {
 		this.restaurant = restaurant;
 	}
 
-	public Integer getLower() {
+	public Double getLower() {
 		return lower;
 	}
 
-	public void setLower(Integer lower) {
+	public void setLower(Double lower) {
 		this.lower = lower;
 	}
 
-	public Integer getUpper() {
+	public Double getUpper() {
 		return upper;
 	}
 
-	public void setUpper(Integer upper) {
+	public void setUpper(Double upper) {
 		this.upper = upper;
 	}
 
