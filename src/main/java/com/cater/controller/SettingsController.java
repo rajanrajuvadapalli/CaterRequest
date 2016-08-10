@@ -24,6 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.cater.Helper;
 import com.cater.constants.Roles;
 import com.cater.data.DiscountElement;
+import com.cater.data.DiscountStrategy;
 import com.cater.model.Customer;
 import com.cater.model.Discount;
 import com.cater.model.Login;
@@ -396,6 +397,49 @@ public class SettingsController {
 		if (session.getAttribute("passwordreset") != null) {
 			session.removeAttribute("passwordreset");
 			return "redirect:/dashboard";
+		}
+		return "redirect:/settings/personalInfo";
+	}
+
+	/**
+	 * Change discount.
+	 *
+	 * @param modelMap the model map
+	 * @param request the request
+	 * @param session the session
+	 * @return the string
+	 */
+	@RequestMapping(value = { "changeDiscount" }, method = RequestMethod.POST)
+	public String changeDiscount(ModelMap modelMap, HttpServletRequest request,
+			HttpSession session,
+			@RequestParam("newDiscountJson") String newDiscountJson,
+			@RequestParam("restaurantID") int restaurantID) {
+		logger.info("newDiscountJson = " + newDiscountJson);
+		logger.info("restaurantID = " + restaurantID);
+		try {
+			DiscountStrategy discountStrategy = new ObjectMapper().readValue(
+					newDiscountJson, DiscountStrategy.class);
+			if (discountStrategy != null
+					&& CollectionUtils.isNotEmpty(discountStrategy.getValues())) {
+				restaurantService.deleteExistingDiscounts(restaurantID);
+				Restaurant restaurant = restaurantService
+						.findRestaurantWithId(restaurantID);
+				for (DiscountElement de : discountStrategy.getValues()) {
+					Discount d = new Discount();
+					d.setRestaurant(restaurant);
+					d.setLower(de.getLower());
+					d.setUpper(de.getUpper());
+					d.setPercent(de.getDiscountPercent().doubleValue());
+					restaurantService.saveOrUpdateDiscount(d);
+				}
+			}
+		}
+		catch (Exception e) {
+			String msg = "Exception occured while processing the new discounts.";
+			logger.error(msg, e);
+			List <String> errors = Lists.newArrayList();
+			errors.add(msg);
+			modelMap.addAttribute("errors", errors);
 		}
 		return "redirect:/settings/personalInfo";
 	}
