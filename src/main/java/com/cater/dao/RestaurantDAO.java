@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.cater.constants.EventStatus;
+import com.cater.model.Discount;
 import com.cater.model.Quote;
 import com.cater.model.Restaurant;
 import com.cater.model.RestaurantSearch;
@@ -43,6 +44,9 @@ public class RestaurantDAO extends DataAccessObject {
 	/** The address dao. */
 	@Autowired
 	private AddressDAO addressDAO;
+	/** The discount DAO. */
+	@Autowired
+	private DiscountDAO discountDAO;
 
 	/**
 	 * Save or update.
@@ -241,6 +245,11 @@ public class RestaurantDAO extends DataAccessObject {
 		return super.fetchAll(Restaurant.class);
 	}
 
+	/**
+	 * Fetch all restaurants with full menu.
+	 *
+	 * @return the list
+	 */
 	@SuppressWarnings("unchecked")
 	public List <Restaurant> fetchAllRestaurantsWithFullMenu() {
 		logger.debug("Finding all restaurants with no primary cuisine.");
@@ -532,5 +541,27 @@ public class RestaurantDAO extends DataAccessObject {
 							+ restaurantID, he);
 		}
 		return Lists.newArrayList();
+	}
+
+	/**
+	 * Delete existing discounts.
+	 *
+	 * @param restaurantID the restaurant ID
+	 */
+	public void deleteExistingDiscounts(int restaurantID) {
+		logger.debug("Delete existing discounts for restaurant with ID: "
+				+ restaurantID);
+		try {
+			Session session = getSessionFactory().getCurrentSession();
+			Query q = session.createQuery("delete "
+					+ Discount.class.getSimpleName()
+					+ " where restaurant_sk = " + restaurantID);
+			q.executeUpdate();
+		}
+		catch (HibernateException he) {
+			logger.error(
+					"Exception occurred while Deleting existing discounts for restaurant with ID: "
+							+ restaurantID, he);
+		}
 	}
 }

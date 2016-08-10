@@ -353,17 +353,52 @@
 			<div class="col-sm-3">
 				<c:if
 					test="${not empty sessionScope.user.restaurant.discountStrategy}">
-					<div class="col-sm-3">
-						<b>Current&nbsp;discounts:</b><br /> <span
-							id="discountTableCurrent" />
-					</div>
+					<b>Current&nbsp;discounts:</b>
 					<br />
+					<span id="discountTableCurrent" /><br />
 				</c:if>
+
+			</div>
+			<div class="col-sm-6">
+				<b>New&nbsp;discounts:</b><br />
 				<form class="form-horizontal" method="POST" id="discountForm"
 					action="${pageContext.request.contextPath}/settings/changeDiscount"
 					novalidate enctype="application/x-www-form-urlencoded"
 					autocomplete="off" onsubmit="return validateChangeDiscountForm();">
-
+					<input type="text" hidden="hidden" id="newDiscountJson" name="newDiscountJson">
+					<input type="text" hidden="hidden" id="restaurantID" name="restaurantID" value="${sessionScope.user.restaurantID}">
+					<table class="table table-striped table-bordered" id="newDiscTable">
+						<tr>
+							<th>From</th>
+							<th>To</th>
+							<th>Discount</th>
+							<%-- <th></th> --%>
+						</tr>
+						<tr id="1">
+							<td><input type="number" size="5" id="l1"
+								class="form-control" placeholder="From"></td>
+							<td><input type="number" size="5" id="u1"
+								class="form-control" placeholder="To"></td>
+							<td><input type="number" size="5" id="d1"
+								class="form-control" placeholder="Discount"></td>
+							<%-- <td><button type="button" class="btn btn-default"
+									onclick="deleteRow('1')">
+									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;Delete
+								</button></td> --%>
+						</tr>
+					</table>
+					<br />
+					<div class="col-sm-6" align="left">
+						<button type="button" class="btn btn-default btn-sm"
+							id="addRowBtn">
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add
+							Row
+						</button>
+					</div>
+					<div class="col-sm-6" align="right">
+						<button type="submit" class="btn btn-default"
+							id="updateDiscountBtn">Update</button>
+					</div>
 				</form>
 			</div>
 		</div>
@@ -395,12 +430,57 @@
 			$(this).attr("disabled", "disabled");
 		});
 		var discounts=JSON.parse('${discounts}');
-		var discountTableCurrent="<table class=\"table table-bordered\"><tr><th>From</th><th>To</th><th>Discount</th></tr>";
+		var discountTableCurrent="<table class=\"table table-striped table-bordered\"><tr><th>From</th><th>To</th><th>Discount</th></tr>";
 		for (var i = 0; i < discounts.length; i++) { 
 			var row = "<tr><td>$"+discounts[i].lower+"</td><td>$"+discounts[i].upper+"</td><td>"+discounts[i].pct+"%</td></tr>";
 			discountTableCurrent += row;
 		}
 		discountTableCurrent += "</table>";
 		$("span[id=discountTableCurrent]").html(discountTableCurrent);
+		//logic for adding row
+		$('button#addRowBtn').click(function(){
+			var numberOfRows=$('#newDiscTable tr').length;
+			//console.log("numberOfRows="+numberOfRows);
+			var newRow = '<tr id="' + numberOfRows + '">'+
+				'<td><input type="number" size="5" id="l' + numberOfRows + '" class="form-control" placeholder="From"></td>'+
+				'<td><input type="number" size="5" id="u' + numberOfRows + '" class="form-control" placeholder="To"></td>'+
+				'<td><input type="number" size="5" id="d' + numberOfRows + '" class="form-control" placeholder="Discount"></td>'+
+				//'<td><button type="button" class="btn btn-default" onclick="deleteRow(\'' + numberOfRows + '\')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;Delete</button></td>'+
+				'</tr>'; 
+			//console.log("newRow="+newRow);
+			$('#newDiscTable tr:last').after(newRow);
+		});
 	});
 </script>
+
+<script>
+function validateChangeDiscountForm() {
+	var numberOfRows = $('#newDiscTable tr').length;
+	//console.log("numberOfRows="+numberOfRows);
+	var newJsonList = [];
+	for(var i=1 ; i< numberOfRows ; i++) { //start at 1, because 1 is header
+		var l = $('#l'+i).val();
+		var u = $('#u'+i).val();
+		var d = $('#d'+i).val();
+		var myObject = new Object();
+		myObject.lower = l;
+		myObject.upper = u;
+		myObject.pct = d;
+		newJsonList.push(myObject);
+	}
+	var discStrategy = new Object();
+	discStrategy.strategy = newJsonList;
+	var newJsonString = JSON.stringify(discStrategy);
+	//console.log("newJsonString="+newJsonString);
+	$('form#discountForm input#newDiscountJson').val(newJsonString);
+	//$('form#discountForm').submit();
+	return;
+}
+</script>
+
+<!-- <script>
+function deleteRow(rowId) {
+	console.log("Deleting row with id=" + rowId);
+	$('table#newDiscTable tr#'+rowId).remove();
+}
+</script> -->

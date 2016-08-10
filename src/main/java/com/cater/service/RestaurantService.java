@@ -22,12 +22,14 @@ import org.springframework.web.multipart.MultipartFile;
 import com.cater.Environment;
 import com.cater.aws.s3.AmazonS3;
 import com.cater.constants.Roles;
+import com.cater.dao.DiscountDAO;
 import com.cater.dao.QuoteDAO;
 import com.cater.dao.RestaurantDAO;
 import com.cater.email.EmailHelper;
 import com.cater.email.Notification;
 import com.cater.maps.MapsHelper;
 import com.cater.maps.RestaurantDTO;
+import com.cater.model.Discount;
 import com.cater.model.Quote;
 import com.cater.model.Restaurant;
 import com.cater.model.RestaurantSearch;
@@ -48,6 +50,8 @@ public class RestaurantService {
 	/** The quote dao. */
 	@Autowired
 	private QuoteDAO quoteDAO;
+	@Autowired
+	private DiscountDAO discountDAO;
 	/** The email helper. */
 	@Autowired
 	private EmailHelper emailHelper;
@@ -80,8 +84,8 @@ public class RestaurantService {
 	public List <Restaurant> fetchAllRestaurants() {
 		return restaurantDAO.fetchAllRestaurants();
 	}
-	
-	public List<Restaurant> fetchAllRestaurantsWithFullMenu(){
+
+	public List <Restaurant> fetchAllRestaurantsWithFullMenu() {
 		return restaurantDAO.fetchAllRestaurantsWithFullMenu();
 	}
 
@@ -209,16 +213,17 @@ public class RestaurantService {
 		smsHelper.sendNotificationSMSto(Roles.RESTAURANT, quote,
 				optionalMessage);
 	}
-	
+
 	/**
 	 * Send payment notification.
 	 *
 	 * @param quote the quote
 	 * @param optionalMessage the optional message
 	 */
-	public void paymentNotification(Quote quote, Notification notification, StringBuilder optionalMessage) {
-		emailHelper.paymentNotificationEmail(Roles.RESTAURANT, quote, notification,
-				optionalMessage);
+	public void paymentNotification(Quote quote, Notification notification,
+			StringBuilder optionalMessage) {
+		emailHelper.paymentNotificationEmail(Roles.RESTAURANT, quote,
+				notification, optionalMessage);
 		smsHelper.sendNotificationSMSto(Roles.RESTAURANT, quote,
 				optionalMessage);
 	}
@@ -347,5 +352,24 @@ public class RestaurantService {
 			logger.error("Exception occurred while getting yelp reviews.", e1);
 		}
 		return nearByRestaurants;
+	}
+
+	/**
+	 * Delete existing discounts.
+	 *
+	 * @param restaurantId the restaurant id
+	 */
+	public void deleteExistingDiscounts(int restaurantId) {
+		restaurantDAO.deleteExistingDiscounts(restaurantId);
+	}
+
+	/**
+	 * Save or update discount.
+	 *
+	 * @param d the d
+	 * @return true, if successful
+	 */
+	public boolean saveOrUpdateDiscount(Discount d) {
+		return discountDAO.saveOrUpdate(d);
 	}
 }
