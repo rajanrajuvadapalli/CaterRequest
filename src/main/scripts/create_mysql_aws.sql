@@ -107,3 +107,17 @@ CREATE TABLE mycaterdb.Quote
 ALTER TABLE mycaterdb.Quote ADD FOREIGN KEY (menu_sk) REFERENCES mycaterdb.Menu(id);
 -- Create Foreign Key: Quote.restaurant_sk -> Restaurant.id
 ALTER TABLE mycaterdb.Quote ADD FOREIGN KEY (restaurant_sk) REFERENCES mycaterdb.Restaurant(id);
+
+CREATE TABLE cater4party.Discount
+(
+	`id` INT NOT NULL AUTO_INCREMENT
+	,PRIMARY KEY (id)
+	,`restaurant_sk` INT NOT NULL 
+	,`lower` DECIMAL(10,2) NOT NULL 
+	,`upper` DECIMAL(10,2) NOT NULL 
+	,`pct` DECIMAL(10,2) NOT NULL
+	,`create_ts` DATETIME NOT NULL 
+	,`lupd_ts` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
+-- Create Foreign Key: Discount.restaurant_sk -> Restaurant.id
+ALTER TABLE cater4party.Discount ADD FOREIGN KEY (restaurant_sk) REFERENCES cater4party.Restaurant(id);
+

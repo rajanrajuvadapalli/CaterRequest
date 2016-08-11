@@ -355,7 +355,8 @@
 					test="${not empty sessionScope.user.restaurant.discountStrategy}">
 					<b>Current&nbsp;discounts:</b>
 					<br />
-					<span id="discountTableCurrent" /><br />
+					<span id="discountTableCurrent" />
+					<br />
 				</c:if>
 
 			</div>
@@ -426,14 +427,16 @@
 			$("div[id=restaurant-pic]").removeClass("hidden");
 			$(this).attr("disabled", "disabled");
 		});
-		var discounts=JSON.parse('${discounts}');
-		var discountTableCurrent="<table class=\"table table-striped table-bordered\"><tr><th>From</th><th>To</th><th>Discount</th></tr>";
-		for (var i = 0; i < discounts.length; i++) { 
-			var row = "<tr><td>$"+discounts[i].lower+"</td><td>$"+discounts[i].upper+"</td><td>"+discounts[i].pct+"%</td></tr>";
-			discountTableCurrent += row;
+		if('${discounts}') {
+			var discounts=JSON.parse('${discounts}');
+			var discountTableCurrent="<table class=\"table table-striped table-bordered\"><tr><th>From</th><th>To</th><th>Discount</th></tr>";
+			for (var i = 0; i < discounts.length; i++) { 
+				var row = "<tr><td>$"+discounts[i].lower+"</td><td>$"+discounts[i].upper+"</td><td>"+discounts[i].pct+"%</td></tr>";
+				discountTableCurrent += row;
+			}
+			discountTableCurrent += "</table>";
+			$("span[id=discountTableCurrent]").html(discountTableCurrent);
 		}
-		discountTableCurrent += "</table>";
-		$("span[id=discountTableCurrent]").html(discountTableCurrent);
 		//logic for adding row
 		$('button#addRowBtn').click(function(){
 			var numberOfRows=$('#newDiscTable tr').length;

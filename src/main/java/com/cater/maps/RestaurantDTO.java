@@ -1,5 +1,8 @@
 package com.cater.maps;
 
+import org.apache.commons.collections.CollectionUtils;
+
+import com.cater.model.Discount;
 import com.cater.model.Restaurant;
 
 public class RestaurantDTO {
@@ -56,5 +59,19 @@ public class RestaurantDTO {
 
 	public void setWebsiteUrl(Object websiteUrl) {
 		this.websiteUrl = websiteUrl;
+	}
+
+	public Double getMaxDiscountPercent() {
+		Double max = new Double(0);
+		if (restaurant != null
+				&& CollectionUtils.isNotEmpty(restaurant.getDiscountStrategy())) {
+			for (Discount d : restaurant.getDiscountStrategy()) {
+				if (d != null && d.getPercent() != null
+						&& max.compareTo(d.getPercent()) == -1) {
+					max = d.getPercent();
+				}
+			}
+		}
+		return max;
 	}
 }

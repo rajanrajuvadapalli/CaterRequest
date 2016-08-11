@@ -61,6 +61,11 @@
 							<br /> <br />
 							${r.restaurant.address.street1}${r.restaurant.address.street2},&nbsp;${r.restaurant.address.city},&nbsp;${r.restaurant.address.state},&nbsp;${r.restaurant.address.zip}<br />
 							<br />
+							<c:if test="${r.maxDiscountPercent > 0}">
+								This restaurant offers discounts upto <span
+									class="label label-success">${r.maxDiscountPercent}&#37;</span>
+								<br />
+							</c:if>
 							<form class="form-horizontal" method="GET"
 								action="${pageContext.request.contextPath}/menu/view/complete">
 								<input type="hidden" name="rName" value="${r.restaurant.name}" />
