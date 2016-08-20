@@ -1,8 +1,5 @@
 package com.cater.controller;
 
-import java.io.IOException;
-import java.io.StringWriter;
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -89,28 +86,9 @@ public class SettingsController {
 				return "settings/t_personalInfo_restaurants";
 			}
 			else {
-				try {
-					List <Discount> discountsFromDb = user.getRestaurant()
-							.getDiscountStrategy();
-					if (CollectionUtils.isNotEmpty(discountsFromDb)) {
-						List <DiscountElement> discounts = Lists.newArrayList();
-						for (Discount d : discountsFromDb) {
-							DiscountElement de = new DiscountElement(
-									new BigDecimal(d.getLower()),
-									new BigDecimal(d.getUpper()),
-									new BigDecimal(d.getPercent()));
-							discounts.add(de);
-						}
-						StringWriter sw = new StringWriter();
-						new ObjectMapper().writeValue(sw, discounts);
-						logger.info(sw.toString());
-						modelMap.addAttribute("discounts", sw.toString());
-					}
-				}
-				catch (IOException e) {
-					logger.error(
-							"Failed to convert discount strategy to json.", e);
-				}
+				String json = user.getRestaurant().getDiscountStrategyAsJson();
+				logger.info(json);
+				modelMap.addAttribute("discounts", json);
 				return "settings/t_personalInfo_restaurant";
 			}
 		}

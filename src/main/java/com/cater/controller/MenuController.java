@@ -679,6 +679,11 @@ public class MenuController {
 			String jsonMenuFile = "rest/s3/menu/"
 					+ fileName + fileNameExtension;
 			modelMap.addAttribute("menu_source_url", jsonMenuFile);
+			String discountStrategyAsJson = r.getRestaurant()
+					.getDiscountStrategyAsJson();
+			logger.info("discountStrategyAsJson=" + discountStrategyAsJson);
+			modelMap.addAttribute("discountStrategyAsJson",
+					discountStrategyAsJson);
 
 			/*
 			// If the menu ID is present, load the menu items

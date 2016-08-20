@@ -306,16 +306,11 @@ $(document).ready( function() {
 
 		var max, ingredients = "";
 		var addition_source = get_item_addition(addition_id);
-		/* example
-		{
-			"id"          : 1,
-			"name"        : "Burger Additions",
-			"min"         : false,
-			"max"         : 9,
-			"type"        : "multiple",
-			"ingredients" : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-		}
-		*/
+		/*
+		 * example { "id" : 1, "name" : "Burger Additions", "min" : false, "max" :
+		 * 9, "type" : "multiple", "ingredients" : [1, 2, 3, 4, 5, 6, 7, 8, 9,
+		 * 10, 11, 12] }
+		 */
 
 		// id
 		addition_wrapper = addition_wrapper.replace("{{addition_id}}", addition_source.id);
@@ -325,14 +320,10 @@ $(document).ready( function() {
 
 		// max
 		/*
-		if (addition_source.type == "single" || addition_source.max === false) {
-			max = "";
-		}
-		else {
-			max = "(" + addition_source.max + " max)";
-		}
-		addition_wrapper = addition_wrapper.replace("{{max}}", max);
-		*/
+		 * if (addition_source.type == "single" || addition_source.max ===
+		 * false) { max = ""; } else { max = "(" + addition_source.max + "
+		 * max)"; } addition_wrapper = addition_wrapper.replace("{{max}}", max);
+		 */
 
 		// ingredients
 		if (addition_source.type == "text") {
@@ -926,7 +917,6 @@ $(document).ready( function() {
 
 	// compile cart item
 	function compile_cart_item(id, item, object_id) {
-
 		// var total_price = calc_shopping_cart_item_total_price(item);
 		var additions = compile_cart_item_additions(item.additions);
 		var product_data = get_product_data(item.product_id);
@@ -941,9 +931,9 @@ $(document).ready( function() {
 		cart_item = cart_item.replace(/\{\{items\}\}/g, additions);
 		cart_item = cart_item.replace(/\{\{instructions\}\}/g, instructions);
 		cart_item = cart_item.replace(/\{\{base_price\}\}/g, product_data.price);
-		//cart_item = cart_item.replace(/\{\{price\}\}/g, item.price);
+		// cart_item = cart_item.replace(/\{\{price\}\}/g, item.price);
 		
-		//will return array of prices []
+		// will return array of prices []
 		var result = compile_cart_item_additions_prices(item.additions);
 		var expl = item.quantity + " x [$" + product_data.price;
 		var cart_item_total_price = parseFloat(product_data.price);
@@ -1053,6 +1043,8 @@ $(document).ready( function() {
 
 		var summary = {
 			"subtotal" : 0,
+			"discPct" : 0,
+			"disc" : 0,
 			"tax" : 0,
 			"total" : 0
 		};
@@ -1061,33 +1053,38 @@ $(document).ready( function() {
 
 		for (var i in bucket.shopping_cart_items) {
 
-			// product_data = get_product_data(bucket.shopping_cart_items[i].product_id);
+			// product_data =
+			// get_product_data(bucket.shopping_cart_items[i].product_id);
 
 			quantity = parseInt(bucket.shopping_cart_items[i].quantity);
 
 			price = parseFloat(bucket.shopping_cart_items[i].price);
 
-			//NOTE (hari): price already includes the additions, so we don't need to 
-			//calculate additions again. Therefore commenting the following code.
+			// NOTE (hari): price already includes the additions, so we don't
+			// need to
+			// calculate additions again. Therefore commenting the following
+			// code.
 			// calculate the ingredients additional price
-			/*additions_total_to_add = 0;
-			for (var a in bucket.shopping_cart_items[i].additions) {
+			/*
+			 * additions_total_to_add = 0; for (var a in
+			 * bucket.shopping_cart_items[i].additions) {
+			 * 
+			 * addition_data =
+			 * get_addition_data(bucket.shopping_cart_items[i].additions[a].id);
+			 * 
+			 * if (typeof(addition_data.pricerange) === "boolean" &&
+			 * addition_data.pricerange === true) { continue; }
+			 * 
+			 * for (var b in
+			 * bucket.shopping_cart_items[i].additions[a].ingredients) {
+			 * ingredient_data =
+			 * get_ingredient_data(bucket.shopping_cart_items[i].additions[a].ingredients[b]);
+			 * console.log("ingredient_data.price=" + ingredient_data.price);
+			 * additions_total_to_add += ingredient_data.price;
+			 * console.log("additions_total_to_add=" + additions_total_to_add); } }
+			 */
 
-				addition_data = get_addition_data(bucket.shopping_cart_items[i].additions[a].id);
-
-				if (typeof(addition_data.pricerange) === "boolean" && addition_data.pricerange === true) {
-					continue;
-				}
-
-				for (var b in bucket.shopping_cart_items[i].additions[a].ingredients) {
-					ingredient_data = get_ingredient_data(bucket.shopping_cart_items[i].additions[a].ingredients[b]);
-					console.log("ingredient_data.price=" + ingredient_data.price);
-					additions_total_to_add += ingredient_data.price;
-					console.log("additions_total_to_add=" + additions_total_to_add);
-				}
-			}*/
-
-			//summary.subtotal += quantity * (price + additions_total_to_add);
+			// summary.subtotal += quantity * (price + additions_total_to_add);
 			summary.subtotal += quantity * (price);
 		}
 
@@ -1104,6 +1101,40 @@ $(document).ready( function() {
 		summary.subtotal = summary.subtotal.toFixed(2);
 		summary.total = summary.total.toFixed(2);
 
+		// Before returning, display the dicount tip.
+		// parsedDiscountJson is set in base.jsp which is set in MenuController
+		var discountBracket;
+		if(parsedDiscountJson && parseFloat(summary.subtotal)) {
+			var isSet = false;
+			$('div#discount_hint').addClass('hidden');
+			$.each(parsedDiscountJson, function(idx, obj) {
+				if(summary.subtotal >= obj.lower) {
+					discountBracket = obj;
+				}
+				if(summary.subtotal < obj.lower && !isSet) {
+					var discount_hint = '<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;';
+					discount_hint += 'The restaurant offers ' + obj.pct + '% discount when the total price exceeds $' + obj.lower.toFixed(2) + '.';
+					var delta = obj.lower-summary.subtotal;
+					delta = delta.toFixed(2);
+					discount_hint += '<br/><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;';
+					discount_hint += 'Please add items worth $' + delta + ' to get this discount.';
+					$('div#discount_hint').html(discount_hint);
+					$('div#discount_hint').removeClass('hidden');
+					// isSet is used so that we do not overwrite after it is set.
+					isSet = true;
+				}
+			});
+		}
+		
+		// If we found the discount bracket, apply it
+		if(discountBracket) {
+			summary.discPct =  discountBracket.pct.toFixed(2);
+			var disc = (parseFloat(summary.subtotal) * discountBracket.pct)/100;
+			summary.disc = disc.toFixed(2);
+			summary.total = parseFloat(summary.subtotal) - parseFloat(summary.disc) + parseFloat(summary.tax);
+			summary.total = summary.total.toFixed(2);
+		}
+		
 		return summary;
 	}
 
@@ -1135,6 +1166,12 @@ $(document).ready( function() {
 		$("#shopping_cart_summary_subtotal").html(summary.subtotal);
 		$("#shopping_cart_summary_tax").html(summary.tax);
 		$("#shopping_cart_summary_total").html(summary.total);
+		
+		if(summary.disc) {
+			var discHtml = '<br> Discount (' + summary.discPct + '%): -$' + summary.disc;
+			$("#shopping_cart_summary_disc").html(discHtml);
+		}
+		
 	}
 
 	// setup shopping cart summary
@@ -1255,18 +1292,11 @@ $(document).ready( function() {
 			var content = $("#upload_custom_menu_source")[0].files[0];
 
 			/*
-			// using FileReader API
-			if (content) {
-				// create reader
-				var reader = new FileReader();
-				reader.readAsText(content);
-				reader.onload = function(e) {
-					// browser completed reading file - display it
-					alert(e.target.result);
-				};
-				return;
-			}
-			*/
+			 * // using FileReader API if (content) { // create reader var
+			 * reader = new FileReader(); reader.readAsText(content);
+			 * reader.onload = function(e) { // browser completed reading file -
+			 * display it alert(e.target.result); }; return; }
+			 */
 
 			// clear the input field for future uplaods
 			$(this).val("");
