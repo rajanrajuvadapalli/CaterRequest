@@ -72,6 +72,10 @@
 
 						<h3>Selected Items</h3>
 
+						<div id="discount_hint" class="col-md-10 col-sm-10 col-xs-10 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 alert alert-success hidden">
+						
+						</div>
+						
 						<div id="shopping_cart" class="slide"></div>
 
 						<div class="pick-deliver">
@@ -83,6 +87,7 @@
 									<br>
 									<div id="shopping_cart_summary" class="shopping-cart-summary ta-right" style="display:none;">
 										Sub-total: $<span id="shopping_cart_summary_subtotal" style="padding:0;"></span>
+										<span id="shopping_cart_summary_disc" style="padding:0;"></span>
 										<br>
 										Tax: $<span id="shopping_cart_summary_tax" style="padding:0;"></span>
 										<br>
@@ -173,4 +178,8 @@
 <!-- Menu Generator -->
 <link rel="stylesheet" href="/cater4party/resources/assets/cl-css/styles.css" type="text/css">
 <script type="text/javascript">var menu_source_url = "/${menu_source_url}";</script>
+<script type="text/javascript">
+	var discountStrategyAsJson = '${discountStrategyAsJson}'; 
+	var parsedDiscountJson = JSON.parse(discountStrategyAsJson);
+</script>
 <script src="/cater4party/resources/assets/cl-js/app.js?v5" type="text/javascript"></script>
