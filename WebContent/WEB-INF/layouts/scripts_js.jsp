@@ -50,6 +50,8 @@
 <script src="${pageContext.request.contextPath}/resources/js/masonry.pkgd.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/modernizr.custom.js"></script>
 
+<script src="${pageContext.request.contextPath}/resources/js/menu/fmf.js"></script>
+
 <script>
     $(window).load(function(){
         var rtl = false; // Use RTL

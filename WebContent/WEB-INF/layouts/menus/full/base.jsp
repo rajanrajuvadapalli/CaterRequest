@@ -80,9 +80,10 @@
 
 						<div class="pick-deliver">
 							<div class="checkout">
-								<form action="/menu/saveMenu" id="california_kabob_restaurant_target" method="post">
-									<input id="full_menu_items" type="hidden" name="full_menu_items">
-									<input type="hidden" name="cuisineType" value="MIDDLE_EASTERN">
+								<form action="${pageContext.request.contextPath}/customer/orderConfirmationFmf" id="fmf" method="post">
+									<input type="hidden" name="full_menu_items">
+									<input type="hidden" name="rId">
+									<input type="hidden" name="summary">
 									<textarea rows="4" cols="50" name="comments" placeholder="Enter your comments to restaurant here" class="form-control"></textarea>
 									<br>
 									<div id="shopping_cart_summary" class="shopping-cart-summary ta-right" style="display:none;">
@@ -94,7 +95,7 @@
 										Total: $<span id="shopping_cart_summary_total" style="padding:0;"></span>
 									</div>
 									<br>
-									<a href="javascript:california_kabob_restaurant_menu_submit();">Next</a>
+									<a href="javascript:fmf_submit();" type="button" class="btn btn-default" >Next</a>
 								</form>
 							</div>
 							<p></p>
@@ -177,7 +178,8 @@
 
 <!-- Menu Generator -->
 <link rel="stylesheet" href="/cater4party/resources/assets/cl-css/styles.css" type="text/css">
-<script type="text/javascript">var menu_source_url = "/${menu_source_url}";</script>
+<script type="text/javascript">var menu_source_url = "/cater4party/resources/${menu_source_url}";</script>
+<script type="text/javascript">var rId = "${rId}";</script>
 <script type="text/javascript">
 	var discountStrategyAsJson = '${discountStrategyAsJson}'; 
 	var parsedDiscountJson = JSON.parse(discountStrategyAsJson);

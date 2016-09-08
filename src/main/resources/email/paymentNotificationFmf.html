@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Payment Confirmation</title>
+<style>
+body {
+	font-family: Lucida Grande, Lucida Sans Unicode, Helvetica, Arial,
+		Verdana, sans-serif;
+}
+</style>
+</head>
+<body>
+	<img alt="cr"
+		src="https://s3-us-west-2.amazonaws.com/rajrv-caterrequest-s3bucket/cr-logo.png">
+	<br />
+	<br /> Hi ${USERNAME},
+	<p>
+		<!-- ${STATUS_MESSAGE}<br/><br/> -->
+		<b>Customer Email: </b>${CUSTOMER_EMAIL}<br />
+		<b>Restaurant Name: </b>${RESTAURANT_NAME}<br />
+		<b>Comments: </b> ${COMMENTS}<br /><br />
+	</p>
+
+	<br />
+	<b><u>Payment Details:</u></b>
+	<p>
+		<b>Price:   </b>${PRICE}<br />
+		<b>Sales Tax:     </b>${SALES_TAX}<br />
+		<b>Total Amount:  </b>${TOTAL_AMOUNT}<br />
+
+		<b>PAYMENT STATUS: <font color="green">${PAYMENT_STATUS}</font></b><br />
+	</p>
+
+	<p>
+		Please <a href="${URL}/login">login</a> to your
+		account for more details.
+	</p>
+
+	<p>
+		<b><u>Menu Summary:</u></b><br/>${MENU}<br />
+	</p>
+
+	Regards,
+	<br /> The CaterRequest Team
+</body>
+</html>

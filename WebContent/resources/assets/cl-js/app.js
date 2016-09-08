@@ -8,6 +8,7 @@ $(document).ready( function() {
 		"data" : {
 			"ready" : false,
 			"url" : window.menu_source_url,
+			"rId" : window.rId,
 			"content" : {}
 		},
 		"templates" : {
@@ -1185,6 +1186,9 @@ $(document).ready( function() {
 
 		// show the summary
 		$("#shopping_cart_summary").show();
+		$("form#fmf input[name=summary]").val(JSON.stringify(summary));
+		$("form#fmf input[name=full_menu_items]").val(JSON.stringify(bucket.shopping_cart_items));
+		$("form#fmf input[name=rId]").val(bucket.data.rId);
 	}
 
 	// populate the popup item data
@@ -1236,7 +1240,7 @@ $(document).ready( function() {
 
 			// compile cart item
 			var cart_item = compile_cart_item(item_id, item_selected, object_id);
-
+			
 			// replace the shopping cart item
 			if (bucket.shopping_cart_edit_item_id !== null) {
 				$("#shopping_cart [data-id="+bucket.shopping_cart_edit_item_id+"].sel_item").replaceWith(cart_item);

@@ -32,9 +32,9 @@ public class Menu extends TimestampEntity implements Serializable {
 	@Column(name = "comments", length = 1000, nullable = true)
 	private String comments;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name = "event_sk", nullable = false)
+	@JoinColumn(name = "event_sk", nullable = true)
 	private Event event;
-	@Column(name = "cuisine_type", length = 20, nullable = false)
+	@Column(name = "cuisine_type", length = 20, nullable = true)
 	private String cuisineType;
 	@Column(name = "full_menu", nullable = false, unique = false, updatable = true)
 	private boolean isFullMenu;
@@ -42,6 +42,8 @@ public class Menu extends TimestampEntity implements Serializable {
 	@JoinColumn(name = "menu_sk")
 	@OrderBy("price ASC")
 	public List <Quote> quotes;
+	@Column(name = "summary", length = 50, nullable = true)
+	private String summary;
 
 	public Integer getId() {
 		return id;
@@ -99,6 +101,14 @@ public class Menu extends TimestampEntity implements Serializable {
 		this.quotes = quotes;
 	}
 
+	public String getSummary() {
+		return summary;
+	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+
 	public Date getLupdPlus24() {
 		Calendar calendar = Calendar.getInstance(Locale.US);
 		calendar.setTime(getUpdated());
@@ -118,6 +128,8 @@ public class Menu extends TimestampEntity implements Serializable {
 		result = prime * result + ((event == null) ? 0 : event.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + (isFullMenu ? 1231 : 1237);
+		result = prime * result + ((quotes == null) ? 0 : quotes.hashCode());
+		result = prime * result + ((summary == null) ? 0 : summary.hashCode());
 		return result;
 	}
 
@@ -161,6 +173,18 @@ public class Menu extends TimestampEntity implements Serializable {
 		else if (!id.equals(other.id))
 			return false;
 		if (isFullMenu != other.isFullMenu)
+			return false;
+		if (quotes == null) {
+			if (other.quotes != null)
+				return false;
+		}
+		else if (!quotes.equals(other.quotes))
+			return false;
+		if (summary == null) {
+			if (other.summary != null)
+				return false;
+		}
+		else if (!summary.equals(other.summary))
 			return false;
 		return true;
 	}

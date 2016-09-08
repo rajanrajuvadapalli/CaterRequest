@@ -323,6 +323,32 @@ public class MenuController {
 		return categoryNames;
 	}
 
+	/*@RequestMapping(value = { "saveMenuFmf" }, method = RequestMethod.POST)
+	public String saveMenuFmf(
+			HttpSession httpSession,
+			ModelMap modelMap,
+			HttpServletRequest request,
+			RedirectAttributes redirectAttributes,
+			@RequestParam(value = "full_menu_items", required = false) String fullmenuItemsJson,
+			@RequestParam(value = "rId", required = true) String rId,
+			@RequestParam(value = "summary", required = true) String summaryJson,
+			@RequestParam(value = "comments") String comments) {
+		User user = (User) httpSession.getAttribute("user");
+		if (user == null) {
+			return "t_home";
+		}
+		logger.info("full_menu_items= " + fullmenuItemsJson);
+		logger.info("rId= " + rId);
+		logger.info("summary= " + summaryJson);
+		logger.info("comments= " + comments);
+		
+		httpSession.setAttribute("fullmenuItemsJson", fullmenuItemsJson);
+		httpSession.setAttribute("summaryJson", summaryJson);
+		httpSession.setAttribute("comments", comments);
+		
+		
+		return "";//payment screen
+	}*/
 	/**
 	 * Save menu.
 	 *
@@ -360,7 +386,7 @@ public class MenuController {
 		String eventId = (String) httpSession.getAttribute("eventId");
 		modelMap.put("cuisineType", cuisine);
 		Boolean fmf = (Boolean) httpSession.getAttribute("full_menu_flow");
-		Integer rId = null;
+		//Integer rId = null;
 		Event e = null;
 		try {
 			StringBuilder stringBuilder = new StringBuilder();
@@ -478,7 +504,7 @@ public class MenuController {
 					Quote quote = restaurantService
 							.findQuoteWithRestaurantIdAndMenuId(r.getId(),
 									menuId);
-					rId = r.getId();
+					//rId = r.getId();
 					if (quote != null) {
 						previouslySelectedRestaurants.add(r.getId());
 						if (isMenuChanged) {
@@ -512,10 +538,10 @@ public class MenuController {
 			//Send the user to create event page
 			return "customer/t_createEvent";
 		}
-		else if (Boolean.TRUE.equals(fmf)) {
+		/*else if (Boolean.TRUE.equals(fmf)) {
 			redirectAttributes.addAttribute("rId", rId);
 			return "redirect:/customer/event/requestQuote";
-		}
+		}*/
 		return "menus/t__cateringRestaurants";
 	}
 
@@ -672,11 +698,13 @@ public class MenuController {
 			httpSession.setAttribute("full_menu_flow", true);
 			httpSession.setAttribute("full_menu_flow_rname", restaurantName);
 			httpSession.setAttribute("full_menu_flow_rid", Helper.stringToInt(restaurantId));
+			httpSession.setAttribute("full_menu_flow_rzip",
+					Helper.stringToInt(restaurantZipCode));
 
 			RestaurantDTO r = getYelpReviews(restaurantId);
 			modelMap.addAttribute("r", r);
 
-			String jsonMenuFile = "rest/s3/menu/"
+			String jsonMenuFile = ""
 					+ fileName + fileNameExtension;
 			modelMap.addAttribute("menu_source_url", jsonMenuFile);
 			String discountStrategyAsJson = r.getRestaurant()
@@ -684,6 +712,7 @@ public class MenuController {
 			logger.info("discountStrategyAsJson=" + discountStrategyAsJson);
 			modelMap.addAttribute("discountStrategyAsJson",
 					discountStrategyAsJson);
+			modelMap.addAttribute("rId", restaurantId);
 
 			/*
 			// If the menu ID is present, load the menu items

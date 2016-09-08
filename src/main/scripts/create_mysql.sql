@@ -84,8 +84,8 @@ CREATE TABLE cater4party.Menu
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
 	,`data` VARCHAR(10000)  NULL 
-	,`event_sk` INT NOT NULL 
-	,`cuisine_type` VARCHAR(20) NOT NULL
+	,`event_sk` INT NULL 
+	,`cuisine_type` VARCHAR(50) NULL
 	,`full_menu` BIT NOT NULL
 	,`comments` VARCHAR(1000) NULL
 	,`create_ts` DATETIME NOT NULL 
@@ -132,3 +132,7 @@ add `full_menu` BIT NOT NULL DEFAULT 0;
 
 alter table cater4party.Discount
 modify `pct` DECIMAL(10,2) NOT NULL;
+
+ALTER TABLE cater4party.Menu MODIFY COLUMN `event_sk` INT NULL;
+ALTER TABLE cater4party.Menu MODIFY COLUMN `cuisine_type` VARCHAR(50) NULL;	
+ALTER TABLE cater4party.Menu ADD COLUMN `summary` varchar(50) NULL;

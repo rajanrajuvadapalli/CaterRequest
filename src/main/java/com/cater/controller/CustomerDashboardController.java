@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +35,7 @@ import com.cater.Helper;
 import com.cater.constants.EventStatus;
 import com.cater.constants.QuoteStatus;
 import com.cater.constants.Roles;
+import com.cater.data.Summary;
 import com.cater.maps.RestaurantDTO;
 import com.cater.model.Address;
 import com.cater.model.Customer;
@@ -44,6 +46,7 @@ import com.cater.model.Restaurant;
 import com.cater.service.CustomerService;
 import com.cater.service.RestaurantService;
 import com.cater.ui.data.User;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
@@ -703,10 +706,10 @@ public class CustomerDashboardController {
 						BigDecimal.ROUND_HALF_UP);
 				double amount = quote.getPrice()
 						+ taxInbigdecimal.doubleValue();
-				
 				double totalAmountInCents = amount * 100;
-				long mStrippedValue = new Double(totalAmountInCents).longValue();
-				modelMap.put("quote", quote);
+				long mStrippedValue = new Double(totalAmountInCents)
+						.longValue();
+				modelMap.put("subtotal", quote.getPrice());
 				modelMap.put("restuarant", quote.getRestaurant());
 				modelMap.put("event", event);
 				modelMap.put("tax", taxInbigdecimal.doubleValue());
@@ -714,6 +717,75 @@ public class CustomerDashboardController {
 				modelMap.put("totalAmountInCents", mStrippedValue);
 				forward = "t_payment";
 			}
+		}
+		return forward;
+	}
+
+	@RequestMapping(value = { "orderConfirmationFmf" }, method = RequestMethod.POST)
+	public String confirmOrderFmf(
+			HttpSession httpSession,
+			ModelMap modelMap,
+			HttpServletRequest request,
+			RedirectAttributes redirectAttributes,
+			@RequestParam(value = "full_menu_items", required = false) String fullmenuItemsJson,
+			@RequestParam(value = "rId", required = false) String rId,
+			@RequestParam(value = "summary", required = false) String summaryJson,
+			@RequestParam(value = "comments") String comments) {
+		String forward = "redirect:/menu/view/complete?rName="
+				+ httpSession.getAttribute("full_menu_flow_rname") + "&rId="
+				+ httpSession.getAttribute("full_menu_flow_rid") + "&rZip="
+				+ httpSession.getAttribute("full_menu_flow_rzip");
+		User user = (User) httpSession.getAttribute("user");
+		if (user == null) {
+			return "t_home";
+		}
+		List <String> errors = Lists.newArrayList();
+		redirectAttributes.addFlashAttribute("errors", errors);
+		List <String> successMessages = Lists.newArrayList();
+		redirectAttributes
+				.addFlashAttribute("successMessages", successMessages);
+		try {
+			Summary summary = new ObjectMapper().readValue(summaryJson,
+					Summary.class);
+			if (summary == null || summary.getTotal() == null
+					|| summary.getSubtotal() == null
+					|| new BigDecimal(0).equals(summary.getSubtotal())) {
+				errors.add("Please add items to cart to proceed to payment.");
+			}
+			else {
+				BigDecimal taxInbigdecimal = summary.getTax();
+				taxInbigdecimal = taxInbigdecimal.setScale(2,
+						BigDecimal.ROUND_HALF_UP);
+				double amount = summary.getSubtotal().add(taxInbigdecimal)
+						.doubleValue();
+				double totalAmountInCents = amount * 100;
+				long mStrippedValue = new Double(totalAmountInCents)
+						.longValue();
+				modelMap.put(
+						"subtotal",
+						summary.getSubtotal()
+								.setScale(2, BigDecimal.ROUND_HALF_UP)
+								.doubleValue());
+				modelMap.put("restuarant", restaurantService
+						.findRestaurantWithId(new Integer(rId)));
+				//modelMap.put("event", event);
+				modelMap.put("tax", taxInbigdecimal.doubleValue());
+				modelMap.put("amount", amount);
+				modelMap.put("totalAmountInCents", mStrippedValue);
+				modelMap.put("full_menu_items", fullmenuItemsJson);
+				modelMap.put("rId", rId);
+				modelMap.put("summary", summaryJson);
+				modelMap.put("comments", comments);
+				forward = "t_payment";
+			}
+		}
+		catch (Exception e) {
+			String referenceNumber = UUID.randomUUID().toString();
+			logger.error(referenceNumber
+					+ ": Exception while reading the summary json.");
+			errors.add("Please contact tech support with referene number: "
+					+ referenceNumber);
+			forward = "t_500";
 		}
 		return forward;
 	}

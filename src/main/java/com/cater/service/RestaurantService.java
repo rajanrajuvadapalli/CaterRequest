@@ -228,6 +228,17 @@ public class RestaurantService {
 				optionalMessage);
 	}
 
+	public void paymentNotification(String fullmenuItemsJson,
+			String summaryJson, String comments, Notification notification,
+			StringBuilder optionalMessage, Restaurant restaurant,
+			String recieptEmail) {
+		emailHelper.paymentNotificationEmailFmf(fullmenuItemsJson, summaryJson,
+				comments, notification, optionalMessage, restaurant,
+				recieptEmail);
+		smsHelper.sendNotificationSMStoFmf(fullmenuItemsJson, summaryJson,
+				comments, optionalMessage, restaurant, recieptEmail);
+	}
+
 	/**
 	 * Save restaurant profile pic.
 	 *

@@ -151,6 +151,46 @@ public class SMSHelper {
 	}
 
 	/**
+	 * Send notification SM sto fmf.
+	 *
+	 * @param fullmenuItemsJson the fullmenu items json
+	 * @param summaryJson the summary json
+	 * @param comments the comments
+	 * @param optionalMessage the optional message
+	 * @param restaurant the restaurant
+	 * @param recieptEmail the reciept email
+	 * @return true, if successful
+	 */
+	public boolean sendNotificationSMStoFmf(String fullmenuItemsJson,
+			String summaryJson, String comments, StringBuilder optionalMessage,
+			Restaurant restaurant, String recieptEmail) {
+		try {
+			String to = restaurant.getContactNumber();
+			if (canWeSendSms(Roles.RESTAURANT, restaurant, null)) {
+				StringBuilder messageBuilder = new StringBuilder();
+				messageBuilder.append("Customer email: ").append(recieptEmail)
+						.append("; ");
+				messageBuilder.append("Restaurant name: ")
+						.append(restaurant.getName()).append(" at ")
+						.append(restaurant.getAddress().getStreet1())
+						.append("; ");
+				messageBuilder.append("--Please login to your account at "
+						+ url + "/login for more details.--");
+				logger.debug(messageBuilder.toString());
+				twilioSms.sendMessage(to, messageBuilder.toString());
+			}
+			else {
+				logger.debug("Phone number is either not verified or the restaurant has opted out.");
+			}
+		}
+		catch (TwilioRestException e) {
+			logger.error("Failed to send SMS.", e);
+			return false;
+		}
+		return true;
+	}
+
+	/**
 	 * Can we send sms.
 	 *
 	 * @param role the role
@@ -162,10 +202,11 @@ public class SMSHelper {
 			Customer customer) {
 		// If restaurant, check if the number is verified.
 		// If customer, check if they enrolled for getting notifications, then check if the number is verified.
-		if (role == Roles.RESTAURANT) {
+		if (role == Roles.RESTAURANT && restaurant != null) {
 			return restaurant.isNumberVerified();
 		}
-		else if (role == Roles.CUSTOMER && customer.isSmsOk()) {
+		else if (role == Roles.CUSTOMER && customer != null
+				&& customer.isSmsOk()) {
 			return customer.isNumberVerified();
 		}
 		return false;

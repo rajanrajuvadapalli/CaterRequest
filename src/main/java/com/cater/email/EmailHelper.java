@@ -29,7 +29,8 @@ import com.cater.model.Restaurant;
 public class EmailHelper {
 	/** The Constant logger. */
 	private static final Logger logger = Logger.getLogger(EmailHelper.class);
-	private static final SimpleDateFormat SDF_1 = new SimpleDateFormat("EEE, d MMM yyyy hh:mm aaa z", Locale.US);
+	private static final SimpleDateFormat SDF_1 = new SimpleDateFormat(
+			"EEE, d MMM yyyy hh:mm aaa z", Locale.US);
 	/** The admin email. */
 	@Value("${admin.email}")
 	private String ADMIN_EMAIL;
@@ -61,9 +62,11 @@ public class EmailHelper {
 	 *            the to addresses
 	 * @return true, if successful
 	 */
-	public boolean sendRegistrationConfirmationEmail(String username, String confirmationToken, String... toAddresses) {
+	public boolean sendRegistrationConfirmationEmail(String username,
+			String confirmationToken, String... toAddresses) {
 		try {
-			File f = new File(EmailHelper.class.getResource("/email/registrationConfirmation.html").getFile());
+			File f = new File(EmailHelper.class.getResource(
+					"/email/registrationConfirmation.html").getFile());
 			String emailBody = FileUtils.readFileToString(f);
 			String[] searchList = new String[3];
 			String[] replacementList = new String[3];
@@ -73,9 +76,12 @@ public class EmailHelper {
 			replacementList[1] = confirmationToken;
 			searchList[2] = "${URL}";
 			replacementList[2] = url;
-			emailBody = StringUtils.replaceEach(emailBody, searchList, replacementList);
-			amazonSES.sendEmail(emailSubject_registrationConfirmation, emailBody, toAddresses);
-		} catch (IOException e) {
+			emailBody = StringUtils.replaceEach(emailBody, searchList,
+					replacementList);
+			amazonSES.sendEmail(emailSubject_registrationConfirmation,
+					emailBody, toAddresses);
+		}
+		catch (IOException e) {
 			logger.error("Error while sending registration confirmation email.");
 			return false;
 		}
@@ -95,10 +101,12 @@ public class EmailHelper {
 	 *            the message
 	 * @return true, if successful
 	 */
-	public boolean sendContactUsEmail(String name, String requesterEmail, String subject, String message) {
+	public boolean sendContactUsEmail(String name, String requesterEmail,
+			String subject, String message) {
 		try {
 			String emailSubject = "Message from " + name + " [" + subject + "]";
-			File f = new File(EmailHelper.class.getResource("/email/contactUs.html").getFile());
+			File f = new File(EmailHelper.class.getResource(
+					"/email/contactUs.html").getFile());
 			String emailBody = FileUtils.readFileToString(f);
 			String[] searchList = new String[3];
 			String[] replacementList = new String[3];
@@ -108,10 +116,12 @@ public class EmailHelper {
 			replacementList[1] = requesterEmail;
 			searchList[2] = "${MESSAGE}";
 			replacementList[2] = stringToHtml(message);
-			emailBody = StringUtils.replaceEach(emailBody, searchList, replacementList);
+			emailBody = StringUtils.replaceEach(emailBody, searchList,
+					replacementList);
 			String[] toAddresses = new String[] { ADMIN_EMAIL, requesterEmail };
 			amazonSES.sendEmail(emailSubject, emailBody, toAddresses);
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			logger.error("Error while sending contact us email.");
 			return false;
 		}
@@ -140,7 +150,8 @@ public class EmailHelper {
 	 *            the optional message
 	 * @return true, if successful
 	 */
-	public boolean sendNotificationEmailTo(Roles role, Quote quote, StringBuilder optionalMessage) {
+	public boolean sendNotificationEmailTo(Roles role, Quote quote,
+			StringBuilder optionalMessage) {
 		if (quote == null) {
 			logger.error("Quote cannot be null.");
 			return false;
@@ -149,10 +160,14 @@ public class EmailHelper {
 			Event event = quote.getMenu().getEvent();
 			Restaurant restaurant = quote.getRestaurant();
 			Customer customer = event.getCustomer();
-			String to = role == Roles.RESTAURANT ? restaurant.getContactEmail() : customer.getContactEmail();
-			String username = role == Roles.RESTAURANT ? restaurant.getName() : customer.getName();
-			StringBuilder customerSlectedMenu = menuHelper.getMenuForEmail(quote.getMenu());
-			File f = new File(EmailHelper.class.getResource("/email/notification.html").getFile());
+			String to = role == Roles.RESTAURANT ? restaurant.getContactEmail()
+					: customer.getContactEmail();
+			String username = role == Roles.RESTAURANT ? restaurant.getName()
+					: customer.getName();
+			StringBuilder customerSlectedMenu = menuHelper
+					.getMenuForEmail(quote.getMenu());
+			File f = new File(EmailHelper.class.getResource(
+					"/email/notification.html").getFile());
 			String emailBody = FileUtils.readFileToString(f);
 			String[] searchList = new String[12];
 			String[] replacementList = new String[12];
@@ -173,7 +188,8 @@ public class EmailHelper {
 			searchList[6] = "${QUOTE_PRICE}";
 			replacementList[6] = Helper.formatCurrency(quote.getPrice());
 			searchList[7] = "${COMMENTS}";
-			replacementList[7] = optionalMessage == null ? "" : stringToHtml(optionalMessage.toString());
+			replacementList[7] = optionalMessage == null ? ""
+					: stringToHtml(optionalMessage.toString());
 			searchList[8] = "${URL}";
 			replacementList[8] = url;
 			searchList[9] = "${N_ADULTS}";
@@ -182,10 +198,13 @@ public class EmailHelper {
 			replacementList[10] = event.getKidsCount() + "";
 			searchList[11] = "${MENU}";
 			replacementList[11] = customerSlectedMenu.toString();
-			emailBody = StringUtils.replaceEach(emailBody, searchList, replacementList);
+			emailBody = StringUtils.replaceEach(emailBody, searchList,
+					replacementList);
 			String[] toAddresses = new String[] { to };
-			amazonSES.sendEmail(emailSubject_notification, emailBody, toAddresses);
-		} catch (IOException e) {
+			amazonSES.sendEmail(emailSubject_notification, emailBody,
+					toAddresses);
+		}
+		catch (IOException e) {
 			logger.error("Error while sending notificaiton email.");
 			return false;
 		}
@@ -203,9 +222,11 @@ public class EmailHelper {
 	 *            the to address
 	 * @return true, if successful
 	 */
-	public boolean sendPasswordResetEmail(String newPwdRaw, String resetToken_URLSafe, String toAddress) {
+	public boolean sendPasswordResetEmail(String newPwdRaw,
+			String resetToken_URLSafe, String toAddress) {
 		try {
-			File f = new File(EmailHelper.class.getResource("/email/passwordReset.html").getFile());
+			File f = new File(EmailHelper.class.getResource(
+					"/email/passwordReset.html").getFile());
 			String emailBody = FileUtils.readFileToString(f);
 			String[] searchList = new String[4];
 			String[] replacementList = new String[4];
@@ -217,9 +238,12 @@ public class EmailHelper {
 			replacementList[2] = resetToken_URLSafe;
 			searchList[3] = "${URL}";
 			replacementList[3] = url;
-			emailBody = StringUtils.replaceEach(emailBody, searchList, replacementList);
-			amazonSES.sendEmail(emailSubject_passwordReset, emailBody, toAddress);
-		} catch (IOException e) {
+			emailBody = StringUtils.replaceEach(emailBody, searchList,
+					replacementList);
+			amazonSES.sendEmail(emailSubject_passwordReset, emailBody,
+					toAddress);
+		}
+		catch (IOException e) {
 			logger.error("Error while sending registration confirmation email.");
 			return false;
 		}
@@ -237,8 +261,8 @@ public class EmailHelper {
 	 *            the optional message
 	 * @return true, if successful
 	 */
-	public boolean paymentNotificationEmail(Roles role, Quote quote, Notification notification,
-			StringBuilder optionalMessage) {
+	public boolean paymentNotificationEmail(Roles role, Quote quote,
+			Notification notification, StringBuilder optionalMessage) {
 		if (quote == null) {
 			logger.error("Quote cannot be null.");
 			return false;
@@ -247,10 +271,14 @@ public class EmailHelper {
 			Event event = quote.getMenu().getEvent();
 			Restaurant restaurant = quote.getRestaurant();
 			Customer customer = event.getCustomer();
-			String to = role == Roles.RESTAURANT ? restaurant.getContactEmail() : customer.getContactEmail();
-			String username = role == Roles.RESTAURANT ? restaurant.getName() : customer.getName();
-			StringBuilder customerSlectedMenu = menuHelper.getMenuForEmail(quote.getMenu());
-			File f = new File(EmailHelper.class.getResource("/email/paymentNotification.html").getFile());
+			String to = role == Roles.RESTAURANT ? restaurant.getContactEmail()
+					: customer.getContactEmail();
+			String username = role == Roles.RESTAURANT ? restaurant.getName()
+					: customer.getName();
+			StringBuilder customerSlectedMenu = menuHelper
+					.getMenuForEmail(quote.getMenu());
+			File f = new File(EmailHelper.class.getResource(
+					"/email/paymentNotification.html").getFile());
 			String emailBody = FileUtils.readFileToString(f);
 			String[] searchList = new String[15];
 			String[] replacementList = new String[15];
@@ -271,7 +299,8 @@ public class EmailHelper {
 			searchList[6] = "${QUOTE_PRICE}";
 			replacementList[6] = Helper.formatCurrency(quote.getPrice());
 			searchList[7] = "${COMMENTS}";
-			replacementList[7] = optionalMessage == null ? "" : stringToHtml(optionalMessage.toString());
+			replacementList[7] = optionalMessage == null ? ""
+					: stringToHtml(optionalMessage.toString());
 			searchList[8] = "${URL}";
 			replacementList[8] = url;
 			searchList[9] = "${N_ADULTS}";
@@ -280,19 +309,82 @@ public class EmailHelper {
 			replacementList[10] = event.getKidsCount() + "";
 			searchList[11] = "${MENU}";
 			replacementList[11] = customerSlectedMenu.toString();
-
 			searchList[12] = "${SALES_TAX}";
-			replacementList[12] = Helper.formatCurrency(notification.getSalesTax());
+			replacementList[12] = Helper.formatCurrency(notification
+					.getSalesTax());
 			searchList[13] = "${TOTAL_AMOUNT}";
-			replacementList[13] = Helper.formatCurrency(notification.getTotalAmount());
+			replacementList[13] = Helper.formatCurrency(notification
+					.getTotalAmount());
 			searchList[14] = "${PAYMENT_STATUS}";
 			replacementList[14] = notification.getPaymentStatus();
-
-			emailBody = StringUtils.replaceEach(emailBody, searchList, replacementList);
+			emailBody = StringUtils.replaceEach(emailBody, searchList,
+					replacementList);
 			String[] toAddresses = new String[] { to };
-			amazonSES.sendEmail(emailSubject_notification, emailBody, toAddresses);
-		} catch (IOException e) {
+			amazonSES.sendEmail(emailSubject_notification, emailBody,
+					toAddresses);
+		}
+		catch (IOException e) {
 			logger.error("Error while sending notificaiton email.");
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Payment notification email fmf.
+	 *
+	 * @param fullmenuItemsJson the fullmenu items json
+	 * @param summaryJson the summary json
+	 * @param comments the comments
+	 * @param notification the notification
+	 * @param optionalMessage the optional message
+	 * @param restaurant the restaurant
+	 * @param recieptEmail the reciept email
+	 * @return true, if successful
+	 */
+	public boolean paymentNotificationEmailFmf(String fullmenuItemsJson,
+			String summaryJson, String comments, Notification notification,
+			StringBuilder optionalMessage, Restaurant restaurant,
+			String recieptEmail) {
+		try {
+			String to = restaurant.getContactEmail();
+			String username = restaurant.getName();
+			File f = new File(EmailHelper.class.getResource(
+					"/email/paymentNotificationFmf.html").getFile());
+			String emailBody = FileUtils.readFileToString(f);
+			String[] searchList = new String[15];
+			String[] replacementList = new String[15];
+			searchList[0] = "${USERNAME}";
+			replacementList[0] = username;
+			searchList[1] = "${CUSTOMER_EMAIL}";
+			replacementList[1] = recieptEmail;
+			searchList[2] = "${RESTAURANT_NAME}";
+			replacementList[2] = restaurant.getName();
+			searchList[3] = "${PRICE}";
+			replacementList[3] = Helper.formatCurrency(notification.getPrice());
+			searchList[4] = "${COMMENTS}";
+			replacementList[4] = optionalMessage == null ? ""
+					: stringToHtml(optionalMessage.toString());
+			searchList[5] = "${MENU}";
+			replacementList[11] = fullmenuItemsJson;
+			searchList[5] = "${SALES_TAX}";
+			replacementList[12] = Helper.formatCurrency(notification
+					.getSalesTax());
+			searchList[6] = "${TOTAL_AMOUNT}";
+			replacementList[6] = Helper.formatCurrency(notification
+					.getTotalAmount());
+			searchList[7] = "${PAYMENT_STATUS}";
+			replacementList[7] = notification.getPaymentStatus();
+			searchList[8] = "${URL}";
+			replacementList[8] = url;
+			emailBody = StringUtils.replaceEach(emailBody, searchList,
+					replacementList);
+			String[] toAddresses = new String[] { to };
+			amazonSES.sendEmail(emailSubject_notification, emailBody,
+					toAddresses);
+		}
+		catch (IOException e) {
+			logger.error("Error while sending notification email.");
 			return false;
 		}
 		return true;

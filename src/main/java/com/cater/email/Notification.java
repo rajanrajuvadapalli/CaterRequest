@@ -1,10 +1,18 @@
 package com.cater.email;
 
 public class Notification {
-
+	private Double price;
 	private Double salesTax;
 	private Double totalAmount;
 	private String paymentStatus;
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 
 	public Double getSalesTax() {
 		return salesTax;
